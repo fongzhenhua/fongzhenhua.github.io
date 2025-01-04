@@ -277,6 +277,125 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/29/REVTEX4%E6%92%B0%E5%86%99%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/11/29/REVTEX4%E6%92%B0%E5%86%99%E7%A7%91%E7%A0%94%E8%AE%BA%E6%96%87/" class="post-title-link" itemprop="url">REVTEX4撰写科研论文</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-11-29 12:03:07" itemprop="dateCreated datePublished" datetime="2024-11-29T12:03:07+08:00">2024-11-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-29 00:39:43" itemprop="dateModified" datetime="2024-12-29T00:39:43+08:00">2024-12-29</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="简介">简介</h1>
+<p>《REVTEX 4 作者指南》是美国物理学会（APS）提供的，用于指导如何使用
+REVTEX 4 来准备向 APS 期刊提交的手稿。在 <a
+target="_blank" rel="noopener" href="https://tug.org/texlive/">TexLive</a>已经收录，所以安装<code>TexLive</code>后，直接调用模板就可以了。</p>
+<h1 id="模板">模板</h1>
+<p>这个模板是我写作时采用的，列在此处大家可以直接调用。</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>[aps,pre,showpacs,preprint,superscriptaddress]&#123;revtex4-1&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;graphicx&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;subfigure&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;amsmath&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;ulem&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;bm&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;amssymb&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;color&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;epstopdf&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;epsfig,dsfont,multirow&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;physics&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;tikz&#125;</span><br><span class="line"><span class="keyword">\usetikzlibrary</span>&#123;fadings,patterns&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;float&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>[</span><br><span class="line">    pdfborder=&#123;0 0 0&#125;,</span><br><span class="line">    bookmarksnumbered=true,</span><br><span class="line">    pagebackref,</span><br><span class="line">    pdftex</span><br><span class="line">]&#123;hyperref&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;orcidlink&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\title</span>&#123;Your Article Title&#125;</span><br><span class="line"><span class="keyword">\author</span>&#123;YourName<span class="keyword">\,</span><span class="keyword">\orcidlink</span>&#123;0000-0000-0000-0000&#125;&#125;</span><br><span class="line"><span class="keyword">\email</span>[Contact author:]&#123;YourEmail@xxx.com&#125;</span><br><span class="line"><span class="keyword">\homepage</span>[Visit:]&#123;https://YourHomePageSite&#125;</span><br><span class="line"><span class="keyword">\affiliation</span>&#123;School of Physics and Astronomy, Beijing Normal University, Beijing 100875, China&#125;</span><br><span class="line"><span class="comment">% \thanks&#123;miscellaneous text&#125;</span></span><br><span class="line"><span class="keyword">\date</span>&#123;<span class="keyword">\today</span>&#125;</span><br><span class="line"><span class="keyword">\preprint</span>&#123;Preprint&#125;</span><br><span class="line"><span class="keyword">\keywords</span>&#123;electron-positron; laser&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;abstract&#125;</span><br><span class="line">Your abstract</span><br><span class="line"><span class="keyword">\end</span>&#123;abstract&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">% \pacs&#123;05.45.-a; 02.60.-x; preprint&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">\maketitle</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">\section</span>&#123;Introduction&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\section</span>&#123;Reference&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">\bibliographystyle</span>&#123;unsrt&#125;</span><br><span class="line"><span class="keyword">\bibliography</span>&#123;Reference.bib&#125;</span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">% 直接写引用信息，不推荐</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">% \appendix</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">% \begin&#123;thebibliography&#125;&#123;99&#125;\suppressfloats</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">%     \bibitem&#123;ComDyn&#125;</span></span><br><span class="line"><span class="comment">%         L. Carleson, T. W. Gamelin, Complex Dynamics, Springer, New York,</span></span><br><span class="line"><span class="comment">%         NY, 1993.</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">%     \bibitem&#123;AITJF&#125;</span></span><br><span class="line"><span class="comment">%         S. Sutherland, An Introduction to Julia and Fatou Sets, in: C. Bandt,</span></span><br><span class="line"><span class="comment">%         M. Barnsley, R. Devaney, K. J. Falconer, V. Kannan, V. Kumar P.B.</span></span><br><span class="line"><span class="comment">%         (Eds.), Fractals, Wavelets, and their Applications, Springer Proceedings</span></span><br><span class="line"><span class="comment">%         in Mathematics $\&amp;$ Statistics, Springer International Publishing, Cham,</span></span><br><span class="line"><span class="comment">%         pp. 37-60, 2014.</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">%     \bibitem&#123;MJFO&#125;</span></span><br><span class="line"><span class="comment">%         M.-F. Danca, M. Fečkan, Mandelbrot set and Julia sets of fractional order, Nonlinear Dynamics 111(10), 9555-9570 (2023).</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">%     \bibitem&#123;MSPPCRF&#125;</span></span><br><span class="line"><span class="comment">%         A. J. Mitchell, Existence of the Mandelbrot Set in the Parameter Planes of Certain Rational Functions, Theses and Dissertations, University of Wisconsin-Milwaukee (2016).</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">%     \bibitem&#123;GBBM&#125;</span></span><br><span class="line"><span class="comment">%         H. Jang, Y. So, S. M. Marotta, Generalized baby Mandelbrot sets adorned with halos in families of rational maps, Journal of Difference Equations and Applications 23(3), 503-520 (2017).</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">% \end&#123;thebibliography&#125;</span></span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="重要宏包">重要宏包</h1>
+<h2 id="orcidlink">1. orcidlink</h2>
+<p>用来插入作者的<a target="_blank" rel="noopener" href="https://orcid.org/">orcid</a>, 调用和命令
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\usepackage</span>&#123;orcidlink&#125;</span><br><span class="line"><span class="keyword">\orcidlink</span>&#123;0000-0000-0000-0000&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="float">2. float</h2>
+<p>在LaTex中，<code>\begin&#123;figure&#125;[htbp]</code>是图片环境，常用选择项<code>[htbp]</code>是浮动格式：</p>
+<ul>
+<li><code>[h]</code>
+here，当前位置。将图形放置在正文文本中给出该图形环境的地方。如果本页所剩页面不够，这一参数将不起作用。<br />
+</li>
+<li><code>[t]</code> top，顶部。将图形放置在页面的顶部。<br />
+</li>
+<li><code>[b]</code> bottom，底部。将图形放置在页面的底部。<br />
+</li>
+<li><code>[p]</code> page of its
+own，浮动页。将图形放置在一个允许有浮动对象的页面上。</li>
+</ul>
+<p>一般使用<code>[htb]</code>这样的组合，只用<code>[h]</code>是没有用的。这样组合的意思就是<code>LaTex</code>会尽量满足排在前面的浮动格式，就是<code>h-t-b</code>这个顺序，让排版的效果尽量好。</p>
+<p><code>[!h]</code>只是试图放在当前位置。如果页面剩下的部分放不下，还是会跑到下一页的。一般而言，用<code>[!h]</code>选项通常会出现不能正确放置的问题，所以常用<code>[ht]</code>、<code>[htbp]</code>等,
+这里加感叹号的意思是 忽略 “美学” 标准。</p>
+<p>如果你确实需要把图片放在当前位置，不容改变，可以用
+<code>\usepackege&#123;float&#125;</code>
+宏包的<code>[H]</code>选项。不过如果这样做，出现放不下的问题时需要手工调整。使用格式如下。</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\usepackage</span>&#123;float&#125; </span><br><span class="line"><span class="comment">% ... </span></span><br><span class="line"><span class="keyword">\begin</span>&#123;figure&#125;[H] </span><br><span class="line">foo </span><br><span class="line"><span class="keyword">\end</span>&#123;figure&#125;</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p>特别强调，当表格或者图片占据双栏模板的两栏时(即在<code>\begin{table*}</code>时），这些控制选项就失效了。其他情况请参考
+<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/LeonSUST/article/details/89332744">技能提升之Latex控制图片位置</a></p>
+</div>
+<h1 id="参考文章">参考文章</h1>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://7id.xray.aps.anl.gov/journals/revtex4/auguide.pdf">revtex4-auguide.pdf</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36654593/article/details/108369354">LaTeX如何插入作者的ORCID</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/LeonSUST/article/details/89332744">技能提升之Latex控制图片位置</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/29/Linux%E4%BD%BF%E7%94%A8dnsmasq%E5%BC%80%E5%90%AF%E6%9C%AC%E5%9C%B0dns%E7%BC%93%E5%AD%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1594,130 +1713,6 @@ x^\gamma}+\Gamma^\mu_{\nu\beta}\Gamma^\nu_{\alpha\gamma}-\Gamma^\mu_{\nu\gamma}\
 <p><label style="color:red">转载声明:本文除格式上略作调整外，全文转自</label>
 <a
 target="_blank" rel="noopener" href="https://spaces.ac.cn/archives/4014">https://spaces.ac.cn/archives/4014</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/16/Linux%E4%B8%8BLogitech%E8%AE%BE%E5%A4%87%E7%9A%84%E7%BB%88%E6%9E%81%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7Solaar/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/11/16/Linux%E4%B8%8BLogitech%E8%AE%BE%E5%A4%87%E7%9A%84%E7%BB%88%E6%9E%81%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7Solaar/" class="post-title-link" itemprop="url">Linux下Logitech设备的终极管理工具Solaar</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-11-16 20:24:49" itemprop="dateCreated datePublished" datetime="2024-11-16T20:24:49+08:00">2024-11-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-29 00:39:43" itemprop="dateModified" datetime="2024-12-29T00:39:43+08:00">2024-12-29</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>由于最近入手了一款Logitech的无线机械键盘k865,
-在Archlinux下使用非常好，所幸使用<code>pacman</code>和<code>paru</code>查询了一下关于Logitech在Archlinux下相关的软件，然后就发现了这款Archlinux官方仓库中的软件<code>solaar</code>.</p>
-<h1 id="简介">简介</h1>
-<p>Solaar 是一款专为 Linux 系统设计的 Logitech 设备管理工具，支持多种
-Logitech 键盘、鼠标及其他无线设备。无论是通过 Unifying、Bolt、Lightspeed
-或 Nano 接收器连接的设备，还是通过 USB 线缆或蓝牙连接的设备，Solaar
-都能轻松管理。Solaar 并非设备驱动程序，而是通过响应 Linux
-输入系统忽略的特殊消息来实现其功能。</p>
-<h1 id="使用场景">使用场景</h1>
-<ol type="1">
-<li><strong>多设备管理</strong>：对于拥有多款 Logitech
-设备的用户，Solaar
-提供了一个集中管理平台，方便用户统一管理所有设备。</li>
-<li><strong>设备配置</strong>：用户可以通过 Solaar
-轻松配置设备的各项设置，如按键映射、灵敏度调整等。</li>
-<li><strong>自动化规则</strong>：Solaar
-支持根据设备消息自动运行预设规则，适用于需要自动化操作的场景。</li>
-<li><strong>设备维护</strong>：Solaar
-可以帮助用户快速诊断和解决设备连接问题，提升设备使用体验。</li>
-</ol>
-<h1 id="项目特点">项目特点</h1>
-<ul>
-<li><strong>多设备支持</strong>：Solaar 支持多种 Logitech
-设备，无论是无线还是有线设备，都能轻松管理。</li>
-<li><strong>灵活配置</strong>：用户可以根据个人需求自定义设备设置，满足不同使用场景的需求。</li>
-<li><strong>自动化规则</strong>：通过设置自动化规则，Solaar
-能够根据设备状态自动执行特定操作，提升工作效率。</li>
-<li><strong>跨平台兼容</strong>：Solaar 完全兼容 Linux 系统，适用于各种
-Linux 发行版。</li>
-<li><strong>开源免费</strong>：Solaar
-是一款开源软件，用户可以免费使用并参与项目开发。</li>
-</ul>
-<h1 id="archlinux-下安装和使用">Archlinux 下安装和使用</h1>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S solaar</span><br><span class="line"><span class="built_in">sudo</span> solaar</span><br></pre></td></tr></table></figure>
-<div class="note primary"><p>虽然<code>solaar</code>建立了启动器图标，但是默认并没有<code>root</code>权限，在使用的时候请在命令行中使用<code>sudo solaar</code>命令打开软件，这样才能看到电脑连接的
-Logitech 设备，并设置。</p>
-</div>
-<h1 id="参考文章">参考文章</h1>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://github.com/pwr-Solaar/Solaar">https://github.com/pwr-Solaar/Solaar</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/gitblog_00402/article/details/142239279">Solaar：Linux
-下 Logitech 设备的终极管理工具</a></li>
-<li><a target="_blank" rel="noopener" href="https://post.smzdm.com/p/ar6zn29x/">Solaar —-
-不一般的罗技接收器linux应用</a></li>
-<li><a target="_blank" rel="noopener" href="https://cn.linux-console.net/?p=12375">如何在 Linux 上管理
-Logitech Unifying 接收器和设备</a></li>
-</ul>
 
       
     </div>

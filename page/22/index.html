@@ -277,6 +277,151 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/24/Linux%E4%B8%8B%E4%BD%BF%E7%94%A8Trash%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%88%B0%E5%9B%9E%E6%94%B6%E7%AB%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/04/24/Linux%E4%B8%8B%E4%BD%BF%E7%94%A8Trash%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%88%B0%E5%9B%9E%E6%94%B6%E7%AB%99/" class="post-title-link" itemprop="url">Linux下使用Trash删除文件到回收站</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-24 23:22:38" itemprop="dateCreated datePublished" datetime="2024-04-24T23:22:38+08:00">2024-04-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-29 00:39:43" itemprop="dateModified" datetime="2024-12-29T00:39:43+08:00">2024-12-29</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>trash-cli
+用于移动文件到回收站，同时会记录文件的原地址、删除日期和权限。trash-cli
+和 KDE、GNOME、XFCE 使用同一个回收站，你可以在命令行或脚本运行
+trash-cli。</p>
+<h2 id="安装">安装</h2>
+<figure class="highlight sh"><figcaption><span>archlinux</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S trash-cli</span><br></pre></td></tr></table></figure>
+<h2 id="命令">命令</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">命令</th>
+<th style="text-align: left;">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">trash-put</td>
+<td style="text-align: left;">把文件或目录移动到回收站</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">trash-empty</td>
+<td style="text-align: left;">清空回收站</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">trash-list</td>
+<td style="text-align: left;">列出回收站文件</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">trash-restore</td>
+<td style="text-align: left;">恢复回收站文件</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">trash-rm</td>
+<td style="text-align: left;">删除回收站文件</td>
+</tr>
+</tbody>
+</table>
+<h2 id="用法">用法</h2>
+<ul>
+<li><p>移动文件到回收站： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ trash-put</span><br></pre></td></tr></table></figure></p></li>
+<li><p>列出回收站文件： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ trash-list</span><br><span class="line">2008-06-01 10:30:48 /home/andrea/bar</span><br><span class="line">2008-06-02 21:50:41 /home/andrea/bar</span><br><span class="line">2008-06-23 21:50:49 /home/andrea/foo</span><br></pre></td></tr></table></figure></p></li>
+<li><p>搜索回收站文件： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ trash-list | grep foo</span><br><span class="line">2007-08-30 12:36:00 /home/andrea/foo</span><br><span class="line">2007-08-30 12:39:41 /home/andrea/foo</span><br></pre></td></tr></table></figure></p></li>
+<li><p>恢复回收站文件： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ trash-restore</span><br><span class="line">0 2007-08-30 12:36:00 /home/andrea/foo</span><br><span class="line">1 2007-08-30 12:39:41 /home/andrea/bar</span><br><span class="line">2 2007-08-30 12:39:41 /home/andrea/bar2</span><br><span class="line">3 2007-08-30 12:39:41 /home/andrea/foo2</span><br><span class="line">4 2007-08-30 12:39:41 /home/andrea/foo</span><br><span class="line">What file to restore [0..4]: 4</span><br><span class="line">$ <span class="built_in">ls</span> foo</span><br><span class="line">foo</span><br></pre></td></tr></table></figure></p></li>
+<li><p>删除所有回收站文件： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ trash-empty</span><br></pre></td></tr></table></figure></p></li>
+<li><p>删除回收站中 n 天前被回收的文件： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ trash-empty &lt;days&gt;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>示例： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">date</span></span><br><span class="line">Tue Feb 19 20:26:52 CET 2008</span><br><span class="line">$ trash-list</span><br><span class="line">2008-02-19 20:11:34 /home/einar/today</span><br><span class="line">2008-02-18 20:11:34 /home/einar/yesterday</span><br><span class="line">2008-02-10 20:11:34 /home/einar/last_week</span><br><span class="line">$ trash-empty 7</span><br><span class="line">$ trash-list</span><br><span class="line">2008-02-19 20:11:34 /home/einar/today</span><br><span class="line">2008-02-18 20:11:34 /home/einar/yesterday</span><br><span class="line">$ trash-empty 1</span><br><span class="line">$ trash-list</span><br><span class="line">2008-02-19 20:11:34 /home/einar/today</span><br></pre></td></tr></table></figure></p></li>
+<li><p>只删除符合某种模式的文件： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ trash-rm \*.o</span><br></pre></td></tr></table></figure> <div class="note primary"><p>注意：要用双引号圈住模式来避免 shell 拓展。</p>
+</div></p></li>
+</ul>
+<h2 id="常见问题">常见问题</h2>
+<ul>
+<li><p>如何创建顶级 .Trash 目录？ <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">mkdir</span> --parent /.Trash</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> a+rw /.Trash</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> +t /.Trash</span><br></pre></td></tr></table></figure></p></li>
+<li><p>我能把 <code>rm</code> 的别名设置为 <code>trash-put</code> 吗？
+<div class="note primary"><p>可以，但不应该这样做。以前我觉得这是个好主意，但现在我不觉得。</p>
+<p>虽然 <code>trash-put</code> 的界面看起来与 <code>rm</code>
+兼容，但它们有不同的语法，这些差异会导致一些问题。比如，用
+<code>rm</code> 删除目录时需要 <code>-R</code> ， <code>trash-put</code>
+则不需要。</p>
+<p>但有时候我忘记用 <code>trash-put</code> 了，真的不能给
+<code>rm</code> 设置别名吗？</p>
+</div></p></li>
+<li><p>你可以给 <code>rm</code> 设置一个别名来提醒你不要使用它：
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> <span class="built_in">rm</span>=<span class="string">&#x27;echo &quot;This is not the command you are looking for.&quot;; false&#x27;</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>如果你真的要用 <code>rm</code> ，那就在 <code>rm</code>
+前加上斜杠来取消别名： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\<span class="built_in">rm</span> file-without-hope</span><br></pre></td></tr></table></figure> <div class="note primary"><p>注意，Bash 别名是有在交互式界面才有效，所以使用这个别名不会影响使用
+<code>rm</code> 的脚本。</p>
+</div></p></li>
+<li><p>被移动到回收站的文件在哪？从 home 分区移动到回收站的文件在这：
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.local/share/Trash/</span><br></pre></td></tr></table></figure></p></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/23/Linux%E4%B8%8B%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%88%B0%E5%9B%9E%E6%94%B6%E7%AB%99/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1444,89 +1589,6 @@ Plasma5,
 <figure class="highlight sh"><figcaption><span>此时逗号分隔多个包或组</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Syyu --ignore=linux,vim</span><br><span class="line"><span class="built_in">sudo</span> pacman -Syyu --ignoregroup=gnome, gnome-extra</span><br></pre></td></tr></table></figure>
 <h1 id="降级安装软件包">降级安装软件包</h1>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S downgrade</span><br><span class="line"><span class="built_in">sudo</span> downgrade plasm-desktop</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/08/Thunderbird%E5%8E%BB%E9%99%A4%E9%87%8D%E5%A4%8D%E5%B7%B2%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/04/08/Thunderbird%E5%8E%BB%E9%99%A4%E9%87%8D%E5%A4%8D%E5%B7%B2%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/" class="post-title-link" itemprop="url">Thunderbird去除重复已发送邮件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-04-08 19:15:12" itemprop="dateCreated datePublished" datetime="2024-04-08T19:15:12+08:00">2024-04-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-29 00:39:43" itemprop="dateModified" datetime="2024-12-29T00:39:43+08:00">2024-12-29</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Thunderbird
-默认开启了保留副本功能，这导致了每次发送邮件时在已发送邮箱中总是保留两份邮件，让人感觉不爽。下而给出解决方法：</p>
-<p><code>编辑</code>→<code>帐户设置</code>→<code>副本和文件夹</code>→<code>取消保留副本到</code></p>
-<figure>
-<img src="/Picture/thunderbird.png" title="取消重复的已发送"
-alt="操作步骤" />
-<figcaption aria-hidden="true">操作步骤</figcaption>
-</figure>
 
       
     </div>
