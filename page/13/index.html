@@ -277,6 +277,94 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/31/GIT%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E5%85%B3%E8%81%94%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/07/31/GIT%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E5%85%B3%E8%81%94%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/" class="post-title-link" itemprop="url">GIT本地仓库关联远程仓库</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-31 22:19:36" itemprop="dateCreated datePublished" datetime="2024-07-31T22:19:36+08:00">2024-07-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-29 00:39:43" itemprop="dateModified" datetime="2024-12-29T00:39:43+08:00">2024-12-29</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="方式一远程仓库没有文件">方式一：远程仓库没有文件</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init（初始化git仓库）；</span><br><span class="line">git remote add 地址（设置remote地址）；</span><br><span class="line">git add . （将所有变更提交到本地仓库）；</span><br><span class="line">git commit -m <span class="string">&#x27;&#x27;</span> （提交注释）；</span><br><span class="line">git push（本地仓库推送到远程仓库）</span><br></pre></td></tr></table></figure>
+<h2 id="方式二远程仓库有文件">方式二：远程仓库有文件</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git init（初始化git仓库）；</span><br><span class="line">git remote add origin 地址（设置远程remote地址）；</span><br><span class="line">git pull origin master（拉取远程仓库master的文件）</span><br><span class="line">git branch --set-upstream-to=origin/master master（将本地master设置为远程master分支）</span><br><span class="line">git add . （将所有变更提交到本地仓库）；</span><br><span class="line">git commit -m <span class="string">&#x27;&#x27;</span> （提交注释）；</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<h2 id="方式三">方式三：</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> 地址（克隆远程仓库） <span class="built_in">test</span></span><br><span class="line"><span class="built_in">cp</span> -r 项目文件  <span class="built_in">test</span></span><br><span class="line">git add . （将所有变更提交到本地仓库）；</span><br><span class="line">git commit -m <span class="string">&#x27;&#x27;</span> （提交注释）；</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<h2 id="设置用户和邮箱">设置用户和邮箱</h2>
+<h3 id="一全局">一：全局</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;you name&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;you email&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="二局部单个项目">二：局部（单个项目）</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name <span class="string">&quot;you name&quot;</span></span><br><span class="line">git config user.email <span class="string">&quot;you email&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="强制推送">强制推送</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -f</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/27/API%E6%98%AF%E4%BB%80%E4%B9%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1561,197 +1649,6 @@ alt="第二台电脑网关设置" /></p>
 <p>这意味着两台电脑之间的网络连接已经建立并且正常工作。</p>
 <div class="note primary"><p>macOS和Windows用户，可以按照类似的步骤进行网线连接和网络配置。在macOS上，你可以打开“系统偏好设置”，选择“网络”，然后配置IP地址、子网掩码和网关等参数。而在Windows操作系统上，可以通过“控制面板”中的“网络和共享中心”来进行相似的设置。（如果无法A可以ping通B，B无法ping通A，请检查A的防火墙设置）</p>
 </div>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/23/ArchLinux%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/07/23/ArchLinux%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">ArchLinux局域网共享文件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-07-23 02:36:19" itemprop="dateCreated datePublished" datetime="2024-07-23T02:36:19+08:00">2024-07-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-29 00:39:43" itemprop="dateModified" datetime="2024-12-29T00:39:43+08:00">2024-12-29</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="安装必备软件">安装必备软件</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S nautilus-share</span><br></pre></td></tr></table></figure>
-<div class="note primary"><p>注意：安装<code>nautilus-share</code>插件后，<code>pacman</code>将会自动安装上<code>samba</code>等依赖软件,所以仅此一条指令就可以实现<code>gnome3</code>下的<code>nautilus</code>配置共享目录。</p>
-</div>
-<h2 id="启用用户共享功能">启用用户共享功能</h2>
-<p>在用户可以共享目录之前，管理员必须在 Samba
-中启用用户共享。本节参考：<a
-target="_blank" rel="noopener" href="https://docs.redhat.com/zh_hans/documentation/red_hat_enterprise_linux/8/html/deploying_different_types_of_servers/assembly_enabling-users-to-share-directories-on-a-samba-server_assembly_using-samba-as-a-server">3.11.
-允许用户在 Samba 服务器上共享目录</a></p>
-<p>例如，仅允许本地 example 组的成员创建用户共享：</p>
-<ol type="1">
-<li><p>如果<code>example</code>不存在，则创建它 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> groupadd example</span><br></pre></td></tr></table></figure></p></li>
-<li><p>为<code>Samba</code>准备目录以存储用户共享定义并正确设置其权限。例如：</p>
-<ul>
-<li><p>创建目录 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">mkdir</span> -p /var/lib/samba/usershares/</span><br></pre></td></tr></table></figure></p></li>
-<li><p>为<code>example</code>组设置权限 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">chgrp</span> example /var/lib/samba/usershares/</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> 1770 /var/lib/samba/usershares/</span><br></pre></td></tr></table></figure></p></li>
-<li><p>设置粘性位以防止用户重命名或删除此目录中其他用户存储的文件。</p></li>
-</ul></li>
-<li><p>若<code>/etc/samba/smb.conf</code>文件不存在，则参考<a
-target="_blank" rel="noopener" href="https://github.com/samba-team/samba/blob/master/examples/smb.conf.default">smb.conf.default</a>建立<code>smb.conf</code>，并将以下内容添加到<code>[global]</code>部分(默认配置中并没有这两项)：</p>
-<ul>
-<li><p>设置您配置用来存储用户共享定义的目录的路径。例如：
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usershare path = /var/lib/samba/usershares/</span><br></pre></td></tr></table></figure></p></li>
-<li><p>设置允许在这个服务器上创建多少个用户共享
-<code>Samba</code>。例如： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usershare max shares = 100</span><br></pre></td></tr></table></figure></p></li>
-</ul>
-<p>如果您对 usershare max shares 参数使用默认值
-0，则用户共享将被禁用。</p></li>
-<li><p>验证<code>/etc/samba/smb.conf</code>文件 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">testparm</span><br></pre></td></tr></table></figure></p></li>
-<li><p>重新载入<code>Samba</code>配置 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> smbcontrol all reload-config</span><br></pre></td></tr></table></figure></p></li>
-</ol>
-<p>用户现在可以创建用户共享。</p>
-<ol start="6" type="1">
-<li>支持软链接访问（可选）</li>
-</ol>
-<p>在<code>/etc/samba/smb.conf</code>的<code>[global]</code>节的最后，加上下面三条设置：
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">follow symlinks = yes</span><br><span class="line">wide links = yes</span><br><span class="line">unix extensions = no</span><br></pre></td></tr></table></figure></p>
-<ol start="7" type="1">
-<li>重启<code>samba</code>服务 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl restart smb</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>参考文章: <a
-target="_blank" rel="noopener" href="https://www.cnblogs.com/xl2432/p/10121982.html">Ubuntu配置samba服务器</a></p>
-<h2 id="archlinux-中共享文件夹的步骤">ArchLinux 中共享文件夹的步骤</h2>
-<p><strong>步骤
-1：</strong> 打开文件管理器，右键单击共享的文件夹。点击上下文菜单中的“本地网络共享”选项。</p>
-<figure>
-<img
-src="https://img.linux.net.cn/data/attachment/album/202207/21/104756l9yr8gb1gbc264h5.jpg"
-alt="本地网络共享选项" />
-<figcaption aria-hidden="true">本地网络共享选项</figcaption>
-</figure>
-<p><strong>步骤
-2：</strong> 在文件夹共享对话框中点击共享文件夹复选框。</p>
-<p>这将在你的系统中安装 <a
-target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Samba_(software)">Samba</a> 软件包。Samba
-用于在 Windows 和 Unix 系统之间通过网络共享文件和打印机。</p>
-<figure>
-<img
-src="https://img.linux.net.cn/data/attachment/album/202207/21/104915uzihpx9j99pibvv0.jpg"
-alt="文件夹共享选项 - 安装 Samba" />
-<figcaption aria-hidden="true">文件夹共享选项 - 安装 Samba</figcaption>
-</figure>
-<p><strong>步骤 3：</strong> 安装 Samba
-后，执行以下操作共享文件夹或目录。</p>
-<ul>
-<li>选中共享文件夹复选框。</li>
-<li>输入共享名称。这将是你从另一个系统（如
-Windows）看到的名称。尽量不要使用任何带有空格的名称。</li>
-<li>（可选）通过勾选相应选项，你可以控制共享文件夹的写入权限，以及允许访客访问。</li>
-<li>如果你允许访客访问，则没有凭据的人可以访问共享文件夹。所以要谨慎。</li>
-<li>如果你希望用户输入用户名和密码，打开终端并运行以下命令。</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> smbpasswd -a 用户名</span><br></pre></td></tr></table></figure>
-<p><code>用户名</code> 应该是对应 ArchLinux 系统的有效用户。</p>
-<p>现在，你应该已经设置好了共享的文件夹或目录。</p>
-<h2 id="如何访问共享文件夹">如何访问共享文件夹</h2>
-<p>从 Linux 系统中访问共享文件夹，你需要系统的 IP
-地址或主机名。为此，打开“系统设置System Settings -&gt; Wi-Fi -&gt; 获取
-IP 地址Get the IP address”。</p>
-<figure>
-<img
-src="https://img.linux.net.cn/data/attachment/album/202207/21/104934qb6w6px0pi8x6b6q.jpg"
-alt="IP 地址设置" />
-<figcaption aria-hidden="true">IP 地址设置</figcaption>
-</figure>
-<p>如果你运行的是 Linux 发行版不是
-Ubuntu，此步骤略有不同。你可能想运行 <code>ip addr</code> 来获取 IP
-地址，如下所示：</p>
-<figure>
-<img
-src="https://img.linux.net.cn/data/attachment/album/202207/21/104757kmcw3ace3dmdd7ea.jpg"
-alt="在 Linux 中查找 IP 地址" />
-<figcaption aria-hidden="true">在 Linux 中查找 IP 地址</figcaption>
-</figure>
-<p>一旦你获得 IP 地址，就可以在 Linux
-系统中打开<code>文件管理器</code>，然后在地址栏中输入以下内容。注意：<code>你应该修改为你系统的 IP 地址</code>。</p>
-<p>你现在可以看到共享文件夹上面显示了一个小共享图标，表示网络共享文件夹。</p>
-<figure>
-<img
-src="https://img.linux.net.cn/data/attachment/album/202207/21/104947l7wn6owul4447ll7.jpg"
-alt="共享文件夹" />
-<figcaption aria-hidden="true">共享文件夹</figcaption>
-</figure>
-<p>要在 <strong>Windows
-系统</strong> 访问共享文件夹，打开运行（按下 <code>Windows + R</code>）或打开资源管理器，输入以下地址。注意：你应该修改为你系统的
-IP 地址和文件夹名称。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\\192.168.43.19\Folder</span><br></pre></td></tr></table></figure>
-<p>你应该能够查看共享文件夹的内容，并根据授予的权限修改它。本节参考：<a
-target="_blank" rel="noopener" href="https://linux.cn/article-14850-1.html">如何在 Ubuntu/Linux 和
-Windows 之间共享文件夹</a></p>
-<h2 id="关闭-samba-异步提高网速">关闭 samba 异步提高网速</h2>
-<p>默认情况下，<code>Samba</code>写操作是异步的，这导致了读取速度减半。在千兆局域网速下，<code>Samba</code>写入速度应当在<code>100m/s</code>,
-但是读取速度只有<code>50m/s</code>, 解决方法为：关闭异步,
-在配置文件<code>/etc/samba/smb.conf</code> 的
-<code>[global]</code>节点下追加上如下代码</p>
-<figure class="highlight txt"><figcaption><span>/etc/samba/smb.conf -- [global]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aio read size = 0</span><br></pre></td></tr></table></figure>
 
       
     </div>

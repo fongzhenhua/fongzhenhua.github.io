@@ -22,13 +22,13 @@
 
 
 
-<link rel="canonical" href="http://example.com/archives/2022/page/4/">
+<link rel="canonical" href="http://example.com/2025/01/06/%E4%BD%BF%E7%94%A8Pandoc%E5%B0%86Markdown%E8%BD%ACPDF/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2022/page/4/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/01/06/%E4%BD%BF%E7%94%A8Pandoc%E5%B0%86Markdown%E8%BD%ACPDF/","path":"2025/01/06/使用Pandoc将Markdown转PDF/","title":"使用Pandoc将Markdown转PDF"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | BNU-FZH</title>
+<title>使用Pandoc将Markdown转PDF | BNU-FZH</title>
   
 
 
@@ -61,7 +61,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">BNU-FZH</h1>
+      <p class="site-title">BNU-FZH</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">fengzhenhua@outlook.com</p>
@@ -115,7 +115,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -128,6 +128,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%A5%BD-pandoc"><span class="nav-number">1.</span> <span class="nav-text">安装好 Pandoc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="nav-number">2.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -267,233 +268,107 @@
 
     </div>
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/06/%E4%BD%BF%E7%94%A8Pandoc%E5%B0%86Markdown%E8%BD%ACPDF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="使用Pandoc将Markdown转PDF | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用Pandoc将Markdown转PDF
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-01-06 17:41:17 / 修改时间：17:49:53" itemprop="dateCreated datePublished" datetime="2025-01-06T17:41:17+08:00">2025-01-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="安装好-pandoc">安装好 Pandoc</h2>
+<p>详细可以参考 <a target="_blank" rel="noopener" href="https://pandoc.org/installing.html">Pandoc -
+Installing pandoc</a>。</p>
+<p>先安装依赖软件<code>wkhtmltopdf</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paru -S wkhtmltopdf</span><br></pre></td></tr></table></figure>
+<p>官网上给出的简单的不修改格式的将 Markdown 转换为 PDF 命令如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandoc file.md -f markdown -t html -o index.pdf</span><br></pre></td></tr></table></figure>
+<h2 id="参考文章">参考文章</h2>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://tex.stackexchange.com/questions/73016/how-do-i-install-an-individual-package-on-a-linux-system">installing
+- How do I install an individual package on a Linux system? - TeX -
+LaTeX Stack Exchange</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/u013019701/article/details/119512493">使用
+Pandoc 来转换 Markdown 为漂亮的 PDF 格式</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%94%B5%E8%84%91%E6%8A%80%E6%9C%AF/" rel="tag"># 电脑技术</a>
+          </div>
+
         
-        <span class="collection-header">太棒了! 目前共计 472 篇日志。 继续努力。</span>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2022<span class="collection-year-count">43</span></span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-09-25T13:15:17+08:00"
-              content="2022-09-25">
-          09-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/09/25/ArchLinux%E5%9B%BE%E5%BD%A2%E5%8C%96%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8FALG/" itemprop="url">
-            <span itemprop="name">ArchLinux图形化安装程序ALG</span>
-          </a>
-      </div>
-
-      
-    </header>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/01/06/%E4%BD%BF%E7%94%A8LaTeX%E6%8E%92%E7%89%88Markdown%E6%96%87%E4%BB%B6/" rel="prev" title="使用LaTeX排版Markdown文件">
+                  <i class="fa fa-angle-left"></i> 使用LaTeX排版Markdown文件
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-09-25T12:40:26+08:00"
-              content="2022-09-25">
-          09-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/09/25/Hexo%E5%8D%9A%E5%AE%A2%E5%8A%A0%E5%AF%86/" itemprop="url">
-            <span itemprop="name">Hexo博客加密</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-09-17T21:13:35+08:00"
-              content="2022-09-17">
-          09-17
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/09/17/%E8%87%AA%E5%AE%9A%E4%B9%89UltiSnips%E7%89%87%E6%AE%B5/" itemprop="url">
-            <span itemprop="name">自定义UltiSnips片段</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-09-15T00:21:36+08:00"
-              content="2022-09-15">
-          09-15
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/09/15/Gitlab%E4%B8%8A%E9%83%A8%E7%BD%B2Hexo%E5%8D%9A%E5%AE%A2/" itemprop="url">
-            <span itemprop="name">Gitlab上部署Hexo博客</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-09-12T10:41:14+08:00"
-              content="2022-09-12">
-          09-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/09/12/PIC%E6%A8%A1%E6%8B%9F%E8%BD%AF%E4%BB%B6epoch/" itemprop="url">
-            <span itemprop="name">PIC模拟软件epoch</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-09-03T22:36:48+08:00"
-              content="2022-09-03">
-          09-03
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/09/03/%E5%B8%90%E6%9C%AC/" itemprop="url">
-            <span itemprop="name">帐本</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-09-01T02:06:42+08:00"
-              content="2022-09-01">
-          09-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/09/01/%E5%B9%B3%E5%8E%9F%E4%B8%80%E4%B8%AD%E5%9B%9E%E5%BF%86%E5%BD%95/" itemprop="url">
-            <span itemprop="name">平原一中回忆录</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-05-20T21:47:37+08:00"
-              content="2022-05-20">
-          05-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/05/20/%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E4%BD%9C%E4%B8%BAgit%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%A4%87%E4%BB%BD%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%A4%B9/" itemprop="url">
-            <span itemprop="name">移动硬盘作为git远程仓库备份本地文件夹</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-05-10T09:24:16+08:00"
-              content="2022-05-10">
-          05-10
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/05/10/Next%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE/" itemprop="url">
-            <span itemprop="name">Next主题设置</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-05-07T23:24:27+08:00"
-              content="2022-05-07">
-          05-07
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/05/07/%E7%94%A8%E8%8B%B1%E8%AF%AD%E8%AF%B4%E4%B8%AD%E5%9B%BD/" itemprop="url">
-            <span itemprop="name">Talk About China in English (用英语说中国)</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/archives/2022/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2022/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2022/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/2022/page/5/">5</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/archives/2022/page/5/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+
+
+
 
 </div>
   </main>
