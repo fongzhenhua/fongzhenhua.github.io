@@ -277,6 +277,89 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/09/14/%E8%A7%A3%E5%86%B3LaTeX%E6%A0%87%E9%A2%98%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7%E6%8A%A5%E9%94%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/09/14/%E8%A7%A3%E5%86%B3LaTeX%E6%A0%87%E9%A2%98%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7%E6%8A%A5%E9%94%99/" class="post-title-link" itemprop="url">解决LaTeX标题中使用特殊符号报错</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-09-14 11:15:07" itemprop="dateCreated datePublished" datetime="2024-09-14T11:15:07+08:00">2024-09-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-29 00:39:43" itemprop="dateModified" datetime="2024-12-29T00:39:43+08:00">2024-12-29</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在编写LaTeX文件时，有时在章节中会使用一些特殊符号，比如： <span
+class="math inline">\(\mu\)</span>
+等。但是由于超链接宏包<code>hyperref</code>建立超链接的时候会导致错误。其警告信息为：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Package hyperref warning: Token not allowed <span class="keyword">in</span> a PDF string (Unicode):(hyperref) removing <span class="string">&#x27;math shift&#x27;</span> on input line 2</span><br></pre></td></tr></table></figure>
+<p>解决方法：使用命令<code>\texorpdfstring&#123;#1&#125;&#123;#2&#125;</code></p>
+<p>参数<code>#1</code>为正文标题栏中显示信息，为<span
+class="math inline">\(\mu\)</span>,
+参数<code>#2</code>为目录页中显示的信息，由<code>hyperref</code>引用，所以需要使用非特殊符号替换。例如：<code>\texorpdfstring&#123;\mu&#125;&#123;mu&#125;</code></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/09/11/Rhythmbox%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E8%A7%A3%E5%86%B3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1430,140 +1513,8 @@ alt="设置DHCP服务器" />
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/08/16/%E6%97%A0%E7%BA%BF%E9%94%AE%E7%9B%98%E5%92%8C%E9%BC%A0%E6%A0%87%E6%80%8E%E4%B9%88%E9%80%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/08/16/%E6%97%A0%E7%BA%BF%E9%94%AE%E7%9B%98%E5%92%8C%E9%BC%A0%E6%A0%87%E6%80%8E%E4%B9%88%E9%80%89/" class="post-title-link" itemprop="url">无线键盘和鼠标怎么选</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-08-16 00:44:09" itemprop="dateCreated datePublished" datetime="2024-08-16T00:44:09+08:00">2024-08-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-29 00:39:43" itemprop="dateModified" datetime="2024-12-29T00:39:43+08:00">2024-12-29</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>无线键盘和鼠标 <code>2.4G</code> 和蓝牙到底哪个好？</p>
-<p>有人说，无线肯定蓝牙好，功耗低够省电；有人说肯定是 <code>2.4G</code>
-好，延迟比蓝牙要低多了；也有人说两个都不好，抗干扰能力都很弱......看似常用的东西，一说到谁更好用，大家都说不上来个但是所以然。</p>
-<p>所以今天 der 就和大家聊聊，都是无线，<code>2.4G</code>
-和蓝牙到底哪个好？</p>
-<p>首先我们要知道，大家常说的蓝牙是“标准版”的蓝牙技术，即
-<code>Bluetooth</code>。</p>
-<p>由于手机厂商觉得标准版的蓝牙技术功耗还是很高，于是就整了个低功耗蓝牙技术，也就是
-<code>BLE</code>。在蓝牙 <code>4.0</code>
-发布后，标准版蓝牙技术和低功耗蓝牙技术都统称蓝牙
-<code>4.0</code>，以至于很多人一时半会分不清。</p>
-<p>好在这两种蓝牙技术的应用场景不同，像标准版蓝牙技术主要应用在蓝牙电话接听，蓝牙耳机、蓝牙音箱等；而低功耗蓝牙技术则应用在可穿戴设备，<code>IoT</code>
-智能设备、鼠标键盘等电池供应的场合。虽说标准版蓝牙技术也支持用电池供电，但低功耗版蓝牙技术对电池的要求更低，续航也更长，有的几年也不在话下。</p>
-<p>而我们常说的 <code>2.4G</code> 无线连接技术，也就是
-<code>2.4G</code>Hz 频段，它的发射频率一般低于
-1W，以免对其他频段造成干扰。</p>
-<p>由于 <code>2.4G</code>Hz 这个频段是美国 FCC
-设立的，还是一个专门为工业、科学、医用开放的免许可频段，简单来说就是可以免费使用。反正不收钱，各国自然也共用这个频段，渐渐的就形成了个庞大的市场，像我们日常用的蓝牙、无线键鼠、无线网络也都支持这个频段。</p>
-<p>于是在功耗方面，自从蓝牙协议 <code>4.0</code>
-发布后，低功耗蓝牙技术的加入使其支持了省电，不再像以前需要占用太多带宽的设备进行连接。</p>
-<p>像现在比较好的智能家居，我们只需开启蓝牙就能连接多个设备，像温度传感器之类的还能进行数据传输，查看温度与记录......只需低功耗蓝牙技术即可实现。还有我们常用的无线蓝牙键盘、鼠标，由于低功耗蓝牙技术的限制，鼠标的回报率、带宽等会限制的很低，这样较低性能的模式去运行，自然会比较省电。</p>
-<p>而 <code>2.4G</code>
-无线连接技术占用的频宽大，像鼠标的回报率要求高，响应速度快，相较于低功耗蓝牙技术会更耗电一点。所以低功耗蓝牙技术相比
-<code>2.4G</code>
-无线连接技术更省电，像很多外设的相关描述中说的都是蓝牙更持久。</p>
-<p>而很多小伙伴关注的稳定性与传输距离的问题，<code>2.4G</code>
-无线连接技术也依旧比不过蓝牙。</p>
-<p>由于 <code>2.4G</code>Hz
-是“公共频段”，当附近有较多该频段的无线产品时，也容易受到干扰，甚至有时候中间放个手机也会造成
-<code>2.4G</code>Hz 设备卡顿。再说了，很多支持 <code>2.4G</code>Hz
-的设备不过 10 米左右，距离相对受限。</p>
-<p>虽说低功耗蓝牙技术也同属 <code>2.4G</code>Hz
-频段，但它支持的频段会更多一些，而且还支持跳频技术错开干扰，稳定性方面会更为稳定。传输距离方面，蓝牙
-<code>4.0</code> 协议理论上最高支持 50 米的传输距离，但实际民用基本为
-8~30 米，也足以比 <code>2.4G</code>
-无线连接技术要强得多，同时这也是为什么有个段子说手机被偷了那么久，蓝牙耳机依旧在播放。</p>
-<p>这时候就有大聪明发话了：既然蓝牙比 <code>2.4G</code>
-更省电，稳定性和传输距离又更好，那 <code>2.4G</code>
-到底有什么用呢？</p>
-<p>der 觉得，<code>2.4G</code>
-无线连接技术最大的优点莫过于它传输速度快很多，而且延迟更低，像一些喜欢玩游戏的小伙伴，对设备有着较高的响应速度，例如鼠标、键盘等，<code>2.4G</code>
-无线连接技术则能提供更好的体验，仅此而已。</p>
-<p>不过有的厂商见蓝牙与 <code>2.4G</code>
-这堆兄弟的优缺点可以互补，推出所谓的蓝牙 + <code>2.4G</code>
-双模无线设备，如果你想玩游戏就用 <code>2.4G</code>
-无线连接；如果只是日常使用省点电，则可以用蓝牙；这样办公娱乐都能用。</p>
-<p>最后总结一下，无论是功耗、稳定性、传输距离等方面，蓝牙确实比
-<code>2.4G</code> 要实用的多，用于办公再适合不过了。</p>
-<p>但如果你喜欢玩游戏，那 <code>2.4G</code>
-速度快且延迟低的特性更适合你。</p>
-<p>再说了，很多主机电脑、其它设备并没自带蓝牙功能，所以很多游戏玩家看不起也用不上蓝牙，只能配备
-USB 解码器对码使用 <code>2.4G</code>
-无线连接技术，祈祷着解码器千万别丢哪不见了。</p>
-<div class="note primary"><p>注：引用自<a
-target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv22828241/">买鼠标键盘，选无线 2.4G
-和蓝牙哪个好？看完你就明白了</a></p>
-</div>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/47/">47</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/11/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/48/">48</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/11/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>

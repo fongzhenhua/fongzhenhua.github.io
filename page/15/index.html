@@ -277,6 +277,106 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/12/tar%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/07/12/tar%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">tar命令详解</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-12 10:23:41" itemprop="dateCreated datePublished" datetime="2024-07-12T10:23:41+08:00">2024-07-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-29 00:39:43" itemprop="dateModified" datetime="2024-12-29T00:39:43+08:00">2024-12-29</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="tar的选项参数">tar的选项参数</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-c: 建立压缩档案</span><br><span class="line">-x：解压</span><br><span class="line">-t：查看内容</span><br><span class="line">-r：向压缩归档文件末尾追加文件</span><br><span class="line">-u：更新原压缩包中的文件</span><br></pre></td></tr></table></figure>
+<p>这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-z：有gzip属性的</span><br><span class="line">-j：有bz2属性的</span><br><span class="line">-Z：有compress属性的</span><br><span class="line">-v：显示所有过程</span><br><span class="line">-O：将文件解开到标准输出</span><br></pre></td></tr></table></figure>
+<p><code>--delete</code>从存档中删除 注意是两个减号。</p>
+<p>下面的参数-f是必须的<br />
+-f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名。</p>
+<h2 id="举例说明">举例说明</h2>
+<ol type="1">
+<li><p>压缩一个目录 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg:  tar -cvzf test.tar.gz  tar  <span class="comment">#压缩当前目录下的tar目录，压缩包的名字叫test.tar.gz</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>压缩其中某一类型的文件 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg:  tar -cvzf test.tar.gz  ./*.c <span class="comment">#压缩当前目录下的.c为后缀的文件。但是不能压缩以.开头的文件</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>查看一个压缩文件的内容 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg: tar -tvf test.tar.gz   <span class="comment">#查看当前目录下test.tar.gz压缩文件中的文件</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>解压一个文件 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg.  tar -xvzf test.tar.gz <span class="comment">#解压test.tar.gz到当前目录下面</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>文件夹做一个归档文件、备份一个目录、 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg: tar -cvf test.tar tar <span class="comment">#将tar文件夹下的文件生成一个test.tar归档文件</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>将某一类型的文件做成归档文件、备份某一类型的文件
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg:tar -cvf test.tar ./tar/*.c   <span class="comment"># 将tar文件夹下所有以.c结尾的文件放到test.tar 文件中，但是以.开头的文件不行</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>向归档文件中添加一个文件夹 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg: tar -rf test.tar  ./test1  <span class="comment">#将test1文件夹中的所有文件，添加到test.tar 归档文件中</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>删除归档文件中的文件 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg: tar -f test.tar --delete a.c  <span class="comment">#删除test.tar文件中的 a.c文件</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>删除归档文件中的某一类的文件 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg: tar -f test.tar --delete *.c  <span class="comment">#删除test.tar文件中的 以.c结尾的文件</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>释放归档文件 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg:  tar  -xvf  test.tar  <span class="comment">#释放test.tar归档文件中的内容到 当前目录下</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>查看归档文件中的内容 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg: tar -tvf test.tar </span><br></pre></td></tr></table></figure></p></li>
+</ol>
+<h2 id="总结">总结</h2>
+<figure class="highlight bash"><figcaption><span>格式与解压命令</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、*.tar           用 tar –xvf 解压</span><br><span class="line">2、*.gz            用 gzip -d或者gunzip 解压</span><br><span class="line">3、*.tar.gz和*.tgz 用 tar –xzf 解压</span><br><span class="line">4、*.bz2           用 bzip2 -d或者用bunzip2 解压</span><br><span class="line">5、*.tar.bz2       用tar –xjf 解压</span><br><span class="line">6、*.Z             用 uncompress 解压</span><br><span class="line">7、*.tar.Z         用tar –xZf 解压</span><br><span class="line">8、*.rar           用 unrar e解压</span><br><span class="line">9、*.zip           用 unzip 解压</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><figcaption><span>使用举例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar cvf  etcbak.tar etc/      打包一个tar</span><br><span class="line">tar xvf  etcbak.tar           解开一个tar</span><br><span class="line">tar cvzf etcbak.tar.gz etc/   打包压缩一个 tar</span><br><span class="line">tar zxvf etcbak.tar.gz        解压一个tar</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/09/%E5%85%B3%E4%BA%8ELaTeX%E6%8E%92%E7%89%88%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AF%B4%E6%98%8E/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1245,165 +1345,8 @@ ppt工具以外，还提供基于 ai的全自动内容营销服务。</p>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/02/Hexo%E4%B8%AD%E8%BE%93%E5%85%A5%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/07/02/Hexo%E4%B8%AD%E8%BE%93%E5%85%A5%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/" class="post-title-link" itemprop="url">Hexo中输入数学公式</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-07-02 17:04:41" itemprop="dateCreated datePublished" datetime="2024-07-02T17:04:41+08:00">2024-07-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-29 00:39:43" itemprop="dateModified" datetime="2024-12-29T00:39:43+08:00">2024-12-29</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>根据<code>Next</code>主题官方文档<a
-target="_blank" rel="noopener" href="https://theme-next.js.org/docs/third-party-services/math-equations.html?highlight=latex">Math
-Equation</a>配置好<code>Hexo</code>对数学公式的支持，对于一些小问题可以写成<code>LaTeX</code>记录在博客中。但是这里面遇到的问题是，<code>MarkDown</code>毕竟不是针对<code>LaTeX</code>设计的，所以一些特殊的宏包在博客中是不能使用的，对于一些特殊复杂的公式需要撰写<code>tex</code>文件编译，而不是发表在博客上。对于一些简单的公式，如果在<code>Hexo</code>博客上编写，应当注意使用原始的<code>LaTeX</code>命令，以增强其兼容性，对于一些数学符号的输入，请参考：<a
-target="_blank" rel="noopener" href="https://www.latexlive.com/help#d15">关于LaTeX公式编辑
-Introduce</a>,
-而对于<code>Hexo</code>支持的数学公式格式，为了方便使用，直接引用其官方的例子。</p>
-<h2 id="支持的数学公式">支持的数学公式</h2>
-<p>在<code>Hexo</code>中开启数学支持，有两种插件支持，其中<code>MathJax</code>依赖<code>JavaScript</code>,但其支持的数学公式更多，而<code>KaTeX</code>不依赖<code>JavaScript</code>,
-同时速度更快，但是其持的数学公式少一些，因些根据<code>Next</code>主题官方，推荐使用<code>MathJax</code>.它们支持的<code>TeX/LaTeX</code>命令参考:</p>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://docs.mathjax.org/en/latest/input/tex/macros/index.html">MathJax支持的TeX/LaTeX命令</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://katex.org/docs/supported.html">KaTeX支持的TeX/LaTeX命令</a></li>
-</ul>
-<h2 id="simple-equations">Simple Equations</h2>
-<p>For simple equations, use the following form to give a tag,</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span><span class="keyword">\begin</span>&#123;equation&#125; <span class="keyword">\label</span>&#123;eq1&#125;</span><br><span class="line">e=mc<span class="built_in">^</span>2</span><br><span class="line"><span class="keyword">\end</span>&#123;equation&#125;<span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
-<p><span class="math display">\[\begin{equation} \label{eq1}
-e=mc^2
-\end{equation}\]</span></p>
-<p>Then, you can refer to this equation in your text easily by using
-something like:</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The famous matter-energy equation <span class="built_in">$</span><span class="keyword">\eqref</span>&#123;eq1&#125;<span class="built_in">$</span> proposed by Einstein...</span><br></pre></td></tr></table></figure>
-<p>The famous matter-energy equation <span
-class="math inline">\(\eqref{eq1}\)</span> proposed by Einstein...</p>
-<h2 id="multi-line-equations">Multi-line Equations</h2>
-<p>For multi-line equations, inside the <code>equation</code>
-environment, you can use the <code>aligned</code> environment to split
-it into multiple lines:</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span><span class="keyword">\begin</span>&#123;equation&#125; <span class="keyword">\label</span>&#123;eq2&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;aligned&#125;</span><br><span class="line">a <span class="built_in">&amp;</span>= b + c <span class="keyword">\\</span></span><br><span class="line">  <span class="built_in">&amp;</span>= d + e + f + g <span class="keyword">\\</span></span><br><span class="line">  <span class="built_in">&amp;</span>= h + i</span><br><span class="line"><span class="keyword">\end</span>&#123;aligned&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;equation&#125;<span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
-<p><span class="math display">\[\begin{equation} \label{eq2}
-\begin{aligned}
-a &amp;= b + c \\
-  &amp;= d + e + f + g \\
-  &amp;= h + i
-\end{aligned}
-\end{equation}\]</span></p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Equation <span class="built_in">$</span><span class="keyword">\eqref</span>&#123;eq2&#125;<span class="built_in">$</span> is a multi-line equation.</span><br></pre></td></tr></table></figure>
-<p>Equation <span class="math inline">\(\eqref{eq2}\)</span> is a
-multi-line equation.</p>
-<h2 id="multiple-aligned-equations">Multiple Aligned Equations</h2>
-<p>We can use <code>align</code> environment to align multiple
-equations. Each of these equations will get its own numbers.</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span><span class="keyword">\begin</span>&#123;align&#125;</span><br><span class="line">a <span class="built_in">&amp;</span>= b + c <span class="keyword">\label</span>&#123;eq3&#125; <span class="keyword">\\</span></span><br><span class="line">x <span class="built_in">&amp;</span>= yz <span class="keyword">\label</span>&#123;eq4&#125; <span class="keyword">\\</span></span><br><span class="line">l <span class="built_in">&amp;</span>= m - n <span class="keyword">\label</span>&#123;eq5&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;align&#125;<span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
-<p><span class="math display">\[\begin{align}
-a &amp;= b + c \label{eq3} \\
-x &amp;= yz \label{eq4} \\
-l &amp;= m - n \label{eq5}
-\end{align}\]</span></p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">There are three aligned equations: equation <span class="built_in">$</span><span class="keyword">\eqref</span>&#123;eq3&#125;<span class="built_in">$</span>, equation <span class="built_in">$</span><span class="keyword">\eqref</span>&#123;eq4&#125;<span class="built_in">$</span> and equation <span class="built_in">$</span><span class="keyword">\eqref</span>&#123;eq5&#125;<span class="built_in">$</span>.</span><br></pre></td></tr></table></figure>
-<p>There are three aligned equations: equation <span
-class="math inline">\(\eqref{eq3}\)</span>, equation <span
-class="math inline">\(\eqref{eq4}\)</span> and equation <span
-class="math inline">\(\eqref{eq5}\)</span>.</p>
-<p>Since <code>align</code> in and of itself is a complete equation
-environment (read <a
-target="_blank" rel="noopener" href="https://tex.stackexchange.com/questions/95402/what-is-the-difference-between-aligned-in-displayed-mode-and-starred-align">here</a>
-about the difference between <code>aligned</code> and <code>align</code>
-in LaTeX). You do not need to wrap it with equation environment.</p>
-<h2 id="exclude-equations-from-numbering">Exclude Equations from
-Numbering</h2>
-<p>In the <code>align</code> environment, if you do not want to number
-one or some equations, just use <code>\nonumber</code> right behind
-these equations. Like the following:</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span><span class="keyword">\begin</span>&#123;align&#125;</span><br><span class="line">-4 + 5x <span class="built_in">&amp;</span>= 2 + y <span class="keyword">\nonumber</span> <span class="keyword">\\</span></span><br><span class="line">w + 2 <span class="built_in">&amp;</span>= -1 + w <span class="keyword">\\</span></span><br><span class="line">ab <span class="built_in">&amp;</span>= cb</span><br><span class="line"><span class="keyword">\end</span>&#123;align&#125;<span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
-<p><span class="math display">\[\begin{align}
--4 + 5x &amp;= 2 + y \nonumber \\
-w + 2 &amp;= -1 + w \\
-ab &amp;= cb
-\end{align}\]</span></p>
-<h2 id="use-tag-to-tag-equations">Use <code>\tag</code> to Tag
-Equations</h2>
-<p>Sometimes, you want to use more «exotic» style to refer your
-equation. You can use <code>\tag&#123;&#125;</code> to achieve this. For
-example:</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span>x+1<span class="keyword">\over</span><span class="keyword">\sqrt</span>&#123;1-x<span class="built_in">^</span>2&#125; <span class="keyword">\tag</span>&#123;i&#125;<span class="keyword">\label</span>&#123;eq<span class="built_in">_</span>tag&#125;<span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
-<p><span class="math display">\[x+1\over\sqrt{1-x^2}
-\tag{i}\label{eq_tag}\]</span></p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Equation <span class="built_in">$</span><span class="keyword">\eqref</span>&#123;eq<span class="built_in">_</span>tag&#125;<span class="built_in">$</span> use `<span class="keyword">\tag</span>&#123;&#125;` instead of automatic numbering.</span><br></pre></td></tr></table></figure>
-<p>Equation <span class="math inline">\(\eqref{eq_tag}\)</span> use
-<code>\tag&#123;&#125;</code> instead of automatic numbering.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/14/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/47/">47</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/16/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/14/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/48/">48</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/16/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
