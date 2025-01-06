@@ -1425,7 +1425,7 @@ pre code {
     transition: all 0.2s ease-in-out;
   }
   .links-of-author a::before {
-    background: #f00042;
+    background: #4734ff;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3011,4 +3011,10 @@ header.header {
   .sidebar {
     display: none;
   }
+}
+.fireworks {
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
 }
