@@ -277,6 +277,99 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/13/Shell%E8%84%9A%E6%9C%AC%E4%B8%AD%E8%AF%86%E5%88%AB%E6%96%B9%E5%90%91%E9%94%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/07/13/Shell%E8%84%9A%E6%9C%AC%E4%B8%AD%E8%AF%86%E5%88%AB%E6%96%B9%E5%90%91%E9%94%AE/" class="post-title-link" itemprop="url">Shell脚本中识别方向键</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-13 12:33:50" itemprop="dateCreated datePublished" datetime="2024-07-13T12:33:50+08:00">2024-07-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在<code>vim</code>中使用<code>H</code>、<code>J</code>、<code>K</code>、<code>L</code>移动光标，但是有时候人们习惯于使用方向键，这在有一些脚本中实现移动光标选择选项时比较重要。在网络上找到两个方案：</p>
+<h2 id="方案一">方案一</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">akey=(0 0 0)</span><br><span class="line"></span><br><span class="line">cESC=`<span class="built_in">echo</span> -ne <span class="string">&quot;\033&quot;</span>`</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> :</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="comment">#这里要注意，这里有-n选项，后跟一个数字，指定输入的字符长度最大值，所以不管key变量的值有多少个字符，都是一个值一个值做循环， 有多少个值就循环多少次</span></span><br><span class="line"><span class="comment">#输入键盘的上下左右键时，都有三个字符(ESC键算一个)，所以都是做三次循环，每做一次循环，akey的值都会发生改变</span></span><br><span class="line">      <span class="built_in">read</span> -s -n 1 key</span><br><span class="line"></span><br><span class="line">      akey[0]=<span class="variable">$&#123;akey[1]&#125;</span></span><br><span class="line">      akey[1]=<span class="variable">$&#123;akey[2]&#125;</span></span><br><span class="line">      akey[2]=<span class="variable">$&#123;key&#125;</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> [[ <span class="variable">$&#123;key&#125;</span> == <span class="variable">$&#123;cESC&#125;</span> &amp;&amp; <span class="variable">$&#123;akey[1]&#125;</span> == <span class="variable">$&#123;cESC&#125;</span> ]]</span><br><span class="line">      <span class="keyword">then</span></span><br><span class="line">         <span class="built_in">echo</span> <span class="string">&quot;ESC键&quot;</span></span><br><span class="line">      <span class="keyword">elif</span> [[ <span class="variable">$&#123;akey[0]&#125;</span> == <span class="variable">$&#123;cESC&#125;</span> &amp;&amp; <span class="variable">$&#123;akey[1]&#125;</span> == <span class="string">&quot;[&quot;</span> ]]</span><br><span class="line">      <span class="keyword">then</span></span><br><span class="line">           <span class="keyword">if</span> [[ <span class="variable">$&#123;key&#125;</span> == <span class="string">&quot;A&quot;</span> ]];<span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">&quot;上键&quot;</span></span><br><span class="line">           <span class="keyword">elif</span> [[ <span class="variable">$&#123;key&#125;</span> == <span class="string">&quot;B&quot;</span> ]];<span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">&quot;向下&quot;</span></span><br><span class="line">           <span class="keyword">elif</span> [[ <span class="variable">$&#123;key&#125;</span> == <span class="string">&quot;D&quot;</span> ]];<span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">&quot;向左&quot;</span></span><br><span class="line">           <span class="keyword">elif</span> [[ <span class="variable">$&#123;key&#125;</span> == <span class="string">&quot;C&quot;</span> ]];<span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">&quot;向右&quot;</span></span><br><span class="line">           <span class="keyword">fi</span></span><br><span class="line">      <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h2 id="方案二">方案二</h2>
+<p>因为上下左右键当中分别含有ABDC，可以利用这一点来做while循环控制输出上下左右键的信号</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">key=() <span class="comment">#-----&gt;自定义一个数组key，为空值</span></span><br><span class="line"><span class="keyword">while</span> :</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">     <span class="built_in">read</span> -s -n 1 key  <span class="comment">#-----&gt;这里跟第一种方法类似，就是利用while循环，不过这里有点不一样的地方，就是这个不考虑完整方向键的字符</span></span><br><span class="line">     <span class="comment">#的方向键字符组成只要循环中包含A就会输出上键，包含B就会输出下键，以此类推，所以个人觉得这种方法没有第一种方法严谨，第一种方法更适合用来写比较大的脚本</span></span><br><span class="line"></span><br><span class="line">     <span class="keyword">case</span> <span class="variable">$&#123;KEY[0]&#125;</span> <span class="keyword">in</span></span><br><span class="line">     <span class="string">&quot;B&quot;</span>)</span><br><span class="line">           <span class="built_in">echo</span> <span class="string">&quot;下键&quot;</span></span><br><span class="line">           ;;</span><br><span class="line">     <span class="string">&quot;A&quot;</span>)</span><br><span class="line">           <span class="built_in">echo</span> <span class="string">&quot;上键&quot;</span></span><br><span class="line">           ;;</span><br><span class="line">     <span class="string">&quot;D&quot;</span>)</span><br><span class="line">           <span class="built_in">echo</span> <span class="string">&quot;左键&quot;</span></span><br><span class="line">           ;;</span><br><span class="line">     <span class="string">&quot;C&quot;</span>)</span><br><span class="line">           <span class="built_in">echo</span> <span class="string">&quot;右键&quot;</span></span><br><span class="line">           ;;</span><br><span class="line">       *)</span><br><span class="line">           <span class="built_in">continue</span></span><br><span class="line">     <span class="keyword">esac</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h2 id="方案三">方案三</h2>
+<p>通过分析上述两种方案，我们给出第三种方案，即识别<code>[A</code>、<code>[B</code>、<code>[C</code>、<code>[D</code>
+也可以区分方向键。代码如下:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">NEO_ESC=`<span class="built_in">echo</span> -ne <span class="string">&quot;\033&quot;</span>`</span><br><span class="line"><span class="built_in">echo</span> -n <span class="string">&quot;请输入按键&quot;</span>; <span class="built_in">read</span> -s -n 1 key</span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$key</span> == <span class="variable">$&#123;NEO_ESC&#125;</span> ]]; <span class="keyword">then</span></span><br><span class="line">   <span class="built_in">read</span> -sn 2 SubListDo</span><br><span class="line">   <span class="keyword">case</span> <span class="string">&quot;<span class="variable">$SubListDo</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">       <span class="string">&quot;[A&quot;</span>)</span><br><span class="line">           <span class="built_in">echo</span> <span class="string">&quot;向上&quot;</span></span><br><span class="line">           ;;</span><br><span class="line">       <span class="string">&quot;[B&quot;</span>)</span><br><span class="line">           <span class="built_in">echo</span> <span class="string">&quot;向下&quot;</span></span><br><span class="line">           ;;</span><br><span class="line">       <span class="string">&quot;[C&quot;</span>)</span><br><span class="line">           <span class="built_in">echo</span> <span class="string">&quot;向右&quot;</span></span><br><span class="line">           ;;</span><br><span class="line">       <span class="string">&quot;[D&quot;</span>)</span><br><span class="line">           <span class="built_in">echo</span> <span class="string">&quot;向左&quot;</span></span><br><span class="line">           ;;</span><br><span class="line">       *)</span><br><span class="line">           <span class="built_in">exit</span></span><br><span class="line">           ;;</span><br><span class="line">   <span class="keyword">esac</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<div class="note primary"><ul>
+<li>2024年07月13日,
+由于在脚本<code>diary.sh</code>和<code>zugit.sh</code>中菜单使用了单一的<code>vim</code>方案，在没有实现完美的方向键识别前暂不加入方向键移动光标选择功能。</li>
+<li>2024年07月14日,
+在上述方案中首先检测是否输入特殊字符，若为特殊字符前导符<code>\033[</code>,
+则读取后面两个字符，再对后两个字符分类探测。使用此方法成功在<code>diary.sh</code>和<code>zugit.sh</code>中引入<code>方向键</code>,<code>home</code>,<code>end</code>,<code>pgup</code>,<code>pgdn</code>控制列表显示，使之成为更加友好的同时兼容<code>vim</code>快捷键的脚本程序。</li>
+</ul>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%B1%82%E5%AF%BC%E6%95%B0%E7%9A%84%E6%95%B0%E5%AD%A6%E7%90%86%E8%AE%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1251,86 +1344,6 @@ CPU、内存的进程；可以检查是否安装了合适的图形驱动程序�
 <li><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-sed.html">Linux sed
 命令</a></li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/04/paru%E7%9A%84%E6%9C%AA%E7%9F%A5%E9%80%89%E9%A1%B9%E9%94%99%E8%AF%AFFileManager/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/07/04/paru%E7%9A%84%E6%9C%AA%E7%9F%A5%E9%80%89%E9%A1%B9%E9%94%99%E8%AF%AFFileManager/" class="post-title-link" itemprop="url">paru的未知选项错误FileManager</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-07-04 22:55:13" itemprop="dateCreated datePublished" datetime="2024-07-04T22:55:13+08:00">2024-07-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>前几天配置好的新电脑后，逐步完成<code>ArchLinux</code>的使用细节配置，但是在使用<code>paru</code>安装软件时会出现一个提示：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">错误：选项节 [options] 中有未知的选项 <span class="string">&#x27;FileManager&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>这源自于<code>paru</code>的配置文件<code>/etc/paru.conf</code>中出现了错误，即将<code>[bin]</code>前的注释去掉，即修改为：</p>
-<figure class="highlight sh"><figcaption><span>/etc/paru.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Binary OPTIONS</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">[bin]</span><br><span class="line">FileManager = vifm</span><br></pre></td></tr></table></figure>
-<p>注意：在之前的配置中我的<code>[bin]</code>是被注释掉的，但是能正常工作，或许是升级后作者修复了这个<code>bug</code>，因些需要严格的启动这个选项。</p>
 
       
     </div>
