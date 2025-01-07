@@ -1,0 +1,28 @@
+name: Fetch Upstream Changes
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # 每周日 UTC 时间 00:00 运行
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  fetch-upstream:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Git
+        run: |
+          git config --global user.name 'fengzhenhua'
+          git config --global user.email 'fengzhenhua@mail.bnu.edu.cn'
+
+      - name: Add upstream remote
+        run: git remote add upstream https://github.com/fungzhenhua/fungzhenhua.github.io.git || true
+        # 使用 || true 防止当远程已经存在时命令失败
+
+      - name: Fetch upstream changes
+        run: git fetch upstream
+
+      - name: List fetched branches
+        run: git branch -r
