@@ -376,6 +376,107 @@ target="_blank" rel="noopener" href="https://endeavouros.com">Endeavour</a>
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/08/%E5%A6%82%E4%BD%95%E5%9C%A8Shell%E8%84%9A%E6%9C%AC%E4%B8%AD%E5%88%A4%E6%96%AD%E8%84%9A%E6%9C%AC%E5%81%9C%E5%9C%A8%E5%93%AA%E9%87%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/01/08/%E5%A6%82%E4%BD%95%E5%9C%A8Shell%E8%84%9A%E6%9C%AC%E4%B8%AD%E5%88%A4%E6%96%AD%E8%84%9A%E6%9C%AC%E5%81%9C%E5%9C%A8%E5%93%AA%E9%87%8C/" class="post-title-link" itemprop="url">如何在Shell脚本中判断脚本停在哪里</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-01-08 17:15:02 / 修改时间：17:20:46" itemprop="dateCreated datePublished" datetime="2025-01-08T17:15:02+08:00">2025-01-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>当编写复杂的 Shell
+脚本时，了解脚本在何处停止执行可以极大地帮助调试和优化。本文将介绍几种在
+Shell 脚本中判断脚本停止位置的方法。</p>
+<h2 id="目录">目录</h2>
+<ul>
+<li><a href="#添加日志记录">添加日志记录</a></li>
+<li><a href="#启用调试模式">启用调试模式</a></li>
+<li><a href="#错误捕获和通知">错误捕获和通知</a></li>
+<li><a href="#检查退出状态">检查退出状态</a></li>
+</ul>
+<h2 id="添加日志记录">添加日志记录</h2>
+<p>通过在脚本的关键位置添加日志记录，可以帮助跟踪脚本的执行进度。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Script has reached step 1&quot;</span> &gt;&gt; script.log </span><br></pre></td></tr></table></figure>
+<p>这行命令会在每次执行到该行时向 <code>script.log</code>
+文件追加一条消息。</p>
+<h2 id="启用调试模式">启用调试模式</h2>
+<p>你可以使用 <code>-x</code> 选项来启用 <code>bash</code>
+的调试模式，这会让它打印出执行的每个命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -x ./your_script.sh</span><br></pre></td></tr></table></figure>
+<p>或者在脚本内部临时开启调试：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -x</span><br><span class="line"><span class="comment"># 你的代码</span></span><br><span class="line"><span class="built_in">set</span> +x</span><br></pre></td></tr></table></figure>
+<p>这样可以在脚本的特定部分开启或关闭调试输出。</p>
+<h2 id="错误捕获和通知">错误捕获和通知</h2>
+<p>使用 <code>trap</code>
+命令可以在发生错误时执行特定的命令，比如发送通知或写入日志：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">trap</span> <span class="string">&#x27;echo &quot;Error at line $LINENO: $BASH_COMMAND&quot;&#x27;</span> ERR</span><br></pre></td></tr></table></figure>
+<p>这将在任何命令失败时触发，并打印出错误发生的行号和命令。</p>
+<h2 id="检查退出状态">检查退出状态</h2>
+<p>每个命令执行后都会返回一个退出状态码，通常<code>0</code>表示成功，非零值表示错误。可以通过检查
+<code>$?</code> 变量来决定是否继续执行：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">command</span></span><br><span class="line"><span class="keyword">if</span> [ $? -ne 0 ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Command failed&quot;</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<p>这种方式确保只有当上一条命令成功时才会继续执行。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/08/Shell%E8%84%9A%E6%9C%AC%E4%B8%AD%E9%81%BF%E5%85%8D%E8%BE%93%E5%85%A5sudo%E5%AF%86%E7%A0%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1247,109 +1348,6 @@ target="_blank" rel="noopener" href="https://www.cnblogs.com/sparkdev/p/10287164
 <ul>
 <li><a target="_blank" rel="noopener" href="https://cn.linux-console.net/?p=12167">如何修复 Linux
 上的“sudo 密码不起作用”错误</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/02/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%BC%98%E5%8C%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/01/02/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%BC%98%E5%8C%96/" class="post-title-link" itemprop="url">Hexo搭建博客的优化</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-01-02 21:27:10 / 修改时间：21:41:05" itemprop="dateCreated datePublished" datetime="2025-01-02T21:27:10+08:00">2025-01-02</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>最近在使用校园网时，发现这有限的流量消耗的特别快，其中一项就是自己维护这个博客。经过考虑，对此博客做一些优化.</p>
-<h1 id="屏蔽掉不需要源备份的文件">屏蔽掉不需要源备份的文件</h1>
-<p>这时遵守一个原则：网站必备的文件，包括主题、基本配置和文章MarkDown文件，
-其他的内容都不必存放在私人仓库中。屏蔽掉这些内容，可以极大的减少数据传输量，提高效率的同时，也节省的仓库空间。</p>
-<figure class="highlight sh"><figcaption><span>.gitignore</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.deploy_git/</span><br><span class="line">public/</span><br><span class="line">db.json</span><br></pre></td></tr></table></figure>
-<div class="note primary"><ul>
-<li><code>.gitignore</code>:
-这是一个git的配置文件，里面定义了不列入git管理的内容设置</li>
-<li><code>.deploy_git</code>:
-这个应该是git部署用的文件。比如你写好的博客想部署到 GitHub
-Pages上去的话，可以用git部署插件，那个插件会创建这个目录.
-为了确保每次增删博客时能够准确执行，则每次都要重建，所以它可以不用备份。</li>
-<li><code>public</code>: 这应该是hero编译之后的网站的目录,
-每次生成博客都是存放在此处，所以其也不用备份。</li>
-<li><code>db.json</code>:
-搜索插件的数据库文件，由于每次增删博客后它也是会发生变化，且可以随时生成，所以也不用备份。</li>
-</ul>
-</div>
-<h1 id="设置主力仓库">设置主力仓库</h1>
-<p>原本在<code>GitHub</code>上建立了三个仓库，以<a
-target="_blank" rel="noopener" href="https://fungzhenhua.github.io">https://fungzhenhua.github.io</a>
-作为主力,
-最初的一个仓库准备弃用，辅助的博客如果也要同步更新就会产生双份的流量，这在目前不合算，于是准备将辅助博客间隔较长时间更新。</p>
-<h1 id="参考文章">参考文章</h1>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000006808337">hexo静态博客框架中.deploy_git目录是什么，起到什么作用？</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/Q1761991696/article/details/123572766">如何使用.gitignore忽略Git中的文件和目录</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34243930/article/details/109046120">用Github
-Pages+Hexo搭建博客之(七)如何删除一篇已经发布的文章
-#成功解决：同时删除掉.deploy_git文件夹</a></li>
 </ul>
 
       

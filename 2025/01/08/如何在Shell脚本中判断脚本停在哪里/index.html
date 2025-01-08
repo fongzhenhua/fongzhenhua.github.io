@@ -22,13 +22,13 @@
 
 
 
-<link rel="canonical" href="http://example.com/archives/2024/page/10/">
+<link rel="canonical" href="http://example.com/2025/01/08/%E5%A6%82%E4%BD%95%E5%9C%A8Shell%E8%84%9A%E6%9C%AC%E4%B8%AD%E5%88%A4%E6%96%AD%E8%84%9A%E6%9C%AC%E5%81%9C%E5%9C%A8%E5%93%AA%E9%87%8C/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2024/page/10/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/01/08/%E5%A6%82%E4%BD%95%E5%9C%A8Shell%E8%84%9A%E6%9C%AC%E4%B8%AD%E5%88%A4%E6%96%AD%E8%84%9A%E6%9C%AC%E5%81%9C%E5%9C%A8%E5%93%AA%E9%87%8C/","path":"2025/01/08/如何在Shell脚本中判断脚本停在哪里/","title":"如何在Shell脚本中判断脚本停在哪里"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | BNU-FZH</title>
+<title>如何在Shell脚本中判断脚本停在哪里 | BNU-FZH</title>
   
 
 
@@ -61,7 +61,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">BNU-FZH</h1>
+      <p class="site-title">BNU-FZH</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">fengzhenhua@outlook.com</p>
@@ -115,7 +115,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -128,6 +128,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">添加日志记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E7%94%A8%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">启用调试模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E6%8D%95%E8%8E%B7%E5%92%8C%E9%80%9A%E7%9F%A5"><span class="nav-number">4.</span> <span class="nav-text">错误捕获和通知</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E9%80%80%E5%87%BA%E7%8A%B6%E6%80%81"><span class="nav-number">5.</span> <span class="nav-text">检查退出状态</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -267,233 +268,122 @@
 
     </div>
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/08/%E5%A6%82%E4%BD%95%E5%9C%A8Shell%E8%84%9A%E6%9C%AC%E4%B8%AD%E5%88%A4%E6%96%AD%E8%84%9A%E6%9C%AC%E5%81%9C%E5%9C%A8%E5%93%AA%E9%87%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="如何在Shell脚本中判断脚本停在哪里 | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          如何在Shell脚本中判断脚本停在哪里
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-01-08 17:15:02 / 修改时间：17:20:46" itemprop="dateCreated datePublished" datetime="2025-01-08T17:15:02+08:00">2025-01-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>当编写复杂的 Shell
+脚本时，了解脚本在何处停止执行可以极大地帮助调试和优化。本文将介绍几种在
+Shell 脚本中判断脚本停止位置的方法。</p>
+<h2 id="目录">目录</h2>
+<ul>
+<li><a href="#添加日志记录">添加日志记录</a></li>
+<li><a href="#启用调试模式">启用调试模式</a></li>
+<li><a href="#错误捕获和通知">错误捕获和通知</a></li>
+<li><a href="#检查退出状态">检查退出状态</a></li>
+</ul>
+<h2 id="添加日志记录">添加日志记录</h2>
+<p>通过在脚本的关键位置添加日志记录，可以帮助跟踪脚本的执行进度。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Script has reached step 1&quot;</span> &gt;&gt; script.log </span><br></pre></td></tr></table></figure>
+<p>这行命令会在每次执行到该行时向 <code>script.log</code>
+文件追加一条消息。</p>
+<h2 id="启用调试模式">启用调试模式</h2>
+<p>你可以使用 <code>-x</code> 选项来启用 <code>bash</code>
+的调试模式，这会让它打印出执行的每个命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -x ./your_script.sh</span><br></pre></td></tr></table></figure>
+<p>或者在脚本内部临时开启调试：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -x</span><br><span class="line"><span class="comment"># 你的代码</span></span><br><span class="line"><span class="built_in">set</span> +x</span><br></pre></td></tr></table></figure>
+<p>这样可以在脚本的特定部分开启或关闭调试输出。</p>
+<h2 id="错误捕获和通知">错误捕获和通知</h2>
+<p>使用 <code>trap</code>
+命令可以在发生错误时执行特定的命令，比如发送通知或写入日志：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">trap</span> <span class="string">&#x27;echo &quot;Error at line $LINENO: $BASH_COMMAND&quot;&#x27;</span> ERR</span><br></pre></td></tr></table></figure>
+<p>这将在任何命令失败时触发，并打印出错误发生的行号和命令。</p>
+<h2 id="检查退出状态">检查退出状态</h2>
+<p>每个命令执行后都会返回一个退出状态码，通常<code>0</code>表示成功，非零值表示错误。可以通过检查
+<code>$?</code> 变量来决定是否继续执行：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">command</span></span><br><span class="line"><span class="keyword">if</span> [ $? -ne 0 ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Command failed&quot;</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<p>这种方式确保只有当上一条命令成功时才会继续执行。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%94%B5%E8%84%91%E6%8A%80%E6%9C%AF/" rel="tag"># 电脑技术</a>
+          </div>
+
         
-        <span class="collection-header">太棒了! 目前共计 475 篇日志。 继续努力。</span>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2024<span class="collection-year-count">241</span></span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-08-27T10:02:56+08:00"
-              content="2024-08-27">
-          08-27
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/08/27/%E4%BD%BF%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8%E5%AE%9E%E7%8E%B0%E6%A0%A1%E5%9B%AD%E7%BD%91%E5%85%8D%E7%99%BB%E5%BD%95/" itemprop="url">
-            <span itemprop="name">使用路由器实现校园网免登录</span>
-          </a>
-      </div>
-
-      
-    </header>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/01/08/Shell%E8%84%9A%E6%9C%AC%E4%B8%AD%E9%81%BF%E5%85%8D%E8%BE%93%E5%85%A5sudo%E5%AF%86%E7%A0%81/" rel="prev" title="Shell脚本中避免输入sudo密码">
+                  <i class="fa fa-angle-left"></i> Shell脚本中避免输入sudo密码
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-08-16T00:44:09+08:00"
-              content="2024-08-16">
-          08-16
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/08/16/%E6%97%A0%E7%BA%BF%E9%94%AE%E7%9B%98%E5%92%8C%E9%BC%A0%E6%A0%87%E6%80%8E%E4%B9%88%E9%80%89/" itemprop="url">
-            <span itemprop="name">无线键盘和鼠标怎么选</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-08-13T23:11:01+08:00"
-              content="2024-08-13">
-          08-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/08/13/%E5%B0%86Windows%E7%94%B5%E8%84%91%E7%94%A8%E4%BD%9C%E7%A7%BB%E5%8A%A8%E7%83%AD%E7%82%B9/" itemprop="url">
-            <span itemprop="name">将Windows电脑用作移动热点</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-08-13T14:53:21+08:00"
-              content="2024-08-13">
-          08-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/08/13/MacOS%E4%B8%8ELinux/" itemprop="url">
-            <span itemprop="name">MacOS与Linux</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-08-12T15:50:58+08:00"
-              content="2024-08-12">
-          08-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/08/12/%E8%A7%A3%E5%86%B3Ubuntu%E7%9A%84%E5%86%85%E9%83%A8%E9%94%99%E8%AF%AF/" itemprop="url">
-            <span itemprop="name">解决Ubuntu的内部错误</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-08-10T16:32:02+08:00"
-              content="2024-08-10">
-          08-10
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/08/10/Linux%E7%BB%88%E7%AB%AF%E6%89%93%E5%8D%B0Unicode/" itemprop="url">
-            <span itemprop="name">Linux终端打印Unicode</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-08-07T13:59:27+08:00"
-              content="2024-08-07">
-          08-07
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/08/07/Python%E4%B9%8Bpandas%E6%A8%A1%E5%9D%97%E6%8A%A5%E9%94%99%E4%BF%AE%E5%A4%8D/" itemprop="url">
-            <span itemprop="name">Python之pandas模块报错修复</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-08-06T16:22:23+08:00"
-              content="2024-08-06">
-          08-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/08/06/Veusz%E6%95%99%E7%A8%8B%E4%B9%8BColorbar/" itemprop="url">
-            <span itemprop="name">Veusz教程之Colorbar</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-08-06T02:43:22+08:00"
-              content="2024-08-06">
-          08-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/08/06/Python%E7%94%9F%E6%88%902D%E6%95%B0%E6%8D%AE%E5%B9%B6%E7%94%A8Veusz%E7%BB%98%E5%9B%BE/" itemprop="url">
-            <span itemprop="name">Python生成2D数据并用Veusz绘图</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-08-04T02:11:03+08:00"
-              content="2024-08-04">
-          08-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/08/04/Python2%E5%88%B0Python3%E7%9A%84%E8%BD%AC%E6%8D%A2%E5%B7%A5%E5%85%B72to3/" itemprop="url">
-            <span itemprop="name">Python2到Python3的转换工具2to3</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/archives/2024/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2024/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2024/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/archives/2024/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2024/page/25/">25</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/archives/2024/page/11/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+
+
+
 
 </div>
   </main>
