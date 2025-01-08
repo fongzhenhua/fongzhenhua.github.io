@@ -277,6 +277,270 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/13/SDDM%E8%AF%AD%E8%A8%80%E4%BF%AE%E6%94%B9%E4%B8%BA%E4%B8%AD%E6%96%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/12/13/SDDM%E8%AF%AD%E8%A8%80%E4%BF%AE%E6%94%B9%E4%B8%BA%E4%B8%AD%E6%96%87/" class="post-title-link" itemprop="url">SDDM语言修改为中文</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-12-13 19:52:49" itemprop="dateCreated datePublished" datetime="2023-12-13T19:52:49+08:00">2023-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>2023-12-27 在安装完新系统后配置中文环境时，根据<a
+target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/Locale#Gnome-terminal_/_rxvt-unicode_不支持_UTF-8">Locale-ArchWiki</a>的描述，对于KDE
+Plasma 则删除<label style="color:red">~/.config/plasma-localerc</label>
+后发现各项翻译包括SDDM增均顺利转换成了英文。如果SDDM没有转成中文，请再按下述方法配置。</p>
+<hr />
+<p>新配置的<code>ArchLinux</code>解决完一些重要的问题后，还剩下<code>SDDM</code>的语言一直显示为英文，需要将语言修改为中文。方法为：
+修改文件<code>/usr/lib/systemd/system/sddm.service</code>，
+在<code>[Service]</code>下添加<code>Environment=LANG=zh_CN.UTF-8</code>,
+即</p>
+<figure class="highlight sh"><figcaption><span>/usr/lib/systemd/system/sddm.service</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Simple Desktop Display Manager</span><br><span class="line">Documentation=man:sddm(1) man:sddm.conf(5)</span><br><span class="line">Conflicts=getty@tty1.service</span><br><span class="line">After=systemd-user-sessions.service getty@tty1.service plymouth-quit.service systemd-logind.service</span><br><span class="line">PartOf=graphical.target</span><br><span class="line">StartLimitIntervalSec=30</span><br><span class="line">StartLimitBurst=2</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">ExecStart=/usr/bin/sddm</span><br><span class="line">Restart=always</span><br><span class="line">Environment=LANG=zh_CN.UTF-8</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">Alias=display-manager.service</span><br></pre></td></tr></table></figure>
+<div class="note info"><p>注意：按<code>ArchLinux</code>的<code>Wiki</code><a
+target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/简体中文本地化">简体中文本地化</a>,不推荐在<code>/etc/locale.conf</code>里把全局的<code>LANG locale</code>设置成中文<code>LANG=zh_CN.UTF-8</code>，因为<code>TTY</code>下没有<code>CJK</code>字体，这样设置会导致<code>TTY</code>中显示豆腐块（除非你使用的内核打了<code>cjktty</code>补丁能绘制中文字体，比如<a
+target="_blank" rel="noopener" href="https://github.com/archlinuxcn/repo/tree/master/archlinuxcn/linux-lily">linux-lily</a><sup>CNRepo</sup>）。</p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/13/%E6%B6%88%E9%99%A4ArchLinux%E6%9B%B4%E6%96%B0%E6%97%B6%E7%9A%84%E5%9B%BA%E4%BB%B6%E7%BC%BA%E5%A4%B1%E8%AD%A6%E5%91%8A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/12/13/%E6%B6%88%E9%99%A4ArchLinux%E6%9B%B4%E6%96%B0%E6%97%B6%E7%9A%84%E5%9B%BA%E4%BB%B6%E7%BC%BA%E5%A4%B1%E8%AD%A6%E5%91%8A/" class="post-title-link" itemprop="url">消除ArchLinux更新时的固件缺失警告</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-12-13 00:32:58" itemprop="dateCreated datePublished" datetime="2023-12-13T00:32:58+08:00">2023-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在<code>ArchLinux</code>执行更新时，如果内核有更新则会出现如下警告：</p>
+<figure class="highlight sh"><figcaption><span>While doing a 'sudo pacman -Syu' pacman warns</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">==&gt; WARNING: Possibly missing firmware <span class="keyword">for</span> module: wd719x</span><br><span class="line">==&gt; WARNING: Possibly missing firmware <span class="keyword">for</span> module: aic94xx</span><br><span class="line">==&gt; WARNING: Possibly missing firmware <span class="keyword">for</span> module: xhci_pci</span><br></pre></td></tr></table></figure>
+<p>解决方法安装<code>mkinitcpio-firmware</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paru --skipreview -S mkinitcpio-firmware</span><br></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paru --skipreview -S wd719x-firmware aic94xx-firmware upd72020x-fw</span><br></pre></td></tr></table></figure>
+<p>查看警告是否消失</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> mkinitcpio -p linux</span><br></pre></td></tr></table></figure>
+<div class="note info"><p>还有一个warning是关于consolefont的，根据arch社区的回答，把/etc/mkinitcpio.conf文件中的HOOKS中的consolefont删掉就行。
+参考文章：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/340918736">Arch Linux
+更新出现模块固件缺失的警告</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Mkinitcpio">mkinitcpio-ArchWiki</a></li>
+</ul>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/12/KDE%E4%B8%8B%E8%AE%BE%E7%BD%AEFcitx5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/12/12/KDE%E4%B8%8B%E8%AE%BE%E7%BD%AEFcitx5/" class="post-title-link" itemprop="url">KDE下设置Fcitxe5</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-12-12 21:53:00" itemprop="dateCreated datePublished" datetime="2023-12-12T21:53:00+08:00">2023-12-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在文章<a
+href="/2023/12/01/Fcitxe5与Calibre的兼容">Fcitxe5与Calibre的兼容</a>中介绍了与<code>Calibre</code>兼容的要求安装了那些带<code>git</code>的<code>cn</code>库里的<code>Fcitxe5</code>版本，同时同于其更新较频繁所以用这个版本比较好。但是在我的笔记本<code>Thinkpad-T490</code>由于升级硬件重新安装系统后，发现<code>Fcit5</code>不能使用自己的皮肤，而只是显示了默认与<code>Plasma</code>相对应的皮肤。经过长时间的百度也没有解决问题，不过参考<a
+target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Fcitxe5">Fcitxe5-Archwiki</a>
+中的一个<code>Note</code>,
+同时也是我的使用<code>Gnome3</code>的时候就知道的地方，如果安装了插件<code>gnome-shell-extension-kimpanel-git</code>则会显示一个借鉴了<code>kde</code>输入法状态栏的<code>kimpanel</code>,
+此时<code>Fcitxe5</code>的皮肤将会失效。在<code>KDE</code>中本身就存在这个挂件，如果启用了挂件<label style="color:red">通用输入法面板</label>,虽然在状态栏上看起来也能显示输入法，但是<code>Fcitxe5</code>却因为这个挂件而不能使用自己的皮肤。正确的做法应当是添加挂件<label style="color:red">系统托盘</label>,
+同时去掉<label style="color:red">通用输入法面板</label>,这样即可以显示输入法面板又不启用<code>kimpanel</code>,
+于是<code>Fcitxe5</code>就可以正常使用自己的皮肤了。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/11/Paru%E9%BB%98%E8%AE%A4%E5%85%B3%E9%97%AD%E5%AE%A1%E9%98%85%E6%B5%81%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -873,283 +1137,6 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/crabdave/article/deta
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/12/07/Linux%E4%B8%AD%E4%B8%80%E6%AC%A1%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AA%E5%91%BD%E4%BB%A4/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/04/%E5%B9%BF%E5%91%8A%E6%8B%A6%E6%88%AA%E6%8F%92%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/04/%E5%B9%BF%E5%91%8A%E6%8B%A6%E6%88%AA%E6%8F%92%E4%BB%B6/" class="post-title-link" itemprop="url">广告拦截插件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-04 17:52:47" itemprop="dateCreated datePublished" datetime="2023-12-04T17:52:47+08:00">2023-12-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>现在网络环境，广告五花八门，无处不在，其不仅影响阅读体验也会耽误大量的时间。然而，就目前的情况来看，一些互联网公司有意干扰了这些广告拦截插件，使其在浏览器中不能直接搜索安装，于是就需要探讨安装广告拦截插件的方法，直接通过源或者<code>Github</code>安装是最好的，但是前提是能够顺利访问<code>Github</code>,
-这可以参考<a
-href="/2023/12/02/Github终极解决方案">Github终极解决方案</a>。这些值得推荐的插件为：</p>
-<h2 id="tampermonkey">Tampermonkey</h2>
-<p><code>Tampermonkey</code>本身不是广告拦截插件，但是其提供了各种各样的神奇功能，所以将其放在第一位。下面列出一些常用的<code>Tampermonkey</code>脚本：</p>
-<ul>
-<li><code>AC-baidu</code>重定向优化百度搜狗谷歌必应搜索,
-过滤掉所有的搜索广告，最大化的还原一个清静的网页。</li>
-<li>🔥持续更新🔥 CSDN广告完全过滤、人性化脚本优化：🆕
-不用再登录了！让你体验令人惊喜的崭新CSDN。</li>
-</ul>
-<h2 id="ublock-origin">uBlock origin</h2>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S firefox-ublock-origin</span><br></pre></td></tr></table></figure>
-<h2 id="adblock-plus">adblock-plus</h2>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S firefox-adblock-plus</span><br></pre></td></tr></table></figure>
-<h2 id="adguardhome">adguardhome</h2>
-<p>Network-wide ads and trackers blocking DNS server</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S adguardhome</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/02/Github%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/02/Github%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">Github终极解决方案</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-02 15:07:03" itemprop="dateCreated datePublished" datetime="2023-12-02T15:07:03+08:00">2023-12-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <div class="note primary"><p>本文分析了之前的一系列的解决方案，虽然题目为终极解决方案，但是有针对性的配置更加有效率。对于<code>ssh</code>访问<code>github.com</code>而言，由于是直接访问<code>github.com</code>所以它的内容是最新的，且没有任何问题，而镜像有可能不完整。同时，对于<code>yay</code>,
-<code>paru</code>而言其<code>axel</code>的多线程下载功能也不是仅仅实现访问<code>github.com</code>所能比的。对于<code>mason</code>和<code>treesitter</code>按本节方法更好一些，但是之前的配置也是可以接受的。对于那些调用<code>git</code>但是还没有找到解决方案的程序，全局化取代<code>github.com</code>将是一个有效的方法。
-<label style="color:red">2023-12-02 17:03</label></p>
-</div>
-<p>我平时使用<code>ArchLinux</code>作为办公的主力，平时用的最多的就是<code>vim</code>和<code>nvim</code>,
-为了更好的使用他们工作配置了若干插件，由于这些插件都发布于<code>Github</code>,且像<code>Plug</code>和<code>Packer</code>这样的插件管理器都从<code>Github</code>上安装和更新插件。但是<code>Github</code>的访问并不稳定，这导致了升级插件和安装的时候出现了问题。为了解决这一问题，我配置了<code>ssh</code>的方法，具体参考</p>
-<p><a
-target="_blank" rel="noopener" href="https://fengzhenhua.gitlab.io/2023/10/11/使用Git下载Github资源的有效方法/">使用Git下载Github资源的有效方法</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/12/02/Github%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/02/%E5%90%84%E7%A7%8D%E5%90%84%E6%A0%B7%E7%9A%84%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/02/%E5%90%84%E7%A7%8D%E5%90%84%E6%A0%B7%E7%9A%84%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F/" class="post-title-link" itemprop="url">各种各样的镜像加速</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-02 14:14:12" itemprop="dateCreated datePublished" datetime="2023-12-02T14:14:12+08:00">2023-12-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>为了在技术上更加方便交流，在<code>github</code>上找到一个项目，用来提供镜像加速。这里直接引用其<code>README.md</code>文件就够用了，因为它记录了具体内容。
-具体参考其镜像网站：</p>
-<p><a
-target="_blank" rel="noopener" href="https://github.com/hedzr/mirror-list">https://github.com/hedzr/mirror-list</a></p>
-<h1 id="各种各样的镜像加速">各种各样的镜像加速</h1>
-<blockquote>
-<p>mirrors-for-coder(s)</p>
-</blockquote>
-<blockquote>
-<p>目录已经没有必要自行生成了，因为 GitHub, Gitee 等都主动提供了 TOC
-支持。</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/12/02/%E5%90%84%E7%A7%8D%E5%90%84%E6%A0%B7%E7%9A%84%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

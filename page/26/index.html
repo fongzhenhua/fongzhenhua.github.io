@@ -277,6 +277,538 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/18/%E6%B8%85%E7%A9%BAGit%E4%BB%93%E5%BA%93%E7%9A%84Commit%E6%8F%90%E4%BA%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/01/18/%E6%B8%85%E7%A9%BAGit%E4%BB%93%E5%BA%93%E7%9A%84Commit%E6%8F%90%E4%BA%A4/" class="post-title-link" itemprop="url">清空Git仓库的Commit提交</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-18 09:42:23" itemprop="dateCreated datePublished" datetime="2024-01-18T09:42:23+08:00">2024-01-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>git是当前最常见的版本控制工具，但出现以下情况时，往往需要清空commits历史记录：</p>
+<ul>
+<li>commits记录占用空间过大甚至远远超过版本控制文件本身大小，进行云端代码管理时会受制于空间限制，无法继续更新</li>
+<li>历史记录中存在敏感信息，需要清理</li>
+</ul>
+<div class="note info"><p>清理commits历史记录的核心思想是，直接删除本地的.git目录，重新建立git仓库并与远程仓库建立链接，采用强制提交的方式覆盖远程仓库的commits记录。</p>
+</div>
+<p>下面是一段示例,参数说明：</p>
+<ul>
+<li>$REPO_DIR 表示需要处理的Git仓库本地目录</li>
+<li>git@github.com:xxxx/$REPO_DIR.git 表示远程仓库地址</li>
+</ul>
+<h3 id="进入本地仓库删除.git目录">进入本地仓库，删除.git目录</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$REPO_DIR</span></span><br><span class="line"><span class="built_in">rm</span> -rf .git</span><br></pre></td></tr></table></figure>
+<h3 id="重新初始化">重新初始化</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git branch -m main</span><br></pre></td></tr></table></figure>
+<div class="note info"><p>由于<code>Gitlab</code>仓库的默认分支名为<code>main</code>，而仓库初始化默认为<code>master</code>,
+所以需要重命名为<code>main</code>.</p>
+</div>
+<h3 id="添加commit">添加commit</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;restart git commit&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="添加远程仓库链接">添加远程仓库链接</h3>
+<p>设置远程仓库代号为<code>origin</code>, 则</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add orign git@github.com:xxxx/<span class="variable">$REPO_DIR</span>.git</span><br></pre></td></tr></table></figure>
+<p>注意，此时可用<code>git remote -v</code>检查远程仓库的设置。</p>
+<h3
+id="强制提交到master分支覆盖远程仓库的commits历史提交记录">强制提交到master分支，覆盖远程仓库的commits历史提交记录</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git push -f origin master</span><br><span class="line">or  </span><br><span class="line">git push --force origin master </span><br></pre></td></tr></table></figure>
+<h3 id="追踪上游分支">追踪上游分支</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --set-upstream origin main</span><br></pre></td></tr></table></figure>
+<div class="note info"><p>如果不设置上游分支，再次提交时的commits不能确定跟踪变化，所以不能正常提交博客文章，于是这是一个必须的操作。</p>
+</div>
+<h3 id="参考文章">参考文章</h3>
+<p><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/magic-wei/p/9919277.html">清空Github仓库的commits历史记录</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/16/vim-latex%E4%B8%8Evimtex%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/01/16/vim-latex%E4%B8%8Evimtex%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9/" class="post-title-link" itemprop="url">vim-latex与vimtex如何选择</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-16 19:21:44" itemprop="dateCreated datePublished" datetime="2024-01-16T19:21:44+08:00">2024-01-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>作为一个理科生，终生都离不开数学公式。而LaTeX绝对是处理数学公式的王者，在编辑LaTeX中的众多工具中，使用vim或neovim配合编辑LaTeX的插件又是王者中的王者。在众多的插件中，<code>vim-latex</code>和<code>vimtex</code>是网络上提到最多的，也是使用者最多的插件，但是这两者该如何选择呢？经过本人的实践，最终选择了<code>vim-latex</code>.</p>
+<h1 id="选择依据分析">选择依据分析</h1>
+<p>众多网络文章都提到了插件<code>vimtex</code>,
+按其官方介绍：<code>VimTeX is a modern Vim and Neovim filetype and syntax plugin for LaTeX files.</code>
+,
+或许就是这个<code>modern</code>让许多人选择了它。诚然<code>vimtex</code>是一个优秀的插件，我们来看一下它提供的功能（引用其README.md）：</p>
+<details>
+<summary>
+<label style="color:blue">vimtex提供的功能</label>
+</summary>
+<ul>
+<li>Document compilation with <a
+target="_blank" rel="noopener" href="https://www.cantab.net/users/johncollins/latexmk/index.html">latexmk</a>,
+<a target="_blank" rel="noopener" href="https://github.com/aclements/latexrun">latexrun</a>, <a
+target="_blank" rel="noopener" href="https://tectonic-typesetting.github.io">tectonic</a>, or <a
+target="_blank" rel="noopener" href="https://github.com/cereda/arara">arara</a></li>
+<li>LaTeX log parsing for quickfix entries using
+<ul>
+<li>internal method</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/stefanhepp/pplatex">pplatex</a></li>
+</ul></li>
+<li>Compilation of selected part of document</li>
+<li>Support for several PDF viewers with forward search
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.mupdf.com/">MuPDF</a></li>
+<li><a target="_blank" rel="noopener" href="https://okular.kde.org/">Okular</a></li>
+<li><a target="_blank" rel="noopener" href="https://launchpad.net/qpdfview">qpdfview</a></li>
+<li><a target="_blank" rel="noopener" href="http://skim-app.sourceforge.net/">Skim</a></li>
+<li><a
+target="_blank" rel="noopener" href="http://www.sumatrapdfreader.org/free-pdf-reader.html">SumatraPDF</a></li>
+<li><a target="_blank" rel="noopener" href="https://pages.uoregon.edu/koch/texshop/">TeXShop</a></li>
+<li><a target="_blank" rel="noopener" href="https://pwmt.org/projects/zathura/">Zathura</a></li>
+<li>Other viewers are supported through a general interface</li>
+</ul></li>
+<li>Completion of
+<ul>
+<li>citations</li>
+<li>labels</li>
+<li>commands</li>
+<li>file names for figures, input/include, includepdf,
+includestandalone</li>
+<li>glossary entries</li>
+<li>package and documentclass names based on available <code>.sty</code>
+and <code>.cls</code> files</li>
+</ul></li>
+<li>Document navigation through
+<ul>
+<li>table of contents</li>
+<li>table of labels</li>
+<li>proper settings for <code>'include'</code>,
+<code>'includexpr'</code>, <code>'suffixesadd'</code> and
+<code>'define'</code>, which among other things
+<ul>
+<li>allow <code>:h include-search</code> and
+<code>:h definition-search</code></li>
+<li>give enhanced <code>gf</code> command</li>
+</ul></li>
+</ul></li>
+<li>Easy access to (online) documentation of packages</li>
+<li>Word count (through <code>texcount</code>)</li>
+<li>Motions (<a href="VISUALS.md#motion-commands">link to GIF
+demonstrations</a>)
+<ul>
+<li>Move between section boundaries with <code>[[</code>,
+<code>[]</code>, <code>][</code>, and <code>]]</code></li>
+<li>Move between environment boundaries with <code>[m</code>,
+<code>[M</code>, <code>]m</code>, and <code>]M</code></li>
+<li>Move between math environment boundaries with <code>[n</code>,
+<code>[N</code>, <code>]n</code>, and <code>]N</code></li>
+<li>Move between frame environment boundaries with <code>[r</code>,
+<code>[R</code>, <code>]r</code>, and <code>]R</code></li>
+<li>Move between comment boundaries with <code>[*</code> and
+<code>]*</code></li>
+<li>Move between matching delimiters with <code>%</code></li>
+</ul></li>
+<li>Text objects (<a href="VISUALS.md#text-objects">link to GIF
+demonstrations</a>)
+<ul>
+<li><code>ic ac</code> Commands</li>
+<li><code>id ad</code> Delimiters</li>
+<li><code>ie ae</code> LaTeX environments</li>
+<li><code>i$ a$</code> Math environments</li>
+<li><code>iP aP</code> Sections</li>
+<li><code>im am</code> Items</li>
+</ul></li>
+<li>Other mappings (<a
+href="VISUALS.md#deleting-surrounding-latex-content">link to GIF
+demonstrations</a>)
+<ul>
+<li>Delete the surrounding command, environment or delimiter with
+<code>dsc</code>/<code>dse</code>/<code>ds$</code>/<code>dsd</code></li>
+<li>Change the surrounding command, environment or delimiter with
+<code>csc</code>/<code>cse</code>/<code>cs$</code>/<code>csd</code></li>
+<li>Toggle starred command or environment with
+<code>tsc</code>/<code>tse</code></li>
+<li>Toggle inline and displaymath with <code>ts$</code></li>
+<li>Toggle between e.g. <code>()</code> and <code>\left(\right)</code>
+with <code>tsd</code></li>
+<li>Toggle (inline) fractions with <code>tsf</code></li>
+<li>Close the current environment/delimiter in insert mode with
+<code>]]</code></li>
+<li>Add <code>\left ... \right)</code> modifiers to surrounding
+delimiters with <code>&lt;F8&gt;</code></li>
+<li>Insert new command with <code>&lt;F7&gt;</code></li>
+<li>Convenient insert mode mappings for faster typing of e.g. maths</li>
+<li>Context menu on citations (e.g. <code>\cite&#123;...&#125;</code>) mapped to
+<code>&lt;cr&gt;</code></li>
+</ul></li>
+<li>Improved folding (<code>:h 'foldexpr'</code>)</li>
+<li>Improved indentation (<code>:h 'indentexpr'</code>)</li>
+<li>Syntax highlighting
+<ul>
+<li>A consistent core syntax specification</li>
+<li>General syntax highlighting for several popular LaTeX packages</li>
+<li>Nested syntax highlighting for several popular LaTeX packages</li>
+<li>Highlight matching delimiters</li>
+</ul></li>
+<li>Support for multi-file project packages
+<ul>
+<li><a
+target="_blank" rel="noopener" href="http://ctan.uib.no/macros/latex/contrib/import/import.pdf">import</a></li>
+<li><a
+target="_blank" rel="noopener" href="http://ctan.uib.no/macros/latex/contrib/subfiles/subfiles.pdf">subfiles</a></li>
+</ul></li>
+</ul>
+</details>
+<p>而插件<code>vim-latex</code>（又称<code>latex-suite</code>）,
+按<code>vimtex</code>的<code>README.md</code></p>
+<details>
+<summary>
+<label style="color:blue">vim-latex vs vimtex</label>
+</summary>
+<p>The main difference between VimTeX and LaTeX-Suite (aka vim-latex) is
+probably that VimTeX does not try to implement a full fledged IDE for
+LaTeX inside Vim. E.g.:</p>
+<ul>
+<li>VimTeX does not provide a full snippet feature, because this is
+better handled by UltiSnips or neosnippet or similar snippet
+engines.</li>
+<li>VimTeX builds upon Vim principles: It provides text objects for
+environments, inline math, it provides motions for sections and
+paragraphs</li>
+<li>VimTeX uses latexmk, latexrun, tectonic or arara for compilation
+with a callback feature to get instant feedback on compilation
+errors</li>
+<li>VimTeX is very modular: if you don't like a feature, you can turn it
+off.</li>
+</ul>
+</details>
+<p>这两个插件有相同的部分，比如说输入希腊字母，<code>vim-latex</code>在任何模式下都可以输出对应的希腊字母命令，而<code>vimtex</code>在数学模式中才输出希腊字母，相较而言<code>vimtex</code>更加保险一些，但是对于一个熟悉<code>LaTeX</code>的人来讲，这个事情都是知道的，影响不大，只能说<code>vimtex</code>更加细致一点。而<code>vim-latex</code>提供了完整的<code>LaTeX</code>的输入语法，同时提供了<code>&lt;++&gt;</code>标记方法，可以使用<code>Ctrl+j</code>快速的移动光标，这点是<code>vimtex</code>所无法比拟的。按<code>vimtex</code>的说法，<code>vimtex</code>把补全的任务交给了其他插件，但是就专业性和速度上讲，<code>vim-latex</code>绝对领先。</p>
+<p><code>vimtex</code>提供的较好的特性是光标在各环境中移动，这点是<code>vim-latex</code>不具备的功能。但是<code>vim</code>或<code>neovim</code>的特性，使用搜索功能或数字键加<code>hjkl</code>方式移动光标，好像<code>vimtex</code>也没有占据足够的优势。</p>
+<p><code>vimtex</code>方便的更改环境功能，例如<code>cse</code>可以方便的更换为新的环境，但是<code>vim-latex</code>也可以使用<code>&lt;S-F5&gt;</code>快捷键快速更换环境，再则考虑到编写环境前作者肯定是规划好的环境，所以更改环境是一个低概率事件。此处注意，<code>Neovim</code>中同时按下组键<code>&lt;S+F5&gt;</code>(也就是<code>Shift</code>+<code>F5</code>)返回的是<code>F17</code>,并不能获得<code>vim-latex</code>所需的组合键<code>&lt;S-F5&gt;</code>!!
+具体请参考<a target="_blank" rel="noopener" href="https://rayx.me/2020/06/10/vim-keycode/">keycode in
+terminal for vim&amp;neovim</a>, 于是做出修改：</p>
+<figure class="highlight vim"><figcaption><span>~/.config/nvim/init.vim</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">map</span> <span class="symbol">&lt;F17&gt;</span> <span class="symbol">&lt;S-F5&gt;</span></span><br><span class="line"><span class="keyword">imap</span> <span class="symbol">&lt;F17&gt;</span> <span class="symbol">&lt;S-F5&gt;</span></span><br><span class="line"><span class="keyword">map</span> <span class="symbol">&lt;F19&gt;</span> <span class="symbol">&lt;S-F7&gt;</span></span><br><span class="line"><span class="keyword">imap</span> <span class="symbol">&lt;F19&gt;</span> <span class="symbol">&lt;S-F7&gt;</span></span><br></pre></td></tr></table></figure>
+<p>修改完毕，在<code>neovim</code>中可以正常使用环境或命令的替换。很多人选择<code>vimtex</code>的一个重要原因是其可以配置增量编译，实现时时查看结果，但是<code>LaTeX</code>的精神本身就是<label style="color:red">所想即所得</label>！对于一个熟悉<code>LaTeX</code>的人来讲随时关注结果并不是必须的，除非公式比较复杂，而这只需要编译一下看看结果即可。时时编译的代价就是电脑消耗更多的资源，对于我的笔记本来说，风扇一直转发出的噪音会干扰我的写作思维。对于一个初入<code>LaTeX</code>的人，这或许是一个较好的选择，但是对于一个足够熟悉<code>LaTeX</code>的人来讲，<label style="color:red">所见即所得</label>不是必须的，也是符合<code>Linux</code>思维。</p>
+<p>综上所述，<code>vim-latex</code>和<code>vimtex</code>都是优秀的<code>LaTeX</code>插件，但是前者提供了完备的功能，后者的优势功能是一些低频率使用的功能，综合平衡的话还是选择<code>vim-latex</code>更好一些。由于二者并不冲突，所以可以同时配置二个插件，获取各自的功能这是一个比较折中的方案，但是不太符合<code>Linux</code>纯净化的哲学思想，所以我还是选择了前者，在没有足够的理由前应该不会同时安装二者。</p>
+<p>作为可用的配置，下面将二者的配置文件列出，方便大家参考：</p>
+<div class="tabs" id="neovim配置latex"><ul class="nav-tabs"><li class="tab active"><a href="#neovim配置latex-1">vim-latex</a></li><li class="tab"><a href="#neovim配置latex-2">vimtex.lua</a></li></ul><div class="tab-content"><div class="tab-pane active" id="neovim配置latex-1"><figure class="highlight lua"><figcaption><span>~/.config/nvim/lua/plg/vim-latex.lua</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">#! /usr/bin/env lua</span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- vim-latex.lua</span></span><br><span class="line"><span class="comment">-- Copyright (C) 2023 feng &lt;feng@arch&gt;</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Distributed under terms of the MIT license.</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- vim-latex默认的局势键</span></span><br><span class="line"><span class="comment">--  F1 帮助菜单</span></span><br><span class="line"><span class="comment">--  F5 插入环境选择对话框,若在导言区将弹出插入宏包对话框</span></span><br><span class="line"><span class="comment">--  F7 插入引用选择对话框</span></span><br><span class="line"><span class="comment">--绑定快捷键</span></span><br><span class="line"><span class="comment">-- -- 测试功能</span></span><br><span class="line"><span class="comment">-- inoremap &lt;buffer&gt;&lt;silent&gt; &lt;C-S-F5&gt; &lt;C-O&gt;:call &lt;SID&gt;ChangeEnvironment(input(&#x27;Environment? &#x27;))&lt;CR&gt;</span></span><br><span class="line"><span class="comment">-- noremap &lt;buffer&gt;&lt;silent&gt; &lt;C-S-F5&gt; :call &lt;SID&gt;ChangeEnvironment(input(&#x27;Environment? &#x27;))&lt;CR&gt;</span></span><br><span class="line">vim.api.nvim_create_autocmd(<span class="string">&quot;FileType&quot;</span>,&#123;</span><br><span class="line">    pattern = <span class="string">&quot;tex&quot;</span>,</span><br><span class="line">    callback = <span class="function"><span class="keyword">function</span><span class="params">()</span></span></span><br><span class="line">        <span class="comment">-- 配置F4打开模板</span></span><br><span class="line">        vim.api.nvim_set_keymap(<span class="string">&quot;n&quot;</span>, <span class="string">&quot;&lt;F4&gt;&quot;</span>, <span class="string">&quot;:TTemplate&lt;CR&gt;&quot;</span>, &#123;noremap = <span class="literal">true</span>, silent = <span class="literal">true</span>&#125;)</span><br><span class="line">        <span class="comment">-- 配置pdflatex编译，原vim-latex中使用\ll 默认 xelatex 编译</span></span><br><span class="line">        vim.api.nvim_set_keymap(<span class="string">&quot;n&quot;</span>, <span class="string">&quot;&lt;F6&gt;&quot;</span>, <span class="string">[[&lt;cmd&gt;!pdflatex % &lt;CR&gt;]]</span>, &#123;noremap = <span class="literal">true</span>, silent = <span class="literal">true</span>&#125;)</span><br><span class="line">        <span class="comment">-- 配置F8编译 aux辅助文件，直接根据数据库生成文献引用, 注意使用%:t:r 截取文件名</span></span><br><span class="line">        vim.api.nvim_set_keymap(<span class="string">&quot;n&quot;</span>, <span class="string">&quot;&lt;F8&gt;&quot;</span>, <span class="string">[[&lt;cmd&gt;!bibtex %:t:r.aux &lt;CR&gt;]]</span>, &#123;noremap = <span class="literal">true</span>, silent = <span class="literal">true</span>&#125;)</span><br><span class="line">        <span class="comment">-- 配置F10编译多合一文件时，以当前目录名为主文件，以节省时间</span></span><br><span class="line">        vim.api.nvim_set_keymap(<span class="string">&quot;n&quot;</span>, <span class="string">&quot;&lt;F10&gt;&quot;</span>, <span class="string">[[&lt;cmd&gt;!xelatex $(echo $PWD|awk -F&quot;/&quot; &#x27;&#123;print $NF&#125;&#x27;).tex &lt;CR&gt;]]</span>, &#123;noremap = <span class="literal">true</span>, silent = <span class="literal">true</span>&#125;)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">-- 开启treesitter提供的语法高亮</span></span><br><span class="line">vim.api.nvim_create_autocmd( <span class="string">&#x27;FileType&#x27;</span>, &#123; pattern = <span class="string">&#x27;tex&#x27;</span>,</span><br><span class="line">    callback = <span class="function"><span class="keyword">function</span><span class="params">(args)</span></span></span><br><span class="line">        vim.treesitter.start(args.buf, <span class="string">&#x27;latex&#x27;</span>)</span><br><span class="line">        vim.bo[args.buf].syntax = <span class="string">&#x27;on&#x27;</span>  <span class="comment">-- only if additional legacy syntax is needed</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">-- set for vim-latex/latex-suite</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_Menus&#x27;</span>] = <span class="number">0</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_Flavor&#x27;</span>] = <span class="string">&#x27;latex&#x27;</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_IgnoreLevel&#x27;</span>] = <span class="number">8</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_GotoError&#x27;</span>] = <span class="number">0</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_DefaultTargetFormat&#x27;</span>] = <span class="string">&#x27;pdf&#x27;</span></span><br><span class="line"><span class="comment">-- 配置默认编译引擎为 xelatex</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_CompileRule_pdf&#x27;</span>] = <span class="string">&#x27;xelatex -synctex=1 -interaction=nonstopmode -file-line-error-style $*&#x27;</span></span><br><span class="line"><span class="comment">-- 获取桌面环境，并根据桌面环境选择默认的PDF阅读器</span></span><br><span class="line"><span class="keyword">if</span>  <span class="built_in">os</span>.<span class="built_in">getenv</span>(<span class="string">&quot;DESKTOP_SESSION&quot;</span>) == <span class="string">&quot;plasma&quot;</span>  <span class="keyword">then</span></span><br><span class="line">    vim.g[<span class="string">&#x27;Tex_ViewRule_pdf&#x27;</span>] = <span class="string">&#x27;okular&#x27;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    vim.g[<span class="string">&#x27;Tex_ViewRule_pdf&#x27;</span>] = <span class="string">&#x27;evince&#x27;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">-- 统一设置为轻量级的mupdf阅读器</span></span><br><span class="line"><span class="comment">-- vim.g[&#x27;Tex_ViewRule_pdf&#x27;] = &#x27;mupdf&#x27;</span></span><br><span class="line"><span class="comment">--控制统计过程中的警告信息</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_IgnoredWarnings&#x27;</span>] = &#123;&#125;</span><br><span class="line"><span class="comment">--</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_CustomTemplateDirectory&#x27;</span>] = <span class="string">&quot;~/.latex-templates/&quot;</span></span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="neovim配置latex-2"><figure class="highlight lua"><figcaption><span>~/.config/nvim/lua/plg/vimtex.lua</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#! /usr/bin/env lua</span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- vimtex.lua</span></span><br><span class="line"><span class="comment">-- Copyright (C) 2023 feng &lt;feng@archlinux&gt;</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line">vim.g[<span class="string">&#x27;tex_flavor&#x27;</span>] = <span class="string">&#x27;latex&#x27;</span></span><br><span class="line">vim.g[<span class="string">&#x27;vimtex_view_method&#x27;</span>] = <span class="string">&#x27;zathura&#x27;</span></span><br><span class="line">vim.g[<span class="string">&#x27;vimtex_view_general_viewer&#x27;</span>] = <span class="string">&#x27;zathura&#x27;</span></span><br><span class="line">vim.g[<span class="string">&#x27;vimtex_view_general_options&#x27;</span>] = <span class="string">[[--unique file:@pdf\#src:@line@tex]]</span></span><br><span class="line">vim.g[<span class="string">&#x27;vimtex_compiler_latexmk_engines&#x27;</span>] = &#123;</span><br><span class="line">    _ = <span class="string">&#x27;-xelatex&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">vim.g[<span class="string">&#x27;vimtex_compiler_progname&#x27;</span>] = <span class="string">&#x27;nvr&#x27;</span></span><br><span class="line"><span class="comment">-- vim.g[&#x27;vimtex_view_general_options_latexmk&#x27;] = &#x27;--unique&#x27;</span></span><br><span class="line"><span class="comment">-- vim.g[&#x27;vimtex_view_general_options_latexmk&#x27;] = &#x27;--reuse-instance&#x27;</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- A few examples of disabling default VimTeX features.</span></span><br><span class="line">vim.g[<span class="string">&#x27;tex_comment_nospell&#x27;</span>] = <span class="number">1</span></span><br><span class="line">vim.g[<span class="string">&#x27;vimtex_quickfix_mode&#x27;</span>] = <span class="number">1</span></span><br><span class="line">vim.g[<span class="string">&#x27;vimtex_indent_enabled&#x27;</span>]   = <span class="number">1</span>      <span class="comment">-- turn off VimTeX indentation</span></span><br><span class="line">vim.g[<span class="string">&#x27;vimtex_imaps_enabled&#x27;</span>]    = <span class="number">1</span>      <span class="comment">-- disable insert mode mappings (e.g. if you use UltiSnips)</span></span><br><span class="line">vim.g[<span class="string">&#x27;vimtex_complete_enabled&#x27;</span>] = <span class="number">1</span>      <span class="comment">-- turn off completion</span></span><br><span class="line">vim.g[<span class="string">&#x27;vimtex_syntax_enabled&#x27;</span>]   = <span class="number">1</span>      <span class="comment">-- disable syntax conceal</span></span><br><span class="line">vim.g[<span class="string">&#x27;vimtex_syntax_conceal_disable&#x27;</span>] = <span class="number">1</span> <span class="comment">--avoid the startup warning</span></span><br><span class="line"><span class="comment">-- 使一些符号以一种更加直观的方式显示出来</span></span><br><span class="line">vim.g[<span class="string">&#x27;tex_conceal&#x27;</span>] = <span class="string">&#x27;abdmg&#x27;</span></span><br><span class="line">vim.g[<span class="string">&#x27;conceallevel&#x27;</span>] = <span class="number">1</span></span><br><span class="line"><span class="comment">-- 更改maplocalleader避免与vim-latex的冲突</span></span><br><span class="line">vim.g[<span class="string">&#x27;maplocalleader&#x27;</span>] = <span class="string">&quot;,&quot;</span></span><br></pre></td></tr></table></figure></div></div></div>
+<h1 id="参考文章">参考文章</h1>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://vimawesome.com/">VimAwesome</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://vim-latex.sourceforge.net/">vim-latex.sourceforge</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://mssun.me/blog/tips-vim-latex.html">用Vim高效地编辑LaTeX文档</a></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/16/vim%E6%8F%92%E4%BB%B6%E4%B9%8Bvim-align/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/01/16/vim%E6%8F%92%E4%BB%B6%E4%B9%8Bvim-align/" class="post-title-link" itemprop="url">vim插件之vim-align</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-16 10:31:52" itemprop="dateCreated datePublished" datetime="2024-01-16T10:31:52+08:00">2024-01-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>这是一款可以实现数学符号对齐的插件，测试后发现很实用，于是直接粘上其<code>README.md</code>，
+如下</p>
+<p>This is a mirror of <a
+target="_blank" rel="noopener" href="http://www.vim.org/scripts/script.php?script_id=294">http://www.vim.org/scripts/script.php?script_id=294</a></p>
+<p>Align and AlignMaps lets you align statements on their equal signs,
+make comment boxes, align comments, align declarations, etc.</p>
+<p>Note: this plugin is not a left&amp;right margin justification tool!
+See vimscript#177 or vimscript#2324 for that. Note: if you have vim 7.1
+or later, your vimball should unpack just fine without having to update
+it.</p>
+<p>There are two basic commands provided by this package:</p>
+<pre><code>    AlignCtrl options sep1 sep2 sep3 ... 
+    [range]Align sep1 sep2 sep3 ... </code></pre>
+<p>The "sep#" are regular expressions which describe separators that
+delineate fields; Align will line up the separators. The range may be
+any Vim range, <em>including</em> visual-blocks. Align works on lines of
+the form: (ws==whitespace, sep==separator, field==text)</p>
+<pre><code>ws-field-ws-sep-ws-field-ws-sep-ws-field-... 
+ws-field-ws-sep-ws-field-ws-sep-ws-field-... </code></pre>
+<p>Note that white-space (ws) surrounding separators is ignored.</p>
+<p>The Align package includes:</p>
+<ul>
+<li>Align : the basic alignment command</li>
+<li>AlignCtrl : provides options for the next call to :Align</li>
+<li>AlignMaps : many three or four key maps which support aligning C/C++
+style declarations, ()?..:.., expressions, C/C++ comments, numbers, C
+preprocessor definitions, tables based on tabs or spaces, and more.</li>
+</ul>
+<p>In addition, AutoAlign (vimscript#884) uses the Align function to
+align =s as you type.</p>
+<p>Align handles alignment on multiple separators, not just the first
+one, and the separators may be the same across the line or different.
+With AlignCtrl one may specify that separators are cyclic (re-used
+sequentially) or equivalent (all separators are simultaneously
+active).</p>
+<p>There are several options to help with deciding what to do with
+initial white space. By default Align re-uses the first line's initial
+white space, but one may use AlignCtrl to retain or remove each line's
+initial white space.</p>
+<p>The &lt;Align.vim&gt; and &lt;AlignMaps.vim&gt; files are plugins and
+require vim 6.1 or higher.</p>
+<p>EXAMPLES:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">:5,10Align = </span><br><span class="line">    Align on &#x27;=&#x27; signs </span><br><span class="line"></span><br><span class="line">:&#x27;&lt;,&#x27;&gt;Align = + - \* / </span><br><span class="line">    Align on any of the five separator characters shown. </span><br><span class="line">    Note that visual block mode was used to fire off Align. </span><br><span class="line"></span><br><span class="line">:AlignCtrl =lp1P1I </span><br><span class="line">    which means: </span><br><span class="line">    = all separators are equivalent </span><br><span class="line">    l fields will be left-justified </span><br><span class="line">    p1 pad one space before each separator </span><br><span class="line">    P1 pad one space after each separator </span><br><span class="line">    I  preserve and apply the first line&#x27;s leading white space to all </span><br><span class="line">       Align&#x27;d lines </span><br><span class="line"></span><br><span class="line">:help align </span><br><span class="line">    Gives help for Align </span><br></pre></td></tr></table></figure>
+<p>ALIGNMENT CONTROL</p>
+<p>Alignment control allows for left or right justification or centering
+of fields, cyclic (sequentially active) or equivalent (simultaneously
+active) regular expressions to specify field separators, initial white
+space control, optional visual-block use (ie. apply Alignment only
+within a block), user-specified white-space padding about separators,
+and multiple separators.</p>
+<p>MANY ALIGNMENT MAPS</p>
+<p>AlignMaps.vim provides a number of maps which make using this package
+easy. They typically either apply to the range 'a,. (from mark a to
+current line) or use the visual-selection (V, v, or ctrl-v
+selected):</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\t=  : align assignments (don&#x27;t count logic, like == or !=) </span><br><span class="line">\t,  : align on commas </span><br><span class="line">\t|  : align on vertical bars (|) </span><br><span class="line">\tsp : align on whitespace </span><br><span class="line">\tt  : align LaTeX tabular tables </span><br></pre></td></tr></table></figure>
+<p>AlignMaps also provides some internally complex maps for aligning C
+declarations, Ansi C function arguments, html tables, LaTeX tabulars,
+and trailing comments:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\acom : align comments </span><br><span class="line">\adec : align C declarations (one variable per line) </span><br><span class="line">\afnc : align ansi-style C function input arguments </span><br><span class="line">\Htd  : align html tables </span><br></pre></td></tr></table></figure>
+<p>To see some examples of this, check out</p>
+<pre><code>[http://mysite.verizon.net/astronaut/vim/align.html#Examples](http://mysite.verizon.net/astronaut/vim/align.html#Examples) </code></pre>
+<p>(the proportional fonts used by most browsers in showing you this
+page preclude showing the examples here). The help for Align and
+AlignCtrl also contains many examples.</p>
+<p>ALIGNMENT ON VISUAL BLOCKS AND g,v-LIKE CONTROL</p>
+<p>Sometimes one wants to align only a subset of text in a range, based
+on patterns or column extents. Align supports both types of
+restrictions!</p>
+<pre><code>Visual-block selection may be used to restrict Align to operate only 
+within that visual block. 
+ 
+AlignCtrl supports &quot;g&quot; and &quot;v&quot; patterns that restrict Align to 
+
+operate on lines which match (or don&#39;t match, respectively) those 
+patterns. </code></pre>
+<p>NEW STUFF:</p>
+<p>There's a number of new AlignCtrl options:</p>
+<pre><code>- allows one to skip a separator (treat it as part of a field) 
++ repeat the last lrc justification (ex. lr+ == lrrrrrr... ) 
+: treat the rest of the line as a field; acts as a modifier 
+  to the last lrc. 
+&lt; left-justify the separator 
+&gt; right-justify the separator 
+| center the separator </code></pre>
+<p>These are, except for the ":", cyclic parameters. In other words,
+&gt;&lt; is equivalent to &gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;... . Thus
+separators can be of differing lengths (ex. -+ as a separator pattern
+can match -, --, ---, etc and the separators will be left/right/center
+justified as you wish).</p>
+<p>To get automatic, as-you-type, aligning of = in the C, vimL, and
+other languages, check out vimscript#884 for several ftplugins (which
+use Align).</p>
+<p>Alternative Aligners: Gergely Kontra's vimscript#176</p>
+<p>Thank you for rating Align!</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">DISCUSSION and COMMENTS:</td>
+</tr>
+</tbody>
+</table>
+<p>Please use email for bugs. Enjoy!</p>
+<p>(alpha/beta version available at
+http://mysite.verizon.net/astronaut/vim/index.html#ALIGN)</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/05/%E8%A7%A3%E5%86%B3CDNJS%E8%AE%BF%E9%97%AE%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -939,453 +1471,6 @@ Linux 中的软件包管理器）安装。</p>
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/22/Zsh%E9%85%8D%E7%BD%AE%E5%BF%AB%E9%80%9F%E8%B7%AF%E5%BE%84%E8%B7%B3%E8%BD%AC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/22/Zsh%E9%85%8D%E7%BD%AE%E5%BF%AB%E9%80%9F%E8%B7%AF%E5%BE%84%E8%B7%B3%E8%BD%AC/" class="post-title-link" itemprop="url">Zsh配置快速路径跳转</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-22 23:47:33" itemprop="dateCreated datePublished" datetime="2023-12-22T23:47:33+08:00">2023-12-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>使用<code>Linux</code>过程中最频繁的命令就是路径跳转<code>cd</code>,
-但是它需要输入完整的路径，显然是一个麻烦的工作，然后我们有几个工具可以解决快速路径跳转的问题，它们分别是：<code>fasd</code>、<code>autojump</code>
-、<code>z.sh</code>、<code>zsh-z-git</code>、<code>z.lua</code>
-。其中前两个可以使用<code>pacman</code>安装，而<code>zsh-z-git</code>是以<code>z.sh</code>构建的，<code>z.lua</code>是国人实现的，后面这三个使用<code>paru</code>从<code>aur</code>源中安装，我试用了<code>zsh-z-git</code>感觉良好。通过文章<a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/56077546">一个会学习你习惯的 cd 命令
-- z.lua</a>
-获知这几个<code>zsh</code>插件中<code>z.lua</code>的性能最快，比<code>z.sh</code>快三倍，比<code>fasd/autojump</code>快十倍以上，于是决定删除<code>zsh-z-git</code>安装<code>z.lua</code>。</p>
-<h2 id="安装和配置z.lua">安装和配置<code>z.lua</code></h2>
-<ol type="1">
-<li><p>安装<code>z.lua</code> <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paru --skipreview --needed --noconfirm -S z.lua</span><br></pre></td></tr></table></figure></p></li>
-<li><p>配置启用<code>z.lua</code> <figure class="highlight sh"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /usr/share/z.lua/z.lua.plugin.zsh</span><br><span class="line">or</span><br><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(lua /usr/share/z.lua/z.lua --init zsh enhanced once)</span>&quot;</span></span><br></pre></td></tr></table></figure></p></li>
-</ol>
-<div class="note warning"><p>注意：启用<code>z.lua</code>作用上述两种方法都可以，第一种方法比较符合<code>zsh</code>的要求，而第二种方法是官网给出的方法，这里我使用了第二种方法，因为官方文件中还有一名话：</p>
-<p>Options like "enhanced", "once" and "fzf" can be used after --init
-too.</p>
-<p>因为它可以增加选项，所以我采用了官方的方法,
-具体使用方法见下面参考文章。</p>
-</div>
-<h2 id="参考文章">参考文章</h2>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/skywind3000/z.lua">z.lua官网</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/56077546">一个会学习你习惯的
-cd 命令 - z.lua</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/22/%E8%A7%A3%E5%86%B3%E7%AC%94%E8%AE%B0%E6%9C%AC%E9%A3%8E%E6%89%87%E4%B8%80%E7%9B%B4%E8%BD%AC%E7%9A%84%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/22/%E8%A7%A3%E5%86%B3%E7%AC%94%E8%AE%B0%E6%9C%AC%E9%A3%8E%E6%89%87%E4%B8%80%E7%9B%B4%E8%BD%AC%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">解决笔记本风扇一直转的问题</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-22 21:26:14" itemprop="dateCreated datePublished" datetime="2023-12-22T21:26:14+08:00">2023-12-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>正确的解决方法：</p>
-<h2 id="关闭kde-plasma5-文件索引">关闭<code>KDE Plasma5</code>
-文件索引！</h2>
-<ul>
-<li>使用命令关闭 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">balooctl <span class="built_in">disable</span></span><br><span class="line">balooctl <span class="built_in">suspend</span></span><br><span class="line">balooctl status</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>第一条命令是<label style="color:red">禁用索引框架</label>，第二条命令是<label style="color:red">立刻停止索引</label>，
-而我在<code>ArchLinux</code>中直接<code>sudo kill</code>掉进程也是立杆见影！第三条命令是<label style="color:red">查看索引状态</label>。</p>
-<ul>
-<li><p>通过点击<code>系统设置</code>→<code>搜索</code>→<code>文件搜索</code>→<code>去掉启用文件索引</code>前的对号→右下角<code>应用</code></p></li>
-<li><p>如果不想停用，可以编辑 <code>~/.config/baloofilerc</code>
-，在里面添加<code>exclude folders</code>一项来忽略某些目录，加速<code>baloo index</code>速度。</p></li>
-</ul>
-<h2 id="关闭gnome3文件索引">关闭<code>Gnome3</code>文件索引</h2>
-<ul>
-<li><p>使用<code>gsettings</code>禁用<code>tracker-miner</code>应用
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gsettings set org.freedesktop.Tracker.Miner.Files crawling-interval -2</span><br><span class="line">gsettings set org.freedesktop.Tracker.Miner.Files enable-monitors false</span><br></pre></td></tr></table></figure> 同时删除旧数据<code>tracker reset --hard</code></p></li>
-<li><p>或者禁止<code>tracker-*</code>软件启动 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo sed -i &quot;s/X-GNOME-Autostart-enabled=true/X-GNOME-Autostart-enabled=false/g&quot; /etc/xdg/autostart/tracker-*.desktop</span><br><span class="line">tracker reset --hard</span><br><span class="line">tracker reset --hard</span><br></pre></td></tr></table></figure></p></li>
-</ul>
-<h2 id="问题分析说明">问题分析说明</h2>
-<p>通过命令<code>ps aux</code>查看了一下系统进程情况，发现是一个叫<code>baloo_file_extractor</code>
-的进程占用了<label style="color:red">84%</label>以上的CPU资源，怪不得<code>CPU</code>一直产热，风扇一直转个不停呢，然后<code>sudko kill</code>它，大约2秒钟系统就安静了。这是一个什么东西？
-参看<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Baloo">Baloo-ArchWiki</a>,
-原来这是一个索引程序，它一直在扫描文件建立索引，所以即使等它运行完，如果再有文件变化，那它照样会消耗掉大量资源！
-这让我想起来，原来使用<code>Gnome3</code>的时候，也遇到类似的问题，我知道刚装好的系统要索引，所以就一直等他索引完成，尽管后面的使用过程中会有风扇转，我一直误以为是驱动不兼容导致的！但是当前的Linux版本足够新根本不存在兼容问题。在使用过程中，大家都知道自己的文件放在哪里，很少使用搜索功能，所以直接关闭就是最佳的解决方案。</p>
-<hr />
-<p>我的电脑Thinkpad T490,
-当配置完<code>ArchLinux</code>后，发现系统确实足够流畅，但是发现只使用电池的情况下电脑很安静，只要接能电源风扇就会一直转个不停，噪音很大，不能让人静下心来工作。排查问题时，发现一般笔记本电脑默认开启了<code>睿频加速技术（Turbo Boost）</code>,
-也就是说CPU本身是有一个基准频率的，但是开启睿频后会提高CPU的速度，但是带来的问题却是风扇一直不停的转，产生了噪音，现在的笔记本基准频率已经够用了，所以默认的开启睿频反倒不是一个最佳的选择。于是打开高级电源管理工具<code>TLP-UI</code>,
-左侧选中<code>处理器</code>, 然后在右侧找到<code>CPU_BOOST</code>,
-选中两项<code>CPU_BOOST_ON_AC</code>和<code>CPU_BOOST_ON_BAT</code>并关闭，然后输入<code>root</code>密码就可以了。同时对比其他的项，将<code>AC</code>电源的项改成与<code>BAT</code>一样的设置，这样电脑就足够安静了。这里我修改的项还有：<code>CPU_ENGERGY_PERF_POLICY_ON_AC</code>
-→<code>balance_power</code> , <code>CPU_MAX_PERF_ON_AC</code>→
-<code>99</code>, <code>CPU_MAX_PERF_ON_BAT</code>→<code>30</code>,
-关闭<code>CPU_HWP_DYN_BOOST_ON_AC_ID_TITLE</code>,
-<code>PLATFORM_PROFILE_ON_AC_ID_TITLE</code>→<code>low-power</code>,
-于是基本和电源模式和电池模式就一样了，实际测试电脑也确实安静的工作了。</p>
-<div class="note info"><p>注意：最初在BIOS中关闭了超线程<code>Hyper-Threading Technology</code>,
-这实际上就是虚拟内核，关闭后硬件显示4核，打开后发现是8核，其与电脑发热量没有最直接关系，同时也尝试关闭了动态节能技术<code>Intel SpeedStep</code>,
-但是都没有解决因发热风扇一直转的问题。最终确定，这个睿频才是导致发热的元凶，关闭之后对于平时的工作也没有什么影响。</p>
-</div>
-<details>
-<summary>
-<label style="color:blue">什么是英特尔® 睿频加速技术？</label>
-</summary>
-<p>英特尔® 睿频加速技术的工作原理是什么？</p>
-<p>CPU
-并不总是需要以最大频率运行。有些程序更依赖内存来平稳运行，而另一些则属于
-CPU 密集型。英特尔®
-睿频加速技术就是用来解决这种不平衡问题的节能方案：它允许 CPU
-在处理轻负载时以基本时钟速度运行，而在处理高负载时提升至更高的时钟速度。</p>
-<p>以低时钟速率（处理器每秒执行的周期数）运行可以让处理器的功耗更低，从而减少热量，并对笔记本电脑的电池寿命产生积极影响。但是当需要更高的速度时，英特尔®
-睿频加速技术会动态地提高时钟速率来进行补偿。这有时称为“算法超频”。</p>
-<p>英特尔® 睿频加速技术可以在安全温度和功率限制内，将 CPU
-速度提升到最高睿频。这样就可以提升单线程和多线程应用程序（利用多个处理器内核的程序）的性能。</p>
-<p>如果您想知道如何启用睿频技术，不要担心 ——
-它被设置为默认启用。您无需下载或配置任何东西。</p>
-<p>什么是最大睿频？</p>
-<p>处理轻负荷时，CPU
-以其规格中列出的基本频率运行。（在使用节能英特尔SpeedStep® 技术调节 CPU
-速度时，频率会更低。） 在处理标记为高性能的硬件线程时，英特尔®
-睿频加速技术可将时钟速度提高到最大睿频。</p>
-<p>例如，英特尔® 酷睿™ i9-9900K 处理器的基本频率为 3.60 GHz，最大睿频为
-5.00
-GHz。需要注意的是，根据所处情况，特定的CPU可能不会总是达到其最大睿频。速度的动态提升会根据工作负载和可用的热余量而变化。</p>
-在比较 CPU
-时钟速度时，最大睿频是通常要记住的关键数字。它反映了处理器在超频前的峰值性能。1除了内核数和高级功能外，这也是选购
-CPU 时要考虑的重点因素之一。
-</details>
-<p><code>Windows</code>用户关闭睿频请参考：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/503821003">Windows11
-高级电源管理: 调节CPU和风扇</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv12372895/">通过对win10注册表修改来关闭睿频(高性能/已禁用来回切换)</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/22/vim%E5%92%8Cneovim%E4%B8%AD%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2Fcitx5%E8%BE%93%E5%85%A5%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/22/vim%E5%92%8Cneovim%E4%B8%AD%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2Fcitx5%E8%BE%93%E5%85%A5%E6%B3%95/" class="post-title-link" itemprop="url">vim和neovim中自动切换Fcitx5输入法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-22 12:30:43" itemprop="dateCreated datePublished" datetime="2023-12-22T12:30:43+08:00">2023-12-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在使用vim或neovim编辑文件时，需要经常在插入模式和编辑模式来回切换，之前已经记录了方法，但本文作为一个正式的版本记录一下，并随ArchLinux的更新相应改变。</p>
-<h2 id="源自fcitx5-archwiki的方法">源自Fcitx5-ArchWiki的方法</h2>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fcitx5state=<span class="built_in">system</span>(<span class="string">&quot;fcitx5-remote&quot;</span>)</span><br><span class="line"><span class="keyword">autocmd</span> InsertLeave * :<span class="keyword">silent</span> <span class="keyword">let</span> fcitx5state=<span class="built_in">system</span>(<span class="string">&quot;fcitx5-remote&quot;</span>)[<span class="number">0</span>] | <span class="keyword">silent</span> !fcitx5-remote -<span class="keyword">c</span></span><br><span class="line"><span class="keyword">autocmd</span> InsertEnter * :<span class="keyword">silent</span> <span class="keyword">if</span> fcitx5state == <span class="number">2</span> | <span class="keyword">call</span> <span class="built_in">system</span>(<span class="string">&quot;fcitx5-remote -o&quot;</span>) | <span class="keyword">endif</span></span><br></pre></td></tr></table></figure>
-<div class="note info"><p>注意：vim将上述代码添加到<code>~/.vimrc</code>,
-neovim将上述代码添加到<code>~/.config/nvim/init.vim</code></p>
-</div>
-<h2 id="使用插件fcitx.vim">使用插件<code>fcitx.vim</code></h2>
-<p>由于不同的插件管理器多少有差异，此处不记录详细配置，请将<code>lilydjwg/fcitx.vim</code>放入到配置文件对应位置即可。插件和官方的脚本区别在于：</p>
-<p><code>ArchLinux</code>官方脚本可以实现在一个文件中输入法的切换，即按<code>Esc</code>后切换为英文输入法，再切换到插入模式后<code>Fcitx5</code>自动切换为刚才输入时的输入法。这个功能基本满足大家的要求。插件<code>fcitx.vim</code>的优势在于可以记录不同文件的输入法状态，例如有两个文件A和B,
-编辑文件A时插入模式使用中文输入，编辑文件B时插入模式使用英文输入，在A或B按<code>Esc</code>后统一转换成了英文输入法，但是在A文件中插入时<code>Fcitx5</code>就切换到中文输入法，在B文件中插入时<code>Fcitx5</code>就切换到英文输入法。</p>
-<p>由于<code>ArchLinux</code>脚本仅是一段简单代码，基本上不占用启动时间，所以vim或nvim都启动的很快，而插件<code>fcitx.vim</code>虽然功能强大，但是需要借助于<code>python3</code>和<code>python-dbus</code>,所以启动会慢一些，使用<code>Lazy</code>插件管理器，在<code>nvim</code>启动时发现插件<code>fcitx.vim</code>占用了<code>90ms</code>左右的时间，它是所有插件中占用时间最多的，其他的插件最多也就几秒.</p>
-<p>由于同时编辑两种文本一个为中文另一个为英文的概率很小，从性能和实现简易程度上讲优先考虑使用<code>Fcitx5-ArchWiki</code>所提供的脚本，如果您在工作中经常处理多个文件，且这多个文件分别使用不同语言，需要分别记录不同的输入状态，那请使用插件<code>fcitx.vim</code>.</p>
-<details>
-<summary>
-<label style="color:blue">fcitx.vim官方READM.md文件</label>
-</summary>
-<p>Keep and restore fcitx state for each buffer separately when
-leaving/re-entering insert mode or search mode. Like always typing
-English in normal mode, but Chinese in insert mode.</p>
-<p>D-Bus only works with the same user so this won't work with
-<code>sudo vim</code>. See the <code>fcitx5-server</code> branch for an
-experimental implementation that supports <code>sudo vim</code>.</p>
-<p>By default, it use python3 and D-Bus to toggle IME state. If you set
-<code>g:fcitx5_remote</code> to the executable path of
-<code>fcitx5-remote</code> <strong>BEFORE</strong> loading the plugin,
-it will use <code>fcitx5-remote</code> instead of python and D-Bus. In
-this case, python3 support is optional.</p>
-<p>Usually <code>fcitx5-remote</code> mode is way faster to start up
-since Python script need quite some time for the initial load if you
-don't use any other plugins that load Python. The Python version will be
-faster while switching.</p>
-<p>Base requirements:</p>
-<ul>
-<li>fcitx 5</li>
-</ul>
-<p>Requirements for Python mode (<code>g:fcitx5_remote</code> is not
-set):</p>
-<ul>
-<li>Vim with Python 3 compiled in</li>
-<li>The python-dbus package</li>
-</ul>
-<p>Requirements for <code>fcitx5-remote</code> mode
-(<code>g:fcitx5_remote</code> is set):</p>
-<ul>
-<li>fcitx5-remote</li>
-</ul>
-<p>If you are using <code>fcitx5-rime</code> (which has its own state),
-<code>let g:fcitx5_rime = 1</code> in your <code>.vimrc</code>.</p>
-<p>The <code>FcitxCurrentIM()</code> function can be used to get current
-IM's name.</p>
-<p>Links:</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/lilydjwg/fcitx.vim">git repo</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://www.vim.org/scripts/script.php?script_id=3764">www.vim.org</a></li>
-</ul>
-<p>Warning:</p>
-<ol type="1">
-<li>If you use Vim in terminal, to avoid the Esc delay, please set
-<code>'ttimeoutlen'</code> to 100 or some other value. And check
-screen's <code>maptimeout</code> or tmux's <code>escape-time</code>
-option if you use it too.</li>
-</ol>
-<hr />
-<p>在离开或重新进入插入模式或搜索模式时自动记录和恢复每个缓冲区各自的输入法状态，以便在普通模式下始终是英文输入模式，切换回插入模式时恢复离开前的输入法输入模式。</p>
-<p>D-Bus 只在同一用户时有效，所以使用 <code>sudo vim</code>
-时本代码就失效了。在 <code>fcitx5-server</code>
-分支有一个实验性的版本支持 <code>sudo vim</code> 的用法。</p>
-<p>本插件默认会使用 Python 3 并通过 D-Bus 来切换输入法状态。
-但如果你在加载插件<strong>之前</strong>设置了
-<code>g:fcitx5_remote</code> 为你已安装的 <code>fcitx5-remote</code>
-可执行文件的路径，那么本插件会使用它来切换输入法状态；此模式下本插件并不需要
-Python。</p>
-<p>如果你没有其他使用 Python 的 Vim 插件，本插件的 Python
-模式初始化可能会显著拖慢启动时间；而 <code>fcitx5-remote</code>
-模式则没有这个问题。Python 模式会在切换时更快。</p>
-<p>基本要求：</p>
-<ul>
-<li>fcitx 5</li>
-</ul>
-<p>使用 Python 模式的要求（未设置 <code>g:fcitx5_remote</code>）：</p>
-<ul>
-<li>带有 Python 3 支持的 Vim</li>
-<li>python-dbus 包</li>
-</ul>
-<p>使用 <code>fcitx5-remote</code> 模式的要求（需设置
-<code>g:fcitx5_remote</code>）：</p>
-<ul>
-<li>fcitx5-remote</li>
-</ul>
-<p>如果使用 <code>fcitx5-rime</code>（它自己有输入状态），在
-<code>.vimrc</code> 中设置 <code>let g:fcitx5_rime = 1</code>。</p>
-<p><code>FcitxCurrentIM()</code> 函数可以用于获取当前输入法的名字。</p>
-<p>链接：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/lilydjwg/fcitx.vim">git 仓库</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://www.vim.org/scripts/script.php?script_id=3764">www.vim.org</a></li>
-</ul>
-<p>注意事项:</p>
-<ol type="1">
-<li>终端下请设置 Vim <code>'ttimeoutlen'</code>
-选项为较小值（如100），否则退出插入模式时会有较严重的延迟。同样会造成延迟的还有
-screen 的 <code>maptimeout</code> 选项以及 tmux 的
-<code>escape-time</code> 选项。</li>
-<li>请在 fcitx5-configtool
-中确认英语是第一个输入法，中文是第二个输入法，rime 用户可能需要设置
-<code>g:fcitx5_rime = 1</code>。</li>
-</ol>
-</details>
-<h2 id="其他插件替代方案">其他插件替代方案</h2>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://hub.yzuu.cf/alohaia/fcitx.nvim">alohaia/Fcitx.nvim</a> :
-纯<code>Lua</code>编写的插件</li>
-<li><a target="_blank" rel="noopener" href="https://hub.yzuu.cf/h-hg/fcitx.nvim">h-hg/fcitx.nvim</a>:
-纯<code>Lua</code>编写的插件</li>
-<li><a
-target="_blank" rel="noopener" href="https://hub.yzuu.cf/rlue/vim-barbaric">rlue/vim-brabraic</a>:
-纯<code>vim script</code>编写的插件</li>
-</ul>
-<div class="note warning"><p>注意：由于这些插件我并没有一一测试，所以请大家自行决定如何选择使用。</p>
-</div>
-
       
     </div>
 

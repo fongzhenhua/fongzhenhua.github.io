@@ -277,6 +277,441 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/03/%E4%BF%AE%E5%A4%8Dsudo%E5%AF%86%E7%A0%81%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8%E7%9A%84%E9%94%99%E8%AF%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/01/03/%E4%BF%AE%E5%A4%8Dsudo%E5%AF%86%E7%A0%81%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8%E7%9A%84%E9%94%99%E8%AF%AF/" class="post-title-link" itemprop="url">修复sudo密码不起作用的错误</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-01-03 10:12:00 / 修改时间：10:21:27" itemprop="dateCreated datePublished" datetime="2025-01-03T10:12:00+08:00">2025-01-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天升级 <code>ArchLinu</code> 后发现 <code>sudo</code>
+命令无法接收密码，即使正确的密码它也会返回 "密码错误"
+的提示。修复方法有三个：</p>
+<h1 id="注销并重新登录会话">注销并重新登录会话</h1>
+<p>重新启动 Linux
+系统是修复任何临时系统故障的最流行且最简单的解决方案之一。在最好的情况下，sudo
+密码不起作用错误只是 Linux
+中的一个临时故障，只需快速注销登录或重新启动系统即可神奇地修复它。</p>
+<h1 id="修改sudo密码">修改sudo密码</h1>
+<ol type="1">
+<li>打开一个新的终端。</li>
+<li>使用命令<code>su</code>， 切换到 <code>root</code>用户。</li>
+<li>使用 <code>passwd</code> 命令，更改用户的<code>sudo</code>密码：
+<code>passwd username</code></li>
+</ol>
+<div class="note primary"><p>多数情况下我们习惯了某一密码，所以尽量不使用本方法修改密码。</p>
+</div>
+<h1 id="重启systemd-homed服务">重启systemd-homed服务</h1>
+<p>systemd-homed 是一个核心 systemd
+服务，负责为用户的主目录提供支持。重新启动它可能会解决该问题，因为它会重置身份验证机制并可能修复任何临时系统故障。重新启动服务的步骤：</p>
+<ol type="1">
+<li>启动一个新终端。</li>
+<li>使用 <code>su</code> 命令切换到 <code>root</code>。</li>
+<li>使用systemctl命令启动或重新启动<code>systemd-homed</code>服务：
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start systemd-homed.service</span><br><span class="line">systemctl restart systemd-homed.service</span><br></pre></td></tr></table></figure></li>
+</ol>
+<div class="note primary"><p>2025年01月03日, 使用此方法解决问题，建议使用此方法。</p>
+</div>
+<h1 id="参考文章">参考文章</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://cn.linux-console.net/?p=12167">如何修复 Linux
+上的“sudo 密码不起作用”错误</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/02/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%BC%98%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/01/02/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%BC%98%E5%8C%96/" class="post-title-link" itemprop="url">Hexo搭建博客的优化</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-01-02 21:27:10 / 修改时间：21:41:05" itemprop="dateCreated datePublished" datetime="2025-01-02T21:27:10+08:00">2025-01-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>最近在使用校园网时，发现这有限的流量消耗的特别快，其中一项就是自己维护这个博客。经过考虑，对此博客做一些优化.</p>
+<h1 id="屏蔽掉不需要源备份的文件">屏蔽掉不需要源备份的文件</h1>
+<p>这时遵守一个原则：网站必备的文件，包括主题、基本配置和文章MarkDown文件，
+其他的内容都不必存放在私人仓库中。屏蔽掉这些内容，可以极大的减少数据传输量，提高效率的同时，也节省的仓库空间。</p>
+<figure class="highlight sh"><figcaption><span>.gitignore</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.deploy_git/</span><br><span class="line">public/</span><br><span class="line">db.json</span><br></pre></td></tr></table></figure>
+<div class="note primary"><ul>
+<li><code>.gitignore</code>:
+这是一个git的配置文件，里面定义了不列入git管理的内容设置</li>
+<li><code>.deploy_git</code>:
+这个应该是git部署用的文件。比如你写好的博客想部署到 GitHub
+Pages上去的话，可以用git部署插件，那个插件会创建这个目录.
+为了确保每次增删博客时能够准确执行，则每次都要重建，所以它可以不用备份。</li>
+<li><code>public</code>: 这应该是hero编译之后的网站的目录,
+每次生成博客都是存放在此处，所以其也不用备份。</li>
+<li><code>db.json</code>:
+搜索插件的数据库文件，由于每次增删博客后它也是会发生变化，且可以随时生成，所以也不用备份。</li>
+</ul>
+</div>
+<h1 id="设置主力仓库">设置主力仓库</h1>
+<p>原本在<code>GitHub</code>上建立了三个仓库，以<a
+target="_blank" rel="noopener" href="https://fungzhenhua.github.io">https://fungzhenhua.github.io</a>
+作为主力,
+最初的一个仓库准备弃用，辅助的博客如果也要同步更新就会产生双份的流量，这在目前不合算，于是准备将辅助博客间隔较长时间更新。</p>
+<h1 id="参考文章">参考文章</h1>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000006808337">hexo静态博客框架中.deploy_git目录是什么，起到什么作用？</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/Q1761991696/article/details/123572766">如何使用.gitignore忽略Git中的文件和目录</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34243930/article/details/109046120">用Github
+Pages+Hexo搭建博客之(七)如何删除一篇已经发布的文章
+#成功解决：同时删除掉.deploy_git文件夹</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/01/%E7%9B%AE%E5%89%8D%E5%8F%AF%E7%94%A8%E7%9A%84%E5%89%8D%E7%AB%AFCDN%E9%95%9C%E5%83%8F%E7%AB%99%E6%B1%87%E6%80%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/01/01/%E7%9B%AE%E5%89%8D%E5%8F%AF%E7%94%A8%E7%9A%84%E5%89%8D%E7%AB%AFCDN%E9%95%9C%E5%83%8F%E7%AB%99%E6%B1%87%E6%80%BB/" class="post-title-link" itemprop="url">目前可用的前端CDN镜像站汇总</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-01-01 22:49:41 / 修改时间：22:53:49" itemprop="dateCreated datePublished" datetime="2025-01-01T22:49:41+08:00">2025-01-01</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="大厂运营">大厂运营</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>厂商</th>
+<th>网址</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cdnjs</td>
+<td>cdnjs.com</td>
+<td>cdnjs</td>
+</tr>
+<tr class="even">
+<td>jsdelivr</td>
+<td>www.jsdelivr.com</td>
+<td>jsdelivr</td>
+</tr>
+<tr class="odd">
+<td>饿了么</td>
+<td>npm.elemecdn.com</td>
+<td>阿里云境内 CDN；未公开发布，曾经有段时间暂停回源；仅包含
+npm(unpkg)</td>
+</tr>
+<tr class="even">
+<td>360奇舞团</td>
+<td>cdn.baomitu.com</td>
+<td>北京联通+上海电信；包含 cdnjs 以及 Google
+Fonts；好像有段时间没有更新了</td>
+</tr>
+<tr class="odd">
+<td>字节跳动</td>
+<td>cdn.bytedance.com</td>
+<td>字节自家
+CDN，电信：北京电信，移动：河北廊坊移动，联通：河北廊坊联通；境外：北京（但是依然很快）；仅包含
+cdnjs</td>
+</tr>
+<tr class="even">
+<td>又拍云赞助</td>
+<td>www.zstatic.net</td>
+<td>又拍云 CDN；仅同步 cdnjs</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<h2 id="个人运营">个人运营</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>个人</th>
+<th>网址</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>7ED Services</td>
+<td>www.7ed.net</td>
+<td>非常全的镜像站，几乎啥都有；前端文件镜像 CDN 为境内华为云，境外
+Vercel</td>
+</tr>
+<tr class="even">
+<td>jsdelivr mirror site / China Jsdelivr</td>
+<td>cdn.jsdmirror.com blog.jsdmirror.com</td>
+<td>境内腾讯云 EdgeOne / 百度云，境外CF；反代 jsdelivr；挺好</td>
+</tr>
+<tr class="odd">
+<td>webcache</td>
+<td>webcache.cn</td>
+<td>fonts: HK 单节点 反代
+（电信绕日NTT，线路爆炸，不可用；移动CMI-&gt;HE，勉强能用；联通绕日NTT，勉强能用）；ajax
+阿里云CDN/CF；cdnjs 阿里云境内CDN/HK单节点；npm
+阿里云境内CDN/HK单节点；github 阿里云境内</td>
+</tr>
+<tr class="even">
+<td>晓白/AKASS</td>
+<td>cdn.akass.cn</td>
+<td>境内多吉云 CDN，境外 Cloudflare；回源使用自建 CDN；npm(unpkg),
+cdnjs, Github Raw, jsd；自建 CDN 偶有污染，被刷绕自建 CDN</td>
+</tr>
+<tr class="odd">
+<td>玉兔/未闻花名静态资源加速</td>
+<td>cdnjs.snrat.com</td>
+<td>境内白山云 CDN，境外301官方；回源南方科技大</td>
+</tr>
+<tr class="even">
+<td>GamerNoTitle</td>
+<td>cdn.bili33.top</td>
+<td>Vercel反代jsdelivr</td>
+</tr>
+<tr class="odd">
+<td>烧饼</td>
+<td>u.sb/css-cdn</td>
+<td>Cloudflare
+自选，速度一般，污染比官方严重，除了被墙的Gravatar，其他基本不如使用官方原版；cdnjs,
+Google Fonts, Gravatar</td>
+</tr>
+<tr class="even">
+<td>zkeq</td>
+<td>cdn.onmicrosoft.cn</td>
+<td>全部使用cloudflare，打赢复活赛了。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gravatar-镜像">Gravatar 镜像</h2>
+<table>
+<thead>
+<tr class="header">
+<th>镜像</th>
+<th>网址</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Gravatar</td>
+<td><a target="_blank" rel="noopener" href="https://cravatar.cn/">https://cravatar.cn/</a></td>
+<td>速度快</td>
+</tr>
+<tr class="even">
+<td>Weavatar</td>
+<td><a target="_blank" rel="noopener" href="https://weavatar.com/">https://weavatar.com/</a></td>
+<td>速度快</td>
+</tr>
+</tbody>
+</table>
+<h2 id="知名院校">知名院校</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>镜像</th>
+<th>网址</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>南方科技大学</td>
+<td><a
+target="_blank" rel="noopener" href="https://mirrors.sustech.edu.cn/help/cdnjs.html">https://mirrors.sustech.edu.cn/help/cdnjs.html</a></td>
+<td>速度快</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/01/%E5%B8%B8%E8%A7%81%E8%B7%AF%E7%94%B1%E5%99%A8%E5%93%81%E7%89%8C%E5%8F%8A%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BD%91%E5%85%B3%E9%BB%98%E8%AE%A4%E7%99%BB%E5%BD%95IP%E5%9C%B0%E5%9D%80%E5%A4%A7%E5%85%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1073,286 +1508,6 @@ target="_blank" rel="noopener" href="https://neovim.io/doc/user/quickfix.html">q
 <figure class="highlight vim"><figcaption><span>~/.vimrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&quot; 控制编译过程中的警告信息</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">g:Tex_IgnoredWarnings</span> = </span><br><span class="line">	\<span class="string">&#x27;Underfull&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&#x27;Overfull&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&#x27;specifier changed to&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&#x27;You have requested&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&#x27;Missing number, treated as zero.&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&#x27;There were undefined references&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&#x27;Citation %.%# undefined&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&quot;LaTeX hooks Warning&quot;</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">g:Tex_IgnoreLevel</span> = <span class="number">8</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">g:Tex_GotoError</span> = <span class="number">0</span></span><br></pre></td></tr></table></figure>
 <div class="note primary"><p>注意：如果您想追加需要过滤的消息，请按上述标格式对应添加到<code>Tex_IgnoredWarnings</code>变量中即可，这样在<code>nvim</code>或<code>vim</code>中输入<code>\ll</code>时，系统直接编译不再弹出<code>quicfix</code>窗口。</p>
 </div>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/15/%E7%BD%91%E9%80%9F%E5%8D%95%E4%BD%8D%E7%9A%84%E8%BD%AC%E6%8D%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/12/15/%E7%BD%91%E9%80%9F%E5%8D%95%E4%BD%8D%E7%9A%84%E8%BD%AC%E6%8D%A2/" class="post-title-link" itemprop="url">网速单位的转换</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-12-15 15:19:43" itemprop="dateCreated datePublished" datetime="2024-12-15T15:19:43+08:00">2024-12-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><code>Mbps</code> 到<code>MB/s</code>
-转换计算器允许用户将<label style="color:red">兆位每秒(Mbps)</label>转换为<label style="color:red">兆字节每秒（<span
-class="math inline">\(MB/s\)</span>）</label>，这有助于理解不同单位的数据传输速率。</p>
-<h1 id="历史背景">历史背景</h1>
-<p><code>Mbps</code>(兆位每秒)和<code>MB/s</code>(兆字节每秒)这两个术语常用于计算和网络中描述数据传输速率。它们的区别在于测量单位：</p>
-<div class="note primary"><p>1字节=8比特，这意味着从Mbps到MB/s的转换需要将Mbps值除以8。</p>
-</div>
-<p>此转换对于理解互联网速度、文件下载时间和网络设备的性能非常重要。例如，广告宣传的互联网速度为<code>100 Mbps</code>，转换为<code>12.5 MB/s</code>，这表明数据实际下载或上传的速度。</p>
-<h1 id="转换公式">转换公式</h1>
-<p>将<code>Mbps</code>转换为<code>MB/s</code>的公式很简单：</p>
-<p><span class="math display">\[\begin{equation}\label{eq:translate}
-MB/s=\frac{Mbps}{8}
-\end{equation}\]</span></p>
-<div class="note primary"><ul>
-<li><code>Mbps</code>是以兆位每秒为单位的数据速率.</li>
-<li><code>MB/s</code>是以兆字节每秒为单位的数据速率.</li>
-</ul>
-</div>
-<h1 id="在线转换">在线转换</h1>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://www.calculatorultra.com/zh/tool/mbps-to-mb-s-conversion-calculator.html">Mbps
-到 MB/s 转换计算器</a></li>
-<li><a target="_blank" rel="noopener" href="https://purecalculators.com/zh-CN/convert-mbps-to-mb">将
-Mbps 转换为 Mb</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/14/Gitee%E5%92%8CGitlab%E4%BF%AE%E6%94%B9%E5%92%8C%E5%88%A0%E9%99%A4%E5%88%86%E6%94%AF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/12/14/Gitee%E5%92%8CGitlab%E4%BF%AE%E6%94%B9%E5%92%8C%E5%88%A0%E9%99%A4%E5%88%86%E6%94%AF/" class="post-title-link" itemprop="url">Gitee和Gitlab修改和删除分支</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-12-14 20:45:33" itemprop="dateCreated datePublished" datetime="2024-12-14T20:45:33+08:00">2024-12-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>最近使用 <code>lugit.sh</code> 取代了 <code>zugit.sh</code>,
-它可以把仓库建立在本地硬盘而不是像<code>zugit.sh</code>那样把仓库建立在<code>U盘</code>,
-原因是<code>U盘</code>的质量太差了，如果不小心<code>U盘</code>
-丢失了，那所有的源文件就丢了。综合考虑后，还是将仓库建立在台式机本地硬盘，进一步将仓库镜像到<code>U盘</code>,
-可以实现不同电脑间的仓库离线同步。同时，对于保密性不太强的文件，完全可以直接使用网络仓库，如<code>gitee</code>、<code>gitlab</code>等。但是在同步的时候，需要修改一下远程仓库的默认分支，以实现每次本地仓库的同步都能只占一个分支，这样也可以节省远程仓库空间。</p>
-<h1 id="gitee-修改和删除分支">gitee 修改和删除分支</h1>
-<ul>
-<li>打开<a target="_blank" rel="noopener" href="https://gitee.com">gitee</a>, 登录自己的帐号。</li>
-<li>打开要修改分支的仓库，点击左侧<code>分支</code>左边的小箭头→<code>管理</code>→右侧<code>切换分支</code>(一个向左向右的前头图标)</li>
-<li>如果要删除分支，则右侧<code>切换分支</code>下面的非默认分支是可以删除的。</li>
-</ul>
-<h1 id="gitlab-修改和删除分支">gitlab 修改和删除分支</h1>
-<ul>
-<li>打开 <a target="_blank" rel="noopener" href="https://gitlab.com/users/sign_in">gitlab</a>,
-登录自己帐号。</li>
-<li>打开要修改分支的仓库，点击左侧<code>Settings</code>→<code>Repository</code>→<code>Branch defaults</code>,
-修改为新的分支即可。</li>
-<li>如果要删除分支，则点击仓库后，在右侧点击<code>Branch</code>，则非默认分支是可以删除的。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/14/Shell%E6%95%B0%E7%BB%84%E8%8E%B7%E5%8F%96%E9%95%BF%E5%BA%A6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/12/14/Shell%E6%95%B0%E7%BB%84%E8%8E%B7%E5%8F%96%E9%95%BF%E5%BA%A6/" class="post-title-link" itemprop="url">Shell数组获取长度</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-12-14 17:16:14" itemprop="dateCreated datePublished" datetime="2024-12-14T17:16:14+08:00">2024-12-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>bash 支持一维数组（不支持多维数组），并且没有限定数组的大小。类似 C
-语言，数组元素的下标由0开始编号。获取数组中的元素要利用下标，下标可以是整数或算术表达式，其值应大于或等于0.</p>
-<h1 id="获取数组长度的标准方法">获取数组长度的标准方法</h1>
-<p>数组的个数称为数组长度，获取数组长度的标准方法为：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">length=<span class="variable">$&#123;#array_name[@]&#125;</span>   <span class="comment"># 取得数组元素的个数</span></span><br><span class="line">length=<span class="variable">$&#123;#array_name[*]&#125;</span>   <span class="comment"># 同上</span></span><br><span class="line">lengthn=<span class="variable">$&#123;#array_name[n]&#125;</span>  <span class="comment"># 取得数组第n-1个元素的长度（字符串长度）</span></span><br></pre></td></tr></table></figure>
-<h1 id="参考文章">参考文章</h1>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37806112/article/details/102728905">shell之数组：定义、读取数组和获取数组长度</a></li>
-</ul>
 
       
     </div>
