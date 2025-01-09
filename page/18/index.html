@@ -277,6 +277,127 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/22/Rust%E7%BC%96%E7%A8%8B%E7%AC%AC%E4%B8%80%E8%AF%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/22/Rust%E7%BC%96%E7%A8%8B%E7%AC%AC%E4%B8%80%E8%AF%BE/" class="post-title-link" itemprop="url">Rust编程第一课</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-22 16:03:29" itemprop="dateCreated datePublished" datetime="2024-06-22T16:03:29+08:00">2024-06-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><code>Rust</code>的官方网站是<a
+target="_blank" rel="noopener" href="https://www.rust-lang.org">https://www.rust-lang.org</a>,
+它是一门赋予每个人构建可靠且高效软件能力的语言.
+按官方介绍，选择<code>Rust</code>的原因主要为：</p>
+<ul>
+<li>高性能：<code>Rust</code>
+速度惊人且内存利用率极高。由于没有运行时和垃圾回收，它能够胜任对性能要求特别高的服务，可以在嵌入式设备上运行，还能轻松和其他语言集成。</li>
+<li>可靠性：<code>Rust</code>
+丰富的类型系统和所有权模型保证了内存安全和线程安全，让您在编译期就能够消除各种各样的错误。</li>
+<li>生产力：<code>Rust</code>
+拥有出色的文档、友好的编译器和清晰的错误提示信息，
+还集成了一流的工具——包管理器和构建工具，
+智能地自动补全和类型检验的多编辑器支持， 以及自动格式化代码等等。</li>
+</ul>
+<p>学习<code>Rust</code>语言，本博客提供以下几个途径：</p>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://www.rust-lang.org/zh-CN/learn">Rust官方教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/rust/rust-tutorial.html">Rust
+教程|菜鸟教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://course.rs/basic/intro.html">Rust语言圣经</a></li>
+<li><a target="_blank" rel="noopener" href="https://rustwiki.org/docs/">Rust 中文文档</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://kaisery.github.io/trpl-zh-cn/ch00-00-introduction.html">Rust
+程序设计语言 简体中文版</a></li>
+</ul>
+<p>本博客决定边学习边记录，以期完成一篇入门级的简洁实用教程。第一课当然是编写<code>Hello World</code>程序，其源码为：</p>
+<figure class="highlight rust"><figcaption><span>hello_world.rs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hello_world.rs</span></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s</span> = <span class="string">&quot;hello world!&quot;</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于其没有复杂的依赖关系，直接使用<code>rustc</code>编译即可，其他所有选项使用默认值：</p>
+<figure class="highlight rust"><figcaption><span>编译hello_world.rs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rustc hello_world.rs</span><br></pre></td></tr></table></figure>
+<p>编译完成后，在本地文件夹中生成了可执行程序：<code>hello_world</code>,
+执行程序<code>./hello_world</code>,
+控制台上输出了<code>hello world!</code>字符串，
+第一个<code>Rust</code>程序已经成功！
+根据这个最简单的例子，我们得到一些基本的规则：</p>
+<ul>
+<li><p>一般<code>Rust</code>源代码的后缀名使用<code>.rs</code>表示。源码一定要注意使用<code>utf-8</code>编码。</p></li>
+<li><p>第一行是注释语句，<code>Rust</code>的注释是<code>C语言</code>系列风格的，行注释采用<code>//</code>开头，块注释使用<code>/*</code>和<code>*/</code>包围。它还支持更高级的文档注释，将在后文中详细展开说明。</p></li>
+<li><p><code>fn</code>是一个关键字（<code>key word</code>），函数定义必须以这个关键字开头。函数体使用大括号来包含。<code>fn</code>是单词<code>function</code>的缩写，在<code>Rust</code>中，设计者比较偏向使用单词缩写，即使是关键字也不例外。在代码风格上，某些读者可能开始会有点不习惯。但总体而言，这只是个审美偏好而已，不必过于纠结，习惯就好。</p></li>
+<li><p>默认情况下，<code>main</code>函数是可执行程序的入口点，它是一个无参数，无返回值的函数。如果我们要定义的函数有参数和返回值，可以使用以下语法（参数列表使用逗号分开，冒号后面是类型，返回值类型使用<code>-&gt;</code>符号分隔）：
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">Foo</span>( input1 : <span class="type">i32</span>, input2 : <span class="type">u32</span>) <span class="punctuation">-&gt;</span> <span class="type">i32</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>局部变量声明使用<code>let</code>关键字开头，用双引号包含起来的部分是字符串常量。<code>Rust</code>是静态强类型语言，所有的变量都有严格的编译期语法检查。关于<code>Rust</code>的变量和类型系统将在后文详细说明。</p></li>
+<li><p>每条语句使用分号结尾。语句块使用大括号。空格、换行和缩进不是语法规则的一部分。这都是明显的<code>C语言</code>系列的风格。</p></li>
+</ul>
+<div class="note primary"><p>最简单的标准输出是使用<code>println！</code>宏来完成。请大家一定注意<code>println</code>后面的感叹号，它代表这是一个宏，而不是一个函数。<code>Rust</code>中的宏与<code>C/C++</code>中的宏是完全不一样的东西。简单点说，可以把它理解为一种安全版的编译期语法扩展。这里之所以使用宏，而不是函数，是因为标准输出宏可以完成编译期格式检查，更加安全。</p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/22/Shell%E8%84%9A%E6%9C%AC%E5%92%8C%E5%88%AB%E5%90%8D%E5%91%BD%E4%BB%A4alias/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1615,127 +1736,6 @@ style="text-align: left;"><code>array_name+=(value1 ... valueN)</code></td>
           <p>当编写脚本时，可能会遇到需要的命令在系统中没有安装,
 此时需要解决命令依赖的问题，解决方法为安装对应的软件。Linux下大量的发行版，且不同发行版一般使用不同的包管理器，这导致了安装软件需要执行不同的安装命令，于是需要解决第二个问题：使用通用<code>Linux</code>命令探测系统安装的包管理器，然后确定安装命令。但是有时候，软件包提供的命令与其包的名称并不一致，这里就需要建立一个命令与包的映射关系，以正确执行安装命令。按照这个思路，本文提供一个基础的脚本：</p>
 <figure class="highlight sh"><figcaption><span>通用安装脚本</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/sh</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># readycmd.sh</span></span><br><span class="line"><span class="comment"># Author   : fengzhenhua</span></span><br><span class="line"><span class="comment"># Email    : fengzhenhua@outlook.com</span></span><br><span class="line"><span class="comment"># Date     : 2024-06-14 15:58</span></span><br><span class="line"><span class="comment"># CopyRight: Copyright (C) 2022-2030 FengZhenhua(冯振华)</span></span><br><span class="line"><span class="comment"># License  : Distributed under terms of the MIT license.</span></span><br><span class="line"><span class="comment"># Objective: 在不同的发行版中安装命令与软件包名不同的命令</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 包管理器列表: 管理器=安装命令</span></span><br><span class="line"><span class="built_in">declare</span> -A RD_PKG=(\</span><br><span class="line">    [<span class="string">&quot;pacman&quot;</span>]=<span class="string">&quot;pacman -S --needed --confirm&quot;</span>  <span class="comment">#arch endeavour manjaro 等</span></span><br><span class="line">    [<span class="string">&quot;apt-get&quot;</span>]=<span class="string">&quot;apt-get -y install&quot;</span>           <span class="comment">#debian ubuntu 等</span></span><br><span class="line">    [<span class="string">&quot;yum&quot;</span>]=<span class="string">&quot;yum -y install&quot;</span>                   <span class="comment">#redhat centos7 及以下</span></span><br><span class="line">    [<span class="string">&quot;dnf&quot;</span>]=<span class="string">&quot;dnf -y install&quot;</span>                   <span class="comment">#fedora centos8</span></span><br><span class="line">    [<span class="string">&quot;zypper&quot;</span>]=<span class="string">&quot;zypper -y install&quot;</span>             <span class="comment">#open suse</span></span><br><span class="line">)</span><br><span class="line"><span class="comment"># 待安装软件列表: 命令=软件名</span></span><br><span class="line"><span class="built_in">declare</span> -A RD_CMD=(\</span><br><span class="line">    [<span class="string">&quot;unar&quot;</span>]=<span class="string">&quot;unarchiver&quot;</span> [<span class="string">&quot;ssh&quot;</span>]=<span class="string">&quot;openssh&quot;</span> [<span class="string">&quot;nvim&quot;</span>]=<span class="string">&quot;neovim&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="comment"># 选择发行版中的包管理器</span></span><br><span class="line"><span class="keyword">for</span> sh_pkg <span class="keyword">in</span> <span class="variable">$&#123;!RD_PKG[*]&#125;</span>; <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">which</span> <span class="variable">$sh_pkg</span> &amp;&gt; /dev/null</span><br><span class="line">    <span class="keyword">if</span> [ $? = 0 ]; <span class="keyword">then</span></span><br><span class="line">        RD_PKG_INS=<span class="variable">$&#123;RD_PKG[$sh_pkg]&#125;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="comment"># 使用发行版中的包管理器安装系统中缺失的命令</span></span><br><span class="line"><span class="keyword">for</span> sh_cmd <span class="keyword">in</span> <span class="variable">$&#123;!RD_CMD[*]&#125;</span>; <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">which</span> <span class="variable">$&#123;sh_cmd&#125;</span> &amp;&gt; /dev/null</span><br><span class="line">    <span class="keyword">if</span> [ ! $? = 0 ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">sudo</span> <span class="variable">$&#123;RD_PKG_INS&#125;</span> <span class="variable">$&#123;RD_CMD[$sh_cmd]&#125;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/14/Linux%E4%B8%AD%E5%9B%9B%E4%B8%AA%E6%9F%A5%E6%89%BE%E5%91%BD%E4%BB%A4%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E7%94%A8%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/14/Linux%E4%B8%AD%E5%9B%9B%E4%B8%AA%E6%9F%A5%E6%89%BE%E5%91%BD%E4%BB%A4%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E7%94%A8%E6%B3%95/" class="post-title-link" itemprop="url">Linux中四个查找命令的区别和用法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-14 14:11:03" itemprop="dateCreated datePublished" datetime="2024-06-14T14:11:03+08:00">2024-06-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="find-locate-whereis-和which-的区别">find , locate, whereis
-和which 的区别</h1>
-<ul>
-<li><p><code>which</code>：常用于查找可直接执行的命令。只能查找可执行文件，该命令基本只在<code>$PATH</code>路径中搜索，查找范围最小，查找速度快。默认只返回第一个匹配的文件路径，通过选项
-<code>-a</code> 可以返回所有匹配结果。</p></li>
-<li><p><code>whereis</code>：不只可以查找命令，其他文件类型都可以（<code>man</code>中说只能查命令、源文件和<code>man</code>文件，实际测试可以查大多数文件）。在<code>$PATH</code>路径基础上增加了一些系统目录的查找，查找范围比<code>which</code>稍大，查找速度快。可以通过
-<code>-b</code> 选项，限定只搜索二进制文件。</p></li>
-<li><p><code>locate</code>：超快速查找任意文件。它会从<code>linux</code>内置的索引数据库查找文件的路径，索引速度超快。刚刚新建的文件可能需要一定时间才能加入该索引数据库，可以通过执行<code>updatedb</code>命令来强制更新一次索引，这样确保不会遗漏文件。该命令通常会返回大量匹配项，可以使用
-<code>-r</code> 选项通过正则表达式来精确匹配。</p></li>
-<li><p><code>find</code>：直接搜索整个文件目录，默认直接从根目录开始搜索，建议在以上命令都无法解决问题时才用它，功能最强大但速度超慢。除非你指定一个很小的搜索范围。通过
-<code>-name</code> 选项指定要查找的文件名，支持通配符。</p></li>
-</ul>
-<h1 id="find-locate-whereis-和which-的用法">find , locate, whereis
-和which 的用法</h1>
-<p><strong>1. find</strong></p>
-<p>find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件。</p>
-<p>find的使用格式如下：</p>
-<p>　　<strong>$ find <指定目录> <指定条件> <指定动作></strong></p>
-<p>　　- <指定目录>： 所要搜索的目录及其所有子目录。默认为当前目录。</p>
-<p>　　- <指定条件>： 所要搜索的文件的特征。</p>
-<p>　　- <指定动作>： 对搜索结果进行特定的处理。</p>
-<p>如果什么参数也不加，find默认搜索当前目录及其子目录，并且不过滤任何结果（也就是返回所有文件），将它们全都显示在屏幕上。</p>
-<p>find的使用实例：</p>
-<p>　　<strong>$ find . -name "my*"</strong></p>
-<p>搜索当前目录（含子目录，以下同）中，所有文件名以my开头的文件。</p>
-<p>　　<strong>$ find . -name "my*" -ls</strong></p>
-<p>搜索当前目录中，所有文件名以my开头的文件，并显示它们的详细信息。</p>
-<p>　　<strong>$ find . -type f -mmin -10</strong></p>
-<p>搜索当前目录中，所有过去10分钟中更新过的普通文件。如果不加-type
-f参数，则搜索普通文件+特殊文件+目录。</p>
-<p><strong>2. locate</strong></p>
-<p>locate命令其实是“find
--name”的另一种写法，但是要比后者快得多，原因在于它不搜索具体目录，而是搜索一个数据库（/var/lib/locatedb），这个数据库中含有本地所有文件信息。Linux系统自动创建这个数据库，并且每天自动更新一次，所以使用locate命令查不到最新变动过的文件。为了避免这种情况，可以在使用locate之前，先使用<strong>updatedb</strong>命令，手动更新数据库。</p>
-<p>locate命令的使用实例：</p>
-<p>　　<strong>$ locate /etc/sh</strong></p>
-<p>搜索etc目录下所有以sh开头的文件。</p>
-<p>　　<strong>$ locate ~/m</strong></p>
-<p>搜索用户主目录下，所有以m开头的文件。</p>
-<p>　　<strong>$ locate -i ~/m</strong></p>
-<p>搜索用户主目录下，所有以m开头的文件，并且忽略大小写。</p>
-<p><strong>3. whereis</strong></p>
-<p>whereis命令只能用于程序名的搜索，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）。如果省略参数，则返回所有信息。</p>
-<figure class="highlight sh"><figcaption><span>whereis 命令的使用实例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ whereis grep </span><br><span class="line">grep: /usr/bin/grep /usr/share/man/man1/grep.1.gz /usr/share/man/man1p/grep.1p.gz /usr/share/info/grep.info.gz</span><br></pre></td></tr></table></figure>
-<p><strong>4. which</strong></p>
-<p>which命令的作用是，在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。也就是说，使用which命令，就可以看到某个系统命令是否存在，以及执行的到底是哪一个位置的命令。</p>
-<figure class="highlight sh"><figcaption><span>which 命令使用实例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">which</span> <span class="built_in">date</span></span><br><span class="line">/usr/bin/date</span><br></pre></td></tr></table></figure>
 
       
     </div>
