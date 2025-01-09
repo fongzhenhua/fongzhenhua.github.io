@@ -277,6 +277,206 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/18/GPU%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86%E5%92%8C%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/07/18/GPU%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86%E5%92%8C%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">GPU硬件知识和基础概念</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-18 14:44:20" itemprop="dateCreated datePublished" datetime="2024-07-18T14:44:20+08:00">2024-07-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>金融建模、自动驾驶、智能机器人、新材料发现、脑神经科学、医学影像分析...人工智能时代的科学研究极度依赖计算力的支持。提供算力的各家硬件芯片厂商中，最抢镜的当属英伟达Nvidia了。这家做显卡起家的芯片公司在深度学习兴起后可红得发紫，如果不聊几句GPU和英伟达，都不好意思跟别人说自己是做人工智能的。那么，英伟达的GPU是如何加速计算呢？本系列将介绍GPU计算加速的一些基础知识：</p>
+<ol type="1">
+<li>GPU硬件知识和基础概念：包括CPU与GPU的区别、GPU架构、CUDA软件栈简介。</li>
+<li>GPU编程入门：主要介绍CUDA核函数，Thread、Block和Grid概念，并使用Python
+Numba进行简单的并行计算。</li>
+<li>GPU编程进阶：主要介绍多核配置和存储管理。</li>
+<li>GPU编程实践：使用Python Numba解决复杂问题。</li>
+</ol>
+<h2 id="什么是gpu">什么是GPU</h2>
+<p>GPU全名为Graphics Processing
+Unit，又称视觉处理器、图形显示卡。GPU负责渲染出2D、3D、VR效果，主要专注于计算机图形图像领域。后来人们发现，GPU非常适合并行计算，可以加速现代科学计算，GPU也因此不再局限于游戏和视频领域。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/19/16e81947540f7433~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.awebp"
+alt="游戏" />
+<figcaption aria-hidden="true">游戏</figcaption>
+</figure>
+<h2 id="cpu和gpu">CPU和GPU</h2>
+<p>现代CPU处理数据的速度在纳秒级别，为何还要使用GPU来加速？CPU能被GPU替代吗？</p>
+<p>对于计算机体系不了解的朋友可以先阅读我之前的文章，有助于你理解下面的一些概念。</p>
+<p>无论是CPU还是GPU，在进行计算时，都需要用核心（Core）来做算术逻辑运算，比如加减乘与或非等。核心中有ALU（逻辑运算单元）和寄存器等电路。在进行计算时，一个核心只能顺序执行某项任务。不可能“吃着火锅唱着歌”，因为吃饭唱歌都占着嘴呢。所以为了同时并行地处理更多任务，芯片公司开发出了多核架构，只要相互之间没有依赖，每个核心做自己的事情，多核之间互不干扰，就可以达到<strong>并行计算</strong>的效果，极大缩短计算时间。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/19/16e81947543987c6~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.awebp"
+alt="CPU vs GPU" />
+<figcaption aria-hidden="true">CPU vs GPU</figcaption>
+</figure>
+<p>个人桌面电脑CPU只有2到8个CPU核心，数据中心的服务器上也只有20到40个左右CPU核心，GPU却有上千个核心。与CPU的核心不同，GPU的核心只能专注于某些特定的任务。知乎上有人把CPU比作大学教授，把GPU比作一个学校几千个小学生：同样是做加减法，几千个小学生所能做的计算，远比几十个大学教授要多得多。俗话说，三个臭皮匠，顶一个诸葛亮。大学教授的知识结构和个人能力远强于小学生，能独立解决复杂问题，小学生的知识有限，只能进行简单的计算。目前来看GPU在处理简单计算任务上有更大的优势，但是主要还是靠人海战术，并不能像CPU那样可以独当一面，短时间内也无法替换掉CPU。如下图所示，在整个计算机系统中，CPU起到协调管理的作用，管理计算机的主存、硬盘、网络以及GPU等各类元件。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/19/16e819475ad5883b~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.awebp"
+alt="计算机体系示意图" />
+<figcaption aria-hidden="true">计算机体系示意图</figcaption>
+</figure>
+<p>如果只关注CPU和GPU，那么计算结构将如下图所示。CPU主要从主存（Main
+Memory）中读写数据，并通过总线（Bus）与GPU交互。GPU除了有超多计算核心外，也有自己独立的存储，被称之为显存。一台服务器上可以安装多块GPU卡，但GPU卡的发热量极大，普通的空调系统难以给大量GPU卡降温，所以大型数据中心通常使用水冷散热，并且选址在温度较低的地方。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/19/16e8194754cc6359~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.awebp"
+alt="CPU与GPU" />
+<figcaption aria-hidden="true">CPU与GPU</figcaption>
+</figure>
+<p>GPU核心在做计算时，只能直接从显存中读写数据，程序员需要在代码中指明哪些数据需要从内存和显存之间相互拷贝。这些数据传输都是在总线上，因此总线的传输速度和带宽成了部分计算任务的瓶颈。也因为这个瓶颈，很多计算任务并不适合放在GPU上，比如笔者这两年关注的推荐系统虽然也在使用深度学习，但因为输入是大规模稀疏特征，GPU加速获得的收益小于数据互相拷贝的时间损失。当前最新的总线技术是NVLink，IBM的Power
+CPU和英伟达的高端显卡可以通过NVLink直接通信。同时，单台机器上的多张英伟达显卡也可以使用NVLink相互通信，适合多GPU卡并行计算的场景。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/19/16e819475aad7660~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.awebp"
+alt="nvlink" />
+<figcaption aria-hidden="true">nvlink</figcaption>
+</figure>
+<p>Intel的CPU目前不支持NVLink，只能使用PCI-E技术，如下图所示。NVLink和PCI-E都是总线技术的一种。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/19/16e8194789254f3c~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.awebp"
+alt="CPU通过PCI-E与GPU通信" />
+<figcaption aria-hidden="true">CPU通过PCI-E与GPU通信</figcaption>
+</figure>
+<p>由于CPU和GPU是分开的，在英伟达的设计理念里，CPU和主存被称为<strong>Host</strong>，GPU被称为<strong>Device</strong>。Host和Device概念会贯穿整个英伟达GPU编程。</p>
+<p>以上结构也被称为<strong>异构计算</strong>：使用CPU+GPU组合来加速计算。世界上顶尖的数据中心和超级计算机均采用了异构计算架构。例如超越天河2号成为世界第一的超级计算机<code>Summit</code>使用了9216个IBM
+POWER9 CPU和27648个英伟达Tesla GPU。</p>
+<h2 id="gpu架构">GPU架构</h2>
+<p>英伟达不同时代产品的芯片设计不同，每代产品背后有一个架构代号，架构均以著名的物理学家为名，以向先贤致敬。当前比较火热的架构有：</p>
+<ul>
+<li><p>Turing 图灵</p>
+<ul>
+<li>2018年发布</li>
+<li>消费显卡：GeForce 2080 Ti</li>
+</ul></li>
+<li><p>Volta 伏特</p>
+<ul>
+<li>2017年末发布</li>
+<li>专业显卡：Telsa V100 (16或32GB显存 5120个核心)</li>
+</ul></li>
+<li><p>Pascal 帕斯卡</p>
+<ul>
+<li><p>2016年发布</p></li>
+<li><p>专业显卡：Telsa P100(12或16GB显存 3584个核心)</p></li>
+</ul></li>
+</ul>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/19/16e8194789559f5c~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.awebp"
+alt="Pascal架构" />
+<figcaption aria-hidden="true">Pascal架构</figcaption>
+</figure>
+<p>在英伟达的设计里，多个小核心组成一个Streaming
+Multiprocessor（<strong>SM</strong>），一张GPU卡有多个SM。从“multiprocessor”这个名字上也可以看出SM包含了多个处理器。实际上，英伟达主要以SM为运算和调度的基本单元。上图为当前计算力最强的显卡Tesla
+V100，密密麻麻的绿色小格子就是GPU小核心，多个小核心一起组成了一个SM。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/19/16e819478971b12e~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.awebp"
+alt="V100 SM" />
+<figcaption aria-hidden="true">V100 SM</figcaption>
+</figure>
+<p>单个SM的结构如图所示。可以看到一个SM中包含了：</p>
+<ul>
+<li><p>针对不同计算的小核心（绿色小格子），包括优化深度学习的TENSOR
+CORE，32个64位浮点核心（FP64），64个整型核心(INT)，64个32位浮点核心(FP32)。</p></li>
+<li><p>计算核心直接从寄存器（Register）中读写数据。</p></li>
+<li><p>调度和分发器（Scheduler和Dispatch Unit）。</p></li>
+<li><p>L0和L1级缓存。</p></li>
+</ul>
+<p>前面提到的以物理学家命名的是英伟达各代GPU的架构代号。对于消费者而言，英伟达主要有两条产品线：</p>
+<ul>
+<li>消费级产品 GeForce系列：GeForce 2080 Ti...</li>
+<li>高性能计算产品 Telsa系列：Telsa V100、Telsa P100、Telsa P40...</li>
+</ul>
+<h2 id="软件生态">软件生态</h2>
+<p>英伟达能够在人工智能时代成功，除了他们在长期深耕显卡芯片领域，更重要的是他们率先提供了可编程的软件架构。2007年，英伟达发布了CUDA编程模型，软件开发人员从此可以使用CUDA在英伟达的GPU上进行并行编程。在此之前，GPU编程并不友好。CUDA简单到什么程度？有经验的程序员经过半天的培训，掌握一些基础概念后，能在==半小时==内将一份CPU程序修改成为GPU并行程序。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/19/16e8194789b35bbb~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.awebp"
+alt="英伟达软件栈" />
+<figcaption aria-hidden="true">英伟达软件栈</figcaption>
+</figure>
+<p>继CUDA之后，英伟达不断丰富其软件技术栈，提供了科学计算所必须的cuBLAS线性代数库，cuFFT快速傅里叶变换库等，当深度学习大潮到来时，英伟达提供了cuDNN深度神经网络加速库，目前常用的TensorFlow、PyTorch深度学习框架的底层大多基于cuDNN库。英伟达能在人工智能时代击败Intel、AMD等强大对手，很大一部分是因为它丰富的软件体系。这些软件工具库使研发人员专注于自己的研发领域，不用再去花大量时间学习GPU底层知识。CUDA对于GPU就像个人电脑上的Windows、手机上的安卓系统，一旦建立好生态，吸引了开发者，用户非常依赖这套软件生态体系。</p>
+<p>GPU编程可以直接使用CUDA的C/C++版本进行编程，也可以使用其他语言包装好的库，比如Python可使用Numba库调用CUDA。CUDA的编程思想在不同语言上都很相似。</p>
+<p>CUDA及其软件栈的优势是方便易用，缺点也显而易见：</p>
+<ol type="1">
+<li><p>软件环境复杂，库以及版本很多，顶层应用又严重依赖底层工具库，入门者很难快速配置好一整套环境；多环境配置困难。</p></li>
+<li><p>用户只能使用英伟达的显卡，成本高，个人用户几乎负担不起。</p></li>
+</ol>
+<p>因此，如果没有专业的运维人员维护GPU机器，最好还是在公有云上按需购买GPU虚拟机。入门者可以考虑云厂商的Telsa
+P4虚拟机，大约10+元/小时，云厂商会配置好CUDA及工具库。如自己购买物理机，可以考虑消费级的GeForce
+2080Ti，这张卡足以应对绝大多数自然语言处理任务。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/17/Archlinux%E5%AE%89%E8%A3%85USB%E6%97%A0%E7%BA%BF%E7%BD%91%E5%8D%A1%E9%A9%B1%E5%8A%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1196,99 +1396,6 @@ target="_blank" rel="noopener" href="https://outlook.live.com/owa/">Outlook登�
 <li>在右侧向下滚动，找到<code>帐户信息</code>,
 再点击<code>通信首选项</code></li>
 <li>将所有的订阅取消,然后点击应用，<code>Outlook</code>得归清静。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/05/vim-vsnip%E8%87%AA%E5%AE%9A%E4%B9%89%E7%89%87%E6%AE%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/07/05/vim-vsnip%E8%87%AA%E5%AE%9A%E4%B9%89%E7%89%87%E6%AE%B5/" class="post-title-link" itemprop="url">vim-vsnip自定义片段</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-07-05 23:15:39" itemprop="dateCreated datePublished" datetime="2024-07-05T23:15:39+08:00">2024-07-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>插件<code>vim-vsnip</code>自带了相当数量的补全插件，但是一般都是通用的片段，对于编写自己常用的文件还需要自定义片段。本文记录自定义片段的具体过程。</p>
-<h2 id="安装插件">安装插件</h2>
-<figure class="highlight lua"><figcaption><span>~/.config/nvim/lua/lazy-init.lua</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">&quot;lazy&quot;</span>).setup(&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">&#x27;hrsh7th/cmp-vsnip&#x27;</span> ,</span><br><span class="line">    <span class="string">&#x27;hrsh7th/vim-vsnip&#x27;</span> ,</span><br><span class="line">    <span class="string">&#x27;rafamadriz/friendly-snippets&#x27;</span> ,</span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="编辑片段">编辑片段</h2>
-<p>这里可以使用命令<code>VsnipOpen</code>,
-或者直接编辑<code>~/.vsnip/markdown.json</code>就可以直接添加<code>markdown</code>相应的片段。在编写过程中，为了适应<code>Next</code>博客主题输入数学公式的需要，需要输入<code>$$</code>,
-但是这个片段是错误的，因为默认<code>$</code>是变量的符号，于是转义，片段的转义符号为<code>\\</code>,
-于是得相应片段为：</p>
-<figure class="highlight lua"><figcaption><span>~/.vsnip/markdown.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;math-sup&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;Vsnips.EnableAutoTrigger&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;^&#123;&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;^&#123;$1&#125;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;math formular&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-sub&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;Vsnips.EnableAutoTrigger&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;_&#123;&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;_&#123;$1&#125;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;math formular&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-dkuohao&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;Vsnips.EnableAutoTrigger&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;&#123;&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;$1&#125;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;math formular&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-fkuohao&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;Vsnips.EnableAutoTrigger&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;[&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;[$1]&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;math formular&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-ykuohao&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;Vsnips.EnableAutoTrigger&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;(&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;($1)&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;math formular&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-sqrt&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;Vsnips.EnableAutoTrigger&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;sqrt&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;\\sqrt&#123;$1&#125;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;math formular&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-frac&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;Vsnips.EnableAutoTrigger&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;frac&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;\\frac&#123;$1&#125;&#123;&lt;++&gt;&#125;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;math formular&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-tag&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;tag&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;\\$\\tag&#123;$1&#125;\\label&#123;tag&lt;++&gt;&#125;\\$&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;math referance&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-eqref&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;eqref&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;\\$\\eqref&#123;eq:$1&#125;\\$&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;math referance&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-label&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;eqlabel&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;\\label&#123;eq:$1&#125;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;math labels&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-multi2&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;align&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;\\$\\$\\begin&#123;align&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;$1&quot;</span>,</span><br><span class="line">            <span class="string">&quot;\\end&#123;align&#125;\\$\\$&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Multi-line Equations&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-multi1&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;mequation&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;\\$\\$\\begin&#123;equation&#125;\\label&#123;eq:$1&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;\\begin&#123;aligned&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;\\end&#123;aligned&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;\\end&#123;equation&#125;\\$\\$&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Multi-line Equations&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-simple&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;equation&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;\\$\\$\\begin&#123;equation&#125;\\label&#123;eq:$1&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;\\end&#123;equation&#125;\\$\\$&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Simple Equation&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;LinkGrid&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;linkgrid&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% linkgrid %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot; $1 | https://&lt;+url+&gt; | &lt;+description+&gt; | /Picture/&lt;++&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&#123;% endlinkgrid %&#125;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;For diary.sh write&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;button&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;button&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% button https://&lt;+url+&gt;, $1 %&#125;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;For diary.sh write&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;fold&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;fold&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&lt;details&gt;&lt;summary&gt;$1&lt;/summary&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;+contents+&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;/details&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;For diary.sh write&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;more&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;more&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&lt;!-- more --&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;For diary.sh write&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;arrow&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;arrow&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;$&#123;1|&amp;rarr;,&amp;uarr;,&amp;darr;,&amp;larr;,&amp;harr;|&#125;&quot;</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;picture&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;picture&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;![$1](/Picture/&lt;+pic+&gt; \&quot;&lt;+title+&gt;\&quot;)&lt;++&gt;&quot;</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;centertext&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;center&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% cq %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;$1&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&#123;% endcq %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;textcolor&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;color&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&lt;label style=\&quot;color:$&#123;1|red,yellow,blue,cyan,gold,green,gray,orange|&#125;\&quot;&gt;&lt;++&gt;&lt;/label&gt;&lt;++&gt;&quot;</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;underline&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;underline&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&lt;u&gt;$1&lt;/u&gt;&lt;++&gt;&quot;</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;sub&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;__&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&lt;sub&gt;$1&lt;/sub&gt;&lt;++&gt;&quot;</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;sup&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;^^&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&lt;sup&gt;$1&lt;/sup&gt;&lt;++&gt;&quot;</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;href&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;ref&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;[$1](/&lt;+year+&gt;/&lt;+month+&gt;/&lt;+day+&gt;/&lt;+article+&gt;)&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Ref the article of my blog&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;hurl&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;url&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;[$1](&lt;+url+&gt;)&lt;++&gt;&quot;</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;delete&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;delete&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;~~$1~~&quot;</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;code&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;code&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% code &lt;+title+&gt; lang:$&#123;1|sh,python,lua,perl,yaml,ruby|&#125; %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;+code+&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&#123;% endcode %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;codeblock&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;codeblock&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% codeblock &lt;+title+&gt; lang:$&#123;1|sh,python,lua,perl,yaml,ruby|&#125; %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;+code+&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&#123;% endcodeblock %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;```&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;```&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;```$&#123;1|sh,python,lua,perl,yaml,ruby|&#125; &lt;+title+&gt; &quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;+code+&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;```&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;note&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;note&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% note $&#123;1|default,primary,success,info,warning,danger|&#125; %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&#123;% endnote %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;tabs&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;tabs&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% tabs $&#123;1:&lt;+UniqueName+&gt;&#125; %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;!-- tab $&#123;2:&lt;+tabcaption+&gt;&#125; --&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;!-- endtab --&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&#123;% endtabs %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;tab&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;tab&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&lt;!-- tab $&#123;2:&lt;+tabcaption+&gt;&#125; --&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;!-- endtab --&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;label&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;label&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% label $&#123;1|default,primary,success,info,warning,danger|&#125;@$&#123;2:&lt;+content+&gt;&#125; %&#125;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;centerquote&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;centerquote&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% centerquote %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;$&#123;1:&lt;+content+&gt;&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&#123;% endcenterquote %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;video&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;video&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% video $&#123;1|/Video/&lt;++&gt;,https://&lt;+website+&gt;|&#125;%&#125;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;pdf&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;pdf&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% pdf $&#123;1|/PDF/&lt;++&gt;.pdf,https://&lt;+website+&gt;|&#125;%&#125;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;grouppicture&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;grouppicture&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% grouppicture $&#123;1:&lt;+number+&gt;&#125;-$&#123;2:&lt;+layout+&gt;&#125; &#125;%&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;![$&#123;3:&lt;+picturetitle+&gt;&#125;]($&#123;4:&lt;+picture+&gt;&#125;)&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&#123;% endgroudpicture %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="参考资料">参考资料</h2>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://github.com/hrsh7th/vim-vsnip/blob/master/README.md">hrsh7th/vim-vsnip</a></li>
-<li><a target="_blank" rel="noopener" href="https://vsnips.corvo.fun/zh/intro/">Vsnips
-Documents</a></li>
-<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2146403">vsnip
-插件</a></li>
 </ul>
 
       

@@ -277,6 +277,90 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/19/vim-latex%E6%8F%92%E4%BB%B6%E5%BC%80%E5%90%AFAlt%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/01/19/vim-latex%E6%8F%92%E4%BB%B6%E5%BC%80%E5%90%AFAlt%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="post-title-link" itemprop="url">vim-latex插件开启Alt快捷键</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-19 01:03:44" itemprop="dateCreated datePublished" datetime="2024-01-19T01:03:44+08:00">2024-01-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在决定全面使用<code>vim-latex</code>来编写<code>latex</code>文件后，发现<code>Alt</code>键一直没有启用。于是在<code>nvim</code>下查询帮助<code>:help latex-suite.txt</code>
+, 然后找到<code>Alt</code>相关，即</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Latex-Suite utilizes a set of macros originally created by Carl Mueller in</span><br><span class="line">auctex.vim to make inserting all the \left ... \right stuff very easy and to</span><br><span class="line">also make some use of the heavily under-utilized &lt;Alt&gt; key.</span><br><span class="line"></span><br><span class="line">NOTE: By default, the mappings involving the &lt;Alt&gt; key are turned off for</span><br><span class="line">      compatibility with inserting non-ASCII characters. It can be enabled by</span><br><span class="line">      setting   </span><br><span class="line">          let g:Tex_AdvancedMath = 1</span><br><span class="line">      in your $VIM/ftplugin/tex.vim.</span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">NOTE: By default, typing Alt-&lt;key&gt; in Vim takes focus to the menu bar if a menu</span><br><span class="line">      with the hotkey &lt;key&gt; exists. If in your case, there are conflicts due to</span><br><span class="line">      this behavior, you will need to set   </span><br><span class="line">          set winaltkeys=no</span><br><span class="line">      in your $VIM/ftplugin/tex.vim in order to use these maps.</span><br></pre></td></tr></table></figure>
+<p>由于我是在<code>neovim</code>下使用的<code>vim-latex</code>,
+于是找到路径为：<code>~/.local/share/nvim/lazy/vim-latex/ftplugin/</code>
+但是发现没有文件<code>tex.vim</code>,
+于是<label style="color:red">需要新建一个文件tex.vim</label>, 即</p>
+<figure class="highlight vim"><figcaption><span>~/.local/share/nvim/lazy/vim-latex/ftplugin/tex.vim</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">g:Tex_AdvancedMath</span> = <span class="number">1</span></span><br><span class="line"><span class="keyword">set</span> winaltkeys=<span class="keyword">no</span></span><br></pre></td></tr></table></figure>
+<p>经过上述设置后<code>Alt</code>键终于被启用了，我目前使用的主要是它智能插入<code>item</code>的功能。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/18/%E6%B8%85%E7%A9%BAGit%E4%BB%93%E5%BA%93%E7%9A%84Commit%E6%8F%90%E4%BA%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1376,101 +1460,6 @@ bit despite ntfsfix not being entirely a good checking tool you can pass
 the -d argument to ntfsfix.</p>
 </div>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/23/%E4%BB%80%E4%B9%88%E6%98%AFArch%E7%94%A8%E6%88%B7%E4%BB%93%E5%BA%93%EF%BC%88AUR%EF%BC%89%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%EF%BC%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/23/%E4%BB%80%E4%B9%88%E6%98%AFArch%E7%94%A8%E6%88%B7%E4%BB%93%E5%BA%93%EF%BC%88AUR%EF%BC%89%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%EF%BC%9F/" class="post-title-link" itemprop="url">什么是Arch用户仓库（AUR）以及如何使用？</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-23 02:45:54" itemprop="dateCreated datePublished" datetime="2023-12-23T02:45:54+08:00">2023-12-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>如果你一直在使用 <a target="_blank" rel="noopener" href="https://www.archlinux.org/">Arch Linux</a>
-或其他基于 Arch 的发行版，如 Manjaro，那么可能会遇到
-AUR。你尝试安装新软件，有人建议从 AUR 中安装它。这让你感到困惑。什么是
-AUR？为什么使用它？如何使用 AUR？我将在本文中回答这些问题。</p>
-<h2 id="什么是-aur">什么是 AUR？</h2>
-<p>AUR 表示 Arch 用户仓库(Arch User Repository)。它是针对基于 Arch 的
-Linux 发行版用户的社区驱动的仓库。它包含名为 <a
-target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/PKGBUILD">PKGBUILD</a>
-的包描述，它可让你使用 <a
-target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Makepkg">makepkg</a>
-从源代码编译软件包，然后通过 <a
-target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Pacman#Additional_commands">pacman</a>（Arch
-Linux 中的软件包管理器）安装。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/12/23/%E4%BB%80%E4%B9%88%E6%98%AFArch%E7%94%A8%E6%88%B7%E4%BB%93%E5%BA%93%EF%BC%88AUR%EF%BC%89%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%EF%BC%9F/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 
