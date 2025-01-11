@@ -376,6 +376,168 @@ target="_blank" rel="noopener" href="https://endeavouros.com">Endeavour</a>
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/11/Linux%E5%BD%BB%E5%BA%95%E5%85%B3%E9%97%ADqq%E7%9A%84%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/01/11/Linux%E5%BD%BB%E5%BA%95%E5%85%B3%E9%97%ADqq%E7%9A%84%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">Linux彻底关闭qq的方法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-01-11 21:54:07 / 修改时间：21:58:50" itemprop="dateCreated datePublished" datetime="2025-01-11T21:54:07+08:00">2025-01-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>由于 <a target="_blank" rel="noopener" href="https://im.qq.com/linuxqq/index.shtml">linuxqq</a> 是用
+electron 写的，而且目前还有一些 bug,
+当点击关闭按钮后程序仍然在后台运行。但是，想重新登录一下，却提示已经登录，而原来的聊天界面又找不到，所以必须完全关闭，然后再重新启动才行。
+解决方法是借助<code>pgrep</code>打印所有相关进程，然后一同<code>kill</code>,
+命令为</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">kill</span> $(pgrep qq)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/10/Github-cli%E5%90%8C%E6%97%B6%E7%AE%A1%E7%90%86%E5%A4%9A%E4%B8%AA%E5%B8%90%E5%8F%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/01/10/Github-cli%E5%90%8C%E6%97%B6%E7%AE%A1%E7%90%86%E5%A4%9A%E4%B8%AA%E5%B8%90%E5%8F%B7/" class="post-title-link" itemprop="url">Github-cli同时管理多个帐号</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-01-10 01:29:53 / 修改时间：01:57:56" itemprop="dateCreated datePublished" datetime="2025-01-10T01:29:53+08:00">2025-01-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>由于工作和学习的需要，可能需要同时在一台电脑上维护多个 github
+帐号，这时使用 Github-cli 同时使用多个帐号的 Token
+认证后，然后就可以随时切换了。具体方法为：</p>
+<h1 id="登录认证帐号">登录认证帐号</h1>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gh auth login -p ssh --skip-ssh-key --with-token &lt; your_token_here &gt;</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p>注意: 这条命令选择了 <code>ssh</code>的认证方式，所以需要提前配置好
+<code>ssh</code>. 同时按 <a
+href="/2025/01/07/使用Github-Cli管理仓库">使用Github-Cli管理仓库</a>
+取得 <code>Token</code>.</p>
+</div>
+<h1 id="切换帐号">切换帐号</h1>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gh auth switch -u &lt; your_name_here &gt;</span><br></pre></td></tr></table></figure>
+<h1 id="gh-auth-选项详解">gh auth 选项详解</h1>
+<figure class="highlight sh"><figcaption><span>gh help auth login</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">Authenticate with a GitHub host.</span><br><span class="line"></span><br><span class="line">The default hostname is `github.com`. This can be overridden using the `--hostname`</span><br><span class="line">flag.</span><br><span class="line"></span><br><span class="line">The default authentication mode is a web-based browser flow. After completion, an</span><br><span class="line">authentication token will be stored securely <span class="keyword">in</span> the system credential store.</span><br><span class="line">If a credential store is not found or there is an issue using it gh will fallback</span><br><span class="line">to writing the token to a plain text file. See `gh auth status` <span class="keyword">for</span> its</span><br><span class="line">stored location.</span><br><span class="line"></span><br><span class="line">Alternatively, use `--with-token` to pass <span class="keyword">in</span> a personal access token (classic) on standard input.</span><br><span class="line">The minimum required scopes <span class="keyword">for</span> the token are: `repo`, `<span class="built_in">read</span>:org`, and `gist`.</span><br><span class="line"></span><br><span class="line">Fine-grained personal access tokens are not supported.</span><br><span class="line"></span><br><span class="line">Alternatively, gh will use the authentication token found <span class="keyword">in</span> environment variables.</span><br><span class="line">This method is most suitable <span class="keyword">for</span> <span class="string">&quot;headless&quot;</span> use of gh such as <span class="keyword">in</span> automation. See</span><br><span class="line">`gh <span class="built_in">help</span> environment` <span class="keyword">for</span> more info.</span><br><span class="line"></span><br><span class="line">To use gh <span class="keyword">in</span> GitHub Actions, add `GH_TOKEN: <span class="variable">$&#123;&#123; github.token &#125;</span>&#125;` to `<span class="built_in">env</span>`.</span><br><span class="line"></span><br><span class="line">The git protocol to use <span class="keyword">for</span> git operations on this host can be <span class="built_in">set</span> with `--git-protocol`,</span><br><span class="line">or during the interactive prompting. Although login is <span class="keyword">for</span> a single account on a host, setting</span><br><span class="line">the git protocol will take effect <span class="keyword">for</span> all <span class="built_in">users</span> on the host.</span><br><span class="line"></span><br><span class="line">Specifying `ssh` <span class="keyword">for</span> the git protocol will detect existing SSH keys to upload,</span><br><span class="line">prompting to create and upload a new key <span class="keyword">if</span> one is not found. This can be skipped with</span><br><span class="line">`--skip-ssh-key` flag.</span><br><span class="line"></span><br><span class="line">For more information on OAuth scopes, &lt;https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps/&gt;.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">USAGE</span><br><span class="line">  gh auth login [flags]</span><br><span class="line"></span><br><span class="line">FLAGS</span><br><span class="line">  -p, --git-protocol string   The protocol to use <span class="keyword">for</span> git operations on this host: &#123;ssh|https&#125;</span><br><span class="line">  -h, --hostname string       The hostname of the GitHub instance to authenticate with</span><br><span class="line">      --insecure-storage      Save authentication credentials <span class="keyword">in</span> plain text instead of credential store</span><br><span class="line">  -s, --scopes strings        Additional authentication scopes to request</span><br><span class="line">      --skip-ssh-key          Skip generate/upload SSH key prompt</span><br><span class="line">  -w, --web                   Open a browser to authenticate</span><br><span class="line">      --with-token            Read token from standard input</span><br><span class="line"></span><br><span class="line">INHERITED FLAGS</span><br><span class="line">  --<span class="built_in">help</span>   Show <span class="built_in">help</span> <span class="keyword">for</span> <span class="built_in">command</span></span><br><span class="line"></span><br><span class="line">EXAMPLES</span><br><span class="line">  <span class="comment"># Start interactive setup</span></span><br><span class="line">  $ gh auth login</span><br><span class="line">  </span><br><span class="line">  <span class="comment"># Authenticate against github.com by reading the token from a file</span></span><br><span class="line">  $ gh auth login --with-token &lt; mytoken.txt</span><br><span class="line">  </span><br><span class="line">  <span class="comment"># Authenticate with specific host</span></span><br><span class="line">  $ gh auth login --hostname enterprise.internal</span><br><span class="line"></span><br><span class="line">LEARN MORE</span><br><span class="line">  Use `gh &lt;<span class="built_in">command</span>&gt; &lt;subcommand&gt; --<span class="built_in">help</span>` <span class="keyword">for</span> more information about a <span class="built_in">command</span>.</span><br><span class="line">  Read the manual at https://cli.github.com/manual</span><br><span class="line">  Learn about <span class="built_in">exit</span> codes using `gh <span class="built_in">help</span> exit-codes`</span><br></pre></td></tr></table></figure>
+<h1 id="参考文章">参考文章</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://cli.githubdocs.cn/manual/">GitHub CLI 手册</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/09/shell%E5%87%A0%E7%A7%8D%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E7%9A%84%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1073,234 +1235,6 @@ Harry Chen 所说：“你喜爱的 Markdown 写作，现更以 LaTeX 呈现。�
 <ul>
 <li><a target="_blank" rel="noopener" href="https://www.latexstudio.net/archives/51808.html">以
 Markdown 撰写文稿，以 LaTeX 排版【好文推荐】</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/04/DNS%E8%A7%A3%E6%9E%90%E4%B8%AD%E7%9A%84%E8%AE%B0%E5%BD%95%E7%B1%BB%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/01/04/DNS%E8%A7%A3%E6%9E%90%E4%B8%AD%E7%9A%84%E8%AE%B0%E5%BD%95%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">DNS解析中的记录类型</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-01-04 13:07:13" itemprop="dateCreated datePublished" datetime="2025-01-04T13:07:13+08:00">2025-01-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-01-06 13:12:47" itemprop="dateModified" datetime="2025-01-06T13:12:47+08:00">2025-01-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在DNS解析中，存在多种类型的记录，每种记录都有其特定的用途。本文列举一些常见的DNS记录类型：</p>
-<ol type="1">
-<li><strong>A 记录 (Address Record)</strong>
-<ul>
-<li>将域名映射到IPv4地址。</li>
-</ul></li>
-<li><strong>AAAA 记录 (IPv6 Address Record)</strong>
-<ul>
-<li>与A记录类似，但将域名映射到IPv6地址。</li>
-</ul></li>
-<li><strong>CNAME 记录 (Canonical Name Record)</strong>
-<ul>
-<li>指定一个域名是另一个域名的别名，允许多个域名指向相同的IP地址。</li>
-</ul></li>
-<li><strong>MX 记录 (Mail Exchange Record)</strong>
-<ul>
-<li>指定负责接收发往该域名邮件的邮件服务器。</li>
-</ul></li>
-<li><strong>NS 记录 (Name Server Record)</strong>
-<ul>
-<li>指明哪些DNS服务器是负责某个域的权威服务器。</li>
-</ul></li>
-<li><strong>PTR 记录 (Pointer Record)</strong>
-<ul>
-<li>用于反向DNS查找，即将IP地址映射到域名。</li>
-</ul></li>
-<li><strong>SOA 记录 (Start of Authority Record)</strong>
-<ul>
-<li>包含有关域名的权威信息，包括主名称服务器、序列号等。</li>
-</ul></li>
-<li><strong>SRV 记录 (Service Record)</strong>
-<ul>
-<li>定义提供特定服务（如SIP、XMPP等）的服务器的位置。</li>
-</ul></li>
-<li><strong>TXT 记录 (Text Record)</strong>
-<ul>
-<li>允许管理员在DNS中存储文本注释或设置SPF记录以防止垃圾邮件。</li>
-</ul></li>
-<li><strong>CAA 记录 (Certification Authority Authorization)</strong>
-<ul>
-<li>指定哪些证书颁发机构(CA)被授权为该域名发行证书。</li>
-</ul></li>
-</ol>
-<p>这些记录构成了DNS系统的骨干，确保互联网上的设备能够找到彼此并交换信息。根据需要，还可以配置更多特定用途的DNS记录。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/03/yarn%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/01/03/yarn%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">yarn的常用命令</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-01-03 14:48:26 / 修改时间：15:00:17" itemprop="dateCreated datePublished" datetime="2025-01-03T14:48:26+08:00">2025-01-03</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="yarn-简介">Yarn 简介</h1>
-<p>Yarn 是一个快速、可靠且安全的依赖管理工具，主要用于 JavaScript
-项目。它由 Facebook 与社区成员共同开发，旨在解决 npm（Node Package
-Manager）存在的性能问题和一些功能上的局限性。Yarn
-的设计目标是加速包的安装过程、确保操作的可重复性和安全性，同时简化开发者的工作流程。</p>
-<h2 id="主要特点">主要特点</h2>
-<ul>
-<li><strong>速度</strong>：Yarn
-使用并行化下载技术来提升安装速度，并通过本地缓存避免重复下载相同的包。</li>
-<li><strong>安全性</strong>：每次安装时都会校验每个包的完整性，保证了项目依赖的一致性和安全性。</li>
-<li><strong>可重复性</strong>：借助 <code>yarn.lock</code> 文件，Yarn
-可以确保不同环境中安装的依赖版本完全一致，从而减少了因版本差异导致的问题。</li>
-<li><strong>兼容性</strong>：与 npm 生态系统完全兼容，能够无缝使用 npm
-注册表中的所有包。</li>
-<li><strong>插件支持</strong>：Yarn
-支持丰富的插件生态系统，允许用户扩展其核心功能。</li>
-<li><strong>命令简洁</strong>：提供了一套简单易用的命令行接口，帮助开发者更高效地管理项目依赖。</li>
-</ul>
-<h1 id="yarn-的常用命令列表">yarn 的常用命令列表</h1>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看 yarn 全局安装过的包</span></span><br><span class="line">yarn global list --depth=0</span><br><span class="line"><span class="comment"># 全局安装</span></span><br><span class="line">yarn global add &lt;package&gt;</span><br><span class="line"><span class="comment"># 安装所有依赖</span></span><br><span class="line">yarn</span><br><span class="line"><span class="comment"># 安装指定版本</span></span><br><span class="line">yarn add &lt;package&gt;@&lt;version&gt;</span><br><span class="line"><span class="comment"># 安装最新版本</span></span><br><span class="line">yarn add &lt;package&gt;</span><br><span class="line"><span class="comment"># 删除包,会更新package.json和yarn.lock</span></span><br><span class="line">yarn remove &lt;package&gt;</span><br><span class="line"><span class="comment"># 更新包</span></span><br><span class="line">yarn upgrade</span><br><span class="line"><span class="comment"># 更新指定的包</span></span><br><span class="line">yarn upgrade &lt;package&gt;</span><br><span class="line"><span class="comment"># 获取可更新的包列表选择更新</span></span><br><span class="line">yarn upgrade-interactive --latest</span><br><span class="line"><span class="comment"># 更新全局依赖</span></span><br><span class="line">yarn global upgrade --latest</span><br><span class="line"><span class="comment"># 更新全局依赖，有交互</span></span><br><span class="line">yarn global upgrade-interactive --latest</span><br><span class="line"><span class="comment"># 列出已缓存的包</span></span><br><span class="line">yarn cache list</span><br><span class="line"><span class="comment"># 查找缓存包的路径</span></span><br><span class="line">yarn cache <span class="built_in">dir</span></span><br><span class="line"><span class="comment"># 清除缓存的包</span></span><br><span class="line">yarn cache clean</span><br></pre></td></tr></table></figure>
-<h1 id="yarn-使用ssh安装插件">yarn 使用ssh安装插件</h1>
-<p>当安装一个模块时，yarn 默认从 <code>https://github.com</code> 下载，
-但有时网络不通，所以可以采用直接添加 <code>ssh</code>
-地址的方法，此后更新也会从新的地址更新。例如</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yarn add @next-theme/plugins@git+ssh://github.com/next-theme/plugins.git</span><br><span class="line">yarn add hexogenerator-searchdb@git+ssh://github.com/next-theme/hexo-generator-searchdb.git</span><br></pre></td></tr></table></figure>
-<h1 id="yarn-切换源">yarn 切换源</h1>
-<h3 id="设置-yarn-的国内源">设置 yarn 的国内源</h3>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 国内 淘宝 镜像源</span></span><br><span class="line">yarn config <span class="built_in">set</span> registry https://registry.npmmirror.com/</span><br><span class="line"><span class="comment"># 官方镜像源</span></span><br><span class="line">yarn config <span class="built_in">set</span> registry https://registry.yarnpkg.com/</span><br></pre></td></tr></table></figure>
-<h3 id="安装-nrm-镜像源工具">安装 nrm 镜像源工具</h3>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> yarn global add nrm</span><br></pre></td></tr></table></figure>
-<div class="note primary"><p><code>nrm</code>使用方法，请参考本文末参考文章。使用<code>nrm test</code>列出各源，并给出源的网速，使用<code>nrm use huawei</code>切换到速度最快的华为源。</p>
-</div>
-<h1 id="参考文章">参考文章</h1>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/qq_58689048/article/details/118789091">npm
-和 yarn 常用命令 （更新、删除、清缓存）</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1588456">秒懂
-Yarn：从安装配置到高效使用的全攻略</a></li>
 </ul>
 
       

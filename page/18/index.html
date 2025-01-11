@@ -277,6 +277,175 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/23/Shell%E8%84%9A%E6%9C%AC%E6%9B%BF%E6%8D%A2%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/23/Shell%E8%84%9A%E6%9C%AC%E6%9B%BF%E6%8D%A2%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">Shell脚本替换字符串的几种方法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-23 21:08:07" itemprop="dateCreated datePublished" datetime="2024-06-23T21:08:07+08:00">2024-06-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>变量<code>a</code>是一个带空格的字符串，现在用"hdpusr400"替换变量<code>a</code>中的"hduser302"：</p>
+<h2 id="字符串变量的替换方式">字符串变量的替换方式</h2>
+<figure class="highlight bash"><figcaption><span>定义变量a</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[liusiyi@localhost ~]$ <span class="built_in">echo</span> <span class="variable">$a</span></span><br><span class="line">hduser302 hduser302 /apps/hduser302/student/</span><br></pre></td></tr></table></figure>
+<h3 id="用变量替换a做字符替换">用变量替换${a//}做字符替换</h3>
+<figure class="highlight sh"><figcaption><span>用变量替换$&#123;a//&#125;做字符替换</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#替换第一个匹配的字符串　</span></span><br><span class="line">[liusiyi@localhost ~]$ <span class="built_in">echo</span> <span class="variable">$&#123;a/hduser302/hdpusr400&#125;</span> </span><br><span class="line">hdpusr400 hduser302 /apps/hduser302/student/</span><br><span class="line"></span><br><span class="line"><span class="comment">#替换所有匹配的字符串　</span></span><br><span class="line">[liusiyi@localhost ~]$ <span class="built_in">echo</span> <span class="variable">$&#123;a//hduser302/hdpusr400&#125;</span>　　</span><br><span class="line">hdpusr400 hdpusr400 /apps/hdpusr400/student/</span><br></pre></td></tr></table></figure>
+<h3 id="用-sed-做字符串替换">用 sed 做字符串替换</h3>
+<figure class="highlight sh"><figcaption><span>用sed做字符串替换</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#替换第一个匹配的字符串　</span></span><br><span class="line">[liusiyi@localhost ~]$ <span class="built_in">echo</span> <span class="variable">$a</span> | sed <span class="string">&#x27;s/hduser302/hdpusr400/&#x27;</span> 　　</span><br><span class="line">hdpusr400 hduser302 /apps/hduser302/student/</span><br><span class="line"></span><br><span class="line"><span class="comment">#替换所有匹配的字符串　</span></span><br><span class="line">[liusiyi@localhost ~]$ <span class="built_in">echo</span> <span class="variable">$a</span> | sed <span class="string">&#x27;s/hduser302/hdpusr400/&#x27;</span> 　　</span><br><span class="line">hdpusr400 hdpusr400 /apps/hdpusr400/student/</span><br></pre></td></tr></table></figure>
+<h3 id="用-awk-做字符串替换">用 awk 做字符串替换</h3>
+<figure class="highlight sh"><figcaption><span>用awk做字符串替换</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#替换第一个匹配的字符串　</span></span><br><span class="line">[liusiyi@localhost ~]$ <span class="built_in">echo</span> <span class="variable">$a</span> | awk <span class="string">&#x27;&#123;gsub(/hduser302/,&quot;hdpusr400&quot;,$3);print $0&#125;&#x27;</span></span><br><span class="line">hdpusr400 hduser302 /apps/hduser302/student/</span><br><span class="line"></span><br><span class="line"><span class="comment">#替换所有匹配的字符串　</span></span><br><span class="line">[liusiyi@localhost ~]$ <span class="built_in">echo</span> <span class="variable">$a</span> | awk <span class="string">&#x27;&#123;gsub(/hduser302/,&quot;hdpusr400&quot;);print $0&#125;&#x27;</span> 　　</span><br><span class="line">hdpusr400 hdpusr400 /apps/hdpusr400/student/</span><br></pre></td></tr></table></figure>
+<h2 id="数组所有元中的字符串替换">数组所有元中的字符串替换</h2>
+<figure class="highlight sh"><figcaption><span>数组所有元替换</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Arr=($(<span class="built_in">ls</span> -d /run/media/<span class="variable">$USER</span>/*/*))</span><br><span class="line">Brr=(<span class="variable">$&#123;Arr[*]//&quot;/run/media/$USER&quot;/&quot;$HOME&quot;&#125;</span>)</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p><code>Arr</code>数组元中，所有元包括绝对路径<code>/run/media/$USER</code>,
+而<code>Brr</code>数组将其全部替换为<code>$HOME</code>.</p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/23/Shell%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8ls%E8%8E%B7%E5%8F%96%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/23/Shell%E8%84%9A%E6%9C%AC%E4%BD%BF%E7%94%A8ls%E8%8E%B7%E5%8F%96%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84/" class="post-title-link" itemprop="url">Shell脚本使用ls获取绝对路径</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-23 20:12:50" itemprop="dateCreated datePublished" datetime="2024-06-23T20:12:50+08:00">2024-06-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>已经完成了<code>ugit.sh</code>程序，利用它可以方便的将仓库建立在<code>U盘</code>上，这也就达成了随身携带<code>U盘</code>仓库而不依赖网络的问题。但是在最初实现时，对<code>Shell</code>的理解不够深入，一些基础的命令没有用好，从而增加了一些循环判断，尽管在使用体验上不会有什么影响，但是仔细测试效率时还是有差别的，同时从维护脚本的角度讲不是足够简洁。本着精益求精的原则，决定进一步精简脚本，实现<code>Shell</code>层次上的效率极大化！在所有的问题中，一步列出所有<code>U盘</code>并且将<code>U盘</code>中的目录都添加绝对路径是一个重要的步骤，本文实现了这个一步操作。代码如下:</p>
+<figure class="highlight sh"><figcaption><span>列出子目录并添加绝对路径</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">ls</span> -d /run/media/<span class="variable">$USER</span>/*/*</span><br><span class="line"><span class="comment"># 运行结果</span></span><br><span class="line">/run/media/feng/BNU-FZH/article.git</span><br><span class="line">/run/media/feng/BNU-FZH/cexam.git</span><br><span class="line">/run/media/feng/BNU-FZH/config.git</span><br><span class="line">/run/media/feng/BNU-FZH/document.git</span><br><span class="line">/run/media/feng/BNU-FZH/latex.git</span><br><span class="line">/run/media/feng/BNU-FZH/python.git</span><br><span class="line">/run/media/feng/BNU-FZH/script.git</span><br><span class="line">/run/media/feng/BNU-FZH/System Volume Information</span><br><span class="line">/run/media/feng/feng/20230203_094347.jpg</span><br><span class="line">/run/media/feng/feng/2023_07_19 17_25 Office Lens (1).jpg</span><br><span class="line">/run/media/feng/feng/2023_07_19 17_25 Office Lens.jpg</span><br><span class="line">/run/media/feng/feng/截图 2024-06-18 18-03-16.png</span><br><span class="line">/run/media/feng/feng/截图 2024-06-18 18-06-42.png</span><br><span class="line">/run/media/feng/feng/PDF文件</span><br><span class="line">/run/media/feng/feng/System Volume Information</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p>可以看到在路径<code>/run/media/feng/</code>下有两个<code>U盘</code>,分别是<code>BNU-FZH</code>和<code>feng</code>,
+这是路径<code>/run/media/$USER/*/*</code>中左起第一个<code>*</code>所代表的，而最后一个<code>*</code>表示列出此目录下的内容。<code>-d</code>选项，则控制<code>ls</code>命令列出路径。一条命令实现了列出所有<code>U盘</code>目录的功能，极大的提高了效率！</p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/22/Rust%E7%BC%96%E7%A8%8B%E7%AC%AC%E4%B8%80%E8%AF%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1516,226 +1685,6 @@ style="text-align: left;">任何一个控制字符（ASCII字符集中的前32�
 </tr>
 </tbody>
 </table>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/15/Shell%E6%95%B0%E7%BB%84%E8%BF%BD%E5%8A%A0%E5%85%83%E7%B4%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/15/Shell%E6%95%B0%E7%BB%84%E8%BF%BD%E5%8A%A0%E5%85%83%E7%B4%A0/" class="post-title-link" itemprop="url">Shell数组追加元素</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-15 15:00:57" itemprop="dateCreated datePublished" datetime="2024-06-15T15:00:57+08:00">2024-06-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <table>
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 18%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">添加方式</th>
-<th style="text-align: left;">语法</th>
-<th style="text-align: center;">多元素</th>
-<th style="text-align: center;">下标连续</th>
-<th style="text-align: center;">下标改变</th>
-<th style="text-align: center;">覆盖原元素</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">直接下标添加</td>
-<td style="text-align: left;"><code>array_name[index]=value</code></td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">是</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">数组长度添加</td>
-<td
-style="text-align: left;"><code>array_name[$&#123;#array_name[@]&#125;]=value</code></td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">是</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">数组长度添加</td>
-<td
-style="text-align: left;"><code>array_name[$&#123;#array_name[*]&#125;]=value</code></td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">是</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">重新创建数组</td>
-<td
-style="text-align: left;"><code>array_name=("$&#123;array_name[@]&#125;" value1 ... valueN)</code></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">赋值运算符<code>+=</code></td>
-<td
-style="text-align: left;"><code>array_name+=(value1 ... valueN)</code></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-</tr>
-</tbody>
-</table>
-<p>综上可知，<label style="color:red">赋值运算符+=</label>是最通用的方案。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/14/Linux%E4%B8%8D%E5%90%8C%E5%8F%91%E8%A1%8C%E7%89%88%E5%AE%89%E8%A3%85%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4%E4%B8%8E%E8%BD%AF%E4%BB%B6%E5%8C%85%E4%B8%8D%E4%B8%80%E8%87%B4%E7%9A%84%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/14/Linux%E4%B8%8D%E5%90%8C%E5%8F%91%E8%A1%8C%E7%89%88%E5%AE%89%E8%A3%85%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4%E4%B8%8E%E8%BD%AF%E4%BB%B6%E5%8C%85%E4%B8%8D%E4%B8%80%E8%87%B4%E7%9A%84%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Linux不同发行版安装安装命令与软件包不一致的命令</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-14 16:06:24" itemprop="dateCreated datePublished" datetime="2024-06-14T16:06:24+08:00">2024-06-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>当编写脚本时，可能会遇到需要的命令在系统中没有安装,
-此时需要解决命令依赖的问题，解决方法为安装对应的软件。Linux下大量的发行版，且不同发行版一般使用不同的包管理器，这导致了安装软件需要执行不同的安装命令，于是需要解决第二个问题：使用通用<code>Linux</code>命令探测系统安装的包管理器，然后确定安装命令。但是有时候，软件包提供的命令与其包的名称并不一致，这里就需要建立一个命令与包的映射关系，以正确执行安装命令。按照这个思路，本文提供一个基础的脚本：</p>
-<figure class="highlight sh"><figcaption><span>通用安装脚本</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/sh</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># readycmd.sh</span></span><br><span class="line"><span class="comment"># Author   : fengzhenhua</span></span><br><span class="line"><span class="comment"># Email    : fengzhenhua@outlook.com</span></span><br><span class="line"><span class="comment"># Date     : 2024-06-14 15:58</span></span><br><span class="line"><span class="comment"># CopyRight: Copyright (C) 2022-2030 FengZhenhua(冯振华)</span></span><br><span class="line"><span class="comment"># License  : Distributed under terms of the MIT license.</span></span><br><span class="line"><span class="comment"># Objective: 在不同的发行版中安装命令与软件包名不同的命令</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 包管理器列表: 管理器=安装命令</span></span><br><span class="line"><span class="built_in">declare</span> -A RD_PKG=(\</span><br><span class="line">    [<span class="string">&quot;pacman&quot;</span>]=<span class="string">&quot;pacman -S --needed --confirm&quot;</span>  <span class="comment">#arch endeavour manjaro 等</span></span><br><span class="line">    [<span class="string">&quot;apt-get&quot;</span>]=<span class="string">&quot;apt-get -y install&quot;</span>           <span class="comment">#debian ubuntu 等</span></span><br><span class="line">    [<span class="string">&quot;yum&quot;</span>]=<span class="string">&quot;yum -y install&quot;</span>                   <span class="comment">#redhat centos7 及以下</span></span><br><span class="line">    [<span class="string">&quot;dnf&quot;</span>]=<span class="string">&quot;dnf -y install&quot;</span>                   <span class="comment">#fedora centos8</span></span><br><span class="line">    [<span class="string">&quot;zypper&quot;</span>]=<span class="string">&quot;zypper -y install&quot;</span>             <span class="comment">#open suse</span></span><br><span class="line">)</span><br><span class="line"><span class="comment"># 待安装软件列表: 命令=软件名</span></span><br><span class="line"><span class="built_in">declare</span> -A RD_CMD=(\</span><br><span class="line">    [<span class="string">&quot;unar&quot;</span>]=<span class="string">&quot;unarchiver&quot;</span> [<span class="string">&quot;ssh&quot;</span>]=<span class="string">&quot;openssh&quot;</span> [<span class="string">&quot;nvim&quot;</span>]=<span class="string">&quot;neovim&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="comment"># 选择发行版中的包管理器</span></span><br><span class="line"><span class="keyword">for</span> sh_pkg <span class="keyword">in</span> <span class="variable">$&#123;!RD_PKG[*]&#125;</span>; <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">which</span> <span class="variable">$sh_pkg</span> &amp;&gt; /dev/null</span><br><span class="line">    <span class="keyword">if</span> [ $? = 0 ]; <span class="keyword">then</span></span><br><span class="line">        RD_PKG_INS=<span class="variable">$&#123;RD_PKG[$sh_pkg]&#125;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="comment"># 使用发行版中的包管理器安装系统中缺失的命令</span></span><br><span class="line"><span class="keyword">for</span> sh_cmd <span class="keyword">in</span> <span class="variable">$&#123;!RD_CMD[*]&#125;</span>; <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">which</span> <span class="variable">$&#123;sh_cmd&#125;</span> &amp;&gt; /dev/null</span><br><span class="line">    <span class="keyword">if</span> [ ! $? = 0 ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">sudo</span> <span class="variable">$&#123;RD_PKG_INS&#125;</span> <span class="variable">$&#123;RD_CMD[$sh_cmd]&#125;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
