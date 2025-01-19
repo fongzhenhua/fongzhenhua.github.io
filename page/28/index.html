@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.21.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#9400D3","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.21.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#9400D3","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
 
 
 
@@ -135,6 +135,21 @@
           <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name"></p>
   <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">482</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
 </div>
   <div class="links-of-author animated">
       <span class="links-of-author-item">
@@ -277,6 +292,190 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/20/%E4%B8%BAvim-templates%E6%8F%92%E4%BB%B6%E7%BC%96%E5%86%99%E6%A8%A1%E6%9D%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/12/20/%E4%B8%BAvim-templates%E6%8F%92%E4%BB%B6%E7%BC%96%E5%86%99%E6%A8%A1%E6%9D%BF/" class="post-title-link" itemprop="url">为vim-templates插件编写模板</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-12-20 19:28:54" itemprop="dateCreated datePublished" datetime="2023-12-20T19:28:54+08:00">2023-12-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><code>vim-templates</code>是一款相当好用的<code>vim</code>插件，同时支持<code>neovim</code>,
+当使用<code>vim</code>或<code>neovim</code>建立文件时，此插件会导入预先设置模板，这大大提高了工作效率。虽然默认配置了好多的模板，但都是一些通用模板，于是就需要自己定义模板，在定义模板的过程中一些变量的引用是重要的内容。本文从官方网站：
+<a
+target="_blank" rel="noopener" href="https://github.com/tibabit/vim-templates">tibabit/vim-templates</a>
+的<code>README.md</code>文件中截取相关变量部分，以方便编写模板之用。同时也可以在安装插件后，使用命令：<code>:help template.txt</code>调出使用细节。</p>
+<h2 id="customization">Customization</h2>
+<h3 id="creating-your-own-templates">Creating your own templates</h3>
+<ul>
+<li>Create a file <code>&lt;template_name&gt;.template</code> inside a
+folder which is searched by the plugin( <a href="#search-paths">see
+below</a>), e.g. if you want to create a template file for a c++ main
+file you can name it <code>cppmain.template</code> or
+<code>cppm.template</code></li>
+<li>Open the file and edit, for example</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/12/20/%E4%B8%BAvim-templates%E6%8F%92%E4%BB%B6%E7%BC%96%E5%86%99%E6%A8%A1%E6%9D%BF/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/20/Linux%E5%8A%A0%E5%AF%86%E5%8E%8B%E7%BC%A9%E5%92%8C%E8%A7%A3%E5%8E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/12/20/Linux%E5%8A%A0%E5%AF%86%E5%8E%8B%E7%BC%A9%E5%92%8C%E8%A7%A3%E5%8E%8B/" class="post-title-link" itemprop="url">Linux加密压缩和解压</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-12-20 18:18:55" itemprop="dateCreated datePublished" datetime="2023-12-20T18:18:55+08:00">2023-12-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在创建备份文件时，有些文件需要加密保存，这时使用命令加密文件就显得必不可少，当使用的时候运行脚本过程再解压，但是要求输入密码，而密码是掌握在作者手中的，所以确保了隐私安全。</p>
+<h2 id="使用zip压缩和解压">使用ZIP压缩和解压</h2>
+<ol type="1">
+<li><p>命令中直接输入密码 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip -rP yourpassword package.zip package</span><br></pre></td></tr></table></figure></p></li>
+<li><p>交互分步输入密码 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip -re package.zip package</span><br></pre></td></tr></table></figure></p></li>
+<li><p>ZIP解压缩 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip package.zip </span><br></pre></td></tr></table></figure></p></li>
+</ol>
+<h2 id="使用tar压缩和解压">使用TAR压缩和解压</h2>
+<ol type="1">
+<li><p>TAR加密压缩 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zcvf - ./package | openssl des3 -salt -k yourpassword | <span class="built_in">dd</span> of=meiyou.tar.gz</span><br></pre></td></tr></table></figure></p></li>
+<li><p>TAR解压缩 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=meiyou.tar.gz | openssl des3 -d -k yourpassword |tar zxf -</span><br></pre></td></tr></table></figure></p></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/17/zsh%E9%AB%98%E4%BA%AE%E6%8F%92%E4%BB%B6fast-syntax-highlighting/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -313,7 +512,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
     </span>
 
   
@@ -403,7 +602,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
     </span>
 
   
@@ -487,7 +686,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
     </span>
 
   
@@ -581,7 +780,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
     </span>
 
   
@@ -660,7 +859,7 @@ target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/812994510
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
     </span>
 
   
@@ -749,7 +948,7 @@ target="_blank" rel="noopener" href="https://github.com/archlinuxcn/repo/tree/ma
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
     </span>
 
   
@@ -841,7 +1040,7 @@ target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Mkinitcpio
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
     </span>
 
   
@@ -924,7 +1123,7 @@ target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Fcitxe5">F
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
     </span>
 
   
@@ -966,207 +1165,8 @@ target="_blank" rel="noopener" href="https://github.com/Morganamilo/paru/issues/
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/10/Pacman%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/10/Pacman%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Pacman常用命令</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-10 02:13:25" itemprop="dateCreated datePublished" datetime="2023-12-10T02:13:25+08:00">2023-12-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><code>Pacman</code>是<code>Archlinux</code>的包管理器，使用<code>Archlinux</code>作为办公的主力，本文列出一些常用的<code>pacman</code>命令:</p>
-<ol type="1">
-<li><p><code>-S</code> 指令</p>
-<ul>
-<li>sudo pacman -S #安装软件</li>
-<li>sudo pacman -Sy
-#获取最新的软件情况，如果已经是最新，直接提示已经更新到最新</li>
-<li>sudo pacman -Syy # 强行更新你的应用软件库</li>
-<li>sudo pacman -Su #更新所有软件</li>
-<li>sudo pacman -Syu #更新软件源并更新你的软件</li>
-<li>sudo pacman -Syyu # 强行更新一遍，再更新软件</li>
-<li>sudo pacman -Ss <pkg_name> #
-查询所有软件名里面带有<pkg_name>相关的软件，支持正则表达式</li>
-<li>sudo pacman -Sc #删除软件<code>/var</code>目录下的缓存</li>
-</ul></li>
-<li><p><code>-R</code>指令</p>
-<ul>
-<li>sudo pacman -R <pkg_name> #删除软件</li>
-<li>sudo pacman -Rs <pkg_name> #删除软件，并删除<pkg>所有的依赖包</li>
-<li>sudo pacman -Rns <pkg_name>
-#删除软件，并删除<pkg>所有的依赖，并删除<pkg>所有配置文件。</li>
-</ul></li>
-<li><p><code>-Q</code>指令</p>
-<ul>
-<li>sudo pacman -Q #显示所有软件</li>
-<li>sudo pacman -Q |wc -l # 查询数量</li>
-<li>sudo pacman -Qe #查询所有自己安装的软件</li>
-<li>sudo pacman -Qeq
-#查询所有自己安装的软件，只显示包名，不显示版本号等</li>
-<li>sudo pacman -Qs <pkg_name>
-#查询本地安装的所有带<pkg_name>的软件</li>
-<li>sudo pacman -Qdt #查询所有不再被需要的孤软件</li>
-<li>sudo pacman -Qtdq # 查询所有不再被依赖的包名</li>
-</ul></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/09/%E5%B0%8F%E7%99%BD%E7%BE%8A%E4%BA%91%E7%9B%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/09/%E5%B0%8F%E7%99%BD%E7%BE%8A%E4%BA%91%E7%9B%98/" class="post-title-link" itemprop="url">小白羊云盘</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-09 01:34:46" itemprop="dateCreated datePublished" datetime="2023-12-09T01:34:46+08:00">2023-12-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在<code>Linux</code>下我们有小白羊版阿里云盘，在这些著名的开源版本中，有两个版本现在最流行，它们分别是
-<a target="_blank" rel="noopener" href="https://github.com/odomu/aliyunpan">阿里云盘小白羊V3</a> 和 <a
-target="_blank" rel="noopener" href="https:///github.com/gaozhangmin/aliyunpan">小白羊网盘</a>。
-<code>阿里云盘小白羊 V3</code>是<code>odomu</code>开发的，文章<a
-target="_blank" rel="noopener" href="https://www.fenxm.com/1033.html">阿里云盘小白羊 v3.23.62819
-最终版-不再更新 免装版</a>
-说此版本不再更新，当时我访问其官网确实是不再更的，但是今天突然发现其重新启用了，且仓库也是近两天才上传的，这是个好消息。但是我还是习惯于在<code>ArchLinux</code>仓库或<code>Aur</code>中安装软件，因为可以方便管理和更新。最初我是用<code>paru</code>在<code>Aur</code>中查找，得到的结果是</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/12/09/%E5%B0%8F%E7%99%BD%E7%BE%8A%E4%BA%91%E7%9B%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/27/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><span class="page-number current">28</span><a class="page-number" href="/page/29/">29</a><span class="space">&hellip;</span><a class="page-number" href="/page/48/">48</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/29/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/27/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><span class="page-number current">28</span><a class="page-number" href="/page/29/">29</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/29/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
@@ -1179,7 +1179,7 @@ target="_blank" rel="noopener" href="https://www.fenxm.com/1033.html">阿里云�
     &copy; Sat Sep 03 2022 08:00:00 GMT+0800 (中国标准时间) – 
     <span itemprop="copyrightYear">2025</span>
     <span class="with-love">
-      <i class="fa fa-heart"></i>
+      <i class="fa-solid fa-star"></i>
     </span>
     <span class="author" itemprop="copyrightHolder">fengzhenhua</span>
   </div>
