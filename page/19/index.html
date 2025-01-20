@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">482</span>
+          <span class="site-state-item-count">483</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -283,6 +283,136 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/21/Shell%E4%B8%AD%E7%9A%84%E5%8D%95%E6%8B%AC%E5%8F%B7%E5%92%8C%E5%8F%8C%E6%8B%AC%E5%8F%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/21/Shell%E4%B8%AD%E7%9A%84%E5%8D%95%E6%8B%AC%E5%8F%B7%E5%92%8C%E5%8F%8C%E6%8B%AC%E5%8F%B7/" class="post-title-link" itemprop="url">Shell中的单括号和双括号</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-21 15:43:41" itemprop="dateCreated datePublished" datetime="2024-06-21T15:43:41+08:00">2024-06-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="单括号-和-test">1. 单括号[ ] 和 test</h2>
+<p>左括号<code>[</code>和<code>test</code>本质是一样的，是shell的内部命令，所以<code>&gt;</code>和<code>&lt;</code>等会被解释为<code>重定向</code>符号，而不是比较符号：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bash-3.2$ type [ [[ test</span><br><span class="line">[ is a shell builtin</span><br><span class="line">[[ is a shell keyword</span><br><span class="line">test is a shell builtin</span><br></pre></td></tr></table></figure>
+<p>右括号<code>]</code>表示判断结束，可以通过<code>man [</code>查看支持的判断语句：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">man [</span></span><br></pre></td></tr></table></figure>
+<h3 id="文件相关判断">1.1 文件相关判断</h3>
+<ul>
+<li><code>-d file</code>: True if file exists and is a directory.</li>
+<li><code>-f file</code>: True if file exists and is a regular
+file.</li>
+<li><code>-h file</code>: True if file exists and is a symbolic
+link.</li>
+<li><code>-S file</code>: True if file exists and is a socket.</li>
+<li><code>file1 -nt file2</code>: True if file1 exists and is newer than
+file2.</li>
+</ul>
+<h3 id="字符串相关判断">1.2 字符串相关判断</h3>
+<ul>
+<li><code>string</code>: True if string is not the null string.</li>
+<li><code>s1 = s2</code>: True if the strings s1 and s2 are
+identical.</li>
+<li><code>s1 &lt; s2</code>: True if string s1 comes before s2 based on
+the binary value of their characters.</li>
+</ul>
+<h3 id="整型判断">1.3 整型判断</h3>
+<ul>
+<li><code>n1 -eq n2</code>: True if the integers n1 and n2 are
+algebraically equal.</li>
+<li><code>n1 -ne n2</code>: True if the integers n1 and n2 are not
+algebraically equal.</li>
+<li><code>n1 -gt n2</code>: True if the integer n1 is algebraically
+greater than the integer n2.</li>
+<li><code>n1 -ge n2</code>: True if the integer n1 is algebraically
+greater than or equal to the integer n2.</li>
+<li><code>n1 -lt n2</code>: True if the integer n1 is algebraically less
+than the integer n2.</li>
+<li><code>n1 -le n2</code>: True if the integer n1 is algebraically less
+than or equal to the integer n2.</li>
+</ul>
+<h3 id="多个判断连接">1.4 多个判断连接</h3>
+<ul>
+<li><code>! expression</code>: True if expression is false.</li>
+<li><code>expression1 -a expression2</code>: True if both expression1
+and expression2 are true.</li>
+<li><code>expression1 -o expression2</code>: True if either expression1
+or expression2 are true.</li>
+</ul>
+<h2 id="双括号">2. 双括号[[ ]]</h2>
+<p>双括号是shell的<strong>关键字</strong>，会返回一个状态码，所以也可以作为判断条件使用。（更加通用）</p>
+<ul>
+<li><code>[[</code>支持字符串的模式匹配，<code>=~</code>支持正则匹配</li>
+<li><code>[[</code>返回状态码，所以可以与shell中的
+<code>&amp;&amp;</code>和<code>||</code>一起使用：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">[[ 1 &lt; 2 ]] &amp;&amp; <span class="built_in">echo</span> <span class="string">&quot;1 &lt; 2&quot;</span> || <span class="built_in">echo</span> <span class="string">&quot;1 &gt;= 2&quot;</span></span></span><br><span class="line">1 &lt; 2</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1642,195 +1772,6 @@ alt="gping" />
 </figure>
 <h2 id="取代ping">取代ping</h2>
 <figure class="highlight sh"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> ping=<span class="string">&quot;gping&quot;</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/09/ls%E6%9B%BF%E4%BB%A3%E5%91%BD%E4%BB%A4exa/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/09/ls%E6%9B%BF%E4%BB%A3%E5%91%BD%E4%BB%A4exa/" class="post-title-link" itemprop="url">ls替代命令exa</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-09 20:49:35" itemprop="dateCreated datePublished" datetime="2024-06-09T20:49:35+08:00">2024-06-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>这个简单的 <code>ls</code> 命令列出目录的内容十分方便，但是直到我发现
-<code>exa</code> 之前从来没想过会有命令能替代它。</p>
-<h3 id="exa-命令简介">exa 命令简介</h3>
-<p><a target="_blank" rel="noopener" href="https://the.exa.website">exa</a>
-是一个命令行工具，可以列出指定路径（如未指定则是当前目录）的目录和文件。这也许听起来很熟悉，因为这就是
-<code>ls</code> 命令所做的事情。</p>
-<p><code>exa</code> 被视作从 UNIX 旧时代延续至今的古老的 <code>ls</code>
-命令的一个现代替代品。如其所声称的那样，它有比 <code>ls</code>
-命令更多的功能、更好的默认行为。</p>
-<figure>
-<img
-src="https://img.linux.net.cn/data/attachment/album/202111/10/155702mm72rrjvmpz9kprh.png"
-alt="exa 功能" />
-<figcaption aria-hidden="true">exa 功能</figcaption>
-</figure>
-<p>以下是一些你应该使用 <code>exa</code> 替代 <code>ls</code>
-的原因：</p>
-<ul>
-<li><code>exa</code> 像 <code>ls</code> 一样可移植（在所有主流 Linux
-发行版、*BSD 和 macOS 上可用）</li>
-<li>默认彩色输出</li>
-<li><code>exa</code> 不同格式化的“详细”输出也许会吸引 Linux/BSD
-新手</li>
-<li>文件查询是并行进行的，这使得 <code>exa</code> 与 <code>ls</code>
-的性能相当</li>
-<li>显示单个文件的 git 暂存或未暂存状态</li>
-</ul>
-<p><code>exa</code> 的另外一个不同的地方是它是用 Rust
-编写的。顺便说一句，Rust 与 C
-语言的执行速度相近，但在编译时减少了内存错误，使你的软件可以快速而安全地执行。</p>
-<h3 id="在-linux-系统上安装-exa">在 Linux 系统上安装 exa</h3>
-<p><code>exa</code>
-最近很流行，因为许多发行版开始将其包括在其官方软件库中。也就是说，你应该可以使用你的
-[发行版的包管理器] 来安装它。</p>
-<p>从 Ubuntu 20.10 开始，你可以使用 <code>apt</code> 命令来安装它：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install exa</span><br></pre></td></tr></table></figure>
-<p>Arch Linux 已经有了它，你只需要 使用 pacman 命令即可：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S exa</span><br></pre></td></tr></table></figure>
-<p>如果它无法通过你的包管理器安装，请不要担心。毕竟它是一个 Rust
-包，你可以很容易地用 Cargo 安装它。请确保在你使用的任何发行版 <a
-target="_blank" rel="noopener" href="https://itsfoss.com/install-rust-cargo-ubuntu-linux/">或 Ubuntu
-上安装了 Rust 和 Cargo</a>。</p>
-<p>安装 Rust 和 Cargo 后，使用此命令安装 <code>exa</code>：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo install exa</span><br></pre></td></tr></table></figure>
-<h3 id="使用-exa">使用 exa</h3>
-<p><code>exa</code>
-有很多命令选项，主要是为了更好的格式化输出和一些提高舒适度的改进，比如文件的
-git 暂存或未暂存状态等等。</p>
-<p>下面是一些屏幕截图，展示了 <code>exa</code>
-是如何在你的系统上工作的。</p>
-<p>简单地使用 <code>exa</code> 命令将产生类似于 <code>ls</code>
-但带有颜色的输出。这种彩色的东西可能没有那么吸引人，因为像 Ubuntu
-这样的发行版至少在桌面版本中已经提供了彩色的 <code>ls</code>
-输出。不过，<code>ls</code> 命令本身默认没有彩色输出。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exa</span><br></pre></td></tr></table></figure>
-<figure>
-<img
-src="https://img.linux.net.cn/data/attachment/album/202111/10/155702nwcizcfc5c1q1ug9.jpg"
-alt="exa 命令的输出截图，没有任何额外的标志" />
-<figcaption aria-hidden="true">exa
-命令的输出截图，没有任何额外的标志</figcaption>
-</figure>
-<p>请注意，<code>exa</code> 和 <code>ls</code>
-命令的选项不尽相同。例如，虽然 <code>-l</code> 选项在 <code>exa</code>
-和 <code>ls</code> 中都给出了长列表，但 <code>-h</code>
-选项添加了一个列标题，而不是 <code>ls</code> 的人类可读选项。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exa -lh</span><br></pre></td></tr></table></figure>
-<figure>
-<img
-src="https://img.linux.net.cn/data/attachment/album/202111/10/155702k8226p6c3ra2fafn.jpg"
-alt="正如我之前提到的，exa 有列标题以获得更好的“详细”输出" />
-<figcaption aria-hidden="true">正如我之前提到的，exa
-有列标题以获得更好的“详细”输出</figcaption>
-</figure>
-<p>我前面说过，<code>exa</code> 已经内置了 Git
-集成。下面的屏幕截图给出了 <code>–git</code> 标志的演示。请注意
-<code>test_file</code> 在 <code>git</code> 的 <code>tracked</code>
-列中显示 <code>-N</code> ，因为它尚未添加到存储库中。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exa --git -lh</span><br></pre></td></tr></table></figure>
-<figure>
-<img
-src="https://img.linux.net.cn/data/attachment/album/202111/10/155703wdr02s72rex3b29q.jpg"
-alt="演示 git 标志如何与 exa 一起工作" />
-<figcaption aria-hidden="true">演示 git 标志如何与 exa
-一起工作</figcaption>
-</figure>
-<p>下面的例子不是我的猫键入的。它是各种选项的组合。<code>exa</code>
-有可供你尝试和探索的很多选项。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exa -abghHliS</span><br></pre></td></tr></table></figure>
-<p>你可以通过在终端中运行以下命令来获取完整的选项列表：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exa --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-<p>但是，如果你想了解 exa 所提供的功能，可以查看其 Git 存储库 上的
-官方文档。值得从 ls 切换到 exa 吗？</p>
-<p>对于类 UNIX 操作系统的新手来说，exa
-可能是用户友好的，它牺牲了在脚本中容易使用的能力，以换取“易用性”和外观。其中，显示得更清楚并不是一件坏事。</p>
-<p>无论如何，ls 就像通用命令。你可以将 exa
-用于个人用途，但在编写脚本时，请坚持使用
-ls。当预期输出与任一命令中的实际输出不匹配时，ls 和 exa 之间一个
-[或多个] 标志的差异可能会让你发疯。</p>
-<p>我想知道你对 exa 的看法。你已经尝试过了吗？你对它的体验如何？</p>
-<p>但是，如果你想了解 <code>exa</code> 所提供的功能，可以查看其 <a
-target="_blank" rel="noopener" href="https://kkgithub.com/ogham/exa">Git 存储库</a> 上的 <a
-target="_blank" rel="noopener" href="https://kkgithub.com/ogham/exa#command-line-options">官方文档</a>。</p>
-<h3 id="值得从-ls-切换到-exa-吗">值得从 ls 切换到 exa 吗？</h3>
-<p>对于类 UNIX 操作系统的新手来说，<code>exa</code>
-可能是用户友好的，它牺牲了在脚本中容易使用的能力，以换取“易用性”和外观。其中，显示得更清楚并不是一件坏事。</p>
-<p>无论如何，<code>ls</code> 就像通用命令。你可以将 <code>exa</code>
-用于个人用途，但在编写脚本时，请坚持使用
-<code>ls</code>。当预期输出与任一命令中的实际输出不匹配时，<code>ls</code>
-和 <code>exa</code> 之间一个 [或多个] 标志的差异可能会让你发疯。</p>
-<p>我想知道你对 <code>exa</code>
-的看法。你已经尝试过了吗？你对它的体验如何？</p>
-<p>本文转自 <a target="_blank" rel="noopener" href="https://linux.cn/article-13972-1.html">exa：一个 ls
-命令的现代替代品</a>，如有侵权，请联系删除。</p>
 
       
     </div>
