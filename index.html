@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">484</span>
+          <span class="site-state-item-count">485</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -366,6 +366,164 @@ target="_blank" rel="noopener" href="https://endeavouros.com">Endeavour</a>
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/10/%E4%BB%8EJulia%E9%9B%86%E7%9A%84%E7%94%9F%E6%88%90%E7%9C%8Bcsv%E4%BA%8C%E7%BB%B4%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/02/10/%E4%BB%8EJulia%E9%9B%86%E7%9A%84%E7%94%9F%E6%88%90%E7%9C%8Bcsv%E4%BA%8C%E7%BB%B4%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">从Julia集的生成看csv二维数据结构</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-02-10 10:52:56 / 修改时间：11:43:27" itemprop="dateCreated datePublished" datetime="2025-02-10T10:52:56+08:00">2025-02-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="julia-集简介">Julia 集简介</h1>
+<p>朱利亚集是分形几何中的一个重要概念，由法国数学家加斯东·朱利亚研究得出，通过迭代复数平面上的函数
+<span class="math inline">\(f_c(z) = z^2 + c\)</span> 来定义，其中 <span
+class="math inline">\(c\)</span> 为固定的复数参数。对于每一个给定的
+<span class="math inline">\(c\)</span> 值，从任意初始点 <span
+class="math inline">\(z_0\)</span> 开始进行迭代，如果序列 <span
+class="math inline">\({zn}\)</span>
+保持有界，则初始点属于该朱利亚集；反之，若序列趋向无穷大，则初始点不属于此集。这些集合并呈现出高度复杂和自相似的边界，其形态随不同的
+<span class="math inline">\(c\)</span>
+值变化，从连通区域到复杂的尘埃状分布不等，展现了丰富的几何结构和美丽的图案，既是数学研究的对象，也是艺术创作的源泉。</p>
+<p>通过计算机绘制 Julia 集，需要指定一个 <span
+class="math inline">\(c\)</span> 值， 然后取一个复平面上的一个区域 <span
+class="math inline">\(A\)</span>， 对于此区域内的每一点按<span
+class="math inline">\(f(z)\)</span>进行迭代, 同时设置一个最大迭代次数
+<span class="math inline">\(N\)</span> 和逃逸半径 <span
+class="math inline">\(R\)</span>. 对于复平面内的点如果<span
+class="math inline">\(|z|&gt;R\)</span>, 则取强度为<span
+class="math inline">\(0\)</span>; 如果 $|z|&lt; <span
+class="math inline">\(, 则使用\)</span>f(z)$ 迭代， 当迭代 <span
+class="math inline">\(m\)</span> 次后点 <span
+class="math inline">\(|z_m|&gt;R\)</span>, 则取强度为<span
+class="math inline">\(m\)</span>, 如果迭代<span
+class="math inline">\(N\)</span>次后仍然不满足<span
+class="math inline">\(|z_N|&gt;R\)</span>, 则取强度为<span
+class="math inline">\(N\)</span>. 如此操作后，对于复平面区域<span
+class="math inline">\(A\)</span>内的每一点都赋予一个强度值，然后输出为
+csv 的2D数据，按强度上色就构成了一个 Julia 集的图形显示。</p>
+<h1 id="代码分析">代码分析</h1>
+<h2 id="声明脚本为-python3-用-utf-8-编码">声明脚本为 python3 , 用 utf-8
+编码</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python3</span></span><br><span class="line"><span class="comment"># vim:fenc=utf-8</span></span><br></pre></td></tr></table></figure>
+<h2 id="调用-numpy-库-同时设置初值-c-并定义保存文件的名称-picname">调用
+numpy 库, 同时设置初值 c, 并定义保存文件的名称 picname</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">c = <span class="built_in">complex</span>(-<span class="number">0.70176</span>, -<span class="number">0.3842</span>)</span><br><span class="line">picname = <span class="string">&quot;Nebula&quot;</span></span><br><span class="line">file_name = <span class="string">f&quot;<span class="subst">&#123;picname&#125;</span>.csv&quot;</span></span><br><span class="line">width, height = <span class="number">1000</span>, <span class="number">1000</span>  <span class="comment"># 图像的宽度和高度</span></span><br><span class="line">max_iter = <span class="number">100</span>  <span class="comment"># 最大迭代次数</span></span><br></pre></td></tr></table></figure>
+<h2 id="绘制程序">绘制程序</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">julia_set</span>(<span class="params">c, width, height, max_iter</span>):</span><br><span class="line">    x = np.linspace(-<span class="number">2</span>, <span class="number">2</span>, width)</span><br><span class="line">    y = np.linspace(-<span class="number">2</span>, <span class="number">2</span>, height)</span><br><span class="line">    escape_time = np.zeros((height, width))  <span class="comment"># 注意这里的维度顺序</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(width):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(height):</span><br><span class="line">            z = <span class="built_in">complex</span>(x[i], y[j])</span><br><span class="line">            n = <span class="number">0</span></span><br><span class="line">            <span class="keyword">while</span> <span class="built_in">abs</span>(z) &lt;= <span class="number">2</span> <span class="keyword">and</span> n &lt; max_iter:</span><br><span class="line">                z = z*z + c</span><br><span class="line">                n += <span class="number">1</span></span><br><span class="line">            escape_time[j, i] = n  <span class="comment"># 根据像素位置更新逃逸时间</span></span><br><span class="line">            </span><br><span class="line">    <span class="keyword">return</span> x, y, escape_time</span><br></pre></td></tr></table></figure>
+<p>上述程序中：</p>
+<ul>
+<li>第1行：定义程序<code>julia_set</code>,
+并设置了四个参数<code>c</code>, <code>width</code>, <code>height</code>
+和 <code>max_iter</code>.</li>
+<li>第2行：定义<code>x</code>数组，将<code>x</code>定义域<span
+class="math inline">\(-2\)</span>到<span
+class="math inline">\(2\)</span>划分成<code>width</code>等份.</li>
+<li>第3行：定义<code>y</code>数组，将<code>y</code>定义域<span
+class="math inline">\(-2\)</span>到<span
+class="math inline">\(2\)</span>划分成<code>height</code>等份.</li>
+<li>第4行：定义 <span class="math inline">\(height\times width\)</span>
+矩阵<code>escape_time</code>，所有矩阵元默认取 <span
+class="math inline">\(0\)</span>.</li>
+<li>第5行：遍历<code>x</code>数组, 以取得每一个 <span
+class="math inline">\(x\)</span>数组元 <span
+class="math inline">\(x[i]\)</span>.</li>
+<li>第6行：遍历<code>y</code>数组, 以取得每一个 <span
+class="math inline">\(y\)</span>数组元 <span
+class="math inline">\(y[j]\)</span>.</li>
+<li>第7行：以<span class="math inline">\(x[i]\)</span> 为实部， <span
+class="math inline">\(y[j]\)</span>为虚部，构建复数<span
+class="math inline">\(z\)</span>.</li>
+<li>第8行：对于每一个点<span class="math inline">\(z\)</span>,
+默认逃逸次数为<span class="math inline">\(n=0\)</span>.</li>
+<li>第9行：使用<code>while</code>对每一个点<span
+class="math inline">\(z\)</span>判断，条件为<code>小于逃逸半径2</code>和<code>小于最大逃逸次数 max_iter</code>.</li>
+<li>第10行：若满足条件，则迭代一次，同时逃逸次数 <span
+class="math inline">\(n\)</span> 增加<span
+class="math inline">\(1\)</span>,
+若仍然满足第9行的条件，则继续循环，同时不断将判断的逃逸次数<span
+class="math inline">\(n\)</span>赋值给矩阵<code>escape_time[j,i]</code>.</li>
+<li>第11行：返回最后的<code>x</code>,<code>y</code>,<code>escape_time</code>
+数组.</li>
+</ul>
+<h2 id="使用上述函数处理具体的参数">使用上述函数处理具体的参数</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 计算Julia集</span></span><br><span class="line">x_coords, y_coords, escape_time = julia_set(c, width, height, max_iter)</span><br></pre></td></tr></table></figure>
+<h2 id="将结果保存为-csv-数据">将结果保存为 csv 数据</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(file_name, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    file.write(<span class="string">&#x27;,&#x27;</span> + <span class="string">&#x27;,&#x27;</span>.join(<span class="built_in">map</span>(<span class="built_in">str</span>, x_coords)) + <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(escape_time.shape[<span class="number">0</span>]):</span><br><span class="line">        <span class="comment"># 写入每行的数据，先写Y坐标，然后是该行的逃逸时间值</span></span><br><span class="line">        file.write(<span class="built_in">str</span>(y_coords[j]) + <span class="string">&#x27;,&#x27;</span> + <span class="string">&#x27;,&#x27;</span>.join(<span class="built_in">map</span>(<span class="built_in">str</span>, escape_time[j])) + <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Julia集已成功保存到<span class="subst">&#123;file_name&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>上述程序中：</p>
+<ul>
+<li>第1行：打开文件<code>file_name</code>,
+同时赋予<code>write</code>权限（即选项<code>w</code>）,
+将其命名为<code>file</code>， 在后续程序中调用.</li>
+<li>第2行：写入<code>x</code>坐标行, 数组以逗号<code>,</code>分隔,
+行尾添加换行符<code>\n</code>.</li>
+<li>第3行：遍历<code>escape_time</code>数组的第一列（也就是所有行数）,
+写入每一行的数组，仍然以逗号<code>,</code>分隔，行尾添加换行符<code>\n</code>.</li>
+<li>第4行：打印处理结果，同时使用<code>f</code>标记来使用变量<code>&#123;file_name&#125;</code>.</li>
+</ul>
+<div class="note primary"><p>注意：通过这一段程序，我们可以判断出<code>2d</code>数据的具体形式构成.
+第1行是<code>x</code>坐标点，第1列是<code>y</code>坐标点，由<code>x</code>和<code>y</code>决定的点上则<code>(x,y)</code>所对应的强度值，这是一个二维数据表格，和数学上描点绘图的数据一致。</p>
+</div>
+
       
     </div>
 
@@ -1145,86 +1303,6 @@ href="/2025/01/07/使用Github-Cli管理仓库">使用Github-Cli管理仓库</a>
 <li><a
 target="_blank" rel="noopener" href="https://blog.csdn.net/qichangjian/article/details/103769468">shell几种字符串加密解密的方法</a></li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/08/Markdown%E6%B7%BB%E5%8A%A0%E7%9B%AE%E5%BD%95%E7%9A%84%E8%AF%AD%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/01/08/Markdown%E6%B7%BB%E5%8A%A0%E7%9B%AE%E5%BD%95%E7%9A%84%E8%AF%AD%E6%B3%95/" class="post-title-link" itemprop="url">Markdown添加目录的语法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-01-08 20:08:48" itemprop="dateCreated datePublished" datetime="2025-01-08T20:08:48+08:00">2025-01-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在 Markdown 中添加目录（Table of Contents,
-ToC）并不是直接支持的功能，但是你可以手动创建一个简单的目录，使用链接和锚点来指向文档中的各个部分。首先，在你想链接到的标题或段落前设置一个锚点（ID），然后在目录部分创建指向这些锚点的链接。例如：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 目录</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">简介</span>](<span class="link">#简介</span>)</span><br><span class="line"><span class="bullet">-</span> [<span class="string">安装</span>](<span class="link">#安装</span>)</span><br><span class="line"><span class="bullet">-</span> [<span class="string">使用方法</span>](<span class="link">#使用方法</span>)</span><br><span class="line"></span><br><span class="line"><span class="section"># 简介</span></span><br><span class="line">这是介绍内容。</span><br><span class="line"></span><br><span class="line"><span class="section">## 安装</span></span><br><span class="line">这是安装说明。</span><br><span class="line"></span><br><span class="line"><span class="section">## 使用方法</span></span><br><span class="line">这是使用方法。</span><br></pre></td></tr></table></figure>
-<p>注意：不是所有的Markdown解析器都支持通过标题自动创建锚点链接。有些解析器可能会需要你显式地为每个标题定义一个唯一的ID，像这样：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## <span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">name</span>=<span class="string">&quot;安装&quot;</span>&gt;</span></span><span class="language-xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span>安装</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
