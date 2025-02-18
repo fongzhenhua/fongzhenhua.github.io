@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">489</span>
+          <span class="site-state-item-count">490</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -283,6 +283,159 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/08/Linux%E4%B8%AD%E7%9A%84XDG%E5%9F%BA%E5%87%86%E7%9B%AE%E5%BD%95%E8%A7%84%E8%8C%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/08/Linux%E4%B8%AD%E7%9A%84XDG%E5%9F%BA%E5%87%86%E7%9B%AE%E5%BD%95%E8%A7%84%E8%8C%83/" class="post-title-link" itemprop="url">Linux中的XDG基准目录规范</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-08 16:37:28" itemprop="dateCreated datePublished" datetime="2024-06-08T16:37:28+08:00">2024-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="介绍">介绍</h2>
+<p>各种规范指定文件和文件格式。此规范通过定义相对于哪些文件应该位于的一个或多个基本目录来定义应该查找这些文件的位置。</p>
+<h2 id="基本">基本</h2>
+<p>XDG基本目录规范基于以下概念：</p>
+<ul>
+<li>有一个用于写入特定用户数据文件的基本目录。$XDG_DATA_HOME。</li>
+<li>有一个用于写入特定用户的配置文件基本目录。$XDG_CONFIG_HOME。</li>
+<li>有一组首选的基本数据目录。$XDG_DATA_DIRS。</li>
+<li>有一组首选的基本配置目录。$XDG_CONFIG_DIRS。</li>
+<li>有一个用于写入用户特定的非必要（缓存）数据的基本目录。$XDG_CACHE_HOME。</li>
+<li>有一个用户放置特定于用户的运行时文件和其他文件对象。$XDG_RUNTIME_DIR。</li>
+</ul>
+<h2 id="环境变量">环境变量</h2>
+<table>
+<thead>
+<tr class="header">
+<th>XDG环境变量</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>$XDG_DATA_HOME</td>
+<td>$HOME/.local/share</td>
+</tr>
+<tr class="even">
+<td>$XDG_CONFIG_HOME</td>
+<td>$HOME/.config</td>
+</tr>
+<tr class="odd">
+<td>$XDG_DATA_DIRS</td>
+<td>/usr/local/share/:/usr/share/</td>
+</tr>
+<tr class="even">
+<td>$XDG_CONFIG_DIRS</td>
+<td>/etc/xdg</td>
+</tr>
+<tr class="odd">
+<td>$XDG_CACHE_HOME</td>
+<td>$HOME/.cache</td>
+</tr>
+</tbody>
+</table>
+<div class="note primary"><p><code>$XDG_RUNTIME_DIR</code>是用户特定的不重要的运行时文件和其他文件对象（例如套接字，命名管道…）存储的基本目录。该目录必须由用户拥有，并且他必须是唯一具有读写访问权限的目录。它的Unix访问模式必须是0700。</p>
+</div>
+<p>目录的生命周期必须绑定到登录用户。必须在用户首次登录时创建，如果用户完全注销，则必须删除该目录。如果用户多次登录，他应该指向同一目录，并且必须从第一次登录到他在系统上的最后一次登出时继续存在，而不是在两者之间删除。目录中的文件必须不能在重新启动或完全注销/登录循环后继续存在。</p>
+<p>该目录必须位于本地文件系统上，不与任何其他系统共享。该目录必须完全按照操作系统的标准进行。更具体地说，在类Unix操作系统上，AF_UNIX套接字，符号链接，硬链接，适当的权限，文件锁定，稀疏文件，内存映射，文件更改通知，必须支持可靠的硬链接计数，并且对文件名没有限制应该强加字符集。此目录中的文件可能需要定期清理。为确保不删除您的文件，他们应至少每6小时单调时间修改一次访问时间戳记，或者在文件上设置“粘滞”位。</p>
+<p>如果$XDG_RUNTIME_DIR未设置，应用程序应回退到具有类似功能的替换目录并打印警告消息。应用程序应使用此目录进行通信和同步，并且不应在其中放置较大的文件，因为它可能驻留在运行时内存中，并且不一定可以交换到磁盘。</p>
+<h2 id="参考规范">参考规范</h2>
+<table>
+<thead>
+<tr class="header">
+<th>文件</th>
+<th>参考规范：subdir应该为软件名</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>数据文件</td>
+<td>$datadir/subdir/filename</td>
+</tr>
+<tr class="even">
+<td>配置文件</td>
+<td>$confdir/subdir/filename</td>
+</tr>
+</tbody>
+</table>
+<p>$config默认为～/.config : /etc<br />
+如果在尝试编写文件时，目标目录不存在，则应尝试使用权限创建目标目录0700。如果目标目录已存在，则不应更改权限。应用程序应准备好处理无法写入文件的情况，因为该目录不存在且无法创建，或者出于任何其他原因。在这种情况下，它可以选择向用户呈现错误消息。</p>
+<h2 id="参考文章">参考文章</h2>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://specifications.freedesktop.org/basedir-spec/basedir-spec-0.8.html">basedir-spec-0.8</a></li>
+<li><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/XDG_Base_Directory">XDG
+Base Directory</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://wiki.deepin.org/zh/03_技术规范/02_XDG规范/XDG基本目录规范">XDG基本目录规范</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1811,92 +1964,6 @@ target="_blank" rel="noopener" href="https://www.latexstudio.net/archives/8040.h
 <figure class="highlight txt"><figcaption><span>xdg-open --help</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   xdg-open -- opens a file or URL in the user&#x27;s preferred</span><br><span class="line">   application</span><br><span class="line"></span><br><span class="line">Synopsis</span><br><span class="line"></span><br><span class="line">   xdg-open &#123; file | URL &#125;</span><br><span class="line"></span><br><span class="line">   xdg-open &#123; --help | --manual | --version &#125;</span><br><span class="line"></span><br><span class="line">Use &#x27;man xdg-open&#x27; or &#x27;xdg-open --manual&#x27; for additional info.</span><br></pre></td></tr></table></figure>
 <div class="note primary"><p>提出这个要求是因为我今天在脚本<code>xugit.sh</code>中加入了根据选项打开文件，避免每次都切换路径的麻烦。尽管有<code>z-lua</code>等路径切换插件，但是在连接<code>U盘</code>时，使用<code>ugit -l</code>选择文件再打开，更加直接。</p>
 </div>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/26/Shell%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E5%8F%AF%E9%80%89%E6%8B%A9%E8%8F%9C%E5%8D%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/05/26/Shell%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E5%8F%AF%E9%80%89%E6%8B%A9%E8%8F%9C%E5%8D%95/" class="post-title-link" itemprop="url">Shell脚本编写可选择菜单</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-05-26 16:27:03" itemprop="dateCreated datePublished" datetime="2024-05-26T16:27:03+08:00">2024-05-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>使用<code>diary.sh</code>写博客已经有近两年了，对于菜单一直没有细致的设计，这主要是因为对<code>Shell</code>理解的不够透彻。今天实现了真正意义上的可选择菜单，实现原理是：不再使用<code>clear</code>每次按键后清屏，改用指定行输出来输出菜单！这样就可以避免每按一次键就闪烁一次的不好体验，同时对于一屏的信息，当只有一二行发生变化时，整体上看很流畅：</p>
-<h2 id="运行截图展示">运行截图展示</h2>
-<figure>
-<img src="https://img2.imgtp.com/2024/05/26/0mRbEkkk.gif"
-alt="可选择菜单" />
-<figcaption aria-hidden="true">可选择菜单</figcaption>
-</figure>
-<div class="note primary"><p>可选择菜单支持<code>vim</code>的快捷键，即<code>j</code>向下，<code>k</code>向上，同时<code>J</code>向下一页，<code>K</code>向上一页.</p>
-</div>
-<h2 id="shell源代码">shell源代码</h2>
-<figure class="highlight sh"><figcaption><span>可选择菜单shell源码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br></pre></td><td class="code"><pre><span class="line">DY_FILES=($(<span class="built_in">ls</span> /home/<span class="variable">$USER</span>/))  <span class="comment">#设置用来列表输出的数组, 此处可以改为您自己的路径</span></span><br><span class="line"><span class="function"><span class="title">DY_SET_SIZE</span></span>()&#123;</span><br><span class="line">    TTY_H=$(<span class="built_in">stty</span> size|awk <span class="string">&#x27;&#123;print $1&#125;&#x27;</span>)</span><br><span class="line">    <span class="built_in">let</span> TTY_H-=2</span><br><span class="line">    TTY_W=$(<span class="built_in">stty</span> size|awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line">DY_LINE=<span class="string">&quot;-&quot;</span></span><br><span class="line"><span class="function"><span class="title">DY_MKLINE</span></span>()&#123;</span><br><span class="line">    l=0</span><br><span class="line">    <span class="keyword">while</span> [ <span class="variable">$l</span> -lt <span class="variable">$TTY_W</span> ]; <span class="keyword">do</span> </span><br><span class="line">        <span class="built_in">echo</span> -n <span class="string">&quot;<span class="variable">$DY_LINE</span>&quot;</span></span><br><span class="line">        <span class="built_in">let</span> l+=1</span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line">&#125;</span><br><span class="line">NEO_FORMAT=7    <span class="comment"># 高亮行的格式，可以自行修改</span></span><br><span class="line"><span class="comment"># 参数： 输出行，行号，数组号， 高亮行号</span></span><br><span class="line"><span class="function"><span class="title">NEO_PRINT</span></span>()&#123;</span><br><span class="line">    <span class="keyword">if</span> [[ <span class="variable">$3</span> -eq <span class="variable">$4</span> ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">&quot;\033[<span class="variable">$1</span>;1H\033[?25l\033[<span class="variable">$&#123;NEO_FORMAT&#125;</span>m[<span class="variable">$2</span>] <span class="variable">$&#123;NEO_ARR[$3-1]&#125;</span>\033[0m\033[K\033&quot;</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> -e <span class="string">&quot;\033[<span class="variable">$1</span>;1H\033[?25l[<span class="variable">$2</span>] <span class="variable">$&#123;NEO_ARR[$3-1]&#125;</span>\033[K&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 参数：$1 起始点 $2 列表长度 $3 高亮行</span></span><br><span class="line"><span class="function"><span class="title">NEO_LIA</span></span>()&#123;</span><br><span class="line">    k=0 ; i=<span class="variable">$1</span></span><br><span class="line">    <span class="keyword">while</span> [[ <span class="variable">$k</span> -lt <span class="variable">$TTY_H</span> ]]; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">let</span> k+=1</span><br><span class="line">        <span class="keyword">if</span> [ <span class="variable">$i</span> -lt -<span class="variable">$2</span> ]; <span class="keyword">then</span></span><br><span class="line">            <span class="built_in">let</span> i=<span class="variable">$i</span>+<span class="variable">$2</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">        <span class="built_in">let</span> i+=1</span><br><span class="line">        <span class="keyword">if</span> [ <span class="variable">$i</span> -gt <span class="variable">$2</span> ]; <span class="keyword">then</span></span><br><span class="line">            <span class="built_in">let</span> i=<span class="variable">$i</span>-<span class="variable">$2</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">if</span> [ <span class="variable">$i</span> -lt 1 ]; <span class="keyword">then</span></span><br><span class="line">            <span class="built_in">let</span> j=<span class="variable">$i</span>+<span class="variable">$2</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            j=<span class="variable">$i</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">        NEO_PRINT <span class="variable">$k</span> <span class="variable">$j</span> <span class="variable">$i</span> <span class="variable">$3</span></span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">NEO_SELECT</span></span>()&#123;</span><br><span class="line">    <span class="built_in">echo</span> -ne <span class="string">&quot;\r\033[<span class="variable">$&#123;NEO_FORMAT&#125;</span>m[s] 选择\033[0m &quot;</span>; <span class="built_in">echo</span> -ne <span class="string">&quot;\033[K&quot;</span> ; <span class="built_in">read</span> TLS_SNum</span><br><span class="line">    <span class="built_in">expr</span> <span class="string">&quot;<span class="variable">$TLS_SNum</span>&quot;</span> + 0 &amp;&gt; /dev/null</span><br><span class="line">    <span class="keyword">if</span> [ $? -eq 0 ]; <span class="keyword">then</span></span><br><span class="line">        <span class="keyword">if</span> [ <span class="variable">$TLS_SNum</span> -lt <span class="variable">$1</span> -o <span class="variable">$TLS_SNum</span> -gt  <span class="variable">$2</span> ]; <span class="keyword">then</span></span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;编号超出范围，请重新选择编号！&quot;</span></span><br><span class="line">            <span class="built_in">exit</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            NEO_OUT_H=<span class="variable">$TLS_SNum</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;输入非数字，请重新输入编号！&quot;</span></span><br><span class="line">        <span class="built_in">exit</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 参数： 输出行，光标所在行</span></span><br><span class="line"><span class="function"><span class="title">NEO_MENUE</span></span>()&#123;</span><br><span class="line">    <span class="built_in">let</span> r=<span class="variable">$1</span>+2</span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$NEO_SEL_ON</span> -eq 1 ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> -ne <span class="string">&quot;\033[<span class="variable">$r</span>;1H[j] 向下 [k] 向上 [s] 选择 [q] 退出 \033[<span class="variable">$&#123;NEO_FORMAT&#125;</span>m<span class="variable">$2</span>\033[0m\033[K\033[?25h&quot;</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> -ne <span class="string">&quot;\033[<span class="variable">$r</span>;1H[j] 向下 [k] 向上 [q] 退出 \033[<span class="variable">$&#123;NEO_FORMAT&#125;</span>m<span class="variable">$2</span>\033[0m\033[K\033[?25h&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">NEO_LISA</span></span>()&#123;</span><br><span class="line">    DY_SET_SIZE</span><br><span class="line">    p=<span class="variable">$1</span> ; <span class="built_in">let</span> q=<span class="variable">$p</span>+<span class="variable">$TTY_H</span>; m=<span class="variable">$3</span></span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$q</span> -gt <span class="string">&quot;<span class="variable">$&#123;#NEO_ARR[*]&#125;</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">let</span> q=<span class="variable">$q</span>-<span class="string">&quot;<span class="variable">$&#123;#NEO_ARR[*]&#125;</span>&quot;</span></span><br><span class="line">        <span class="built_in">let</span> p=<span class="variable">$p</span>-<span class="string">&quot;<span class="variable">$&#123;#NEO_ARR[*]&#125;</span>&quot;</span></span><br><span class="line">        <span class="built_in">let</span> m=<span class="variable">$m</span>-<span class="string">&quot;<span class="variable">$&#123;#NEO_ARR[*]&#125;</span>&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$p</span> -le <span class="string">&quot;-<span class="variable">$&#123;#NEO_ARR[*]&#125;</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">let</span> q=<span class="variable">$q</span>+<span class="string">&quot;<span class="variable">$&#123;#NEO_ARR[*]&#125;</span>&quot;</span></span><br><span class="line">        <span class="built_in">let</span> p=<span class="variable">$p</span>+<span class="string">&quot;<span class="variable">$&#123;#NEO_ARR[*]&#125;</span>&quot;</span></span><br><span class="line">        <span class="built_in">let</span> m=<span class="variable">$m</span>+<span class="string">&quot;<span class="variable">$&#123;#NEO_ARR[*]&#125;</span>&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    NEO_LIA <span class="variable">$p</span> <span class="variable">$2</span> <span class="variable">$m</span></span><br><span class="line">    DY_MKLINE</span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$m</span> -le 0 ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">let</span> NEO_CURRENT=<span class="variable">$m</span>+<span class="string">&quot;<span class="variable">$&#123;#NEO_ARR[*]&#125;</span>&quot;</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        NEO_CURRENT=<span class="variable">$m</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    NEO_MENUE <span class="string">&quot;<span class="variable">$TTY_H</span>&quot;</span> <span class="string">&quot;<span class="variable">$NEO_CURRENT</span>&quot;</span></span><br><span class="line">    <span class="built_in">read</span> -s -n 1 ListDo</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;<span class="variable">$ListDo</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">        j)</span><br><span class="line">            <span class="built_in">let</span> m+=1</span><br><span class="line">            <span class="keyword">if</span> [ <span class="variable">$m</span> -gt <span class="variable">$q</span> ]; <span class="keyword">then</span></span><br><span class="line">                <span class="built_in">let</span> p+=<span class="variable">$TTY_H</span></span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">            NEO_LISA <span class="variable">$p</span> <span class="variable">$2</span> <span class="variable">$m</span></span><br><span class="line">            ;;</span><br><span class="line">        J)</span><br><span class="line">            <span class="built_in">let</span> p+=<span class="variable">$TTY_H</span></span><br><span class="line">            <span class="built_in">let</span> m=<span class="variable">$p</span>+1</span><br><span class="line">            NEO_LISA <span class="variable">$p</span> <span class="variable">$2</span> <span class="variable">$m</span></span><br><span class="line">            ;;</span><br><span class="line">        k)</span><br><span class="line">            <span class="built_in">let</span> m-=1</span><br><span class="line">            <span class="keyword">if</span> [ <span class="variable">$m</span> -le <span class="variable">$p</span> ]; <span class="keyword">then</span></span><br><span class="line">                <span class="built_in">let</span> p-=<span class="variable">$TTY_H</span></span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">            NEO_LISA <span class="variable">$p</span> <span class="variable">$2</span> <span class="variable">$m</span></span><br><span class="line">            ;;</span><br><span class="line">        K)</span><br><span class="line">            <span class="built_in">let</span> m=<span class="variable">$p</span></span><br><span class="line">            <span class="built_in">let</span> p-=<span class="variable">$TTY_H</span></span><br><span class="line">            NEO_LISA <span class="variable">$p</span> <span class="variable">$2</span> <span class="variable">$m</span></span><br><span class="line">            ;;</span><br><span class="line">        <span class="string">&quot;&quot;</span>)</span><br><span class="line">            <span class="keyword">if</span> [ <span class="variable">$NEO_SEL_ON</span> -eq 1 ]; <span class="keyword">then</span></span><br><span class="line">                NEO_OUT_H=<span class="variable">$m</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="built_in">exit</span></span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">            ;;</span><br><span class="line">        s)</span><br><span class="line">            <span class="keyword">if</span> [ <span class="variable">$NEO_SEL_ON</span> -eq 1 ]; <span class="keyword">then</span></span><br><span class="line">                NEO_SELECT <span class="variable">$p</span> <span class="variable">$q</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                NEO_LISA <span class="variable">$p</span> <span class="variable">$2</span> <span class="variable">$m</span></span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">            ;;</span><br><span class="line">        q)</span><br><span class="line">            <span class="built_in">exit</span> </span><br><span class="line">            ;;</span><br><span class="line">    <span class="keyword">esac</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">NEO_LIB</span></span>()&#123;</span><br><span class="line">    k=0 ; i=<span class="variable">$1</span></span><br><span class="line">    <span class="keyword">while</span> [[ <span class="variable">$k</span> -lt <span class="variable">$2</span> ]]; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">let</span> k+=1</span><br><span class="line">        <span class="keyword">if</span> [ <span class="variable">$i</span> -lt -<span class="variable">$2</span> ]; <span class="keyword">then</span></span><br><span class="line">            <span class="built_in">let</span> i=<span class="variable">$i</span>+<span class="variable">$2</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">        <span class="built_in">let</span> i+=1</span><br><span class="line">        <span class="keyword">if</span> [ <span class="variable">$i</span> -gt <span class="variable">$2</span> ]; <span class="keyword">then</span></span><br><span class="line">            <span class="built_in">let</span> i=<span class="variable">$i</span>-<span class="variable">$2</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">if</span> [ <span class="variable">$i</span> -lt 1 ]; <span class="keyword">then</span></span><br><span class="line">            <span class="built_in">let</span> j=<span class="variable">$i</span>+<span class="variable">$2</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            j=<span class="variable">$i</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">        NEO_PRINT <span class="variable">$k</span> <span class="variable">$j</span> <span class="variable">$i</span> <span class="variable">$3</span></span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">NEO_LISB</span></span>()&#123;</span><br><span class="line">    DY_SET_SIZE</span><br><span class="line">    p=<span class="variable">$1</span> ; q=<span class="variable">$2</span> ; m=<span class="variable">$3</span></span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$m</span> -gt <span class="variable">$q</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">let</span> m=<span class="variable">$p</span>+1</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$m</span> -le <span class="variable">$p</span> ]; <span class="keyword">then</span></span><br><span class="line">        m=<span class="variable">$q</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    NEO_LIB <span class="variable">$p</span> <span class="variable">$2</span> <span class="variable">$m</span></span><br><span class="line">    DY_MKLINE</span><br><span class="line">    NEO_MENUE <span class="variable">$q</span> <span class="variable">$m</span></span><br><span class="line">    <span class="built_in">read</span> -s -n 1 ListDo</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;<span class="variable">$ListDo</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">        j)</span><br><span class="line">            <span class="built_in">let</span> m+=1</span><br><span class="line">            NEO_LISB <span class="variable">$p</span> <span class="variable">$2</span> <span class="variable">$m</span></span><br><span class="line">            ;;</span><br><span class="line">        k)</span><br><span class="line">            <span class="built_in">let</span> m-=1</span><br><span class="line">            NEO_LISB <span class="variable">$p</span> <span class="variable">$2</span> <span class="variable">$m</span></span><br><span class="line">            ;;</span><br><span class="line">        s)</span><br><span class="line">            <span class="keyword">if</span> [ <span class="variable">$NEO_SEL_ON</span> -eq 1 ]; <span class="keyword">then</span></span><br><span class="line">                NEO_SELECT <span class="variable">$p</span> <span class="variable">$q</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                NEO_LISB <span class="variable">$p</span> <span class="variable">$2</span> <span class="variable">$m</span></span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">            ;;</span><br><span class="line">        <span class="string">&quot;&quot;</span>)</span><br><span class="line">            <span class="keyword">if</span> [ <span class="variable">$NEO_SEL_ON</span> -eq 1 ]; <span class="keyword">then</span></span><br><span class="line">                NEO_OUT_H=<span class="variable">$m</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="built_in">exit</span></span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">            ;;</span><br><span class="line">        q)</span><br><span class="line">            <span class="built_in">exit</span></span><br><span class="line">            ;;</span><br><span class="line">    <span class="keyword">esac</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 参数：列出的数组， 1开启选择，0关闭选择</span></span><br><span class="line"><span class="function"><span class="title">NEO_LIST</span></span>()&#123;</span><br><span class="line">    NEO_ARR=(<span class="variable">$1</span>) ; NEO_SEL_ON=<span class="variable">$2</span></span><br><span class="line">    clear</span><br><span class="line">    DY_SET_SIZE</span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;#NEO_ARR[*]&#125;</span>&quot;</span> -gt <span class="variable">$TTY_H</span> ]; <span class="keyword">then</span></span><br><span class="line">        NEO_LISA 0 <span class="string">&quot;<span class="variable">$&#123;#NEO_ARR[*]&#125;</span>&quot;</span> 1</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        NEO_LISB 0 <span class="string">&quot;<span class="variable">$&#123;#NEO_ARR[*]&#125;</span>&quot;</span> 1</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$NEO_OUT_H</span>  <span class="comment"># 目标是获得光标所在的行</span></span><br><span class="line">&#125;</span><br><span class="line">NEO_LIST <span class="string">&quot;<span class="variable">$&#123;DY_FILES[*]&#125;</span>&quot;</span> 1  <span class="comment"># 测试程序命令</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
