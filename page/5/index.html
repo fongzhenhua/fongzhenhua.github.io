@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">487</span>
+          <span class="site-state-item-count">488</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -283,6 +283,104 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/07/Next%E4%B8%BB%E9%A2%98%E5%8D%87%E7%BA%A7%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/12/07/Next%E4%B8%BB%E9%A2%98%E5%8D%87%E7%BA%A7%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="post-title-link" itemprop="url">Next主题升级注意事项</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-12-07 11:16:02" itemprop="dateCreated datePublished" datetime="2024-12-07T11:16:02+08:00">2024-12-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="https://theme-next.js.org/">Next</a> 是一款优秀的 Hexo
+博客主题。 随时间的推移，Next 主题已经升级到了 <a
+target="_blank" rel="noopener" href="https://theme-next.js.org/next-8-21-1-released/">Next 8.21.1</a>,
+但是升级主题的时候有时候会遇到错误，比如：</p>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/CDL_LuFei/article/details/123226745">Hexo换Next主题遇到的各种问题</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-theme-next/issues/623">v8.15.0
+hexo g 报错 ENOENT: no such file or directory · Issue #623 ·
+next</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://maplerain.cc/index.php/archives/29.html">关于升级Hexo和Next主题踩过的坑</a></li>
+</ul>
+<p>造成这些问题的主要原因在于，<code>Next</code>
+主题升级必然有许多要修改的源码或增加的功能。而按官网的教程 <a
+target="_blank" rel="noopener" href="https://theme-next.js.org/docs/getting-started/#Upgrading-NexT">theme-next</a>
+的建议，升级 <code>Next</code> 主题时应当把原来的主题配置文件
+<code>themes/next/_config.yml</code> 复制到根目录，也就是和
+<code>themes</code> 一个目录，并且命名为 <code>_config.next.yml</code>,
+这样升级主题后配置文件由于没被覆盖而得以保留自定义设置。但是这造成另一个问题，假如升级前后两个版本的差异过大，导致有些功能上的删减，那原来的配置有可能就不再被新主题兼容，这样再生成博客就会导致出错。同时，由于配置文件没有被修改，新配置就不会生效，所以升级后应当将原配置文件
+<code>_config.next.yml</code> 与 <code>themes/next/_config.yml</code>
+对比，找出不同，修改成新主题的配置方式，这样就可以正常使用新系统了。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1385,134 +1483,6 @@ DNS缓存建立</a></li>
 Dnsmasq 部署 DNS 服务</a></li>
 <li><a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/XDG_Autostart">XDG
 Autostart-Wiki</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/29/Linux%E8%A7%A3%E5%86%B3%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E5%AD%A6%E6%9C%AF%E7%BD%91%E7%AB%99%E7%9A%84%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/11/29/Linux%E8%A7%A3%E5%86%B3%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E5%AD%A6%E6%9C%AF%E7%BD%91%E7%AB%99%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">Linux解决无法访问学术网站的问题</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-11-29 01:06:49" itemprop="dateCreated datePublished" datetime="2024-11-29T01:06:49+08:00">2024-11-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>科研工作中需要经常访问学术网站，然而有时候却无法访问或速度太慢，以致于论文无法下载。为解决这一问题，本文提出修改<code>/etc/hosts</code>文件的方法。</p>
-<h2 id="解决追加内容到-hosts-时无权限问题">解决追加内容到 hosts
-时无权限问题</h2>
-<h3 id="使用子命令">1. 使用子命令</h3>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> bash -c <span class="string">&quot;cat &gt;&gt; /etc/hosts&quot;</span> &lt;&lt; <span class="string">EOF</span></span><br><span class="line"><span class="string">172.67.9.71                  journals.aps.org</span></span><br><span class="line"><span class="string">104.26.5.132                 doi.org</span></span><br><span class="line"><span class="string">66.22.61.221                 iopscience.iop.org</span></span><br><span class="line"><span class="string">EOF</span></span><br></pre></td></tr></table></figure>
-<h3 id="使用tee命令">2. 使用tee命令</h3>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">tee</span> -a /etc/hosts &gt; /dev/null &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">172.67.9.71                  journals.aps.org</span></span><br><span class="line"><span class="string">104.26.5.132                 doi.org</span></span><br><span class="line"><span class="string">66.22.61.221                 iopscience.iop.org</span></span><br><span class="line"><span class="string">EOF</span></span><br></pre></td></tr></table></figure>
-<h2 id="ip-查询">Ip 查询</h2>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://zh-hans.ipshu.com/">https://zh-hans.ipshu.com</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.ip138.com/">https://www.ip138.com</a></li>
-<li><a target="_blank" rel="noopener" href="https://uutool.cn/nslookup/">https://uutool.cn</a></li>
-<li><a target="_blank" rel="noopener" href="https://ip.cn/">https://ip.cn</a></li>
-<li><a target="_blank" rel="noopener" href="https://iplark.com/search">https://iplark.com</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.ipuu.net/Home">https://www.ipuu.net</a></li>
-<li><a target="_blank" rel="noopener" href="https://ip.weirain.com/">https://ip.weirain.com/</a></li>
-</ul>
-<div class="note primary"><p>注意：选择上述任意的一个网站，然后输入你要访问的学术网站的域名，查询到对应的<code>IP</code>地址，保存下来。</p>
-</div>
-<h2 id="写入到-hosts">写入到 hosts</h2>
-<figure class="highlight sh"><figcaption><span>updatehost.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/sh</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Program  : updatehost.sh</span></span><br><span class="line"><span class="comment"># Version  : v1.1</span></span><br><span class="line"><span class="comment"># Date     : 2023-10-08</span></span><br><span class="line"><span class="comment"># Author   : fengzhenhua</span></span><br><span class="line"><span class="comment"># Email    : fengzhenhua@outlook.com</span></span><br><span class="line"><span class="comment"># CopyRight: Copyright (C) 2022-2025 FengZhenhua(冯振华)</span></span><br><span class="line"><span class="comment"># License  : Distributed under terms of the MIT license.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">OutHost=<span class="string">&quot;/etc/hosts&quot;</span></span><br><span class="line"><span class="built_in">sudo</span> curl -o <span class="variable">$OutHost</span> https://gitlab.com/ineo6/hosts/-/raw/master/next-hosts\?inline\=<span class="literal">false</span></span><br><span class="line"><span class="built_in">sudo</span> sh -c <span class="string">&quot;cat &gt;&gt; <span class="variable">$OutHost</span>&quot;</span> &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">172.67.9.71                  journals.aps.org</span></span><br><span class="line"><span class="string">104.26.5.132                 doi.org</span></span><br><span class="line"><span class="string">66.22.61.221                 iopscience.iop.org</span></span><br><span class="line"><span class="string">104.20.229.70                orcid.org</span></span><br><span class="line"><span class="string">172.64.146.247               www.researchgate.net</span></span><br><span class="line"><span class="string">151.101.3.42                 arxiv.org</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl restart NetworkManager</span><br></pre></td></tr></table></figure>
-<h2 id="windows下修改hosts">Windows下修改hosts</h2>
-<ul>
-<li>打开文本编辑器:
-在<code>管理员权限</code>下打开你选择的文本编辑器。</li>
-<li>打开hosts文件:
-在文本编辑器中，选择<code>文件</code>→<code>打开</code>，找到的<code>hosts</code>文件
-<br> <code>C:\Windows\System32\drivers\etc\hosts</code>。</li>
-<li>编辑hosts文件:
-在<code>hosts</code>文件的最后一行，添加你需要的域名和对应的IP地址。例如，你想将
-<br>
-<code>www.example.com</code>指向本地的<code>127.0.0.1</code>，那么可以在<code>hosts</code>文件中添加以下内容：
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1       www.example.com</span><br></pre></td></tr></table></figure>
-每个映射关系应该占据一行，IP地址和域名之间使用制表符或空格进行分隔。</li>
-<li>保存文件: 在编辑完成后，保存hosts文件。</li>
-<li>刷新DNS缓存
-<ul>
-<li>打开命令提示符：
-在开始菜单中搜索“命令提示符”，并以管理员权限打开。</li>
-<li>执行命令： 在命令提示符中输入以下命令，并按下回车键：
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig/flushdns</span><br></pre></td></tr></table></figure></li>
-</ul></li>
-</ul>
-<h2 id="参考文章">参考文章</h2>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.amjun.com/1628.html">Linux 执行 cat
-命令往文件写入内容提示 Permission denied</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/438447914">如何修改hosts文件？几种修改hosts文件的方法</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_55846296/article/details/131451501">一步步教你修改Windows本地hosts文件，轻松修改域名指向！</a></li>
 </ul>
 
       
