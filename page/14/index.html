@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">488</span>
+          <span class="site-state-item-count">489</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -283,6 +283,138 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/08/03/%E4%BD%BF%E7%94%A8Python%E7%94%BB%E5%88%86%E5%BD%A2%E5%9B%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/08/03/%E4%BD%BF%E7%94%A8Python%E7%94%BB%E5%88%86%E5%BD%A2%E5%9B%BE/" class="post-title-link" itemprop="url">使用Python画分形图</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-08-03 00:03:05" itemprop="dateCreated datePublished" datetime="2024-08-03T00:03:05+08:00">2024-08-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>由于不想受限于<code>MatLab</code>，于是全面转入到<code>Python</code>工作，同时绘图工具使用免费开源的<code>veusz</code>,
+在实现<code>python</code>导出数据，再使用<code>veusz</code>绘图时，第一步就是使用<code>python</code>正确的绘图，而分形图就是练习画这类图的绝佳素材。</p>
+<h2 id="koch曲线">Koch曲线</h2>
+<h3 id="代码">代码</h3>
+<figure class="highlight python"><figcaption><span>Koch</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line"></span><br><span class="line">Division = <span class="number">3.0</span> </span><br><span class="line">DirectionAangle = [(<span class="string">&#x27;left&#x27;</span>,<span class="number">60</span>),(<span class="string">&#x27;right&#x27;</span>,<span class="number">120</span>),(<span class="string">&#x27;left&#x27;</span>,<span class="number">60</span>)]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">call</span>(<span class="params">name</span>):</span><br><span class="line">    <span class="keyword">if</span> name == <span class="string">&#x27;left&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> turtle.left</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> turtle.right</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">koch</span>(<span class="params">n, length</span>):</span><br><span class="line">    <span class="keyword">if</span> n==<span class="number">0</span>:</span><br><span class="line">        turtle.forward(length)   </span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">for</span> DA <span class="keyword">in</span> DirectionAangle:</span><br><span class="line">            koch(n-<span class="number">1</span>,length/Division)</span><br><span class="line">            call(DA[<span class="number">0</span>])(DA[<span class="number">1</span>])</span><br><span class="line">        koch(n-<span class="number">1</span>,length/Division)   </span><br><span class="line">            </span><br><span class="line">koch(n=<span class="number">4</span>, length=<span class="number">400</span>)</span><br><span class="line">turtle.done()        </span><br></pre></td></tr></table></figure>
+<h3 id="运行结果">运行结果</h3>
+<figure>
+<img src="http://imgos.cn/2024/08/03/66ad037f9fd02.png" alt="koch" />
+<figcaption aria-hidden="true">koch</figcaption>
+</figure>
+<h2 id="julia-集">Julia 集</h2>
+<h3 id="代码-1">代码</h3>
+<figure class="highlight python"><figcaption><span>Julia</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plot</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">p=<span class="number">0.45</span> <span class="comment">#初始值c的实部</span></span><br><span class="line">q=-<span class="number">0.1428</span> <span class="comment">#初始值c的虚部</span></span><br><span class="line">N=<span class="number">800</span> <span class="comment">#最大迭代次数</span></span><br><span class="line">M=<span class="number">100</span> <span class="comment">#迭代区域的界值</span></span><br><span class="line">a=<span class="number">3.0</span> <span class="comment">#绘制图的横轴大小</span></span><br><span class="line">b=<span class="number">3.0</span> <span class="comment">#绘制图的纵轴大小</span></span><br><span class="line">step=<span class="number">0.005</span> <span class="comment">#绘制点的步长</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">iterate</span>(<span class="params">z,N,M</span>):</span><br><span class="line">    z=z*z+c</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">abs</span>(z)&gt;M:</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        z=z*z+c</span><br><span class="line">    <span class="keyword">return</span> N</span><br><span class="line"></span><br><span class="line">c=p+q*<span class="number">1j</span></span><br><span class="line">i=np.arange(-a/<span class="number">2.0</span>,a/<span class="number">2.0</span>,step)</span><br><span class="line">j=np.arange(b/<span class="number">2.0</span>,-b/<span class="number">2.0</span>,-step)</span><br><span class="line">I,J=np.meshgrid(i, j)</span><br><span class="line">ufunc=np.frompyfunc(iterate,<span class="number">3</span>,<span class="number">1</span>)</span><br><span class="line">Z=ufunc(I+<span class="number">1j</span>*J,N,M).astype(np.float64)</span><br><span class="line">plot.imshow(Z,extent=(-a/<span class="number">2.0</span>,a/<span class="number">2.0</span>,-b/<span class="number">2</span>,b/<span class="number">2.0</span>))</span><br><span class="line">cb = plot.colorbar(orientation=<span class="string">&#x27;vertical&#x27;</span>,shrink=<span class="number">1</span>)</span><br><span class="line">cb.set_label(<span class="string">&#x27;iteration counts&#x27;</span>)</span><br><span class="line">plot.show()</span><br></pre></td></tr></table></figure>
+<h3 id="运行结果-1">运行结果</h3>
+<figure>
+<img src="http://imgos.cn/2024/08/03/66ad043fc8b4f.png" alt="Julia集" />
+<figcaption aria-hidden="true">Julia集</figcaption>
+</figure>
+<h2 id="mandelbrot-集">Mandelbrot 集</h2>
+<h3 id="代码-2">代码</h3>
+<figure class="highlight python"><figcaption><span>Mandelbrot</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plot </span><br><span class="line"></span><br><span class="line">x0=<span class="number">0</span> <span class="comment">#初始值z0的x0</span></span><br><span class="line">y0=<span class="number">0</span> <span class="comment">#初始值z0的y0</span></span><br><span class="line">zoom=<span class="number">1.0</span> <span class="comment">#放大倍率</span></span><br><span class="line">N=<span class="number">100</span> <span class="comment">#最大迭代次数</span></span><br><span class="line">R=<span class="number">2</span> <span class="comment">#迭代半径</span></span><br><span class="line">a=<span class="number">4.0</span> <span class="comment">#绘制图的横轴大小</span></span><br><span class="line">b=<span class="number">3.0</span> <span class="comment">#绘制图的纵轴大小</span></span><br><span class="line">step=<span class="number">0.005</span> <span class="comment">#绘制点的步长</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">iterate</span>(<span class="params">c,N,R</span>):</span><br><span class="line">    z=c</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">abs</span>(z)&gt;R: </span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        z = z*z+c</span><br><span class="line">    <span class="keyword">return</span> N</span><br><span class="line"></span><br><span class="line">x=np.arange(-a/(<span class="number">2.0</span>*zoom)+x0,a/(<span class="number">2.0</span>*zoom)+x0,step)</span><br><span class="line">y=np.arange(b/(<span class="number">2.0</span>*zoom)+y0,-b/(<span class="number">2.0</span>*zoom)+y0,-step)</span><br><span class="line">cx,cy=np.meshgrid(x, y)</span><br><span class="line">c = cx + cy*<span class="number">1j</span></span><br><span class="line">ufunc=np.frompyfunc(iterate,<span class="number">3</span>,<span class="number">1</span>)</span><br><span class="line">Z=ufunc(c,N,R).astype(np.float64)</span><br><span class="line">plot.imshow(Z,extent=(-a/<span class="number">2.0</span>,a/<span class="number">2.0</span>,-b/<span class="number">2</span>,b/<span class="number">2.0</span>))</span><br><span class="line">cb = plot.colorbar(orientation=<span class="string">&#x27;vertical&#x27;</span>,shrink=<span class="number">1</span>)</span><br><span class="line">cb.set_label(<span class="string">&#x27;iteration counts&#x27;</span>)</span><br><span class="line">plot.show()</span><br></pre></td></tr></table></figure>
+<h3 id="运行结果-2">运行结果</h3>
+<figure>
+<img src="http://imgos.cn/2024/08/03/66ad043fac140.png"
+alt="Mandelbrot 集" />
+<figcaption aria-hidden="true">Mandelbrot 集</figcaption>
+</figure>
+<h2 id="说明">说明</h2>
+<p>本文参考文章： <a
+target="_blank" rel="noopener" href="https://www.chenshaowen.com/blog/drawing-2d-fractal-graph-using-python.html">使用
+Python 绘制分形: Koch 曲线、Julia 集、Mandelbrot 集</a>,
+文章发布于2017年1月25日， 比较早。其使用的是<code>python2</code>,
+而当前使用更加先进的<code>python3</code>更加合理，于是切换为<code>python3</code>代码后，出现几处错误，本文逐一更正。</p>
+<h3 id="python3-xrange-报错">python3 xrange 报错</h3>
+<p>由于<code>python3</code>取消了在<code>python2</code>中定义的<code>xrange</code>函数，取而代之的是<code>range</code>,
+于是在修改后的代码中改<code>xrange</code>为<code>range</code>.</p>
+<h3
+id="attributeerror-module-numpy-has-no-attribute-float.">AttributeError:
+module 'numpy' has no attribute 'float'.</h3>
+<p>直接运行程序时，会提示：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">AttributeError: module <span class="string">&#x27;numpy&#x27;</span> has no attribute <span class="string">&#x27;float&#x27;</span>.</span><br><span class="line">`np.float` was a deprecated <span class="built_in">alias</span> <span class="keyword">for</span> the <span class="built_in">builtin</span> `<span class="built_in">float</span>`. To avoid this error <span class="keyword">in</span> existing code, use `<span class="built_in">float</span>` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar <span class="built_in">type</span>, use `np.float64` here.</span><br><span class="line">The aliases was originally deprecated <span class="keyword">in</span> NumPy 1.20; <span class="keyword">for</span> more details and guidance see the original release note at:</span><br><span class="line">    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations. Did you mean: <span class="string">&#x27;float16&#x27;</span>?</span><br></pre></td></tr></table></figure>
+<p>于是根据提示：将<code>np.float</code>修改为<code>np.float64</code>解决问题。</p>
+<h3
+id="importerror-libtk8.6.so-cannot-open-shared-object-file-no-such-file-or-directory">ImportError:
+libtk8.6.so: cannot open shared object file: No such file or
+directory</h3>
+<p>造成这个问题的原因是系统没有安装程序<code>tk</code>,安装即可解决问题：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S tk</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p><code>Tkinter</code> 模块(<code>Tk</code> 接口)是 <code>Python</code>
+的标准 <code>Tk GUI</code> 工具包的接口 <code>.Tk</code> 和
+<code>Tkinter</code> 可以在大多数的 <code>Unix</code>
+平台下使用,同样可以应用在 <code>Windows</code> 和 <code>Macintosh</code>
+系统里。<code>Tk8.0</code> 的后续版本可以实现本地窗口风格,
+并良好地运行在绝大多数平台中。详情参考：<a
+target="_blank" rel="noopener" href="https://www.runoob.com/python/python-gui-tkinter.html">Python
+GUI编程(Tkinter)</a></p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1420,108 +1552,6 @@ target="_blank" rel="noopener" href="https://www.modb.pro/db/135704">告别Origi
 </ul>
 <p>通过上述技巧和 <code>veusz</code>
 工具，可以轻松地制作出高质量的科学图表，在科学研究和学术交流中发挥重要的作用。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/27/Matplotlib%E4%BB%8E%E5%9B%BE%E4%B8%AD%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/07/27/Matplotlib%E4%BB%8E%E5%9B%BE%E4%B8%AD%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE/" class="post-title-link" itemprop="url">Matplotlib从图中提取数据</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-07-27 00:04:00" itemprop="dateCreated datePublished" datetime="2024-07-27T00:04:00+08:00">2024-07-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在数据可视化领域，Matplotlib是Python中最常用的绘图库之一。既然它被用于数据可视化，那么从图中提取数据也是Matplotlib的一个重要应用场景。在本文中，我们将介绍如何使用Matplotlib从图中提取数据并利用这些数据进行进一步的处理。</p>
-<h2 id="一个简单实例">一个简单实例</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成500个0~1之间的随机数作为x轴数据</span></span><br><span class="line">x = np.random.rand(<span class="number">500</span>)</span><br><span class="line"><span class="comment"># 生成与x轴数据数量相同的随机数作为y轴数据</span></span><br><span class="line">y = np.random.rand(<span class="number">500</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制散点图</span></span><br><span class="line">plt.scatter(x, y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置横轴标签和纵轴标签</span></span><br><span class="line">plt.xlabel(<span class="string">&quot;x&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;y&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置图表的标题</span></span><br><span class="line">plt.title(<span class="string">&quot;Scatter Plot&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示图表</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<div class="note primary"><p>上述代码通过<code>numpy</code>库生成了<code>500</code>个<code>0~1</code>之间的随机数，并将这些随机数分别作为<code>x轴</code>和<code>y轴</code>的数据，最终绘制出了一个散点图。其中，<code>plt.scatter()</code>函数是用于绘制散点图的函数，<code>plt.xlabel()</code>和<code>plt.ylabel()</code>函数是用于设置横轴标签和纵轴标签的函数，<code>plt.title()</code>函数是用于设置图表标题的函数。</p>
-</div>
-<h2 id="如何从matplotlib图中提取数据">如何从Matplotlib图中提取数据</h2>
-<p>在Matplotlib中，要提取图中的数据，最常见的方式是获取图中的Artist对象，然后从这些对象中获取数据。Artist是所有绘图元素的基类，包括坐标轴、文字、点、线等。因此，从Artist对象中获取数据可以获取到图表中所有的信息。</p>
-<h3 id="获取散点图的数据">获取散点图的数据</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成500个0~1之间的随机数作为x轴数据</span></span><br><span class="line">x = np.random.rand(<span class="number">500</span>)</span><br><span class="line"><span class="comment"># 生成与x轴数据数量相同的随机数作为y轴数据</span></span><br><span class="line">y = np.random.rand(<span class="number">500</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制散点图</span></span><br><span class="line">plt.scatter(x, y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取散点图的Artist对象</span></span><br><span class="line">scatter_plot = plt.gca().collections[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印每个散点的x轴坐标和y轴坐标</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(scatter_plot._offsets)):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x: &quot;</span>, scatter_plot._offsets[i][<span class="number">0</span>], <span class="string">&quot;y: &quot;</span>, scatter_plot._offsets[i][<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
-<div class="note primary"><p>上述代码中，<code>plt.gca()</code>函数返回当前的<code>Axes</code>对象，我们通过对这个对象调用<code>collections</code>属性获取到了散点图的<code>Artist</code>对象。获取到这个对象后，我们可以从<code>_offsets</code>属性中获取到每个散点的坐标信息。上述代码中使用了一个<code>for</code>循环打印出了每个散点的<code>x轴</code>坐标和<code>y轴</code>坐标。</p>
-</div>
-<h3 id="获取拆线图数据">获取拆线图数据</h3>
-<p>折线图是绘制曲线最常见的方式之一。在<code>Matplotlib</code>中，使用<code>plt.plot()</code>函数可以方便地绘制折线图。为了演示从折线图中获取数据的方法，我们来生成一个简单的折线图。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成0~10之间的100个数作为x轴数据</span></span><br><span class="line">x = np.linspace(<span class="number">0</span>, <span class="number">10</span>, <span class="number">100</span>)</span><br><span class="line"><span class="comment"># 生成sin函数在0~10之间的值作为y轴数据</span></span><br><span class="line">y = np.sin(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制折线图</span></span><br><span class="line">plt.plot(x, y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置横轴标签和纵轴标签</span></span><br><span class="line">plt.xlabel(<span class="string">&quot;x&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;y&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置图表的标题</span></span><br><span class="line">plt.title(<span class="string">&quot;Line Plot&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示图表</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>在得到了折线图之后，我们可以通过如下代码从折线图中获取数据。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成0~10之间的100个数作为x轴数据</span></span><br><span class="line">x = np.linspace(<span class="number">0</span>, <span class="number">10</span>, <span class="number">100</span>)</span><br><span class="line"><span class="comment"># 生成sin函数在0~10之间的值作为y轴数据</span></span><br><span class="line">y = np.sin(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制折线图</span></span><br><span class="line">plt.plot(x, y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取折线的Artist对象</span></span><br><span class="line">line_plot = plt.gca().lines[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印每个点的x轴坐标和y轴坐标</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(line_plot.get_xdata())):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x: &quot;</span>, line_plot.get_xdata()[i], <span class="string">&quot;y: &quot;</span>, line_plot.get_ydata()[i])</span><br></pre></td></tr></table></figure>
-<div class="note primary"><p>在上述代码中，<code>plt.gca()</code>函数获取到当前的<code>Axes</code>对象，我们通过对这个对象调用<code>lines</code>属性获取到了折线图的<code>Artist</code>对象。获取到这个对象后，我们可以通过<code>get_xdata()</code>和<code>get_ydata()</code>方法获取到折线图上每个点的<code>x轴</code>坐标和<code>y轴</code>坐标。上述代码中使用了一个<code>for循环</code>将获取到的<code>x轴</code>坐标和<code>y轴</code>坐标打印出来。</p>
-</div>
-<h3 id="取柱状图数据">取柱状图数据</h3>
-<p>柱状图是绘制分布最常见的方式之一。在<code>Matplotlib</code>中，使用<code>plt.bar()</code>函数可以方便地绘制柱状图。为了演示从柱状图中获取数据的方法，我们来生成一个简单的柱状图。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成5个0~1之间的随机数作为x轴数据</span></span><br><span class="line">x = np.random.rand(<span class="number">5</span>)</span><br><span class="line"><span class="comment"># 生成5个0~1之间的随机数作为y轴数据</span></span><br><span class="line">y = np.random.rand(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制柱状图</span></span><br><span class="line">plt.bar(x, y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置横轴标签和纵轴标签</span></span><br><span class="line">plt.xlabel(<span class="string">&quot;x&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;y&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置图表的标题</span></span><br><span class="line">plt.title(<span class="string">&quot;Bar Plot&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示图表</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>在得到了柱状图之后，我们可以通过如下代码从柱状图中获取数据。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成5个0~1之间的随机数作为x轴数据</span></span><br><span class="line">x = np.random.rand(<span class="number">5</span>)</span><br><span class="line"><span class="comment"># 生成5个0~1之间的随机数作为y轴数据</span></span><br><span class="line">y = np.random.rand(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制柱状图</span></span><br><span class="line">plt.bar(x, y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取柱状图的Artist对象</span></span><br><span class="line">bar_plot = plt.gca().patches</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印每个柱子的x轴坐标和y轴坐标</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(bar_plot)):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x: &quot;</span>, bar_plot[i].get_x(), <span class="string">&quot;y: &quot;</span>, bar_plot[i].get_height())</span><br></pre></td></tr></table></figure>
-<div class="note primary"><p>在上述代码中，<code>plt.gca()</code>函数获取到当前的<code>Axes</code>对象，我们通过对这个对象调用<code>patches</code>属性获取到了柱状图的<code>Artist</code>对象。获取到这个对象后，我们可以通过<code>get_x()</code>和<code>get_height()</code>方法获取到柱状图的每个柱子的<code>x轴</code>坐标和<code>y轴</code>坐标。上述代码中使用了一个<code>for循环</code>将获取到的<code>x轴</code>坐标和<code>y轴</code>坐标打印出来。</p>
-</div>
-<h2 id="总结">总结</h2>
-<p>本文介绍了如何使用<code>Matplotlib</code>从图中提取数据的方法，包括散点图、折线图和柱状图的例子。通过这些例子，我们可以发现从<code>Matplotlib</code>图中获取数据的办法都是类似的，都是获取到图中的<code>Artist</code>对象，然后从这些对象中获取需要的数据。在实际使用中，我们还可以通过定制<code>Artist</code>对象来控制绘图过程，更好地实现我们的数据可视化需求。</p>
 
       
     </div>

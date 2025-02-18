@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">488</span>
+          <span class="site-state-item-count">489</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -283,6 +283,157 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/08/Linux%E9%98%B2%E6%AD%A2%E8%AF%AF%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/08/Linux%E9%98%B2%E6%AD%A2%E8%AF%AF%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95/" class="post-title-link" itemprop="url">Linux防止误删除文件或目录</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-08 12:41:34" itemprop="dateCreated datePublished" datetime="2024-05-08T12:41:34+08:00">2024-05-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>为了防止在 Linux
+系统中意外删除一些重要文件或目录，除了必要的备份之外，还有一个好方法，就是使用<code>chattr</code>命令。</p>
+<h3 id="chattrchange-attribute命令"><strong>chattr（Change
+Attribute）命令</strong></h3>
+<p>在类 Unix
+等发行版中，该命令能够有效防止文件和目录被意外的删除或修改。file 文件在
+Linux 中被描述为一个数据结构，chattr 命令在大多数现代 Linux
+操作系统中是可用的，可以修改file属性，一旦定义文件的隐藏属性，那么该文件的拥有者和
+root 用户也无权操作该文件，只能解除文件的隐藏属性。</p>
+<h3 id="命令语法"><strong>命令语法</strong></h3>
+<p><code>chattr [operator] [switch] [file]</code></p>
+<p>operator 具有如下操作符：</p>
+<ul>
+<li>操作符 <code>+</code>，追加指定属性到文件已存在属性中</li>
+<li>操作符<code>-</code>， 删除指定属性</li>
+<li>操作符<code>=</code>，直接设置文件属性为指定属性</li>
+</ul>
+<h3 id="switch-常用属性指令如下"><strong>switch
+常用属性指令如下</strong></h3>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a：让文件或目录仅供附加用途；</span><br><span class="line">b：不更新文件或目录的最后存取时间；</span><br><span class="line">c：将文件或目录压缩后存放；</span><br><span class="line">d：将文件或目录排除在倾倒操作之外；</span><br><span class="line">i：不得任意更动文件或目录；</span><br><span class="line">s：保密性删除文件或目录；</span><br><span class="line">S：即时更新文件或目录；</span><br><span class="line">u：预防意外删除。</span><br></pre></td></tr></table></figure>
+<h3 id="其它参数"><strong>其它参数</strong></h3>
+<ul>
+<li>-R：递归处理，将指令目录下的所有文件及子目录一并处理；</li>
+<li>-v<版本编号>：设置文件或目录版本；</li>
+<li>-V：显示指令执行过程</li>
+</ul>
+<h3
+id="设置文件不能被改名移动删除增删数据"><strong>设置文件不能被改名,移动删除,增删数据</strong></h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">lsattr rumenz.txt </span><br><span class="line">---------------- rumenz.txt</span><br><span class="line"></span><br><span class="line">chattr +i rumenz.txt</span><br><span class="line">lsattr rumenz.txt </span><br><span class="line">----i----------- rumenz.txt</span><br></pre></td></tr></table></figure>
+<h3 id="尝试修改文件"><strong>尝试修改文件</strong></h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;rumenz.com&quot;</span> rumenz.txt</span><br><span class="line">-bash: rumenz.txt: Permission denied</span><br></pre></td></tr></table></figure>
+<p>提示没有权限</p>
+<h3 id="删除特殊i权限"><strong>删除特殊<code>i</code>权限</strong></h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr -i rumenz.txt</span><br></pre></td></tr></table></figure>
+<h3
+id="设置目录不能建立移动和删除文件"><strong>设置目录不能建立,移动和删除文件</strong></h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> rumenz &amp;&amp; <span class="built_in">touch</span> rumenz/1.txt</span><br><span class="line">tree </span><br><span class="line">.</span><br><span class="line">└── rumenz</span><br><span class="line">    └── 1.txt</span><br><span class="line">lsattr rumenz/</span><br><span class="line">---------------- rumenz/1.txt</span><br><span class="line">chattr +i -R rumenz/</span><br><span class="line">lsattr rumenz/</span><br><span class="line">----i----------- rumenz/1.txt</span><br></pre></td></tr></table></figure>
+<h3
+id="在rumenz目录下创建目录"><strong>在<code>rumenz</code>目录下创建目录</strong></h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> rumenz/one</span><br><span class="line"><span class="built_in">mkdir</span>: cannot create directory ‘rumenz/one’: Permission denied</span><br></pre></td></tr></table></figure>
+<p>提示权限不足</p>
+<h3
+id="在rumenz1.txt文件中添加数据"><strong>在<code>rumenz/1.txt</code>文件中添加数据</strong></h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;rumenz.com&quot;</span> rumenz/1.txt </span><br><span class="line">-bash: rumenz/1.txt: Permission denied</span><br></pre></td></tr></table></figure>
+<h3
+id="删除特殊i权限-1"><strong>删除特殊<code>i</code>权限</strong></h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr -i -R rumenz</span><br></pre></td></tr></table></figure>
+<h3
+id="设置文件只能添加数据不能修改删除移动该文件"><strong>设置文件只能添加数据,不能修改,删除,移动该文件</strong></h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lsattr rumenz.txt</span><br><span class="line">---------------- rumenz.txt</span><br><span class="line">chattr +a rumenz.txt</span><br><span class="line">lsattr rumenz.txt</span><br><span class="line">-----a---------- rumenz.txt</span><br></pre></td></tr></table></figure>
+<h3
+id="修改rumenz.txt文件内容"><strong>修改rumenz.txt文件内容</strong></h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;rumenz.com&quot;</span> rumenz.txt</span><br><span class="line">-bash: rumenz.txt: Operation not permitted</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;rumenz.com&quot;</span> &gt;rumenz.txt</span><br></pre></td></tr></table></figure>
+<p>修改覆盖<code>rumenz.txt</code>文件内容不行,向后追加可以。</p>
+<h3 id="修改文件名"><strong>修改文件名</strong></h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> rumenz.txt one.txt</span><br><span class="line"><span class="built_in">mv</span>: cannot move ‘rumenz.txt’ to ‘one.txt’: Operation not permitted</span><br></pre></td></tr></table></figure>
+<p>提示权限不足</p>
+<h3
+id="设置rumenz目录下只能添加目录文件但是不能对里面的文件夹文件修改移动删除"><strong>设置<code>rumenz</code>目录下只能添加目录,文件,但是不能对里面的文件夹,文件修改,移动,删除。</strong></h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chattr +a -R rumenz</span><br><span class="line">lsattr rumenz/</span><br><span class="line">-----a---------- rumenz/1.txt</span><br></pre></td></tr></table></figure>
+<h3
+id="在rumenz目录下创建one"><strong>在<code>rumenz</code>目录下创建<code>one</code></strong></h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> rumenz/one</span><br></pre></td></tr></table></figure>
+<h3
+id="将rumenzone目录重命名"><strong>将<code>rumenz/one</code>目录重命名</strong></h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> rumenz/one rumenz/tow</span><br><span class="line"><span class="built_in">mv</span>: cannot move ‘rumenz/one’ to ‘rumenz/tow’: Operation not permitted</span><br></pre></td></tr></table></figure>
+<h3
+id="在rumenz目录下创建文件"><strong>在<code>rumenz</code>目录下创建文件</strong></h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> rumenz/3.txt</span><br><span class="line"><span class="built_in">ls</span> rumenz/</span><br><span class="line">1.txt  3.txt  one</span><br></pre></td></tr></table></figure>
+<h3
+id="不能删除rumenz3.txt文件"><strong>不能删除<code>rumenz/3.txt</code>文件</strong></h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf rumenz/3.txt </span><br><span class="line"><span class="built_in">rm</span>: cannot remove ‘rumenz/3.txt’: Operation not permitted</span><br></pre></td></tr></table></figure>
+<p>不能被删除</p>
+<h3
+id="可以修改rumenz3.txt文件内容"><strong>可以修改<code>rumenz/3.txt</code>文件内容</strong></h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;rumenz.com&quot;</span> rumenz/3.txt</span><br><span class="line"><span class="built_in">cat</span> rumenz/3.txt </span><br><span class="line">rumenz.com</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1361,91 +1512,6 @@ trash-cli。</p>
 <li><p>被移动到回收站的文件在哪？从 home 分区移动到回收站的文件在这：
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.local/share/Trash/</span><br></pre></td></tr></table></figure></p></li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/23/Linux%E4%B8%8B%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%88%B0%E5%9B%9E%E6%94%B6%E7%AB%99/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/04/23/Linux%E4%B8%8B%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%88%B0%E5%9B%9E%E6%94%B6%E7%AB%99/" class="post-title-link" itemprop="url">Linux下删除文件到回收站</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-04-23 20:43:48" itemprop="dateCreated datePublished" datetime="2024-04-23T20:43:48+08:00">2024-04-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <ul>
-<li><p>删除文件<code>test.tex</code>, 直接命令输入
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> -t ~/.local/share/Trash/files --backup=t test.tex</span><br></pre></td></tr></table></figure></p></li>
-<li><p>在<code>shell</code>中取别名 <figure class="highlight sh"><figcaption><span>~/.zshrc 或 ~/.bashrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> del=<span class="string">&#x27;mv -t ~/.local/share/Trash/files --backup=t&#x27;</span></span><br></pre></td></tr></table></figure></p></li>
-<li><p>使用rl命令查看回收站的内容<br />
-<figure class="highlight sh"><figcaption><span>~/.zshrc 或 ~/.bashrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> rl=<span class="string">&#x27;ls ~/.local/share/Trash/files&#x27;</span></span><br><span class="line"><span class="built_in">alias</span> ur=undelfile</span><br><span class="line"><span class="function"><span class="title">undelfile</span></span>()</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">mv</span> -i ~/.local/share/Trash/files/<span class="variable">$@</span> ./</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
-<li><p>使之立刻生效 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure></p></li>
-</ul>
-<div class="note primary"><p>注意：文件<code>~/.zshrc</code>针对<code>zsh</code>配置，<code>~/.bashrc</code>针对<code>bash</code>配置。</p>
-</div>
 
       
     </div>
