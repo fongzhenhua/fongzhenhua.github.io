@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">487</span>
+          <span class="site-state-item-count">488</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -283,6 +283,102 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/08/%E8%A7%A3%E5%86%B3ArchLinux%E4%BD%BF%E7%94%A8yay%E6%88%96paru%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E6%97%B6%E4%BB%8EGithub%E4%B8%8B%E8%BD%BD%E6%85%A2%E6%88%96%E4%B8%8D%E5%8F%AF%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/10/08/%E8%A7%A3%E5%86%B3ArchLinux%E4%BD%BF%E7%94%A8yay%E6%88%96paru%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E6%97%B6%E4%BB%8EGithub%E4%B8%8B%E8%BD%BD%E6%85%A2%E6%88%96%E4%B8%8D%E5%8F%AF%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">解决ArchLinux使用yay或paru安装软件时从Github下载慢或不可下载的问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-10-08 21:27:33" itemprop="dateCreated datePublished" datetime="2023-10-08T21:27:33+08:00">2023-10-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>2023年10月08日星期日晴北京市北京师范大学,
+今天有点心烦，决定解决使用<code>paru</code>安装软件时，遇到在github下载软件时不能下载的问题。虽然没有成功，但是感觉思路正确，暂时先记录下来。</p>
+<div class="note success"><p>2023年11月27日经过研究彻底解决问题，重写了脚本，找到了原来问题的<code>bug</code>,
+经测试成功安装<code>小白羊版阿里云盘</code>。</p>
+</div>
+<h1 id="成功解决问题脚本">成功解决问题脚本</h1>
+<p>2023年10月20日星期五晴北京市北京师范大学,成功解决问题，自今天起不仅解决了<code>vim</code>,
+<code>neovim</code>的插件安装升级问题，也解决了<code>paru</code>安装软件不能下载<code>https://github.com</code>源的问题，对于<code>ArchLinux</code>的研究至此告一段落，可以正常的在<code>ArchLinux</code>上安装及处理各种软件问题。直接给出解决问题的脚本文件：</p>
+<h2 id="自动配置脚本iparu.sh">自动配置脚本iparu.sh</h2>
+<ul>
+<li><label style="color:blue">2023-11-27 13:58
+更新脚本，切实可用！</label></li>
+</ul>
+<figure class="highlight sh"><figcaption><span>iparu.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/sh</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 项目：iparu.sh</span></span><br><span class="line"><span class="comment"># 版本：V1.1</span></span><br><span class="line"><span class="comment"># 功能：解决paru 或yay 无法从https://github.com下载资源的问题</span></span><br><span class="line"><span class="comment"># 注意：脚本ParuAxel重新将https://github.com 定义到了镜像网址，如果失效请打开ParuAxel脚本更换可行的镜像</span></span><br><span class="line"><span class="comment"># 历史：2023-11-27 正式解决问题</span></span><br><span class="line"><span class="comment"># Copyright (C) 2023 feng &lt;feng@arch&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Distributed under terms of the MIT license.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 安装多线程下载工具axel</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -S --needed --noconfirm axel &amp;&gt; /dev/null</span><br><span class="line"><span class="comment"># 修改配置文件</span></span><br><span class="line"><span class="built_in">sudo</span> curl -o /etc/makepkg.conf https://gitlab.com/fengzhenhua/script/-/raw/main/makepkg.conf\?inline\=<span class="literal">false</span></span><br><span class="line"><span class="comment"># 安装修改后的下载脚本ParuAxel</span></span><br><span class="line"><span class="built_in">sudo</span> curl -o /usr/bin/ParuAxel https://gitlab.com/fengzhenhua/script/-/raw/main/ParuAxel.sh\?inline\=<span class="literal">false</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> 755 /usr/bin/ParuAxel</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;ParuAxel 安装成功，paru配置完毕 !! &quot;</span></span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/10/08/%E8%A7%A3%E5%86%B3ArchLinux%E4%BD%BF%E7%94%A8yay%E6%88%96paru%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E6%97%B6%E4%BB%8EGithub%E4%B8%8B%E8%BD%BD%E6%85%A2%E6%88%96%E4%B8%8D%E5%8F%AF%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%97%AE%E9%A2%98/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1178,92 +1274,6 @@ target="_blank" rel="noopener" href="https://fengzhenhua.gitlab.io/2023/10/08/�
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/09/08/Aur%E5%8A%A9%E6%89%8BParu/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/12/python%E7%94%BB%E5%9B%BE%E9%A2%9C%E8%89%B2%E5%A4%A7%E5%85%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/12/python%E7%94%BB%E5%9B%BE%E9%A2%9C%E8%89%B2%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">python画图颜色大全</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-08-12 11:54:31" itemprop="dateCreated datePublished" datetime="2023-08-12T11:54:31+08:00">2023-08-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>2023年08月12日星期六阴北京市北京师范大学,
-离京前发一篇文章，以方便后面工作的需要。</p>
-<h2 id="绘图线型">绘图线型</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;.&#x27;</span>       point marker</span><br><span class="line"><span class="string">&#x27;,&#x27;</span>       pixel marker</span><br><span class="line"><span class="string">&#x27;o&#x27;</span>       circle marker</span><br><span class="line"><span class="string">&#x27;v&#x27;</span>       triangle_down marker</span><br><span class="line"><span class="string">&#x27;^&#x27;</span>       triangle_up marker</span><br><span class="line"><span class="string">&#x27;&lt;&#x27;</span>       triangle_left marker</span><br><span class="line"><span class="string">&#x27;&gt;&#x27;</span>       triangle_right marker</span><br><span class="line"><span class="string">&#x27;1&#x27;</span>       tri_down marker</span><br><span class="line"><span class="string">&#x27;2&#x27;</span>       tri_up marker</span><br><span class="line"><span class="string">&#x27;3&#x27;</span>       tri_left marker</span><br><span class="line"><span class="string">&#x27;4&#x27;</span>       tri_right marker</span><br><span class="line"><span class="string">&#x27;s&#x27;</span>       square marker</span><br><span class="line"><span class="string">&#x27;p&#x27;</span>       pentagon marker</span><br><span class="line"><span class="string">&#x27;*&#x27;</span>       star marker</span><br><span class="line"><span class="string">&#x27;h&#x27;</span>       hexagon1 marker</span><br><span class="line"><span class="string">&#x27;H&#x27;</span>       hexagon2 marker</span><br><span class="line"><span class="string">&#x27;+&#x27;</span>       plus marker</span><br><span class="line"><span class="string">&#x27;x&#x27;</span>       x marker</span><br><span class="line"><span class="string">&#x27;D&#x27;</span>       diamond marker</span><br><span class="line"><span class="string">&#x27;d&#x27;</span>       thin_diamond marker</span><br><span class="line"><span class="string">&#x27;|&#x27;</span>       vline marker</span><br><span class="line"><span class="string">&#x27;_&#x27;</span>       hline marker</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/08/12/python%E7%94%BB%E5%9B%BE%E9%A2%9C%E8%89%B2%E5%A4%A7%E5%85%A8/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
