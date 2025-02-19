@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">491</span>
+          <span class="site-state-item-count">492</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -283,6 +283,116 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/06/18/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/06/18/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92/" class="post-title-link" itemprop="url">软件开发规划</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-06-18 16:24:37" itemprop="dateCreated datePublished" datetime="2023-06-18T16:24:37+08:00">2023-06-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>2023年06月18日星期日多云北京市北京师范大学,
+由于日常工作中需要面对大量 LaTeX
+资料的编写工作，当数量大到一定量的时候在不同电脑上写作就会有不同步的问题，同时即使在同一台电脑上也会有找不到文件的可能性。同时为了不受限于网络，在很多时候
+Github 并不能正确访问，所以一些需要的软件就需要通过 Gitlab 来间接的获取
+，但是每次都通过网页版操作太过麻烦，于是产生了通过脚本命令实现自动化的需要。于是决定规划编写两个主要的软件：</p>
+<ol type="1">
+<li><code>labmgr.sh</code> 管理本地的目录树:
+<ul>
+<li>对于普通 LaTeX 文件，自动组织好目录并及时同步到 Gitlab</li>
+<li>一键列出所有同步的文件，自动调用 nvim
+来编辑对应文档，最后保存并及时上传到对应仓库。</li>
+<li>运行时自动联网，检测 GitLab
+仓库并检测更新情况，自动完成文件的更新</li>
+</ul></li>
+<li><code>plgmgr.sh</code> 管理 nvim 插件:
+<ul>
+<li>对于一些无法访问 Github 的情况，调用 GitLab api 将 github 上的源文件
+fork 到 GitLab ,然后增加到 packer.vim 的插件控制目录，从 GitLab
+上安装。</li>
+<li>同时考虑到插件的更新，本脚本增加 GitLab api
+自动更新仓库的功能，这样就可以实现自动更新功能。</li>
+<li>再增加脚本自动备份功能，将本机配置好的 nvim 的lua
+脚本及目录树一并同步到 GitLab 对应仓库， 这样就可以实现快速部署 nvim
+到新电脑的目的。</li>
+</ul></li>
+<li>参考文献：
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://docs.gitlab.com/ee/api/projects.html">GitLab|Projects
+API</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.bookstack.cn/read/gitlab-doc-zh/docs-353.md">GitLab|中文文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/">菜鸟教程</a></li>
+</ul></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1377,84 +1487,6 @@ data-height="500px">
 至此2022-2023春季学期所有考试内容及考核内容全部完成。</li>
 </ul>
 </div>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/11/vim%E4%B8%80%E9%94%AE%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/11/vim%E4%B8%80%E9%94%AE%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F/" class="post-title-link" itemprop="url">vim一键运行程序</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-05-11 00:52:48" itemprop="dateCreated datePublished" datetime="2023-05-11T00:52:48+08:00">2023-05-11</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <mark class="label success">2023年05月11日星期四多云北京市北京师范大学</mark>
-<p>今天决定在ThinkPad-T490上删除matlab,改用octave执行matlab脚本，同时为了方便编写python等程序，为vim配置了一键执行命令。如下</p>
-<figure class="highlight bash"><figcaption><span>~/.vimrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;Set  F5 to run all language program</span></span><br><span class="line"><span class="string">map &lt;F5&gt; :call  CompileRunGcc()&lt;CR&gt;</span></span><br><span class="line"><span class="string">func! CompileRunGcc()</span></span><br><span class="line"><span class="string">   exec &quot;</span>w<span class="string">&quot;</span></span><br><span class="line"><span class="string">   if &amp;filetype == &#x27;sh&#x27;</span></span><br><span class="line"><span class="string">      :!time bash %</span></span><br><span class="line"><span class="string">   elseif &amp;filetype == &#x27;python&#x27;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!time python3 %<span class="string">&quot;</span></span><br><span class="line"><span class="string">   elseif &amp;filetype == &#x27;c&#x27;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!g++ % -o %&lt;<span class="string">&quot;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!time ./%&lt;<span class="string">&quot;</span></span><br><span class="line"><span class="string">   elseif &amp;filetype == &#x27;cpp&#x27;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!g++ % -o %&lt;<span class="string">&quot;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!time ./%&lt;<span class="string">&quot;</span></span><br><span class="line"><span class="string">   elseif &amp;filetype == &#x27;java&#x27;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!javac %<span class="string">&quot;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!time java %&lt;<span class="string">&quot;</span></span><br><span class="line"><span class="string">   elseif &amp;filetype == &#x27;html&#x27;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!firefox % &amp;<span class="string">&quot;</span></span><br><span class="line"><span class="string">   elseif &amp;filetype == &#x27;go&#x27;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!go build %&lt;<span class="string">&quot;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!time go run %<span class="string">&quot;</span></span><br><span class="line"><span class="string">   elseif &amp;filetype == &#x27;mkd&#x27;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!~/.vim/markdown.pl % &gt; %.html &amp;<span class="string">&quot;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!firefox %.html &amp;<span class="string">&quot;</span></span><br><span class="line"><span class="string">   endif</span></span><br><span class="line"><span class="string">endfunc</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
