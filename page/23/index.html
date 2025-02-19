@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">491</span>
+          <span class="site-state-item-count">492</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -283,6 +283,141 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/11/iVentoy%E9%80%9A%E8%BF%87%E7%BD%91%E7%BB%9C%E5%90%8C%E6%97%B6%E7%BB%99%E5%A4%9A%E5%8F%B0%E6%9C%BA%E5%99%A8%E5%AE%89%E8%A3%85%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/11/iVentoy%E9%80%9A%E8%BF%87%E7%BD%91%E7%BB%9C%E5%90%8C%E6%97%B6%E7%BB%99%E5%A4%9A%E5%8F%B0%E6%9C%BA%E5%99%A8%E5%AE%89%E8%A3%85%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">iVentoy通过网络同时给多台机器安装操作系统</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-11 21:03:52" itemprop="dateCreated datePublished" datetime="2024-05-11T21:03:52+08:00">2024-05-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>之前为大家推荐过软件<a
+target="_blank" rel="noopener" href="https://www.ventoy.net/cn/index.html">Ventoy</a>,
+实现了一个U盘在手同时安装多个操作系统的强大功能，大大方便了日常工作。今天升级我的Ventoy
+后在主页发现原作者又开发了一款神器 <a
+target="_blank" rel="noopener" href="https://www.iventoy.com/cn/index.html">iVentoy</a>,
+用于通过网络给多台机器启动安装操作系统，现引用其官方的说明，推荐给大家。</p>
+<p>简单来说，iVentoy 可以看成是一个增强版的 PXE 服务器。iVentoy
+使用极其简单，无需复杂的配置，直接把 ISO
+文件放到指定位置，客户机在启动时根据菜单选择要启动的ISO文件即可。iVentoy
+同时支持 x86 Legacy BIOS、IA32 UEFI、x86_64 UEFI 和 ARM64 UEFI
+模式。iVentoy 支持 110 多种常见类型的操作系统
+（Windows/WinPE/Linux/VMware）(<a
+target="_blank" rel="noopener" href="https://www.iventoy.com/cn/isolist.html">列表</a>)。</p>
+<h2 id="iventoy-特点">iVentoy 特点</h2>
+<ul>
+<li>软件使用非常简单 <a
+target="_blank" rel="noopener" href="https://www.iventoy.com/cn/doc_start.html">(使用说明)</a></li>
+<li>软件跨平台，支持运行在 Windows 和 Linux 系统中。</li>
+<li>软件专门针对PXE场景优化设计，功能灵活。</li>
+<li>支持ISO文件直接启动，无需提取内部文件。</li>
+</ul>
+<details>
+<summary>
+其他特点
+</summary>
+<ul>
+<li><p>保留原始ISO文件的启动菜单风格。</p></li>
+<li><p>启动菜单和文件目录结构一一对应。</p></li>
+<li><p>同时支持 Legacy BIOS 以及 IA32/X86_64/ARM64 的 UEFI
+模式。</p></li>
+<li><p>支持 110 多种常见的操作系统
+（Windows/WinPE/Linux/VMware）。</p></li>
+<li><p>支持整体及单个ISO文件的启动密码保护。</p></li>
+<li><p>支持多台设备同时安装不同操作系统。</p></li>
+<li><p>支持和第三方 DHCP Server 配合工作。<a
+target="_blank" rel="noopener" href="https://www.iventoy.com/cn/doc_ext_dhcp.html">说明</a></p></li>
+<li><p>支持通过 MAC 地址进行设备过滤。</p></li>
+<li><p>支持查询 MAC 地址过滤状态。</p></li>
+<li><p>支持 MAC 地址归属查询。</p></li>
+<li><p>支持客户端设备信息查询。（厂商名、产品名、序列号等）</p></li>
+<li><p>提供 HTTP 直接获取 ISO 内部文件的功能。<a
+target="_blank" rel="noopener" href="https://www.iventoy.com/cn/doc_http_url.html">说明</a></p></li>
+<li><p>支持启动文件注入功能。 <a
+target="_blank" rel="noopener" href="https://www.iventoy.com/cn/doc_injection.html">说明</a></p></li>
+<li><p>支持注入并自动执行脚本的功能。 <a
+target="_blank" rel="noopener" href="https://www.iventoy.com/cn/doc_injection.html">说明</a></p></li>
+<li><p>支持 Windows 系统的自动安装部署 <a
+target="_blank" rel="noopener" href="https://www.iventoy.com/cn/doc_autoinstall.html">说明</a></p></li>
+<li><p>支持 Linux 系统的自动安装部署 <a
+target="_blank" rel="noopener" href="https://www.iventoy.com/cn/doc_autoinstall.html">说明</a></p></li>
+<li><p>Windows/Linux 自动安装脚本中支持变量扩展 <a
+target="_blank" rel="noopener" href="https://www.iventoy.com/cn/doc_autoinstall.html">说明</a></p></li>
+<li><p>自动解决Linux安装过程中缺少网卡驱动的问题。</p></li>
+</ul>
+</details>
+<figure>
+<img src="https://www.iventoy.com/static/img/screen/boot_ground.png?v=4"
+alt="iVentoy启动截图" />
+<figcaption aria-hidden="true">iVentoy启动截图</figcaption>
+</figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1398,88 +1533,6 @@ to those in siunitx, but is uses slightly different macro names for
 each. This package also provides a number of non-SI units (e.g. erg, cm,
 BTU).</p></li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/06/LaTeX%E5%A4%9A%E5%A4%84%E5%BC%95%E7%94%A8%E5%90%8C%E4%B8%80%E8%84%9A%E6%B3%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/05/06/LaTeX%E5%A4%9A%E5%A4%84%E5%BC%95%E7%94%A8%E5%90%8C%E4%B8%80%E8%84%9A%E6%B3%A8/" class="post-title-link" itemprop="url">LaTeX多处引用同一脚注</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-05-06 14:57:02" itemprop="dateCreated datePublished" datetime="2024-05-06T14:57:02+08:00">2024-05-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>若文章中几处需要添加相同内容的脚注，各自都写<code>\footnote&#123;*&#125;</code>的话，则会出现好几个内容重复的脚注。这个问题可以通过“标签引用”+“上标”来解决。比如我们要给<code>ORL</code>和<code>Jaffe</code>都添加同样的脚注，可以这样：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ORL\footnote&#123;http://blog.csdn.net/bear\<span class="emphasis">_kai\label&#123;web&#125;&#125; and</span></span><br><span class="line"><span class="emphasis">Jaffe\textsuperscript&#123;\ref &#123;web&#125;&#125;.</span></span><br></pre></td></tr></table></figure>
-<div class="note primary"><p>注意网址中有下划线时，在latex中需要额外加一个反斜杠即“转义字符”。</p>
-</div>
-<p>其他参考：<a
-target="_blank" rel="noopener" href="https://www.latexstudio.net/archives/51620.html">LaTeX 技巧
-950：LaTeX 攻略之脚注常用技巧</a></p>
 
       
     </div>

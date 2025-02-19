@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">491</span>
+          <span class="site-state-item-count">492</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -283,6 +283,87 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/27/Linux%E7%9A%84%E9%BB%98%E8%AE%A4%E8%B7%AF%E5%BE%84%E5%90%8D%E7%A7%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/09/27/Linux%E7%9A%84%E9%BB%98%E8%AE%A4%E8%B7%AF%E5%BE%84%E5%90%8D%E7%A7%B0/" class="post-title-link" itemprop="url">Linux的默认路径名称</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-27 11:35:37" itemprop="dateCreated datePublished" datetime="2023-09-27T11:35:37+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>近期想编写一个脚本，方便书写LaTeX文档，原因是当需要写的LaTeX文件变的越来越多的时候查找和编辑最新的文件就是一个问题了，同时在不同电脑上编辑一个LaTeX文件也会出现不同步的问题。虽然我们可以通过上传到gitlab仓库解决同步的问题，但是由于每次编写文件时都要逐步查找和Pull文件，写完之后又要Push,
+这些重复的工作显然需要自动执行效率都会提高。这个脚本的目的就是来统一管理和简化使用vim写作的步骤。</p>
+<h1 id="目录的取得">目录的取得</h1>
+<p>由于系统语言的问题，默认保存目录的名称会有一些不同，但是规范的做法是将对应的文件保存到指定的位置。于是需要做的第一个工作就是取得正确的目录名称，当然我们可以使用<code>ls -l</code>
+来查询目录，然后保存到一个变量中，也可以根据<code>echo $LANGE</code>变量先取得语言，当然我们一般只需要在中文和英文之间做出选择，然而这个方法却不是最佳的，因为如果增加支持的语言的话程序代码会相应增加。经过考虑，使用系统的目录变量是一个正确的选择，我使用提<code>ArchLinux+Gnome3</code>,这些默认的语言配置位于于<code>~/.config/user-dirs.dirs</code>
+<figure class="highlight sh"><figcaption><span>~/.config/user-dirs.dirs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># This file is written by xdg-user-dirs-update</span></span><br><span class="line"><span class="comment"># If you want to change or add directories, just edit the line you&#x27;re</span></span><br><span class="line"><span class="comment"># interested in. All local changes will be retained on the next run.</span></span><br><span class="line"><span class="comment"># Format is XDG_xxx_DIR=&quot;$HOME/yyy&quot;, where yyy is a shell-escaped</span></span><br><span class="line"><span class="comment"># homedir-relative path, or XDG_xxx_DIR=&quot;/yyy&quot;, where /yyy is an</span></span><br><span class="line"><span class="comment"># absolute path. No other format is supported.</span></span><br><span class="line"><span class="comment"># </span></span><br><span class="line">XDG_DESKTOP_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/桌面&quot;</span></span><br><span class="line">XDG_DOWNLOAD_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/下载&quot;</span></span><br><span class="line">XDG_TEMPLATES_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/模板&quot;</span></span><br><span class="line">XDG_PUBLICSHARE_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/公共&quot;</span></span><br><span class="line">XDG_DOCUMENTS_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/文档&quot;</span></span><br><span class="line">XDG_MUSIC_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/音乐&quot;</span></span><br><span class="line">XDG_PICTURES_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/图片&quot;</span></span><br><span class="line">XDG_VIDEOS_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/视频&quot;</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1089,93 +1170,6 @@ address 等。</p></li>
 解决方法为，安装 <code>tkinter</code>, 由于我使用的是
 <code>ArchLinux</code>, 所以直接执行</p>
 <figure class="highlight bash"><figcaption><span>install tkinter</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S tk</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/18/Vim%E5%BC%80%E5%90%AF%E8%A1%8C%E5%8F%B7%E8%AE%BE%E7%BD%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/07/18/Vim%E5%BC%80%E5%90%AF%E8%A1%8C%E5%8F%B7%E8%AE%BE%E7%BD%AE/" class="post-title-link" itemprop="url">Vim开启行号设置</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-07-18 22:08:58" itemprop="dateCreated datePublished" datetime="2023-07-18T22:08:58+08:00">2023-07-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-01-10 01:27:58" itemprop="dateModified" datetime="2025-01-10T01:27:58+08:00">2025-01-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>最近配置好 Neovim 后，由于暂时不能决定是否淘汰 Vim9 ,
-因为这二者目前来看不相上下，所以逐步完成 Vim 的先进化配置。
-今天记录的是设置行号， Vim 有两种行号模式，
-一种是绝对行号，即每一行显示的行号就是当前行的行号，另一种是相对行号，当前行记为
-0 ，向上和向下分别是相对于此行的行数，
-但是这两种规则可以实现混合，即同时开启，结果就是当前行显示的是该行的绝对行事号，向上向下分别是相对于此行的行数。于是和
-Neovim 设置相对应，开启混合模式，设置如下</p>
-<figure class="highlight vim"><figcaption><span>～/.vimrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">number</span></span><br><span class="line"><span class="keyword">set</span> relativenumber</span><br></pre></td></tr></table></figure>
-<div class="note warning"><p>设置也可以设置简写形式，即 <code>set nu</code> 和
-<code>set rnu</code>
-,但是为了提高可读性，我在配置文件中使用了全称。一般简写可以用在命令行中临时执行的命令，这样输入命令时会快一写。</p>
-</div>
 
       
     </div>
