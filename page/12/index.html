@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">497</span>
+          <span class="site-state-item-count">498</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,161 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/09/21/ArchLinux%E6%95%B4%E4%BD%93%E5%9B%9E%E6%BB%9A%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/09/21/ArchLinux%E6%95%B4%E4%BD%93%E5%9B%9E%E6%BB%9A%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89/" class="post-title-link" itemprop="url">ArchLinux整体回滚（重要）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-09-21 01:54:36" itemprop="dateCreated datePublished" datetime="2024-09-21T01:54:36+08:00">2024-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天使用<code>Pacman</code>升级系统后发现<code>Gnome-Shell</code>版本从<code>46</code>升级到了<code>47</code>，
+每次这个大版本的升级都会导致大量的<code>Gnome</code>插件版本失效，这个问题之前我使用了锁定<code>Gnome</code>版本的方法，但是由于软件的相互依赖，好像这个并不是最佳方法。于是有了这篇文章，我们决定把<code>ArchLinux</code>整体回滚到某个正常使用日期前的最佳版本，锁定日期后系统相当于停止滚动，待时机成熟（相应的插件都处理可用或某一必备软件得到升级）可以再进行整体的升级。</p>
+<h2 id="arch-linux-archive-简介">Arch Linux Archive 简介</h2>
+<p>Arch Linux 存档库（<a
+target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/Arch_Linux_Archive">Arch Linux
+Archive</a>，简称 ala），以前称为 Arch Linux 回滚机（Arch Linux Rollback
+Machine，简称 ARM），保存了官方仓库快照、iso
+镜像和引导程序包的历史版本。</p>
+<h3 id="用途">用途</h3>
+<ul>
+<li>将某个包降级到某个早期版本（最新版本不能用，我需要之前的版本）</li>
+<li>将所有包恢复到某个指定的历史时刻（所有包都不能用，我要恢复到两个月之前的状态）</li>
+<li>查找某个历史版本的 ISO 镜像</li>
+</ul>
+<h2 id="arch-linux-存档库">Arch Linux 存档库</h2>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://archive.archlinux.org/repos/">https://archive.archlinux.org/repos/</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://america.archive.pkgbuild.com/repos/">https://america.archive.pkgbuild.com/repos/</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://asia.archive.pkgbuild.com/repos/">https://asia.archive.pkgbuild.com/repos/</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://europe.archive.pkgbuild.com/repos/">https://europe.archive.pkgbuild.com/repos/</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://arch-archive.tuna.tsinghua.edu.cn/">https://arch-archive.tuna.tsinghua.edu.cn/</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://mirrors.bfsu.edu.cn/archlinux-archive/">https://mirrors.bfsu.edu.cn/archlinux-archive/</a></li>
+</ul>
+<div class="note primary"><p>前四个源是官方源及全球的存档镜像，它保存了每一天的镜像，而后面两个分别是清华大学和北京外国语大学的存档镜像，它们每周存档一次。如果您指定的日期在两个国内存档源中时则使用这两个，因为速度快。如果您的指定日期不在它们之中，则使用前四个源中的某一个都可以，2024年09月21日使用第一个官方存档库回滚系统到2024年09月18日,
+这是我的电脑正常工作的最新日期，测试的速度比较快。</p>
+</div>
+<h2 id="archlinux-所有软件包降级到特定日期">ArchLinux
+所有软件包降级到特定日期</h2>
+<p>假设您的 Arch Linux
+系统在两天前运行良好且稳定。您今天运行了系统更新，它破坏了系统。因此，您可以将所有软件包降级到之前的特定日期，例如<strong>2024
+年 9 月 18 日</strong>。</p>
+<div class="tabs" id="pacman"><ul class="nav-tabs"><li class="tab active"><a href="#pacman-1">/etc/pacman.d/mirrorlist</a></li><li class="tab"><a href="#pacman-2">/etc/pacman.conf</a></li></ul><div class="tab-content"><div class="tab-pane active" id="pacman-1"><h4 id="备份etcpacman.dmirrorlist">1.
+备份<code>/etc/pacman.d/mirrorlist</code></h4>
+<figure class="highlight sh"><figcaption><span>/etc/pacman.d/mirrorlist</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">cp</span> /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak</span><br></pre></td></tr></table></figure>
+<h4 id="备份etcpacman.dmirrorlist-1">2.
+备份<code>/etc/pacman.d/mirrorlist</code></h4>
+<figure class="highlight sh"><figcaption><span>/etc/pacman.d/mirrorlist</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Server = http://archive.archlinux.org/repos/2024/09/18/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br><span class="line">Server = https://america.archive.pkgbuild.com/repos/2024/09/19/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br><span class="line">Server = https://asia.archive.pkgbuild.com/repos/2024/09/19/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br><span class="line">Server = https://europe.archive.pkgbuild.com/repos/2024/09/19/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br><span class="line">Server = https://arch-archive.tuna.tsinghua.edu.cn/2024/09-16/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br><span class="line">Server = https://mirrors.bfsu.edu.cn/archlinux-archive/2024/09-16/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="pacman-2"><h4 id="备份配置文件">1. 备份配置文件</h4>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">cp</span> /etc/pacman.conf /etc/pacman.conf.bak</span><br></pre></td></tr></table></figure>
+<h4 id="修改etcpacman.conf">2. 修改<code>/etc/pacman.conf</code></h4>
+<figure class="highlight sh"><figcaption><span>/etc/pacman.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">SigLevel = PackageRequired</span><br><span class="line">Server=https://archive.archlinux.org/repos/2024/09/18/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br><span class="line"></span><br><span class="line">[extra]</span><br><span class="line">SigLevel = PackageRequired</span><br><span class="line">Server=https://archive.archlinux.org/repos/2024/09/18/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br><span class="line"></span><br><span class="line">[community]</span><br><span class="line">SigLevel = PackageRequired</span><br><span class="line">Server=https://archive.archlinux.org/repos/2024/09/18/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure></div></div></div>
+<h3 id="强制更新系统">强制更新系统</h3>
+<p>仔细检查恢复日期, 保存并关闭文件。最后，更新数据库并使用命令强制 Arch
+Linux 更新：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Syyuu</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p>更新完成后，重新启动系统,
+您现在已将所有包恢复到之前的特定日期（在我们的示例中为 2024年 9 月 18
+日）。但是请注意，我们不建议使用过时的软件包，待您需要<code>Gnome</code>插件或其他特定版本的软件及时跟进更新后请及时将系统升级到最新，若出现问题则再锁定到最新的稳定系统日期，等待下一次全部软件稳定后再次更新。如果操作后可以保证一直稳定使用<code>ArchLinux</code>.</p>
+</div>
+<h2 id="gnome插件适配查询">Gnome插件适配查询</h2>
+<p>此次研究锁定系统滚动日期的主要原因是：2024年09月21日升级后由于<code>Gnome</code>大版本升级导致插件<code>hide-top-bar</code>失效，所以请及时关注失效插件是否适配了当前版本，网址为：<a
+target="_blank" rel="noopener" href="https://extensions.gnome.org/">https://extensions.gnome.org/</a>
+几个常用插件：</p>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://extensions.gnome.org/extension/3193/blur-my-shell/">Blur
+my Shel</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://extensions.gnome.org/extension/307/dash-to-dock/">Dash to
+Dock</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://extensions.gnome.org/extension/545/hide-top-bar/">Hide Top
+Bar</a></li>
+<li><a target="_blank" rel="noopener" href="https://extensions.gnome.org/extension/261/kimpanel/">Input
+Method Panel</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://extensions.gnome.org/extension/7/removable-drive-menu/">Removable
+Drive Menu</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://extensions.gnome.org/extension/19/user-themes/">User
+Themes</a></li>
+</ul>
+<h2 id="手动解决gnome插件适配">手动解决Gnome插件适配</h2>
+<p>在2024年09月21日升级系统后采用的锁定<code>ArchLinux</code>到指定日期的稳键策略，而2024年09月27日放开了更新后发现只有插件<code>Hide Top Bar</code>仍然没有适配，于是在百度后发现可以追加版本后修复，因为<code>Gnome 47</code>更新并没有大量改变<code>java script</code>接口，所以这个方法是可行的。具体修改为</p>
+<figure class="highlight sh"><figcaption><span>/usr/share/gnome-shell/extensions/hidetopbar@mathieu.bidon.ca/metadata.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;shell-version&quot;</span>: [<span class="string">&quot;45&quot;</span>, <span class="string">&quot;46&quot;</span>, <span class="string">&quot;47&quot;</span> ],</span><br><span class="line">  <span class="string">&quot;uuid&quot;</span>: <span class="string">&quot;hidetopbar@mathieu.bidon.ca&quot;</span>,</span><br><span class="line">  <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Hide Top Bar&quot;</span>,</span><br><span class="line">  <span class="string">&quot;settings-schema&quot;</span>: <span class="string">&quot;org.gnome.shell.extensions.hidetopbar&quot;</span>,</span><br><span class="line">  <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Hides the top bar, except in overview. However, there is an option to show the panel whenever the mouse pointer approaches the edge of the screen. And if \&quot;intellihide\&quot; is enabled, the panel only hides when a window takes the space.\n\n- Press backspace to remove keyboard shortcut.\n- Log off and on again when there is an error after upgrading.&quot;</span>,</span><br><span class="line">  <span class="string">&quot;url&quot;</span>: <span class="string">&quot;https://gitlab.gnome.org/tuxor1337/hidetopbar&quot;</span>,</span><br><span class="line">  <span class="string">&quot;gettext-domain&quot;</span>: <span class="string">&quot;hidetopbar@mathieu.bidon.ca&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1148,87 +1303,6 @@ target="_blank" rel="noopener" href="https://www.cnblogs.com/yiersay/articles/42
     
     <div class="post-body" itemprop="articleBody">
           <p>近几天<code>zotero</code>正式升级为<code>7.0</code>版，而翻译插件<code>zotero-pdf-translate</code>是一个必不可少的强大工具，对于那些纯英文的文献它可以正常翻译。而由于小牛翻译的快速和较大的免费额度，所以将翻译设置成了小牛翻译，但是由于要备考六级英语考试，在翻译六级真题题，它却无法正常翻译。切换到<code>Deepl</code>翻译后却可以准确的翻译，仔细分析得到问题所在。小牛无法自动检测原语言，而<code>Deepl</code>可以自动检测原语言，于是点击右上角<code>展开/折叠内容窗格</code>后发现，小牛翻译是从中文到中文的翻译，原因我想应该是文件名中存在中文，于是它自动检测为原始文字为中文了，将其改为英文到中文后，翻译插件<code>zotero-pdf-translate</code>正常工作。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/09/09/Beamer%E5%A4%9A%E4%B8%AA%E4%BD%9C%E8%80%85%E5%A4%9A%E4%B8%AA%E5%8D%95%E4%BD%8D%E7%9A%84%E7%BC%96%E5%86%99/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/09/09/Beamer%E5%A4%9A%E4%B8%AA%E4%BD%9C%E8%80%85%E5%A4%9A%E4%B8%AA%E5%8D%95%E4%BD%8D%E7%9A%84%E7%BC%96%E5%86%99/" class="post-title-link" itemprop="url">Beamer多个作者多个单位的编写</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-09-09 01:06:46" itemprop="dateCreated datePublished" datetime="2024-09-09T01:06:46+08:00">2024-09-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在<code>Beamer</code>的封面加上</p>
-<ol type="1">
-<li>Joint work with Prof. xxx and Prof. xxx</li>
-<li>两个不同的作者单</li>
-</ol>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\title</span>&#123;xxxxx&#125;</span><br><span class="line"><span class="keyword">\author</span>[ author ]&#123;author1<span class="keyword">\inst</span>&#123;1&#125; <span class="keyword">\small</span>&#123;Joint work with Prof. author2<span class="keyword">\inst</span>&#123;1&#125; and Prof. author3<span class="keyword">\inst</span>&#123;2&#125;&#125;&#125;</span><br><span class="line"><span class="keyword">\institute</span>[ cug ] <span class="comment">% (optional, but mostly needed)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">\inst</span>&#123;1&#125;</span><br><span class="line">     School of Computer Science<span class="keyword">\\</span></span><br><span class="line">     China University of Geosciences (Wuhan)</span><br><span class="line">    <span class="keyword">\and</span></span><br><span class="line">    <span class="keyword">\inst</span>&#123;2&#125;</span><br><span class="line">    Department of Mathematical Sciences<span class="keyword">\\</span></span><br><span class="line">    University of Cincinnati</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">\date</span>&#123;<span class="keyword">\today</span>&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;frame&#125;[plain]</span><br><span class="line">    <span class="keyword">\titlepage</span></span><br><span class="line"><span class="keyword">\end</span>&#123;frame&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>

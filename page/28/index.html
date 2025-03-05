@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">497</span>
+          <span class="site-state-item-count">498</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,103 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/19/gitignore%E6%96%87%E4%BB%B6%E7%9A%84%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/01/19/gitignore%E6%96%87%E4%BB%B6%E7%9A%84%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">gitignore文件的配置使用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-19 17:45:25" itemprop="dateCreated datePublished" datetime="2024-01-19T17:45:25+08:00">2024-01-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在使用Git的过程中，有的文件比如日志，临时文件，编译的中间文件等不要提交到代码仓库，这时就要设置相应的忽略规则，来忽略这些文件的提交。简单来说一个场景：在你使用git
+add
+.的时候，遇到了把你不想提交的文件也添加到了缓存中去的情况，比如项目的本地配置信息，如果你上传到Git中去其他人pull下来的时候就会和他本地的配置有冲突，所以这样的个性化配置文件我们一般不把它推送到git服务器中，但是又为了偷懒每次添加缓存的时候都想用git
+add
+.而不是手动一个一个文件添加，该怎么办呢？很简单，git为我们提供了一个.gitignore文件，只要在这个文件中声明哪些文件你不希望添加到git中去，这样当你使用git
+add .的时候这些文件就会被自动忽略掉。</p>
+<h2 id="git忽略文件的原则">Git忽略文件的原则</h2>
+<ul>
+<li>忽略操作系统自动生成的文件，比如缩略图等；</li>
+<li>忽略编译生成的中间文件、可执行文件等，也就是如果一个文件是通过另一个文件自动生成的，那自动生成的文件就没必要放进版本库，比如产生的.log日志文件；</li>
+<li>忽略你自己的带有敏感信息的配置文件，比如存放口令的配置文件。</li>
+</ul>
+<h2 id="使用方法">使用方法</h2>
+<p>在工作目录中新建一个文件<code>.gitignore</code>,
+然后把要忽略的文件名填进去，Git就会自动忽略这些文件。不需要从头写.gitignore文件，GitHub已经为我们准备了各种配置文件，只需要组合一下就可以使用了。
+<a
+target="_blank" rel="noopener" href="https://github.com/github/gitignore">https://github.com/github/gitignore</a></p>
+<h2 id="我的latex仓库配置">我的Latex仓库配置</h2>
+<figure class="highlight sh"><figcaption><span>.gitignore</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*.aux</span><br><span class="line">*.<span class="built_in">log</span></span><br><span class="line">*.pdf</span><br><span class="line">*.synctex.gz</span><br><span class="line">*.out</span><br></pre></td></tr></table></figure>
+<h2 id="参考文章">参考文章</h2>
+<p><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/52885189">[Git].gitignore文件的配置使用</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1391,95 +1488,6 @@ style="text-align: left;">无扩展名的文件名.例如../path/test就会成�
 </tbody>
 </table>
 <figure class="highlight vim"><figcaption><span>各种效果</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Examples, when the <span class="keyword">file</span> name <span class="keyword">is</span> <span class="string">&quot;src/version.c&quot;</span>, current dir</span><br><span class="line"><span class="string">&quot;/home/mool/vim&quot;</span>: &gt;</span><br><span class="line">  :<span class="keyword">p</span>            /home/mool/<span class="keyword">vim</span>/src/<span class="keyword">version</span>.<span class="keyword">c</span></span><br><span class="line">  :<span class="keyword">p</span>:.                       src/<span class="keyword">version</span>.<span class="keyword">c</span></span><br><span class="line">  :<span class="keyword">p</span>:~                 ~/<span class="keyword">vim</span>/src/<span class="keyword">version</span>.<span class="keyword">c</span></span><br><span class="line">  :h                       src</span><br><span class="line">  :<span class="keyword">p</span>:h            /home/mool/<span class="keyword">vim</span>/src</span><br><span class="line">  :<span class="keyword">p</span>:h:h        /home/mool/<span class="keyword">vim</span></span><br><span class="line">  :t                       <span class="keyword">version</span>.<span class="keyword">c</span></span><br><span class="line">  :<span class="keyword">p</span>:t                       <span class="keyword">version</span>.<span class="keyword">c</span></span><br><span class="line">  :r                       src/<span class="keyword">version</span></span><br><span class="line">  :<span class="keyword">p</span>:r            /home/mool/<span class="keyword">vim</span>/src/<span class="keyword">version</span></span><br><span class="line">  :<span class="variable">t:r</span>                       <span class="keyword">version</span></span><br><span class="line">  :<span class="keyword">e</span>                           <span class="keyword">c</span></span><br><span class="line">  :s?<span class="keyword">version</span>?main?               src/main.<span class="keyword">c</span></span><br><span class="line">  :s?<span class="keyword">version</span>?main?:<span class="keyword">p</span>    /home/mool/<span class="keyword">vim</span>/src/main.<span class="keyword">c</span></span><br><span class="line">  :<span class="keyword">p</span>:gs?/?\\?        \home\mool\<span class="keyword">vim</span>\src\<span class="keyword">version</span>.<span class="keyword">c</span></span><br><span class="line"></span><br><span class="line">Examples, when the <span class="keyword">file</span> name <span class="keyword">is</span> <span class="string">&quot;src/version.c.gz&quot;</span>: &gt;</span><br><span class="line">  :<span class="keyword">p</span>            /home/mool/<span class="keyword">vim</span>/src/<span class="keyword">version</span>.<span class="keyword">c</span>.gz</span><br><span class="line">  :<span class="keyword">e</span>                             gz</span><br><span class="line">  :<span class="keyword">e</span>:<span class="keyword">e</span>                           <span class="keyword">c</span>.gz</span><br><span class="line">  :<span class="keyword">e</span>:<span class="keyword">e</span>:<span class="keyword">e</span>                       <span class="keyword">c</span>.gz</span><br><span class="line">  :<span class="keyword">e</span>:<span class="keyword">e</span>:r                       <span class="keyword">c</span></span><br><span class="line">  :r                       src/<span class="keyword">version</span>.<span class="keyword">c</span></span><br><span class="line">  :r:<span class="keyword">e</span>                           <span class="keyword">c</span></span><br><span class="line">  :r:r                       src/<span class="keyword">version</span></span><br><span class="line">  :r:r:r                   src/versio</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/29/%E8%A7%A3%E5%86%B3KDE%E4%BD%BF%E7%94%A8ntfs3%E6%8C%82%E8%BD%BDntfs%E7%A1%AC%E7%9B%98%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/29/%E8%A7%A3%E5%86%B3KDE%E4%BD%BF%E7%94%A8ntfs3%E6%8C%82%E8%BD%BDntfs%E7%A1%AC%E7%9B%98%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">解决KDE使用ntfs3挂载ntfs硬盘失败的问题</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-29 11:05:59" itemprop="dateCreated datePublished" datetime="2023-12-29T11:05:59+08:00">2023-12-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>近期重装了<code>ArchLinux</code>，但是又遇到<code>KDE Plasma5</code>桌面环境下无法挂载<code>Windows</code>所在硬盘问题，具体是什么原因造成的尚不明确，但是百度之后找到了解决方法：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> ntfsfix -d /dev/nvme0n1p6</span><br></pre></td></tr></table></figure>
-<p>注意：第一条命令需要加参数<code>-d</code>,
-按好多资料没有加<code>-d</code>修复无效。原因参考资料：<a
-target="_blank" rel="noopener" href="https://bbs.archlinux.org/viewtopic.php?id=271650">Mounting ntfs
-partition by ntfs3 failed</a>：</p>
-<div class="note info"><p>Check your dmesg for errors with ntfs3. Chances are the volume is
-still marked dirty, and ntfs3 will not mount a partition where that is
-the case without the force option. ntfsfix without any arguments will
-actively set the dirty bit, so that a chkdsk from Windows can do a real
-check/analysis. If you don't have that handy and want to clear the dirty
-bit despite ntfsfix not being entirely a good checking tool you can pass
-the -d argument to ntfsfix.</p>
-</div>
 
       
     </div>
