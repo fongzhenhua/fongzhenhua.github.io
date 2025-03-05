@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">498</span>
+          <span class="site-state-item-count">499</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -372,6 +372,101 @@ target="_blank" rel="noopener" href="https://endeavouros.com">Endeavour</a>
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/05/Rust%E7%94%9F%E6%88%90CSV%E6%95%B0%E6%8D%AE%E5%B9%B6%E4%BD%BF%E7%94%A8Veusz%E7%BB%98%E5%88%B6%E5%87%BD%E6%95%B0%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/03/05/Rust%E7%94%9F%E6%88%90CSV%E6%95%B0%E6%8D%AE%E5%B9%B6%E4%BD%BF%E7%94%A8Veusz%E7%BB%98%E5%88%B6%E5%87%BD%E6%95%B0%E8%B1%A1/" class="post-title-link" itemprop="url">Rust生成CSV数据并使用Veusz绘制函数像</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-03-05 22:04:05 / 修改时间：22:22:00" itemprop="dateCreated datePublished" datetime="2025-03-05T22:04:05+08:00">2025-03-05</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>使用<code>Rust</code>编写的程序由于是编译型的语言，其速度远超<code>Python</code>等脚本程序，所以本文尝试使用<code>Rust</code>编写一段<span
+class="math inline">\(f(x)=x^2\)</span>在区间<span
+class="math inline">\((0,10)\)</span>上的值，并将其保存在<code>function_data.csv</code>文件中，以供<code>veusz</code>调用，绘制函数图像。</p>
+<h2 id="编写rust程序">编写Rust程序</h2>
+<ol type="1">
+<li><p>建立项目: drawfunction <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cargo new drawfunction</span><br><span class="line"><span class="built_in">cd</span> drawfunction</span><br></pre></td></tr></table></figure></p></li>
+<li><p>确保<code>Cargo.toml</code>文件中添加了必要的依赖项：
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[dependencies]</span></span><br><span class="line"><span class="attr">csv</span> = <span class="string">&quot;1.1&quot;</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>编辑源码： <figure class="highlight rust"><figcaption><span>drawfunction/src/main.rs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> csv::Writer;</span><br><span class="line"><span class="keyword">use</span> std::error::Error;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() <span class="punctuation">-&gt;</span> <span class="type">Result</span>&lt;(), <span class="type">Box</span>&lt;<span class="keyword">dyn</span> Error&gt;&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">wtr</span> = Writer::<span class="title function_ invoke__">from_path</span>(<span class="string">&quot;function_data.csv&quot;</span>)?;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 写入CSV头部</span></span><br><span class="line">    wtr.<span class="title function_ invoke__">write_record</span>(&amp;[<span class="string">&quot;x&quot;</span>, <span class="string">&quot;x_squared&quot;</span>])?;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生成数据并写入CSV</span></span><br><span class="line">    <span class="keyword">for</span> <span class="variable">x</span> <span class="keyword">in</span> <span class="number">0</span>..=<span class="number">100</span> &#123; <span class="comment">// 使用0到10之间的101个点</span></span><br><span class="line">        <span class="keyword">let</span> <span class="variable">x_val</span> = (x <span class="keyword">as</span> <span class="type">f64</span>) / <span class="number">10.0</span>;</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">y_val</span> = x_val.<span class="title function_ invoke__">powi</span>(<span class="number">2</span>);</span><br><span class="line">        wtr.<span class="title function_ invoke__">write_record</span>(&amp;[x_val.<span class="title function_ invoke__">to_string</span>(), y_val.<span class="title function_ invoke__">to_string</span>()])?;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    wtr.<span class="title function_ invoke__">flush</span>()?;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;CSV data has been written.&quot;</span>);</span><br><span class="line">    <span class="title function_ invoke__">Ok</span>(())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <div class="note primary"><p>使用<code>cargo run</code>运行这个程序将会在当前目录下生成一个名为<code>function_data.csv</code>的文件，其中包含了我们计算的数据。</p>
+</div></p></li>
+<li><p>编译程序： <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cargo build --release</span><br><span class="line">./drawfunction/target/release/montecarlo</span><br></pre></td></tr></table></figure> <div class="note primary"><p>第1行为编译程序，第2行为运行这个程序.
+可以明显的感觉到程序运行时,瞬间在当前目录下生成一个名为<code>function_data.csv</code>的文件，其中包含了我们计算的数据。</p>
+</div></p></li>
+</ol>
+<h2 id="使用veusz绘图">使用Veusz绘图</h2>
+<ol type="1">
+<li>启动<code>veusz</code>: 打开Veusz应用程序。</li>
+<li>导入数据：通过“数据-&gt;导入”菜单选项导入你用Rust生成的<code>function_data.csv</code>文件。</li>
+<li>创建图表：</li>
+</ol>
+<ul>
+<li>在<code>Veusz</code>中，选择<code>Insert--&gt;add Graph</code>以创建一个新的图形窗口。</li>
+<li>在工具栏中选择<code>Plot points with lines and eorrbars</code>.</li>
+<li>选中上述组件，在<code>X data</code> 中选择 <code>x</code> ,
+<code>Y data</code> 中选择<code>x_squared</code>.</li>
+</ul>
+
       
     </div>
 
@@ -1160,103 +1255,6 @@ IMC）是一种专门设计用来解决辐射传输问题的高级蒙特卡洛�
 <li><p><strong>传统蒙特卡洛方法</strong>：粒子（如光子）的轨迹是根据当前物理状态逐次随机抽样得到的。这种方法对于线性问题非常有效，但在处理非线性问题时可能遇到困难。</p></li>
 <li><p><strong>隐式蒙特卡洛方法</strong>：通过对粒子行为的概率分布进行调整，使得计算过程能够更准确地反映真实的物理过程。具体来说，IMC通过考虑未来时间点的状态信息，即在计算下一时刻的状态时，不仅依赖于当前已知的信息，还考虑到该状态自身的未来值，从而提高了计算的稳定性和准确性。</p></li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/18/%E4%BD%BF%E7%94%A8%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E6%B1%82%E8%A7%A3%E5%AE%9A%E7%A7%AF%E5%88%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/02/18/%E4%BD%BF%E7%94%A8%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E6%B1%82%E8%A7%A3%E5%AE%9A%E7%A7%AF%E5%88%86/" class="post-title-link" itemprop="url">使用蒙特卡洛方法求解定积分</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-02-18 14:15:10 / 修改时间：14:27:15" itemprop="dateCreated datePublished" datetime="2025-02-18T14:15:10+08:00">2025-02-18</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="基本原理">基本原理</h1>
-<p>蒙特卡洛方法求解定积分的理论依据是积分中值定理和大数定理。即</p>
-<p><span
-class="math display">\[\int_a^bf(x)dx=f(\xi)\cdot(b-a)\]</span></p>
-<p>其中<span class="math inline">\(a\leq\xi\leq b\)</span>.
-蒙特卡洛方法是随机在<span
-class="math inline">\((a,b)\)</span>区间取点，然后将这个点当作<span
-class="math inline">\(\xi\)</span>来计算面积，但是由于点<span
-class="math inline">\(\xi\)</span>当前是随机的，这个积分值就不是准确的，但是当大量取点时，由于函数<span
-class="math inline">\(f(x)\)</span>本身的作用，根据大数定量最终会稳定到准确值的附近，因为接近真实值的情况出现的概率更大。</p>
-<h1 id="一维函数的定积分">一维函数的定积分</h1>
-<p>假设我们想要计算如下函数在区间 <span class="math inline">\([0,
-1]\)</span> 上的积分:</p>
-<p><span class="math display">\[\int_0^1x^2dx\]</span></p>
-<p>该积分的解析解是<span class="math inline">\(\frac{1}{3}\)</span>.
-使用Python代码实现蒙特卡洛积分的代码为:</p>
-<figure class="highlight python"><figcaption><span>一维函数积分</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">monte_carlo_integral</span>(<span class="params">f, a, b, N</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    使用蒙特卡洛方法估计函数f在[a,b]上的积分。</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    参数:</span></span><br><span class="line"><span class="string">        f: 要积分的函数。</span></span><br><span class="line"><span class="string">        a (float): 积分下限。</span></span><br><span class="line"><span class="string">        b (float): 积分上限。</span></span><br><span class="line"><span class="string">        N (int): 随机样本的数量。</span></span><br><span class="line"><span class="string">    返回:</span></span><br><span class="line"><span class="string">        float: 积分的蒙特卡洛估计值。</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    samples = np.random.uniform(a, b, N)  <span class="comment"># 在[a, b]上生成N个均匀分布的随机数</span></span><br><span class="line">    evaluations = f(samples)  <span class="comment"># 计算每个随机样本点处函数的值</span></span><br><span class="line">    integral_estimate = (b - a) * np.mean(evaluations)  <span class="comment"># 积分估计</span></span><br><span class="line">    <span class="keyword">return</span> integral_estimate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义要积分的函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> x**<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行蒙特卡洛积分</span></span><br><span class="line">a, b = <span class="number">0</span>, <span class="number">1</span>  <span class="comment"># 积分范围</span></span><br><span class="line">N = <span class="number">100000</span>   <span class="comment"># 样本数量</span></span><br><span class="line">integral = monte_carlo_integral(f, a, b, N)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;蒙特卡洛积分估计值: <span class="subst">&#123;integral&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;真实值: <span class="subst">&#123;<span class="number">1</span>/<span class="number">3</span>&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="二维函数的定积分">二维函数的定积分</h1>
-<p>二维函数的定积分同样也满足积分中值定理，所以蒙特卡洛方法是求解定积分的有效工具。本节我们求解定义在<span
-class="math inline">\([0,1]\times[0,1]\)</span>上的二重积分:</p>
-<p><span
-class="math display">\[\iint_{[0,1]\times[0,1]]}(x^2+y^2)dxdy\]</span></p>
-<p>该积分的解可以直接解析求得为<span
-class="math inline">\(\frac{2}{3}\)</span>. 其 Python 代码实现为:</p>
-<figure class="highlight python"><figcaption><span>二维函数定积分</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">monte_carlo_double_integral</span>(<span class="params">f, a1, b1, a2, b2, N</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    使用蒙特卡洛方法估计函数f在[a1,b1] x [a2,b2]上的二重积分。</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    参数:</span></span><br><span class="line"><span class="string">        f: 要积分的函数，接受两个参数x和y。</span></span><br><span class="line"><span class="string">        a1, b1 (float): 第一维的积分下限和上限。</span></span><br><span class="line"><span class="string">        a2, b2 (float): 第二维的积分下限和上限。</span></span><br><span class="line"><span class="string">        N (int): 随机样本的数量。</span></span><br><span class="line"><span class="string">    返回:</span></span><br><span class="line"><span class="string">        float: 积分的蒙特卡洛估计值。</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># 在[a1, b1]和[a2, b2]上生成N个均匀分布的随机数对</span></span><br><span class="line">    x_samples = np.random.uniform(a1, b1, N)</span><br><span class="line">    y_samples = np.random.uniform(a2, b2, N)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 计算每个随机样本点处函数的值</span></span><br><span class="line">    evaluations = f(x_samples, y_samples)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 积分估计</span></span><br><span class="line">    area = (b1 - a1) * (b2 - a2)</span><br><span class="line">    integral_estimate = area * np.mean(evaluations)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> integral_estimate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义要积分的函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">integrand</span>(<span class="params">x, y</span>):</span><br><span class="line">    <span class="keyword">return</span> x**<span class="number">2</span> + y**<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行蒙特卡洛二重积分</span></span><br><span class="line">a1, b1 = <span class="number">0</span>, <span class="number">1</span>  <span class="comment"># 第一维积分范围</span></span><br><span class="line">a2, b2 = <span class="number">0</span>, <span class="number">1</span>  <span class="comment"># 第二维积分范围</span></span><br><span class="line">N = <span class="number">100000</span>     <span class="comment"># 样本数量</span></span><br><span class="line"></span><br><span class="line">integral = monte_carlo_double_integral(integrand, a1, b1, a2, b2, N)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;蒙特卡洛积分估计值: <span class="subst">&#123;integral&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;真实值: <span class="subst">&#123;<span class="number">2</span>/<span class="number">3</span>&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
-<div class="note primary"><p>通过增加样本数量
-<code>N</code>，可以提高积分估计的精度。尽管对于这个简单的二重积分问题，传统数值积分方法可能更高效且准确，但对于更高维度或复杂形状的积分区域，蒙特卡洛方法就显得尤为重要了。这种方法提供了一种通用的方法来解决那些难以通过常规手段求解的积分问题。</p>
-</div>
 
       
     </div>

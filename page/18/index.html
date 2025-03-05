@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">498</span>
+          <span class="site-state-item-count">499</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,101 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/08/LaTeX%E4%B8%AD%E6%96%87%E6%A1%A3%E7%B1%BBrevtex4%E4%B8%AD%E7%A6%81%E6%AD%A2%E5%BC%95%E7%94%A8%E6%96%87%E7%8C%AE%E4%B8%AD%E6%98%BE%E7%A4%BA%E8%84%9A%E6%B3%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/07/08/LaTeX%E4%B8%AD%E6%96%87%E6%A1%A3%E7%B1%BBrevtex4%E4%B8%AD%E7%A6%81%E6%AD%A2%E5%BC%95%E7%94%A8%E6%96%87%E7%8C%AE%E4%B8%AD%E6%98%BE%E7%A4%BA%E8%84%9A%E6%B3%A8/" class="post-title-link" itemprop="url">LaTeX中文档类revtex4中禁止引用文献中显示脚注</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-08 12:58:14" itemprop="dateCreated datePublished" datetime="2024-07-08T12:58:14+08:00">2024-07-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="简介">简介</h3>
+<p>Includes styles for American Physical Society, American Institute of
+Physics, and Optical Society of America. The distribution consists of
+the RevTeX class itself, and several support packages.</p>
+<h3 id="文献引用显示和隐藏脚注">文献引用显示和隐藏脚注</h3>
+<p>在使用<code>revtex4</code>编写论文时，发现所有的<code>footnote</code>都会在引用文献中出现，调用其说明文档<a
+target="_blank" rel="noopener" href="https://mirrors.cloud.tencent.com/CTAN/obsolete/macros/latex/contrib/revtex4-1/revtex4-1.pdf">revtex4.pdf</a>后发现其使用规则并没有详细介绍。于是经过一翻查找得到设置方法：即使用选项<code>footinbib</code>实现在参考文献列表中出现<code>footnote</code>的内容，使用选项<code>nofootinbib</code>则不在参考文献中出现<code>footnote</code>.
+即</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>[footinbib]&#123;revtex4&#125;   <span class="comment">%默认启用此选项</span></span><br><span class="line"><span class="keyword">\documentclass</span>[nofootinbib]&#123;revtex4&#125; <span class="comment">%关闭需手动设置</span></span><br></pre></td></tr></table></figure>
+<h3 id="参考文章">参考文章</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://journals.aps.org/revtex">REVTeX Home Page</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://cdn.journals.aps.org/files/revtex/index.html">REVTeX 4
+Home Page</a></li>
+<li><a target="_blank" rel="noopener" href="https://ctan.org/pkg/revtex4-1">revtex4-1 -Styles for
+various Physics Journals</a></li>
+<li><a target="_blank" rel="noopener" href="https://ctan.org/pkg/revtex">revtex -Styles for various
+Physics Journals</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1368,283 +1463,6 @@ id="通过泊松分布来对这个问题进行预测">通过泊松分布来对�
 <p>本文引用自：<a
 target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40064300/article/details/134628610">如何深刻理解从二项式分布到泊松分布</a>,
 只是对数学公式部分重新编写以适应<code>Next</code>主题。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/02/Nvidia-ArchLinux-Wayland%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/07/02/Nvidia-ArchLinux-Wayland%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Nvidia-ArchLinux-Wayland安装教程</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-07-02 13:43:09" itemprop="dateCreated datePublished" datetime="2024-07-02T13:43:09+08:00">2024-07-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>As you know, the transition to Wayland from the traditional Xorg
-server in the Linux ecosystem has been a hot topic that caused much
-controversy and, admittedly, a fair share of troubleshooting.</p>
-<p>While Wayland promises a more streamlined and secure interface than
-its predecessor, Xorg, users have often encountered hurdles,
-particularly regarding compatibility with NVIDIA graphics cards.</p>
-<p>In other words, the journey hasn’t always been without bumps, from
-rendering issues to compatibility quirks. However, it’s becoming
-increasingly clear that the NVIDIA and Wayland combo, while not yet a
-perfect match, is evolving into a viable, working solution for many.</p>
-<p>Still, with the proper guidance and a bit of patience, using NVIDIA
-with Wayland on Arch is not just a possibility but a largely workable
-solution. You can approach this transition with confidence.</p>
-<p>This guide is designed to do precisely this: usher you through the
-setup process and offer solutions to ensure you can take most of your
-NVIDIA and Wayland experience on Arch Linux. So, let’s get started.</p>
-<h2 id="install-nvidia-driver">1、Install NVIDIA Driver</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S nvidia nvidia-settings</span><br></pre></td></tr></table></figure>
-<h2 id="set-environment-variables">2、Set Environment Variables</h2>
-<p>With NVIDIA’s introduction of GBM (Generic Buffer Management)
-support, a crucial component of the Linux graphics stack that provides
-an API for allocating buffers for graphics rendering and display, many
-compositors have adopted it as their default. So, to force GBM as a
-backend, we need to set some environment variables.</p>
-<p>Open the “<em>/etc/environment</em>” file, paste the following two
-lines, then save the file and exit.</p>
-<figure class="highlight sh"><figcaption><span>/etc/environment</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GBM_BACKEND=nvidia-drm</span><br><span class="line">__GLX_VENDOR_LIBRARY_NAME=nvidia</span><br></pre></td></tr></table></figure>
-<p><a
-target="_blank" rel="noopener" href="https://linuxiac.b-cdn.net/wp-content/uploads/2024/04/nvidia-arch-wayland07.jpg"><img
-src="https://cdn.shortpixel.ai/spai/q_lossy+ret_img+to_auto/linuxiac.com/wp-content/uploads/2024/04/nvidia-arch-wayland07-1024x396.jpg"
-alt="Set environment variables." /></a></p>
-<h2 id="loading-the-nvidia-modules-at-system-boot">3、Loading the NVIDIA
-Modules at System Boot</h2>
-<p>To ensure that the NVIDIA modules are loaded at the earliest possible
-stage, i.e., on the system boot, we need to add the ‘<em>nvidia</em>,’
-‘<em>nvidia_modeset</em>,’ ‘<em>nvidia_uvm</em>,’ and
-‘<em>nvidia_drm</em>‘ modules to the initramfs – a temporary root file
-system loaded into memory as part of the boot process before the real
-root file system is mounted.</p>
-<p>This is possible by entering them in the “<em>MODULES</em>” section
-of the “<em>/etc/mkinitcpio.conf</em>” file. This is a configuration
-file for mkinitcpio, a tool Arch uses to generate initial ramdisk
-images.</p>
-<p>So, open the “<em>/etc/mkinitcpio.conf</em>” file. Then, enter the
-modules mentioned above, as the final version should look like this:</p>
-<figure class="highlight sh"><figcaption><span>/etc/mkinitcpio.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)</span><br></pre></td></tr></table></figure>
-<p><a
-target="_blank" rel="noopener" href="https://linuxiac.b-cdn.net/wp-content/uploads/2024/04/nvidia-arch-wayland03.jpg"><img
-src="https://cdn.shortpixel.ai/spai/q_lossy+ret_img+to_auto/linuxiac.com/wp-content/uploads/2024/04/nvidia-arch-wayland03.jpg"
-alt="Loading the NVIDIA modules at system boot." /></a></p>
-<p>Great, but we’re not done with this file yet. Scroll down and remove
-the “<em>kms</em>” from the “<em>HOOKS</em>” section. This ensures that
-the initramfs will avoid including the open-source “<em>nouveau</em>”
-driver to mess with the work of the proprietary NVIDIA one we have
-installed and rely on.</p>
-<p><a
-target="_blank" rel="noopener" href="https://linuxiac.b-cdn.net/wp-content/uploads/2024/04/nvidia-arch-wayland04.jpg"><img
-src="https://cdn.shortpixel.ai/spai/q_lossy+ret_img+to_auto/linuxiac.com/wp-content/uploads/2024/04/nvidia-arch-wayland04.jpg"
-alt="Removing KMS from the Hooks." /></a></p>
-<p>We’ve finished modifying “<em>/etc/mkinitcpio.conf</em>“. Save your
-changes and close the file. Next, we’ll proceed to regenerate the
-initramfs. To do this, execute the following command:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> mkinitcpio -P</span><br></pre></td></tr></table></figure>
-<p>In the command’s output, you might notice messages like “<em>WARNING:
-Possibly missing firmware for module…</em>” These shouldn’t cause
-concern and are unrelated to the modifications we are currently
-implementing.</p>
-<h2 id="enable-drm">4、Enable DRM</h2>
-<p>DRM (Direct Rendering Manager) is a subsystem of the Linux kernel
-responsible for interfacing with GPUs. It provides a framework for
-graphics drivers to enable direct access to the graphics hardware, which
-is crucial for performance in rendering tasks, 3D graphics, video
-playback, and more.</p>
-<p>NVIDIA provides proprietary graphics drivers for Linux that use the
-DRM subsystem to interact with their GPUs. These drivers are essential
-for getting the best performance and feature support on NVIDIA hardware
-under Linux.</p>
-<p>Enabling the DRM kernel mode setting is required for Wayland
-compositors to function properly. So, we will pass it as a parameter to
-the Linux kernel during its initial boot through the GRUB
-bootloader.</p>
-<p>Open its configuration file<code>/etc/default/grub</code>. Locate the
-line that begins with “<em>GRUB_CMDLINE_LINUX_DEFAULT</em>” and append
-“<em>nvidia-drm.modeset=1</em>” to its end. The completed line should
-resemble the example provided below.</p>
-<p><a
-target="_blank" rel="noopener" href="https://linuxiac.b-cdn.net/wp-content/uploads/2024/04/nvidia-arch-wayland05.jpg"><img
-src="https://cdn.shortpixel.ai/spai/q_lossy+ret_img+to_auto/linuxiac.com/wp-content/uploads/2024/04/nvidia-arch-wayland05-1024x501.jpg"
-alt="Enabling DRM (Direct Rendering Manager) via GRUB." /></a></p>
-<p>Finally, regenerate the GRUB configuration by running:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
-<p><a
-target="_blank" rel="noopener" href="https://linuxiac.b-cdn.net/wp-content/uploads/2024/04/nvidia-arch-wayland06.jpg"><img
-src="https://cdn.shortpixel.ai/spai/q_lossy+ret_img+to_auto/linuxiac.com/wp-content/uploads/2024/04/nvidia-arch-wayland06-1024x396.jpg"
-alt="Regenerating the main GRUB configuration file." /></a></p>
-<h2 id="testing-wayland-with-nvidia-on-arch-linux">5、Testing Wayland
-with NVIDIA on Arch Linux</h2>
-<p>You are all set up. Now, reboot your Arch system. At the login screen
-of the display manager you’re using, choose the Wayland Session
-option.</p>
-<p><a
-target="_blank" rel="noopener" href="https://linuxiac.b-cdn.net/wp-content/uploads/2024/04/nvidia-arch-wayland09.jpg"><img
-src="https://cdn.shortpixel.ai/spai/q_lossy+ret_img+to_auto/linuxiac.com/wp-content/uploads/2024/04/nvidia-arch-wayland09-1024x640.jpg"
-alt="Switching to Wayland session on Arch." /></a></p>
-<p>Log in and enjoy a seamless Wayland experience with NVIDIA and your
-beloved Arch Linux.</p>
-<p><a
-target="_blank" rel="noopener" href="https://linuxiac.b-cdn.net/wp-content/uploads/2024/04/nvidia-arch-wayland10.jpg"><img
-src="https://cdn.shortpixel.ai/spai/q_lossy+ret_img+to_auto/linuxiac.com/wp-content/uploads/2024/04/nvidia-arch-wayland10-1024x640.jpg"
-alt="Arch Linux is running on Wayland with NVIDIA GPU." /></a></p>
-<p>In addition, to verify that the NVIDIA DRM settings were correctly
-applied after a reboot, execute the following command; in response, you
-should get “<em>Y</em>.”</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">cat</span> /sys/module/nvidia_drm/parameters/modeset</span><br></pre></td></tr></table></figure>
-<p><a
-target="_blank" rel="noopener" href="https://linuxiac.b-cdn.net/wp-content/uploads/2024/04/nvidia-arch-wayland11.jpg"><img
-src="https://cdn.shortpixel.ai/spai/q_lossy+ret_img+to_auto/linuxiac.com/wp-content/uploads/2024/04/nvidia-arch-wayland11.jpg"
-alt="Verifying the NVIDIA DRM settings." /></a></p>
-<h2 id="设置-nvidia-电源管理">6、设置 nvidia 电源管理</h2>
-<ol type="1">
-<li><p>Create a file
-<code>/etc/modprobe.d/nvidia-power-management.conf</code> with the
-following content: <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp</span><br></pre></td></tr></table></figure></p></li>
-<li><p><code>sudo update-initramfs -c -k all</code> to re-generate the
-kernels.
-此处我没有执行成功命令，但是并没有影响，系统正常配置成功。</p></li>
-<li><p>Reboot</p></li>
-<li><p>Go to suspend mode.</p></li>
-<li><p>Get an error when trying to load a saved state.</p></li>
-</ol>
-<h2 id="配置wayland">7、配置wayland</h2>
-<p>经过上述配置后，我发现重启系统将会默认进入到<code>x11</code>,
-它是可以正常工作的，效果良好。但是，既然有强大的独立<code>nvidia</code>显卡，我们还是需要设置好<code>nvidia</code>.
-下述根据 <a
-target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/GDM#Wayland_and_the_proprietary_NVIDIA_driver">Wayland
-and the proprietary NVIDIA driver</a>主操作，详细信息可以参考。</p>
-<ul>
-<li><p>启用<code>nvidia</code>相关服务 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> nvidia-suspend.service nvidia-hibernate.service nvidia-resume.service</span><br></pre></td></tr></table></figure> 此项参考：<a
-target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend">Preserve
-video memory after suspend</a></p></li>
-<li><p>强制启用<code>Wayland</code>, As of GDM 42 and NVIDIA driver 510,
-GDM defaults to Wayland. For older NVIDIA drivers (in between version
-470 and 510), GDM has chipset-dependent udev rules to use Xorg rather
-than Wayland. To force-enable Wayland, override these rules by creating
-the following symlink: <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">ln</span> -s /dev/null /etc/udev/rules.d/61-gdm.rules</span><br></pre></td></tr></table></figure></p></li>
-</ul>
-<p>注意：如果没有第<code>6</code>到<code>7</code>步，在<code>GNOME</code>桌面环境启动后，<code>GDM</code>不能显示<code>wayland</code>启动选项，而只是默认启动<code>Xorg</code>,
-设置好<code>6</code>和<code>7</code>后，系统正常进入到<code>wayland</code>。</p>
-<h2 id="bottom-line">8、Bottom Line</h2>
-<p>In the end, it’s essential to clarify a key point. Our guide has
-confidently demonstrated that Wayland can operate smoothly with NVIDIA
-on an Arch system. This, however, does not extend to guaranteeing that
-every application, game, or desktop environment will also function
-flawlessly.</p>
-<p>The compatibility of these components with Wayland varies and is
-dependent on the extent to which they have integrated support for
-it.</p>
-<p>For example, desktop environments like KDE Plasma and GNOME offer
-very good support for Wayland, ensuring a seamless experience. On the
-other hand, environments like Cinnamon, with only basic Wayland support,
-may not deliver the same smoothness. So, it’s important to consider
-these differences.</p>
-<p>Similarly, using the Hyprland dynamic tiling Wayland compositor would
-result in a smooth user experience, whereas others that are still
-dependent on Xorg may not offer the necessary support for Wayland. This
-variability in compatibility applies to individual applications too, so
-it’s important to be aware of potential issues when using specific
-software.</p>
-<p>In conclusion, navigating the complexities of setting up Wayland on
-Arch can seem daunting, especially for those wielding the power of
-NVIDIA GPUs, who have historically faced hurdles ranging from rendering
-glitches to compatibility concerns.</p>
-<p>Yet, with the proper knowledge, a dash of perseverance, and our
-guidance, the hurdles that once seemed impossible begin to shrink to the
-level that, with the correct setup, NVIDIA and Wayland can indeed create
-a synergy that brings out the best in your Arch setup.</p>
-<p>Finally, we recommend referring to the specific <a
-target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Wayland">Wayland</a> and <a
-target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/NVIDIA">NVIDIA</a> sections on
-the official Arch wiki for a more comprehensive understanding. They
-provide detailed information on setting up and troubleshooting Wayland
-and NVIDIA on Arch, making them valuable resources for further
-exploration.</p>
-<p>And, of course, we’d love to hear your feedback or thoughts, so
-please don’t hesitate to share them in the comment box below.</p>
-<h2 id="references">9、References</h2>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://linuxiac.com/nvidia-with-wayland-on-arch-setup-guide/">NVIDIA
-+ Wayland on Arch: A Comprehensive Setup Guide</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://www.maketecheasier.com/wayland-work-with-nvidia-graphics-cards/">How
-to Get Wayland to Work on Nvidia Graphics Cards</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv25617874/">ArchLinux
-安装Nvidia 驱动使用Wayland</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Wayland">Wayland-ArchWiki</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/NVIDIA">Nvidia-ArchWiki</a></li>
-<li><a target="_blank" rel="noopener" href="https://sh.alynx.one/posts/NVIDIA-GNOME-Wayland/">NVIDIA
-驱动和 GNOME 和 Wayland</a></li>
-</ul>
 
       
     </div>
