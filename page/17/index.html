@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">499</span>
+          <span class="site-state-item-count">500</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,99 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/19/Linux%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/07/19/Linux%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95/" class="post-title-link" itemprop="url">Linux软件的安装目录</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-19 20:43:54" itemprop="dateCreated datePublished" datetime="2024-07-19T20:43:54+08:00">2024-07-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="linux目录与windows目录类比">Linux目录与Windows目录类比</h3>
+<ul>
+<li><code>/usr</code>：系统级的目录，可以理解为<code>C:/Windows/</code>，<code>/usr/lib</code>理解为<code>C:/Windows/System32</code>。</li>
+<li><code>/usr/local</code>：用户级的程序目录，可以理解为<code>C:/Progrem Files/</code>。用户自己编译的软件默认会安装到这个目录下。</li>
+<li><code>/opt</code>：用户级的程序目录，可以理解为<code>D:/Software</code>，<code>opt</code>有可选的意思，这里可以用于放置第三方大型软件（或游戏），当你不需要时，直接<code>rm -rf</code>掉即可。在硬盘容量不够时，也可将<code>/opt</code>单独挂载到其他磁盘上使用。</li>
+</ul>
+<h3 id="源码的安装位置">源码的安装位置</h3>
+<ul>
+<li><code>/usr/src</code>：系统级的源码目录。</li>
+<li><code>/usr/local/src</code>：用户级的源码目录。</li>
+</ul>
+<h3 id="opt">/opt</h3>
+<p>这里主要存放那些可选的程序。例如测试最新的<code>firefox</code>,
+那就装到<code>/opt</code>目录，<strong>当你测试完，直接删除它即可，这不影响系统其他任何设置。</strong>安装到<code>/opt</code>目录下的程序，它所有的数据、库文件等等都是放在同个目录下面。
+举个例子：刚才装的测试版<code>firefox</code>，就可以装到<code>/opt/firefox_beta</code>目录下，<code>/opt/firefox_beta</code>目录下面就包含了运
+行<code>firefox</code>所需要的所有文件、库、数据等等。要删除<code>firefox</code>的时候，你只需删除<code>/opt/firefox_beta</code>目录即可，非常简单。</p>
+<h3 id="usrlocal">/usr/local</h3>
+<p>这里主要存放那些<label style="color:red">手动安装</label>的软件，<strong>即不是通过“包管理器”安装的软件。它和<code>/usr</code>目录具有相类似的目录结构</strong>。让软件包管理器来管理<code>/usr</code>目录，而把自定义的脚本(<code>scripts</code>)放到<code>/usr/local</code>目录下面是个不错的主意。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1502,109 +1595,6 @@ f&#39;(x_i)=\frac{-f(x_{i+2})+4f(x_{i+1})-3f(x_i)}{2h}+O(h^2)
 <h2 id="总结">总结</h2>
 <figure class="highlight bash"><figcaption><span>格式与解压命令</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、*.tar           用 tar –xvf 解压</span><br><span class="line">2、*.gz            用 gzip -d或者gunzip 解压</span><br><span class="line">3、*.tar.gz和*.tgz 用 tar –xzf 解压</span><br><span class="line">4、*.bz2           用 bzip2 -d或者用bunzip2 解压</span><br><span class="line">5、*.tar.bz2       用tar –xjf 解压</span><br><span class="line">6、*.Z             用 uncompress 解压</span><br><span class="line">7、*.tar.Z         用tar –xZf 解压</span><br><span class="line">8、*.rar           用 unrar e解压</span><br><span class="line">9、*.zip           用 unzip 解压</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><figcaption><span>使用举例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar cvf  etcbak.tar etc/      打包一个tar</span><br><span class="line">tar xvf  etcbak.tar           解开一个tar</span><br><span class="line">tar cvzf etcbak.tar.gz etc/   打包压缩一个 tar</span><br><span class="line">tar zxvf etcbak.tar.gz        解压一个tar</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/09/%E5%85%B3%E4%BA%8ELaTeX%E6%8E%92%E7%89%88%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AF%B4%E6%98%8E/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/07/09/%E5%85%B3%E4%BA%8ELaTeX%E6%8E%92%E7%89%88%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AF%B4%E6%98%8E/" class="post-title-link" itemprop="url">关于LaTeX排版系统的说明</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-07-09 13:49:14" itemprop="dateCreated datePublished" datetime="2024-07-09T13:49:14+08:00">2024-07-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><code>LaTeX</code>排版系统主要有<code>CTeX套装</code>和<code>TeXLive</code>,
-然而我们建议大家尽量使用<code>TeXLive</code>, 原因是：</p>
-<h3 id="ctex套装">CTeX套装</h3>
-<p><code>CTeX套装</code>是科学院吴凌云研究员的个人作品。在
-<code>CTeX套装</code>刚刚问世之时，因其解决了繁琐的中文字体安装工作，所以广受欢迎。但是，一方面
-<code>CTeX套装</code>已经很久不更新，内里的宏包、工具陈旧；另一方面，随着
-<code>XeLaTeX</code> 的发展，以及 <code>xeCJK</code>
-等技术的成熟，上述这些繁琐的工作已经没有必要而失去意义；因此，<label style="color:red">现在不推荐使用CTeX套装</label>.</p>
-<h3 id="ctex宏集">CTeX宏集</h3>
-<p>虽然它的名字也是<code>「CTeX」</code>，但是 <code>CTeX</code> 宏集和
-<code>CTeX</code> 套装是两个不同的东西。<code>CTeX</code>
-宏集是集成了中文支持、操作系统判定、字体选择、版式预设为一体的一组宏包和文档类的合集。我们推荐在任何情况下，优先使用
-<code>CTeX</code> 宏集处理中文。</p>
-<h3 id="texlive">TeXLive</h3>
-<p><code>TeXLive</code> 是 <code>TUG (TeX User Group)</code>
-维护和发布的 <code>TeX</code> 系统，可说是「官方」的 <code>TeX</code>
-系统。我们推荐任何阶段的 <code>TeX</code> 用户，都尽可能使用
-<code>TeXLive</code>，以保持在跨操作系统平台、跨用户的一致性。<code>TeXLive</code>
-的官方站点是 <a
-target="_blank" rel="noopener" href="https://tug.org/texlive/">https://tug.org/texlive/</a>.</p>
-<h3 id="归纳总结">归纳总结</h3>
-<div class="note primary"><ul>
-<li>不要安装和使用 CTeX 套装！</li>
-<li>请在任何情况下优先使用 CTeX 宏集在 LaTeX 中处理中文！</li>
-<li>具体安装配置请参考：<a
-href="/2022/03/01/ArchLinux安装指南">ArchLinux安装指南</a></li>
-</ul>
-</div>
 
       
     </div>
