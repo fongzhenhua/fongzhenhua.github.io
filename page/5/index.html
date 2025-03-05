@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">496</span>
+          <span class="site-state-item-count">497</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,95 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/20/vim-latex%E8%BF%87%E6%BB%A4Warning%E4%BF%A1%E6%81%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/12/20/vim-latex%E8%BF%87%E6%BB%A4Warning%E4%BF%A1%E6%81%AF/" class="post-title-link" itemprop="url">vim-latex过滤Warning信息</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-12-20 20:34:41" itemprop="dateCreated datePublished" datetime="2024-12-20T20:34:41+08:00">2024-12-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在 neovim 中编辑 LaTeX 使用 <a
+target="_blank" rel="noopener" href="https://github.com/vim-latex/vim-latex">vim-latex</a>
+插件是一个绝佳选择。然而，有时候写论文需要使用官方的
+LaTeX的模板，但是不同出版社的模板设置多少有些不符合 LaTeX
+规范，于是就会有字体等 Warning 信息出现，但是这些信息又不是 LaTeX
+必须处理的，它们是可以忽略的。如果不忽略它们，每次编译 <a
+target="_blank" rel="noopener" href="https://neovim.io/doc/user/quickfix.html">quicfix</a>
+窗口都会弹出提示，这极大的影响的写作体验，为此本文提供屏蔽这些信息的方法。</p>
+<h1 id="neovim-中设置">Neovim 中设置</h1>
+<figure class="highlight lua"><figcaption><span>~/.config/nvim/lua/plg/vim-latex.lua</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 控制统计过程中的警告信息</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_IgnoredWarnings&#x27;</span>] = <span class="string">[[</span></span><br><span class="line"><span class="string">    LaTeX Font Warning:</span></span><br><span class="line"><span class="string">    LaTeX Warning:</span></span><br><span class="line"><span class="string">    Warning:</span></span><br><span class="line"><span class="string">    Overfull</span></span><br><span class="line"><span class="string">]]</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_IgnoreLevel&#x27;</span>] = <span class="number">4</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_GotoError&#x27;</span>] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h1 id="vim-中设置">Vim 中设置</h1>
+<figure class="highlight vim"><figcaption><span>~/.vimrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&quot; 控制编译过程中的警告信息</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">g:Tex_IgnoredWarnings</span> = </span><br><span class="line">	\<span class="string">&#x27;Underfull&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&#x27;Overfull&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&#x27;specifier changed to&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&#x27;You have requested&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&#x27;Missing number, treated as zero.&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&#x27;There were undefined references&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&#x27;Citation %.%# undefined&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&quot;LaTeX hooks Warning&quot;</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">g:Tex_IgnoreLevel</span> = <span class="number">8</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">g:Tex_GotoError</span> = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<div class="note primary"><p>注意：如果您想追加需要过滤的消息，请按上述标格式对应添加到<code>Tex_IgnoredWarnings</code>变量中即可，这样在<code>nvim</code>或<code>vim</code>中输入<code>\ll</code>时，系统直接编译不再弹出<code>quicfix</code>窗口。</p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1321,98 +1410,6 @@ target="_blank" rel="noopener" href="https://theme-next.js.org/docs/getting-star
 这样升级主题后配置文件由于没被覆盖而得以保留自定义设置。但是这造成另一个问题，假如升级前后两个版本的差异过大，导致有些功能上的删减，那原来的配置有可能就不再被新主题兼容，这样再生成博客就会导致出错。同时，由于配置文件没有被修改，新配置就不会生效，所以升级后应当将原配置文件
 <code>_config.next.yml</code> 与 <code>themes/next/_config.yml</code>
 对比，找出不同，修改成新主题的配置方式，这样就可以正常使用新系统了。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/05/%E6%A3%80%E6%9F%A5%E5%92%8C%E5%A4%84%E7%90%86%E9%87%8D%E5%A4%8D%E8%A1%8C%E7%9A%84%E5%91%BD%E4%BB%A4uniq/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/12/05/%E6%A3%80%E6%9F%A5%E5%92%8C%E5%A4%84%E7%90%86%E9%87%8D%E5%A4%8D%E8%A1%8C%E7%9A%84%E5%91%BD%E4%BB%A4uniq/" class="post-title-link" itemprop="url">检查和处理重复行的命令uniq</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-12-05 11:33:30" itemprop="dateCreated datePublished" datetime="2024-12-05T11:33:30+08:00">2024-12-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>文本中的重复行，基本上不是我们所要的，所以就要去除掉。使用<code>uniq</code>的时候要注意以下二点:</p>
-<h1 id="uniq-的语法">uniq 的语法</h1>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">用法：<span class="built_in">uniq</span> [选项]... [输入文件 [输出文件]]</span><br><span class="line">从 &lt;输入文件&gt;（或标准输入）中过滤内容相同的相邻的行，</span><br><span class="line">并写到 &lt;输出文件&gt;（或标准输出）。</span><br><span class="line"></span><br><span class="line">不带选项时，内容相同的行将仅输出一次。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">长选项的必选参数对于短选项也是必选的。</span><br><span class="line">  -c, --count           在每行之前加上该行的重复次数作为前缀</span><br><span class="line">  -d, --repeated        只输出重复的行，每组重复的行输出一次</span><br><span class="line">  -D                    输出所有重复的行</span><br><span class="line">      --all-repeated[=方法]    类似 -D，但支持在每组重复的行之间添加一行空行；</span><br><span class="line">                                 方法=&#123;none（默认）,prepend,separate&#125;</span><br><span class="line">  -f, --skip-fields=N   不要比较前 N 个字段</span><br><span class="line">      --group[=方法]    分组输出所有项目，每组之间用空行分隔；</span><br><span class="line">                          方法=&#123;separate（默认）,prepend,append,both&#125;</span><br><span class="line">  -i, --ignore-case     比较时忽略大小写</span><br><span class="line">  -s, --skip-chars=N    不要比较前 N 个字符</span><br><span class="line">  -u, --unique          只输出不重复（内容唯一）的行</span><br><span class="line">  -z, --zero-terminated     以 NUL 空字符而非换行符作为行分隔符</span><br><span class="line">  -w, --check-chars=N   每行最多比较 N 个字符</span><br><span class="line">      --<span class="built_in">help</span>        显示此帮助信息并退出</span><br><span class="line">      --version     显示版本信息并退出</span><br><span class="line"></span><br><span class="line">字段指的是空白字符（通常是空格和/或制表符）的序列，后跟非空白字符的序列。</span><br><span class="line">程序将先跳过字段 (--skip-fields)，后跳过字符 (--skip-chars)。</span><br><span class="line"></span><br><span class="line">除非重复的行是相邻的，否则 <span class="string">&quot;uniq&quot;</span> 将无法检测到它们。</span><br><span class="line">您可能需要事先对输入进行排序，或使用 <span class="string">&quot;sort -u&quot;</span> 而无需接着使用 <span class="string">&quot;uniq&quot;</span>。</span><br><span class="line"></span><br><span class="line">GNU coreutils 在线帮助：&lt;https://www.gnu.org/software/coreutils/&gt;</span><br><span class="line">请向 &lt;http://translationproject.org/team/zh_CN.html&gt; 报告任何翻译错误</span><br><span class="line">完整文档 &lt;https://www.gnu.org/software/coreutils/uniq&gt;</span><br><span class="line">或者在本地使用：info <span class="string">&#x27;(coreutils) uniq invocation&#x27;</span></span><br></pre></td></tr></table></figure>
-<h1 id="uniq-处理文件重复数据">uniq 处理文件重复数据</h1>
-<p>经常有这样的需求：两个文本文件要求取重复的行或只取不重复的，但是<code>uniq</code>只能处理相邻重复的行，所以需要借助于<code>sort</code>命令，先排序。利用现存两个文件
-<code>file1</code>和<code>file2</code>，生成一个新的文件。</p>
-<h2
-id="取出两个文件的并集重复的行只保留一份">取出两个文件的并集(重复的行只保留一份)</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> file1 file2 | <span class="built_in">sort</span> | <span class="built_in">uniq</span></span><br></pre></td></tr></table></figure>
-<h2
-id="取出两个文件的交集只留下同时存在于两个文件中的文件重复行">取出两个文件的交集(只留下同时存在于两个文件中的文件，重复行)</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> file1 file2 | <span class="built_in">sort</span> | <span class="built_in">uniq</span> -d</span><br></pre></td></tr></table></figure>
-<h2
-id="删除交集留下其他的行非重复行">删除交集，留下其他的行（非重复行）</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> file1 file2 | <span class="built_in">sort</span> | <span class="built_in">uniq</span> -u</span><br></pre></td></tr></table></figure>
-<div class="note primary"><p>注意：对文本操作时，若域中为先空字符(通常包括空格以及制表符)，然后非空字符，域中字符前的空字符将被跳过。</p>
-</div>
 
       
     </div>

@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">496</span>
+          <span class="site-state-item-count">497</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,131 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/31/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95%E8%AF%BE%E5%A4%A7%E4%BD%9C%E4%B8%9A%E5%B1%95%E7%A4%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/31/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95%E8%AF%BE%E5%A4%A7%E4%BD%9C%E4%B8%9A%E5%B1%95%E7%A4%BA/" class="post-title-link" itemprop="url">高等数学物理方法课大作业展示</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-31 21:29:12" itemprop="dateCreated datePublished" datetime="2023-05-31T21:29:12+08:00">2023-05-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="project-15.32-overcoming-critical-slowing-down">Project 15.32
+Overcoming critical slowing down</h2>
+<p>Many of the original applications of Monte Carlo methods were done
+for systems of approximately one hundred particles and lattices of order
+322 spins. It would be instructive to redo many of these applications
+with much better statistics and with larger system sizes. In the
+following, we discuss some additional recent developments, but we have
+omitted other important topics such as Brownian dynamics and umbrella
+sampling. More ideas for projects can be found in the references.</p>
+<div class="tabs" id="overcoming"><ul class="nav-tabs"><li class="tab active"><a href="#overcoming-1">运行结果</a></li><li class="tab"><a href="#overcoming-2">ocsd_beamer.pdf</a></li><li class="tab"><a href="#overcoming-3">作业展示ocsd_v4.0</a></li><li class="tab"><a href="#overcoming-4">程序代码ocsd_v4.1.py</a></li><li class="tab"><a href="#overcoming-5">Project 15.32</a></li></ul><div class="tab-content"><div class="tab-pane active" id="overcoming-1"><p><img src="/Picture/ocsd_1.png" alt="Energy-Monte Carlo Step" /> <img
+src="/Picture/ocsd_2.png" alt="The Spin Configuration" /> <img
+src="/Picture/ocsd_energy.png" alt="The Spin Configuration" /> <img
+src="/Picture/ocsd_spin.png" alt="The Spin Configuration" /> <img
+src="/Picture/ocsdx_1.png" alt="The Spin Configuration" /></p></div><div class="tab-pane" id="overcoming-2"><div class="pdf-container" data-target="/PDF/ocsd_beamer.pdf"
+data-height="500px">
+
+</div></div><div class="tab-pane" id="overcoming-3"><figure class="highlight python">
+<figcaption>
+<span>ocsd4.py</span>
+</figcaption>
+<table>
+<tr>
+<td class="gutter">
+<pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="comment">#! /usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># vim:fenc=utf-8</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Author: 冯振华</span></span><br><span class="line"><span class="comment"># StudentNumber: 202221140015</span></span><br><span class="line"><span class="comment"># Verdion: V4.0</span></span><br><span class="line"><span class="comment"># Copyright © 2023 feng &lt;feng@arch&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Distributed under terms of the MIT license.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define the parameters</span></span><br><span class="line">N = <span class="number">20</span> <span class="comment"># number of spins in each direction</span></span><br><span class="line">J = -<span class="number">1</span> <span class="comment"># coupling constant</span></span><br><span class="line">beta = <span class="number">1</span> <span class="comment"># inverse temperature</span></span><br><span class="line">nsteps = <span class="number">1000</span> <span class="comment"># number of Monte Carlo steps</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize the spins randomly</span></span><br><span class="line">spins = np.random.choice([-<span class="number">1</span>, <span class="number">1</span>], size=(N, N))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define the energy function</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">energy</span>(<span class="params">spins</span>):</span><br><span class="line">    <span class="keyword">return</span> -J * (np.<span class="built_in">sum</span>(spins[:-<span class="number">1</span>,:] * spins[<span class="number">1</span>:,:]) + np.<span class="built_in">sum</span>(spins[:,:-<span class="number">1</span>] * spins[:,<span class="number">1</span>:])) \</span><br><span class="line">           - J * (np.<span class="built_in">sum</span>(spins[<span class="number">0</span>,:] * spins[-<span class="number">1</span>,:]) + np.<span class="built_in">sum</span>(spins[:,<span class="number">0</span>] * spins[:,-<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define the Metropolis algorithm</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">metropolis</span>(<span class="params">spins, beta</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">            <span class="comment"># Choose a random spin to flip</span></span><br><span class="line">            x, y = np.random.randint(<span class="number">0</span>, N), np.random.randint(<span class="number">0</span>, N)</span><br><span class="line">            <span class="comment"># Calculate the energy difference</span></span><br><span class="line">            delta_E = <span class="number">2</span> * J * spins[x, y] * \</span><br><span class="line">                      (spins[(x+<span class="number">1</span>)%N, y] + spins[(x-<span class="number">1</span>)%N, y] + spins[x, (y+<span class="number">1</span>)%N] + spins[x, (y-<span class="number">1</span>)%N])</span><br><span class="line">            <span class="comment"># Flip the spin with probability according to the Boltzmann factor</span></span><br><span class="line">            <span class="keyword">if</span> np.random.uniform(<span class="number">0</span>, <span class="number">1</span>) &lt; np.exp(-beta * delta_E):</span><br><span class="line">                spins[x, y] = -spins[x, y]</span><br><span class="line">    <span class="keyword">return</span> spins</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run the Monte Carlo simulation</span></span><br><span class="line">energies = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(nsteps):</span><br><span class="line">    spins = metropolis(spins, beta)</span><br><span class="line">    energies.append(energy(spins))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Calculate the average energy</span></span><br><span class="line">E = np.mean(energies)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Print the result</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Average energy: <span class="subst">&#123;E:<span class="number">.4</span>f&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot the energy as a function of Monte Carlo steps</span></span><br><span class="line">plt.plot(energies)</span><br><span class="line">plt.xlabel(<span class="string">&quot;Monte Carlo step&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Energy&quot;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot the spin configuration</span></span><br><span class="line">plt.imshow(spins, cmap=<span class="string">&#x27;binary&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre>
+</td>
+</tr>
+</table>
+</figure></div><div class="tab-pane" id="overcoming-4"><figure class="highlight python">
+<figcaption>
+<span>ocsd3.py</span>
+</figcaption>
+<table>
+<tr>
+<td class="gutter">
+<pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre>
+</td>
+<td class="code">
+<pre><span class="line"><span class="comment">#! /usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># vim:fenc=utf-8</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Copyright © 2023 feng &lt;feng@archlinux&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Distributed under terms of the MIT license.</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">作者：冯振华</span></span><br><span class="line"><span class="string">学号：202221140015</span></span><br><span class="line"><span class="string">版本：V4.1</span></span><br><span class="line"><span class="string">日期：2023年05月20日</span></span><br><span class="line"><span class="string">项目：Monte Carlo methods for Overcoming critical slowing down</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">initialize_spins</span>(<span class="params">N</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Initializes the spin lattice with random spins of -1 or +1</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> np.random.choice([-<span class="number">1</span>, <span class="number">1</span>], size=(N, N))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bond_probability</span>(<span class="params">beta</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Calculates probability of forming a bond between two neighboring spins</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> - np.exp(-<span class="number">2</span>*beta)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">update_spins</span>(<span class="params">spins, beta</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    a single update of the spins using the Wolff algorithm</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    N = spins.shape[<span class="number">0</span>]</span><br><span class="line">    visited = np.zeros((N, N), dtype=<span class="built_in">bool</span>)</span><br><span class="line">    seed = (np.random.randint(N), np.random.randint(N))</span><br><span class="line">    cluster_spins = [seed]</span><br><span class="line">    cluster_perimeter = [(seed[<span class="number">0</span>], (seed[<span class="number">1</span>]+<span class="number">1</span>)%N), (seed[<span class="number">0</span>], (seed[<span class="number">1</span>]-<span class="number">1</span>)%N),</span><br><span class="line">                         ((seed[<span class="number">0</span>]+<span class="number">1</span>)%N, seed[<span class="number">1</span>]), ((seed[<span class="number">0</span>]-<span class="number">1</span>)%N, seed[<span class="number">1</span>])]</span><br><span class="line">    <span class="keyword">while</span> <span class="built_in">len</span>(cluster_perimeter) &gt; <span class="number">0</span>:</span><br><span class="line">        i, j = cluster_perimeter.pop()</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> visited[i,j] <span class="keyword">and</span> np.random.random() &lt; bond_probability(beta):</span><br><span class="line">            cluster_spins.append((i, j))</span><br><span class="line">            visited[i, j] = <span class="literal">True</span></span><br><span class="line">            cluster_perimeter += [(i, (j+<span class="number">1</span>)%N), (i, (j-<span class="number">1</span>)%N),</span><br><span class="line">                                  ((i+<span class="number">1</span>)%N, j), ((i-<span class="number">1</span>)%N, j)]</span><br><span class="line">    spins[<span class="built_in">tuple</span>(<span class="built_in">zip</span>(*cluster_spins))] *= -<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> spins</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_energy</span>(<span class="params">spins,J</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Calculates the energy of the spin configuration</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    N = spins.shape[<span class="number">0</span>]</span><br><span class="line">    energy = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">            spin = spins[i, j]</span><br><span class="line">            neighbors = spins[(i+<span class="number">1</span>)%N, j] + spins[i, (j+<span class="number">1</span>)%N] + spins[(i-<span class="number">1</span>)%N, j] + spins[i, (j-<span class="number">1</span>)%N]</span><br><span class="line">            energy += <span class="number">2</span>*J*spin * neighbors    </span><br><span class="line">    <span class="keyword">return</span> energy </span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">run_simulation</span>(<span class="params">N=<span class="number">20</span>, J=-<span class="number">1</span>,beta=<span class="number">1.0</span>, num_steps=<span class="number">2000</span>, num_measurements=<span class="number">100</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Performs a full simulation of the Wolff algorithm on the spin lattice</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    spins = initialize_spins(N)</span><br><span class="line">    energies = []</span><br><span class="line">    mags = []</span><br><span class="line">    <span class="keyword">for</span> step <span class="keyword">in</span> <span class="built_in">range</span>(num_steps):</span><br><span class="line">        spins = update_spins(spins, beta)</span><br><span class="line">        <span class="keyword">if</span> step % (num_steps // num_measurements) == <span class="number">0</span>:</span><br><span class="line">            energy = calculate_energy(spins,J)</span><br><span class="line">            mag = np.<span class="built_in">sum</span>(spins)</span><br><span class="line">            energies.append(energy)</span><br><span class="line">            mags.append(mag)</span><br><span class="line">    <span class="keyword">return</span> energies, mags </span><br><span class="line"></span><br><span class="line">energies, mags = run_simulation(N=<span class="number">20</span>,J=-<span class="number">1</span>,beta=<span class="number">1.0</span>, num_steps=<span class="number">100000</span>, num_measurements=<span class="number">100</span>)</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Calculate the average energy</span></span><br><span class="line">E = np.mean(energies)</span><br><span class="line"><span class="comment"># Print the result</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Average energy: <span class="subst">&#123;E:<span class="number">.4</span>f&#125;</span>&quot;</span>)</span><br><span class="line"><span class="comment"># Plot the energy as a function of Monte Carlo steps</span></span><br><span class="line">plt.plot(energies)</span><br><span class="line">plt.xlabel(<span class="string">&quot;Monte Carlo step&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Energy&quot;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot the spin configuration</span></span><br><span class="line">plt.plot(mags)</span><br><span class="line">plt.xlabel(<span class="string">&quot;Monte Carlo step&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Spin&quot;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    To run the simulation, simply the `run_simulation` function with the desired parameters, such as `energies, mags = run_simulation(N=30,=1.0, num_steps=100000, num_measurements=100)`. This will simulate 100,000 Wolff updates on a 30x30 lattice at a temperature of 1. and take measurements of the energy and magnetization every 1,000 steps. The output is two arrays, `energies` and `mags`, that record the energy and magnetization at each measurement step. These arrays can be used to averages and variances to analyze the system properties.</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre>
+</td>
+</tr>
+</table>
+</figure></div><div class="tab-pane" id="overcoming-5"><h2 id="project-15.32-overcoming-critical-slowing-down">Project 15.32
+Overcoming critical slowing down</h2>
+<div class="pdf-container" data-target="/PDF/homework.pdf"
+data-height="500px">
+
+</div></div></div></div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1173,98 +1298,6 @@ target="_blank" rel="noopener" href="https://github.com/lervag/vimtex">vimtex的
 <div class="note warning"><p>注意：不要使用sudo执行，虽然我执行成功了，但是后面提示有可能有影响什么权限的问题。所以使用普通权限又安装了一遍。</p>
 </div>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/05/EarliestUsesOfFunctionSymbols/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/05/EarliestUsesOfFunctionSymbols/" class="post-title-link" itemprop="url">Earliest Uses of Function Symbols</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-05-05 09:05:21" itemprop="dateCreated datePublished" datetime="2023-05-05T09:05:21+08:00">2023-05-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-31 14:43:56" itemprop="dateModified" datetime="2024-12-31T14:43:56+08:00">2024-12-31</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>The function symbol f(x) was first used by Leonhard Euler (1707-1783)
-in 1734 in Commentarii Academiae Scientiarum Petropolitanae (Cajori,
-vol. 2, page 268).</p>
-<p>Absolute value function. Karl Weierstrass (1815-1897) used | | in an
-1841 essay "Zur Theorie der Potenzreihen," in which the symbol appears
-on page 67. He also used the symbol in 1859 in "Neuer Beweis des
-Fundamentalsatzes der Algebra," in which the symbol appears on page 252.
-This latter essay was submitted to the Berlin Academy of Sciences on
-December 12, 1859. These are the two reference shown by Cajori (vol. 2,
-page 123).</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/05/05/EarliestUsesOfFunctionSymbols/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 
