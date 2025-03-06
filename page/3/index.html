@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">500</span>
+          <span class="site-state-item-count">502</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -298,6 +298,239 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/20/shell%E5%8F%98%E9%87%8F%E4%B8%8Eawk%E5%8F%98%E9%87%8F%E5%86%B2%E7%AA%81%E7%9A%84%E5%A4%84%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/01/20/shell%E5%8F%98%E9%87%8F%E4%B8%8Eawk%E5%8F%98%E9%87%8F%E5%86%B2%E7%AA%81%E7%9A%84%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">shell变量与awk变量冲突的处理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-01-20 15:02:02" itemprop="dateCreated datePublished" datetime="2025-01-20T15:02:02+08:00">2025-01-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="shell-中的特殊变量">Shell 中的特殊变量</h1>
+<p>Shell
+预定义了一些特殊变量，它们通常包含一个或两个连字符作为前缀：</p>
+<ul>
+<li><code>$0</code> - 当前脚本的名字。</li>
+<li><code>$1</code>, <code>$2</code>, ... -
+传递给脚本或函数的位置参数。</li>
+<li><code>$#</code> - 传递给脚本或函数的参数个数。</li>
+<li><code>$*</code> - 所有参数作为一个字符串。</li>
+<li><code>$@</code> - 参数列表（与 <code>$*</code>
+类似，但在引号中有区别）。</li>
+<li><code>$?</code> - 上一条命令的退出状态。</li>
+<li><code>$$</code> - 当前 Shell 的进程 ID。</li>
+<li><code>$!</code> - 最后一个后台进程的 PID。</li>
+</ul>
+<h1 id="awk-内置变量">awk 内置变量</h1>
+<p><code>awk</code> 提供了多个内置变量来访问输入数据和其他特性：</p>
+<ul>
+<li><strong><code>$n</code></strong> - 表示当前行的第 n
+个字段（列），其中 <code>$1</code> 是第一列，<code>$2</code>
+是第二列，依此类推。</li>
+<li><strong><code>$0</code></strong> - 表示整个当前行的内容。</li>
+<li><strong><code>NF</code></strong> - 当前行的字段数（列数）。</li>
+<li><strong><code>NR</code></strong> -
+到目前为止处理的总行数（全局行号）。</li>
+<li><strong><code>FNR</code></strong> -
+当前文件中的行号（对于多文件输入，每个新文件计数会重新开始）。</li>
+<li><strong><code>FILENAME</code></strong> - 当前正在读取的文件名。</li>
+<li><strong><code>FS</code></strong> -
+字段分隔符，默认为空白字符（空格或制表符）。可以设置为其他值以改变字段划分规则。</li>
+<li><strong><code>OFS</code></strong> -
+输出字段分隔符，默认为空格。当使用逗号 <code>,</code>
+分隔输出字段时，<code>awk</code> 会用这个值替换逗号。</li>
+<li><strong><code>ORS</code></strong> - 输出记录分隔符，默认为换行符
+<code>\n</code>。</li>
+<li><strong><code>RS</code></strong> -
+输入记录分隔符，默认为换行符，即每行作为一个记录。</li>
+<li><strong><code>ARGC</code> 和 <code>ARGV</code></strong> - 类似于
+Shell 的特殊变量，分别表示命令行参数的数量和数组。</li>
+</ul>
+<p>这些内置变量提供了对输入数据结构、格式以及程序运行环境的强大控制能力。</p>
+<h1 id="冲突和解决">冲突和解决</h1>
+<p>Shell 和 awk 同时内置了 <code>$n</code> 变量，在 Shell
+脚本中使用变量会造成混乱。但是注意到：Shell 中使用双引号括起来的变量
+<code>"$n"</code>
+表示变量，而使用单引号<code>'$n'</code>不表示变量，但是 awk
+在单引号<code>'$n'</code>中表示 awk 变量，
+所以在任何情况下都使用单引号将 awk 的命令引起来就可以避免冲突。</p>
+<h1 id="参考文章">参考文章</h1>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/1960760332238490100.html">awk中使用$0与shell脚本$1有冲突怎么办</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/ask/sof/116316122">awk参数$1，$2与bash输入参数冲突</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/19/%E4%BD%BF%E7%94%A8dig%E6%89%B9%E9%87%8F%E6%9F%A5%E8%AF%A2IP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/01/19/%E4%BD%BF%E7%94%A8dig%E6%89%B9%E9%87%8F%E6%9F%A5%E8%AF%A2IP/" class="post-title-link" itemprop="url">使用dig批量查询IP</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-01-19 19:27:24" itemprop="dateCreated datePublished" datetime="2025-01-19T19:27:24+08:00">2025-01-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="dig-命令简介"><code>dig</code> 命令简介</h1>
+<p><code>dig</code>（Domain Information Groper）是 Linux 和 Unix
+系统中用于查询 DNS（域名系统）的强大工具。它提供了对 DNS
+查询的详细控制，并且可以用来执行各种类型的 DNS 查询，包括但不限于 A
+记录、MX 记录、NS 记录、CNAME 记录、TXT 记录等。<code>dig</code>
+是网络管理员和开发者调试 DNS
+问题、验证域名配置以及获取有关互联网资源信息的重要工具。</p>
+<h2 id="主要特点">主要特点</h2>
+<ul>
+<li><strong>多功能性</strong>：支持多种查询类型和选项，能够满足复杂的
+DNS 查询需求。</li>
+<li><strong>详细的输出</strong>：提供详尽的查询结果信息，默认情况下输出格式易于阅读，同时也支持简洁模式（如
+<code>+short</code>）。</li>
+<li><strong>灵活性</strong>：用户可以通过命令行参数自定义查询行为，例如指定
+DNS 服务器、设置查询超时时间、递归查询等。</li>
+<li><strong>批处理能力</strong>：支持从文件批量读取域名进行查询（使用
+<code>-f</code> 参数），适合自动化脚本或大规模 DNS 数据收集。</li>
+</ul>
+<h2 id="基本用法">基本用法</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig [选项] [域名] [记录类型] </span><br></pre></td></tr></table></figure>
+<h3 id="查询特定dns服务器">查询特定DNS服务器</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig @8.8.8.8 www.baidu.com</span><br></pre></td></tr></table></figure>
+<h3 id="批量查询文件">批量查询文件</h3>
+<p>创建一个包含域名列表的文本文件，并使用<code>-f</code>参数进行批量查询。</p>
+<div class="tabs" id="批量查询"><ul class="nav-tabs"><li class="tab active"><a href="#批量查询-1">批量查询文件</a></li><li class="tab"><a href="#批量查询-2">domains.txt</a></li></ul><div class="tab-content"><div class="tab-pane active" id="批量查询-1"><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig -f domains.txt</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="批量查询-2"><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">www.baidu.com</span><br><span class="line">www.bing.com</span><br><span class="line">www.sina.com</span><br></pre></td></tr></table></figure></div></div></div>
+<h3 id="批量查询数组">批量查询数组</h3>
+<p>创建一个包含域名列表的数组，并使用<code>-f</code>参数进行批量查询。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MH=(</span><br><span class="line">www.baidu.com</span><br><span class="line">www.bing.com</span><br><span class="line">www.sina.com</span><br><span class="line">)</span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot;%s\n&quot;</span> <span class="string">&quot;<span class="variable">$&#123;MH[@]&#125;</span>&quot;</span> | dig @119.29.29.29 -f /dev/stdin +noall +answer | awk <span class="string">&#x27;&#123;print $5, $1&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/14/%E9%98%B2%E6%AD%A2resolve%E6%96%87%E4%BB%B6%E8%A2%AB%E8%87%AA%E5%8A%A8%E4%BF%AE%E6%94%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -334,7 +567,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-01-15 12:31:59" itemprop="dateModified" datetime="2025-01-15T12:31:59+08:00">2025-01-15</time>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
     </span>
 
   
@@ -434,7 +667,7 @@ chattr命令</a></li>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-01-15 12:35:38" itemprop="dateModified" datetime="2025-01-15T12:35:38+08:00">2025-01-15</time>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
     </span>
 
   
@@ -551,9 +784,15 @@ target="_blank" rel="noopener" href="https://www.cnblogs.com/cnhack/articles/171
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-01-11 21:54:07 / 修改时间：21:58:50" itemprop="dateCreated datePublished" datetime="2025-01-11T21:54:07+08:00">2025-01-11</time>
+      <time title="创建时间：2025-01-11 21:54:07" itemprop="dateCreated datePublished" datetime="2025-01-11T21:54:07+08:00">2025-01-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
     </span>
 
   
@@ -634,7 +873,7 @@ electron 写的，而且目前还有一些 bug,
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-01-11 21:48:46" itemprop="dateModified" datetime="2025-01-11T21:48:46+08:00">2025-01-11</time>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
     </span>
 
   
@@ -719,9 +958,15 @@ href="/2025/01/07/使用Github-Cli管理仓库">使用Github-Cli管理仓库</a>
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-01-09 14:41:59 / 修改时间：14:52:29" itemprop="dateCreated datePublished" datetime="2025-01-09T14:41:59+08:00">2025-01-09</time>
+      <time title="创建时间：2025-01-09 14:41:59" itemprop="dateCreated datePublished" datetime="2025-01-09T14:41:59+08:00">2025-01-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
     </span>
 
   
@@ -807,9 +1052,15 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/qichangjian/article/d
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-01-08 20:08:48 / 修改时间：20:11:21" itemprop="dateCreated datePublished" datetime="2025-01-08T20:08:48+08:00">2025-01-08</time>
+      <time title="创建时间：2025-01-08 20:08:48" itemprop="dateCreated datePublished" datetime="2025-01-08T20:08:48+08:00">2025-01-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
     </span>
 
   
@@ -881,9 +1132,15 @@ ToC）并不是直接支持的功能，但是你可以手动创建一个简单�
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-01-08 17:15:02 / 修改时间：20:06:26" itemprop="dateCreated datePublished" datetime="2025-01-08T17:15:02+08:00">2025-01-08</time>
+      <time title="创建时间：2025-01-08 17:15:02" itemprop="dateCreated datePublished" datetime="2025-01-08T17:15:02+08:00">2025-01-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
     </span>
 
   
@@ -982,9 +1239,15 @@ Shell 脚本中判断脚本停止位置的方法。</p>
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-01-08 14:33:47 / 修改时间：20:06:21" itemprop="dateCreated datePublished" datetime="2025-01-08T14:33:47+08:00">2025-01-08</time>
+      <time title="创建时间：2025-01-08 14:33:47" itemprop="dateCreated datePublished" datetime="2025-01-08T14:33:47+08:00">2025-01-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
     </span>
 
   
@@ -1051,243 +1314,8 @@ Least Privilege ）
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/07/%E4%BD%BF%E7%94%A8Github-Cli%E7%AE%A1%E7%90%86%E4%BB%93%E5%BA%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/01/07/%E4%BD%BF%E7%94%A8Github-Cli%E7%AE%A1%E7%90%86%E4%BB%93%E5%BA%93/" class="post-title-link" itemprop="url">使用Github-Cli管理仓库</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-01-07 16:58:34 / 修改时间：17:20:21" itemprop="dateCreated datePublished" datetime="2025-01-07T16:58:34+08:00">2025-01-07</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="github-cli-简介">GitHub CLI 简介</h1>
-<p>GitHub CLI 是一个用于通过命令行与 GitHub
-进行交互的强大工具。它允许开发者和用户管理存储库、拉取请求、问题和其他
-GitHub 资源，而无需离开终端。</p>
-<h2 id="主要功能">主要功能</h2>
-<ol type="1">
-<li><strong>仓库管理</strong>：创建、克隆、列出和删除仓库。</li>
-<li><strong>拉取请求</strong>：查看、创建、合并和关闭拉取请求。</li>
-<li><strong>问题跟踪</strong>：创建、列表、评论和关闭问题。</li>
-<li><strong>项目管理</strong>：管理和操作 GitHub Projects。</li>
-<li><strong>代码审查</strong>：检查更改、提交评论和批准或拒绝拉取请求。</li>
-<li><strong>扩展性</strong>：支持通过脚本和插件进行扩展。</li>
-</ol>
-<h1 id="安装-github-cli">安装 Github-Cli</h1>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S github-cli</span><br></pre></td></tr></table></figure>
-<h1 id="基本使用">基本使用</h1>
-<h2 id="在-github-上取得-personal-access-token">在 GitHub 上取得
-Personal Access Token</h2>
-<h3 id="登录-github-账户">1. 登录 GitHub 账户</h3>
-<ul>
-<li>打开 <a target="_blank" rel="noopener" href="https://github.com">GitHub</a>
-并使用你的凭据登录。</li>
-</ul>
-<h3 id="进入开发者设置">2. 进入开发者设置</h3>
-<ul>
-<li>点击右上角的头像图标。</li>
-<li>从下拉菜单中选择 <code>Settings</code>。</li>
-</ul>
-<h3 id="导航到developer-settings">3. 导航到“Developer settings”</h3>
-<ul>
-<li>在左侧边栏中找到并点击 <code>Developer settings</code>。</li>
-</ul>
-<h3 id="生成新的个人访问令牌">4. 生成新的个人访问令牌</h3>
-<ul>
-<li>在 <code>Developer settings</code> 中，点击
-<code>Personal access tokens</code>。</li>
-<li>点击 <code>Tokens (classic)</code> 或
-<code>Fine-grained tokens</code>，具体取决于你需要的权限范围。
-<ul>
-<li>如果选择 <code>Tokens (classic)</code>：
-<ul>
-<li>点击 <code>Generate new token</code>。</li>
-<li>填写令牌描述。</li>
-<li>选择所需的权限范围（例如，<code>repo</code>
-表示对仓库的完全控制）。</li>
-<li>点击 <code>Generate token</code>。</li>
-</ul></li>
-<li>如果选择 <code>Fine-grained tokens</code>：
-<ul>
-<li>点击 <code>Generate new token</code>。</li>
-<li>填写令牌名称和描述。</li>
-<li>配置资源访问权限（例如，特定组织或仓库）。</li>
-<li>配置所需的作用域（例如，读取和写入仓库）。</li>
-<li>点击 <code>Generate token</code>。</li>
-</ul></li>
-</ul></li>
-</ul>
-<h3 id="保存令牌">5. 保存令牌</h3>
-<ul>
-<li>生成后，你会看到新创建的令牌。<strong>非常重要的是，此时需要复制并安全地存储这个令牌</strong>，因为一旦离开页面，你就无法再次查看该令牌。</li>
-<li>不要将令牌泄露给他人，并确保将其存储在一个安全的地方。</li>
-</ul>
-<h3 id="使用令牌">6. 使用令牌</h3>
-<ul>
-<li>你可以使用这个令牌来进行身份验证，例如，在命令行工具中使用 GitHub
-CLI 登录： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gh auth login --with-token &lt; your_token_here &gt;</span><br></pre></td></tr></table></figure> <div class="note primary"><p>在本地配置 ssh 后， 可以在第6步中使用令牌登录，选择 ssh,
-这种方法可以方便的创建、删除仓库等操作而不用登录网页。</p>
-</div></li>
-</ul>
-<h2 id="基本操作">基本操作</h2>
-<ol type="1">
-<li><p>登录和认证(按提示，一步一步认证即可) <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gh auth login</span><br></pre></td></tr></table></figure></p></li>
-<li><p>仓库管理 <figure class="highlight sh"><figcaption><span>新建、列出、查看、删除仓库</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gh repo create my-new-repo --public</span><br><span class="line">gh repo list</span><br><span class="line">gh repo view owner/repo</span><br><span class="line">gh repo delete owner/repo</span><br></pre></td></tr></table></figure></p></li>
-<li><p>拉取请求 <figure class="highlight sh"><figcaption><span>创建、列出、查看、合并、关闭请求</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gh <span class="built_in">pr</span> create --title <span class="string">&quot;Fix bug&quot;</span> --body <span class="string">&quot;This PR fixes a critical bug.&quot;</span></span><br><span class="line">gh <span class="built_in">pr</span> list</span><br><span class="line">gh <span class="built_in">pr</span> view 123</span><br><span class="line">gh <span class="built_in">pr</span> merge 123</span><br><span class="line">gh <span class="built_in">pr</span> close 123</span><br></pre></td></tr></table></figure></p></li>
-<li><p>问题跟踪 <figure class="highlight sh"><figcaption><span>创建、列出、查看、关闭issue</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gh issue create --title <span class="string">&quot;Bug report&quot;</span> --body <span class="string">&quot;I found a bug...&quot;</span></span><br><span class="line">gh issue list</span><br><span class="line">gh issue view 456</span><br><span class="line">gh issue close 456</span><br></pre></td></tr></table></figure></p></li>
-<li><p>分支管理 <figure class="highlight sh"><figcaption><span>列出、创建、删除分支</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gh branch list</span><br><span class="line">gh branch create new-feature</span><br><span class="line">gh branch delete old-feature</span><br></pre></td></tr></table></figure></p></li>
-<li><p>发布管理 <figure class="highlight sh"><figcaption><span>创建、列出、查看release</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gh release create v1.0.0</span><br><span class="line">gh release list</span><br><span class="line">gh release view v1.0.0</span><br></pre></td></tr></table></figure></p></li>
-<li><p>用户信息 <figure class="highlight sh"><figcaption><span>查看当前用户、其他用户</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gh api user</span><br><span class="line">gh api <span class="built_in">users</span>/username</span><br></pre></td></tr></table></figure></p></li>
-<li><p>组织管理 <figure class="highlight sh"><figcaption><span>列出、查看组织</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gh org list</span><br><span class="line">gh org view organization-name</span><br></pre></td></tr></table></figure></p></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/06/%E4%BD%BF%E7%94%A8Pandoc%E5%B0%86Markdown%E8%BD%ACPDF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/01/06/%E4%BD%BF%E7%94%A8Pandoc%E5%B0%86Markdown%E8%BD%ACPDF/" class="post-title-link" itemprop="url">使用Pandoc将Markdown转PDF</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-01-06 17:41:17 / 修改时间：17:49:53" itemprop="dateCreated datePublished" datetime="2025-01-06T17:41:17+08:00">2025-01-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="安装好-pandoc">安装好 Pandoc</h2>
-<p>详细可以参考 <a target="_blank" rel="noopener" href="https://pandoc.org/installing.html">Pandoc -
-Installing pandoc</a>。</p>
-<p>先安装依赖软件<code>wkhtmltopdf</code></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paru -S wkhtmltopdf</span><br></pre></td></tr></table></figure>
-<p>官网上给出的简单的不修改格式的将 Markdown 转换为 PDF 命令如下：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandoc file.md -f markdown -t html -o index.pdf</span><br></pre></td></tr></table></figure>
-<h2 id="参考文章">参考文章</h2>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://tex.stackexchange.com/questions/73016/how-do-i-install-an-individual-package-on-a-linux-system">installing
-- How do I install an individual package on a Linux system? - TeX -
-LaTeX Stack Exchange</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/u013019701/article/details/119512493">使用
-Pandoc 来转换 Markdown 为漂亮的 PDF 格式</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/50/">50</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/51/">51</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
