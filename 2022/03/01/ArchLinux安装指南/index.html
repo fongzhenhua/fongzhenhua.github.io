@@ -343,7 +343,7 @@ CPU下的启动BUG</span></a></li><li class="nav-item nav-level-3"><a class="nav
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+      <time title="修改时间：2025-03-12 20:46:57" itemprop="dateModified" datetime="2025-03-12T20:46:57+08:00">2025-03-12</time>
     </span>
 
   
@@ -367,7 +367,7 @@ CPU下的启动BUG</span></a></li><li class="nav-item nav-level-3"><a class="nav
 <div class="note primary"><p><a
 target="_blank" rel="noopener" href="https://archlinux.org/">ArchLinux</a>是一款灵活、强大、可定制的Linux发行版，提供丰富的软件包和工具，支持滚动更新和多种桌面环境，拥有庞大的社区支持和方便的包管理器，适合各种用户需求和使用场景。<a
 target="_blank" rel="noopener" href="https://endeavouros.com">Endeavour</a>
-是一个基于ArchLinux的轻量级和用户友好的发行版，预装了桌面环境和预配置的软件包，旨在提供一个无忧的ArchLinux体验。<img align="right" src="https://img.shields.io/badge/Version-V4.5.1-purple" /></p>
+是一个基于ArchLinux的轻量级和用户友好的发行版，预装了桌面环境和预配置的软件包，旨在提供一个无忧的ArchLinux体验。<img align="right" src="https://img.shields.io/badge/Version-V4.5.2-purple" /></p>
 </div>
 <span id="more"></span>
 <h2 id="linux版本选择">Linux版本选择</h2>
@@ -1557,7 +1557,7 @@ target="_blank" rel="noopener" href="https://extensions.gnome.org/">https://exte
 <ul>
 <li>安装<code>Gnome</code> 主题</li>
 </ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">paru --skipreview --needed --noconfirm -S whitesur-cursor-theme-git phinger-cursors</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/vinceliuice/WhiteSur-gtk-theme.git --depth=1</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/vinceliuice/WhiteSur-icon-theme.git --depth=1</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/vinceliuice/WhiteSur-wallpapers.git</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/vinceliuice/grub2-themes.git</span><br><span class="line">./WhiteSur-gtk-theme/tweaks.sh -f alt</span><br><span class="line"><span class="built_in">sudo</span> ./WhiteSur-gtk-theme/tweaks.sh -g</span><br><span class="line"><span class="built_in">sudo</span> ./WhiteSur-icon-theme/install.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">paru --skipreview --needed --noconfirm -S whitesur-cursor-theme-git phinger-cursors</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/vinceliuice/WhiteSur-gtk-theme.git --depth=1</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/vinceliuice/WhiteSur-icon-theme.git --depth=1</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/vinceliuice/WhiteSur-wallpapers.git</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/vinceliuice/grub2-themes.git</span><br><span class="line">./WhiteSur-gtk-theme/tweaks.sh -f alt</span><br><span class="line"><span class="built_in">sudo</span> ./WhiteSur-gtk-theme/tweaks.sh -g</span><br><span class="line">./WhiteSur-gtk-theme/install.sh -l           <span class="comment"># 默认是普通深色主题</span></span><br><span class="line">./WhiteSur-gtk-theme/install.sh -l -c light  <span class="comment"># 为 libadwaita 安装浅色主题</span></span><br><span class="line"><span class="built_in">sudo</span> ./WhiteSur-icon-theme/install.sh</span><br></pre></td></tr></table></figure>
 <div id="gnome-theme" class="tabs">
 <ul class="nav-tabs">
 <li class="tab active">
@@ -1594,6 +1594,11 @@ href="/2024/10/16/Linux中Whitesur主题切换4k显示器设置/">Linux中Whites
 <li>
 2024年11月28日,
 删除<code>paru</code>安装的<code>whitesur-icon-theme-git</code>,因为其包含的图标不全，改为直接使用<code>github</code>源中的版本.
+</li>
+<li>
+2025年03月12日,
+发现在<code>设置</code>→<code>外观</code>→<code>样式</code>中的颜色选项是空白的，于是在<code>gtk</code>主题下执行<code>./install
+-l</code>修复<code>libadwaita</code>后问题解决。
 </li>
 </ul>
 </div>

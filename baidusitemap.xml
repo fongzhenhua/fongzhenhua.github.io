@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://example.com/2022/03/01/ArchLinux%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</loc>
+    <lastmod>2025-03-12</lastmod>
+  </url>
+  <url>
     <loc>http://example.com/2025/03/06/Gnome3%E6%98%BE%E7%A4%BA%E6%A1%8C%E9%9D%A2%E5%9B%BE%E6%A0%87/</loc>
     <lastmod>2025-03-06</lastmod>
   </url>
@@ -1954,10 +1958,6 @@
   </url>
   <url>
     <loc>http://example.com/2024/09/21/ArchLinux%E6%95%B4%E4%BD%93%E5%9B%9E%E6%BB%9A%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89/</loc>
-    <lastmod>2025-03-05</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2022/03/01/ArchLinux%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</loc>
     <lastmod>2025-03-05</lastmod>
   </url>
   <url>
