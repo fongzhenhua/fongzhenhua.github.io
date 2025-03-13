@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">502</span>
+          <span class="site-state-item-count">503</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,117 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/08/Shell%E8%84%9A%E6%9C%AC%E4%B8%AD%E9%81%BF%E5%85%8D%E8%BE%93%E5%85%A5sudo%E5%AF%86%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/01/08/Shell%E8%84%9A%E6%9C%AC%E4%B8%AD%E9%81%BF%E5%85%8D%E8%BE%93%E5%85%A5sudo%E5%AF%86%E7%A0%81/" class="post-title-link" itemprop="url">Shell脚本中避免输入sudo密码</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-01-08 14:33:47" itemprop="dateCreated datePublished" datetime="2025-01-08T14:33:47+08:00">2025-01-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在 Shell 脚本中避免输入 <code>sudo</code>
+密码的方法有几种，但每种方法都有其适用场景和安全考量。以下是几种常见的方法：</p>
+<h2 id="修改-etcsudoers-文件">1. 修改 <code>/etc/sudoers</code>
+文件</h2>
+<p>你可以编辑 <code>/etc/sudoers</code> 文件（推荐使用
+<code>visudo</code>
+命令以确保语法正确），为特定用户或用户组添加不需要密码的权限。</p>
+<p>例如，要允许用户 <code>username</code>
+在不输入密码的情况下运行所有命令，可以添加如下行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username ALL=(ALL) NOPASSWD:ALL </span><br></pre></td></tr></table></figure>
+<p>如果你想限制到特定命令，比如只允许不输入密码地运行
+<code>apt-get update</code>，可以这样做： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username ALL=(ALL) NOPASSWD:/usr/bin/apt-get update</span><br></pre></td></tr></table></figure></p>
+<h2 id="使用sudo--s和环境变量">2.
+使用<code>sudo -S</code>和环境变量</h2>
+<p>虽然这不是最推荐的安全实践，但在某些情况下你可能需要自动化流程，并且能够通过环境变量传递密码。你可以设置一个环境变量来保存密码，并结合
+<code>echo</code>和 <code>sudo -S</code>
+来实现这一点。但是，请注意这种方法存在安全风险，因为密码可能会被其他进程看到。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> SUDO_PASSWORD=<span class="string">&quot;your_password_here&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$SUDO_PASSWORD</span>&quot;</span> | <span class="built_in">sudo</span> -S command_to_run</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p>警告： 这种方式并不安全，应该尽量避免使用。</p>
+</div>
+<h2 id="使用sudo的-n选项">3.
+使用<code>sudo</code>的<code>-n</code>选项</h2>
+<p><code>-n</code> 选项可以让 <code>sudo</code>
+尝试非交互式执行命令，即如果当前用户没有足够的权限或缓存的凭证已过期，则不会提示输入密码而是直接失败。这可以用于检查是否可以在不提供密码的情况下执行命令。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> -n command_to_run</span><br></pre></td></tr></table></figure>
+<h2 id="利用sudo的时间戳">4. 利用<code>sudo</code>的时间戳</h2>
+<p><code>sudo</code>
+会缓存用户的认证一段时间（默认是15分钟）。如果你在一个脚本中多次调用
+<code>sudo</code>，那么在第一次成功输入密码后，在这段时间内后续的
+<code>sudo</code> 调用将不再要求密码。</p>
+<h2 id="安全建议">安全建议</h2>
+<p>无论选择哪种方法，都应该谨慎行事，确保最小权限原则 （ Principle of
+Least Privilege ）
+得以遵守，即给予用户完成工作所需的最少权限。修改系统配置文件如
+<code>/etc/sudoers</code>
+应该非常小心，错误的配置可能导致安全漏洞或系统无法正常工作。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1443,222 +1554,6 @@ Google Fonts, Gravatar</td>
 <td><a
 target="_blank" rel="noopener" href="https://mirrors.sustech.edu.cn/help/cdnjs.html">https://mirrors.sustech.edu.cn/help/cdnjs.html</a></td>
 <td>速度快</td>
-</tr>
-</tbody>
-</table>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/01/%E5%B8%B8%E8%A7%81%E8%B7%AF%E7%94%B1%E5%99%A8%E5%93%81%E7%89%8C%E5%8F%8A%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BD%91%E5%85%B3%E9%BB%98%E8%AE%A4%E7%99%BB%E5%BD%95IP%E5%9C%B0%E5%9D%80%E5%A4%A7%E5%85%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/01/01/%E5%B8%B8%E8%A7%81%E8%B7%AF%E7%94%B1%E5%99%A8%E5%93%81%E7%89%8C%E5%8F%8A%E8%B7%AF%E7%94%B1%E5%99%A8%E7%BD%91%E5%85%B3%E9%BB%98%E8%AE%A4%E7%99%BB%E5%BD%95IP%E5%9C%B0%E5%9D%80%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">常见路由器品牌及路由器网关默认登录IP地址大全</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-01-01 14:04:56" itemprop="dateCreated datePublished" datetime="2025-01-01T14:04:56+08:00">2025-01-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <table>
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>路由器品牌或类型</th>
-<th>后台登录 IP</th>
-<th>后台登录网址</th>
-<th>品牌官网</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>TP-Link 路由器</td>
-<td><a target="_blank" rel="noopener" href="http://192.168.1.1/">192.168.1.1</a></td>
-<td><a target="_blank" rel="noopener" href="http://tplogin.cn/">tplogin.cn</a></td>
-<td><a target="_blank" rel="noopener" href="https://www.tp-link.com.cn/">www.tp-link.com.cn</a></td>
-</tr>
-<tr class="even">
-<td>D-Link 路由器</td>
-<td><a target="_blank" rel="noopener" href="http://192.168.0.1/">192.168.0.1</a></td>
-<td></td>
-<td><a target="_blank" rel="noopener" href="https://www.dlink.com.cn/">www.dlink.com.cn</a></td>
-</tr>
-<tr class="odd">
-<td>华为路由器</td>
-<td><a target="_blank" rel="noopener" href="http://192.168.3.1/">192.168.3.1</a></td>
-<td></td>
-<td><a
-target="_blank" rel="noopener" href="https://consumer.huawei.com/cn/">consumer.huawei.com</a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><a target="_blank" rel="noopener" href="http://192.168.101.1/">192.168.101.1</a></td>
-<td></td>
-<td><a
-target="_blank" rel="noopener" href="https://consumer.huawei.com/cn/">consumer.huawei.com</a></td>
-</tr>
-<tr class="odd">
-<td>荣耀路由器</td>
-<td><a target="_blank" rel="noopener" href="http://192.168.3.1/">192.168.3.1</a></td>
-<td></td>
-<td><a target="_blank" rel="noopener" href="https://www.honor.com/cn/">www.hihonor.com</a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><a target="_blank" rel="noopener" href="http://192.168.101.1/">192.168.101.1</a></td>
-<td></td>
-<td><a target="_blank" rel="noopener" href="https://www.honor.com/cn/">www.hihonor.com</a></td>
-</tr>
-<tr class="odd">
-<td>网件(Netgear)路由器</td>
-<td><a target="_blank" rel="noopener" href="http://192.168.1.1/">192.168.1.1</a></td>
-<td><a target="_blank" rel="noopener" href="http://www.routerlogin.com/">routerlogin.com</a></td>
-<td><a target="_blank" rel="noopener" href="https://www.netgear.com.cn/">www.netgear.com.cn</a></td>
-</tr>
-<tr class="even">
-<td>华硕(Asus)路由器</td>
-<td><a target="_blank" rel="noopener" href="http://192.168.1.1/">192.168.1.1</a></td>
-<td><a target="_blank" rel="noopener" href="http://www.asusrouter.com/">router.asus.com</a></td>
-<td><a target="_blank" rel="noopener" href="https://www.asus.com.cn/">www.asus.com.cn</a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><a target="_blank" rel="noopener" href="http://192.168.50.1/">192.168.50.1</a></td>
-<td><a target="_blank" rel="noopener" href="http://www.asusrouter.com/">router.asus.com</a></td>
-<td><a target="_blank" rel="noopener" href="https://www.asus.com.cn/">www.asus.com.cn</a></td>
-</tr>
-<tr class="even">
-<td>小米路由器</td>
-<td><a target="_blank" rel="noopener" href="http://192.168.31.1/">192.168.31.1</a></td>
-<td><a target="_blank" rel="noopener" href="http://www.miwifi.com/">miwifi.com</a></td>
-<td><a target="_blank" rel="noopener" href="https://miwifi.com/">www.miwifi.com</a></td>
-</tr>
-<tr class="odd">
-<td>360安全路由</td>
-<td><a target="_blank" rel="noopener" href="http://192.168.0.1/">192.168.0.1</a></td>
-<td><a target="_blank" rel="noopener" href="http://luyou.360.cn/">luyou.360.cn</a></td>
-<td><a target="_blank" rel="noopener" href="https://luyou.360.cn/">luyou.360.cn</a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><a target="_blank" rel="noopener" href="http://192.168.100.1/">192.168.100.1</a></td>
-<td><a target="_blank" rel="noopener" href="http://luyou.360.cn/">luyou.360.cn</a></td>
-<td><a target="_blank" rel="noopener" href="https://luyou.360.cn/">luyou.360.cn</a></td>
-</tr>
-<tr class="odd">
-<td>水星(MERCURY)路由</td>
-<td><a target="_blank" rel="noopener" href="http://192.168.1.1/">192.168.1.1</a></td>
-<td><a target="_blank" rel="noopener" href="http://melogin.cn/">melogin.cn</a></td>
-<td><a
-target="_blank" rel="noopener" href="https://www.mercurycom.com.cn/">www.mercurycom.com.cn</a></td>
-</tr>
-<tr class="even">
-<td>腾达(Tenda)无线路由器</td>
-<td><a target="_blank" rel="noopener" href="http://192.168.0.1/">192.168.0.1</a></td>
-<td><a target="_blank" rel="noopener" href="http://tendawifi.com/">tendawifi.com</a></td>
-<td><a target="_blank" rel="noopener" href="https://www.tenda.com.cn/">www.tenda.com.cn</a></td>
-</tr>
-<tr class="odd">
-<td>H3C 路由器</td>
-<td><a target="_blank" rel="noopener" href="http://192.168.0.1/">192.168.0.1</a></td>
-<td></td>
-<td><a target="_blank" rel="noopener" href="https://www.h3c.com/cn/">www.h3c.com</a></td>
-</tr>
-<tr class="even">
-<td>京东云无线宝路由</td>
-<td><a target="_blank" rel="noopener" href="http://192.168.68.1/">192.168.68.1</a></td>
-<td><a target="_blank" rel="noopener" href="http://jdcloudwifi.com/">jdcloudwifi.com</a></td>
-<td><a target="_blank" rel="noopener" href="https://jdbox.jdcloud.com/">jdbox.jdcloud.com</a></td>
-</tr>
-<tr class="odd">
-<td>ZTE 中兴路由</td>
-<td><a target="_blank" rel="noopener" href="http://192.168.5.1/">192.168.5.1</a></td>
-<td><a target="_blank" rel="noopener" href="http://zte.home/">zte.home</a></td>
-<td><a target="_blank" rel="noopener" href="https://www.zte.com.cn/">www.zte.com.cn</a></td>
-</tr>
-<tr class="even">
-<td>极路由</td>
-<td><a target="_blank" rel="noopener" href="http://192.168.199.1/">192.168.199.1</a></td>
-<td></td>
-<td>官网已关闭</td>
-</tr>
-<tr class="odd">
-<td>Newifi 智能路由器</td>
-<td><a target="_blank" rel="noopener" href="http://192.168.99.1/">192.168.99.1</a></td>
-<td></td>
-<td>官网已关闭</td>
-</tr>
-<tr class="even">
-<td>斐讯(PHICOMM)路由</td>
-<td><a target="_blank" rel="noopener" href="http://192.168.2.1/">192.168.2.1</a></td>
-<td><a target="_blank" rel="noopener" href="http://p.to/">p.to</a></td>
-<td>官网已关闭</td>
 </tr>
 </tbody>
 </table>

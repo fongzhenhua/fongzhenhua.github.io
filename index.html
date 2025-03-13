@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">502</span>
+          <span class="site-state-item-count">503</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -372,6 +372,192 @@ target="_blank" rel="noopener" href="https://endeavouros.com">Endeavour</a>
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/13/%E6%B3%B0%E5%8B%92%E5%B1%95%E5%BC%80%E4%B8%AD%E7%9A%84Lagrange%E4%BD%99%E9%A1%B9%E5%92%8CPeano%E4%BD%99%E9%A1%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/03/13/%E6%B3%B0%E5%8B%92%E5%B1%95%E5%BC%80%E4%B8%AD%E7%9A%84Lagrange%E4%BD%99%E9%A1%B9%E5%92%8CPeano%E4%BD%99%E9%A1%B9/" class="post-title-link" itemprop="url">泰勒展开中的Lagrange余项和Peano余项</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-03-13 12:04:13 / 修改时间：12:27:06" itemprop="dateCreated datePublished" datetime="2025-03-13T12:04:13+08:00">2025-03-13</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在泰勒展开中，余项的形式决定了展开式的精度和适用范围。拉格朗日余项（Lagrange
+Remainder）和皮亚诺余项（Peano
+Remainder）是两种最常见的余项类型，它们的核心区别在于对误差的描述方式和无穷小性的要求。本文将通过表达式、性质、对比和例子详细分析两者的异同。</p>
+<hr />
+<h2 id="拉格朗日余项lagrange-remainder">1. 拉格朗日余项（Lagrange
+Remainder）</h2>
+<h3 id="表达式">表达式</h3>
+<p>对于函数 $ y(x) $ 在 $ x_0 $ 处的 <strong>$ n $
+阶泰勒展开</strong>，拉格朗日余项的形式为： <span
+class="math display">\[
+R_n(x) = \frac{y^{(n+1)}(\xi)}{(n+1)!}(x - x_0)^{n+1}
+\]</span> 其中，$ $ 是介于 $ x_0 $ 和 $ x $ 之间的某个点。</p>
+<h3 id="性质">性质</h3>
+<ul>
+<li><strong>余项的无穷小性</strong>： 当 $ x_0$ 时，若 $ y^{(n+1)}(x) $
+在 $ x_0 $ 附近有界，则余项 $ R_n(x) $
+趋于零；否则余项可能不趋于零。</li>
+<li><strong>误差描述</strong>：
+提供定量的误差估计，例如明确给出余项的表达式和依赖的高阶导数值。</li>
+<li><strong>导数要求</strong>： 需要函数 $ y(x) $ 在 $ x_0 $ 处具有
+<strong>$ n+1 $ 阶连续导数</strong>。</li>
+</ul>
+<h3 id="例子">例子</h3>
+<p>以 $ y(x) = e^x $ 在 $ x_0 = 0 $ 处的二阶泰勒展开为例： <span
+class="math display">\[
+e^x = 1 + x + \frac{x^2}{2} + \frac{e^\xi}{6}x^3 \quad (\xi \text{ 介于
+} 0 \text{ 和 } x \text{ 之间})
+\]</span> 余项 $ x^3 $ 的大小取决于 $ $ 的值。当 $ x $ 时，$
+$，余项趋于零；但对固定 $ x $，余项不一定无穷小。</p>
+<hr />
+<h2 id="皮亚诺余项peano-remainder">2. 皮亚诺余项（Peano Remainder）</h2>
+<h3 id="表达式-1">表达式</h3>
+<p>对于 $ n $ 阶泰勒展开，皮亚诺余项的形式为： <span
+class="math display">\[
+R_n(x) = o\left((x - x_0)^n\right) \quad \text{当} \ x \to x_0
+\]</span> 符号 $ o(...) $ 表示余项是比 $ (x - x_0)^n $
+<strong>更高阶的无穷小</strong>。</p>
+<h3 id="性质-1">性质</h3>
+<ul>
+<li><strong>余项的无穷小性</strong>：<br />
+强制要求余项满足： <span class="math display">\[
+\lim_{x \to x_0} \frac{R_n(x)}{(x - x_0)^n} = 0
+\]</span> 即余项必须比展开式的最后一项 $ (x - x_0)^n $
+更快趋近于零。</li>
+<li><strong>误差描述</strong>：<br />
+仅提供定性描述，强调余项的高阶无穷小性质，不涉及具体数值估计。</li>
+<li><strong>导数要求</strong>：<br />
+仅需函数 $ y(x) $ 在 $ x_0 $ 处存在 ​<strong>$ n $
+阶导数</strong>，无需更高阶导数连续。</li>
+</ul>
+<h3 id="例子-1">例子</h3>
+<p>以 $ y(x) = e^x $ 在 $ x_0 = 0 $ 处的二阶泰勒展开为例： <span
+class="math display">\[
+e^x = 1 + x + \frac{x^2}{2} + o(x^2) \quad (x \to 0)
+\]</span> 余项 $ o(x^2) $ 仅表明当 <span class="math inline">\(x \to
+0\)</span> 时，余项比 $ x^2 $ 更快趋近于零，但不提供具体表达式。</p>
+<hr />
+<h2 id="关键区别对比">关键区别对比</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 37%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>性质</strong></th>
+<th><strong>拉格朗日余项</strong></th>
+<th><strong>皮亚诺余项</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>余项是否无穷小</strong></td>
+<td>不一定，取决于高阶导数的有界性</td>
+<td>必须无穷小（定义要求）</td>
+</tr>
+<tr class="even">
+<td><strong>误差描述</strong></td>
+<td>定量估计（具体数值）</td>
+<td>定性描述（仅高阶无穷小）</td>
+</tr>
+<tr class="odd">
+<td><strong>导数要求</strong></td>
+<td>需要 $ y^{(n+1)}(x) $ 存在且连续</td>
+<td>只需 $ y^{(n)}(x) $ 在 $ x_0 $ 处存在</td>
+</tr>
+<tr class="even">
+<td><strong>适用场景</strong></td>
+<td>需要误差范围的实际问题</td>
+<td>理论分析，强调局部逼近性质</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="结论">结论</h2>
+<ol type="1">
+<li><strong>拉格朗日余项</strong>：
+<ul>
+<li>适用于需要定量误差估计的场景（如工程计算）。<br />
+</li>
+<li>余项的无穷小性依赖于高阶导数的有界性，当 <span
+class="math inline">\(x \to x_0\)</span> 且导数有界时，余项趋于零。</li>
+</ul></li>
+<li><strong>皮亚诺余项</strong>：
+<ul>
+<li>适用于理论分析，强调函数在局部的高阶逼近性质。<br />
+</li>
+<li>强制余项为高阶无穷小，无需具体计算高阶导数的值。</li>
+</ul></li>
+</ol>
+<p>两种余项的共同点是当 <span class="math inline">\(x \to x_0\)</span>
+时，余项均趋于零，但皮亚诺余项对无穷小性的要求更严格，且不依赖高阶导数的连续性。</p>
+<hr />
+<p><strong>延伸思考</strong>：
+在实际应用中，若函数的高阶导数难以计算或无界（例如 $ y(x) = x^{5/2} $ 在
+$ x=0 $ 处的三阶导数不存在），皮亚诺余项可能是唯一可行的选择。</p>
+
       
     </div>
 
@@ -1176,138 +1362,6 @@ class="math inline">\(E=mc2\)</span> 则是在 <code>PDF</code>
 <p>利用 <code>\texorpdfstring&#123;&#125;</code> 命令，我们能够有效地解决在
 <code>LaTeX</code> 文档的 <code>section</code>
 标题中插入数学公式时遇到的问题。这不仅使得我们的文档更加美观专业，同时也保证了技术上的正确性和兼容性。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/20/Bash%E8%84%9A%E6%9C%AC%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E9%80%92%E5%A2%9E/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/02/20/Bash%E8%84%9A%E6%9C%AC%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E9%80%92%E5%A2%9E/" class="post-title-link" itemprop="url">Bash脚本中的变量递增</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-02-20 15:53:51" itemprop="dateCreated datePublished" datetime="2025-02-20T15:53:51+08:00">2025-02-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在Bash脚本中，<code>let i+=1</code> 和 <code>((i++))</code>
-都是用来对变量进行递增操作的，但它们有一些关键的区别.</p>
-<h1 id="let-i1"><code>let i+=1</code></h1>
-<ul>
-<li><p><strong>语法</strong>：<code>let</code>
-是一个内置命令，用于执行算术运算。使用 <code>let</code>
-时，后面跟着的是算术表达式。</p></li>
-<li><p><strong>示例</strong>： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> i+=1</span><br></pre></td></tr></table></figure> 这行代码将变量
-<code>i</code> 的值增加<code>1</code>。</p></li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>必须使用空格分隔 <code>let</code> 和表达式。</li>
-<li>可以在一个 <code>let</code> 命令中执行多个算术运算，用逗号分隔：
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> i+=1, j+=2</span><br></pre></td></tr></table></figure></li>
-<li>如果变量未初始化，默认值为<code>0</code>.</li>
-</ul></li>
-</ul>
-<h1 id="i"><code>((i++))</code></h1>
-<ul>
-<li><p><strong>语法</strong>：双括号 <code>(( ... ))</code> 结构是 Bash
-中的算术运算扩展。它允许更简洁地编写算术表达式。</p></li>
-<li><p><strong>示例</strong>： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((i++))</span><br></pre></td></tr></table></figure> 这行代码也是将变量
-<code>i</code> 的值增加<code>1</code>，但是它的行为和 <code>i+=1</code>
-略有不同（后置递增）。</p></li>
-<li><p><strong>特点</strong>:</p>
-<ul>
-<li>允许直接在双括号内写算术表达式，无需 <code>let</code> 关键字。</li>
-<li>支持所有<code>C</code>语言风格的算术运算符，包括前置递增
-<code>++i</code> 和后置递增 <code>i++</code>。</li>
-<li>更加直观和易于阅读，特别是对于熟悉<code>C</code>或类似编程语言的人来说。</li>
-<li>同样支持在一个表达式中执行多个算术运算，用逗号分隔：
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((i++,j+=<span class="number">2</span>))</span><br></pre></td></tr></table></figure></li>
-</ul></li>
-</ul>
-<h2 id="区别总结">区别总结</h2>
-<h3 id="递增行为">递增行为：</h3>
-<ul>
-<li><code>let i+=1</code> 直接将 <code>i</code> 的值增加1。</li>
-<li><code>((i++))</code> 是后置递增操作，在当前语句中使用 <code>i</code>
-的原始值，然后才增加 <code>i</code> 的值。
-<ul>
-<li>对比 <code>((++i))</code>，这是前置递增操作，先增加 <code>i</code>
-的值，再使用新的值。</li>
-</ul></li>
-</ul>
-<h3 id="语法简洁性">语法简洁性：</h3>
-<ul>
-<li><code>let</code> 需要关键字 <code>let</code>
-并且需要遵循特定的语法格式。</li>
-<li><code>((...))</code>
-更简洁，不需要额外的关键字，并且更接近于编程语言中的算术运算表达式。</li>
-</ul>
-<h3 id="多操作支持">多操作支持：</h3>
-<ul>
-<li>两者都支持在同一表达式中执行多个算术运算，但 <code>((...))</code>
-更加灵活和直观。</li>
-</ul>
 
       
     </div>
