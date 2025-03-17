@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">504</span>
+          <span class="site-state-item-count">505</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -372,6 +372,104 @@ target="_blank" rel="noopener" href="https://endeavouros.com">Endeavour</a>
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/17/%E4%BF%AE%E5%A4%8Dtexstudio%E6%89%93%E5%BC%80%E9%97%AA%E9%80%80%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/03/17/%E4%BF%AE%E5%A4%8Dtexstudio%E6%89%93%E5%BC%80%E9%97%AA%E9%80%80%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">修复texstudio打开闪退的问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-03-17 20:26:40 / 修改时间：20:29:38" itemprop="dateCreated datePublished" datetime="2025-03-17T20:26:40+08:00">2025-03-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>如果 TeXstudio
+出现问题无法打开或闪退，你可以尝试恢复其默认设置。TeXstudio
+将其设置存储在一个名为 <code>texstudio.ini</code>
+的配置文件中。要恢复默认设置，你需要删除或重命名这个文件，这样 TeXstudio
+在下次启动时会生成一个新的默认配置文件。</p>
+<h2 id="操作步骤">操作步骤</h2>
+<h3 id="关闭-texstudio">1. 关闭 TeXstudio</h3>
+<p>确保 TeXstudio
+已经完全关闭。如果它因为错误而无法正常关闭，请通过任务管理器强制结束它的进程。</p>
+<h3 id="找到配置文件">2. 找到配置文件</h3>
+<ul>
+<li><strong>Windows</strong>: 通常位于用户目录下的
+<code>AppData\Roaming\texstudio\texstudio.ini</code>。注意
+<code>AppData</code>
+文件夹是隐藏的，你可能需要在资源管理器中显示隐藏的文件和文件夹才能看到它。</li>
+<li><strong>macOS</strong>: 配置文件一般位于
+<code>~/Library/Preferences/texstudio.ini</code>。</li>
+<li><strong>Linux</strong>: 对于大多数发行版来说，配置文件可以在
+<code>~/.config/texstudio/texstudio.ini</code> 找到。</li>
+</ul>
+<h3 id="删除或重命名配置文件">3. 删除或重命名配置文件</h3>
+<p>为了安全起见，你可以先尝试重命名该文件（例如，添加 <code>.bak</code>
+后缀），而不是直接删除它。这样，如果你发现新的默认设置有问题，还可以恢复原来的配置。</p>
+<h3 id="重新启动-texstudio">4. 重新启动 TeXstudio</h3>
+<p>现在再次启动 TeXstudio，程序将会使用默认设置启动。</p>
+<h3 id="验证更改">5. 验证更改</h3>
+<p>检查是否所有的问题都得到了解决，并根据需要重新配置你的偏好设置。</p>
+<div class="note primary"><p>注意：此过程将删除所有自定义设置，包括快捷键、语法高亮设置等。如果你有重要的自定义设置，建议在执行上述步骤前备份相关的配置信息。</p>
+</div>
+
       
     </div>
 
@@ -1241,104 +1339,6 @@ target="_blank" rel="noopener" href="https://www.rust-lang.org/?spm=5176.2810346
 class="math inline">\(y=x^2\)</span>在某个区间上的积分，并基于此结果绘制出其积分函数的图像。
 为了验证蒙卡的计算效果，我们在同一张图中给制出蒙卡积分结果和解析解析的结果，对比结果可以证实蒙特卡洛方法的可行性。代码如下：</p>
 <figure class="highlight python"><figcaption><span>Comparison between Monte Carlo Integration and Analytical Solutions</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python3</span></span><br><span class="line"><span class="comment"># vim:fenc=utf-8</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义蒙特卡洛积分函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">monte_carlo_integration</span>(<span class="params">func, a, b, n=<span class="number">1000</span></span>):</span><br><span class="line">    x_samples = np.random.uniform(a, b, n)</span><br><span class="line">    y_samples = func(x_samples)</span><br><span class="line">    <span class="comment"># 计算平均高度</span></span><br><span class="line">    average_height = np.mean(y_samples)</span><br><span class="line">    <span class="comment"># 计算积分值</span></span><br><span class="line">    integral = average_height * (b - a)</span><br><span class="line">    <span class="keyword">return</span> integral</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义被积函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> x**<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 解析解计算积分函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">analytic_integral_f</span>(<span class="params">x,a</span>):</span><br><span class="line">    <span class="keyword">return</span> (x**<span class="number">3</span>)/<span class="number">3</span>-(a**<span class="number">3</span>)/<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用蒙特卡洛方法求解积分</span></span><br><span class="line">a, b = -<span class="number">5</span>, <span class="number">5</span>  <span class="comment"># 积分区间</span></span><br><span class="line">x_points = np.linspace(a, b, <span class="number">100</span>)  <span class="comment"># 用于绘图的x点</span></span><br><span class="line">monte_carlo_values = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(x_points)):</span><br><span class="line">    <span class="comment"># 对每个x点计算从a到该点的积分</span></span><br><span class="line">    integral_value = monte_carlo_integration(f, a, x_points[i], n=<span class="number">20000</span>)</span><br><span class="line">    monte_carlo_values.append(integral_value)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算解析解</span></span><br><span class="line">analytic_values = analytic_integral_f(x_points,a)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制积分后的函数图像</span></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>, <span class="number">8</span>))</span><br><span class="line">plt.plot(x_points, monte_carlo_values, label=<span class="string">&#x27;Monte Carlo Integral of $x^2$&#x27;</span>, color=<span class="string">&#x27;blue&#x27;</span>, linestyle=<span class="string">&#x27;--&#x27;</span>)</span><br><span class="line">plt.plot(x_points, analytic_values, label=<span class="string">&#x27;Analytical Integral of $x^2$&#x27;</span>, color=<span class="string">&#x27;red&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加标题和标签</span></span><br><span class="line">plt.title(<span class="string">&#x27;Comparison between Monte Carlo and Analytical Integration of $x^2$&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Integral Value&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示图例</span></span><br><span class="line">plt.legend()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示网格</span></span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示图像</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/05/%E5%9C%A8LaTeX%E4%B8%AD%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AAPDF%E6%96%87%E4%BB%B6%E5%B9%B6%E6%B7%BB%E5%8A%A0%E8%B6%85%E9%93%BE%E6%8E%A5%E5%BC%95%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/03/05/%E5%9C%A8LaTeX%E4%B8%AD%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AAPDF%E6%96%87%E4%BB%B6%E5%B9%B6%E6%B7%BB%E5%8A%A0%E8%B6%85%E9%93%BE%E6%8E%A5%E5%BC%95%E7%94%A8/" class="post-title-link" itemprop="url">在LaTeX中合并多个PDF文件并添加超链接引用</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-03-05 18:01:25" itemprop="dateCreated datePublished" datetime="2025-03-05T18:01:25+08:00">2025-03-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>如果你正在寻找一种方法来将多个PDF文件整合到一个LaTeX文档中，并且希望在这个过程中添加超链接引用，那么这篇文章正好适合你。我们将介绍如何使用<code>pdfpages</code>宏包来插入外部PDF文件，以及如何通过<code>hyperref</code>宏包添加内部和外部的超链接，包括利用<code>\phantomsection</code>命令为非结构化元素创建锚点。</p>
-<h2
-id="使用pdfpages宏包合并pdf文件">使用<code>pdfpages</code>宏包合并PDF文件</h2>
-<p>首先，在LaTeX文档的导言区引入<code>pdfpages</code>宏包：</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\usepackage</span>&#123;pdfpages&#125;</span><br></pre></td></tr></table></figure>
-<p>然后，你可以使用<code>\includepdf[选项]&#123;文件名&#125;</code>命令来插入PDF文件。例如，插入整个PDF文件：</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\includepdf</span>[pages=-]&#123;filename1.pdf&#125;</span><br></pre></td></tr></table></figure>
-<p>或选择特定页面插入：</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\includepdf</span>[pages=2,5-7]&#123;filename1.pdf&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="添加超链接引用">添加超链接引用</h2>
-<p>为了添加超链接功能，需要引入hyperref宏包：</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\usepackage</span>[hidelinks]&#123;hyperref&#125;</span><br></pre></td></tr></table></figure>
-<p><code>hidelinks</code>选项去掉了超链接周围的彩色边框，使文档看起来更整洁。接下来，可以使用以下命令添加不同类型的超链接：</p>
-<ul>
-<li><p>内部链接： <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\hyperref</span>[sec:intro]&#123;introduction section&#125;</span><br></pre></td></tr></table></figure></p></li>
-<li><p>网页链接：直接生成网址 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Visit <span class="keyword">\url</span>&#123;<span class="link">https://www.example.com</span>&#125; for additional information.</span><br></pre></td></tr></table></figure></p></li>
-<li><p>网页链接：隐藏链接网址 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">You can also visit <span class="keyword">\href</span>&#123;<span class="link">https://www.example.com</span>&#125;&#123;this website&#125; for more details.</span><br></pre></td></tr></table></figure></p></li>
-</ul>
-<h2 id="隐形定位点">隐形定位点</h2>
-<p>时候你需要为非结构化的元素（如未编号的章节标题）创建一个目标位置。这时可以使用<code>\phantomsection</code>命令：</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\clearpage</span></span><br><span class="line"><span class="keyword">\phantomsection</span></span><br><span class="line"><span class="keyword">\label</span>&#123;sec:important<span class="built_in">_</span>note&#125;</span><br><span class="line"><span class="keyword">\noindent</span>&#123;<span class="keyword">\Large</span> <span class="keyword">\textbf</span>&#123;Important Note&#125;&#125;</span><br></pre></td></tr></table></figure>
-<p>这会在“Important
-Note”部分创建一个可供<code>\ref&#123;&#125;</code>引用的标签，并允许读者通过点击超链接跳转到该部分。通过设置隐形定位点，你可以在LaTeX文档中高效地整合多个PDF文件，同时添加各种形式的超链接引用。</p>
 
       
     </div>
