@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">505</span>
+          <span class="site-state-item-count">508</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,342 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/03/yarn%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/01/03/yarn%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">yarn的常用命令</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-01-03 14:48:26" itemprop="dateCreated datePublished" datetime="2025-01-03T14:48:26+08:00">2025-01-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="yarn-简介">Yarn 简介</h1>
+<p>Yarn 是一个快速、可靠且安全的依赖管理工具，主要用于 JavaScript
+项目。它由 Facebook 与社区成员共同开发，旨在解决 npm（Node Package
+Manager）存在的性能问题和一些功能上的局限性。Yarn
+的设计目标是加速包的安装过程、确保操作的可重复性和安全性，同时简化开发者的工作流程。</p>
+<h2 id="主要特点">主要特点</h2>
+<ul>
+<li><strong>速度</strong>：Yarn
+使用并行化下载技术来提升安装速度，并通过本地缓存避免重复下载相同的包。</li>
+<li><strong>安全性</strong>：每次安装时都会校验每个包的完整性，保证了项目依赖的一致性和安全性。</li>
+<li><strong>可重复性</strong>：借助 <code>yarn.lock</code> 文件，Yarn
+可以确保不同环境中安装的依赖版本完全一致，从而减少了因版本差异导致的问题。</li>
+<li><strong>兼容性</strong>：与 npm 生态系统完全兼容，能够无缝使用 npm
+注册表中的所有包。</li>
+<li><strong>插件支持</strong>：Yarn
+支持丰富的插件生态系统，允许用户扩展其核心功能。</li>
+<li><strong>命令简洁</strong>：提供了一套简单易用的命令行接口，帮助开发者更高效地管理项目依赖。</li>
+</ul>
+<h1 id="yarn-的常用命令列表">yarn 的常用命令列表</h1>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看 yarn 全局安装过的包</span></span><br><span class="line">yarn global list --depth=0</span><br><span class="line"><span class="comment"># 全局安装</span></span><br><span class="line">yarn global add &lt;package&gt;</span><br><span class="line"><span class="comment"># 安装所有依赖</span></span><br><span class="line">yarn</span><br><span class="line"><span class="comment"># 安装指定版本</span></span><br><span class="line">yarn add &lt;package&gt;@&lt;version&gt;</span><br><span class="line"><span class="comment"># 安装最新版本</span></span><br><span class="line">yarn add &lt;package&gt;</span><br><span class="line"><span class="comment"># 删除包,会更新package.json和yarn.lock</span></span><br><span class="line">yarn remove &lt;package&gt;</span><br><span class="line"><span class="comment"># 更新包</span></span><br><span class="line">yarn upgrade</span><br><span class="line"><span class="comment"># 更新指定的包</span></span><br><span class="line">yarn upgrade &lt;package&gt;</span><br><span class="line"><span class="comment"># 获取可更新的包列表选择更新</span></span><br><span class="line">yarn upgrade-interactive --latest</span><br><span class="line"><span class="comment"># 更新全局依赖</span></span><br><span class="line">yarn global upgrade --latest</span><br><span class="line"><span class="comment"># 更新全局依赖，有交互</span></span><br><span class="line">yarn global upgrade-interactive --latest</span><br><span class="line"><span class="comment"># 列出已缓存的包</span></span><br><span class="line">yarn cache list</span><br><span class="line"><span class="comment"># 查找缓存包的路径</span></span><br><span class="line">yarn cache <span class="built_in">dir</span></span><br><span class="line"><span class="comment"># 清除缓存的包</span></span><br><span class="line">yarn cache clean</span><br></pre></td></tr></table></figure>
+<h1 id="yarn-使用ssh安装插件">yarn 使用ssh安装插件</h1>
+<p>当安装一个模块时，yarn 默认从 <code>https://github.com</code> 下载，
+但有时网络不通，所以可以采用直接添加 <code>ssh</code>
+地址的方法，此后更新也会从新的地址更新。例如</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yarn add @next-theme/plugins@git+ssh://github.com/next-theme/plugins.git</span><br><span class="line">yarn add hexogenerator-searchdb@git+ssh://github.com/next-theme/hexo-generator-searchdb.git</span><br></pre></td></tr></table></figure>
+<h1 id="yarn-切换源">yarn 切换源</h1>
+<h3 id="设置-yarn-的国内源">设置 yarn 的国内源</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 国内 淘宝 镜像源</span></span><br><span class="line">yarn config <span class="built_in">set</span> registry https://registry.npmmirror.com/</span><br><span class="line"><span class="comment"># 官方镜像源</span></span><br><span class="line">yarn config <span class="built_in">set</span> registry https://registry.yarnpkg.com/</span><br></pre></td></tr></table></figure>
+<h3 id="安装-nrm-镜像源工具">安装 nrm 镜像源工具</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> yarn global add nrm</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p><code>nrm</code>使用方法，请参考本文末参考文章。使用<code>nrm test</code>列出各源，并给出源的网速，使用<code>nrm use huawei</code>切换到速度最快的华为源。</p>
+</div>
+<h1 id="参考文章">参考文章</h1>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_58689048/article/details/118789091">npm
+和 yarn 常用命令 （更新、删除、清缓存）</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1588456">秒懂
+Yarn：从安装配置到高效使用的全攻略</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/03/Linux%E9%87%8D%E5%AE%9A%E5%90%91%E6%9D%83%E9%99%90%E4%B8%8D%E5%A4%9F%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/01/03/Linux%E9%87%8D%E5%AE%9A%E5%90%91%E6%9D%83%E9%99%90%E4%B8%8D%E5%A4%9F%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">Linux重定向权限不够的解决方案</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-01-03 10:29:56" itemprop="dateCreated datePublished" datetime="2025-01-03T10:29:56+08:00">2025-01-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在使用 <code>cat</code> 或<code>echo</code>
+等命令，将一些内容添加到<code>root</code>权限的文件，比如<code>/etc/hosts</code>时，系统会报出“权限不够”的错误。</p>
+<h1 id="原因分析">原因分析</h1>
+<p>以向<code>/etc/hosts</code>中添加一条记录为例，通常代码写为</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">echo</span>  <span class="string">&quot;220.181.111.232 www.baidu.com&quot;</span> &gt;&gt; /etc/hosts</span><br><span class="line">-bash: test.asc: Permission denied</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p>此时，<code>bash</code> 拒绝这么做会提示权限不够，是因为重定向符号
+<code>&gt;</code> 和 <code>&gt;&gt;</code> 也是 <code>bash</code>
+的命令。由于使用 <code>sudo</code> 只是让 <code>echo</code> 命令具有了
+<code>root</code> 权限，但是没有让 <code>&gt;</code> 和
+<code>&gt;&gt;</code> 命令也具有 <code>root</code> 权限，所以
+<code>bash</code>
+会认为这两个命令都没有向<code>/etc/hosts</code>写入信息的权限。</p>
+</div>
+<h1 id="解决方法">解决方法</h1>
+<h2 id="使用命令sh--c">使用命令<code>sh -c</code></h2>
+<p><code>sh -c</code> 命令，可以让 <code>bash</code>
+将一个字串作为完整的命令来执行，这样就可以将 <code>sudo</code>
+的影响范围扩展到整条命令。具体用法如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> sh -c <span class="string">&#x27;echo  &quot;220.181.111.232 www.baidu.com&quot; &gt;&gt; /etc/hosts&#x27;</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用命令tee">使用命令<code>tee</code></h2>
+<p>利用管道和 tee
+命令，该命令可以从标准输入中读入信息并将其写入标准输出或文件中，具体用法如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span>  <span class="string">&quot;220.181.111.232 www.baidu.com&quot;</span> | <span class="built_in">sudo</span> <span class="built_in">tee</span> -a /etc/hosts</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p>注意: <code>tee</code> 命令的 <code>-a</code> 选项的作用等同于
+<code>&gt;&gt;</code> 命令。如果去除该选项，那么 <code>tee</code>
+命令的作用就等同于 <code>&gt;</code> 命令。</p>
+</div>
+<h1 id="参考文章">参考文章</h1>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_15821725/article/details/104015904">linux
+关于重定向 权限不够 的解决方式使用 sh -c 或者 tee</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/m0_60352504/article/details/121442148">Linux执行sudo
+echo xxx ＞＞ 命令提示权限不够的问题</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/sparkdev/p/10287164.html">sudo与输出重定向</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/03/%E4%BF%AE%E5%A4%8Dsudo%E5%AF%86%E7%A0%81%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8%E7%9A%84%E9%94%99%E8%AF%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/01/03/%E4%BF%AE%E5%A4%8Dsudo%E5%AF%86%E7%A0%81%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8%E7%9A%84%E9%94%99%E8%AF%AF/" class="post-title-link" itemprop="url">修复sudo密码不起作用的错误</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-01-03 10:12:00" itemprop="dateCreated datePublished" datetime="2025-01-03T10:12:00+08:00">2025-01-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天升级 <code>ArchLinu</code> 后发现 <code>sudo</code>
+命令无法接收密码，即使正确的密码它也会返回 "密码错误"
+的提示。修复方法有三个：</p>
+<h1 id="注销并重新登录会话">注销并重新登录会话</h1>
+<p>重新启动 Linux
+系统是修复任何临时系统故障的最流行且最简单的解决方案之一。在最好的情况下，sudo
+密码不起作用错误只是 Linux
+中的一个临时故障，只需快速注销登录或重新启动系统即可神奇地修复它。</p>
+<h1 id="修改sudo密码">修改sudo密码</h1>
+<ol type="1">
+<li>打开一个新的终端。</li>
+<li>使用命令<code>su</code>， 切换到 <code>root</code>用户。</li>
+<li>使用 <code>passwd</code> 命令，更改用户的<code>sudo</code>密码：
+<code>passwd username</code></li>
+</ol>
+<div class="note primary"><p>多数情况下我们习惯了某一密码，所以尽量不使用本方法修改密码。</p>
+</div>
+<h1 id="重启systemd-homed服务">重启systemd-homed服务</h1>
+<p>systemd-homed 是一个核心 systemd
+服务，负责为用户的主目录提供支持。重新启动它可能会解决该问题，因为它会重置身份验证机制并可能修复任何临时系统故障。重新启动服务的步骤：</p>
+<ol type="1">
+<li>启动一个新终端。</li>
+<li>使用 <code>su</code> 命令切换到 <code>root</code>。</li>
+<li>使用systemctl命令启动或重新启动<code>systemd-homed</code>服务：
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start systemd-homed.service</span><br><span class="line">systemctl restart systemd-homed.service</span><br></pre></td></tr></table></figure></li>
+</ol>
+<div class="note primary"><p>2025年01月03日, 使用此方法解决问题，建议使用此方法。</p>
+</div>
+<h1 id="参考文章">参考文章</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://cn.linux-console.net/?p=12167">如何修复 Linux
+上的“sudo 密码不起作用”错误</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1237,314 +1573,6 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/fdipzone/article/deta
 shell数组参数传递参数</a></li>
 <li><a
 href="/2024/12/02/syndns脚本让您的网速飞起">syndns脚本让您的网速飞起</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/21/%E5%8D%8E%E7%A1%95TUF-GAMING%E5%B0%8F%E6%97%8B%E9%A3%8E%E8%AE%BE%E7%BD%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/12/21/%E5%8D%8E%E7%A1%95TUF-GAMING%E5%B0%8F%E6%97%8B%E9%A3%8E%E8%AE%BE%E7%BD%AE/" class="post-title-link" itemprop="url">华硕TUF-GAMING小旋风设置</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-12-21 16:45:30" itemprop="dateCreated datePublished" datetime="2024-12-21T16:45:30+08:00">2024-12-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>近日决定升级一下路由器，最初从京东自营店购买的<a
-target="_blank" rel="noopener" href="https://www.tp-link.com.cn/product_3289.html?source=productCenter">TP-BE5100</a>,
-但是发现收到的货是二手的，所以果断决定退货。经过对比，选择了口碑良好的<a
-target="_blank" rel="noopener" href="https://www.asus.com.cn/networking-iot-servers/wifi-routers/asus-gaming-routers/tuf-gaming-3600/techspec/">华硕TUF-GAMING
-小旋风 WiFi7 BE3600</a>,
-以过一下午的使用发现这款路由器确实值得购买。</p>
-<h1 id="aidisk-共享usb-硬盘设置">AiDisk 共享USB 硬盘设置</h1>
-<p>TUF-GAMING 配置了一个 USB3.0
-接口，通过这个接口我们可以设置自己的网络硬盘，这是一个相当实用的功能。下面是其设置方法：</p>
-<ul>
-<li>连接好路由，然后在游览器地址栏输入: <a
-target="_blank" rel="noopener" href="http://www.asusrouter.com">http://www.asusrouter.com</a>,
-输入帐户名和密码进入到路由器管理页面。</li>
-<li>点击 <a
-target="_blank" rel="noopener" href="http://www.asusrouter.com/Advanced_ASUSDDNS_Content.asp">外部网络(WAN)</a>→<code>DDNS</code>,
-然后输入一个主机名，如果没有被占用，则可以成功开启，如果被占用则要更改新的主机名。</li>
-<li>点击 <code>USB相关应用</code> →<code>AiDisk</code>,
-然后根据向导设置就可以了。设置完成的样子： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">您曾经设置过AiDisk向导，现在可参考以下信息来访问硬盘：</span><br><span class="line">   Internet FTP address: ftp://yourhost.asuscomm.cn</span><br><span class="line">   LAN FTP address: ftp://192.168.50.1</span><br><span class="line">   若您需要更专业的文件共享设置，例如多组共享权限的规划，共享文件夹的修改，请至 这里设置。</span><br><span class="line">   警告：AiDisk 已设置。若您再次设置，之前的帐号/密码与存取 权限都将重置。 欲添加更多帐号，选择 这里 以编辑帐户信息。</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>之后在文件管理器中输入上述 <code>Internet</code>或<code>LAN</code>的
-<code>ftp</code>地址，输入帐号名和密码就可以访问路由器<code>U</code>盘接口上连接的<code>U盘</code>了。</p>
-<h1 id="aicloud-2.0-个人云应用">AiCloud 2.0 个人云应用</h1>
-<p><code>AiCloud</code>提供了外网通过浏览器访问<code>U</code>盘接口上连接的<code>U盘</code>的功能。直接点击<code>AiCloud 2.0 个人云2.0 应用</code>根据提示设置就好。但是这里设置遇到了一些问题，比如</p>
-<div class="note primary"><ul>
-<li>ASUS Router 在 HTTP 下外网可以连接路由器，HTTPS 下不可以。</li>
-<li>AiCloud 内网情况下 Web 和 App 都可以登陆，外网情况下 Web
-可以登陆，App 不能。</li>
-<li>参考文章：<a target="_blank" rel="noopener" href="https://www.52asus.com/thread-4536-1-1.html">求助
-AiCloud app外网登陆问题</a></li>
-</ul>
-</div>
-<h1 id="应用下载">应用下载</h1>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.123pan.com/s/lRT7Vv-IXeaH.html">AiCloud 2.0
-安卓版 提取码：YZhS</a></li>
-</ul>
-<h1 id="参考文章">参考文章</h1>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.52asus.com/thread-4536-1-1.html">求助 AiCloud
-app外网登陆问题</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://www.asus.com.cn/support/faq/1010004/">如何设置Aicloud中的智能访问功能?</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/20/vim-latex%E8%BF%87%E6%BB%A4Warning%E4%BF%A1%E6%81%AF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/12/20/vim-latex%E8%BF%87%E6%BB%A4Warning%E4%BF%A1%E6%81%AF/" class="post-title-link" itemprop="url">vim-latex过滤Warning信息</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-12-20 20:34:41" itemprop="dateCreated datePublished" datetime="2024-12-20T20:34:41+08:00">2024-12-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在 neovim 中编辑 LaTeX 使用 <a
-target="_blank" rel="noopener" href="https://github.com/vim-latex/vim-latex">vim-latex</a>
-插件是一个绝佳选择。然而，有时候写论文需要使用官方的
-LaTeX的模板，但是不同出版社的模板设置多少有些不符合 LaTeX
-规范，于是就会有字体等 Warning 信息出现，但是这些信息又不是 LaTeX
-必须处理的，它们是可以忽略的。如果不忽略它们，每次编译 <a
-target="_blank" rel="noopener" href="https://neovim.io/doc/user/quickfix.html">quicfix</a>
-窗口都会弹出提示，这极大的影响的写作体验，为此本文提供屏蔽这些信息的方法。</p>
-<h1 id="neovim-中设置">Neovim 中设置</h1>
-<figure class="highlight lua"><figcaption><span>~/.config/nvim/lua/plg/vim-latex.lua</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 控制统计过程中的警告信息</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_IgnoredWarnings&#x27;</span>] = <span class="string">[[</span></span><br><span class="line"><span class="string">    LaTeX Font Warning:</span></span><br><span class="line"><span class="string">    LaTeX Warning:</span></span><br><span class="line"><span class="string">    Warning:</span></span><br><span class="line"><span class="string">    Overfull</span></span><br><span class="line"><span class="string">]]</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_IgnoreLevel&#x27;</span>] = <span class="number">4</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_GotoError&#x27;</span>] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
-<h1 id="vim-中设置">Vim 中设置</h1>
-<figure class="highlight vim"><figcaption><span>~/.vimrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&quot; 控制编译过程中的警告信息</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">g:Tex_IgnoredWarnings</span> = </span><br><span class="line">	\<span class="string">&#x27;Underfull&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&#x27;Overfull&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&#x27;specifier changed to&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&#x27;You have requested&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&#x27;Missing number, treated as zero.&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&#x27;There were undefined references&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&#x27;Citation %.%# undefined&#x27;</span>.<span class="string">&quot;\n&quot;</span>.</span><br><span class="line">	\<span class="string">&quot;LaTeX hooks Warning&quot;</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">g:Tex_IgnoreLevel</span> = <span class="number">8</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">g:Tex_GotoError</span> = <span class="number">0</span></span><br></pre></td></tr></table></figure>
-<div class="note primary"><p>注意：如果您想追加需要过滤的消息，请按上述标格式对应添加到<code>Tex_IgnoredWarnings</code>变量中即可，这样在<code>nvim</code>或<code>vim</code>中输入<code>\ll</code>时，系统直接编译不再弹出<code>quicfix</code>窗口。</p>
-</div>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/15/%E7%BD%91%E9%80%9F%E5%8D%95%E4%BD%8D%E7%9A%84%E8%BD%AC%E6%8D%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/12/15/%E7%BD%91%E9%80%9F%E5%8D%95%E4%BD%8D%E7%9A%84%E8%BD%AC%E6%8D%A2/" class="post-title-link" itemprop="url">网速单位的转换</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-12-15 15:19:43" itemprop="dateCreated datePublished" datetime="2024-12-15T15:19:43+08:00">2024-12-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><code>Mbps</code> 到<code>MB/s</code>
-转换计算器允许用户将<label style="color:red">兆位每秒(Mbps)</label>转换为<label style="color:red">兆字节每秒（<span
-class="math inline">\(MB/s\)</span>）</label>，这有助于理解不同单位的数据传输速率。</p>
-<h1 id="历史背景">历史背景</h1>
-<p><code>Mbps</code>(兆位每秒)和<code>MB/s</code>(兆字节每秒)这两个术语常用于计算和网络中描述数据传输速率。它们的区别在于测量单位：</p>
-<div class="note primary"><p>1字节=8比特，这意味着从Mbps到MB/s的转换需要将Mbps值除以8。</p>
-</div>
-<p>此转换对于理解互联网速度、文件下载时间和网络设备的性能非常重要。例如，广告宣传的互联网速度为<code>100 Mbps</code>，转换为<code>12.5 MB/s</code>，这表明数据实际下载或上传的速度。</p>
-<h1 id="转换公式">转换公式</h1>
-<p>将<code>Mbps</code>转换为<code>MB/s</code>的公式很简单：</p>
-<p><span class="math display">\[\begin{equation}\label{eq:translate}
-MB/s=\frac{Mbps}{8}
-\end{equation}\]</span></p>
-<div class="note primary"><ul>
-<li><code>Mbps</code>是以兆位每秒为单位的数据速率.</li>
-<li><code>MB/s</code>是以兆字节每秒为单位的数据速率.</li>
-</ul>
-</div>
-<h1 id="在线转换">在线转换</h1>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://www.calculatorultra.com/zh/tool/mbps-to-mb-s-conversion-calculator.html">Mbps
-到 MB/s 转换计算器</a></li>
-<li><a target="_blank" rel="noopener" href="https://purecalculators.com/zh-CN/convert-mbps-to-mb">将
-Mbps 转换为 Mb</a></li>
 </ul>
 
       

@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">505</span>
+          <span class="site-state-item-count">508</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,545 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/24/Shell%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/24/Shell%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="post-title-link" itemprop="url">Shell常用快捷键</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-24 23:24:23" itemprop="dateCreated datePublished" datetime="2024-05-24T23:24:23+08:00">2024-05-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>为了提高我们使用 Bash Shell 的效率，本文总结了一些 Bash
+中常用的高效快捷键，可以帮助我们在快节奏的学习和工作环境中提高生产力。熟悉了这些常用的快捷键之后，将会极大的提升我们与终端交互的速度，从而有效利用时间。</p>
+<h3 id="光标移动">光标移动</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>快捷键</th>
+<th>对应功能</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ctrl + a 或 Home</td>
+<td>将光标移动到整行命令的开头 (#)</td>
+</tr>
+<tr class="even">
+<td>Ctrl + e 或 End</td>
+<td>将光标移动到整行命令的末尾 (#)</td>
+</tr>
+<tr class="odd">
+<td>Ctrl + b 或 &lt;-</td>
+<td>将光标向左移动一个字符 (#)</td>
+</tr>
+<tr class="even">
+<td>Ctrl + f 或 -&gt;</td>
+<td>将光标向右移动一个字符 (#)</td>
+</tr>
+<tr class="odd">
+<td>Alt + b 或 Ctrl + &lt;-</td>
+<td>将光标向左移动到当前单词或前一个单词的第一个字母上 (#)</td>
+</tr>
+<tr class="even">
+<td>Alt + f 或 Ctrl + -&gt;</td>
+<td>将光标向右移动到当前单词或后一个单词的末尾的第一个空格处 (#)</td>
+</tr>
+<tr class="odd">
+<td>Alt + c</td>
+<td>将光标向右移动到当前单词或后一个单词的末尾的第一个空格处，并将对应单词的首字母大写</td>
+</tr>
+<tr class="even">
+<td>Alt + u</td>
+<td>将光标向右移动到当前单词或后一个单词的末尾的第一个空格处，并将对应单词的所有字母大写</td>
+</tr>
+<tr class="odd">
+<td>Alt + l</td>
+<td>将光标向右移动到当前单词或后一个单词的末尾的第一个空格处，并将对应单词的所有字母小写</td>
+</tr>
+<tr class="even">
+<td>Alt + -&gt;</td>
+<td>将光标向右移动到当前单词或后一个单词的末尾的第一个空格处 (#)</td>
+</tr>
+<tr class="odd">
+<td>Alt + &lt;-</td>
+<td>将光标向左移动到当前单词或前一个单词的首字母处 (#)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="终端编辑">终端编辑</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>快捷键</th>
+<th>对应功能</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ctrl + u</td>
+<td>删除从命令开始位置到当前光标所在位置之前的所有字符（会保留当前光标所在位置的字符）
+(#))</td>
+</tr>
+<tr class="even">
+<td>Ctrl + k</td>
+<td>删除从当前光标位置到结尾的所有字符（不保留当前光标所在位置的字符）
+(#)</td>
+</tr>
+<tr class="odd">
+<td>Ctrl + w</td>
+<td>删除当前光标之前的第一个命令行参数或从光标位置往左删除至上一个空字符处（会保留当前光标位置的字符）
+(#)</td>
+</tr>
+<tr class="even">
+<td>Ctrl + t</td>
+<td>交换当前光标之前和之后的两个字符</td>
+</tr>
+<tr class="odd">
+<td>Ctrl + h 或 Backspace</td>
+<td>删除光标之前的单个字符 (#)</td>
+</tr>
+<tr class="even">
+<td>Ctrl + d 或 Delete</td>
+<td>往后删除当前光标所在位置的字符 (#)</td>
+</tr>
+<tr class="odd">
+<td>Alt + d 或 Ctrl + Delete</td>
+<td>往右删除从当前光标到下一个单词结尾的所有字符（不会保留当前光标所在位置的字符）</td>
+</tr>
+<tr class="even">
+<td>Alt + Backspace</td>
+<td>往左删除从当前光标到上一个单词开头的所有字符（会保留当前光标所在位置的字符）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="任务处理">任务处理</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>快捷键或命令</th>
+<th>对应功能</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ctrl + c</td>
+<td>通过向当前前台进程发送SIGINT信号来中断当前前台进程。默认行为是终止进程
+(#)</td>
+</tr>
+<tr class="even">
+<td>Ctrl + z</td>
+<td>向进程发送SIGTSTP信号，并挂起当前前台进程。可以使用fg命令将重新将进程拉回到前台
+(#)</td>
+</tr>
+<tr class="odd">
+<td>[Command] &amp;</td>
+<td>将Command命令放到后台执行，一般和nohup一起使用（eg: nohup ping <a
+target="_blank" rel="noopener" href="http://www.baidu.com/">http://www.baidu.com</a> &amp;） (#)</td>
+</tr>
+<tr class="even">
+<td>jobs 或 jobs -l</td>
+<td>查看当前终端后台所执行的用户提交任务 (#)</td>
+</tr>
+<tr class="odd">
+<td>kill -9 PID</td>
+<td>杀掉进程ID号为PID的进程 (#)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="其他">其他</h3>
+<table>
+<thead>
+<tr class="header">
+<th>快捷键</th>
+<th>对应功能</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ctrl + l</td>
+<td>清除整个屏幕，与clear命令作用相同 (#)</td>
+</tr>
+<tr class="even">
+<td>Ctrl + s</td>
+<td>暂停终端屏幕的显示</td>
+</tr>
+<tr class="odd">
+<td>Ctrl + q</td>
+<td>终止Ctr</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/23/Gnome3%E8%AE%BE%E7%BD%AE%E6%89%93%E5%BC%80%E7%BB%88%E7%AB%AF%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/23/Gnome3%E8%AE%BE%E7%BD%AE%E6%89%93%E5%BC%80%E7%BB%88%E7%AB%AF%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="post-title-link" itemprop="url">Gnome3设置打开终端快捷键</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-23 15:55:25" itemprop="dateCreated datePublished" datetime="2024-05-23T15:55:25+08:00">2024-05-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>旧版的Gnome3默认的终端叫<code>gnome-terminal</code>,
+新版（2023年5月之后)的新终端控制台启动命令叫<code>kgx</code>,
+于是解决方法为:
+<code>设置</code>→<code>键盘</code>→<code>自定义键盘</code>→<code>设置自定义快捷键</code></p>
+<figure>
+<img src="/Picture/kgx.png" title="Console 设置快捷键"
+alt="Console 设置启动快捷键" />
+<figcaption aria-hidden="true">Console 设置启动快捷键</figcaption>
+</figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/23/KDE-Plasma%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/23/KDE-Plasma%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="post-title-link" itemprop="url">KDE-Plasma桌面环境提高效率的快捷键</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-23 12:38:39" itemprop="dateCreated datePublished" datetime="2024-05-23T12:38:39+08:00">2024-05-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天有同学遇到一个问题，她的KDE-Plasma
+桌面莫名其妙的变大了，一直不能设置回来，调显示器分辨率也不行。由于我平时使用Gnome作为主力，好久不使用KDE-Plasma了，所以一时也找不到症结所在。最初的判断是她误删除了配置文件，同时Endavour
+也很长时间没有升级了，所以决定把系统升级到Plasma6.0,
+如果是配置文件删除了的话，那系统升级后会重新建立的，但是重启后仍然不行！一时间解决不了问题，但是突然想起来，有可能是她误触了某些键导致开启了KDE-Plasma的<code>屏幕缩放</code>功能,
+于是按这个思路百度了一下，发现确实是她误触了。解决方法是：
+<code>Meta+=</code> 放大屏幕， <code>Meta+-</code>缩小屏幕，
+<code>Meta+0</code>恢复到初始，
+真是”踏破铁鞋无密处，得来全不费工夫“！为了方便大家，特附上可以提高工作效率的快捷键如下：</p>
+<h2 id="应用程序启动器元">1.<strong>应用程序启动器（元）</strong></h2>
+<ul>
+<li><strong>功能</strong>：打开应用程序启动器，这是所有已安装程序的门户。</li>
+<li><strong>优点</strong>：无需使用鼠标导航来启动应用程序，从而节省时间。</li>
+</ul>
+<h2 id="运行命令界面altspacealtf2">2.
+<strong>运行命令界面（Alt+Space/Alt+F2）</strong></h2>
+<ul>
+<li><strong>功能</strong>：激活命令框以快速启动程序或执行命令。</li>
+<li><strong>优点</strong>：简化运行应用程序或命令的过程，无需导航菜单。</li>
+</ul>
+<h2 id="系统活动ctrlesc">3.<strong>系统活动（Ctrl+Esc）</strong></h2>
+<ul>
+<li><strong>功能</strong>：显示正在进行的系统活动和资源使用情况的概述。</li>
+<li><strong>优点</strong>：对于监控系统性能和识别资源密集型进程至关重要。</li>
+</ul>
+<h2 id="关闭窗口altf4">4.<strong>关闭窗口(Alt+F4)</strong></h2>
+<ul>
+<li><strong>功能</strong>：立即关闭活动窗口，快速退出程序。</li>
+<li><strong>优点</strong>：通过允许快速关闭应用程序来增强窗口管理。</li>
+</ul>
+<h2 id="退出应用程序ctrlq">5.<strong>退出应用程序(Ctrl+Q)</strong></h2>
+<ul>
+<li><strong>功能</strong>：退出当前应用程序，是跨多个程序的常用快捷方式。</li>
+<li><strong>好处</strong>：提供统一的退出方法，增强用户体验。</li>
+</ul>
+<h2 id="强制退出ctrlaltesc">6.
+<strong>强制退出（Ctrl+Alt+Esc）</strong></h2>
+<ul>
+<li><strong>功能</strong>：启动强制关闭无响应应用程序的工具。</li>
+<li><strong>好处</strong>：对于重新获得对无响应应用程序的控制至关重要。</li>
+</ul>
+<h2 id="显示窗口-ctrlf10">7. <strong>显示窗口 (Ctrl+F10)</strong></h2>
+<ul>
+<li><strong>功能</strong>：一次显示所有打开的窗口，以便于导航。</li>
+<li><strong>好处</strong>：通过允许快速窗口选择，极大地改进了多任务处理。</li>
+</ul>
+<h2 id="显示桌面ctrlf12">8. <strong>显示桌面(Ctrl+F12)</strong></h2>
+<ul>
+<li><strong>功能</strong>：最小化所有窗口以显示桌面，提供对文件和小部件的访问。</li>
+<li><strong>优点</strong>：提供整洁的工作空间并快速访问桌面项目。</li>
+</ul>
+<h2 id="窗口导航alttabaltshifttab">9.
+<strong>窗口导航（Alt+Tab/Alt+Shift+Tab）</strong></h2>
+<ul>
+<li><strong>功能</strong>：能够在打开的窗户中快速循环，向前和向后。</li>
+<li><strong>好处</strong>：促进任务之间的平滑过渡并提高工作流程效率。</li>
+</ul>
+<h2 id="放大缩小metameta-">10.
+<strong>放大/缩小（Meta+=/Meta+-）</strong></h2>
+<ul>
+<li><strong>功能</strong>：允许放大和缩小桌面视图。</li>
+<li><strong>优点</strong>：增强可视性和可访问性，特别是对于有视力障碍的用户。</li>
+</ul>
+<h2 id="恢复缩放meta0">11. <strong>恢复缩放（Meta+0）</strong></h2>
+<ul>
+<li><strong>功能</strong>：将桌面缩放级别重置为默认设置。</li>
+<li><strong>优点</strong>：快速标准化视图，在放大细节或辅助功能后特别有用。</li>
+</ul>
+<h2 id="下一个活动metatab">12.
+<strong>下一个活动（Meta+Tab）</strong></h2>
+<ul>
+<li><strong>功能</strong>：切换到下一个 KDE
+活动，这是工作区组织的独特功能。</li>
+<li><strong>优点</strong>：通过允许在针对特定任务定制的不同工作区之间轻松导航来提高工作效率。</li>
+</ul>
+<h2
+id="上一个活动metashifttab">13.<strong>上一个活动（Meta+Shift+Tab）</strong></h2>
+<ul>
+<li><strong>功能</strong>：返回到上一个活动，有助于高效的工作区管理。</li>
+<li><strong>优点</strong>：可以快速反转到以前使用的工作区，保持流畅的工作流程。</li>
+</ul>
+<h2 id="切换到桌面-1-4ctrlf1-至-ctrlf4">14. <strong>切换到桌面
+1-4（Ctrl+F1 至 Ctrl+F4）</strong></h2>
+<ul>
+<li><strong>功能</strong>：直接切换到前四个虚拟桌面之一。</li>
+<li><strong>优点</strong>：便于在多个桌面之间轻松快速地导航，从而增强多任务处理能力。</li>
+</ul>
+<h2 id="添加小部件手动方法">15.
+<strong>添加小部件（手动方法）</strong></h2>
+<ul>
+<li><strong>功能</strong>：提供一种通过桌面上下文菜单或面板选项手动添加小部件的方法。</li>
+<li><strong>优点</strong>：允许对工作区进行定制和个性化，以满足个人需求。</li>
+</ul>
+<h2 id="锁定屏幕ctrlaltl">16.
+<strong>锁定屏幕（Ctrl+Alt+L）</strong></h2>
+<ul>
+<li><strong>功能</strong>：安全锁定屏幕，防止未经授权的访问。</li>
+<li><strong>好处</strong>：对于离开计算机时维护隐私和安全至关重要。</li>
+</ul>
+<h2 id="平移元箭头键">17. <strong>平移（元+箭头键）</strong></h2>
+<ul>
+<li><strong>功能</strong>：按照箭头键的方向导航放大的桌面视图。</li>
+<li><strong>优点</strong>：放大细节或可访问性时，可用于探索桌面的不同区域。</li>
+</ul>
+<h2 id="打开窗口操作菜单altf3">18.
+<strong>打开窗口操作菜单(Alt+F3)</strong></h2>
+<ul>
+<li><strong>功能</strong>：显示带有各种窗口管理选项的菜单。</li>
+<li><strong>优点</strong>：提供对窗口大小调整、移动和其他管理功能的快速访问。</li>
+</ul>
+<h2
+id="面板小部件管理面板选项">19.<strong>面板小部件管理（面板选项）</strong></h2>
+<ul>
+<li><strong>功能</strong>：通过上下文菜单或面板控制器提供对面板中小部件管理的访问。</li>
+<li><strong>优点</strong>：支持自定义面板，为用户界面添加功能和效率。</li>
+</ul>
+<h2
+id="最小化全部显示桌面ctrlf12">20.<strong>最小化全部/显示桌面(Ctrl+F12)</strong></h2>
+<ul>
+<li><strong>功能</strong>：快速最小化所有打开的窗口，露出桌面。</li>
+<li><strong>优点</strong>：对于快速访问桌面项目或从干净的工作区开始非常有用。</li>
+</ul>
+<p>通过将这些快捷方式融入到您的日常使用中，您可以更轻松、更高效地导航和控制
+KDE
+Plasma。无论您是在处理复杂的项目还是只是浏览，这些快捷方式都旨在增强您在
+KDE 环境中的整体体验。</p>
+<h2 id="结论">结论</h2>
+<p>掌握 KDE Plasma 的键盘快捷键是提高工作效率并简化与 Linux
+桌面环境交互的有效方法。通过熟悉这 20
+个最重要的快捷方式，您可以显着提高从简单的应用程序启动到复杂的工作区管理等任务的效率。这些知识不仅可以节省时间，还可以丰富您的整体用户体验，使
+KDE Plasma
+成为满足您日常计算需求的更强大且用户友好的界面。无论您是新用户还是经验丰富的
+Linux 爱好者，这些快捷方式都是您更熟练、更愉快地使用 KDE Plasma
+的宝贵工具。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1336,310 +1875,6 @@ id="不能删除rumenz3.txt文件"><strong>不能删除<code>rumenz/3.txt</code>
 <h3
 id="可以修改rumenz3.txt文件内容"><strong>可以修改<code>rumenz/3.txt</code>文件内容</strong></h3>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;rumenz.com&quot;</span> rumenz/3.txt</span><br><span class="line"><span class="built_in">cat</span> rumenz/3.txt </span><br><span class="line">rumenz.com</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/08/U%E7%9B%98GIT%E4%BB%93%E5%BA%93%E5%90%8C%E6%AD%A5%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/05/08/U%E7%9B%98GIT%E4%BB%93%E5%BA%93%E5%90%8C%E6%AD%A5%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92/" class="post-title-link" itemprop="url">U盘GIT仓库同步系统开发规划</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-05-08 11:28:26" itemprop="dateCreated datePublished" datetime="2024-05-08T11:28:26+08:00">2024-05-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="增强版xugitv5.2发布">增强版<code>xugit</code>(V5.2)发布</h2>
-<ul>
-<li><p>2024-05-09 16:37 完成增强版<code>xugit.sh</code>,
-安装后命令仍然为<code>ugit</code>. 后期如果没有重大<code>bug</code>,
-尽量不再升级了，因为科研工作紧张。欢迎大家使用增强版<code>xugit.sh</code>,
-欢迎反馈您的意见.</p></li>
-<li><p>2024年05月09日,
-完成了增强版<code>U盘</code>同步程序<code>xugit.sh</code>.
-写这支程序的动机是为了解决文件夹误删除，同时如果被改名时能够智能找回或重建，此版采用<code>uudi</code>来唯一识别主机上的<code>HOME</code>挂载硬盘和相应的<code>U盘</code>,
-它不依赖于<code>U盘</code>和仓库的名称来识别设备，所以可以自动校准电脑和U盘上的仓库，所以我称之为增强版。同时在实现逻辑上比之前的版本也进步了一大截，所以无特别需求的话，您应当下载使用增强版<code>xugit.sh</code>,
-安装后其命令仍然为<code>ugit</code>,
-使用<code>ugit -h</code>查看帮助信息。</p></li>
-<li><p>此版，将同步网络的配置内容保存于<code>U盘</code>仓库，不受主机限制，所以配置一次即可走遍天下。同时，也取消了对本地<code>~/.ugitmap</code>的引用，专而将其建立在<code>U盘</code>端，这也可以避免受限于本地，所以更加合理。</p></li>
-<li><p>增强版还优化了命令，强调易用性，对于同步的和操作实现自动化，仅保留几项常用的操作，所以它更加实用。</p></li>
-<li><p>为了保留近二十多天的劳动成果，所以同时保存了三个版本的程序，也可以作为大家学习之用,但是未来本人将只维护<code>xugi.sh</code>，同时由于实现逻辑上的巨大差异，增强版<code>xugit.sh</code>直接升级至<code>V5.0</code>,
-2024年05月09日版本号<code>V5.2</code>.</p></li>
-</ul>
-<h2 id="ugit-v4.0-存在的问题">ugit V4.0 存在的问题</h2>
-<p>已经开发成功了<code>ugit</code>软件，基本实现U盘上建立<code>GIT</code>仓库，并且同步到不同电脑。其实现原理为：在U盘上建立仓库，然后在本地电脑写入<code>本地目录</code>与<code>U盘仓库</code>的对应关系，然后实现同步。但是这种情况存在问题也是比较严重的，下面说明：</p>
-<ul>
-<li><p>本地仓库名称有可能被用户改变，这种情况下导致本地记录文件<code>.ugitmap</code>的一系列记录失效，因为这些路径不存在。</p></li>
-<li><p>最初对本地仓库命名时，使用<code>U盘名称@UGIT</code>的模式，如果用户使用了另一个同名的<code>U盘</code>,
-尽管通过比对<code>U盘的UUID</code>可以识别出这不是之前的源仓库，但是在本地建立仓库时就会和之前的<code>U盘名称@UGIT</code>冲突。</p></li>
-<li><p>如果某用户误删除了<code>.ugitmap</code>文件，但是原来建立的仓库还存在，于是在执行同步的时候<code>ugit</code>就无法取得本地和源仓库的对应关系。</p></li>
-</ul>
-<h2 id="ugit-v4.1-的改进计划">ugit V4.1 的改进计划</h2>
-<p>硬件设备的唯一识别编号为<code>UUID</code>, Linux
-让的所有文件识别的唯一编号为 <code>inode</code>,
-于是通过这两者建立一一对应关系，就不会存在<code>ugit V4.0</code>的问题。需要做的应当是将<code>.ugitmap</code>删除，同时根据硬盘<code>UUID</code>和U盘<code>UUID</code>取得一一对应关系，同时将系统中的<code>inode</code>自动和<code>U盘仓库</code>建立一一对应关系。实现流程为：</p>
-<ol type="1">
-<li><p>读取<code>U盘</code>信息，将所有插入电脑的<code>U盘</code>的<code>UUID</code>和<code>路径</code>存入数组变量待用。</p></li>
-<li><p>新的<code>U盘仓库</code>为空时，在该<code>U盘</code>建立映射文件<code>.ugitmap</code>,
-加入防删除权限。如果在<code>U盘仓库</code>中已经存在仓库，则使用<code>ls</code>命令，建立<code>仓库路径</code>存入数组变量待用。
-<div class="note primary"><p><code>.ugitmap</code>
-中记录了克隆过<code>U盘仓库</code>的电脑硬盘<code>UUID</code>和目标文件夹的<code>inode</code></p>
-</div></p></li>
-<li><p>读对主机的硬盘信息，如果其不在<code>.ugitmap</code>内，此硬盘没有克隆过<code>U盘仓库</code>,
-执行克隆操作，同时将本地上的文件夹<code>inode</code>记录到<code>U盘</code>中的<code>.ugitmap</code>.
-如果其在<code>.ugitmap</code>内，则使用<code>find</code>按<code>inode</code>在<code>/home/$USER</code>内查找路径，建立本地<code>map</code>,
-执行同步操作。</p></li>
-<li><p>剩下的工作交给<code>ugit V4.0</code>原始程序处理。</p></li>
-<li><p>2024-05-08 12:22 暂时记录到此。</p></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/07/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A3%81%E7%9B%98%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%90%8E%E8%BF%98%E6%98%AF%E6%9C%8990%E5%A4%9AM%E7%9A%84%E5%B7%B2%E7%94%A8%E7%A9%BA%E9%97%B4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/05/07/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A3%81%E7%9B%98%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%90%8E%E8%BF%98%E6%98%AF%E6%9C%8990%E5%A4%9AM%E7%9A%84%E5%B7%B2%E7%94%A8%E7%A9%BA%E9%97%B4/" class="post-title-link" itemprop="url">为什么磁盘格式化后还是有90多M的已用空间</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-05-07 22:34:52" itemprop="dateCreated datePublished" datetime="2024-05-07T22:34:52+08:00">2024-05-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>格式化一个磁盘，
-操作系统就知道您要在磁盘上存放文件了，于是系统为您将建立一个文件指针的一个结构。这个结构存放在磁盘上的起始区中的。</p>
-<p>先前的FAT16系统占用的空间相当小，但是它所能支持的最大空间也很小的。</p>
-<p>从WIN98后，支持的FAT32系统支持大于4G的空间。为什么会支持这样大么？就是因为它占用了更大的磁盘空间来支持文件的存储表。它是按照磁盘的空间来决定的。</p>
-<p>我的磁盘一般是用 NTFS
-系统的。因为它的安全性高一些。如果您要在局域网中存放相关的安全信息的话，那都是<label style="color:red">需要占用空间的</label>。而这些根目录的总体信息等等都存放在这里的。下面列出一组数据：</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">U 盘容量</th>
-<th style="text-align: left;">空白占用</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">105G</td>
-<td style="text-align: left;">93M</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">148G</td>
-<td style="text-align: left;">93.8M</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">223G</td>
-<td style="text-align: left;">96.7M</td>
-</tr>
-</tbody>
-</table>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/07/Git%E6%95%B4%E5%90%88%E5%88%86%E6%94%AF%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/05/07/Git%E6%95%B4%E5%90%88%E5%88%86%E6%94%AF%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">Git整合分支的两种方法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-05-07 10:44:53" itemprop="dateCreated datePublished" datetime="2024-05-07T10:44:53+08:00">2024-05-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><code>git merge</code> 和<code>git rebase</code>的区别, 如图</p>
-<figure>
-<img
-src="https://pic2.zhimg.com/v2-73db63a5abb3cac70f913155a854cf29_r.jpg"
-alt="merge和rebase的区别" />
-<figcaption aria-hidden="true">merge和rebase的区别</figcaption>
-</figure>
-<p>一个事情很容易判断，使用<code>merge</code>会得到一个复杂的路线图，但是<code>rebase</code>会生成一条清晰的发展路线，所以还是建议使用<code>rebase</code>.</p>
 
       
     </div>

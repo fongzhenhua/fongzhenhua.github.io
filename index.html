@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">505</span>
+          <span class="site-state-item-count">508</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -372,6 +372,356 @@ target="_blank" rel="noopener" href="https://endeavouros.com">Endeavour</a>
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/18/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E8%AE%A1%E7%AE%97%E5%9C%86%E5%91%A8%E7%8E%87%E7%9A%84%E7%A8%8B%E5%BA%8F%E4%BC%98%E5%8C%96%E5%A2%9E%E5%BC%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/03/18/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E8%AE%A1%E7%AE%97%E5%9C%86%E5%91%A8%E7%8E%87%E7%9A%84%E7%A8%8B%E5%BA%8F%E4%BC%98%E5%8C%96%E5%A2%9E%E5%BC%BA/" class="post-title-link" itemprop="url">蒙特卡洛方法计算圆周率的程序优化增强</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-03-18 16:19:31 / 修改时间：16:58:01" itemprop="dateCreated datePublished" datetime="2025-03-18T16:19:31+08:00">2025-03-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>关于蒙特卡洛方法，我已经连续发布了三篇博文：</p>
+<ul>
+<li><a
+href="./2025/02/18/使用蒙特卡洛方法计算圆周率">使用蒙特卡洛方法计算圆周率</a></li>
+<li><a
+href="./2025/03/18/蒙特卡洛方法计算圆周率：积分公式选择的方差分析">蒙特卡洛方法计算圆周率：积分公式选择的方差分析</a></li>
+<li><a
+href="./2025/03/18/蒙特卡洛方法计算圆周率的一个高精度公式">蒙特卡洛方法计算圆周率的一个高精度公式</a></li>
+</ul>
+<p>在第一篇文章中我们探讨了蒙特卡洛方法使用面积法计算圆周率的经典案例，对MC方法有了一个初步的认识，在第二篇文章中我们在MC方法中使用不同的公式计算圆周率，得到了影响MC方法精度的条件，在第三篇文章中根据第二篇文章得到的条件实现了高精度计算圆周率的一个公式，从而验证了提高MC精度的条件。本文进一步，基于第三篇文章，在程序实现上将写死的程序代码以循环程序自动化。同时，引入<code>mpmath</code>库，实现迭代求根式的精度拓展，但是仍然使用<code>numpy</code>进行随机采样。</p>
+<h1 id="python3-代码实现">Python3 代码实现</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python3</span></span><br><span class="line"><span class="comment"># vim:fenc=utf-8</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> mpmath <span class="keyword">import</span> mp, mpf</span><br><span class="line"><span class="comment"># 修改为 40 位十进制精度</span></span><br><span class="line">mp.dps = <span class="number">40</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义函数f(x)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>/(<span class="number">1</span>-x**<span class="number">2</span>)**<span class="number">0.5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Monte Carlo方法求积分</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">monte_carlo_integral</span>(<span class="params">f, m, b, num_samples=<span class="number">1000</span></span>):</span><br><span class="line">    <span class="comment"># 根据半角公式用m设定嵌套次数</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> count &lt; m:</span><br><span class="line">        b = mp.sqrt(<span class="number">1</span>/<span class="number">2</span>-mp.sqrt(<span class="number">1</span>-b**<span class="number">2</span>)/<span class="number">2</span>)</span><br><span class="line">        count +=<span class="number">1</span></span><br><span class="line">    <span class="comment"># 先用半角公式根据b计算a</span></span><br><span class="line">    a = mp.sqrt(<span class="number">1</span>/<span class="number">2</span>-mp.sqrt(<span class="number">1</span>-b**<span class="number">2</span>)/<span class="number">2</span>)</span><br><span class="line">    <span class="comment"># 在区间[a, b]内随机生成num_samples个样本点</span></span><br><span class="line">    samples = np.random.uniform(a, b, num_samples)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 计算这些样本点对应的函数值</span></span><br><span class="line">    y_values = f(samples)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 根据平均高度估计积分值，乘以区间的宽度得到近似面积</span></span><br><span class="line">    integral_estimate = <span class="number">2</span>**(m + <span class="number">3</span>)*(b - a) * np.mean(y_values)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> integral_estimate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用Monte Carlo方法估计积分</span></span><br><span class="line">estimated_integral = monte_carlo_integral(f,<span class="number">42</span>, mp.sqrt(<span class="number">2</span>)/<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Pi&quot;</span>, estimated_integral)</span><br></pre></td></tr></table></figure>
+<h1 id="计算结果">计算结果</h1>
+<ul>
+<li>运行程序得到的结果：
+<code>3.14159265358979313874736836854190094502</code></li>
+<li>资源消耗情况：
+<code>0.08s user 0.02s system 98% cpu 0.099 total</code></li>
+<li>按现有资料<span
+class="math inline">\(\pi\)</span>的前<code>20</code>位精确结果为<code>3.1415926535 8979323846</code>,
+对比可知我们的程序可以精确到小数点后<code>15</code>位,
+用时仅<code>0.08s</code>, 所以这是一个不错的结果。</li>
+</ul>
+<h1 id="优化的细节">优化的细节</h1>
+<ul>
+<li>动态精度控制：通过循环，使用参数<code>m</code>灵活调整精度(如<code>m=42</code>时，区间极小，方差极低）。</li>
+<li>高效性：样本需求低(<code>1000</code>), 计算速度快。</li>
+<li>可拓展性：增加<code>m</code>可进一步提高精度，代码结构清晰，易于维护。</li>
+</ul>
+<div class="note primary"><p>在这四篇博客中，我们从初步了解蒙特卡罗（MC）方法开始，逐步进行优化改进，展示了三种能够计算圆周率的程序。其中，本文介绍的第三个程序以其高效性和灵活性脱颖而出，特别适合需要高精度结果并希望简化手动计算的场景。然而，值得注意的是，m的取值并非越大越好，因为随着m增大，随机点的取值区间(a,b)会减少，加之本程序使用了通常采用双精度浮点数的<code>np.random.uniform</code>
+进行随机取样，为了确保精度，m需要保持在一个适当的范围内。此外，<code>np.mean</code>的使用也限制了精度的进一步提升。如果想要进一步提高利用蒙特卡罗方法计算圆周率的精度，可以从调整m的取值和改进均值计算方式这两个方面入手。尽管如此，蒙特卡罗方法的核心价值在于在一定精度下快速提供那些常规方法难以计算或计算量极大的问题的结果，因此本文在这些考量基础上未对精度做进一步优化，但指明了可能的改进路径，以期与读者共同探讨技术细节。</p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/18/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E8%AE%A1%E7%AE%97%E5%9C%86%E5%91%A8%E7%8E%87%E7%9A%84%E4%B8%80%E4%B8%AA%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%85%AC%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/03/18/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E8%AE%A1%E7%AE%97%E5%9C%86%E5%91%A8%E7%8E%87%E7%9A%84%E4%B8%80%E4%B8%AA%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%85%AC%E5%BC%8F/" class="post-title-link" itemprop="url">蒙特卡洛方法计算圆周率的一个高精度公式</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-03-18 01:01:30 / 修改时间：02:52:46" itemprop="dateCreated datePublished" datetime="2025-03-18T01:01:30+08:00">2025-03-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>通过文章<a
+href="./2025/03/18/蒙特卡洛方法计算圆周率：积分公式选择的方差分析">蒙特卡洛方法计算圆周率：积分公式选择的方差分析</a>，
+我们可以得到提高蒙特卡洛方法计算精度的方法：</p>
+<ol type="1">
+<li>确保函数的平滑性，这样可以减少方差，于是每次随机点都更加接近平均值。</li>
+<li>减少积分区间，这样同样的随机点数，采样密度更高，有效点更多，所以误差更小。</li>
+</ol>
+<h1 id="半角公式的选择">半角公式的选择</h1>
+<p>本文就来验证这两条规则，于是仍然选择反正弦三角函数，但是使用半角公式不断减小积分区间,
+于是我们选择了<span
+class="math inline">\(\frac{\pi}{24576}\)</span>作为积分值，即取积分:</p>
+<p><span class="math display">\[
+\pi=24576\int_0^b\frac{1}{\sqrt{1-x^2}}dx\]</span></p>
+<p>其中<span class="math inline">\(b\)</span>为</p>
+<p><span class="math display">\[
+b=\frac{1}{2}\sqrt{2-\sqrt{2+\sqrt{2+\sqrt{2+\sqrt{2+\sqrt{2+\sqrt{2+\sqrt{2+\sqrt{2+\sqrt{2+\sqrt{2+\sqrt{3}}}}}}}}}}}}
+\]</span></p>
+<h1 id="python代码实现">Python代码实现</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python3</span></span><br><span class="line"><span class="comment"># vim:fenc=utf-8</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义函数f(x)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>/(<span class="number">1</span>-x**<span class="number">2</span>)**<span class="number">0.5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Monte Carlo方法求积分</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">monte_carlo_integral</span>(<span class="params">f, a, b, num_samples=<span class="number">1000</span></span>):</span><br><span class="line">    <span class="comment"># 在区间[a, b]内随机生成num_samples个样本点</span></span><br><span class="line">    samples = np.random.uniform(a, b, num_samples)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 计算这些样本点对应的函数值</span></span><br><span class="line">    y_values = f(samples)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 根据平均高度估计积分值，乘以区间的宽度得到近似面积</span></span><br><span class="line">    integral_estimate = (b - a) * np.mean(y_values)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">24576</span>*integral_estimate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用Monte Carlo方法估计积分</span></span><br><span class="line">a, b = <span class="number">0</span>, np.sqrt(<span class="number">2</span>-np.sqrt(<span class="number">2</span>+np.sqrt(<span class="number">2</span>+np.sqrt(<span class="number">2</span>+np.sqrt(<span class="number">2</span>+np.sqrt(<span class="number">2</span>+np.sqrt(<span class="number">2</span>+np.sqrt(<span class="number">2</span>+np.sqrt(<span class="number">2</span>+np.sqrt(<span class="number">2</span>+np.sqrt(<span class="number">2</span>+np.sqrt(<span class="number">2</span>+np.sqrt(<span class="number">3</span>)))))))))))))/<span class="number">2</span>  <span class="comment"># 定义积分区间</span></span><br><span class="line">estimated_integral = monte_carlo_integral(f, a, b)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Pi&quot;</span>, estimated_integral)</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p>上述程序计算了<span
+class="math inline">\(\frac{\pi}{6}\)</span>的<span
+class="math inline">\(\frac{1}{2^{12}}\)</span>,
+随机点只取了<code>1000</code>, 运行结果为
+<code>3.1415926538918395</code>,
+这个精度已经相当高了，计算量也急剧下降。所以对比之前的文章我们通过半角公式降低的计算量的同时，有效提高了计算精度。这个例子说明，对于同一个物理或数学问题，设计不同的算法，给出不同的公式是相当重要的事情。</p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/18/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E8%AE%A1%E7%AE%97%E5%9C%86%E5%91%A8%E7%8E%87%EF%BC%9A%E7%A7%AF%E5%88%86%E5%85%AC%E5%BC%8F%E9%80%89%E6%8B%A9%E7%9A%84%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/03/18/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E8%AE%A1%E7%AE%97%E5%9C%86%E5%91%A8%E7%8E%87%EF%BC%9A%E7%A7%AF%E5%88%86%E5%85%AC%E5%BC%8F%E9%80%89%E6%8B%A9%E7%9A%84%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">蒙特卡洛方法计算圆周率：积分公式选择的方差分析</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-03-18 00:22:27 / 修改时间：00:31:25" itemprop="dateCreated datePublished" datetime="2025-03-18T00:22:27+08:00">2025-03-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在使用蒙特卡洛方法计算圆周率时，选择积分公式的关键在于<strong>方差的大小</strong>和<strong>实现的效率</strong>。本文通过数学推导和实验验证，对比两种常见积分公式的优劣。</p>
+<hr />
+<h2 id="积分公式的数学等价性">1. 积分公式的数学等价性</h2>
+<p>两个积分的数学结果均为π，但被积函数特性不同：</p>
+<ul>
+<li><p><strong>公式1</strong>：<br />
+<span class="math display">\[
+2 \int_0^1 \frac{1}{\sqrt{1 - x^2}} \, dx = \pi
+\]</span><br />
+被积函数 <span class="math inline">\(f_1(x) = \frac{1}{\sqrt{1 -
+x^2}}\)</span> 在 <span class="math inline">\(x \to 1\)</span>
+时发散，导致数值计算的不稳定性。</p></li>
+<li><p><strong>公式2</strong>：<br />
+<span class="math display">\[
+2 \int_{-1}^1 \sqrt{1 - x^2} \, dx = \pi
+\]</span><br />
+被积函数 <span class="math inline">\(f_2(x) = \sqrt{1 - x^2}\)</span>
+在区间 <span class="math inline">\([-1, 1]\)</span>
+上有界且连续，方差更小。</p></li>
+</ul>
+<hr />
+<h2 id="蒙特卡洛方法的方差分析">2. 蒙特卡洛方法的方差分析</h2>
+<h3 id="公式1的方差问题">2.1 公式1的方差问题</h3>
+<ul>
+<li><p><strong>发散特性</strong>：<br />
+<span class="math inline">\(f_1(x)\)</span> 在 <span
+class="math inline">\(x \to 1\)</span>
+处趋向无穷大，导致蒙特卡洛采样时方差显著增大。例如，当 <span
+class="math inline">\(x = 0.99\)</span> 时，<span
+class="math inline">\(f_1(x) \approx 7\)</span>，远高于平均值 <span
+class="math inline">\(\pi/2 \approx
+1.57\)</span>，极端值会严重干扰估计结果。</p></li>
+<li><p><strong>实现挑战</strong>：<br />
+需要均匀采样 <span class="math inline">\(x \in [0, 1]\)</span>，但靠近
+<span class="math inline">\(x = 1\)</span>
+的点对结果贡献极大，易引入噪声。</p></li>
+</ul>
+<h3 id="公式2的方差优势">2.2 公式2的方差优势</h3>
+<ul>
+<li><p><strong>有界性</strong>：<br />
+<span class="math inline">\(f_2(x)\)</span> 的值域为 <span
+class="math inline">\([0, 1]\)</span>，方差远小于公式1。例如，<span
+class="math inline">\(N=10^6\)</span>
+次采样时，公式2的估计误差通常比公式1低一个数量级。</p></li>
+<li><p><strong>数值稳定性</strong>：<br />
+无需处理函数发散问题，所有采样点的贡献均在可控范围内。</p></li>
+</ul>
+<hr />
+<h2 id="实验验证方差的量化对比">3. 实验验证：方差的量化对比</h2>
+<p>假设使用 <span class="math inline">\(N\)</span> 次采样：</p>
+<ul>
+<li><p><strong>公式1</strong>：<br />
+由于 <span class="math inline">\(f_1(x)\)</span> 的发散性，方差 <span
+class="math inline">\(D_1 \propto \int_0^1 \left( \frac{1}{\sqrt{1-x^2}}
+\right)^2 dx = \infty\)</span>（发散）。</p></li>
+<li><p><strong>公式2</strong>：<br />
+方差 <span class="math inline">\(D_2 = \int_{-1}^1 \left( \sqrt{1-x^2}
+\right)^2 dx - \left( \frac{\pi}{2} \right)^2 = \frac{\pi}{2} -
+\frac{\pi^2}{4} \approx 0.43\)</span>，远小于公式1。</p></li>
+</ul>
+<hr />
+<h2 id="代码实现对比">4. 代码实现对比</h2>
+<h3 id="公式2的c实现高效且低方差">4.1
+公式2的C++实现（高效且低方差）</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">estimate_pi</span>(<span class="params">n</span>):</span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        x = random.uniform(-<span class="number">1</span>, <span class="number">1</span>)       <span class="comment"># 生成x ∈ [-1, 1]</span></span><br><span class="line">        y = random.uniform(<span class="number">0</span>, <span class="number">1</span>)        <span class="comment"># 生成y ∈ [0, 1]</span></span><br><span class="line">        <span class="keyword">if</span> y &lt;= math.sqrt(<span class="number">1</span> - x**<span class="number">2</span>):    <span class="comment"># 判断是否在半圆内</span></span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line">    <span class="comment"># 计算公式：2 * (积分值) = 2 * (count/N * 矩形面积)</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">2.0</span> * (count * <span class="number">2.0</span> / n)      <span class="comment"># 矩形面积为2（宽2×高1）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：使用100万个样本</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Estimated π: <span class="subst">&#123;estimate_pi(<span class="number">1000000</span>)&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="公式1的python实现高方差问题">4.2
+公式1的Python实现（高方差问题）</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">monte_carlo_formula1</span>(<span class="params">n</span>):</span><br><span class="line">    x = np.random.uniform(<span class="number">0</span>, <span class="number">1</span>, n)</span><br><span class="line">    f = <span class="number">1</span> / np.sqrt(<span class="number">1</span> - x**<span class="number">2</span>)</span><br><span class="line">    integral = np.mean(f)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span> * integral</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试示例（方差极大）</span></span><br><span class="line"><span class="built_in">print</span>(monte_carlo_formula1(<span class="number">1000000</span>))  <span class="comment"># 结果可能波动明显</span></span><br></pre></td></tr></table></figure>
+<h2 id="结论">5. 结论</h2>
+<p>公式2（<span class="math inline">\(2\int_{-1}^{1} \sqrt{1 - x^2} \,
+dx\)</span>）是更优选择，原因如下：</p>
+<ol type="1">
+<li><strong>方差更小</strong>：被积函数 <span
+class="math inline">\(\sqrt{1 - x^2}\)</span> 在区间 <span
+class="math inline">\([-1, 1]\)</span>
+上有界且连续，使得蒙特卡洛方法的收敛速度更快。<br />
+</li>
+<li><strong>数值稳定性</strong>：无需处理函数发散问题（如公式1中 <span
+class="math inline">\(\frac{1}{\sqrt{1-x^2}}\)</span> 在 <span
+class="math inline">\(x \to 1\)</span>
+处的发散），避免极端值对估计结果的干扰。<br />
+</li>
+<li><strong>计算效率</strong>：在相同采样次数下，公式2的估计误差显著低于公式1，且计算过程更稳定。</li>
+</ol>
+<p>选择积分公式时，应优先考虑被积函数的<strong>有界性</strong>和<strong>光滑性</strong>，以降低蒙特卡洛方法的方差，从而提升计算效率。</p>
+
       
     </div>
 
@@ -1040,305 +1390,6 @@ C++，程序员必须手动分配和释放内存，这容易导致错误。Rust
 <h2 id="结论">结论</h2>
 <p>Rust
 的所有权系统是一种独特的方法，用于解决内存管理和并发问题，同时保持性能。虽然一开始可能看起来有些复杂，但它极大地减少了运行时错误，提高了代码的安全性和可靠性。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/05/Rust%E7%94%9F%E6%88%90CSV%E6%95%B0%E6%8D%AE%E5%B9%B6%E4%BD%BF%E7%94%A8Veusz%E7%BB%98%E5%88%B6%E5%87%BD%E6%95%B0%E8%B1%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/03/05/Rust%E7%94%9F%E6%88%90CSV%E6%95%B0%E6%8D%AE%E5%B9%B6%E4%BD%BF%E7%94%A8Veusz%E7%BB%98%E5%88%B6%E5%87%BD%E6%95%B0%E8%B1%A1/" class="post-title-link" itemprop="url">Rust生成CSV数据并使用Veusz绘制函数像</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-03-05 22:04:05" itemprop="dateCreated datePublished" datetime="2025-03-05T22:04:05+08:00">2025-03-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>使用<code>Rust</code>编写的程序由于是编译型的语言，其速度远超<code>Python</code>等脚本程序，所以本文尝试使用<code>Rust</code>编写一段<span
-class="math inline">\(f(x)=x^2\)</span>在区间<span
-class="math inline">\((0,10)\)</span>上的值，并将其保存在<code>function_data.csv</code>文件中，以供<code>veusz</code>调用，绘制函数图像。</p>
-<h2 id="编写rust程序">编写Rust程序</h2>
-<ol type="1">
-<li><p>建立项目: drawfunction <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cargo new drawfunction</span><br><span class="line"><span class="built_in">cd</span> drawfunction</span><br></pre></td></tr></table></figure></p></li>
-<li><p>确保<code>Cargo.toml</code>文件中添加了必要的依赖项：
-<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[dependencies]</span></span><br><span class="line"><span class="attr">csv</span> = <span class="string">&quot;1.1&quot;</span></span><br></pre></td></tr></table></figure></p></li>
-<li><p>编辑源码： <figure class="highlight rust"><figcaption><span>drawfunction/src/main.rs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> csv::Writer;</span><br><span class="line"><span class="keyword">use</span> std::error::Error;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() <span class="punctuation">-&gt;</span> <span class="type">Result</span>&lt;(), <span class="type">Box</span>&lt;<span class="keyword">dyn</span> Error&gt;&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">wtr</span> = Writer::<span class="title function_ invoke__">from_path</span>(<span class="string">&quot;function_data.csv&quot;</span>)?;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 写入CSV头部</span></span><br><span class="line">    wtr.<span class="title function_ invoke__">write_record</span>(&amp;[<span class="string">&quot;x&quot;</span>, <span class="string">&quot;x_squared&quot;</span>])?;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生成数据并写入CSV</span></span><br><span class="line">    <span class="keyword">for</span> <span class="variable">x</span> <span class="keyword">in</span> <span class="number">0</span>..=<span class="number">100</span> &#123; <span class="comment">// 使用0到10之间的101个点</span></span><br><span class="line">        <span class="keyword">let</span> <span class="variable">x_val</span> = (x <span class="keyword">as</span> <span class="type">f64</span>) / <span class="number">10.0</span>;</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">y_val</span> = x_val.<span class="title function_ invoke__">powi</span>(<span class="number">2</span>);</span><br><span class="line">        wtr.<span class="title function_ invoke__">write_record</span>(&amp;[x_val.<span class="title function_ invoke__">to_string</span>(), y_val.<span class="title function_ invoke__">to_string</span>()])?;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    wtr.<span class="title function_ invoke__">flush</span>()?;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;CSV data has been written.&quot;</span>);</span><br><span class="line">    <span class="title function_ invoke__">Ok</span>(())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <div class="note primary"><p>使用<code>cargo run</code>运行这个程序将会在当前目录下生成一个名为<code>function_data.csv</code>的文件，其中包含了我们计算的数据。</p>
-</div></p></li>
-<li><p>编译程序： <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cargo build --release</span><br><span class="line">./drawfunction/target/release/montecarlo</span><br></pre></td></tr></table></figure> <div class="note primary"><p>第1行为编译程序，第2行为运行这个程序.
-可以明显的感觉到程序运行时,瞬间在当前目录下生成一个名为<code>function_data.csv</code>的文件，其中包含了我们计算的数据。</p>
-</div></p></li>
-</ol>
-<h2 id="使用veusz绘图">使用Veusz绘图</h2>
-<ol type="1">
-<li>启动<code>veusz</code>: 打开Veusz应用程序。</li>
-<li>导入数据：通过“数据-&gt;导入”菜单选项导入你用Rust生成的<code>function_data.csv</code>文件。</li>
-<li>创建图表：</li>
-</ol>
-<ul>
-<li>在<code>Veusz</code>中，选择<code>Insert--&gt;add Graph</code>以创建一个新的图形窗口。</li>
-<li>在工具栏中选择<code>Plot points with lines and eorrbars</code>.</li>
-<li>选中上述组件，在<code>X data</code> 中选择 <code>x</code> ,
-<code>Y data</code> 中选择<code>x_squared</code>.</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/05/Rust%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/03/05/Rust%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">Rust编程入门</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-03-05 21:16:06" itemprop="dateCreated datePublished" datetime="2025-03-05T21:16:06+08:00">2025-03-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="简介">简介</h2>
-<p>Rust是一种由Mozilla开发的系统级编程语言，专注于速度、内存安全和并行处理。它通过所有权模型、借用检查器及生命周期概念，在编译时确保内存安全，有效避免了空指针异常、悬挂指针和数据竞争等问题。Rust支持高效的并发编程，并提供了高层次抽象而无运行时开销，保证程序性能。其自带的包管理和构建工具Cargo简化了依赖管理和构建流程。Rust适用于多种场景，包括操作系统、嵌入式系统、WebAssembly、游戏开发及高性能网络服务。凭借现代化的语法、强大的工具链支持（如rustfmt和clippy）以及跨平台兼容性，Rust在追求高效和安全的项目中展现出色。活跃的开源社区和丰富的学习资源进一步增强了它的吸引力，使其成为开发下一代可靠软件的理想选择。</p>
-<h2 id="创建rust项目">创建Rust项目</h2>
-<ol type="1">
-<li><p>安装Rust: 各种系统中Rust的安装，请参考<a
-target="_blank" rel="noopener" href="https://www.rust-lang.org/?spm=5176.28103460.0.0.297c451ef56Kw8">Rust官网说明</a>.
-在ArchLinux环境下，安装命令为 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S rust</span><br></pre></td></tr></table></figure></p></li>
-<li><p>创建新项目 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cargo new hello_world</span><br><span class="line"><span class="built_in">cd</span> hello_world</span><br></pre></td></tr></table></figure> <div class="note primary"><p>运行<code>cargo new hello_world</code>后，会建立一个文件夹<code>hello_world</code>,
-其内部包含：<code>Cargo.lock</code>,<code>Cargo.toml</code>,<code>src</code>,<code>target</code>.</p>
-</div></p></li>
-<li><p>编辑<code>src/main.rs</code>:
-打开<code>src/main.rs</code>文件，并添加一些简单的Rust代码，比如打印斐波那契数列的前10项：
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">fibonacci</span>(n: <span class="type">u32</span>) <span class="punctuation">-&gt;</span> <span class="type">u32</span> &#123;</span><br><span class="line">    <span class="keyword">match</span> n &#123;</span><br><span class="line">        <span class="number">0</span> =&gt; <span class="number">0</span>,</span><br><span class="line">        <span class="number">1</span> =&gt; <span class="number">1</span>,</span><br><span class="line">        _ =&gt; <span class="title function_ invoke__">fibonacci</span>(n - <span class="number">1</span>) + <span class="title function_ invoke__">fibonacci</span>(n - <span class="number">2</span>),</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">for</span> <span class="variable">i</span> <span class="keyword">in</span> <span class="number">0</span>..<span class="number">10</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;fibonacci(&#123;&#125;) = &#123;&#125;&quot;</span>, i, <span class="title function_ invoke__">fibonacci</span>(i));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
-<li><p>编译并运行项目： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo run</span><br></pre></td></tr></table></figure> <div class="note primary"><p>运行上述命令后，将输出斐波那契数列的前10项。</p>
-</div></p></li>
-</ol>
-<h2 id="使用evcxr进行交互式探索">使用EVCXR进行交互式探索</h2>
-<p>为了能够更灵活地试验代码片段而不必每次都通过<code>cargo run</code>执行整个程序，我们可以使用<code>evcxr</code>，这是一个为<code>Rust</code>设计的<code>Jupyter</code>内核，也可以作为独立的<code>REPL</code>使用。</p>
-<ol type="1">
-<li><p>安装<code>EVCXR</code>: <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo install evcxr</span><br></pre></td></tr></table></figure></p></li>
-<li><p>启动<code>EVCXR</code> <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">evcxr</span><br></pre></td></tr></table></figure></p></li>
-<li><p>在<code>EVCXR</code>中试验代码：一旦进入了<code>evcxr</code>环境，您可以直接输入<code>Rust</code>表达式或小段代码进行试验，例如尝试上面定义的斐波那契函数：
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义斐波那契函数</span></span><br><span class="line">:dep num_traits</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">fibonacci</span>(n: <span class="type">u32</span>) <span class="punctuation">-&gt;</span> <span class="type">u32</span> &#123;</span><br><span class="line">    <span class="keyword">match</span> n &#123;</span><br><span class="line">        <span class="number">0</span> =&gt; <span class="number">0</span>,</span><br><span class="line">        <span class="number">1</span> =&gt; <span class="number">1</span>,</span><br><span class="line">        _ =&gt; <span class="title function_ invoke__">fibonacci</span>(n - <span class="number">1</span>) + <span class="title function_ invoke__">fibonacci</span>(n - <span class="number">2</span>),</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试斐波那契函数</span></span><br><span class="line"><span class="keyword">for</span> <span class="variable">i</span> <span class="keyword">in</span> <span class="number">0</span>..<span class="number">10</span> &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;fibonacci(&#123;&#125;) = &#123;&#125;&quot;</span>, i, <span class="title function_ invoke__">fibonacci</span>(i));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <div class="note primary"><p>请注意，在<code>evcxr</code>中，您可能需要先声明对外部依赖项（如果有的话）使用<code>:dep</code>命令。在这个特定的例子中，我们实际上不需要额外的依赖项，所以可以忽略<code>:dep num_traits</code>这一行。
-通过这种方式，您可以在不离开终端的情况下快速测试<code>Rust</code>代码片段，这对于学习语言特性、调试问题或简单地验证想法都非常有用。此外，由于<code>evcxr</code>支持类似<code>Jupyter notebook</code>的交互方式，它也适合用于教学和演示目的。</p>
-</div></p></li>
-</ol>
-<h2 id="rust代码编译">Rust代码编译</h2>
-<ol type="1">
-<li><p>确保处于正确的目录:
-请确保您位于包含<code>Cargo.toml</code>文件的项目根目录下。这个文件定义了项目的配置、依赖和其他相关信息。在上述例子中，就是位于目录<code>hello_world</code>下.</p></li>
-<li><p>编译项目： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo build</span><br></pre></td></tr></table></figure> <div class="note primary"><p>这将根据当前环境（调试或发布）编译项目。默认情况下，<code>cargo build</code>会在调试模式下进行编译，生成的二进制文件会位于<code>target/debug/</code>目录下。</p>
-</div></p></li>
-<li><p>编译优化版本（发布模式）: <figure class="highlight sh"><figcaption><span>编译优化后的版本（适用于生产环境）</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo build --release</span><br></pre></td></tr></table></figure> <div class="note primary"><p>这将在<code>target/release/</code>目录下生成经过优化的二进制文件。相比调试模式，发布模式下的编译会花费更多时间，但是生成的二进制文件通常更小且执行速度更快。</p>
-</div></p></li>
-<li><p>直接运行可执行文件:</p></li>
-</ol>
-<ul>
-<li>对于调试模式编译的二进制文件，可以直接从<code>target/debug/</code>目录下运行：
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./target/debug/your_project_name</span><br></pre></td></tr></table></figure></li>
-<li>对于发布模式编译的二进制文件，则从<code>target/release/</code>目录下运行：
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./target/release/your_project_name</span><br></pre></td></tr></table></figure> <div class="note primary"><p>这里的<code>your_project_name</code>是指您<code>Cargo</code>项目的名称，也就是<code>Cargo.toml</code>文件中的<code>[package] name</code>字段所指定的名字。</p>
-</div></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/05/MonteCarlo%E6%96%B9%E6%B3%95%E6%B1%82%E7%A7%AF%E5%88%86%E4%B8%8E%E8%A7%A3%E6%9E%90%E6%96%B9%E6%B3%95%E7%9A%84%E5%AF%B9%E6%AF%94%E9%AA%8C%E8%AF%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/03/05/MonteCarlo%E6%96%B9%E6%B3%95%E6%B1%82%E7%A7%AF%E5%88%86%E4%B8%8E%E8%A7%A3%E6%9E%90%E6%96%B9%E6%B3%95%E7%9A%84%E5%AF%B9%E6%AF%94%E9%AA%8C%E8%AF%81/" class="post-title-link" itemprop="url">MonteCarlo方法求积分与解析方法的对比验证</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-03-05 20:30:07" itemprop="dateCreated datePublished" datetime="2025-03-05T20:30:07+08:00">2025-03-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>蒙特卡洛积分是一种通过随机抽样来估计定积分的方法。我们可以用它来近似计算函数
-<span
-class="math inline">\(y=x^2\)</span>在某个区间上的积分，并基于此结果绘制出其积分函数的图像。
-为了验证蒙卡的计算效果，我们在同一张图中给制出蒙卡积分结果和解析解析的结果，对比结果可以证实蒙特卡洛方法的可行性。代码如下：</p>
-<figure class="highlight python"><figcaption><span>Comparison between Monte Carlo Integration and Analytical Solutions</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python3</span></span><br><span class="line"><span class="comment"># vim:fenc=utf-8</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义蒙特卡洛积分函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">monte_carlo_integration</span>(<span class="params">func, a, b, n=<span class="number">1000</span></span>):</span><br><span class="line">    x_samples = np.random.uniform(a, b, n)</span><br><span class="line">    y_samples = func(x_samples)</span><br><span class="line">    <span class="comment"># 计算平均高度</span></span><br><span class="line">    average_height = np.mean(y_samples)</span><br><span class="line">    <span class="comment"># 计算积分值</span></span><br><span class="line">    integral = average_height * (b - a)</span><br><span class="line">    <span class="keyword">return</span> integral</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义被积函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> x**<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 解析解计算积分函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">analytic_integral_f</span>(<span class="params">x,a</span>):</span><br><span class="line">    <span class="keyword">return</span> (x**<span class="number">3</span>)/<span class="number">3</span>-(a**<span class="number">3</span>)/<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用蒙特卡洛方法求解积分</span></span><br><span class="line">a, b = -<span class="number">5</span>, <span class="number">5</span>  <span class="comment"># 积分区间</span></span><br><span class="line">x_points = np.linspace(a, b, <span class="number">100</span>)  <span class="comment"># 用于绘图的x点</span></span><br><span class="line">monte_carlo_values = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(x_points)):</span><br><span class="line">    <span class="comment"># 对每个x点计算从a到该点的积分</span></span><br><span class="line">    integral_value = monte_carlo_integration(f, a, x_points[i], n=<span class="number">20000</span>)</span><br><span class="line">    monte_carlo_values.append(integral_value)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算解析解</span></span><br><span class="line">analytic_values = analytic_integral_f(x_points,a)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制积分后的函数图像</span></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>, <span class="number">8</span>))</span><br><span class="line">plt.plot(x_points, monte_carlo_values, label=<span class="string">&#x27;Monte Carlo Integral of $x^2$&#x27;</span>, color=<span class="string">&#x27;blue&#x27;</span>, linestyle=<span class="string">&#x27;--&#x27;</span>)</span><br><span class="line">plt.plot(x_points, analytic_values, label=<span class="string">&#x27;Analytical Integral of $x^2$&#x27;</span>, color=<span class="string">&#x27;red&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加标题和标签</span></span><br><span class="line">plt.title(<span class="string">&#x27;Comparison between Monte Carlo and Analytical Integration of $x^2$&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Integral Value&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示图例</span></span><br><span class="line">plt.legend()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示网格</span></span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示图像</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
       
     </div>

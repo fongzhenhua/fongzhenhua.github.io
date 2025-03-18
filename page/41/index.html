@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">505</span>
+          <span class="site-state-item-count">508</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,310 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/05/%E8%A7%A3%E5%86%B3%E5%8D%87%E7%BA%A7archlinux%E5%90%8Eneovim%E6%8A%A5%E9%94%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/05/%E8%A7%A3%E5%86%B3%E5%8D%87%E7%BA%A7archlinux%E5%90%8Eneovim%E6%8A%A5%E9%94%99/" class="post-title-link" itemprop="url">解决升级archlinux后neovim报错</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-05 09:35:06" itemprop="dateCreated datePublished" datetime="2023-05-05T09:35:06+08:00">2023-05-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <mark class="label success">2023年05月05日星期五阴北京市北京师范大学</mark>
+<p>在宿舍执行<code>sudo pacman -Syu</code>,使用neovim编辑了一篇日记，但是发现插入字符时一操作就会报错，出现如下提示</p>
+<!-- ```[language] [title] [url] [link text] [additional options] -->
+<figure class="highlight python"><figcaption><span>nvim报错</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Python 3 provider (optional) </span></span><br><span class="line"><span class="number">30</span>   - WARNING: No Python executable found that can `<span class="keyword">import</span> neovim`. Using the first available executable <span class="keyword">for</span> diagnostics.                                    </span><br><span class="line"><span class="number">31</span>   - ERROR: Python provider error:                                                                                                                                </span><br><span class="line"><span class="number">32</span>     - ADVICE:                                                                                                                                                    </span><br><span class="line"><span class="number">33</span>       - provider/pythonx: Could <span class="keyword">not</span> load Python <span class="number">3</span>:                                                                                                               </span><br><span class="line"><span class="number">34</span>           python3 <span class="keyword">not</span> found <span class="keyword">in</span> search path <span class="keyword">or</span> <span class="keyword">not</span> executable.                                                                                                    </span><br><span class="line"><span class="number">35</span>           python3<span class="number">.7</span> <span class="keyword">not</span> found <span class="keyword">in</span> search path <span class="keyword">or</span> <span class="keyword">not</span> executable.                                                                                                  </span><br><span class="line"><span class="number">36</span>           python3<span class="number">.6</span> <span class="keyword">not</span> found <span class="keyword">in</span> search path <span class="keyword">or</span> <span class="keyword">not</span> executable.                                                                                                  </span><br><span class="line"><span class="number">37</span>           python3<span class="number">.5</span> <span class="keyword">not</span> found <span class="keyword">in</span> search path <span class="keyword">or</span> <span class="keyword">not</span> executable.                                                                                                  </span><br><span class="line"><span class="number">38</span>           python3<span class="number">.4</span> <span class="keyword">not</span> found <span class="keyword">in</span> search path <span class="keyword">or</span> <span class="keyword">not</span> executable.                                                                                                  </span><br><span class="line"><span class="number">39</span>           python3<span class="number">.3</span> <span class="keyword">not</span> found <span class="keyword">in</span> search path <span class="keyword">or</span> <span class="keyword">not</span> executable.                                                                                                  </span><br><span class="line"><span class="number">40</span>           python <span class="keyword">not</span> found <span class="keyword">in</span> search path <span class="keyword">or</span> <span class="keyword">not</span> executable.                                                                                                     </span><br><span class="line"><span class="number">41</span>   - INFO: Executable: Not found      </span><br></pre></td></tr></table></figure>
+<p>解决方法为：为<code>neovim</code>添加python支持</p>
+<figure class="highlight python"><figcaption><span>添加python支持</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m pip install --user --upgrade pynvim</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>注意：不要使用sudo执行，虽然我执行成功了，但是后面提示有可能有影响什么权限的问题。所以使用普通权限又安装了一遍。</p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/05/EarliestUsesOfFunctionSymbols/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/05/EarliestUsesOfFunctionSymbols/" class="post-title-link" itemprop="url">Earliest Uses of Function Symbols</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-05 09:05:21" itemprop="dateCreated datePublished" datetime="2023-05-05T09:05:21+08:00">2023-05-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>The function symbol f(x) was first used by Leonhard Euler (1707-1783)
+in 1734 in Commentarii Academiae Scientiarum Petropolitanae (Cajori,
+vol. 2, page 268).</p>
+<p>Absolute value function. Karl Weierstrass (1815-1897) used | | in an
+1841 essay "Zur Theorie der Potenzreihen," in which the symbol appears
+on page 67. He also used the symbol in 1859 in "Neuer Beweis des
+Fundamentalsatzes der Algebra," in which the symbol appears on page 252.
+This latter essay was submitted to the Berlin Academy of Sciences on
+December 12, 1859. These are the two reference shown by Cajori (vol. 2,
+page 123).</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/05/05/EarliestUsesOfFunctionSymbols/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/01/ArchLinuxCN%E8%BD%AF%E4%BB%B6%E4%BB%93%E5%BA%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/01/ArchLinuxCN%E8%BD%AF%E4%BB%B6%E4%BB%93%E5%BA%93/" class="post-title-link" itemprop="url">ArchLinuxCN软件仓库</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-01 00:56:05" itemprop="dateCreated datePublished" datetime="2023-05-01T00:56:05+08:00">2023-05-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><label style="color:red">2023年12月03日星期日晴北京市</label>
+更新为官方标准设置方案。</p>
+<div class="tabs" id="linuxcn"><ul class="nav-tabs"><li class="tab active"><a href="#linuxcn-1">Arch Linux 中文社区仓库标准方法</a></li><li class="tab"><a href="#linuxcn-2">/etc/pacman.d/mirrorcnlist</a></li><li class="tab"><a href="#linuxcn-3">/etc/pacman.conf</a></li></ul><div class="tab-content"><div class="tab-pane active" id="linuxcn-1"><p><label style="color:red">2023-12-02 23:51</label>
+完善本文，删除了原来的方法，但是作为纪念最初的配置请参考 <a
+target="_blank" rel="noopener" href="https://fengzhenhua.gitlab.io/2023/05/01/">ArchLinuxCN软件仓库</a>
+, 在这一版中我们参考<a
+target="_blank" rel="noopener" href="https://www.archlinuxcn.org/archlinux-cn-repo-and-mirror/">Arch
+Linux 中文社区仓库</a> 进行标准的配置，方法如下：</p>
+<ul>
+<li>在 <code>/etc/pacman.conf</code> 文件末尾添加以下两行 <figure class="highlight sh"><figcaption><span>/etc/pacman.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">Server = https://repo.archlinuxcn.org/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure>
+<div class="note info">
+<p>
+注意：点击<a
+target="_blank" rel="noopener" href="https://github.com/archlinuxcn/mirrorlist-repo">https://github.com/archlinuxcn/mirrorlist-repo</a>
+,
+选择任意一个源的链接取代上述<code>Server</code>后的链接也是可以的。如果<code>githb.com</code>无法访问，请访问镜像网站
+<a
+target="_blank" rel="noopener" href="https://hub.yzuu.cf/archlinuxcn/mirrorlist-repo">https://hub.yzuu.cf/archlinuxcn/mirrorlist-repo</a>
+或 <a
+target="_blank" rel="noopener" href="https://archlinux.org/mirrorlist/?country=CN">https://archlinux.org/mirrorlist/?country=CN</a>
+</p>
+</div></li>
+<li>安装 <code>archlinuxcn-keyring</code> 包以导入 <code>GPG key</code>
+<figure class="highlight sh"><figcaption><span>安装archlinuxcn-keyring</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S archlinuxcn-keyring</span><br></pre></td></tr></table></figure></li>
+<li>安装 <code>archlinuxcn-mirrorlist-git</code> 包可以获得一份镜像列表
+<figure class="highlight sh"><figcaption><span>安装archlinuxcn-mirrorlist-git</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S archlinuxcn-mirrorlist-git</span><br></pre></td></tr></table></figure>
+安装完成后，会生成文件<code>/etc/pacman.d/archlinuxcn-mirrorlist</code>,
+此文件正是国内所有的镜像，同时也在更新。</li>
+<li>在 pacman.conf 中直接引入<code>archlinuxcn-mirrorlist</code>
+<figure class="highlight sh"><figcaption><span>/etc/pacman.conf`末尾追加</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">Server = https://repo.archlinuxcn.org/<span class="variable">$arch</span></span><br><span class="line">Include = /etc/pacman.d/archlinuxcn-mirrorlist</span><br></pre></td></tr></table></figure></li>
+<li>编辑<code>/etc/pacman.d/archlinuxcn-mirrorlist</code>文件，去掉要引用的源前面的注释符即可。</li>
+</ul></div><div class="tab-pane" id="linuxcn-2"><ol type="1">
+<li><p>在<code>/etc/pacman.conf</code>文件末尾添加以下两行
+<figure class="highlight bash"><figcaption><span>/etc/pacman.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">Include = /etc/pacman.d/mirrorcnlist</span><br></pre></td></tr></table></figure></p></li>
+<li><p>新建文件<code>/etc/pacman.d/mirrorcnlist</code>,加入cn源
+<figure class="highlight bash"><figcaption><span>/etc/pacman.d/mirrorcnlist</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># archlinuxcn</span></span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/<span class="variable">$arch</span></span><br><span class="line">Server = https://mirrors.ustc.edu.cn/archlinuxcn/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure></p></li>
+</ol>
+<div class="note warning">
+<p>
+注意，在执行完成上述添加命令后，再通过命令安装<code>archlinuxcn-keyring</code>包导入GPG
+key.若添加之前执行命令，<code>pacman</code>找不到这个软件，所以是
+<mark class="label warning">先添加再执行</mark>。 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Sy archlinuxcn-keyring</span><br></pre></td></tr></table></figure>
+</p>
+<p>
+本法中，如果第一个源出现问题，则系统会自动调用第二个源，因此这是一个更加方便稳定的方法，推荐此法。
+</p>
+</div></div><div class="tab-pane" id="linuxcn-3"><p>在<code>/etc/pacman.conf</code>文件末尾添加以下两行 <figure class="highlight bash"><figcaption><span>archlinuxcn</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure></p>
+<div class="note warning">
+<p>
+注意，在执行完成上述添加命令后，再通过命令安装<code>archlinuxcn-keyring</code>包导入GPG
+key.若添加之前执行命令，<code>pacman</code>找不到这个软件，所以是
+<mark class="label warning">先添加再执行</mark>。 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Sy archlinuxcn-keyring</span><br></pre></td></tr></table></figure>
+</p>
+</div></div></div></div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -904,260 +1208,6 @@ target="_blank" rel="noopener" href="https://www.latexlive.com">https://www.late
 class="math inline">\(\LaTeX\)</span>的符号输入方法，所以没有书籍的时候这是一个相当不错的选择:
 <a target="_blank" rel="noopener" href="https://www.latexlive.com/help">LaTeXLive帮助文档</a></p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/15/Python%E4%B9%8B%E7%BE%8E%E7%AC%AC%E4%B9%9D%E6%AC%A1%E4%BD%9C%E4%B8%9A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/04/15/Python%E4%B9%8B%E7%BE%8E%E7%AC%AC%E4%B9%9D%E6%AC%A1%E4%BD%9C%E4%B8%9A/" class="post-title-link" itemprop="url">Python之美第九次作业</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-15 12:50:33" itemprop="dateCreated datePublished" datetime="2023-04-15T12:50:33+08:00">2023-04-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>2023年04月15日星期六晴北京市北京师范大学,
-今天完成了Python的作业，但是之前都是从Jupyter上完成，这个东西做作业还行，要是编辑调试大一点的程度就很无语了。所以今天配置了一下vim,直接在vim下编辑了Python脚本，完成了第九次作业。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/04/15/Python%E4%B9%8B%E7%BE%8E%E7%AC%AC%E4%B9%9D%E6%AC%A1%E4%BD%9C%E4%B8%9A/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/10/XtremeDownload/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/04/10/XtremeDownload/" class="post-title-link" itemprop="url">XtremeDownload</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-10 16:28:25" itemprop="dateCreated datePublished" datetime="2023-04-10T16:28:25+08:00">2023-04-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>2023年04月10日星期一晴北京市北京师范大学,
-今天发现新装的电脑上还没有安装xtreme监视插件，所以有的文件下载不能自动调用xtreme下载。于是顺便从Github<a
-target="_blank" rel="noopener" href="https://github.com/subhra74/xdm">https://github.com/subhra74/xdm</a>下载了源文件，同时将其README.md文件，原文考备于此，作为参考之用。最后给出其官网：<a
-target="_blank" rel="noopener" href="https://xtremedownloadmanager.com/">https://xtremedownloadmanager.com/</a>,大家可以到官网下载软件。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/04/10/XtremeDownload/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/09/Python%E4%B9%8B%E7%BE%8E%E7%AC%AC%E5%85%AB%E6%AC%A1%E4%BD%9C%E4%B8%9A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/04/09/Python%E4%B9%8B%E7%BE%8E%E7%AC%AC%E5%85%AB%E6%AC%A1%E4%BD%9C%E4%B8%9A/" class="post-title-link" itemprop="url">Python之美第八次作业</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-09 09:20:04" itemprop="dateCreated datePublished" datetime="2023-04-09T09:20:04+08:00">2023-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>2023年04月09日星期日晴北京市北京师范大学,
-昨天完成了Python之美课程的作业，此次封装了函数，自己感觉这才有程序的意思，同时也保留了一些有用的功能。在以后使用Python开发软件时有可能会用到，所以这里释出这次作业的源码。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/04/09/Python%E4%B9%8B%E7%BE%8E%E7%AC%AC%E5%85%AB%E6%AC%A1%E4%BD%9C%E4%B8%9A/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 

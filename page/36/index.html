@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">505</span>
+          <span class="site-state-item-count">508</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,390 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/08/%E8%A7%A3%E5%86%B3ArchLinux%E4%BD%BF%E7%94%A8yay%E6%88%96paru%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E6%97%B6%E4%BB%8EGithub%E4%B8%8B%E8%BD%BD%E6%85%A2%E6%88%96%E4%B8%8D%E5%8F%AF%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/10/08/%E8%A7%A3%E5%86%B3ArchLinux%E4%BD%BF%E7%94%A8yay%E6%88%96paru%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E6%97%B6%E4%BB%8EGithub%E4%B8%8B%E8%BD%BD%E6%85%A2%E6%88%96%E4%B8%8D%E5%8F%AF%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">解决ArchLinux使用yay或paru安装软件时从Github下载慢或不可下载的问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-10-08 21:27:33" itemprop="dateCreated datePublished" datetime="2023-10-08T21:27:33+08:00">2023-10-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>2023年10月08日星期日晴北京市北京师范大学,
+今天有点心烦，决定解决使用<code>paru</code>安装软件时，遇到在github下载软件时不能下载的问题。虽然没有成功，但是感觉思路正确，暂时先记录下来。</p>
+<div class="note success"><p>2023年11月27日经过研究彻底解决问题，重写了脚本，找到了原来问题的<code>bug</code>,
+经测试成功安装<code>小白羊版阿里云盘</code>。</p>
+</div>
+<h1 id="成功解决问题脚本">成功解决问题脚本</h1>
+<p>2023年10月20日星期五晴北京市北京师范大学,成功解决问题，自今天起不仅解决了<code>vim</code>,
+<code>neovim</code>的插件安装升级问题，也解决了<code>paru</code>安装软件不能下载<code>https://github.com</code>源的问题，对于<code>ArchLinux</code>的研究至此告一段落，可以正常的在<code>ArchLinux</code>上安装及处理各种软件问题。直接给出解决问题的脚本文件：</p>
+<h2 id="自动配置脚本iparu.sh">自动配置脚本iparu.sh</h2>
+<ul>
+<li><label style="color:blue">2023-11-27 13:58
+更新脚本，切实可用！</label></li>
+</ul>
+<figure class="highlight sh"><figcaption><span>iparu.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/sh</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 项目：iparu.sh</span></span><br><span class="line"><span class="comment"># 版本：V1.1</span></span><br><span class="line"><span class="comment"># 功能：解决paru 或yay 无法从https://github.com下载资源的问题</span></span><br><span class="line"><span class="comment"># 注意：脚本ParuAxel重新将https://github.com 定义到了镜像网址，如果失效请打开ParuAxel脚本更换可行的镜像</span></span><br><span class="line"><span class="comment"># 历史：2023-11-27 正式解决问题</span></span><br><span class="line"><span class="comment"># Copyright (C) 2023 feng &lt;feng@arch&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Distributed under terms of the MIT license.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 安装多线程下载工具axel</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -S --needed --noconfirm axel &amp;&gt; /dev/null</span><br><span class="line"><span class="comment"># 修改配置文件</span></span><br><span class="line"><span class="built_in">sudo</span> curl -o /etc/makepkg.conf https://gitlab.com/fengzhenhua/script/-/raw/main/makepkg.conf\?inline\=<span class="literal">false</span></span><br><span class="line"><span class="comment"># 安装修改后的下载脚本ParuAxel</span></span><br><span class="line"><span class="built_in">sudo</span> curl -o /usr/bin/ParuAxel https://gitlab.com/fengzhenhua/script/-/raw/main/ParuAxel.sh\?inline\=<span class="literal">false</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> 755 /usr/bin/ParuAxel</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;ParuAxel 安装成功，paru配置完毕 !! &quot;</span></span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/10/08/%E8%A7%A3%E5%86%B3ArchLinux%E4%BD%BF%E7%94%A8yay%E6%88%96paru%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E6%97%B6%E4%BB%8EGithub%E4%B8%8B%E8%BD%BD%E6%85%A2%E6%88%96%E4%B8%8D%E5%8F%AF%E4%B8%8B%E8%BD%BD%E7%9A%84%E9%97%AE%E9%A2%98/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/08/Github%E9%95%9C%E5%83%8F%E5%8F%8A%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/10/08/Github%E9%95%9C%E5%83%8F%E5%8F%8A%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/" class="post-title-link" itemprop="url">Github镜像及加速下载</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-10-08 19:47:50" itemprop="dateCreated datePublished" datetime="2023-10-08T19:47:50+08:00">2023-10-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">域名</th>
+<th style="text-align: left;">类型</th>
+<th style="text-align: left;">状态</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a
+target="_blank" rel="noopener" href="https://git.homegu.com">https://git.homegu.com</a></td>
+<td style="text-align: left;">镜像站</td>
+<td style="text-align: left;"><img
+src="https://img.shields.io/website?url=https%3A%2F%2Fgit.homegu.com%2F&amp;up_message=%E6%AD%A3%E5%B8%B8&amp;down_message=%E5%A4%B1%E6%95%88&amp;label=%E7%8A%B6%E6%80%81"
+alt="Website" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a
+target="_blank" rel="noopener" href="https://kkgithub.com">https://kkgithub.com</a></td>
+<td style="text-align: left;">镜像站</td>
+<td style="text-align: left;"><img
+src="https://img.shields.io/website?url=https%3A%2F%2Fkkgithub.com%2F&amp;up_message=%E6%AD%A3%E5%B8%B8&amp;down_message=%E5%A4%B1%E6%95%88&amp;label=%E7%8A%B6%E6%80%81"
+alt="Website" /></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a
+target="_blank" rel="noopener" href="https://hub.yzuu.cf">https://hub.yzuu.cf</a></td>
+<td style="text-align: left;">镜像站</td>
+<td style="text-align: left;"><img
+src="https://img.shields.io/website?url=https%3A%2F%2Fhub.yzuu.cf%2F&amp;up_message=%E6%AD%A3%E5%B8%B8&amp;down_message=%E5%A4%B1%E6%95%88&amp;label=%E7%8A%B6%E6%80%81"
+alt="Website" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a
+target="_blank" rel="noopener" href="https://hub.njuu.cf">https://hub.njuu.cf</a></td>
+<td style="text-align: left;">镜像站</td>
+<td style="text-align: left;"><img
+src="https://img.shields.io/website?url=https%3A%2F%2Fhub.njuu.cf%2F&amp;up_message=%E6%AD%A3%E5%B8%B8&amp;down_message=%E5%A4%B1%E6%95%88&amp;label=%E7%8A%B6%E6%80%81"
+alt="Website" /></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a
+target="_blank" rel="noopener" href="https://hub.fgit.cf">https://hub.fgit.cf</a></td>
+<td style="text-align: left;">镜像站</td>
+<td style="text-align: left;"><img
+src="https://img.shields.io/website?url=https%3A%2F%2Fhub.fgit.cf%2F&amp;up_message=%E6%AD%A3%E5%B8%B8&amp;down_message=%E5%A4%B1%E6%95%88&amp;label=%E7%8A%B6%E6%80%81"
+alt="Website" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a
+target="_blank" rel="noopener" href="https://githubfast.com">https://githubfast.com</a></td>
+<td style="text-align: left;">镜像站</td>
+<td style="text-align: left;"><img
+src="https://img.shields.io/website?url=https%3A%2F%2Fgithubfast.com%2F&amp;up_message=%E6%AD%A3%E5%B8%B8&amp;down_message=%E5%A4%B1%E6%95%88&amp;label=%E7%8A%B6%E6%80%81"
+alt="Website" /></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a
+target="_blank" rel="noopener" href="https://521github.com">https://521gitub.com</a></td>
+<td style="text-align: left;">镜像站</td>
+<td style="text-align: left;"><img
+src="https://img.shields.io/website?url=https%3A%2F%2F521github.com%2F&amp;up_message=%E6%AD%A3%E5%B8%B8&amp;down_message=%E5%A4%B1%E6%95%88&amp;label=%E7%8A%B6%E6%80%81"
+alt="Website" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a
+target="_blank" rel="noopener" href="https://hub.fgit.mxtrans.net">https://hub.fgit.mxtrans.net</a></td>
+<td style="text-align: left;">镜像站</td>
+<td style="text-align: left;"><img
+src="https://img.shields.io/website?url=https%3A%2F%2Fhub.fgit.mxtrans.net%2F&amp;up_message=%E6%AD%A3%E5%B8%B8&amp;down_message=%E5%A4%B1%E6%95%88&amp;label=%E7%8A%B6%E6%80%81"
+alt="Website" /></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a
+target="_blank" rel="noopener" href="https://hub.nuaa.cf">https://hub.nuaa.cf</a></td>
+<td style="text-align: left;">镜像站</td>
+<td style="text-align: left;"><img
+src="https://img.shields.io/website?url=https%3A%2F%2Fhub.nuaa.cf%2F&amp;up_message=%E6%AD%A3%E5%B8%B8&amp;down_message=%E5%A4%B1%E6%95%88&amp;label=%E7%8A%B6%E6%80%81"
+alt="Website" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a
+target="_blank" rel="noopener" href="https://github.hscsec.cn">https://github.hscsec.cn</a></td>
+<td style="text-align: left;">镜像站</td>
+<td style="text-align: left;"><img
+src="https://img.shields.io/website?url=https%3A%2F%2Fgithub.hscsec.cn%2F&amp;up_message=%E6%AD%A3%E5%B8%B8&amp;down_message=%E5%A4%B1%E6%95%88&amp;label=%E7%8A%B6%E6%80%81"
+alt="Website" /></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a
+target="_blank" rel="noopener" href="https://gitclone.com">https://gitclone.com</a></td>
+<td style="text-align: left;">镜像站</td>
+<td style="text-align: left;"><img
+src="https://img.shields.io/website?url=https%3A%2F%2Fgitclone.com%2F&amp;up_message=%E6%AD%A3%E5%B8%B8&amp;down_message=%E5%A4%B1%E6%95%88&amp;label=%E7%8A%B6%E6%80%81"
+alt="Website" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a
+target="_blank" rel="noopener" href="https://ghproxy.com/">Ghproxy</a></td>
+<td style="text-align: left;">加速下载站</td>
+<td style="text-align: left;"><img
+src="https://img.shields.io/website?url=https%3A%2F%2Fghproxy.com%2F&amp;up_message=%E6%AD%A3%E5%B8%B8&amp;down_message=%E5%A4%B1%E6%95%88&amp;label=%E7%8A%B6%E6%80%81"
+alt="Website" /></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a
+target="_blank" rel="noopener" href="https://gh.api.99988866.xyz/">99988866 API</a></td>
+<td style="text-align: left;">加速下载站</td>
+<td style="text-align: left;"><img
+src="https://img.shields.io/website?url=https%3A%2F%2Fgh.api.99988866.xyz%2F&amp;up_message=%E6%AD%A3%E5%B8%B8&amp;down_message=%E5%A4%B1%E6%95%88&amp;label=%E7%8A%B6%E6%80%81"
+alt="Website" /></td>
+</tr>
+</tbody>
+</table>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/10/08/Github%E9%95%9C%E5%83%8F%E5%8F%8A%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/07/sed%E5%91%BD%E4%BB%A4%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8%E5%8F%98%E9%87%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/10/07/sed%E5%91%BD%E4%BB%A4%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8%E5%8F%98%E9%87%8F/" class="post-title-link" itemprop="url">sed命令中使用外部变量</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-10-07 12:55:40" itemprop="dateCreated datePublished" datetime="2023-10-07T12:55:40+08:00">2023-10-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>近几天需要编写一个写LaTeX的脚本，用来自动管理LaTeX文件，但是遇到了在<code>sed</code>命令中使用脚本的麻烦，百度之后解决问题，记录于此。</p>
+<ol type="1">
+<li><p>单引号中使用变量：将变量用<code>'"$var"'</code>表示，即<code>单引号+双引号+变量+双引号+单引号</code>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> $(sed -n <span class="string">&#x27;&#x27;</span><span class="string">&quot;<span class="variable">$var</span>&quot;</span><span class="string">&#x27;p&#x27;</span> <span class="variable">$WMS_History</span>)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/10/07/sed%E5%91%BD%E4%BB%A4%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8%E5%8F%98%E9%87%8F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -901,256 +1285,6 @@ target="_blank" rel="noopener" href="https://fengzhenhua.gitlab.io/2023/10/08/�
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/12/python%E7%94%BB%E5%9B%BE%E9%A2%9C%E8%89%B2%E5%A4%A7%E5%85%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/12/python%E7%94%BB%E5%9B%BE%E9%A2%9C%E8%89%B2%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">python画图颜色大全</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-08-12 11:54:31" itemprop="dateCreated datePublished" datetime="2023-08-12T11:54:31+08:00">2023-08-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>2023年08月12日星期六阴北京市北京师范大学,
-离京前发一篇文章，以方便后面工作的需要。</p>
-<h2 id="绘图线型">绘图线型</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;.&#x27;</span>       point marker</span><br><span class="line"><span class="string">&#x27;,&#x27;</span>       pixel marker</span><br><span class="line"><span class="string">&#x27;o&#x27;</span>       circle marker</span><br><span class="line"><span class="string">&#x27;v&#x27;</span>       triangle_down marker</span><br><span class="line"><span class="string">&#x27;^&#x27;</span>       triangle_up marker</span><br><span class="line"><span class="string">&#x27;&lt;&#x27;</span>       triangle_left marker</span><br><span class="line"><span class="string">&#x27;&gt;&#x27;</span>       triangle_right marker</span><br><span class="line"><span class="string">&#x27;1&#x27;</span>       tri_down marker</span><br><span class="line"><span class="string">&#x27;2&#x27;</span>       tri_up marker</span><br><span class="line"><span class="string">&#x27;3&#x27;</span>       tri_left marker</span><br><span class="line"><span class="string">&#x27;4&#x27;</span>       tri_right marker</span><br><span class="line"><span class="string">&#x27;s&#x27;</span>       square marker</span><br><span class="line"><span class="string">&#x27;p&#x27;</span>       pentagon marker</span><br><span class="line"><span class="string">&#x27;*&#x27;</span>       star marker</span><br><span class="line"><span class="string">&#x27;h&#x27;</span>       hexagon1 marker</span><br><span class="line"><span class="string">&#x27;H&#x27;</span>       hexagon2 marker</span><br><span class="line"><span class="string">&#x27;+&#x27;</span>       plus marker</span><br><span class="line"><span class="string">&#x27;x&#x27;</span>       x marker</span><br><span class="line"><span class="string">&#x27;D&#x27;</span>       diamond marker</span><br><span class="line"><span class="string">&#x27;d&#x27;</span>       thin_diamond marker</span><br><span class="line"><span class="string">&#x27;|&#x27;</span>       vline marker</span><br><span class="line"><span class="string">&#x27;_&#x27;</span>       hline marker</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/08/12/python%E7%94%BB%E5%9B%BE%E9%A2%9C%E8%89%B2%E5%A4%A7%E5%85%A8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/02/vim%E4%BD%BF%E7%94%A8%E4%B8%BB%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/02/vim%E4%BD%BF%E7%94%A8%E4%B8%BB%E9%A2%98/" class="post-title-link" itemprop="url">vim使用主题</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-08-02 12:09:45" itemprop="dateCreated datePublished" datetime="2023-08-02T12:09:45+08:00">2023-08-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在使用 Neovim
-后发现，配置好主题及底部状态栏后确定好看好用多了。于是在没有最终确定抛弃
-vim 时，选择配置好 vim ,但是所有的文件都写入到
-<code>~/.vimrc</code>文件中,会影响vim的启动速度，于是这个问题的解决方法就是，将配置好的主题一并列在本博客，而在配置文件中只给出链接。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/08/02/vim%E4%BD%BF%E7%94%A8%E4%B8%BB%E9%A2%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/02/Git%E5%85%8B%E9%9A%86%E4%B8%80%E4%B8%AA%E4%BB%93%E5%BA%93%E7%9A%84%E5%AD%90%E6%96%87%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/02/Git%E5%85%8B%E9%9A%86%E4%B8%80%E4%B8%AA%E4%BB%93%E5%BA%93%E7%9A%84%E5%AD%90%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">Git克隆一个仓库的子文件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-08-02 01:30:10" itemprop="dateCreated datePublished" datetime="2023-08-02T01:30:10+08:00">2023-08-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>2023年08月02日星期三阴北京市北京师范大学,
-前面文章写了一个克隆git仓库子目录的方法，此篇文章记录单独克隆一个仓库中子文件的方法。</p>
-<figure class="highlight sh"><figcaption><span>克隆仓库中子文件</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">VimCFG=~/.vimrc</span><br><span class="line">curl -o <span class="variable">$VimCFG</span> https://gitlab.com/fengzhenhua/script/-/raw/main/vimrc\?inline\=<span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
       
     </div>
 

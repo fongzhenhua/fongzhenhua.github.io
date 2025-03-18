@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">505</span>
+          <span class="site-state-item-count">508</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,609 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/18/Python%E7%89%88CUDA%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/07/18/Python%E7%89%88CUDA%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Python版CUDA教程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-18 14:48:24" itemprop="dateCreated datePublished" datetime="2024-07-18T14:48:24+08:00">2024-07-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>本文主要介绍<code>CUDA</code>编程的基本流程和核心概念，并使用<code>Python Numba</code>编写<code>GPU</code>并行程序。</p>
+<ol type="1">
+<li><p><a href="/2024/07/18/GPU硬件知识和基础概念"
+title="https://juejin.cn/post/6844904000165249032">GPU硬件知识和基础概念</a>：包括CPU与GPU的区别、GPU架构、CUDA软件栈简介。</p></li>
+<li><p>GPU编程入门：主要介绍CUDA核函数，Thread、Block和Grid概念，并使用Python
+Numba进行简单的并行计算。</p></li>
+<li><p>GPU编程进阶：主要介绍一些优化方法。</p></li>
+<li><p>GPU编程实践：使用Python Numba解决复杂问题。</p></li>
+</ol>
+<h2 id="针对python的cuda教程">针对Python的CUDA教程</h2>
+<p>Python是当前最流行的编程语言，被广泛应用在深度学习、金融建模、科学和工程计算上。作为一门解释型语言，它运行速度慢也常常被用户诟病。著名Python发行商Anaconda公司开发的Numba库为程序员提供了Python版CPU和GPU编程工具，速度比原生Python快数十倍甚至更多。使用Numba进行GPU编程，你可以享受：</p>
+<ol type="1">
+<li>Python简单易用的语法；</li>
+<li>极快的开发速度；</li>
+<li>成倍的硬件加速。</li>
+</ol>
+<p>为了既保证Python语言的易用性和开发速度，又达到并行加速的目的，本系列主要从Python的角度给大家分享GPU编程方法。关于Numba的入门可以参考我的另一篇文章。<strong>更加令人兴奋的是，Numba提供了一个GPU模拟器，即使你手头暂时没有GPU机器，也可以先使用这个模拟器来学习GPU编程！</strong></p>
+<h2 id="初识gpu编程">初识GPU编程</h2>
+<p>兵马未动，粮草先行。在开始GPU编程前，需要明确一些概念，并准备好相关工具。</p>
+<p>CUDA是英伟达提供给开发者的一个GPU编程框架，程序员可以使用这个框架轻松地编写并行程序。本系列第一篇文章提到，CPU和主存被称为<strong>主机（Host）</strong>，GPU和显存（显卡内存）被称为<strong>设备（Device）</strong>，CPU无法直接读取显存数据，GPU无法直接读取主存数据，主机与设备必须通过总线（Bus）相互通信。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/20/16e86a62c580871e~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.png"
+alt="GPU和CPU架构" />
+<figcaption aria-hidden="true">GPU和CPU架构</figcaption>
+</figure>
+<p>在进行GPU编程前，需要先确认是否安装了CUDA工具箱，可以使用<code>echo $CUDA_HOME</code>检查CUDA环境变量，返回值不为空说明已经安装好CUDA。也可以直接用Anaconda里的<code>conda</code>命令安装CUDA：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ conda install cudatoolkit</span><br></pre></td></tr></table></figure>
+<p>然后可以使用<code>nvidia-smi</code>命令查看显卡情况，比如这台机器上几张显卡，CUDA版本，显卡上运行的进程等。我这里是一台32GB显存版的Telsa
+V100机器。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/20/16e86a62c5992567~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.png"
+alt="nvidia-smi命令返回结果" />
+<figcaption aria-hidden="true">nvidia-smi命令返回结果</figcaption>
+</figure>
+<p>安装Numba库：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ conda install numba</span><br></pre></td></tr></table></figure>
+<p>检查一下CUDA和Numba是否安装成功：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from numba import cuda</span><br><span class="line"><span class="built_in">print</span>(cuda.gpus)</span><br></pre></td></tr></table></figure>
+<p>如果上述步骤没有问题，可以得到结果：<code>&lt;Managed Device 0&gt;...</code>。如果机器上没有GPU或没安装好上述包，会有报错。CUDA程序执行时会独霸一张卡，如果你的机器上有多张GPU卡，CUDA默认会选用0号卡。如果你与其他人共用这台机器，最好协商好谁在用哪张卡。一般使用<code>CUDA_VISIBLE_DEVICES</code>这个环境变量来选择某张卡。如选择5号GPU卡运行你的程序。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=<span class="string">&#x27;5&#x27;</span> python example.py</span><br></pre></td></tr></table></figure>
+<p>如果手头暂时没有GPU设备，Numba提供了一个模拟器，供用户学习和调试，只需要在命令行里添加一个环境变量。</p>
+<p><strong>Mac/Linux:</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> NUMBA_ENABLE_CUDASIM=1</span><br></pre></td></tr></table></figure>
+<p><strong>Windows:</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET NUMBA_ENABLE_CUDASIM=1</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，模拟器只是一个调试的工具，在模拟器中使用Numba并不能加速程序，有可能速度更慢，而且在模拟器能够运行的程序，并不能保证一定能在真正的GPU上运行，最终还是要以GPU为准。</p>
+<p>有了以上的准备工作，我们就可以开始我们的GPU编程之旅了！</p>
+<h2 id="gpu程序与cpu程序的区别">GPU程序与CPU程序的区别</h2>
+<p>一个传统的CPU程序的执行顺序如下图所示：</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/20/16e86a62c5ab32b3~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.png"
+alt="CPU程序执行流程" />
+<figcaption aria-hidden="true">CPU程序执行流程</figcaption>
+</figure>
+<p>CPU程序是顺序执行的，一般需要：</p>
+<ol type="1">
+<li><p>初始化。</p></li>
+<li><p>CPU计算。</p></li>
+<li><p>得到计算结果。</p></li>
+</ol>
+<p>在CUDA编程中，CPU和主存被称为主机（Host），GPU被称为设备（Device）。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/20/16e86a62c5b7a913~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.png"
+alt="GPU程序执行流程" />
+<figcaption aria-hidden="true">GPU程序执行流程</figcaption>
+</figure>
+<p>当引入GPU后，计算流程变为：</p>
+<ol type="1">
+<li>初始化，并将必要的数据拷贝到GPU设备的显存上。</li>
+<li>CPU调用GPU函数，启动GPU多个核心同时进行计算。</li>
+<li>CPU与GPU异步计算。</li>
+<li>将GPU计算结果拷贝回主机端，得到计算结果。</li>
+</ol>
+<p>一个名为<code>gpu_print.py</code>的GPU程序如下所示：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numba <span class="keyword">import</span> cuda</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cpu_print</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;print by cpu.&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@cuda.jit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">gpu_print</span>():</span><br><span class="line">    <span class="comment"># GPU核函数</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;print by gpu.&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    gpu_print[<span class="number">1</span>, <span class="number">2</span>]()</span><br><span class="line">    cuda.synchronize()</span><br><span class="line">    cpu_print()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>使用<code>CUDA_VISIBLE_DEVICES='0' python gpu_print.py</code>执行这段代码，得到的结果为：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> by gpu.</span><br><span class="line"><span class="built_in">print</span> by gpu.</span><br><span class="line"><span class="built_in">print</span> by cpu.</span><br></pre></td></tr></table></figure>
+<p>与传统的Python CPU代码不同的是：</p>
+<ul>
+<li>使用<code>from numba import cuda</code>引入<code>cuda</code>库</li>
+<li>在GPU函数上添加<code>@cuda.jit</code>装饰符，表示该函数是一个在GPU设备上运行的函数，GPU函数又被称为<strong>核函数</strong>。</li>
+<li>主函数调用GPU核函数时，需要添加如<code>[1, 2]</code>这样的<strong>执行配置</strong>，这个配置是在告知GPU以多大的并行粒度同时进行计算。<code>gpu_print[1, 2]()</code>表示同时开启2个线程并行地执行<code>gpu_print</code>函数，函数将被并行地执行2次。下文会深入探讨如何设置执行配置。</li>
+<li>GPU核函数的启动方式是<strong>异步</strong>的：启动GPU函数后，CPU不会等待GPU函数执行完毕才执行下一行代码。必要时，需要调用<code>cuda.synchronize()</code>，告知CPU等待GPU执行完核函数后，再进行CPU端后续计算。这个过程被称为<strong>同步</strong>，也就是GPU执行流程图中的红线部分。如果不调用<code>cuda.synchronize()</code>函数，执行结果也将改变，"print
+by
+cpu.将先被打印。虽然GPU函数在前，但是程序并没有等待GPU函数执行完，而是继续执行后面的<code>cpu_print</code>函数，由于CPU调用GPU有一定的延迟，反而后面的<code>cpu_print</code>先被执行，因此<code>cpu_print</code>的结果先被打印了出来。</li>
+</ul>
+<h2 id="thread层次结构">Thread层次结构</h2>
+<p>前面的程序中，核函数被GPU并行地执行了2次。在进行GPU并行编程时需要定义执行配置来告知以怎样的方式去并行计算，比如上面打印的例子中，是并行地执行2次，还是8次，还是并行地执行20万次，或者2000万次。2000万的数字��大，远远多于GPU的核心数，如何将2000万次计算合理分配到所有GPU核心上。解决这些问题就需要弄明白CUDA的Thread层次结构。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/20/16e86a62c5c7d4d6~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.png"
+alt="并行执行8次的执行配置" />
+<figcaption aria-hidden="true">并行执行8次的执行配置</figcaption>
+</figure>
+<p>CUDA将核函数所定义的运算称为<strong>线程（Thread）</strong>，多个线程组成一个<strong>块（Block）</strong>，多个块组成<strong>网格（Grid）</strong>。这样一个grid可以定义成千上万个线程，也就解决了并行执行上万次操作的问题。例如，把前面的程序改为并行执行8次：可以用2个block，每个block中有4个thread。原来的代码可以改为<code>gpu_print[2, 4]()</code>，其中方括号中第一个数字表示整个grid有多少个block，方括号中第二个数字表示一个block有多少个thread。</p>
+<p>实际上，线程（thread）是一个编程上的软件概念。从硬件来看，thread运行在一个CUDA核心上，多个thread组成的block运行在Streaming
+Multiprocessor（SM的概念详见本系列第一篇文章），多个block组成的grid运行在一个GPU显卡上。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/20/16e86a62e8d3594b~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.png"
+alt="软硬件对应关系" />
+<figcaption aria-hidden="true">软硬件对应关系</figcaption>
+</figure>
+<p>CUDA提供了一系列内置变量，以记录thread和block的大小及索引下标。以<code>[2, 4]</code>这样的配置为例：<code>blockDim.x</code>变量表示block的大小是4，即每个block有4个thread，<code>threadIdx.x</code>变量是一个从0到<code>blockDim.x - 1</code>（4-1=3）的索引下标，记录这是第几个thread；<code>gridDim.x</code>变量表示grid的大小是2，即每个grid有2个block，<code>blockIdx.x</code>变量是一个从0到<code>gridDim.x - 1</code>（2-1=1）的索引下标，记录这是第几个block。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/20/16e86a62e6bf29ca~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.png"
+alt="CUDA内置变量示意图" />
+<figcaption aria-hidden="true">CUDA内置变量示意图</figcaption>
+</figure>
+<p>某个thread在整个grid中的位置编号为：<code>threadIdx.x + blockIdx.x * blockDim.x</code>。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/20/16e86a62eeccd9cb~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.png"
+alt="使用内置变量计算某个thread编号" />
+<figcaption
+aria-hidden="true">使用内置变量计算某个thread编号</figcaption>
+</figure>
+<p>利用上述变量，我们可以把之前的代码丰富一下：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">``<span class="keyword">from</span> numba <span class="keyword">import</span> cuda</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cpu_print</span>(<span class="params">N</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, N):</span><br><span class="line">        <span class="built_in">print</span>(i)</span><br><span class="line"></span><br><span class="line"><span class="meta">@cuda.jit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">gpu_print</span>(<span class="params">N</span>):</span><br><span class="line">    idx = cuda.threadIdx.x + cuda.blockIdx.x * cuda.blockDim.x </span><br><span class="line">    <span class="keyword">if</span> (idx &lt; N):</span><br><span class="line">        <span class="built_in">print</span>(idx)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;gpu print:&quot;</span>)</span><br><span class="line">    gpu_print[<span class="number">2</span>, <span class="number">4</span>](<span class="number">8</span>)</span><br><span class="line">    cuda.synchronize()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;cpu print:&quot;</span>)</span><br><span class="line">    cpu_print(<span class="number">8</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()`</span><br><span class="line"></span><br><span class="line">执行结果为：</span><br><span class="line"></span><br><span class="line">```py</span><br><span class="line">``gpu <span class="built_in">print</span>:</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">7</span></span><br><span class="line">cpu <span class="built_in">print</span>:</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">7</span>`</span><br><span class="line"></span><br><span class="line">这里的GPU函数在每个CUDA thread中打印了当前thread的编号，起到了CPU函数`<span class="keyword">for</span>`循环同样的作用。因为`<span class="keyword">for</span>`循环中的计算内容互相不依赖，也就是说，某次循环只是专心做自己的事情，循环第i次不影响循环第j次的计算，所以这样互相不依赖的`<span class="keyword">for</span>`循环非常适合放到CUDA thread里做并行计算。在实际使用中，我们一般将CPU代码中互相不依赖的的`<span class="keyword">for</span>`循环适当替换成CUDA代码。</span><br><span class="line"></span><br><span class="line">这份代码打印了<span class="number">8</span>个数字，核函数有一个参数`N`，`N = <span class="number">8</span>`，假如我们只想打印<span class="number">5</span>个数字呢？当前的执行配置共<span class="number">2</span> \* <span class="number">4</span> = <span class="number">8</span>个线程，线程数<span class="number">8</span>与要执行的次数<span class="number">5</span>不匹配，不过我们已经在代码里写好了`<span class="keyword">if</span> (idx &lt; N)`的判断语句，判断会帮我们过滤不需要的计算。我们只需要把`N = <span class="number">5</span>`传递给`gpu_print`函数中就好，CUDA仍然会启动<span class="number">8</span>个thread，但是大于等于`N`的thread不进行计算。==注意，当线程数与计算次数不一致时，一定要使用这样的判断语句，以保证某个线程的计算不会影响其他线程的数据。==</span><br><span class="line"></span><br><span class="line">![线程数与计算次数不匹配](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/<span class="number">2019</span>/<span class="number">11</span>/<span class="number">20</span>/16e86a62f739c803~tplv-t2oaga2asx-jj-mark:<span class="number">3024</span>:<span class="number">0</span>:<span class="number">0</span>:<span class="number">0</span>:q75.png)</span><br><span class="line"></span><br><span class="line"><span class="comment">## Block大小设置</span></span><br><span class="line"></span><br><span class="line">不同的执行配置会影响GPU程序的速度，一般需要多次调试才能找到较好的执行配置，在实际编程中，执行配置`[gridDim, blockDim]`应参考下面的方法：</span><br><span class="line"></span><br><span class="line">-   block运行在SM上，不同硬件架构（Turing、Volta、Pascal...）的CUDA核心数不同，一般需要根据当前硬件来设置block的大小`blockDim`（执行配置中第二个参数）。一个block中的thread数最好是<span class="number">32</span>、<span class="number">128</span>、<span class="number">256</span>的倍数。==注意，限于当前硬件的设计，block大小不能超过<span class="number">1024</span>。==</span><br><span class="line">-   grid的大小`gridDim`（执行配置中第一个参数），即一个grid中block的个数可以由总次数`N`除以`blockDim`，并向上取整。</span><br><span class="line"></span><br><span class="line">例如，我们想并行启动<span class="number">1000</span>个thread，可以将blockDim设置为<span class="number">128</span>，`<span class="number">1000</span> ÷ <span class="number">128</span> = <span class="number">7.8</span>`，向上取整为<span class="number">8</span>。使用时，执行配置可以写成`gpuWork[<span class="number">8</span>, <span class="number">128</span>]()`，CUDA共启动`<span class="number">8</span> * <span class="number">128</span> = <span class="number">1024</span>`个thread，实际计算时只使用前<span class="number">1000</span>个thread，多余的<span class="number">24</span>个thread不进行计算。</span><br><span class="line"></span><br><span class="line">注意，这几个变量比较容易混淆，再次明确一下：`blockDim`是block中thread的个数，一个block中的`threadIdx`最大不超过`blockDim`；`gridDim`是grid中block的个数，一个grid中的`blockIdx`最大不超过`gridDim`。</span><br><span class="line"></span><br><span class="line">以上讨论中，block和grid大小均是一维，实际编程使用的执行配置常常更复杂，block和grid的大小可以设置为二维甚至三维，如下图所示。这部分内容将在下篇文章中讨论。</span><br><span class="line"></span><br><span class="line">![Thread Block Grid](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/<span class="number">2019</span>/<span class="number">11</span>/<span class="number">20</span>/16e86a62ef74074b~tplv-t2oaga2asx-jj-mark:<span class="number">3024</span>:<span class="number">0</span>:<span class="number">0</span>:<span class="number">0</span>:q75.png)</span><br><span class="line"></span><br><span class="line"><span class="comment">## 内存分配</span></span><br><span class="line"></span><br><span class="line">前文提到，GPU计算时直接从显存中读取数据，因此每当计算时要将数据从主存拷贝到显存上，用CUDA的术语来说就是要把数据从主机端拷贝到设备端。CUDA强大之处在于它能自动将数据从主机和设备间相互拷贝，不需要程序员在代码中写明。这种方法对编程者来说非常方便，不必对原有的CPU代码做大量改动。</span><br><span class="line"></span><br><span class="line">我们以一个向量加法为例，编写一个向量加法的核函数如下：</span><br><span class="line"></span><br><span class="line">```py</span><br><span class="line">py@cuda.jit</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">gpu_add</span>(<span class="params">a, b, result, n</span>):</span><br><span class="line">    <span class="comment"># a, b为输入向量，result为输出向量</span></span><br><span class="line">    <span class="comment"># 所有向量都是n维</span></span><br><span class="line">    <span class="comment"># 得到当前thread的索引</span></span><br><span class="line">    idx = cuda.threadIdx.x + cuda.blockDim.x * cuda.blockIdx.x</span><br><span class="line">    <span class="keyword">if</span> idx &lt; n:</span><br><span class="line">        result[idx] = a[idx] + b[idx]</span><br></pre></td></tr></table></figure>
+<p>初始化两个2千万维的向量，作为参数传递给核函数：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="number">20000000</span></span><br><span class="line">x = np.arange(n).astype(np.int32)</span><br><span class="line">y = <span class="number">2</span> * x</span><br><span class="line">gpu_result = np.zeros(n)</span><br><span class="line"></span><br><span class="line"><span class="comment"># CUDA执行配置</span></span><br><span class="line">threads_per_block = <span class="number">1024</span></span><br><span class="line">blocks_per_grid = math.ceil(n / threads_per_block)</span><br><span class="line"></span><br><span class="line">gpu_add[blocks_per_grid, threads_per_block](x, y, gpu_result, n)</span><br></pre></td></tr></table></figure>
+<p>把上述代码整合起来，与CPU代码做对比，并验证结果正确性：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numba <span class="keyword">import</span> cuda</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="meta">@cuda.jit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">gpu_add</span>(<span class="params">a, b, result, n</span>):</span><br><span class="line">    idx = cuda.threadIdx.x + cuda.blockDim.x * cuda.blockIdx.x</span><br><span class="line">    <span class="keyword">if</span> idx &lt; n:</span><br><span class="line">        result[idx] = a[idx] + b[idx]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    n = <span class="number">20000000</span></span><br><span class="line">    x = np.arange(n).astype(np.int32)</span><br><span class="line">    y = <span class="number">2</span> * x</span><br><span class="line"></span><br><span class="line">    gpu_result = np.zeros(n)</span><br><span class="line">    cpu_result = np.zeros(n)</span><br><span class="line"></span><br><span class="line">    threads_per_block = <span class="number">1024</span></span><br><span class="line">    blocks_per_grid = math.ceil(n / threads_per_block)</span><br><span class="line">    start = time()</span><br><span class="line">    gpu_add[blocks_per_grid, threads_per_block](x, y, gpu_result, n)</span><br><span class="line">    cuda.synchronize()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;gpu vector add time &quot;</span> + <span class="built_in">str</span>(time() - start))</span><br><span class="line">    start = time()</span><br><span class="line">    cpu_result = np.add(x, y)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;cpu vector add time &quot;</span> + <span class="built_in">str</span>(time() - start))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (np.array_equal(cpu_result, gpu_result)):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;result correct&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>运行结果，GPU代码竟然比CPU代码慢10+倍！</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gpu vector add time 13.589356184005737</span><br><span class="line">cpu vector add time 1.2823548316955566</span><br><span class="line">result correct</span><br></pre></td></tr></table></figure>
+<p>说好的GPU比CPU快几十倍上百倍呢？这里GPU比CPU慢很多原因主要在于：</p>
+<ol type="1">
+<li>向量加法的这个计算比较简单，CPU的numpy已经优化到了极致，无法突出GPU的优势，我们要解决实际问题往往比这个复杂得多，当解决复杂问题时，优化后的GPU代码将远快于CPU代码。</li>
+<li>这份代码使用CUDA默认的统一内存管理机制，没有对数据的拷贝做优化。CUDA的统一内存系统是当GPU运行到某块数据发现不在设备端时，再去主机端中将数据拷贝过来，当执行完核函数后，又将所有的内存拷贝回主存。在上面的代码中，输入的两个向量是只读的，没必要再拷贝回主存。</li>
+<li>这份代码没有做流水线优化。CUDA并非同时计算2千万个数据，一般分批流水线工作：一边对2000万中的某批数据进行计算，一边将下一批数据从主存拷贝过来。计算占用的是CUDA核心，数据拷贝占用的是总线，所需资源不同，互相不存在竞争关系。这种机制被称为流水线。这部分内容将在下篇文章中讨论。</li>
+</ol>
+<p>原因2中本该程序员动脑思考的问题交给了CUDA解决，增加了时间开销，所以CUDA非常方便的统一内存模型缺点是计算速度慢。针对原因2，我们可以继续优化这个程序，告知GPU哪些数据需要拷贝到设备，哪些需要拷贝回主机。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numba <span class="keyword">import</span> cuda</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="meta">@cuda.jit</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">gpu_add</span>(<span class="params">a, b, result, n</span>):</span><br><span class="line">    idx = cuda.threadIdx.x + cuda.blockDim.x * cuda.blockIdx.x</span><br><span class="line">    <span class="keyword">if</span> idx &lt; n :</span><br><span class="line">        result[idx] = a[idx] + b[idx]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    n = <span class="number">20000000</span></span><br><span class="line">    x = np.arange(n).astype(np.int32)</span><br><span class="line">    y = <span class="number">2</span> * x</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 拷贝数据到设备端</span></span><br><span class="line">    x_device = cuda.to_device(x)</span><br><span class="line">    y_device = cuda.to_device(y)</span><br><span class="line">    <span class="comment"># 在显卡设备上初始化一块用于存放GPU计算结果的空间</span></span><br><span class="line">    gpu_result = cuda.device_array(n)</span><br><span class="line">    cpu_result = np.empty(n)</span><br><span class="line"></span><br><span class="line">    threads_per_block = <span class="number">1024</span></span><br><span class="line">    blocks_per_grid = math.ceil(n / threads_per_block)</span><br><span class="line">    start = time()</span><br><span class="line">    gpu_add[blocks_per_grid, threads_per_block](x_device, y_device, gpu_result, n)</span><br><span class="line">    cuda.synchronize()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;gpu vector add time &quot;</span> + <span class="built_in">str</span>(time() - start))</span><br><span class="line">    start = time()</span><br><span class="line">    cpu_result = np.add(x, y)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;cpu vector add time &quot;</span> + <span class="built_in">str</span>(time() - start))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (np.array_equal(cpu_result, gpu_result.copy_to_host())):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;result correct!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>这段代码的运行结果为：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gpu vector add time 0.19940638542175293</span><br><span class="line">cpu vector add time 1.132070541381836</span><br><span class="line">result correct!</span><br></pre></td></tr></table></figure>
+<p>至此，可以看到GPU速度终于比CPU快了很多。</p>
+<p>Numba对Numpy的比较友好，编程中一定要使用Numpy的数据类型。用到的比较多的内存分配函数有：</p>
+<ul>
+<li><code>cuda.device_array()</code>：
+在设备上分配一个空向量，类似于<code>numpy.empty()</code></li>
+<li><code>cuda.to_device()</code>：将主机的数据拷贝到设备</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ary = np.arange(<span class="number">10</span>)</span><br><span class="line">device_ary = cuda.to_device(ary)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>cuda.copy_to_host()</code>：将设备的数据拷贝回主机</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host_ary = device_ary.copy_to_host()</span><br></pre></td></tr></table></figure>
+<h2 id="总结">总结</h2>
+<p>Python
+Numba库可以调用CUDA进行GPU编程，CPU端被称为主机，GPU端被称为设备，运行在GPU上的函数被称为核函数，调用核函数时需要有执行配置，以告知CUDA以多大的并行粒度来计算。使用GPU编程时要合理地将数据在主机和设备间互相拷贝。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/20/16e86a62ef44fe14~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.png"
+alt="GPU程序执行流程" />
+<figcaption aria-hidden="true">GPU程序执行流程</figcaption>
+</figure>
+<p>CUDA编程的基本流程为：</p>
+<ol type="1">
+<li>初始化，并将必要的数据拷贝到GPU设备的显存上。</li>
+<li>使用某个执行配置，以一定的并行粒度调用CUDA核函数。</li>
+<li>CPU和GPU异步计算。</li>
+<li>将GPU计算结果拷贝回主机。</li>
+</ol>
+<h2 id="参考声明">参考声明</h2>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://juejin.cn/post/6844904000970571783">中文领域最详细的Python版CUDA入门教程</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42596142/article/details/103157468">中文领域最详细的Python版CUDA入门教程</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.nvidia.cn/docs/IO/51635/NVIDIA_CUDA_Programming_Guide_1.1_chs.pdf">NVIDIA
+CUDA 编程指南(全译文)</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/18/GPU%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86%E5%92%8C%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/07/18/GPU%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86%E5%92%8C%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">GPU硬件知识和基础概念</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-18 14:44:20" itemprop="dateCreated datePublished" datetime="2024-07-18T14:44:20+08:00">2024-07-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>金融建模、自动驾驶、智能机器人、新材料发现、脑神经科学、医学影像分析...人工智能时代的科学研究极度依赖计算力的支持。提供算力的各家硬件芯片厂商中，最抢镜的当属英伟达Nvidia了。这家做显卡起家的芯片公司在深度学习兴起后可红得发紫，如果不聊几句GPU和英伟达，都不好意思跟别人说自己是做人工智能的。那么，英伟达的GPU是如何加速计算呢？本系列将介绍GPU计算加速的一些基础知识：</p>
+<ol type="1">
+<li>GPU硬件知识和基础概念：包括CPU与GPU的区别、GPU架构、CUDA软件栈简介。</li>
+<li>GPU编程入门：主要介绍CUDA核函数，Thread、Block和Grid概念，并使用Python
+Numba进行简单的并行计算。</li>
+<li>GPU编程进阶：主要介绍多核配置和存储管理。</li>
+<li>GPU编程实践：使用Python Numba解决复杂问题。</li>
+</ol>
+<h2 id="什么是gpu">什么是GPU</h2>
+<p>GPU全名为Graphics Processing
+Unit，又称视觉处理器、图形显示卡。GPU负责渲染出2D、3D、VR效果，主要专注于计算机图形图像领域。后来人们发现，GPU非常适合并行计算，可以加速现代科学计算，GPU也因此不再局限于游戏和视频领域。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/19/16e81947540f7433~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.awebp"
+alt="游戏" />
+<figcaption aria-hidden="true">游戏</figcaption>
+</figure>
+<h2 id="cpu和gpu">CPU和GPU</h2>
+<p>现代CPU处理数据的速度在纳秒级别，为何还要使用GPU来加速？CPU能被GPU替代吗？</p>
+<p>对于计算机体系不了解的朋友可以先阅读我之前的文章，有助于你理解下面的一些概念。</p>
+<p>无论是CPU还是GPU，在进行计算时，都需要用核心（Core）来做算术逻辑运算，比如加减乘与或非等。核心中有ALU（逻辑运算单元）和寄存器等电路。在进行计算时，一个核心只能顺序执行某项任务。不可能“吃着火锅唱着歌”，因为吃饭唱歌都占着嘴呢。所以为了同时并行地处理更多任务，芯片公司开发出了多核架构，只要相互之间没有依赖，每个核心做自己的事情，多核之间互不干扰，就可以达到<strong>并行计算</strong>的效果，极大缩短计算时间。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/19/16e81947543987c6~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.awebp"
+alt="CPU vs GPU" />
+<figcaption aria-hidden="true">CPU vs GPU</figcaption>
+</figure>
+<p>个人桌面电脑CPU只有2到8个CPU核心，数据中心的服务器上也只有20到40个左右CPU核心，GPU却有上千个核心。与CPU的核心不同，GPU的核心只能专注于某些特定的任务。知乎上有人把CPU比作大学教授，把GPU比作一个学校几千个小学生：同样是做加减法，几千个小学生所能做的计算，远比几十个大学教授要多得多。俗话说，三个臭皮匠，顶一个诸葛亮。大学教授的知识结构和个人能力远强于小学生，能独立解决复杂问题，小学生的知识有限，只能进行简单的计算。目前来看GPU在处理简单计算任务上有更大的优势，但是主要还是靠人海战术，并不能像CPU那样可以独当一面，短时间内也无法替换掉CPU。如下图所示，在整个计算机系统中，CPU起到协调管理的作用，管理计算机的主存、硬盘、网络以及GPU等各类元件。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/19/16e819475ad5883b~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.awebp"
+alt="计算机体系示意图" />
+<figcaption aria-hidden="true">计算机体系示意图</figcaption>
+</figure>
+<p>如果只关注CPU和GPU，那么计算结构将如下图所示。CPU主要从主存（Main
+Memory）中读写数据，并通过总线（Bus）与GPU交互。GPU除了有超多计算核心外，也有自己独立的存储，被称之为显存。一台服务器上可以安装多块GPU卡，但GPU卡的发热量极大，普通的空调系统难以给大量GPU卡降温，所以大型数据中心通常使用水冷散热，并且选址在温度较低的地方。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/19/16e8194754cc6359~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.awebp"
+alt="CPU与GPU" />
+<figcaption aria-hidden="true">CPU与GPU</figcaption>
+</figure>
+<p>GPU核心在做计算时，只能直接从显存中读写数据，程序员需要在代码中指明哪些数据需要从内存和显存之间相互拷贝。这些数据传输都是在总线上，因此总线的传输速度和带宽成了部分计算任务的瓶颈。也因为这个瓶颈，很多计算任务并不适合放在GPU上，比如笔者这两年关注的推荐系统虽然也在使用深度学习，但因为输入是大规模稀疏特征，GPU加速获得的收益小于数据互相拷贝的时间损失。当前最新的总线技术是NVLink，IBM的Power
+CPU和英伟达的高端显卡可以通过NVLink直接通信。同时，单台机器上的多张英伟达显卡也可以使用NVLink相互通信，适合多GPU卡并行计算的场景。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/19/16e819475aad7660~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.awebp"
+alt="nvlink" />
+<figcaption aria-hidden="true">nvlink</figcaption>
+</figure>
+<p>Intel的CPU目前不支持NVLink，只能使用PCI-E技术，如下图所示。NVLink和PCI-E都是总线技术的一种。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/19/16e8194789254f3c~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.awebp"
+alt="CPU通过PCI-E与GPU通信" />
+<figcaption aria-hidden="true">CPU通过PCI-E与GPU通信</figcaption>
+</figure>
+<p>由于CPU和GPU是分开的，在英伟达的设计理念里，CPU和主存被称为<strong>Host</strong>，GPU被称为<strong>Device</strong>。Host和Device概念会贯穿整个英伟达GPU编程。</p>
+<p>以上结构也被称为<strong>异构计算</strong>：使用CPU+GPU组合来加速计算。世界上顶尖的数据中心和超级计算机均采用了异构计算架构。例如超越天河2号成为世界第一的超级计算机<code>Summit</code>使用了9216个IBM
+POWER9 CPU和27648个英伟达Tesla GPU。</p>
+<h2 id="gpu架构">GPU架构</h2>
+<p>英伟达不同时代产品的芯片设计不同，每代产品背后有一个架构代号，架构均以著名的物理学家为名，以向先贤致敬。当前比较火热的架构有：</p>
+<ul>
+<li><p>Turing 图灵</p>
+<ul>
+<li>2018年发布</li>
+<li>消费显卡：GeForce 2080 Ti</li>
+</ul></li>
+<li><p>Volta 伏特</p>
+<ul>
+<li>2017年末发布</li>
+<li>专业显卡：Telsa V100 (16或32GB显存 5120个核心)</li>
+</ul></li>
+<li><p>Pascal 帕斯卡</p>
+<ul>
+<li><p>2016年发布</p></li>
+<li><p>专业显卡：Telsa P100(12或16GB显存 3584个核心)</p></li>
+</ul></li>
+</ul>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/19/16e8194789559f5c~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.awebp"
+alt="Pascal架构" />
+<figcaption aria-hidden="true">Pascal架构</figcaption>
+</figure>
+<p>在英伟达的设计里，多个小核心组成一个Streaming
+Multiprocessor（<strong>SM</strong>），一张GPU卡有多个SM。从“multiprocessor”这个名字上也可以看出SM包含了多个处理器。实际上，英伟达主要以SM为运算和调度的基本单元。上图为当前计算力最强的显卡Tesla
+V100，密密麻麻的绿色小格子就是GPU小核心，多个小核心一起组成了一个SM。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/19/16e819478971b12e~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.awebp"
+alt="V100 SM" />
+<figcaption aria-hidden="true">V100 SM</figcaption>
+</figure>
+<p>单个SM的结构如图所示。可以看到一个SM中包含了：</p>
+<ul>
+<li><p>针对不同计算的小核心（绿色小格子），包括优化深度学习的TENSOR
+CORE，32个64位浮点核心（FP64），64个整型核心(INT)，64个32位浮点核心(FP32)。</p></li>
+<li><p>计算核心直接从寄存器（Register）中读写数据。</p></li>
+<li><p>调度和分发器（Scheduler和Dispatch Unit）。</p></li>
+<li><p>L0和L1级缓存。</p></li>
+</ul>
+<p>前面提到的以物理学家命名的是英伟达各代GPU的架构代号。对于消费者而言，英伟达主要有两条产品线：</p>
+<ul>
+<li>消费级产品 GeForce系列：GeForce 2080 Ti...</li>
+<li>高性能计算产品 Telsa系列：Telsa V100、Telsa P100、Telsa P40...</li>
+</ul>
+<h2 id="软件生态">软件生态</h2>
+<p>英伟达能够在人工智能时代成功，除了他们在长期深耕显卡芯片领域，更重要的是他们率先提供了可编程的软件架构。2007年，英伟达发布了CUDA编程模型，软件开发人员从此可以使用CUDA在英伟达的GPU上进行并行编程。在此之前，GPU编程并不友好。CUDA简单到什么程度？有经验的程序员经过半天的培训，掌握一些基础概念后，能在==半小时==内将一份CPU程序修改成为GPU并行程序。</p>
+<figure>
+<img
+src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/11/19/16e8194789b35bbb~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.awebp"
+alt="英伟达软件栈" />
+<figcaption aria-hidden="true">英伟达软件栈</figcaption>
+</figure>
+<p>继CUDA之后，英伟达不断丰富其软件技术栈，提供了科学计算所必须的cuBLAS线性代数库，cuFFT快速傅里叶变换库等，当深度学习大潮到来时，英伟达提供了cuDNN深度神经网络加速库，目前常用的TensorFlow、PyTorch深度学习框架的底层大多基于cuDNN库。英伟达能在人工智能时代击败Intel、AMD等强大对手，很大一部分是因为它丰富的软件体系。这些软件工具库使研发人员专注于自己的研发领域，不用再去花大量时间学习GPU底层知识。CUDA对于GPU就像个人电脑上的Windows、手机上的安卓系统，一旦建立好生态，吸引了开发者，用户非常依赖这套软件生态体系。</p>
+<p>GPU编程可以直接使用CUDA的C/C++版本进行编程，也可以使用其他语言包装好的库，比如Python可使用Numba库调用CUDA。CUDA的编程思想在不同语言上都很相似。</p>
+<p>CUDA及其软件栈的优势是方便易用，缺点也显而易见：</p>
+<ol type="1">
+<li><p>软件环境复杂，库以及版本很多，顶层应用又严重依赖底层工具库，入门者很难快速配置好一整套环境；多环境配置困难。</p></li>
+<li><p>用户只能使用英伟达的显卡，成本高，个人用户几乎负担不起。</p></li>
+</ol>
+<p>因此，如果没有专业的运维人员维护GPU机器，最好还是在公有云上按需购买GPU虚拟机。入门者可以考虑云厂商的Telsa
+P4虚拟机，大约10+元/小时，云厂商会配置好CUDA及工具库。如自己购买物理机，可以考虑消费级的GeForce
+2080Ti，这张卡足以应对绝大多数自然语言处理任务。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/17/Archlinux%E5%AE%89%E8%A3%85USB%E6%97%A0%E7%BA%BF%E7%BD%91%E5%8D%A1%E9%A9%B1%E5%8A%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/07/17/Archlinux%E5%AE%89%E8%A3%85USB%E6%97%A0%E7%BA%BF%E7%BD%91%E5%8D%A1%E9%A9%B1%E5%8A%A8/" class="post-title-link" itemprop="url">Archlinux安装USB无线网卡驱动</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-17 02:03:25" itemprop="dateCreated datePublished" datetime="2024-07-17T02:03:25+08:00">2024-07-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天获得了一个微形的<code>USB</code>无线网卡，其在<code>Windows</code>下是可以自动安装驱动程序的，因为此<code>USB</code>网卡中包含了<code>Windows</code>版的驱动程序。但是我现在想在<code>Archlinux</code>下使用这个<code>USB</code>无线网卡作为<code>Wifi</code>的发射无线信息供手机上网使用，而<code>windows</code>驱动就无能为力了。通过将<code>USB</code>无线网卡插入到<code>windows</code>电脑上配置好<code>wifi</code>就可以查询到此网卡的具体型号为<code>realtek 8188gu wireless lan 802.11n usb nic linux</code>,
+而使用
+<code>pacman -Ss</code>无法找到<code>realtek</code>相关驱动，于是使用<code>paru</code>查找:</p>
+<figure class="highlight sh"><figcaption><span>paru -Ss realtek |grep 8188gu</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    Driver <span class="keyword">for</span> Realtek RTL8188CUS (8188C, 8192C) chipset wireless cards</span><br><span class="line">aur/8188eu-dkms v4.3.0.8_13968-17 [+25 ~0.14]</span><br><span class="line">    Driver <span class="keyword">for</span> Realtek RTL8188EUS (RTL8188EUS, RTL8188ETV) WLAN</span><br><span class="line">aur/8188eu-aircrack-dkms-git 5.3.9.r196.3fae723-5 [+7 ~0.00]</span><br><span class="line">    Realtek RTL8188EUS and RTL8188ETV Wi-Fi driver with monitor mode &amp; frame injection support</span><br><span class="line">aur/8188eu-dkms-git 5.2.2.4.r794.53ed527-3 [+5 ~0.00]</span><br><span class="line">    Standalone driver <span class="keyword">for</span> Realtek RTL8188EUS (RTL8188EUS, RTL8188ETV) WLAN</span><br><span class="line">aur/8188fu-kelebek333-dkms-git r115.751882b-1 [+4 ~0.00] [无人维护]</span><br><span class="line">    Kernel driver module <span class="keyword">for</span> Realtek RTL8188FU and RTL8188FTV Wireless 802.11n USB 2.0 adapters (device <span class="built_in">id</span> 0bda:f179), <span class="keyword">for</span> kernel versions &lt; 6</span><br><span class="line">aur/8188fu-dkms-git r13.586d795-1 [+3 ~0.00] [无人维护]</span><br><span class="line">    Kernel driver module <span class="keyword">for</span> Realtek RTL8188FU and RTL8188FTV Wireless 802.11n USB 2.0 adapters (device <span class="built_in">id</span> 0bda:f179), <span class="keyword">for</span> kernel versions less than 5.8</span><br><span class="line">    Kernel module <span class="keyword">for</span> Realtek RTL8188SU/RTL8191SU/RTL8192SU devices</span><br><span class="line">aur/8188fu-supremegamers-dkms-git r120.40d4a49-1 [+2 ~0.00]</span><br><span class="line">    Kernel driver module <span class="keyword">for</span> Realtek RTL8188FU and RTL8188FTV Wireless 802.11n USB 2.0 adapters (device <span class="built_in">id</span> 0bda:f179), <span class="keyword">for</span> kernel versions 6.0 and 6.1</span><br><span class="line">aur/rtl8188gu-dkms-git r10.699d0cc-1 [+2 ~0.00] [已安装：r12.9dec829-1]</span><br><span class="line">    Linux driver <span class="keyword">for</span> Realtek RTL8188GU</span><br></pre></td></tr></table></figure>
+<h2
+id="rtl8xxxu支持的wifi芯片"><code>rtl8xxxu</code>支持的<code>wifi</code>芯片</h2>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">RTL8188CU/CUS/CTV</span><br><span class="line">RTL8188EU/EUS/ETV</span><br><span class="line">RTL8188FU/FTV</span><br><span class="line">RTL8188GU | RTL8188RU</span><br><span class="line">RTL8191CU | RTL8192CU </span><br><span class="line">RTL8192EU | RTL8192FU</span><br><span class="line">RTL8723AU | RTL8723BU</span><br></pre></td></tr></table></figure>
+<div class="note primary"><ul>
+<li>支持<code>Linux</code> 内核版本: 5.5.x ~ 6.11.x</li>
+<li>测试工作良好的<code>Linux</code>发行版：
+<ul>
+<li>Arch Linux (kernel version: 6.6.39-1-lts)</li>
+<li>Debian 11.10 (kernel version: 5.10.0-30-amd64 /
+6.1.0-0.deb11.21-amd64)</li>
+<li>Linux Mint 20.3 (kernel version: 5.15.0-113-generic)</li>
+</ul></li>
+</ul>
+</div>
+<h2 id="安装驱动rtl8xxxu">安装驱动<code>rtl8xxxu</code></h2>
+<ol type="1">
+<li><p>克隆下<code>rtl8xxxu</code>的源文件： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/a5a5aa555oo/rtl8xxxu.git</span><br></pre></td></tr></table></figure></p></li>
+<li><p>如果您使用的<code>USB Wifi</code>发射器基于<code>RTL8188GU</code>或<code>RTL8192FU</code>芯片，您需要首先使用命令<code>usb_modeswitch</code>或<code>eject</code>切换到<code>Wifi</code>模式。</p></li>
+<li><p>安装构建模块需要的软件包：<code>gcc</code>,<code>make</code>,<code>linux-headers</code>,<code>dkms</code>和其他的依赖软件。</p></li>
+<li><p>构建和安装模块</p>
+<ul>
+<li><p><em>使用传统方式</em></p>
+<p><code>make clean modules &amp;&amp; sudo make install</code></p></li>
+<li><p><em>使用 DKMS 方式<strong>(推荐)</strong></em></p>
+<p><code>sudo dkms install $PWD</code></p></li>
+<li><p><em>基于<code>ArchLinux</code>的发行版用户</em></p>
+<p>在<code>AUR</code>中安装软件包： <a
+target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/rtl8xxxu-dkms-git">rtl8xxxu-dkms-git</a>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paru -S rtl8xxxu-dkms-git</span><br></pre></td></tr></table></figure></p></li>
+</ul></li>
+<li><p>为芯片
+<code>RTL8188EU/RTL8188FU/RTL8188GU/RTL8192EU/RTL8192FU</code>
+安装固件(关键)</p>
+<p><code>sudo make install_fw</code></p></li>
+<li><p>载入模块</p>
+<p><code>sudo modprobe rtl8xxxu_git</code></p></li>
+</ol>
+<p>安装成功后，可以在<code>设置</code>→<code>Wi-Fi</code>中找到网卡
+<code>Realtek RTL8188GU</code>,顺利完成无线网卡驱动的安装。</p>
+<div class="note primary"><ul>
+<li>2024年07月17日,
+在办公室的台式机<code>90M2CTO1WW (QiTianM428-N000)</code>测试失败，或许是<code>USB</code>版的网卡不稳定？由于时间的关系，不再研究无线<code>wifi</code>在<code>linux</code>上的启用。</li>
+<li>2024年08月12日,
+在办公室的台式<code>90M2CTO1WW(QiTianM428-N000)</code>再次测试，重新安装<code>rtl8188gu-dkms-git</code>之后仍然将网卡识别为光盘，但是执行<code>sudo modprobe rtl8188</code>之后再重启，同时更换的插入的<code>USB</code>接口，发现无线网卡启动成功。</li>
+<li>2024年08月13日, 通过<code>rtl8xxxu-dkms</code>官网<a
+target="_blank" rel="noopener" href="https://kkgithub.com/a5a5aa555oo/rtl8xxxu">https://kkgithub.com/a5a5aa555oo/rtl8xxxu</a>安装固件.</li>
+</ul>
+</div>
+<h2
+id="安装驱动rtl8xxxu-dkms-git"><del>安装驱动<code>rtl8xxxu-dkms-git</code></del></h2>
+<p><del>根据文章<a
+target="_blank" rel="noopener" href="https://melonedo.github.io/2024/05/13/RTL8188GU.html">RTL8188GU驱动安装</a>,
+<code>rtl8188gu-dkms-git</code>有已知性能问题，在用户态可以看到一个RTW_CMD_THREAD。我使用时延迟很大并且使用一会就会断开，只能通过拔插恢复。同时也说明<code>rtl8xxxu-dkms-git</code>由<code>Linux</code>主线移植的驱动，性能优异，于是决定卸载<code>rtl8188gu-dkms-git</code>后安装<code>rtl8xxxu-dkms-git</code>。</del></p>
+<figure class="highlight sh"><figcaption><span>rtl8xxxu驱动安装</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">paru -S rtl8xxxu-dkms-git</span><br><span class="line"><span class="built_in">sudo</span> modprobe rtl8xxxu</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p><del>如果已经安装了前面的McMCCRU版本的驱动，可以在/etc/modprobe.d/blacklist中添加一行blacklist
+8188gu屏蔽旧驱动。</del></p>
+</div>
+<h2 id="安装-dnsmasq"><del>安装 dnsmasq</del></h2>
+<p><del>当安装好<code>rtl8xxxu-dkms-git</code>后，发现使用<code>Gnome</code>自带的开启wifi热成功，但是使用手机连接热点总是失败，同时<code>wifi</code>热点也随之关闭。原因是没有安装<code>dnsmasq</code>，它的主要作用是提供
+DNS 缓存和 DHCP 服务功能。作为域名解析服务器(DNS)，dnsmasq可以通过缓存
+DNS 请求来提高对访问过的网址的连接速度。作为DHCP 服务器，dnsmasq
+可以用于为局域网电脑分配内网ip地址和提供路由。DNS和DHCP两个功能可以同时或分别单独实现。dnsmasq轻量且易配置，适用于个人用户或少于50台主机的网络。此外它还自带了一个
+PXE 服务器。所以如果没有这个服务，那wifi热点就无法为手机分配 dns,
+也就无法启动wifi热点。安装此服务即可：</del></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S dnsmasq</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p>根据文章<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_21946723/article/details/134450901">Arch
+Linux上简单地创建wifi热点（只用一块无线网卡）</a>,
+共享wifi需要安装<code>linux-wifi-hotspot</code>,
+但是按其配置好我的电脑并不能通过<code>linux-wifi-hotspot</code>共享网络，或许在其文章底部的<del>当然不是用来共享校园网</del>说明了问题。于是果断删除此软件,在安装好<code>dnsmasq</code>之后，使用<code>Gnome</code>自带的创建<code>wifi</code>共享网络成功。</p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -983,431 +1586,6 @@ various Physics Journals</a></li>
 <li><a target="_blank" rel="noopener" href="https://ctan.org/pkg/revtex">revtex -Styles for various
 Physics Journals</a></li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/06/Outlook%E9%82%AE%E7%AE%B1%E5%8F%96%E6%B6%88StartDaily%E9%82%AE%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/07/06/Outlook%E9%82%AE%E7%AE%B1%E5%8F%96%E6%B6%88StartDaily%E9%82%AE%E4%BB%B6/" class="post-title-link" itemprop="url">Outlook邮箱取消StartDaily邮件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-07-06 00:43:22" itemprop="dateCreated datePublished" datetime="2024-07-06T00:43:22+08:00">2024-07-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>本来我的<code>Outlook</code>邮箱是相当纯净的，但是最近总是收到<code>Start Daily</code>的邮件，有点不能接受。研究后发现解决方法：</p>
-<ul>
-<li>登录网页版的<code>Outlook</code>邮箱：<a
-target="_blank" rel="noopener" href="https://outlook.live.com/owa/">Outlook登录</a></li>
-<li>点击右上角您的头象，然后选择<code>我的Microsoft帐户</code></li>
-<li>在左侧点击第二项<code>您的信息</code></li>
-<li>在右侧向下滚动，找到<code>帐户信息</code>,
-再点击<code>通信首选项</code></li>
-<li>将所有的订阅取消,然后点击应用，<code>Outlook</code>得归清静。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/05/vim-vsnip%E8%87%AA%E5%AE%9A%E4%B9%89%E7%89%87%E6%AE%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/07/05/vim-vsnip%E8%87%AA%E5%AE%9A%E4%B9%89%E7%89%87%E6%AE%B5/" class="post-title-link" itemprop="url">vim-vsnip自定义片段</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-07-05 23:15:39" itemprop="dateCreated datePublished" datetime="2024-07-05T23:15:39+08:00">2024-07-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>插件<code>vim-vsnip</code>自带了相当数量的补全插件，但是一般都是通用的片段，对于编写自己常用的文件还需要自定义片段。本文记录自定义片段的具体过程。</p>
-<h2 id="安装插件">安装插件</h2>
-<figure class="highlight lua"><figcaption><span>~/.config/nvim/lua/lazy-init.lua</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">&quot;lazy&quot;</span>).setup(&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">&#x27;hrsh7th/cmp-vsnip&#x27;</span> ,</span><br><span class="line">    <span class="string">&#x27;hrsh7th/vim-vsnip&#x27;</span> ,</span><br><span class="line">    <span class="string">&#x27;rafamadriz/friendly-snippets&#x27;</span> ,</span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="编辑片段">编辑片段</h2>
-<p>这里可以使用命令<code>VsnipOpen</code>,
-或者直接编辑<code>~/.vsnip/markdown.json</code>就可以直接添加<code>markdown</code>相应的片段。在编写过程中，为了适应<code>Next</code>博客主题输入数学公式的需要，需要输入<code>$$</code>,
-但是这个片段是错误的，因为默认<code>$</code>是变量的符号，于是转义，片段的转义符号为<code>\\</code>,
-于是得相应片段为：</p>
-<figure class="highlight lua"><figcaption><span>~/.vsnip/markdown.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;math-sup&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;Vsnips.EnableAutoTrigger&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;^&#123;&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;^&#123;$1&#125;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;math formular&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-sub&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;Vsnips.EnableAutoTrigger&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;_&#123;&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;_&#123;$1&#125;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;math formular&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-dkuohao&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;Vsnips.EnableAutoTrigger&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;&#123;&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;$1&#125;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;math formular&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-fkuohao&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;Vsnips.EnableAutoTrigger&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;[&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;[$1]&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;math formular&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-ykuohao&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;Vsnips.EnableAutoTrigger&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;(&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;($1)&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;math formular&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-sqrt&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;Vsnips.EnableAutoTrigger&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;sqrt&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;\\sqrt&#123;$1&#125;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;math formular&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-frac&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;Vsnips.EnableAutoTrigger&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;frac&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;\\frac&#123;$1&#125;&#123;&lt;++&gt;&#125;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;math formular&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-tag&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;tag&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;\\$\\tag&#123;$1&#125;\\label&#123;tag&lt;++&gt;&#125;\\$&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;math referance&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-eqref&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;eqref&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;\\$\\eqref&#123;eq:$1&#125;\\$&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;math referance&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-label&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;eqlabel&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;\\label&#123;eq:$1&#125;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;math labels&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-multi2&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;align&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;\\$\\$\\begin&#123;align&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;$1&quot;</span>,</span><br><span class="line">            <span class="string">&quot;\\end&#123;align&#125;\\$\\$&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Multi-line Equations&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-multi1&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;mequation&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;\\$\\$\\begin&#123;equation&#125;\\label&#123;eq:$1&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;\\begin&#123;aligned&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;\\end&#123;aligned&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;\\end&#123;equation&#125;\\$\\$&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Multi-line Equations&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;math-simple&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;equation&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;\\$\\$\\begin&#123;equation&#125;\\label&#123;eq:$1&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;\\end&#123;equation&#125;\\$\\$&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Simple Equation&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;LinkGrid&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;linkgrid&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% linkgrid %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot; $1 | https://&lt;+url+&gt; | &lt;+description+&gt; | /Picture/&lt;++&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&#123;% endlinkgrid %&#125;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;For diary.sh write&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;button&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;button&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% button https://&lt;+url+&gt;, $1 %&#125;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;For diary.sh write&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;fold&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;fold&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&lt;details&gt;&lt;summary&gt;$1&lt;/summary&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;+contents+&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;/details&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;For diary.sh write&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;more&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;more&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&lt;!-- more --&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;For diary.sh write&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;arrow&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;arrow&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;$&#123;1|&amp;rarr;,&amp;uarr;,&amp;darr;,&amp;larr;,&amp;harr;|&#125;&quot;</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;picture&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;picture&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;![$1](/Picture/&lt;+pic+&gt; \&quot;&lt;+title+&gt;\&quot;)&lt;++&gt;&quot;</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;centertext&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;center&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% cq %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;$1&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&#123;% endcq %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;textcolor&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;color&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&lt;label style=\&quot;color:$&#123;1|red,yellow,blue,cyan,gold,green,gray,orange|&#125;\&quot;&gt;&lt;++&gt;&lt;/label&gt;&lt;++&gt;&quot;</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;underline&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;underline&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&lt;u&gt;$1&lt;/u&gt;&lt;++&gt;&quot;</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;sub&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;__&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&lt;sub&gt;$1&lt;/sub&gt;&lt;++&gt;&quot;</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;sup&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;^^&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&lt;sup&gt;$1&lt;/sup&gt;&lt;++&gt;&quot;</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;href&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;ref&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;[$1](/&lt;+year+&gt;/&lt;+month+&gt;/&lt;+day+&gt;/&lt;+article+&gt;)&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Ref the article of my blog&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;hurl&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;url&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;[$1](&lt;+url+&gt;)&lt;++&gt;&quot;</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;delete&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;delete&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;~~$1~~&quot;</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;code&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;code&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% code &lt;+title+&gt; lang:$&#123;1|sh,python,lua,perl,yaml,ruby|&#125; %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;+code+&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&#123;% endcode %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;codeblock&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;codeblock&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% codeblock &lt;+title+&gt; lang:$&#123;1|sh,python,lua,perl,yaml,ruby|&#125; %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;+code+&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&#123;% endcodeblock %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;```&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;```&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;```$&#123;1|sh,python,lua,perl,yaml,ruby|&#125; &lt;+title+&gt; &quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;+code+&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;```&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;note&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;note&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% note $&#123;1|default,primary,success,info,warning,danger|&#125; %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&#123;% endnote %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;tabs&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;tabs&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% tabs $&#123;1:&lt;+UniqueName+&gt;&#125; %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;!-- tab $&#123;2:&lt;+tabcaption+&gt;&#125; --&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;!-- endtab --&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&#123;% endtabs %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;tab&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;tab&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&lt;!-- tab $&#123;2:&lt;+tabcaption+&gt;&#125; --&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;!-- endtab --&gt;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;label&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;label&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% label $&#123;1|default,primary,success,info,warning,danger|&#125;@$&#123;2:&lt;+content+&gt;&#125; %&#125;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;centerquote&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;centerquote&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% centerquote %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;$&#123;1:&lt;+content+&gt;&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&#123;% endcenterquote %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;video&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;video&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% video $&#123;1|/Video/&lt;++&gt;,https://&lt;+website+&gt;|&#125;%&#125;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;pdf&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;pdf&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% pdf $&#123;1|/PDF/&lt;++&gt;.pdf,https://&lt;+website+&gt;|&#125;%&#125;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;grouppicture&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;prefix&quot;</span>: [<span class="string">&quot;grouppicture&quot;</span>],</span><br><span class="line">        <span class="string">&quot;body&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;&#123;% grouppicture $&#123;1:&lt;+number+&gt;&#125;-$&#123;2:&lt;+layout+&gt;&#125; &#125;%&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;![$&#123;3:&lt;+picturetitle+&gt;&#125;]($&#123;4:&lt;+picture+&gt;&#125;)&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&#123;% endgroudpicture %&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&lt;++&gt;&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Next theme environment for Hexo&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="参考资料">参考资料</h2>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://github.com/hrsh7th/vim-vsnip/blob/master/README.md">hrsh7th/vim-vsnip</a></li>
-<li><a target="_blank" rel="noopener" href="https://vsnips.corvo.fun/zh/intro/">Vsnips
-Documents</a></li>
-<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2146403">vsnip
-插件</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/05/Linux%E4%B8%AD%E4%BD%BF%E7%94%A8inxi%E8%8E%B7%E5%8F%96%E5%90%84%E7%A7%8D%E4%BF%A1%E6%81%AF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/07/05/Linux%E4%B8%AD%E4%BD%BF%E7%94%A8inxi%E8%8E%B7%E5%8F%96%E5%90%84%E7%A7%8D%E4%BF%A1%E6%81%AF/" class="post-title-link" itemprop="url">Linux中使用inxi获取各种信息</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-07-05 16:55:55" itemprop="dateCreated datePublished" datetime="2024-07-05T16:55:55+08:00">2024-07-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><code>inix</code> 是一个用于获取 Linux
-系统信息的终端命令。能够获取软件和硬件的详细信息，比如计算机型号、内核版本、发行版号以及桌面环境等信息，甚至可以读取主存模块占用主板的哪块
-RAM 卡槽等详细信息。</p>
-<p><code>inxi</code> 还可以用于监控系统中正在消耗 CPU
-或者内存资源的进程。</p>
-<p>在本文中，我将展示使用 <code>inxi</code> 命令获取系统信息的常用操作。</p>
-<p>首先，我将展示下如何安装 <code>inxi</code> 命令。</p>
-<h3 id="在-linux-上安装-inxi">在 Linux 上安装 inxi</h3>
-<p><code>inxi</code> 是一个非常流行的工具，所以在大多数 Linux
-发行版仓库中都可以轻松获取到该工具。不过还没有流行到各大 Linux
-发行版默认就安装了该软件，所以需要我们自己安装一下。</p>
-<p>在 Ubuntu/Debian 发行版系统中，安装命令：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install inxi</span><br></pre></td></tr></table></figure>
-<p>在 Fedora/RHEL8-based 等发行版中，安装命令：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> dnf install -y epel-release</span><br><span class="line"><span class="built_in">sudo</span> dnf install -y inxi</span><br></pre></td></tr></table></figure>
-<p>在 <code>Arch Linux</code> 以及它的派生分支版本中，安装命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S inxi</span><br></pre></td></tr></table></figure>
-<h3 id="使用-inxi-获取系统信息">使用 inxi 获取系统信息</h3>
-<p>你可以在终端运行 <code>inxi</code> 命令来总体浏览下系统信息。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inxi</span><br></pre></td></tr></table></figure>
-<p>如下图所示，运行 <code>inxi</code> 命令可以简要浏览
-CPU、时钟频率（<code>speed/min/max</code>）、内核（<code>Kernel</code>）、内存（<code>Mem</code>）、磁盘存储空间（<code>Storage</code>）、运行进程数量（<code>Procs</code>）以及
-Shell 等信息。</p>
-<figure>
-<img
-src="https://img.linux.net.cn/data/attachment/album/202112/17/134938gckyz33o3ybxggbs.jpg"
-alt="The default output of inxi command" />
-<figcaption aria-hidden="true">The default output of inxi
-command</figcaption>
-</figure>
-<p>使用 <code>-b</code> 参数可以获取更为详细的系统信息。<code>-b</code> 参数会读取更多有关
-CPU、驱动器、当前运行进程、主板 UEFI
-版本、GPU、显示分辨率以及网络设备等详细信息。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inxi -b</span><br></pre></td></tr></table></figure>
-<figure>
-<img
-src="https://img.linux.net.cn/data/attachment/album/202112/17/134938wzhamzbmbl7b11lk.jpg"
-alt="Detailed hardware and software information about machine as reported by inxi" />
-<figcaption aria-hidden="true">Detailed hardware and software
-information about machine as reported by inxi</figcaption>
-</figure>
-<p>类似 <code>-b</code> 参数使用方法，<code>inxi</code> 还有许多其他的参数可供使用。你可以综合使用这些参数来获取你关心的信息。</p>
-<p>让我们看几个实例。</p>
-<h3 id="获取音频设备信息">获取音频设备信息</h3>
-<p>使用 <code>-A</code> 参数可以获取有关音频（输出）设备信息，包括物理音频（输出）设备、声音服务器以及音频驱动等详细信息。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inxi -A</span><br></pre></td></tr></table></figure>
-<figure>
-<img
-src="https://img.linux.net.cn/data/attachment/album/202112/17/134938q3y2pjpsps3qpymq.jpg"
-alt="Output of inxi command when “-A” flag is used" />
-<figcaption aria-hidden="true">Output of inxi command when “-A” flag is
-used</figcaption>
-</figure>
-<h3 id="获取电池信息">获取电池信息</h3>
-<p>使用 <code>-B</code> 参数，可以获取有关电池的信息（如果安装了电池）。你将读取到例如以 <code>Wh</code>（瓦特小时）为单位的当前电池电量和状况。</p>
-<p>因为我使用的是台式机，所以这里仅仅作为一个示例，让我们看看使用 <code>inxi -B</code> 会输出什么。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Battery:   ID-1: BAT0 charge: 50.0 Wh (100.0%) condition: 50.0/50.0</span><br></pre></td></tr></table></figure>
-<h3 id="获取-cpu-信息">获取 CPU 信息</h3>
-<p><code>-C</code> 参数用于获取有关 CPU 的详细信息。比如包括 CPU
-缓存大小、频率（单位 <code>MHz</code>，如果有多核，会显示每个核心的频率）、核心数、CPU
-型号以及 CPU 是 32 位还是 64 位。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inxi -C</span><br></pre></td></tr></table></figure>
-<figure>
-<img
-src="https://img.linux.net.cn/data/attachment/album/202112/17/134939ag2s0byetgbcarce.jpg"
-alt="Detailed CPU information displayed by inxi" />
-<figcaption aria-hidden="true">Detailed CPU information displayed by
-inxi</figcaption>
-</figure>
-<p>注意，如果是在虚拟机中使用 <code>inix -C</code>，<code>inxi</code> 读取到的 <code>CPU</code> 的最大和最小频率可能异常。下面是一个在四核
-Debian 11 虚拟机中使用 <code>-C</code> 参数的示例输出。</p>
-<figure>
-<img
-src="https://img.linux.net.cn/data/attachment/album/202112/17/134939u2isin8zhccrrhhn.jpg"
-alt="An example output of using the “-C” flag in a Virtual Machine" />
-<figcaption aria-hidden="true">An example output of using the “-C” flag
-in a Virtual Machine</figcaption>
-</figure>
-<h3 id="获取更多的系统信息">获取更多的系统信息</h3>
-<p>使用 <code>-F</code> 参数可以获取更详细的系统信息（类似 <code>-b</code> 参数，但会更为详细）。几乎囊括了所有层次的系统信息。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inxi -F</span><br></pre></td></tr></table></figure>
-<p><img
-src="https://img.linux.net.cn/data/attachment/album/202112/17/134939fcdz7eg4fsqf8plz.jpg" /></p>
-<h3 id="获取图形显示相关信息">获取图形显示相关信息</h3>
-<p><code>-G</code> 参数可以获取和图形相关的信息。</p>
-<p>它会显示所有的图形设备（GPU）、正在使用的 GPU
-驱动（有助于检查是否使用 Nvidia 驱动还是 nouveau
-驱动）、显示输出分辨率和驱动程序版本。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inxi -G</span><br></pre></td></tr></table></figure>
-<p><img
-src="https://img.linux.net.cn/data/attachment/album/202112/17/134940kkuiwcakzkkv1utm.jpg" /></p>
-<h3 id="获取运行进程信息">获取运行进程信息</h3>
-<p><code>-I</code> 参数（大写字母 <code>i</code>）显示正在运行的进程、当前
-shell 、内存（内存使用情况）以及 <code>inxi</code> 版本号等信息。</p>
-<figure>
-<img
-src="https://img.linux.net.cn/data/attachment/album/202112/17/134940p7ccatw7weemte8n.png"
-alt="inxi get running process info" />
-<figcaption aria-hidden="true">inxi get running process
-info</figcaption>
-</figure>
-<h3 id="获取内存信息">获取内存信息</h3>
-<p>可能你已经猜到了，<code>-m</code> 参数可以获取与内存相关的信息。</p>
-<p>它读取了如总可用内存、最大内存容量（硬件或 CPU
-支持的）、主板物理内存插槽数、是否存在
-ECC、插入的内存插槽，以及枚举每个插槽中运行的内存模块的大小和运行速度等信息。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inxi -m</span><br></pre></td></tr></table></figure>
-<p>要使用 <code>-m</code> 参数获取更详细的信息，例如最大容量、每个插槽的内存模块信息等，需要超级用户权限。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> inxi -m</span><br></pre></td></tr></table></figure>
-<p><img
-src="https://img.linux.net.cn/data/attachment/album/202112/17/134941vu61m9tqdxugq2gt.jpg" /></p>
-<p>如果只是希望简短的输出内存信息，可以使用 <code>-memory-short</code> 参数。</p>
-<p>使用 <code>-memroy-short</code> 参数将会只显示总内存以及当前已使用的内存量。</p>
-<h3 id="查看正在使用的包存储库">查看正在使用的包存储库</h3>
-<p>当使用 <code>-r</code> 参数时，会列举当前正在使用的包管理仓库或者更新本地仓库缓存中的所有存储库列表。</p>
-<figure>
-<img
-src="https://img.linux.net.cn/data/attachment/album/202112/17/134941kfwpalmlftzwm916.png"
-alt="List of repositories in use" />
-<figcaption aria-hidden="true">List of repositories in use</figcaption>
-</figure>
-<h3 id="获取-raid-设备信息">获取 RAID 设备信息</h3>
-<p><code>-R</code> 参数用于获取所有 RAID 设备相关信息。</p>
-<p>令人惊喜的是，它甚至显示了有关 ZFS RAID（默认情况下，多数 Linux
-系统不包含该文件系统）的信息。它显示了 RAID
-设备上文件系统的详细信息、状态（包含离线状态、总大小和可用大小等）。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inxi -R</span><br></pre></td></tr></table></figure>
-<p><img
-src="https://img.linux.net.cn/data/attachment/album/202112/17/134941pj8dni7qjdnw4d3n.jpg" /></p>
-<h3 id="在-linux-终端中查询天气对这是可以的">在 Linux
-终端中查询天气（对，这是可以的）</h3>
-<p>利用 <code>-W</code> 参数，你可以查询地球上任何地方的天气情况。</p>
-<p><code>-W</code> 参数后面，需要携带以下中的任一一个体现位置的信息</p>
-<ul>
-<li>邮政编码</li>
-<li>纬度</li>
-<li>城市（及州）、国家（不能含有空格，使用 “+” 替换空格）</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inxi -W Baroda,India</span><br></pre></td></tr></table></figure>
-<figure>
-<img
-src="https://img.linux.net.cn/data/attachment/album/202112/17/134942ja1ue68kvor8ecsu.jpg"
-alt="Use of the “-W” flag with inxi followed by the city,country location descriptor" />
-<figcaption aria-hidden="true">Use of the “-W” flag with inxi followed
-by the city,country location descriptor</figcaption>
-</figure>
-<h3 id="监控系统资源使用情况">监控系统资源使用情况</h3>
-<p><code>inxi</code> 除了提供有关已安装的硬件和驱动的信息外，还可以用于资源监控。</p>
-<p>使用 <code>-t</code> 参数可以显示进程信息。你还可以可选项 <code>-c</code> （用于
-CPU）和 <code>-m</code>（用于内存）。这些选项结合使用可以按指定数量列出进程信息。</p>
-<p>下面是一些使用 <code>-t</code> 参数监控资源信息的示例。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inxi -t</span><br></pre></td></tr></table></figure>
-<p>命令 <code>inxi -t</code> 默认效果等同于 <code>inxi -t cm5</code> 的效果。</p>
-<figure>
-<img
-src="https://img.linux.net.cn/data/attachment/album/202112/17/134942w2nsininwbwj2fsc.jpg"
-alt="No difference in output of “inti -t” and “inxi -t cm5”" />
-<figcaption aria-hidden="true">No difference in output of “inti -t” and
-“inxi -t cm5”</figcaption>
-</figure>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inxi -t cm10</span><br></pre></td></tr></table></figure>
-<p><img
-src="https://img.linux.net.cn/data/attachment/album/202112/17/134942zwuo9ukw9t8f9b12.jpg" /></p>
-<p>偶尔需要监控资源使用情况时，该工具挺管用。如果需要更多的资源监控功能，则推荐使用 <a
-target="_blank" rel="noopener" href="https://itsfoss.com/linux-system-monitoring-tools/">专用系统资源监控工具</a>。</p>
-<h3 id="总结">总结</h3>
-<p>对于需要诊断计算机问题以及获取那些并不熟悉的软硬件信息的人来说，<code>inxi</code> 工具是十分便利且有用的。它能识别那些消耗
-CPU、内存的进程；可以检查是否安装了合适的图形驱动程序、主板 UEFI/BIOS
-是否需要更新等等。</p>
-<p>事实上，在 <code>inxi</code> 开源社区论坛上，我们要求那些寻求帮助的成员提供 <code>inxi</code> 命令输出内容以便判断他们当前正在使用什么样的系统环境。</p>
-<p>我知道也有其他的工具可以读取 Linux
-上的硬件信息，不过 <code>inxi</code> 同时能读取硬件和软件信息，这也是我喜欢它的地方所在。</p>
 
       
     </div>

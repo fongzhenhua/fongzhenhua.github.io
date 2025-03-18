@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">505</span>
+          <span class="site-state-item-count">508</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,303 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/08/12/%E8%A7%A3%E5%86%B3Ubuntu%E7%9A%84%E5%86%85%E9%83%A8%E9%94%99%E8%AF%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/08/12/%E8%A7%A3%E5%86%B3Ubuntu%E7%9A%84%E5%86%85%E9%83%A8%E9%94%99%E8%AF%AF/" class="post-title-link" itemprop="url">解决Ubuntu的内部错误</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-08-12 15:50:58" itemprop="dateCreated datePublished" datetime="2024-08-12T15:50:58+08:00">2024-08-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="问题描述">问题描述</h2>
+<p><a
+target="_blank" rel="noopener" href="https://ubuntu.com/">ubuntu</a>是大多数人步入<code>Linux</code>世界的入门级系统，其易用性使得多数对系统配置不高的人容易接受这一系统。在我使用<code>Linux</code>的早期，也是使用了一段时间的<code>ubuntu</code>,
+但是直到有一天，它经常出现<label style="color:red">内部错误</label>，不得不让早期的我认为它不友好，于是转入<code>Debian</code>.它的错误对话框如下：</p>
+<figure>
+<img src="https://imgos.cn/2024/08/12/66b9bf1b3db54.png"
+alt="Ubuntu提示出现了内部错误" />
+<figcaption aria-hidden="true">Ubuntu提示出现了内部错误</figcaption>
+</figure>
+<h2 id="原因分析">原因分析</h2>
+<p>Ubuntu桌面版预装了Apport，它是一个错误收集系统，会收集软件崩溃、未处理异常和其他，包括程序bug，并为调试目的生成崩溃报告。当一个应用程序崩溃或者出现Bug时候，Apport就会通过弹窗警告用户并且询问用户是否提交崩溃报告:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">“Sorry, the application XXXX has closed unexpectedly.”   </span><br><span class="line">“对不起，应用程序XXXX意外关闭了。”   </span><br><span class="line">“Sorry, Ubuntu XX.XX has experienced an internal error.”   </span><br><span class="line">“对不起，Ubuntu XX.XX 发生了一个内部错误。”   </span><br><span class="line">“System program problem detected.”   </span><br><span class="line">“检测到系统程序问题。”</span><br></pre></td></tr></table></figure>
+<p>实际情况并不是Ubuntu容易出现内部错误，而是一旦程序崩溃过一次，就会生成一个.crash文件，记录着崩溃信息，这些崩溃信息保存在目录: <code>/var/crash/</code></p>
+<p>只要你不去处理，每次开机都会提示你有错误。也就是说：报错并不一定是出现了什么错误，而是曾经出现过错误，而你没有处理。通常情况下，到/var/crash/目录查看崩溃文件，如果不是什么大问题(通常都没什么大问题)，删除该目录下的崩溃文件，之后就不会再报错误了.。</p>
+<h2 id="解决方案">解决方案</h2>
+<h3 id="永久关闭apport错误报告">永久关闭Apport错误报告</h3>
+<p>修改Apport配置文件<code>/etc/default/apport</code></p>
+<figure class="highlight sh"><figcaption><span>/etc/default/apport</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enabled=0</span><br></pre></td></tr></table></figure>
+<p>重启你的Ubuntu系统，Apport将会自动关闭 </p>
+<h3 id="完全移除apport">完全移除Apport</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get purge apport</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/08/10/Linux%E7%BB%88%E7%AB%AF%E6%89%93%E5%8D%B0Unicode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/08/10/Linux%E7%BB%88%E7%AB%AF%E6%89%93%E5%8D%B0Unicode/" class="post-title-link" itemprop="url">Linux终端打印Unicode</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-08-10 16:32:02" itemprop="dateCreated datePublished" datetime="2024-08-10T16:32:02+08:00">2024-08-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>编写<code>Shell</code>脚本的过程中，使用常用的图标符号增加美观的同时也增强了易用性,
+比如使用软盘符💾、个人电脑符💻 等。
+本文总结在<code>Shell</code>脚本中显示<code>Unicode</code>符号的方法：</p>
+<h2 id="查询-unicode-编码">查询 Unicode 编码</h2>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://www.unicodery.com/">https://www.unicodery.com/</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.lddgo.net/string/unicode-chart">在线Unicode编码字符查看</a></li>
+<li><a target="_blank" rel="noopener" href="https://unicodeplus.com/">https://unicodeplus.com/</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.rapidtables.org/zh-CN/code/text/unicode-characters.html">Unicode字符表</a></li>
+<li><a target="_blank" rel="noopener" href="https://symbl.cc/cn/">https://symbl.cc/cn/</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.nerdfonts.com/cheat-sheet">https://www.nerdfonts.com/cheat-sheet</a></li>
+</ul>
+<h2 id="使用-echo-命令">使用 echo 命令</h2>
+<p>例如查询到💾的Unicode编码为<code>U+1F4BE</code>,
+则使用<code>echo</code>应当开启<code>-e</code>选项，即：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\u0001F4BE&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用-printf-命令">使用 printf 命令</h2>
+<p>同样输出💾，使用<code>printf</code>命令为:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span> <span class="string">&quot;\u0001F4BE&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用-python-脚本">使用 Python 脚本</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">u&quot;\U0001F4BE&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="使用-perl-脚本">使用 Perl 脚本</h2>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> <span class="string">&quot;\x&#123;1F4BE&#125;\n&quot;</span> ;</span><br></pre></td></tr></table></figure>
+<h2 id="在-html-中使用-unicode">在 Html 中使用 Unicode</h2>
+<p><code>Html</code>中使用<code>Unicode</code>应当使用其专用的格式，例如<a
+target="_blank" rel="noopener" href="https://www.unicodery.com/">https://www.unicodery.com/</a>会直接给出。输出💾的源码为<code>&amp;#x1F4BE;</code>.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/08/07/Python%E4%B9%8Bpandas%E6%A8%A1%E5%9D%97%E6%8A%A5%E9%94%99%E4%BF%AE%E5%A4%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/08/07/Python%E4%B9%8Bpandas%E6%A8%A1%E5%9D%97%E6%8A%A5%E9%94%99%E4%BF%AE%E5%A4%8D/" class="post-title-link" itemprop="url">Python之pandas模块报错修复</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-08-07 13:59:27" itemprop="dateCreated datePublished" datetime="2024-08-07T13:59:27+08:00">2024-08-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2
+id="attributeerror-partially-initialized-module-pandas-has-no-attribute-dataframe-most-likely-due-to-a-circular-import">AttributeError:
+partially initialized module 'pandas' has no attribute 'DataFrame' (most
+likely due to a circular import)</h2>
+<p><a
+target="_blank" rel="noopener" href="https://www.runoob.com/pandas/pandas-tutorial.html">Pandas</a> 是
+<code>Python</code>
+语言的一个扩展程序库，用于数据分析。但是今天在使用<code>pandas</code>导出数据时，发现它报错了：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AttributeError: partially initialized module <span class="string">&#x27;pandas&#x27;</span> has no attribute <span class="string">&#x27;DataFrame&#x27;</span> (most likely due to a circular import)</span><br></pre></td></tr></table></figure>
+<p>经过研究发现它是由于我把同目录下的另一个测试程序改名为<code>pandas.py</code>导致的，然后修改了那个程序后，问题解决。</p>
+<h2 id="参考文章">参考文章</h2>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://pandashowto.com/partially-initialized-module-pandas-has-no-attribute/">How
+to fix AttributeError: partially initialized module ‘pandas’ has no
+attribute ‘DataFrame’ (most likely due to a circular import)</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42989041/article/details/111991311">AttributeError:
+module ‘pandas‘ has no attribute ‘DataFrame‘ 报错解决 Python
+Pandas</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1071,388 +1368,6 @@ directory</h3>
 target="_blank" rel="noopener" href="https://www.runoob.com/python/python-gui-tkinter.html">Python
 GUI编程(Tkinter)</a></p>
 </div>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/08/02/%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%ACNode%E7%9A%84%E5%8C%BA%E5%88%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/08/02/%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%ACNode%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">不同版本Node的区别</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-08-02 23:18:56" itemprop="dateCreated datePublished" datetime="2024-08-02T23:18:56+08:00">2024-08-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><code>Node.js</code> 是一个流行的服务器端 JavaScript
-运行时环境，用于构建高性能、可扩展的网络应用程序。<code>Node.js</code>
-有两个主要的版本发布频道，分别是 <code>Current</code> 版本和
-<code>LTS</code> 版本，它们之间有一些重要的区别。在本文中，我将详细介绍
-<code>Node.js</code> 的 <code>Current</code> 版本和 <code>LTS</code>
-版本的区别，并通过示例来说明这些区别。</p>
-<h2 id="node.js-的版本发布周期"><code>Node.js</code> 的版本发布周期</h2>
-<p>首先，让我们了解一下 <code>Node.js</code>
-的版本发布周期，以便更好地理解 <code>Current</code> 版本和
-<code>LTS</code> 版本之间的差异。</p>
-<ul>
-<li><code>Current</code> 版本：<code>Current</code> 版本是
-<code>Node.js</code>
-的最新开发版本，通常每隔几个月发布一次。它包含最新的功能、改进和实验性特性，但不太稳定。<code>Current</code>
-版本的目标是提供给开发人员一个平台来尝试新的功能和实验性特性，以便反馈和测试。</li>
-<li><code>LTS</code> 版本：<code>LTS</code>（Long-Term Support）版本是
-<code>Node.js</code>
-的长期支持版本，通常每隔两年发布一次。<code>LTS</code>
-版本的主要特点是稳定性和可靠性。它们接受持续的维护和安全更新，以确保企业和生产环境的稳定性。</li>
-</ul>
-<h2 id="区别一稳定性和可靠性">区别一：稳定性和可靠性</h2>
-<p>最明显的区别是 <code>Current</code> 版本和 <code>LTS</code>
-版本的稳定性和可靠性。<code>LTS</code>
-版本在发布后会接受长达几年的维护和安全更新，因此非常适合用于生产环境，特别是对于企业应用程序。相比之下，<code>Current</code>
-版本可能包含实验性特性和较新的代码，可能会引入不稳定性或潜在的问题，因此不建议在生产环境中使用。</p>
-<p>示例：假设你正在开发一个在线电子商务网站，该网站需要高度稳定性和可靠性。在这种情况下，你可能会选择使用
-<code>LTS</code>
-版本，因为它提供了经过验证的稳定性和长期支持，有助于确保你的网站在生产环境中保持高可用性。另一方面，如果你正在开发一个实验性的新功能，可以选择
-<code>Current</code> 版本，以便尝试最新的功能和改进。</p>
-<h2 id="区别二新特性和改进">区别二：新特性和改进</h2>
-<p><code>Current</code> 版本是 <code>Node.js</code>
-的最新开发版本，因此包含了最新的功能、改进和实验性特性。这使得它成为了尝试新技术和构建原型的理想选择。如果你想要访问最新的
-ECMAScript 版本、<code>Node.js</code> API
-或其他功能，<code>Current</code> 版本可能会更适合你。</p>
-<p>示例：假设你需要使用最新的 ECMAScript
-模块系统，以便更好地组织你的代码。在这种情况下，你可以选择
-<code>Current</code>
-版本，因为它可能会提供对这些新特性的更好支持。另外，如果你想尝试
-<code>Node.js</code> 中的实验性功能，例如 Web Streams API，也可以选择
-<code>Current</code> 版本来体验这些新功能。</p>
-<h2 id="区别三性能优化">区别三：性能优化</h2>
-<p><code>Current</code>
-版本通常包含了性能优化和改进，以提高应用程序的性能。这些优化可以包括更快的执行速度、更低的内存消耗和更好的并发处理能力。如果你对应用程序的性能有较高的要求，那么可能会考虑使用
-<code>Current</code> 版本来获得这些优势。</p>
-<p>示例：假设你正在开发一个实时多人游戏服务器，需要处理大量并发连接和快速响应时间。在这种情况下，你可能会选择
-<code>Current</code>
-版本，因为它可能包含了性能改进，有助于提高服务器的响应速度和并发处理能力，从而提供更好的游戏体验。</p>
-<h2 id="区别四维护和安全更新">区别四：维护和安全更新</h2>
-<p><code>LTS</code>
-版本的一个关键优势是它们接受长期的维护和安全更新。这意味着即使在发布后的几年内，<code>Node.js</code>
-社区仍然会修复潜在的安全漏洞和问题，以确保应用程序的安全性。对于企业和生产环境来说，这是一个非常重要的因素。</p>
-<p>示例：假设你的公司运行着一个在线支付平台，处理大量敏感用户数据。在这种情况下，安全性至关重要。你可能会选择
-<code>LTS</code>
-版本，因为它提供了长期的维护和安全更新，帮助你保持应用程序的安全性，同时避免潜在的安全威胁。</p>
-<h2 id="区别五社区支持">区别五：社区支持</h2>
-<p>由于 <code>LTS</code>
-版本在生命周期内接受长期的维护，因此通常拥有更广泛的社区支持。这意味着你可以更容易地找到解决问题的资源、文档和社区支持。相比之下，<code>Current</code>
-版本可能会更加小众，社区支持可能有限。</p>
-<p>示例：假设你在开发过程中遇到了一个复杂的问题，需要寻求帮助和支持。如果你使用的是
-<code>LTS</code>
-版本，你可能会更容易地在社区中找到有经验的开发者来帮助你解决问题，因为这个版本有更广泛的社区支持。</p>
-<h2 id="区别六升级频率">区别六：升级频率</h2>
-<p><code>LTS</code> 版</p>
-<p>本的升级频率较低，通常每隔两年发布一个新的 <code>LTS</code>
-版本。这使得企业可以更轻松地规划和管理升级过程。相比之下，<code>Current</code>
-版本的升级频率较高，可能每隔几个月就会发布一个新版本，需要更频繁的升级和迁移工作。</p>
-<p>示例：如果你的公司有一个严格的升级策略，并且希望最小化升级带来的风险和工作量，那么你可能会更倾向于选择
-<code>LTS</code>
-版本。这样，你可以更轻松地规划升级，并确保稳定性和可靠性。</p>
-<h2 id="如何选择适合的版本">如何选择适合的版本？</h2>
-<p>选择 <code>Node.js</code>
-的版本取决于你的具体需求和项目的性质。以下是一些指导原则，帮助你决定是使用
-<code>Current</code> 版本还是 <code>LTS</code> 版本：</p>
-<ol type="1">
-<li>生产环境 vs.
-开发环境：如果你的应用程序将在生产环境中运行，特别是对于企业级应用程序，通常建议使用
-<code>LTS</code>
-版本，以确保稳定性和安全性。对于开发和测试环境，你可以考虑使用
-<code>Current</code> 版本来尝试最新的功能和改进。</li>
-<li>功能需求：如果你需要访问最新的 ECMAScript 版本、<code>Node.js</code>
-API 或其他功能，<code>Current</code>
-版本可能更适合你。如果你的应用程序对稳定性要求较高，那么应该优先选择
-<code>LTS</code> 版本。</li>
-<li>性能需求：如果你对应用程序的性能有较高的要求，可以考虑使用
-<code>Current</code>
-版本，因为它可能包含性能优化。但要确保你有充分的测试和性能监控，以确保新版本不会引入性能问题。</li>
-<li>安全性：如果你处理敏感数据或对安全性有严格要求，<code>LTS</code>
-版本是更安全的选择，因为它接受长期的维护和安全更新。</li>
-<li>社区支持：如果你需要广泛的社区支持，特别是在解决问题时，<code>LTS</code>
-版本通常会有更多的资源和支持可用。</li>
-<li>升级策略：考虑你的公司或项目的升级策略。如果你希望最小化升级工作量，<code>LTS</code>
-版本可能更适合你。</li>
-</ol>
-<h2 id="结论">结论</h2>
-<p><code>Node.js</code> 的 <code>Current</code> 版本和 <code>LTS</code>
-版本之间存在明显的区别，涵盖了稳定性、新特性、性能、维护、社区支持和升级频率等方面。在选择适合你的版本时，需要综合考虑你的项目需求和优先级。无论你选择哪个版本，都要确保了解该版本的特性和限制，并采取适当的测试和监控措施，以确保应用程序的稳定性和性能。在任何情况下，<code>Node.js</code>
-的强大生态系统和活跃的社区都将为你提供支持和资源，帮助你构建出色的应用程序。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/08/02/%E5%86%85%E5%AD%98%E9%A2%91%E7%8E%87%E5%B9%B6%E9%9D%9E%E8%B6%8A%E9%AB%98%E8%B6%8A%E5%A5%BD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/08/02/%E5%86%85%E5%AD%98%E9%A2%91%E7%8E%87%E5%B9%B6%E9%9D%9E%E8%B6%8A%E9%AB%98%E8%B6%8A%E5%A5%BD/" class="post-title-link" itemprop="url">内存频率并非越高越好</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-08-02 14:51:47" itemprop="dateCreated datePublished" datetime="2024-08-02T14:51:47+08:00">2024-08-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>很多人觉得内存频率越高速度越快，尤其是在英特尔12代酷睿处理器支持DDR5之后，不少人都想升级到DDR5，以为升级到DDR5就能获得更高的性能。事实真的是这样吗？如下图两内存，都是同样的芝奇的DDR4
-3600MHz
-16GBx2的内存，为什么会有500+的价格差？因为它们有不同的CL时序，一个是18-22-22-42，另一个是16-19-19-39，这点区别就值500+。那么内存CL时序到底是什么？对性能又有什么影响？</p>
-<p><img src="https://thumbsnap.com/i/rpssrcWZ.jpg" /></p>
-<p>内存在存取数据时是以行列的方式进行，跟Excel表格类似，通过行列的方式定位数据。内存时序代表的是行列访问所需要的周期数（周期数不等于时间），主要有四个分别是CL，tRCD，tRP，tRAS。CL代表内存访问一次列所需的周期数，下图为16，tRCD表示内存访问一次行所需的最小周期数，下图中的19，tRP表示打开下一行的最小周期数，下图中为19，tRAS代表的是行活动到发出打开下一行的最小周期数。看起来很复杂，最重要的就是第一个，即CL。</p>
-<p><img src="https://thumbsnap.com/i/Tm3zwE8v.jpg" /></p>
-<p>CL全称CAS
-latency，内存访问一次列的延迟时间，在频率相同的情况下，CL值越小内存速度越快。就跟我们看小说一样，只要定位到了行，剩下的就是读行中的每一列，直到读完一行才会读下一行。内存只要定位到了数据所在的行，剩下的基本就是列操作，直到读完一行才会进行一次行操作。所以CL值对内存来说非常重要。</p>
-<p><img src="https://thumbsnap.com/i/PPyvUBcU.jpg" /></p>
-<p>从下表中可以发现CL（表中的CAS
-Latency）的值是随着内存频率的增加而增大的。DDR5
-4800MHz的CL值为40个时钟周期，比DDR4更大。这也是为什么DDR5比DDR4提升不大的原因，频率高了延迟更大。由于CL是时钟周期与内存频率相关不好比较，所以要换成时间。CL延迟时时间=1/（DDR频率/2）*
-CL周期数*1000。</p>
-<p><img src="https://thumbsnap.com/i/nQRdzqHh.jpg" /></p>
-<p>公式中的1代表1秒钟，内存频率除以2，是因为DDR的全称是Double Data
-Rate即双倍数据传输速率，如下图SDR不用除，QDR要除以4才是内存的时钟频率，因此上图的DDR4，DDR5都要除以2
-。乘1000是为了把微秒换成纳秒。所以上图DDR5
-4800MHz的CL延迟时间=1/（4800/2）*40*1000=16.67ns。</p>
-<p><img src="https://thumbsnap.com/i/68eD9NZA.jpg" /></p>
-<p>内存的CL，tRCD等都是可以通过BIOS修改的，如下图修改成1600MHz
-16CL和1500MHz
-15CL哪个更快？用上面的公式算CL延迟都是10ns，所以几乎一样快。决定内存速度的除了CL延迟以外，还有其它几个。但CL影响更大。</p>
-<p><img src="https://thumbsnap.com/i/7RhG2BXY.jpg" /></p>
-<p>现在我们来解决第一张图为什么后者比前者更贵的问题。2099的CL延迟时间为8.89ns，而1549的CL延迟时间为10ns，2099的存取速度更快，也因此更贵。</p>
-<p>引用：<a
-target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1722749333299450599">对内存频率的误解！以为频率越高速度就越快，真相未必是这样</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/08/02/ArchLinux%E8%A7%A3%E5%86%B3%E8%93%9D%E7%89%99%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E7%9A%84%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/08/02/ArchLinux%E8%A7%A3%E5%86%B3%E8%93%9D%E7%89%99%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">ArchLinux解决蓝牙无法打开的问题</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-08-02 13:12:56" itemprop="dateCreated datePublished" datetime="2024-08-02T13:12:56+08:00">2024-08-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="问题描述">问题描述</h2>
-<p>今天突然发现台式机上的蓝牙无法启动，按钮开启后蓝牙仍然处于关闭状态。如图所示：</p>
-<figure>
-<img src="http://imgos.cn/2024/08/02/66ac6a9d9002b.png"
-alt="蓝牙无法打开" />
-<figcaption aria-hidden="true">蓝牙无法打开</figcaption>
-</figure>
-<h2 id="解决方案">解决方案</h2>
-<h3 id="卸载并重新加载btusb内核模块支持蓝牙设备的内核模块">1.
-卸载并重新加载<code>btusb</code>内核模块（支持蓝牙设备的内核模块）</h3>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> rmmod btintel</span><br><span class="line"><span class="built_in">sudo</span> rmmod btusb</span><br><span class="line"><span class="built_in">sudo</span> modprobe btusb</span><br><span class="line"><span class="built_in">sudo</span> modprobe btintel</span><br></pre></td></tr></table></figure>
-<div class="note primary"><ul>
-<li>2024年08月29日, 升级ArchLinux后发现蓝牙再次无法打开，根据文章<a
-target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38305523/article/details/131031379">在Archlinux
-下蓝牙突然无法打开的解决办法</a> 修复此问题，于是做出如上修改。</li>
-<li>2024年12月08日, 升级ArchLinux后发现问题复现，但是这次我注意到是
-Linux 内核有更新。使用本方法仍然解决问题。</li>
-</ul>
-</div>
-<p>当蓝牙总是不能开启时，查看蓝牙服务， 得到如下信息:</p>
-<figure class="highlight sh"><figcaption><span>sudo systemctl status bluetooth.service</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">12月 08 21:08:03 archlinux bluetoothd[648]: src/plugin.c:init_plugin() System does not support bap plugin</span><br><span class="line">12月 08 21:08:03 archlinux bluetoothd[648]: src/plugin.c:init_plugin() System does not support bass plugin</span><br><span class="line">12月 08 21:08:03 archlinux bluetoothd[648]: src/plugin.c:init_plugin() System does not support mcp plugin</span><br><span class="line">12月 08 21:08:03 archlinux bluetoothd[648]: src/plugin.c:init_plugin() System does not support vcp plugin</span><br><span class="line">12月 08 21:08:03 archlinux bluetoothd[648]: profiles/audio/micp.c:micp_init() D-Bus experimental not enabled</span><br><span class="line">12月 08 21:08:03 archlinux bluetoothd[648]: src/plugin.c:init_plugin() System does not support micp plugin</span><br><span class="line">12月 08 21:08:03 archlinux bluetoothd[648]: src/plugin.c:init_plugin() System does not support ccp plugin</span><br><span class="line">12月 08 21:08:03 archlinux bluetoothd[648]: src/plugin.c:init_plugin() System does not support csip plugin</span><br><span class="line">12月 08 21:08:03 archlinux bluetoothd[648]: src/plugin.c:init_plugin() System does not support asha plugin</span><br><span class="line">12月 08 21:08:03 archlinux bluetoothd[648]: Bluetooth management interface 1.23 initialized</span><br></pre></td></tr></table></figure>
-<p>因此判断蓝牙无法启动的原因是内核升级造成的，因此使用此法成功解决问题。</p>
-<h3 id="安装蓝牙工具和工具包">2. 安装蓝牙工具和工具包</h3>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S --needed --noconfirm bluez bluez-utils pipewire-pulse bluedevil blueman</span><br></pre></td></tr></table></figure>
-<h3 id="启动蓝牙服务">3. 启动蓝牙服务</h3>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> service bluetooth start</span><br></pre></td></tr></table></figure>
-<h3 id="重新解除蓝牙设备的阻止">4. 重新解除蓝牙设备的阻止</h3>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rfkill block bluetooth</span><br><span class="line">rfkill unblock bluetooth</span><br></pre></td></tr></table></figure>
-<h2 id="蓝牙设备可被检测到">蓝牙设备可被检测到</h2>
-<figure>
-<img src="http://imgos.cn/2024/08/02/66ac6c85e6835.png"
-alt="蓝牙启动成功" />
-<figcaption aria-hidden="true">蓝牙启动成功</figcaption>
-</figure>
 
       
     </div>

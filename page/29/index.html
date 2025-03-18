@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">505</span>
+          <span class="site-state-item-count">508</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,297 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/19/gitignore%E6%96%87%E4%BB%B6%E7%9A%84%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/01/19/gitignore%E6%96%87%E4%BB%B6%E7%9A%84%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">gitignore文件的配置使用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-19 17:45:25" itemprop="dateCreated datePublished" datetime="2024-01-19T17:45:25+08:00">2024-01-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在使用Git的过程中，有的文件比如日志，临时文件，编译的中间文件等不要提交到代码仓库，这时就要设置相应的忽略规则，来忽略这些文件的提交。简单来说一个场景：在你使用git
+add
+.的时候，遇到了把你不想提交的文件也添加到了缓存中去的情况，比如项目的本地配置信息，如果你上传到Git中去其他人pull下来的时候就会和他本地的配置有冲突，所以这样的个性化配置文件我们一般不把它推送到git服务器中，但是又为了偷懒每次添加缓存的时候都想用git
+add
+.而不是手动一个一个文件添加，该怎么办呢？很简单，git为我们提供了一个.gitignore文件，只要在这个文件中声明哪些文件你不希望添加到git中去，这样当你使用git
+add .的时候这些文件就会被自动忽略掉。</p>
+<h2 id="git忽略文件的原则">Git忽略文件的原则</h2>
+<ul>
+<li>忽略操作系统自动生成的文件，比如缩略图等；</li>
+<li>忽略编译生成的中间文件、可执行文件等，也就是如果一个文件是通过另一个文件自动生成的，那自动生成的文件就没必要放进版本库，比如产生的.log日志文件；</li>
+<li>忽略你自己的带有敏感信息的配置文件，比如存放口令的配置文件。</li>
+</ul>
+<h2 id="使用方法">使用方法</h2>
+<p>在工作目录中新建一个文件<code>.gitignore</code>,
+然后把要忽略的文件名填进去，Git就会自动忽略这些文件。不需要从头写.gitignore文件，GitHub已经为我们准备了各种配置文件，只需要组合一下就可以使用了。
+<a
+target="_blank" rel="noopener" href="https://github.com/github/gitignore">https://github.com/github/gitignore</a></p>
+<h2 id="我的latex仓库配置">我的Latex仓库配置</h2>
+<figure class="highlight sh"><figcaption><span>.gitignore</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*.aux</span><br><span class="line">*.<span class="built_in">log</span></span><br><span class="line">*.pdf</span><br><span class="line">*.synctex.gz</span><br><span class="line">*.out</span><br></pre></td></tr></table></figure>
+<h2 id="参考文章">参考文章</h2>
+<p><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/52885189">[Git].gitignore文件的配置使用</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/19/vim-latex%E6%8F%92%E4%BB%B6%E5%BC%80%E5%90%AFAlt%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/01/19/vim-latex%E6%8F%92%E4%BB%B6%E5%BC%80%E5%90%AFAlt%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="post-title-link" itemprop="url">vim-latex插件开启Alt快捷键</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-19 01:03:44" itemprop="dateCreated datePublished" datetime="2024-01-19T01:03:44+08:00">2024-01-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在决定全面使用<code>vim-latex</code>来编写<code>latex</code>文件后，发现<code>Alt</code>键一直没有启用。于是在<code>nvim</code>下查询帮助<code>:help latex-suite.txt</code>
+, 然后找到<code>Alt</code>相关，即</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Latex-Suite utilizes a set of macros originally created by Carl Mueller in</span><br><span class="line">auctex.vim to make inserting all the \left ... \right stuff very easy and to</span><br><span class="line">also make some use of the heavily under-utilized &lt;Alt&gt; key.</span><br><span class="line"></span><br><span class="line">NOTE: By default, the mappings involving the &lt;Alt&gt; key are turned off for</span><br><span class="line">      compatibility with inserting non-ASCII characters. It can be enabled by</span><br><span class="line">      setting   </span><br><span class="line">          let g:Tex_AdvancedMath = 1</span><br><span class="line">      in your $VIM/ftplugin/tex.vim.</span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">NOTE: By default, typing Alt-&lt;key&gt; in Vim takes focus to the menu bar if a menu</span><br><span class="line">      with the hotkey &lt;key&gt; exists. If in your case, there are conflicts due to</span><br><span class="line">      this behavior, you will need to set   </span><br><span class="line">          set winaltkeys=no</span><br><span class="line">      in your $VIM/ftplugin/tex.vim in order to use these maps.</span><br></pre></td></tr></table></figure>
+<p>由于我是在<code>neovim</code>下使用的<code>vim-latex</code>,
+于是找到路径为：<code>~/.local/share/nvim/lazy/vim-latex/ftplugin/</code>
+但是发现没有文件<code>tex.vim</code>,
+于是<label style="color:red">需要新建一个文件tex.vim</label>, 即</p>
+<figure class="highlight vim"><figcaption><span>~/.local/share/nvim/lazy/vim-latex/ftplugin/tex.vim</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">g:Tex_AdvancedMath</span> = <span class="number">1</span></span><br><span class="line"><span class="keyword">set</span> winaltkeys=<span class="keyword">no</span></span><br></pre></td></tr></table></figure>
+<p>经过上述设置后<code>Alt</code>键终于被启用了，我目前使用的主要是它智能插入<code>item</code>的功能。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/18/%E6%B8%85%E7%A9%BAGit%E4%BB%93%E5%BA%93%E7%9A%84Commit%E6%8F%90%E4%BA%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/01/18/%E6%B8%85%E7%A9%BAGit%E4%BB%93%E5%BA%93%E7%9A%84Commit%E6%8F%90%E4%BA%A4/" class="post-title-link" itemprop="url">清空Git仓库的Commit提交</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-18 09:42:23" itemprop="dateCreated datePublished" datetime="2024-01-18T09:42:23+08:00">2024-01-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>git是当前最常见的版本控制工具，但出现以下情况时，往往需要清空commits历史记录：</p>
+<ul>
+<li>commits记录占用空间过大甚至远远超过版本控制文件本身大小，进行云端代码管理时会受制于空间限制，无法继续更新</li>
+<li>历史记录中存在敏感信息，需要清理</li>
+</ul>
+<div class="note info"><p>清理commits历史记录的核心思想是，直接删除本地的.git目录，重新建立git仓库并与远程仓库建立链接，采用强制提交的方式覆盖远程仓库的commits记录。</p>
+</div>
+<p>下面是一段示例,参数说明：</p>
+<ul>
+<li>$REPO_DIR 表示需要处理的Git仓库本地目录</li>
+<li>git@github.com:xxxx/$REPO_DIR.git 表示远程仓库地址</li>
+</ul>
+<h3 id="进入本地仓库删除.git目录">进入本地仓库，删除.git目录</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$REPO_DIR</span></span><br><span class="line"><span class="built_in">rm</span> -rf .git</span><br></pre></td></tr></table></figure>
+<h3 id="重新初始化">重新初始化</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git branch -m main</span><br></pre></td></tr></table></figure>
+<div class="note info"><p>由于<code>Gitlab</code>仓库的默认分支名为<code>main</code>，而仓库初始化默认为<code>master</code>,
+所以需要重命名为<code>main</code>.</p>
+</div>
+<h3 id="添加commit">添加commit</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;restart git commit&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="添加远程仓库链接">添加远程仓库链接</h3>
+<p>设置远程仓库代号为<code>origin</code>, 则</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add orign git@github.com:xxxx/<span class="variable">$REPO_DIR</span>.git</span><br></pre></td></tr></table></figure>
+<p>注意，此时可用<code>git remote -v</code>检查远程仓库的设置。</p>
+<h3
+id="强制提交到master分支覆盖远程仓库的commits历史提交记录">强制提交到master分支，覆盖远程仓库的commits历史提交记录</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git push -f origin master</span><br><span class="line">or  </span><br><span class="line">git push --force origin master </span><br></pre></td></tr></table></figure>
+<h3 id="追踪上游分支">追踪上游分支</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --set-upstream origin main</span><br></pre></td></tr></table></figure>
+<div class="note info"><p>如果不设置上游分支，再次提交时的commits不能确定跟踪变化，所以不能正常提交博客文章，于是这是一个必须的操作。</p>
+</div>
+<h3 id="参考文章">参考文章</h3>
+<p><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/magic-wei/p/9919277.html">清空Github仓库的commits历史记录</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1197,289 +1488,6 @@ style="text-align: left;">无扩展名的文件名.例如../path/test就会成�
 </tbody>
 </table>
 <figure class="highlight vim"><figcaption><span>各种效果</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Examples, when the <span class="keyword">file</span> name <span class="keyword">is</span> <span class="string">&quot;src/version.c&quot;</span>, current dir</span><br><span class="line"><span class="string">&quot;/home/mool/vim&quot;</span>: &gt;</span><br><span class="line">  :<span class="keyword">p</span>            /home/mool/<span class="keyword">vim</span>/src/<span class="keyword">version</span>.<span class="keyword">c</span></span><br><span class="line">  :<span class="keyword">p</span>:.                       src/<span class="keyword">version</span>.<span class="keyword">c</span></span><br><span class="line">  :<span class="keyword">p</span>:~                 ~/<span class="keyword">vim</span>/src/<span class="keyword">version</span>.<span class="keyword">c</span></span><br><span class="line">  :h                       src</span><br><span class="line">  :<span class="keyword">p</span>:h            /home/mool/<span class="keyword">vim</span>/src</span><br><span class="line">  :<span class="keyword">p</span>:h:h        /home/mool/<span class="keyword">vim</span></span><br><span class="line">  :t                       <span class="keyword">version</span>.<span class="keyword">c</span></span><br><span class="line">  :<span class="keyword">p</span>:t                       <span class="keyword">version</span>.<span class="keyword">c</span></span><br><span class="line">  :r                       src/<span class="keyword">version</span></span><br><span class="line">  :<span class="keyword">p</span>:r            /home/mool/<span class="keyword">vim</span>/src/<span class="keyword">version</span></span><br><span class="line">  :<span class="variable">t:r</span>                       <span class="keyword">version</span></span><br><span class="line">  :<span class="keyword">e</span>                           <span class="keyword">c</span></span><br><span class="line">  :s?<span class="keyword">version</span>?main?               src/main.<span class="keyword">c</span></span><br><span class="line">  :s?<span class="keyword">version</span>?main?:<span class="keyword">p</span>    /home/mool/<span class="keyword">vim</span>/src/main.<span class="keyword">c</span></span><br><span class="line">  :<span class="keyword">p</span>:gs?/?\\?        \home\mool\<span class="keyword">vim</span>\src\<span class="keyword">version</span>.<span class="keyword">c</span></span><br><span class="line"></span><br><span class="line">Examples, when the <span class="keyword">file</span> name <span class="keyword">is</span> <span class="string">&quot;src/version.c.gz&quot;</span>: &gt;</span><br><span class="line">  :<span class="keyword">p</span>            /home/mool/<span class="keyword">vim</span>/src/<span class="keyword">version</span>.<span class="keyword">c</span>.gz</span><br><span class="line">  :<span class="keyword">e</span>                             gz</span><br><span class="line">  :<span class="keyword">e</span>:<span class="keyword">e</span>                           <span class="keyword">c</span>.gz</span><br><span class="line">  :<span class="keyword">e</span>:<span class="keyword">e</span>:<span class="keyword">e</span>                       <span class="keyword">c</span>.gz</span><br><span class="line">  :<span class="keyword">e</span>:<span class="keyword">e</span>:r                       <span class="keyword">c</span></span><br><span class="line">  :r                       src/<span class="keyword">version</span>.<span class="keyword">c</span></span><br><span class="line">  :r:<span class="keyword">e</span>                           <span class="keyword">c</span></span><br><span class="line">  :r:r                       src/<span class="keyword">version</span></span><br><span class="line">  :r:r:r                   src/versio</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/29/%E8%A7%A3%E5%86%B3KDE%E4%BD%BF%E7%94%A8ntfs3%E6%8C%82%E8%BD%BDntfs%E7%A1%AC%E7%9B%98%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/29/%E8%A7%A3%E5%86%B3KDE%E4%BD%BF%E7%94%A8ntfs3%E6%8C%82%E8%BD%BDntfs%E7%A1%AC%E7%9B%98%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">解决KDE使用ntfs3挂载ntfs硬盘失败的问题</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-29 11:05:59" itemprop="dateCreated datePublished" datetime="2023-12-29T11:05:59+08:00">2023-12-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>近期重装了<code>ArchLinux</code>，但是又遇到<code>KDE Plasma5</code>桌面环境下无法挂载<code>Windows</code>所在硬盘问题，具体是什么原因造成的尚不明确，但是百度之后找到了解决方法：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> ntfsfix -d /dev/nvme0n1p6</span><br></pre></td></tr></table></figure>
-<p>注意：第一条命令需要加参数<code>-d</code>,
-按好多资料没有加<code>-d</code>修复无效。原因参考资料：<a
-target="_blank" rel="noopener" href="https://bbs.archlinux.org/viewtopic.php?id=271650">Mounting ntfs
-partition by ntfs3 failed</a>：</p>
-<div class="note info"><p>Check your dmesg for errors with ntfs3. Chances are the volume is
-still marked dirty, and ntfs3 will not mount a partition where that is
-the case without the force option. ntfsfix without any arguments will
-actively set the dirty bit, so that a chkdsk from Windows can do a real
-check/analysis. If you don't have that handy and want to clear the dirty
-bit despite ntfsfix not being entirely a good checking tool you can pass
-the -d argument to ntfsfix.</p>
-</div>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/23/%E4%BB%80%E4%B9%88%E6%98%AFArch%E7%94%A8%E6%88%B7%E4%BB%93%E5%BA%93%EF%BC%88AUR%EF%BC%89%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%EF%BC%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/23/%E4%BB%80%E4%B9%88%E6%98%AFArch%E7%94%A8%E6%88%B7%E4%BB%93%E5%BA%93%EF%BC%88AUR%EF%BC%89%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%EF%BC%9F/" class="post-title-link" itemprop="url">什么是Arch用户仓库（AUR）以及如何使用？</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-23 02:45:54" itemprop="dateCreated datePublished" datetime="2023-12-23T02:45:54+08:00">2023-12-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>如果你一直在使用 <a target="_blank" rel="noopener" href="https://www.archlinux.org/">Arch Linux</a>
-或其他基于 Arch 的发行版，如 Manjaro，那么可能会遇到
-AUR。你尝试安装新软件，有人建议从 AUR 中安装它。这让你感到困惑。什么是
-AUR？为什么使用它？如何使用 AUR？我将在本文中回答这些问题。</p>
-<h2 id="什么是-aur">什么是 AUR？</h2>
-<p>AUR 表示 Arch 用户仓库(Arch User Repository)。它是针对基于 Arch 的
-Linux 发行版用户的社区驱动的仓库。它包含名为 <a
-target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/PKGBUILD">PKGBUILD</a>
-的包描述，它可让你使用 <a
-target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Makepkg">makepkg</a>
-从源代码编译软件包，然后通过 <a
-target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Pacman#Additional_commands">pacman</a>（Arch
-Linux 中的软件包管理器）安装。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/12/23/%E4%BB%80%E4%B9%88%E6%98%AFArch%E7%94%A8%E6%88%B7%E4%BB%93%E5%BA%93%EF%BC%88AUR%EF%BC%89%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%EF%BC%9F/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/22/Zsh%E9%85%8D%E7%BD%AE%E5%BF%AB%E9%80%9F%E8%B7%AF%E5%BE%84%E8%B7%B3%E8%BD%AC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/22/Zsh%E9%85%8D%E7%BD%AE%E5%BF%AB%E9%80%9F%E8%B7%AF%E5%BE%84%E8%B7%B3%E8%BD%AC/" class="post-title-link" itemprop="url">Zsh配置快速路径跳转</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-22 23:47:33" itemprop="dateCreated datePublished" datetime="2023-12-22T23:47:33+08:00">2023-12-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>使用<code>Linux</code>过程中最频繁的命令就是路径跳转<code>cd</code>,
-但是它需要输入完整的路径，显然是一个麻烦的工作，然后我们有几个工具可以解决快速路径跳转的问题，它们分别是：<code>fasd</code>、<code>autojump</code>
-、<code>z.sh</code>、<code>zsh-z-git</code>、<code>z.lua</code>
-。其中前两个可以使用<code>pacman</code>安装，而<code>zsh-z-git</code>是以<code>z.sh</code>构建的，<code>z.lua</code>是国人实现的，后面这三个使用<code>paru</code>从<code>aur</code>源中安装，我试用了<code>zsh-z-git</code>感觉良好。通过文章<a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/56077546">一个会学习你习惯的 cd 命令
-- z.lua</a>
-获知这几个<code>zsh</code>插件中<code>z.lua</code>的性能最快，比<code>z.sh</code>快三倍，比<code>fasd/autojump</code>快十倍以上，于是决定删除<code>zsh-z-git</code>安装<code>z.lua</code>。</p>
-<h2 id="安装和配置z.lua">安装和配置<code>z.lua</code></h2>
-<ol type="1">
-<li><p>安装<code>z.lua</code> <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paru --skipreview --needed --noconfirm -S z.lua</span><br></pre></td></tr></table></figure></p></li>
-<li><p>配置启用<code>z.lua</code> <figure class="highlight sh"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /usr/share/z.lua/z.lua.plugin.zsh</span><br><span class="line">or</span><br><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(lua /usr/share/z.lua/z.lua --init zsh enhanced once)</span>&quot;</span></span><br></pre></td></tr></table></figure></p></li>
-</ol>
-<div class="note warning"><p>注意：启用<code>z.lua</code>作用上述两种方法都可以，第一种方法比较符合<code>zsh</code>的要求，而第二种方法是官网给出的方法，这里我使用了第二种方法，因为官方文件中还有一名话：</p>
-<p>Options like "enhanced", "once" and "fzf" can be used after --init
-too.</p>
-<p>因为它可以增加选项，所以我采用了官方的方法,
-具体使用方法见下面参考文章。</p>
-</div>
-<h2 id="参考文章">参考文章</h2>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/skywind3000/z.lua">z.lua官网</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/56077546">一个会学习你习惯的
-cd 命令 - z.lua</a></li>
-</ul>
 
       
     </div>

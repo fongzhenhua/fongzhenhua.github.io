@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">505</span>
+          <span class="site-state-item-count">508</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,418 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/06/MatheMatica%E7%9A%84%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/10/06/MatheMatica%E7%9A%84%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">MatheMatica_V14.1.0的安装教程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-10-06 20:56:51" itemprop="dateCreated datePublished" datetime="2024-10-06T20:56:51+08:00">2024-10-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="简介">简介</h1>
+<p><a
+target="_blank" rel="noopener" href="https://www.wolfram.com/mathematica/">Mathematica</a>是一款由<code>Wolfram Research</code>公司开发的科学计算软件，它将<strong>数值和符号计算引擎、图形系统、编程语言、文本系统以及其他应用程序的高级连接</strong>完美结合在一起。这款软件自1988年发布以来，已经在科技和其他领域产生了深远的影响，被广泛认为是现代科技计算的开端。</p>
+<details>
+<summary>
+基本功能(点击查看)
+</summary>
+<ul>
+<li><p><strong>数值和符号计算</strong>：Mathematica能够进行高效的数值计算和精确的符号计算，如多项式求解、方程求解、极限求解、积分求解等。</p></li>
+<li><p><strong>图形系统</strong>：提供强大的图形绘制功能，可用于创建高质量的二维和三维图形。</p></li>
+<li><p><strong>编程语言</strong>：集成了高级程序设计语言，允许用户编写自定义脚本和函数。</p></li>
+<li><p><strong>文本系统</strong>：支持文本编辑和处理，方便用户记录和分享计算过程。</p></li>
+<li><p><strong>应用程序连接</strong>：能够与其他应用程序建立高级连接，实现数据和功能的集成。
+主要应用领域 Mathematica的应用领域非常广泛，包括但不限于：</p></li>
+<li><p><strong>科学研究</strong>：用于解决复杂的科学和工程问题，如物理、化学、生物学等领域的研究。</p></li>
+<li><p><strong>工程设计</strong>：在航空航天、汽车制造等行业中用于模拟和分析。</p></li>
+<li><p><strong>数据分析</strong>：处理和分析大量数据，提取有价值的信息。</p></li>
+<li><p><strong>教育和学习</strong>：作为教学和学习的工具，帮助学生和专业人士掌握数学和编程技能。
+在科研和教育中的重要性</p></li>
+<li><p><strong>科研</strong>：Mathematica的强大计算能力和丰富的功能使其成为科研人员解决复杂问题的有力工具，加速了科研进程。</p></li>
+</ul>
+</details>
+<h1 id="下载安装">下载安装</h1>
+<ul>
+<li><p><a
+target="_blank" rel="noopener" href="https://www.wolfram.com/download-center/">Mathematica最新版官方下载(推荐)</a>:
+官网会根据您的操作系统自动选择版，一般而言Windows系统用户使用此软件多一些，选择下载版本将获得<code>Wolfram_14.1.0_WIN_Bndl_DLM_CN.exe</code>,
+双击安装，它将自动从官网下载最新的<code>Mathematica 14.1.0</code>,
+下载完成后进入到保存目录，双击<code>setup.exe</code>安装即可。</p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Colj7Hqv21A1pPNijzZAbw">百度网盘+提取码<label style="color:red">gqsc</label></a>:
+网速感人，推荐有百度<code>SVIP</code>的用户下载，这样能快一点。为了确保文件的安全，压缩文件添加了密码，在<a
+target="_blank" rel="noopener" href="https://www.jb51.net/">脚本之家</a>下载的软件一般默认压缩文件的解压密码为<label style="color:red">www.jb51.net</label>或<label style="color:red">0daydown</label>.</p></li>
+</ul>
+<h1 id="破解测试">破解测试</h1>
+<p>本人坚决支持正版，请大家购买正版软件。但本博客引用网络上的技术，记录一下破解技术以供大家体验测试之用，测试完成后请及时删除并购买正版。</p>
+<p><strong>激活步骤：</strong></p>
+<ol type="1">
+<li>启动<code>Mathematica</code></li>
+</ol>
+<figure>
+<img
+src="https://img.yutu.cn/soft/2024/20240826/c33a923f2af3b6008bdfa78ced9f3781.png"
+alt="启动Mathematica" />
+<figcaption aria-hidden="true">启动Mathematica</figcaption>
+</figure>
+<ol start="2" type="1">
+<li>在开始菜单点击程序，启动<code>Mathematica</code>,
+选择"其他激活方式“</li>
+</ol>
+<figure>
+<img
+src="https://img.yutu.cn/soft/2024/20240826/e3c707fe3202a555ddb905a84a5f204e.png"
+alt="其他激活方式" />
+<figcaption aria-hidden="true">其他激活方式</figcaption>
+</figure>
+<ol start="3" type="1">
+<li>选择激活的方法</li>
+</ol>
+<figure>
+<img
+src="https://img.yutu.cn/soft/2024/20240826/25de7341b4af8c81d8e0ab98a4f6838b.png"
+alt="通过激活密钥和请求的密码离线激活" />
+<figcaption
+aria-hidden="true">通过激活密钥和请求的密码离线激活</figcaption>
+</figure>
+<ol start="4" type="1">
+<li>获取<code>MachineID</code>, 并复制这个<code>MachineID</code></li>
+</ol>
+<figure>
+<img
+src="https://img.yutu.cn/soft/2024/20240826/e16cd46dc4786c2e570940fd7583cc28.png"
+alt="离线激活获取MachineID" />
+<figcaption aria-hidden="true">离线激活获取MachineID</figcaption>
+</figure>
+<ol start="5" type="1">
+<li>获取激活密钥和密码</li>
+</ol>
+<p>打开下述网站之一：</p>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://wu-yijun.github.io/Mathematica-Keygen-Mechanism/">MathPass(推荐)</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://paran3xus.github.io/2024/08/24/mathematica-14.1-crack/">Wolfram
+Mathematica 14.1 Key Generator</a></li>
+</ul>
+<p>将<code>MachineID</code>粘贴到网站的<code>Math id</code>对话框，然后点击<code>Generate Activation Key And Password!</code>或<code>生成密钥</code>,
+此时就会生成对应的激活密钥和密码。将<code>Activation Key</code>和<code>Password</code>分别填入软件的对话框中，点击激活即可完成激活。</p>
+<h1 id="参考文章">参考文章</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.yutu.cn/softhtml/showsoft_9202.html">Wolfram
+Mathematica 14.1（附破解文件）简体中文破解版</a></li>
+<li><a target="_blank" rel="noopener" href="https://software.3d66.com/list/setup_9202.html">Wolfram
+Mathematica 14.1最新版【数学计算软件】破解版</a></li>
+<li><a target="_blank" rel="noopener" href="https://lemmingh.github.io/InstallTutorial/">Mathematica
+激活指南</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jb51.net/softs/922352.html">数学软件Wolfram
+Mathematica 14.1.0 Mac中文免费版(附安装教程)</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/05/ArchLinux%E9%95%BF%E6%97%B6%E9%97%B4%E4%B8%8D%E6%9B%B4%E6%96%B0%E5%AF%BC%E8%87%B4%E9%94%99%E8%AF%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/10/05/ArchLinux%E9%95%BF%E6%97%B6%E9%97%B4%E4%B8%8D%E6%9B%B4%E6%96%B0%E5%AF%BC%E8%87%B4%E9%94%99%E8%AF%AF/" class="post-title-link" itemprop="url">ArchLinux长时间不更新导致错误</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-10-05 23:21:59" itemprop="dateCreated datePublished" datetime="2024-10-05T23:21:59+08:00">2024-10-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天更新我的笔记本电脑发现总是出错，错误信息如下：</p>
+<figure class="highlight sh"><figcaption><span>sudo pacman -Syu</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">:: 进行安装吗？ [Y/n] y</span><br><span class="line">:: 正在获取软件包......</span><br><span class="line">pandoc-cli-0.1.1.1-141-x86_64.pkg.tar.zst下载失败</span><br><span class="line"> 全部 (1/8)                             171.5 KiB   318 KiB/s 00:01 [#####################################] 100%</span><br><span class="line">错误：无法从 mirrors.tuna.tsinghua.edu.cn : The requested URL returned error: 404 获取文件 <span class="string">&#x27;pandoc-cli-0.1.1.1-141-x86_64.pkg.tar.zst&#x27;</span></span><br><span class="line">错误：无法从 mirrors.tuna.tsinghua.edu.cn : The requested URL returned error: 404 获取文件 <span class="string">&#x27;pandoc-cli-0.1.1.1-141-x86_64.pkg.tar.zst&#x27;</span></span><br><span class="line">错误：无法从 mirrors.tuna.tsinghua.edu.cn : Protocol <span class="string">&quot;rsync&quot;</span> not supported 获取文件 <span class="string">&#x27;pandoc-cli-0.1.1.1-141-x86_64.pkg.tar.zst&#x27;</span></span><br><span class="line">警告：mirrors.tuna.tsinghua.edu.cn 返回错误过多，将在此事务的剩余部分中跳过</span><br><span class="line">错误：无法从 rsync.mirrors.ustc.edu.cn : Protocol <span class="string">&quot;rsync&quot;</span> not supported 获取文件 <span class="string">&#x27;pandoc-cli-0.1.1.1-141-x86_64.pkg.tar.zst&#x27;</span></span><br><span class="line">警告：无法获取某些文件</span><br><span class="line">错误：无法提交处理 (无法获取某些文件)</span><br><span class="line">发生错误，没有软件包被更新。</span><br></pre></td></tr></table></figure>
+<p>造成错误的原因是办公室和宿舍同时配置了台式机，所以较长时间没有更新和使用我的<code>Thinkpad T490</code>
+了. 解决方法为：重新生成一下源文件，然后再更新。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> reflector --verbose -c China --latest 12 --<span class="built_in">sort</span> rate --threads 100 --save /etc/pacman.d/mirrorlist</span><br><span class="line"><span class="built_in">sudo</span> pacman -Syu</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/01/Calibre%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/10/01/Calibre%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0%E7%89%88/" class="post-title-link" itemprop="url">Calibre安装最新版</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-10-01 01:00:48" itemprop="dateCreated datePublished" datetime="2024-10-01T01:00:48+08:00">2024-10-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>作为电子书管理的瑞士军刀，Calibre
+一直备受书籍爱好者和数字书虫们的喜爱。虽然存在更好（更轻量级）的
+电子书阅读器，但 Calibre
+在创建电子书、转换格式以及管理你的电子书库方面做得更出色。简言之，它是满足你所有电子书需求的全套解决方案。</p>
+<h2 id="从archlinux仓库中安装-calibre">从ArchLinux仓库中安装
+Calibre</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S calibre</span><br></pre></td></tr></table></figure>
+<p>如果您不需要它，可以使用<code>pacman</code>卸载 Calibre</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Rns calibre</span><br></pre></td></tr></table></figure>
+<h2 id="获取最新版本的-calibre">获取最新版本的 Calibre</h2>
+<p><a target="_blank" rel="noopener" href="https://calibre-ebook.com/download_linux">Calibre 官方</a>
+推荐安装提供的官方二进制文件。目的是防止用户使用存在错误或已过时的软件包。该二进制文件包含了所有私有版本的依赖项，支持
+32 位和 64 位的机器。</p>
+<h3 id="安装依赖">安装依赖</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S xdg-utils wget xz-utils python3</span><br></pre></td></tr></table></figure>
+<h3 id="从官网安装二进制文件">从官网安装二进制文件</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> -v &amp;&amp; wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | <span class="built_in">sudo</span> sh /dev/stdin</span><br></pre></td></tr></table></figure>
+<details>
+<summary>
+关于上述安装命令的解解释
+</summary>
+<p>考虑两种情况：</p>
+<ol type="1">
+<li><code>sudo</code>未配置为命令需要密码( <code>NOPASSWD</code>标记),
+对<code>sudo</code>的两个调用都在没有任何提示的情况下成功。</li>
+<li><code>sudo</code>被配置为需要命令的密码:
+<ul>
+<li>如果它们最近进行了身份验证，<code>sudo -v</code>只需更新缓存凭据的时间戳即可。</li>
+<li>如果用户最近没有对<code>sudo</code>进行身份验证，它将提示他们输入密码；一旦经过验证，他们的凭据就会被缓存。</li>
+</ul></li>
+</ol>
+<p>一旦<code>sudo -v</code>进程成功，第二个<code>sudo sh /dev/stdin</code>调用应该使用其缓存的凭据并不间断地运行。</p>
+<p>考虑另一种情况(
+<code>sudo</code>仍然被配置为提示输入密码)，其中没有初始的<code>sudo -v</code>命令。在这种情况下，<code>wget</code>可能已经将输出写到<code>stdout</code>或<code>stderr</code>，这可能会导致用户错过看到它，并想知道为什么什么都没有发生。</p>
+<p><strong><code>sh /dev/stdin</code>的目的是什么？</strong></p>
+<p>在这里，<code>sh</code>是用一个参数作为<code>command_file</code>调用的，这个参数是一个特殊的文件--一个指向<code>stdin</code>的链接。</p>
+<p><strong>名称破折号-命令解释器(外壳)简要说明破折号.[command_file
+争论...]</strong></p>
+<p>结果，<code>sh</code>读取<code>command_file</code>，期待并执行它的命令。这个特殊的<code>stdin</code>“文件”通过管道连接到来自<code>wget</code>的输出，因此最终的结果是将<code>URL</code>的内容发送到根级<code>shell</code>。</p>
+我不知道为什么口径项目具体选择这种语法。备选办法包括： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">... | <span class="built_in">sudo</span> sh</span><br><span class="line">... | <span class="built_in">sudo</span> sh -</span><br></pre></td></tr></table></figure>
+</details>
+<h3 id="创建启动器">创建启动器</h3>
+<div class="tabs" id="desktop"><ul class="nav-tabs"><li class="tab active"><a href="#desktop-1">calibre-gui</a></li><li class="tab"><a href="#desktop-2">calibre-lrfviewer</a></li><li class="tab"><a href="#desktop-3">calibre-ebook-edit</a></li><li class="tab"><a href="#desktop-4">calibre-ebook-viewer</a></li></ul><div class="tab-content"><div class="tab-pane active" id="desktop-1"><figure class="highlight sh"><figcaption><span>/usr/share/applications/calibre-gui.desktop</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Version=1.0</span><br><span class="line">Type=Application</span><br><span class="line">Name=Calibre</span><br><span class="line">GenericName=E-book library management</span><br><span class="line">Comment=E-book library management: Convert, view, share, catalogue all your e-books</span><br><span class="line">TryExec=/opt/calibre/calibre</span><br><span class="line">Exec=/opt/calibre/calibre --detach %U</span><br><span class="line">Icon=calibre-gui</span><br><span class="line">Categories=Office;</span><br><span class="line">X-GNOME-UsesNotifications=<span class="literal">true</span></span><br><span class="line">Keywords=epub;ebook;manager;</span><br><span class="line">MimeType=application/x-cbz;application/x-cbc;application/x-mobipocket-ebook;application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/ereader;application/x-cb7;application/x-mobi8-ebook;application/vnd.ms-word.document.macroenabled.12;application/vnd.ctc-posml;application/epub+zip;application/oebps-package+xml;image/vnd.djvu;application/x-cbr;application/x-sony-bbeb;application/x-mobipocket-subscription;x-scheme-handler/calibre;</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="desktop-2"><figure class="highlight sh"><figcaption><span>/usr/share/applications/calibre-lrfviewer.desktop</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Version=1.0</span><br><span class="line">Type=Application</span><br><span class="line">Name=LRF viewer</span><br><span class="line">GenericName=Viewer <span class="keyword">for</span> LRF files</span><br><span class="line">Comment=Viewer <span class="keyword">for</span> LRF files (SONY ebook format files)</span><br><span class="line">TryExec=/opt/calibre/lrfviewer</span><br><span class="line">Exec=/opt/calibre/lrfviewer %f</span><br><span class="line">Icon=calibre-viewer</span><br><span class="line">MimeType=application/x-sony-bbeb;</span><br><span class="line">Categories=Office;Viewer;</span><br><span class="line">Keywords=lrf;viewer;</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="desktop-3"><figure class="highlight sh"><figcaption><span>/usr/share/applications/calibre-ebook-edit.desktop</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Version=1.0</span><br><span class="line">Type=Application</span><br><span class="line">Name=E-book editor</span><br><span class="line">GenericName=Editor <span class="keyword">for</span> E-books</span><br><span class="line">Comment=Edit E-books <span class="keyword">in</span> various formats</span><br><span class="line">TryExec=/opt/calibre/ebook-edit</span><br><span class="line">Exec=/opt/calibre/ebook-edit --detach %f</span><br><span class="line">Icon=calibre-ebook-edit</span><br><span class="line">Categories=Office;WordProcessor</span><br><span class="line">Keywords=epub;ebook;editor;</span><br><span class="line">MimeType=application/xhtml+xml;application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/x-mobi8-ebook;application/epub+zip;text/html;</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="desktop-4"><figure class="highlight sh"><figcaption><span>/usr/share/applications/calibre-ebook-viewer.desktop</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Version=1.0</span><br><span class="line">Type=Application</span><br><span class="line">Name=E-book viewer</span><br><span class="line">GenericName=Viewer <span class="keyword">for</span> E-books</span><br><span class="line">Comment=Viewer <span class="keyword">for</span> E-books <span class="keyword">in</span> all the major formats</span><br><span class="line">TryExec=/opt/calibre/ebook-viewer</span><br><span class="line">Exec=/opt/calibre/ebook-viewer --detach %f</span><br><span class="line">Icon=calibre-viewer</span><br><span class="line">Categories=Office;Viewer;</span><br><span class="line">Keywords=epub;ebook;viewer;</span><br><span class="line">MimeType=application/x-cbz;application/x-cbc;application/x-mobipocket-ebook;application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/ereader;application/x-cb7;application/x-mobi8-ebook;application/vnd.ms-word.document.macroenabled.12;application/vnd.ctc-posml;application/epub+zip;application/oebps-package+xml;image/vnd.djvu;application/x-cbr;application/x-sony-bbeb;application/x-mobipocket-subscription;</span><br></pre></td></tr></table></figure></div></div></div>
+<div class="note primary"><p>注意：各启动器文件所有者和群组都应当设置为<code>root</code>.</p>
+</div>
+<h2 id="参考文章">参考文章</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://linux.cn/article-16394-1.html">在 Ubuntu
+上安装最新版的 Calibre</a></li>
+<li><a target="_blank" rel="noopener" href="https://linux.cn/article-9199-1.html">为你的 Linux 应用创建
+.desktop 文件</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://manual.calibre-ebook.com/zh_CN/customize.html#creating-your-own-icon-theme-for-calibre">自定义Calibre</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://specifications.freedesktop.org/desktop-entry-spec/latest/index.html">Desktop
+Entry Specification</a></li>
+<li><a target="_blank" rel="noopener" href="https://manual.calibre-ebook.com/zh_CN/">calibre
+用户手册</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://aimerneige.com/zh/post/linux/how-to-write-a-desktop-file/">如何编写
+.desktop 文件</a></li>
+<li><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/desktop_entries">Arch
+Linux Wiki - Desktop entries</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://wiki.deepin.org/zh/03_技术规范/02_XDG规范/desktop文件规范">Deepin-desktop文件规范</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://gnu-linux.readthedocs.io/zh/latest/Chapter02/53_desktop.html">Linux
+Desktop Entry 文件解析</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/ask/sof/116270897">‘<code>sudo -v &amp;’和‘</code>sh
+/dev/stdin`’在这里的目的是什么？</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/456881/what-are-the-purposes-of-sudo-v-and-sh-dev-stdin-here">What
+are the purposes of <code>sudo -v &amp;&amp;</code> and
+<code>sh /dev/stdin</code> here?</a></li>
+</ul>
+<div class="note primary"><p><code>Linux KDE</code>和<code>Linux GNOME</code>桌面系统都使用 <a
+target="_blank" rel="noopener" href="https://specifications.freedesktop.org/desktop-entry-spec/latest/index.html">Desktop
+Entry
+Specification</a>来描述程序启动配置信息。<code>Desktop Entry 文件标准</code>是由
+<code>X Desktop Group</code> 制定的，目前最新的版本是"Desktop Entry
+Specification 1.5"。</p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1396,364 +1808,6 @@ target="_blank" rel="noopener" href="https://unpkg.zhimg.com">https://unpkg.zhim
 <p>其中<code>Zstatic</code>用到了镜像回源，也就是说只要访问一次，文件就会被存储到国内的服务器上，再也不用担心缓存过期了，所以网络文章建议优先用这个。<code>Next</code>配置文件为：
 <figure class="highlight sh"><figcaption><span>hexo-site/_config.next.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">vendors:</span><br><span class="line">  internal: <span class="built_in">local</span></span><br><span class="line">  plugins: custom</span><br><span class="line">  <span class="comment"># custom_cdn_url: https://cdnjs.cloudflare.com/ajax/libs/$&#123;cdnjs_name&#125;/$&#123;version&#125;/$&#123;cdnjs_file&#125;</span></span><br><span class="line">  <span class="comment"># custom_cdn_url: https://cdnjs.onmicrosoft.cn/ajax/libs/$&#123;cdnjs_name&#125;/$&#123;version&#125;/$&#123;cdnjs_file&#125;</span></span><br><span class="line">  <span class="comment"># custom_cdn_url: https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/$&#123;cdnjs_name&#125;/$&#123;version&#125;/$&#123;cdnjs_file&#125;</span></span><br><span class="line">  <span class="comment"># custom_cdn_url: https://s4.zstatic.net/ajax/libs/$&#123;cdnjs_name&#125;/$&#123;version&#125;/$&#123;cdnjs_file&#125;</span></span><br><span class="line">  custom_cdn_url: https://cdn.iocdn.cc/npm/<span class="variable">$&#123;npm_name&#125;</span>@<span class="variable">$&#123;version&#125;</span>/<span class="variable">$&#123;minified&#125;</span></span><br><span class="line">  <span class="comment"># custom_cdn_url: https://cdn.jsdelivr.net/npm/$&#123;npm_name&#125;@$&#123;version&#125;/$&#123;minified&#125;</span></span><br><span class="line">  <span class="comment"># custom_cdn_url: https://github.elemecdn.com/$&#123;npm_name&#125;@$&#123;version&#125;/$&#123;minified&#125;</span></span><br><span class="line">  <span class="comment"># custom_cdn_url: https://npm.elemecdn.com/$&#123;npm_name&#125;@$&#123;version&#125;/$&#123;minified&#125;</span></span><br><span class="line">css: css</span><br><span class="line">js: js</span><br><span class="line">images: images</span><br></pre></td></tr></table></figure></p>
 <div class="note primary"><p>安装<code>@next-theme/plugins</code>后，可以保证<code>PDF</code>等<code>Next</code>主题依赖的插件由站内加载，其他部分则由<code>cdn</code>镜像加载，于是多数的镜像均可以正常使用了，为确保访问的稳定重新切换为<code>s4.zstatic.net</code>.</p>
-</div>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/09/21/ArchLinux%E6%95%B4%E4%BD%93%E5%9B%9E%E6%BB%9A%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/09/21/ArchLinux%E6%95%B4%E4%BD%93%E5%9B%9E%E6%BB%9A%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89/" class="post-title-link" itemprop="url">ArchLinux整体回滚（重要）</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-09-21 01:54:36" itemprop="dateCreated datePublished" datetime="2024-09-21T01:54:36+08:00">2024-09-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>今天使用<code>Pacman</code>升级系统后发现<code>Gnome-Shell</code>版本从<code>46</code>升级到了<code>47</code>，
-每次这个大版本的升级都会导致大量的<code>Gnome</code>插件版本失效，这个问题之前我使用了锁定<code>Gnome</code>版本的方法，但是由于软件的相互依赖，好像这个并不是最佳方法。于是有了这篇文章，我们决定把<code>ArchLinux</code>整体回滚到某个正常使用日期前的最佳版本，锁定日期后系统相当于停止滚动，待时机成熟（相应的插件都处理可用或某一必备软件得到升级）可以再进行整体的升级。</p>
-<h2 id="arch-linux-archive-简介">Arch Linux Archive 简介</h2>
-<p>Arch Linux 存档库（<a
-target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/Arch_Linux_Archive">Arch Linux
-Archive</a>，简称 ala），以前称为 Arch Linux 回滚机（Arch Linux Rollback
-Machine，简称 ARM），保存了官方仓库快照、iso
-镜像和引导程序包的历史版本。</p>
-<h3 id="用途">用途</h3>
-<ul>
-<li>将某个包降级到某个早期版本（最新版本不能用，我需要之前的版本）</li>
-<li>将所有包恢复到某个指定的历史时刻（所有包都不能用，我要恢复到两个月之前的状态）</li>
-<li>查找某个历史版本的 ISO 镜像</li>
-</ul>
-<h2 id="arch-linux-存档库">Arch Linux 存档库</h2>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://archive.archlinux.org/repos/">https://archive.archlinux.org/repos/</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://america.archive.pkgbuild.com/repos/">https://america.archive.pkgbuild.com/repos/</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://asia.archive.pkgbuild.com/repos/">https://asia.archive.pkgbuild.com/repos/</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://europe.archive.pkgbuild.com/repos/">https://europe.archive.pkgbuild.com/repos/</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://arch-archive.tuna.tsinghua.edu.cn/">https://arch-archive.tuna.tsinghua.edu.cn/</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://mirrors.bfsu.edu.cn/archlinux-archive/">https://mirrors.bfsu.edu.cn/archlinux-archive/</a></li>
-</ul>
-<div class="note primary"><p>前四个源是官方源及全球的存档镜像，它保存了每一天的镜像，而后面两个分别是清华大学和北京外国语大学的存档镜像，它们每周存档一次。如果您指定的日期在两个国内存档源中时则使用这两个，因为速度快。如果您的指定日期不在它们之中，则使用前四个源中的某一个都可以，2024年09月21日使用第一个官方存档库回滚系统到2024年09月18日,
-这是我的电脑正常工作的最新日期，测试的速度比较快。</p>
-</div>
-<h2 id="archlinux-所有软件包降级到特定日期">ArchLinux
-所有软件包降级到特定日期</h2>
-<p>假设您的 Arch Linux
-系统在两天前运行良好且稳定。您今天运行了系统更新，它破坏了系统。因此，您可以将所有软件包降级到之前的特定日期，例如<strong>2024
-年 9 月 18 日</strong>。</p>
-<div class="tabs" id="pacman"><ul class="nav-tabs"><li class="tab active"><a href="#pacman-1">/etc/pacman.d/mirrorlist</a></li><li class="tab"><a href="#pacman-2">/etc/pacman.conf</a></li></ul><div class="tab-content"><div class="tab-pane active" id="pacman-1"><h4 id="备份etcpacman.dmirrorlist">1.
-备份<code>/etc/pacman.d/mirrorlist</code></h4>
-<figure class="highlight sh"><figcaption><span>/etc/pacman.d/mirrorlist</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">cp</span> /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak</span><br></pre></td></tr></table></figure>
-<h4 id="备份etcpacman.dmirrorlist-1">2.
-备份<code>/etc/pacman.d/mirrorlist</code></h4>
-<figure class="highlight sh"><figcaption><span>/etc/pacman.d/mirrorlist</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Server = http://archive.archlinux.org/repos/2024/09/18/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br><span class="line">Server = https://america.archive.pkgbuild.com/repos/2024/09/19/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br><span class="line">Server = https://asia.archive.pkgbuild.com/repos/2024/09/19/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br><span class="line">Server = https://europe.archive.pkgbuild.com/repos/2024/09/19/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br><span class="line">Server = https://arch-archive.tuna.tsinghua.edu.cn/2024/09-16/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br><span class="line">Server = https://mirrors.bfsu.edu.cn/archlinux-archive/2024/09-16/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="pacman-2"><h4 id="备份配置文件">1. 备份配置文件</h4>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">cp</span> /etc/pacman.conf /etc/pacman.conf.bak</span><br></pre></td></tr></table></figure>
-<h4 id="修改etcpacman.conf">2. 修改<code>/etc/pacman.conf</code></h4>
-<figure class="highlight sh"><figcaption><span>/etc/pacman.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">SigLevel = PackageRequired</span><br><span class="line">Server=https://archive.archlinux.org/repos/2024/09/18/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br><span class="line"></span><br><span class="line">[extra]</span><br><span class="line">SigLevel = PackageRequired</span><br><span class="line">Server=https://archive.archlinux.org/repos/2024/09/18/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br><span class="line"></span><br><span class="line">[community]</span><br><span class="line">SigLevel = PackageRequired</span><br><span class="line">Server=https://archive.archlinux.org/repos/2024/09/18/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure></div></div></div>
-<h3 id="强制更新系统">强制更新系统</h3>
-<p>仔细检查恢复日期, 保存并关闭文件。最后，更新数据库并使用命令强制 Arch
-Linux 更新：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Syyuu</span><br></pre></td></tr></table></figure>
-<div class="note primary"><p>更新完成后，重新启动系统,
-您现在已将所有包恢复到之前的特定日期（在我们的示例中为 2024年 9 月 18
-日）。但是请注意，我们不建议使用过时的软件包，待您需要<code>Gnome</code>插件或其他特定版本的软件及时跟进更新后请及时将系统升级到最新，若出现问题则再锁定到最新的稳定系统日期，等待下一次全部软件稳定后再次更新。如果操作后可以保证一直稳定使用<code>ArchLinux</code>.</p>
-</div>
-<h2 id="gnome插件适配查询">Gnome插件适配查询</h2>
-<p>此次研究锁定系统滚动日期的主要原因是：2024年09月21日升级后由于<code>Gnome</code>大版本升级导致插件<code>hide-top-bar</code>失效，所以请及时关注失效插件是否适配了当前版本，网址为：<a
-target="_blank" rel="noopener" href="https://extensions.gnome.org/">https://extensions.gnome.org/</a>
-几个常用插件：</p>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://extensions.gnome.org/extension/3193/blur-my-shell/">Blur
-my Shel</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://extensions.gnome.org/extension/307/dash-to-dock/">Dash to
-Dock</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://extensions.gnome.org/extension/545/hide-top-bar/">Hide Top
-Bar</a></li>
-<li><a target="_blank" rel="noopener" href="https://extensions.gnome.org/extension/261/kimpanel/">Input
-Method Panel</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://extensions.gnome.org/extension/7/removable-drive-menu/">Removable
-Drive Menu</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://extensions.gnome.org/extension/19/user-themes/">User
-Themes</a></li>
-</ul>
-<h2 id="手动解决gnome插件适配">手动解决Gnome插件适配</h2>
-<p>在2024年09月21日升级系统后采用的锁定<code>ArchLinux</code>到指定日期的稳键策略，而2024年09月27日放开了更新后发现只有插件<code>Hide Top Bar</code>仍然没有适配，于是在百度后发现可以追加版本后修复，因为<code>Gnome 47</code>更新并没有大量改变<code>java script</code>接口，所以这个方法是可行的。具体修改为</p>
-<figure class="highlight sh"><figcaption><span>/usr/share/gnome-shell/extensions/hidetopbar@mathieu.bidon.ca/metadata.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;shell-version&quot;</span>: [<span class="string">&quot;45&quot;</span>, <span class="string">&quot;46&quot;</span>, <span class="string">&quot;47&quot;</span> ],</span><br><span class="line">  <span class="string">&quot;uuid&quot;</span>: <span class="string">&quot;hidetopbar@mathieu.bidon.ca&quot;</span>,</span><br><span class="line">  <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Hide Top Bar&quot;</span>,</span><br><span class="line">  <span class="string">&quot;settings-schema&quot;</span>: <span class="string">&quot;org.gnome.shell.extensions.hidetopbar&quot;</span>,</span><br><span class="line">  <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Hides the top bar, except in overview. However, there is an option to show the panel whenever the mouse pointer approaches the edge of the screen. And if \&quot;intellihide\&quot; is enabled, the panel only hides when a window takes the space.\n\n- Press backspace to remove keyboard shortcut.\n- Log off and on again when there is an error after upgrading.&quot;</span>,</span><br><span class="line">  <span class="string">&quot;url&quot;</span>: <span class="string">&quot;https://gitlab.gnome.org/tuxor1337/hidetopbar&quot;</span>,</span><br><span class="line">  <span class="string">&quot;gettext-domain&quot;</span>: <span class="string">&quot;hidetopbar@mathieu.bidon.ca&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/09/20/RSS%E8%AE%A2%E9%98%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/09/20/RSS%E8%AE%A2%E9%98%85/" class="post-title-link" itemprop="url">RSS订阅</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-09-20 13:56:38" itemprop="dateCreated datePublished" datetime="2024-09-20T13:56:38+08:00">2024-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="rss订阅简介">RSS订阅简介</h2>
-<p>RSS（Really Simple
-Syndication）订阅是一种允许用户跟踪网站更新的技术，无需频繁访问这些网站来检查是否有新内容。RSS是一种XML格式的标准，它允许发布者将摘要、链接和其他元数据打包成“feed”，供订阅者使用RSS阅读器（也称为聚合器或RSS阅读器）来接收。</p>
-<h3 id="以下是rss订阅的一些关键特点">以下是RSS订阅的一些关键特点</h3>
-<ul>
-<li>内容聚合：通过RSS订阅，用户可以从多个来源获取信息，而不必逐个访问每个网站。</li>
-<li>自动更新：一旦有新的内容发布，RSS阅读器会自动下载更新，这样用户就可以立即看到最新信息。</li>
-<li>个性化阅读体验：用户可以选择他们感兴趣的站点进行订阅，并根据自己的喜好调整阅读列表。</li>
-<li>无广告干扰：RSS通常只包含文章标题、摘要和链接，不会包含网页上的广告或其他干扰元素。</li>
-<li>跨平台支持：有许多不同类型的RSS阅读器，包括桌面应用程序、移动应用和基于网页的服务，这使得RSS订阅可以在多种设备上使用。</li>
-</ul>
-<h3 id="使用rss订阅的基本步骤">使用RSS订阅的基本步骤</h3>
-<ul>
-<li>寻找RSS源：大多数网站都会提供一个RSS图标（通常是橙色的），点击该图标可以获得网站的RSS
-feed链接。</li>
-<li>添加到RSS阅读器：用户需要将找到的RSS
-feed链接添加到他们的RSS阅读器中。</li>
-<li>阅读更新：RSS阅读器会定期检查已订阅的feed，并显示最新的条目。</li>
-</ul>
-<p>RSS订阅对于那些希望高效管理来自多个来源的信息流的人来说非常有用。虽然随着社交媒体和电子邮件简报的流行，RSS的使用有所下降，但它仍然是许多用户获取新闻和博客更新的有效工具。</p>
-<h2 id="订阅archlinux新闻">订阅ArchLinux新闻</h2>
-<p>由于<code>ArchLinux</code>是滚动升级模式，为了在工作中稳定使用，在升级前看一下有什么重大更新再决定是否升级是必要的。但是每次都到官网<a
-target="_blank" rel="noopener" href="https://archlinux.org/">https://archlinux.org/</a>查看消息有所不便，因此我想起了<code>RSS</code>,
-到官网发现订阅地址为：</p>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://archlinux.org/feeds/news/">https://archlinux.org/feeds/news/</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://archlinux.org/feeds/packages/">https://archlinux.org/feeds/packages/</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://aur.archlinux.org/rss">https://aur.archlinux.org/rss</a></li>
-</ul>
-<h2 id="订阅百度新闻">订阅百度新闻</h2>
-<p>百度新闻也是支持订阅的，其聚合订阅地址为：</p>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://www.baidu.com/search/rss.html">https://www.baidu.com/search/rss.html</a></li>
-</ul>
-<h2 id="thunderbird订阅方法">Thunderbird订阅方法</h2>
-<p><code>帐户设置</code>→<code>帐户操作</code>→<code>新建新闻组帐户</code>→主页面右键<code>博客和新闻收取点</code>→<code>订阅...</code>→<code>收取点网址</code>→<code>添加</code>→<code>完成</code>.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/09/20/vortex%E5%92%8Cspiral%E7%9A%84%E4%B8%8D%E5%90%8C%E4%B9%8B%E5%A4%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/09/20/vortex%E5%92%8Cspiral%E7%9A%84%E4%B8%8D%E5%90%8C%E4%B9%8B%E5%A4%84/" class="post-title-link" itemprop="url">vortex和spiral的不同之处</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-09-20 13:02:03" itemprop="dateCreated datePublished" datetime="2024-09-20T13:02:03+08:00">2024-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>"Vortex" 和 "Spiral"
-是两个不同的概念，尽管它们在某些情况下可能看起来相似或相互关联。</p>
-<ol type="1">
-<li><p>Vortex（涡流）：
-涡流通常指的是流体（如水或空气）或粒子围绕一个中心点旋转的现象。涡流可以存在于自然界中，例如龙卷风或水下沉船周围形成的漩涡，也可以是在工程应用中如飞机翼尖产生的涡旋。涡流的关键特征是围绕中心的旋转运动以及由此产生的向内的吸力或向外的推力。</p></li>
-<li><p>Spiral（螺旋）：
-螺旋则是一种几何形状或运动路径，它是由一条曲线构成的，这条曲线从一个点开始，并围绕这个点逐渐远离或接近。螺旋可以是开放式的，也可以是封闭式的。开放式的螺旋会不断向外扩展，而封闭式的螺旋则可能会回到起点附近。螺旋并不一定涉及到旋转流体或者粒子，它可以描述任何按照螺旋轨迹运动的事物，例如螺旋楼梯或者弹簧。</p></li>
-</ol>
-<div class="note primary"><p>总结来说，vortex
-是一种物理现象，涉及到流体或粒子围绕中心旋转，通常伴随着向心或离心的力量；而
-spiral
-则是一个几何概念，描述的是沿着螺旋形路径的运动或形状。两者之间的联系在于，当流体形成涡流时，其流动路径可能呈现出螺旋形。</p>
 </div>
 
       

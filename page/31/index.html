@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">505</span>
+          <span class="site-state-item-count">508</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,268 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/16/Linux%E4%B8%8B%E8%A7%A3%E5%8E%8Bzip%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/12/16/Linux%E4%B8%8B%E8%A7%A3%E5%8E%8Bzip%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">Linux下解压zip文件乱码的解决方案</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-12-16 21:27:39" itemprop="dateCreated datePublished" datetime="2023-12-16T21:27:39+08:00">2023-12-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在Linux下打开或解压从Windows系统拷贝的zip文件，中文部分乱码,这个问题的根本原因是<label style="color:red">编码问题</label>，windows下默认gb2312与linux中默认utf-8不兼容。</p>
+<div class="tabs" id="解决乱码问题"><ul class="nav-tabs"><li class="tab active"><a href="#解决乱码问题-1">KDE-Plasma Ark</a></li><li class="tab"><a href="#解决乱码问题-2">Gnome3 File-Roller</a></li></ul><div class="tab-content"><div class="tab-pane active" id="解决乱码问题-1"><p>Ark
+是KDE默认的解压缩软件，出现乱码的直接原因是Ark中用于zip打开和解压的插件不支持gb2312,
+解决方案为：</p>
+<ol type="1">
+<li><p>安装<code>p7zip-natspec</code>(cn源里面有此软件)
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S ark</span><br><span class="line"><span class="built_in">sudo</span> pacman -S p7zip-natspec unarchiver lzop lrzip arj</span><br></pre></td></tr></table></figure></p></li>
+<li><p>在Ark中禁用libzip插件（该插件优先级高于p7zip）:
+<code>Ark</code>菜单→设置→配置<code>Ark</code>→插件→取消<code>Libzip</code>插件对应的复选框→应用。同时应当确保<code>p7zip</code>插件使用中。</p></li>
+<li><p>其他选择，使用<code>unzip-natspec</code>或<code>unzip-iconv</code>.</p></li>
+</ol></div><div class="tab-pane" id="解决乱码问题-2"><ol type="1">
+<li><p>安装<code>p7zip-natspec</code>(cn源里面有此软件)
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S file-roller</span><br><span class="line"><span class="built_in">sudo</span> pacman -S p7zip-natspec unarchiver lzop lrzip arj</span><br></pre></td></tr></table></figure></p></li>
+<li><p>在环境变量中，指定unzip参数，总是以指定的字符集显示和解压文件,
+即在<code>/etc/environment</code>中加入 <figure class="highlight sh"><figcaption><span>/etc/environment</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UNZIP=<span class="string">&quot;-O CP936&quot;</span></span><br><span class="line">ZIPINFO=<span class="string">&quot;-O CP936&quot;</span></span><br></pre></td></tr></table></figure></p></li>
+</ol>
+<p>这样Gnome桌面的归档文件管理器(file-roller)可以正常使用unzip解压中文，但是file-roller本身并不能设置编码传递给unzip。</p></div></div></div>
+<p>如果您习惯于使用命令，由于已经安装了<code>unarchiver</code>,
+所以直接使用命令<code>unar</code>解压<code>zip</code>文件也是可以解决文件名乱码问题的，这在所有Linux中都是一个通用的方案。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/16/%E5%A6%82%E4%BD%95%E6%8A%8AWord%E9%87%8C%E7%9A%84%E5%9B%BE%E7%89%87%E6%89%B9%E9%87%8F%E8%BD%AC%E6%8D%A2%E6%88%90%E5%B5%8C%E5%85%A5%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/12/16/%E5%A6%82%E4%BD%95%E6%8A%8AWord%E9%87%8C%E7%9A%84%E5%9B%BE%E7%89%87%E6%89%B9%E9%87%8F%E8%BD%AC%E6%8D%A2%E6%88%90%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="post-title-link" itemprop="url">如何把Word里的图片批量转换成嵌入式</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-12-16 17:38:32" itemprop="dateCreated datePublished" datetime="2023-12-16T17:38:32+08:00">2023-12-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>这原本是2020年1月15日，我在百度问答中回答网友的问题，现收录到本博客。</p>
+<figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Sub</span> 图片版式转换()</span><br><span class="line"><span class="keyword">Dim</span> n <span class="comment">&#x27;图片个数</span></span><br><span class="line"><span class="keyword">Dim</span> oShape <span class="keyword">As</span> Variant</span><br><span class="line"><span class="keyword">On</span> <span class="keyword">Error</span> <span class="keyword">Resume</span> <span class="keyword">Next</span></span><br><span class="line"><span class="keyword">For</span> n = <span class="number">1</span> <span class="keyword">To</span> ActiveDocument.Shapes.Count <span class="comment">&#x27;Shapes类型图片</span></span><br><span class="line">    ActiveDocument.Shapes(<span class="number">1</span>).ConvertToInlineShape</span><br><span class="line">    <span class="keyword">Next</span> n</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+<p>参考: <a
+target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/812994510875103092">如何把word里的图片批量转换成嵌入式</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/13/SDDM%E8%AF%AD%E8%A8%80%E4%BF%AE%E6%94%B9%E4%B8%BA%E4%B8%AD%E6%96%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/12/13/SDDM%E8%AF%AD%E8%A8%80%E4%BF%AE%E6%94%B9%E4%B8%BA%E4%B8%AD%E6%96%87/" class="post-title-link" itemprop="url">SDDM语言修改为中文</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-12-13 19:52:49" itemprop="dateCreated datePublished" datetime="2023-12-13T19:52:49+08:00">2023-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>2023-12-27 在安装完新系统后配置中文环境时，根据<a
+target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/Locale#Gnome-terminal_/_rxvt-unicode_不支持_UTF-8">Locale-ArchWiki</a>的描述，对于KDE
+Plasma 则删除<label style="color:red">~/.config/plasma-localerc</label>
+后发现各项翻译包括SDDM增均顺利转换成了英文。如果SDDM没有转成中文，请再按下述方法配置。</p>
+<hr />
+<p>新配置的<code>ArchLinux</code>解决完一些重要的问题后，还剩下<code>SDDM</code>的语言一直显示为英文，需要将语言修改为中文。方法为：
+修改文件<code>/usr/lib/systemd/system/sddm.service</code>，
+在<code>[Service]</code>下添加<code>Environment=LANG=zh_CN.UTF-8</code>,
+即</p>
+<figure class="highlight sh"><figcaption><span>/usr/lib/systemd/system/sddm.service</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Simple Desktop Display Manager</span><br><span class="line">Documentation=man:sddm(1) man:sddm.conf(5)</span><br><span class="line">Conflicts=getty@tty1.service</span><br><span class="line">After=systemd-user-sessions.service getty@tty1.service plymouth-quit.service systemd-logind.service</span><br><span class="line">PartOf=graphical.target</span><br><span class="line">StartLimitIntervalSec=30</span><br><span class="line">StartLimitBurst=2</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">ExecStart=/usr/bin/sddm</span><br><span class="line">Restart=always</span><br><span class="line">Environment=LANG=zh_CN.UTF-8</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">Alias=display-manager.service</span><br></pre></td></tr></table></figure>
+<div class="note info"><p>注意：按<code>ArchLinux</code>的<code>Wiki</code><a
+target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/简体中文本地化">简体中文本地化</a>,不推荐在<code>/etc/locale.conf</code>里把全局的<code>LANG locale</code>设置成中文<code>LANG=zh_CN.UTF-8</code>，因为<code>TTY</code>下没有<code>CJK</code>字体，这样设置会导致<code>TTY</code>中显示豆腐块（除非你使用的内核打了<code>cjktty</code>补丁能绘制中文字体，比如<a
+target="_blank" rel="noopener" href="https://github.com/archlinuxcn/repo/tree/master/archlinuxcn/linux-lily">linux-lily</a><sup>CNRepo</sup>）。</p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -900,272 +1162,6 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/diqiudq/article/detai
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">&quot;1,/^$/&#123;s/^$/\n## title ## \n/&#125;&quot;</span></span><br></pre></td></tr></table></figure>
 <p>参考文章：<a
 target="_blank" rel="noopener" href="https://blog.csdn.net/crabdave/article/details/84877079">sed修改第一个匹配的行</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/07/%E6%9C%80%E7%AE%80%E9%85%8D%E7%BD%AEzsh/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/07/%E6%9C%80%E7%AE%80%E9%85%8D%E7%BD%AEzsh/" class="post-title-link" itemprop="url">最简配置zsh</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-07 15:44:12" itemprop="dateCreated datePublished" datetime="2023-12-07T15:44:12+08:00">2023-12-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>之前配置好了<code>oh-my-zsh</code>,
-但是作为一个终端来讲没必要配置很多插件，因为我们的需要是有限的，而安装<code>oh-my-zsh</code>仅仅是为了实现一个主题而己，这显然不太符合<code>Archlinux</code>的精神。本文就是基于<code>zsh</code>自身的功能定制了一个最简配置，使用<code>pacman</code>来管理<code>zsh</code>必要的几个插件，这样更方便升级更新。</p>
-<h2 id="安装插件">安装插件</h2>
-<figure class="highlight sh"><figcaption><span>安装zsh的和必要插件</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S zsh-autosuggestions</span><br><span class="line"><span class="built_in">sudo</span> pacman -S zsh-completions</span><br><span class="line"><span class="built_in">sudo</span> pacman -S zsh-theme-powerlevel10k</span><br><span class="line"><span class="built_in">sudo</span> pacman -S zsh-syntax-highlighting-git</span><br><span class="line">paru -S zsh-z-git</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/12/07/%E6%9C%80%E7%AE%80%E9%85%8D%E7%BD%AEzsh/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/07/Linux%E4%B8%AD%E4%B8%80%E6%AC%A1%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AA%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/07/Linux%E4%B8%AD%E4%B8%80%E6%AC%A1%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AA%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Linux中一次运行多个命令</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-07 11:36:30" itemprop="dateCreated datePublished" datetime="2023-12-07T11:36:30+08:00">2023-12-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>如果要完成的任务需要执行大量的命令，那可以单独写成一个脚本，但是对于经常一块运行的几个命令单独写成脚本就有点得不偿失，此时在<code>.zshrc</code>中以命令别名的形式一次性运行多个命令是一个更好的选择。一个典型的例子，每次<code>push</code>一个仓库时需要执行三步，即
-<code>git add .</code> , <code>git commit -m "foobar"</code>,
-<code>git push</code>,
-在我的<code>zsh</code>配置中，我将其合并为<code>zpush</code>,代码如下：</p>
-<figure class="highlight sh"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># For a full list of active aliases, run `alias`.</span></span><br><span class="line"><span class="built_in">alias</span> zpush=<span class="string">&quot;git add . &amp;&amp; git commit -m <span class="variable">$HOST</span>-<span class="subst">$(date <span class="string">&quot;+%Y%m%d&quot;</span>)</span> &amp;&amp; git push&quot;</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/12/07/Linux%E4%B8%AD%E4%B8%80%E6%AC%A1%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AA%E5%91%BD%E4%BB%A4/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/04/%E5%B9%BF%E5%91%8A%E6%8B%A6%E6%88%AA%E6%8F%92%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/04/%E5%B9%BF%E5%91%8A%E6%8B%A6%E6%88%AA%E6%8F%92%E4%BB%B6/" class="post-title-link" itemprop="url">广告拦截插件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-04 17:52:47" itemprop="dateCreated datePublished" datetime="2023-12-04T17:52:47+08:00">2023-12-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>现在网络环境，广告五花八门，无处不在，其不仅影响阅读体验也会耽误大量的时间。然而，就目前的情况来看，一些互联网公司有意干扰了这些广告拦截插件，使其在浏览器中不能直接搜索安装，于是就需要探讨安装广告拦截插件的方法，直接通过源或者<code>Github</code>安装是最好的，但是前提是能够顺利访问<code>Github</code>,
-这可以参考<a
-href="/2023/12/02/Github终极解决方案">Github终极解决方案</a>。这些值得推荐的插件为：</p>
-<h2 id="tampermonkey">Tampermonkey</h2>
-<p><code>Tampermonkey</code>本身不是广告拦截插件，但是其提供了各种各样的神奇功能，所以将其放在第一位。下面列出一些常用的<code>Tampermonkey</code>脚本：</p>
-<ul>
-<li><code>AC-baidu</code>重定向优化百度搜狗谷歌必应搜索,
-过滤掉所有的搜索广告，最大化的还原一个清静的网页。</li>
-<li>🔥持续更新🔥 CSDN广告完全过滤、人性化脚本优化：🆕
-不用再登录了！让你体验令人惊喜的崭新CSDN。</li>
-</ul>
-<h2 id="ublock-origin">uBlock origin</h2>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S firefox-ublock-origin</span><br></pre></td></tr></table></figure>
-<h2 id="adblock-plus">adblock-plus</h2>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S firefox-adblock-plus</span><br></pre></td></tr></table></figure>
-<h2 id="adguardhome">adguardhome</h2>
-<p>Network-wide ads and trackers blocking DNS server</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S adguardhome</span><br></pre></td></tr></table></figure>
 
       
     </div>
