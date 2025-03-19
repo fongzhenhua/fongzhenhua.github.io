@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">509</span>
+          <span class="site-state-item-count">510</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,93 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/31/vim-latex%E7%BC%96%E8%BE%91%E5%A4%9A%E5%90%88%E4%B8%80%E6%96%87%E4%BB%B6%E6%97%B6%E7%9A%84%E4%B8%80%E9%94%AE%E7%BC%96%E8%AF%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/12/31/vim-latex%E7%BC%96%E8%BE%91%E5%A4%9A%E5%90%88%E4%B8%80%E6%96%87%E4%BB%B6%E6%97%B6%E7%9A%84%E4%B8%80%E9%94%AE%E7%BC%96%E8%AF%91/" class="post-title-link" itemprop="url">vim-latex编辑多合一文件时的一键编译</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-12-31 02:49:04" itemprop="dateCreated datePublished" datetime="2023-12-31T02:49:04+08:00">2023-12-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在使用<code>vim</code>或<code>nvim</code>编译<code>latex</code>文件时，对于单个源文件，自然使用<code>vim-latex</code>插件足够应对，但是对于一个多合一文件，比如说一本书，这里会有一个主文件，然后各个章节分开来写，但是每次写一部分后都要切换到主文件编译，然后再回到当前章节文件编辑，这显然是十分低效率的。于是研究使用一键编译，在多合一文件时能够直接编译主文件，设计思路是：</p>
+<ol type="1">
+<li><p>建立一个文件夹，<label style="color:red">文件夹名称就是要编译的主文件名称</label>.
+例如：<code>特殊函数/特殊函数.tex</code></p></li>
+<li><p>绑定'F10'映射到编译命令，使用shell命令截取文件夹的名称，也就获得了主文件的名称，进而直接编译就可以了，文件夹内的其他子文件就不用再管了。</p></li>
+<li><p>映射设置，位于'~/.config/nvim/lua/plg/vim-latex.lua`中，相关部分设置为：
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--绑定快捷键</span></span><br><span class="line">vim.api.nvim_create_autocmd(<span class="string">&quot;FileType&quot;</span>,&#123;</span><br><span class="line">    pattern = <span class="string">&quot;tex&quot;</span>,</span><br><span class="line">    callback = <span class="function"><span class="keyword">function</span><span class="params">()</span></span></span><br><span class="line">        <span class="comment">-- 配置F4打开模板</span></span><br><span class="line">        vim.api.nvim_set_keymap(<span class="string">&quot;n&quot;</span>, <span class="string">&quot;&lt;F4&gt;&quot;</span>, <span class="string">&quot;:TTemplate&lt;CR&gt;&quot;</span>, &#123;noremap = <span class="literal">true</span>, silent = <span class="literal">true</span>&#125;)</span><br><span class="line">        <span class="comment">-- 配置pdflatex编译，原vim-latex中使用\ll 默认 xelatex 编译</span></span><br><span class="line">        vim.api.nvim_set_keymap(<span class="string">&quot;n&quot;</span>, <span class="string">&quot;&lt;F6&gt;&quot;</span>, <span class="string">[[&lt;cmd&gt;!pdflatex % &lt;CR&gt;]]</span>, &#123;noremap = <span class="literal">true</span>, silent = <span class="literal">true</span>&#125;)</span><br><span class="line">        <span class="comment">-- 配置F8编译 aux辅助文件，直接根据数据库生成文献引用, 注意使用%:t:r 截取文件名</span></span><br><span class="line">        vim.api.nvim_set_keymap(<span class="string">&quot;n&quot;</span>, <span class="string">&quot;&lt;F8&gt;&quot;</span>, <span class="string">[[&lt;cmd&gt;!bibtex %:t:r.aux &lt;CR&gt;]]</span>, &#123;noremap = <span class="literal">true</span>, silent = <span class="literal">true</span>&#125;)</span><br><span class="line">        <span class="comment">-- 配置F10编译多合一文件时，以当前目录名为主文件，以节省时间</span></span><br><span class="line">        vim.api.nvim_set_keymap(<span class="string">&quot;n&quot;</span>, <span class="string">&quot;&lt;F10&gt;&quot;</span>, <span class="string">[[&lt;cmd&gt;!xelatex $(echo $PWD|awk -F&quot;/&quot; &#x27;&#123;print $NF&#125;&#x27;).tex &lt;CR&gt;]]</span>, &#123;noremap = <span class="literal">true</span>, silent = <span class="literal">true</span>&#125;)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p></li>
+<li><p>多合一文件的结构参考 <figure class="highlight tex"><figcaption><span>特殊函数</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>[a4paper,fontset = windows]&#123;ctexbook&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;xeCJKfntef&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>[svgnames]&#123;xcolor&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>[margin=2cm]&#123;geometry&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;tikz&#125;</span><br><span class="line"><span class="keyword">\usetikzlibrary</span>&#123;patterns&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;float&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;amsfonts&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;amssymb&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;mathtools&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;amsthm&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;amsmath&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;physics&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;multicol&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;lineno&#125;</span><br><span class="line"><span class="comment">%\usepackage&#123;mathpazo&#125;</span></span><br><span class="line"><span class="keyword">\usepackage</span>[</span><br><span class="line">  pdfborder=0 0 0,</span><br><span class="line">  bookmarksnumbered=true</span><br><span class="line">]&#123;hyperref&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>[user=teacher]&#123;cexam&#125;  </span><br><span class="line"><span class="keyword">\usepackage</span>&#123;colornote&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>[fontwarning=off]&#123;ctrlwarning&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;pgfplots&#125;</span><br><span class="line"><span class="keyword">\pgfplotsset</span>&#123;compat=1.18&#125;</span><br><span class="line"><span class="comment">%\usepackage&#123;doc&#125;</span></span><br><span class="line"><span class="comment">%\usepackage&#123;draftwatermark&#125;</span></span><br><span class="line"><span class="comment">%\SetWatermarkText&#123;冯振华&#125;</span></span><br><span class="line"><span class="keyword">\includeonly</span>&#123;</span><br><span class="line">  Gamma函数,</span><br><span class="line">  Reimannζ函数,</span><br><span class="line">  常系数线性微分方程,</span><br><span class="line">  特殊函数的微分解法,</span><br><span class="line">  积分变换,</span><br><span class="line">  特殊函数的积分解法,</span><br><span class="line">  Whittaker,</span><br><span class="line">  椭圆函数,</span><br><span class="line">  不等式高级水平必备,</span><br><span class="line">  线性代数,</span><br><span class="line">  张量分析,</span><br><span class="line">  附录,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="comment">%\title&#123;\Huge 特殊函数新解&#125;</span></span><br><span class="line"><span class="comment">%\author&#123; 冯振华&#125;</span></span><br><span class="line"><span class="comment">%\date&#123;2020年12月3日&#125;</span></span><br><span class="line"><span class="comment">%\maketitle</span></span><br><span class="line"><span class="keyword">\input</span>&#123;coverpage&#125;</span><br><span class="line"><span class="keyword">\tableofcontents</span></span><br><span class="line"><span class="keyword">\include</span>&#123;Gamma函数&#125;</span><br><span class="line"><span class="keyword">\include</span>&#123;Reimannζ函数&#125;</span><br><span class="line"><span class="keyword">\include</span>&#123;常系数线性微分方程&#125;</span><br><span class="line"><span class="keyword">\include</span>&#123;特殊函数的微分解法&#125;</span><br><span class="line"><span class="keyword">\include</span>&#123;积分变换&#125;</span><br><span class="line"><span class="keyword">\include</span>&#123;特殊函数的积分解法&#125;</span><br><span class="line"><span class="keyword">\include</span>&#123;Whittaker&#125;</span><br><span class="line"><span class="keyword">\include</span>&#123;椭圆函数&#125;</span><br><span class="line"><span class="keyword">\include</span>&#123;不等式高级水平必备&#125;</span><br><span class="line"><span class="keyword">\include</span>&#123;线性代数&#125;</span><br><span class="line"><span class="keyword">\include</span>&#123;张量分析&#125;</span><br><span class="line"><span class="keyword">\include</span>&#123;附录&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure></p></li>
+</ol>
+<div class="note warning"><p>注意：在绑定到<code>F10</code>的编译命令中，本来应当借助于vimscript的内置变量，但是<code>%:h</code>返回值是当前目录的缩写<code>.</code>,
+而我需要的是和主文件同名的文件夹名，同时也没有使用<code>shell</code>截取字符串的方法，因为<code>##</code>或<code>%</code>都被vimscript解析成它的命令用来替换，所以直接使用了<code>awk</code>来截截取文件夹名，从而也获得了主文件的名称。同时注意，由于使用了<code>主文件/主文件.tex</code>的命名方式，在多文件<code>latex</code>的编辑过程中，应当遵守这个规定命名。同时键位<code>F9</code>已经分配给了<code>nabla</code>插件，用来显示公式，所以此处多合一编辑分配了最后一个键位<code>F10</code>。</p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1297,96 +1384,6 @@ file you can name it <code>cppmain.template</code> or
 <li><p>TAR加密压缩 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zcvf - ./package | openssl des3 -salt -k yourpassword | <span class="built_in">dd</span> of=meiyou.tar.gz</span><br></pre></td></tr></table></figure></p></li>
 <li><p>TAR解压缩 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=meiyou.tar.gz | openssl des3 -d -k yourpassword |tar zxf -</span><br></pre></td></tr></table></figure></p></li>
 </ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/17/zsh%E9%AB%98%E4%BA%AE%E6%8F%92%E4%BB%B6fast-syntax-highlighting/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/17/zsh%E9%AB%98%E4%BA%AE%E6%8F%92%E4%BB%B6fast-syntax-highlighting/" class="post-title-link" itemprop="url">zsh高亮插件fast-syntax-highlighting</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-17 22:30:44" itemprop="dateCreated datePublished" datetime="2023-12-17T22:30:44+08:00">2023-12-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Zsh(Z-shell)是一款用于交互式使用的shell，也可以作为脚本解释器来使用。它包含了bash，ksh，tcsh等其他shell中许多优秀功能，也拥有诸多自身特色。</p>
-<p><code>zsh</code>有一款语法高亮插件<code>zsh-syntax-highlighting</code>,
-它可以为<code>zsh</code>添加色彩高亮，是一款必备插件，但是今天我又发现一款比它更优秀的插件<code>fast-syntax-highlighting</code>,
-其自带有多款高亮主题，且可以自由切换。</p>
-<h2 id="安装插件">安装插件</h2>
-<figure class="highlight sh"><figcaption><span>fast-syntax-highlighting</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paru -S fast-syntax-highlighting-git</span><br></pre></td></tr></table></figure>
-<h2 id="启用插件">启用插件</h2>
-<figure class="highlight sh"><figcaption><span>~/.zshrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh</span></span><br><span class="line"><span class="built_in">source</span> /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh</span><br></pre></td></tr></table></figure>
-<h2 id="配置插件">配置插件</h2>
-<ul>
-<li><p>列出可用的主题 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fast-theme -l</span><br></pre></td></tr></table></figure></p></li>
-<li><p>切换主题 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fast-theme -t theme-name</span><br></pre></td></tr></table></figure></p></li>
-</ul>
-<div class="note warning"><p>插件<code>zsh-syntax-highlighting</code>与<code>fast-syntax-highlighting</code>可以同时安装，并不冲突，但是在<code>.zshrc</code>配置文件中应当选择其中一个.</p>
-</div>
 
       
     </div>
