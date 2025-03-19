@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">508</span>
+          <span class="site-state-item-count">509</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,94 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/05/Shell%E4%B8%AD%E7%9A%84eval%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/11/05/Shell%E4%B8%AD%E7%9A%84eval%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Shell中的eval命令</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-11-05 21:41:50" itemprop="dateCreated datePublished" datetime="2024-11-05T21:41:50+08:00">2024-11-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="基本用法">基本用法</h1>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span> command-line</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p>其中<code>command－line</code>是在终端上键入的一条普通命令行。然而当在它前面放上<code>eval</code>时，其结果是<code>shell</code>在执行命令行之前扫描它两次。</p>
+</div>
+<h1 id="举例解释">举例解释</h1>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pipe=<span class="string">&quot;|&quot;</span></span><br><span class="line"><span class="built_in">eval</span> <span class="built_in">ls</span> <span class="variable">$pipe</span> <span class="built_in">wc</span> -l</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p><code>shell</code>第<code>1</code>次扫描命令行时，它替换出变量<code>$pipe</code>的值<code>｜</code>，接着<code>eval</code>使它再次扫描命令行，这时<code>shell</code>把<code>｜</code>作为管道符号了。</p>
+</div>
+<h1 id="参考文章">参考文章</h1>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/luliuliu1234/article/details/80994391">Shell中eval的用法</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1420,160 +1508,6 @@ ID，系统可以识别不同的计算机并进行特定的操作和配置。在
 Linux 中的机器 ID？</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.idc.net/help/161609/">「深入浅出」Linux 主机
 id：快速获取系统唯一标识符 (linux 主机 id)</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/19/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E7%9A%84%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95%E4%B9%8BRunge-Kutta%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/10/19/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E7%9A%84%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95%E4%B9%8BRunge-Kutta%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">微分方程的数值解法之Runge-Kutta方法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-10-19 19:45:35" itemprop="dateCreated datePublished" datetime="2024-10-19T19:45:35+08:00">2024-10-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="简介">简介</h2>
-<p>当我们在纸面上画曲线时会遇到三种情况:
-第一种是曲线可以初等函数通过各种组合获得，
-第二种是曲线可以由初等函数及其导函数确定，但是无法求出明确的函数关系，第三种就是没有任何关系的随机函数。而物理规律往往存在一定关系的，也就是各种各样的微分方程，但是有限的数学函数不可能构建出各种各样的物理规律，所以这就是根据基本微积分原理使用列表法罗列出自变量与因变量的对应关系，把这些分立的点在纸上描出，只要足够分离间隔足够小，基本上就能得到精确的数值解。然后根据曲线的变化趋势就可以找到物理规律了。这就包括了前两种情况，所以数值解法可以应用的范围极广，但是若有解析解，我们可以方便的通过一些数学手段来分析其规律，没有解析解，也就是没有初等函数组合出的具体函数，我们只能牺牲时间，来逐点计算，列表以找到映射关系。</p>
-<p>Runge-Kutta 法的理论基础是 Taylor
-展开，通过增加Taylor的幂级数项来增加精度，但是注意这隐含着那个不可解析的函数也必须是收敛的才有意义！这个需要根据具体情况判断，换言之出现无穷大的情况就要小心了。</p>
-<h2 id="理论细节">理论细节</h2>
-<h3 id="问题数学化">问题数学化</h3>
-<p>已经初始值：<span class="math inline">\(x_0\)</span>, <span
-class="math inline">\(y_0\)</span> 和微分方程关系式 <span
-class="math inline">\(y&#39;=f(x,y)\)</span>, 求<span
-class="math inline">\(y=y(x)\)</span>的映射关系（列表法）</p>
-<h3 id="具体步骤">具体步骤</h3>
-<p>建立的基础是比卡逐次逼近法，不断增加Taylor级数的项。具体操作为：</p>
-<ol type="1">
-<li><p>取<span class="math inline">\(x_1=x_0+h\)</span>,
-采用线性项做初步近似，即 <span
-class="math display">\[\begin{equation}\label{eq:jie1}
-g_1(x_1)=y_0+hf(x_0,y_0)
-\end{equation}\]</span></p></li>
-<li><p>若我们能求出二阶导数，则在式<span
-class="math inline">\(\eqref{eq:jie1}\)</span>的基础上再追加上二阶项后记为<span
-class="math inline">\(g_2(x_1)\)</span>, 显然比式<span
-class="math inline">\(\eqref{eq:jie1}\)</span>更加精确。按导数的定义，只要令<span
-class="math inline">\(h\)</span>足够小，<span
-class="math inline">\((x_0,y_0)\)</span>处的二阶导数就可以取为 <span
-class="math display">\[\begin{equation}\label{eq:daoshu1}
-f&#39;(x_0,y_0)=\frac{f(x_1,g_1(x_1))-f(x_0,y_0)}{h}
-\end{equation}\]</span> 于是式<span
-class="math inline">\(\eqref{eq:jie1}\)</span>按Taylor级数追加下一阶项后为
-<span class="math display">\[\begin{equation}\label{eq:jie2}
-g_2(x_1)=y_0+hf(x_0,y_0)+\frac{h^2}{2!}f&#39;(x_1,g_1(x_1))
-\end{equation}\]</span></p></li>
-<li><p>按照上述步骤一直做下去，假设已经精确到了<span
-class="math inline">\(n\)</span>阶项，即 <span
-class="math display">\[\begin{equation}\label{eq:jieN}
-g_n(x_1)=y_0+hf(x_0,y_0)+\frac{h^2}{2!}f&#39;(x_1,g_1(x_1))+\cdots +
-\frac{h^n}{n!}f^{(n)}(x_1,g_{n-1}(x_1))
-\end{equation}\]</span> 进一步可以求解第<span
-class="math inline">\(n+1\)</span>阶导数 <span
-class="math display">\[\begin{equation}\label{eq:jieN1}
-f^{(n+1)}(x_0,y_0)=\frac{f^{(n)}(x_1,g_n(x_1))-f^{(n)}(x_0,y_0)}{h}
-\end{equation}\]</span> 将式<span
-class="math inline">\(\eqref{eq:jieN1}\)</span>按Taylor展开式代入式<span
-class="math inline">\(\eqref{eq:jieN}\)</span>得 <span
-class="math display">\[\begin{align}
-g_{n+1}(x_1)&amp;=y_0+hf(x_0,y_0)+\frac{h^2}{2!}f&#39;(x_1,g_1(x_1))+\cdots
-+\\
-         &amp;\frac{h^n}{n!}f^{(n)}(x_1,g_{n-1}(x_1))+\frac{h^{n+1}}{(n+1)!}f^{(n+1)}(x_1,g_{n}(x_1))
-\label{eq:jieN2}
-\end{align}\]</span></p></li>
-<li><p>按式<span class="math inline">\(\eqref{eq:jieN}\)</span>到式<span
-class="math inline">\(\eqref{eq:jieN2}\)</span>一直递推下去就可以得到越来越接近<span
-class="math inline">\(y(x_1)\)</span>的值，所认也可以说近似精度在提高。在保持<span
-class="math inline">\(n\)</span>阶近似时，可以取下一个函数点<span
-class="math inline">\((x_1,y_1)\)</span>, 其中<span
-class="math inline">\(y_1=g_n(x_1)\)</span>. 在此基础上，以<span
-class="math inline">\((x_1,y_1)\)</span>为起点，将递推关系中的<span
-class="math inline">\(x_0\)</span>换成<span
-class="math inline">\(x_1\)</span>,<span
-class="math inline">\(x_1\)</span>换成<span
-class="math inline">\(x_2\)</span>, 重复递推过程则获得<span
-class="math inline">\((x_2,y_2)\)</span>,
-一直执行下去就可以获得列表法的结果<span
-class="math inline">\((x_i,y_i)\)</span>, 其中<span
-class="math inline">\(i=0\)</span>,<span
-class="math inline">\(1\)</span>,<span
-class="math inline">\(2\)</span>,<span
-class="math inline">\(\cdots\)</span></p></li>
-<li><p>上面分析了Runge-Kutta法的理论，并未直接从程序入手分析，也没有列出程序编码，其目的是理解数值计算的理论，在今后的学习和工作中更好的处理物理问题。</p></li>
-</ol>
-<h2 id="参考文章">参考文章</h2>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%BE%99%E6%A0%BC%E5%BA%93%E5%A1%94%E6%B3%95/3016350">龙格库塔法-百度百科</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/SanyHo/article/details/107017076">Runge-Kutta（龙格-库塔）方法
-| 基本思想 + 二阶格式 + 四阶格式</a></li>
 </ul>
 
       

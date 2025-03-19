@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">508</span>
+          <span class="site-state-item-count">509</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,131 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/13/Shell%E4%BA%A7%E7%94%9F%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/01/13/Shell%E4%BA%A7%E7%94%9F%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">Shell产生随机数的几种方法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-01-13 19:47:31" itemprop="dateCreated datePublished" datetime="2025-01-13T19:47:31+08:00">2025-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="一问题">一、问题</h2>
+<p>Shell下有时需要使用随机数，在此总结产生随机数的方法。计算机产生的的只是“伪随机数”，不会产生绝对的随机数（是一种理想随机数）。伪随机数在大量重现时也并不一定保持唯一，但一个好的伪随机产生算法将可以产生一个非常长的不重复的序列。</p>
+<h2 id="二随机数">二、随机数</h2>
+<h2 id="生成随机数的七种方法">1、生成随机数的七种方法</h2>
+<h3 id="通过内部系统变量random">（1）通过内部系统变量（$RANDOM）</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$RANDOM</span></span><br></pre></td></tr></table></figure>
+<p>生成0-32767之间的整数随机数，若超过5位可以加个固定10位整数，然后进行求余。</p>
+<figure class="highlight sh"><figcaption><span>生成400000~500000的随机数</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash  </span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">rand</span></span>()&#123; </span><br><span class="line">min=<span class="variable">$1</span> </span><br><span class="line">max=$((<span class="variable">$2</span>-<span class="variable">$min</span>+<span class="number">1</span>)) </span><br><span class="line">num=$((<span class="variable">$RANDOM</span>+<span class="number">1000000000</span>)) <span class="comment">#增加一个10位的数再求余 </span></span><br><span class="line"><span class="built_in">echo</span> $((<span class="variable">$num</span>%<span class="variable">$max</span>+<span class="variable">$min</span>)) </span><br><span class="line">&#125;  </span><br><span class="line">rnd=$(rand 400000 500000) </span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$rnd</span>  </span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure>
+<h3 id="使用awk的随机函数">（2）使用awk的随机函数</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">&#x27;BEGIN&#123;srand();print rand()*1000000&#125;&#x27;</span> <span class="comment">#可以加上if判断</span></span><br></pre></td></tr></table></figure>
+<h3 id="openssl-rand产生随机数">（3）openssl rand产生随机数</h3>
+<p><code>openssl rand</code>
+用于产生指定长度个bytes的随机字符。<code>-base64</code>或<code>-hex</code>对随机字符串进行base64编码或用hex格式显示。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">openssl rand -<span class="built_in">base64</span> 8 | <span class="built_in">md5sum</span> | <span class="built_in">cut</span> -c1-8 <span class="comment">#八位字母和数字的组合，3a61800e</span></span><br><span class="line">openssl rand -<span class="built_in">base64</span> 8 | <span class="built_in">cksum</span> | <span class="built_in">cut</span> -c1-8  <span class="comment">#八位数字，10784736</span></span><br></pre></td></tr></table></figure>
+<h3 id="通过时间获得随机数date">（4）通过时间获得随机数（date）</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">date</span> +%s%N <span class="comment">#生成19位数字，1287764807051101270</span></span><br><span class="line"><span class="built_in">date</span> +%s%N | <span class="built_in">cut</span> -c6-13 <span class="comment">#取八位数字，21793709</span></span><br><span class="line"><span class="built_in">date</span> +%s%N | <span class="built_in">md5sum</span> | <span class="built_in">head</span> -c 8 <span class="comment">#八位字母和数字的组合，87022fda</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><figcaption><span>生成1~50的随机数</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash </span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">rand</span></span>()&#123;</span><br><span class="line"> min=<span class="variable">$1</span> </span><br><span class="line"> max=$((<span class="variable">$2</span>-<span class="variable">$min</span>+<span class="number">1</span>))</span><br><span class="line"> num=$(<span class="built_in">date</span> +%s%N)</span><br><span class="line"> <span class="built_in">echo</span> $((<span class="variable">$num</span>%<span class="variable">$max</span>+<span class="variable">$min</span>))</span><br><span class="line">&#125;</span><br><span class="line">rnd=$(rand 1 50)</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$rnd</span></span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure>
+<h3
+id="通过系统内唯一数据生成随机数devrandom及devurandom">（5）通过系统内唯一数据生成随机数（/dev/random及/dev/urandom）</h3>
+<p><code>/dev/random</code>存储系统当前运行环境的实时数据，可看作系统某时的唯一值，提供优质随机数。</p>
+<p><code>/dev/urandom</code>是非阻塞随机数产生器，读取时不会产生阻塞，速度更快、安全性较差。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#32f1e953ac</span></span><br><span class="line"><span class="built_in">cat</span> /dev/urandom | <span class="built_in">head</span> -n 10 | <span class="built_in">md5sum</span> | <span class="built_in">head</span> -c 10</span><br><span class="line"><span class="comment">#生成全字符的随机字符串，08?WU$ZU</span></span><br><span class="line"><span class="built_in">cat</span> /dev/urandom | strings -n 8 | <span class="built_in">head</span> -n 1</span><br><span class="line"><span class="comment">#生成数字加字母的随机字符串，Ql2q9CXS，其中 strings -n设置字符串的字符数，head -n设置输出的行数。</span></span><br><span class="line"><span class="built_in">cat</span> /dev/urandom | sed -e <span class="string">&#x27;s/[^a-zA-Z0-9]//g&#x27;</span> | strings -n 8 | <span class="built_in">head</span> -n 1</span><br><span class="line"><span class="comment">#urandom的数据很多使用cat会比较慢，在此使用head读200行，cksum将读取文件内容生成唯一的表示整型数据，cut以” “分割然后得到分割的第一个字段数据</span></span><br><span class="line">head-200/dev/urandom| <span class="built_in">cksum</span> |cut-d<span class="string">&quot; &quot;</span> -f1</span><br></pre></td></tr></table></figure>
+<h3 id="读取linux的uuid码">（6）读取linux的uuid码</h3>
+<p>UUID码全称是通用唯一识别码 (Universally Unique Identifier,
+UUID)，UUID格式是：包含32个16进制数字，以“-”连接号分为五段，形式为8-4-4-4-12的32个字符。linux的uuid码也是有内核提供的，在/proc/sys/kernel/random/uuid这个文件内。cat/proc/sys/kernel/random/uuid每次获取到的数据都会不同。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/sys/kernel/random/uuid| <span class="built_in">cksum</span> | <span class="built_in">cut</span> -f1 -d<span class="string">&quot; &quot;</span> <span class="comment">#获取不同的随机整数，1675034933</span></span><br><span class="line"><span class="built_in">cat</span> /proc/sys/kernel/random/uuid| <span class="built_in">md5sum</span> | <span class="built_in">cut</span> -c1-8    <span class="comment">#数字加字母的随机数，d69a7ebf</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><figcaption><span>使用linux uuid 生成100~500随机数</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash </span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">rand</span></span>()&#123;</span><br><span class="line"> min=<span class="variable">$1</span></span><br><span class="line"> max=$((<span class="variable">$2</span>-<span class="variable">$min</span>+<span class="number">1</span>))</span><br><span class="line"> num=$(<span class="built_in">cat</span> /proc/sys/kernel/random/uuid | <span class="built_in">cksum</span> | awk -F <span class="string">&#x27; &#x27;</span> <span class="string">&#x27;&#123;print $1&#125;&#x27;</span>)</span><br><span class="line"> <span class="built_in">echo</span> $((<span class="variable">$num</span>%<span class="variable">$max</span>+<span class="variable">$min</span>))</span><br><span class="line">&#125;</span><br><span class="line">rnd=$(rand 100 500)</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$rnd</span></span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure>
+<h3 id="从元素池中随机抽取取">（7）从元素池中随机抽取取</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pool=(a b c d e f g h i j k l m n o p q r s t 1 2 3 4 5 6 7 8 9 10)</span><br><span class="line">num=<span class="variable">$&#123;#pool[*]&#125;</span></span><br><span class="line">result=<span class="variable">$&#123;pool[$((RANDOM%num))]&#125;</span></span><br></pre></td></tr></table></figure>
+<p>用于生成一段特定长度的有数字和字母组成的字符串，字符串中元素来自自定义的池子。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash </span></span><br><span class="line">length=8 </span><br><span class="line">i=1 </span><br><span class="line"><span class="built_in">seq</span>=(0 1 2 3 4 5 6 7 8 9 a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z) </span><br><span class="line">num_seq=<span class="variable">$&#123;#seq[@]&#125;</span> </span><br><span class="line">  </span><br><span class="line"><span class="keyword">while</span> [ <span class="string">&quot;<span class="variable">$i</span>&quot;</span> -le <span class="string">&quot;<span class="variable">$length</span>&quot;</span> ] </span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"> seqrand[<span class="variable">$i</span>]=<span class="variable">$&#123;seq[$((RANDOM%num_seq))]&#125;</span> </span><br><span class="line"> <span class="built_in">let</span> <span class="string">&quot;i=i+1&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line">  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;The random string is:&quot;</span></span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> <span class="variable">$&#123;seqrand[@]&#125;</span> </span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"> <span class="built_in">echo</span> -n <span class="variable">$j</span> </span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="built_in">echo</span></span><br></pre></td></tr></table></figure>
+<h2 id="随机数应用">2、随机数应用</h2>
+<ol type="1">
+<li><p>随机数在互联网中应用广泛如计算机仿真模拟、数据加密、网络游戏等，在登录某些论坛或游戏时，系统会产生一个由随机数字和字母组成的图片，用户必须正确输入，这是防止恶意攻击的很好的方法，因比较难破解图片格式的字符。其关键技术就是产生随机数，再使用ASP.NET等工具将这些字符串封装成图片格式以作为验证图片。</p></li>
+<li><p>网络游戏中也常利用随机数完成一些功能，比如掷骰子、发扑克牌等。以下是连续掷1000次骰子，然后统计出1～6点的次数：
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash </span></span><br><span class="line"><span class="comment">#RANDOM=$$ </span></span><br><span class="line">PIPS=6 </span><br><span class="line">MAX=1000 </span><br><span class="line">throw=1 </span><br><span class="line">  </span><br><span class="line">one=0 </span><br><span class="line">two=0 </span><br><span class="line">three=0 </span><br><span class="line">four=0 </span><br><span class="line">five=0 </span><br><span class="line">six=0 </span><br><span class="line"><span class="function"><span class="title">count</span></span>() </span><br><span class="line">&#123; </span><br><span class="line"><span class="keyword">case</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line"> 0) <span class="built_in">let</span> <span class="string">&quot;one=one+1&quot;</span>;; </span><br><span class="line"> 1) <span class="built_in">let</span> <span class="string">&quot;two=two+1&quot;</span>;; </span><br><span class="line"> 2) <span class="built_in">let</span> <span class="string">&quot;three=three+1&quot;</span>;; </span><br><span class="line"> 3) <span class="built_in">let</span> <span class="string">&quot;four=four+1&quot;</span>;; </span><br><span class="line"> 4) <span class="built_in">let</span> <span class="string">&quot;five=five+1&quot;</span>;; </span><br><span class="line"> 5) <span class="built_in">let</span> <span class="string">&quot;six=six+1&quot;</span>;; </span><br><span class="line"><span class="keyword">esac</span> </span><br><span class="line">&#125; </span><br><span class="line">  </span><br><span class="line"><span class="keyword">while</span> [ <span class="string">&quot;<span class="variable">$throw</span>&quot;</span> -le <span class="string">&quot;<span class="variable">$MAX</span>&quot;</span> ] </span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"> <span class="built_in">let</span> <span class="string">&quot;dice=RANDOM % <span class="variable">$PIPS</span>&quot;</span></span><br><span class="line"> count <span class="variable">$dice</span> </span><br><span class="line"> <span class="built_in">let</span> <span class="string">&quot;throw=throw+1&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line">  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;The statistics results are as follows:&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;one=<span class="variable">$one</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;two=<span class="variable">$two</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;three=<span class="variable">$three</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;four=<span class="variable">$four</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;five=<span class="variable">$five</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;six=<span class="variable">$six</span>&quot;</span></span><br></pre></td></tr></table></figure>
+RANDOM产生的随机数基本在平均值左右浮动（即方差较小）。</p></li>
+<li><p>批量创建10个系统帐号，密码随机 先看看指定用户密码的脚本：
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash </span></span><br><span class="line"><span class="comment">#批量创建10个系统帐号并设置密码，帐号和密码相同 </span></span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> `<span class="built_in">seq</span> -w 10` </span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"> <span class="comment">#非交互式的输入密码 </span></span><br><span class="line"> useradd linux<span class="variable">$name</span> &amp;&amp; <span class="built_in">echo</span> <span class="string">&quot;linux<span class="variable">$name</span>&quot;</span> | passwd --stdin linux<span class="variable">$name</span> </span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+10个用户用户名和密码相同都从linux-01到linux-10，再看看用户密码随机生成的脚本：
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash </span></span><br><span class="line"><span class="comment">#批量创建10个系统帐号并设置密码 </span></span><br><span class="line"><span class="built_in">rm</span> -f user.log </span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> `<span class="built_in">seq</span> -w 10` </span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"> <span class="comment">#非交互式的输入随机密码 </span></span><br><span class="line"> password=`<span class="built_in">echo</span> <span class="variable">$RANDOM</span> | <span class="built_in">md5sum</span> | <span class="built_in">cut</span> -c1-8` </span><br><span class="line"> <span class="comment">#可以使用password=`echo &quot;date $RANDOM&quot; | md5sum | cut -c3-11` </span></span><br><span class="line"> <span class="comment">#也可以使用password=`penssl rand -base64 8 | md5sum | cut -c1-8` </span></span><br><span class="line"> useradd linux<span class="variable">$name</span> &amp;&amp; <span class="built_in">echo</span> password | passwd --stdin linux<span class="variable">$name</span> </span><br><span class="line"> <span class="built_in">echo</span> -e <span class="string">&quot;user=linux<span class="variable">$name</span> \t passwd=<span class="variable">$password</span>&quot;</span> &gt;&gt; user.log <span class="comment">#保存用户名密码以查阅 </span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+对比可以看出，随机生成密码的灵活性和保密性，管理员可以打开user.log文件，记录刚创建的十个用户的信息。</p></li>
+</ol>
+<h2 id="三总结">三、总结</h2>
+<ol type="1">
+<li>Shell产生伪随机数的函数$RANDOM，能方便地产生分布较平均的伪随机数，能满足大部分应用的需求。</li>
+<li>产生随机数的方法还有很多并且可以扩展，扩展思路才能选择最近的方式。</li>
+<li>完全引用自: <a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/cnhack/articles/17164650.html">shell产生随机数七种方法的实现</a></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1212,125 +1337,6 @@ Harry Chen 所说：“你喜爱的 Markdown 写作，现更以 LaTeX 呈现。�
 <li><a target="_blank" rel="noopener" href="https://www.latexstudio.net/archives/51808.html">以
 Markdown 撰写文稿，以 LaTeX 排版【好文推荐】</a></li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/04/DNS%E8%A7%A3%E6%9E%90%E4%B8%AD%E7%9A%84%E8%AE%B0%E5%BD%95%E7%B1%BB%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/01/04/DNS%E8%A7%A3%E6%9E%90%E4%B8%AD%E7%9A%84%E8%AE%B0%E5%BD%95%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">DNS解析中的记录类型</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-01-04 13:07:13" itemprop="dateCreated datePublished" datetime="2025-01-04T13:07:13+08:00">2025-01-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-06 02:46:19" itemprop="dateModified" datetime="2025-03-06T02:46:19+08:00">2025-03-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在DNS解析中，存在多种类型的记录，每种记录都有其特定的用途。本文列举一些常见的DNS记录类型：</p>
-<ol type="1">
-<li><strong>A 记录 (Address Record)</strong>
-<ul>
-<li>将域名映射到IPv4地址。</li>
-</ul></li>
-<li><strong>AAAA 记录 (IPv6 Address Record)</strong>
-<ul>
-<li>与A记录类似，但将域名映射到IPv6地址。</li>
-</ul></li>
-<li><strong>CNAME 记录 (Canonical Name Record)</strong>
-<ul>
-<li>指定一个域名是另一个域名的别名，允许多个域名指向相同的IP地址。</li>
-</ul></li>
-<li><strong>MX 记录 (Mail Exchange Record)</strong>
-<ul>
-<li>指定负责接收发往该域名邮件的邮件服务器。</li>
-</ul></li>
-<li><strong>NS 记录 (Name Server Record)</strong>
-<ul>
-<li>指明哪些DNS服务器是负责某个域的权威服务器。</li>
-</ul></li>
-<li><strong>PTR 记录 (Pointer Record)</strong>
-<ul>
-<li>用于反向DNS查找，即将IP地址映射到域名。</li>
-</ul></li>
-<li><strong>SOA 记录 (Start of Authority Record)</strong>
-<ul>
-<li>包含有关域名的权威信息，包括主名称服务器、序列号等。</li>
-</ul></li>
-<li><strong>SRV 记录 (Service Record)</strong>
-<ul>
-<li>定义提供特定服务（如SIP、XMPP等）的服务器的位置。</li>
-</ul></li>
-<li><strong>TXT 记录 (Text Record)</strong>
-<ul>
-<li>允许管理员在DNS中存储文本注释或设置SPF记录以防止垃圾邮件。</li>
-</ul></li>
-<li><strong>CAA 记录 (Certification Authority Authorization)</strong>
-<ul>
-<li>指定哪些证书颁发机构(CA)被授权为该域名发行证书。</li>
-</ul></li>
-</ol>
-<p>这些记录构成了DNS系统的骨干，确保互联网上的设备能够找到彼此并交换信息。根据需要，还可以配置更多特定用途的DNS记录。</p>
 
       
     </div>
