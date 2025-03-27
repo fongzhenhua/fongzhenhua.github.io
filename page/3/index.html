@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">516</span>
+          <span class="site-state-item-count">517</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,124 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/05/Rust%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/03/05/Rust%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">Rust编程入门</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-03-05 21:16:06" itemprop="dateCreated datePublished" datetime="2025-03-05T21:16:06+08:00">2025-03-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="简介">简介</h2>
+<p>Rust是一种由Mozilla开发的系统级编程语言，专注于速度、内存安全和并行处理。它通过所有权模型、借用检查器及生命周期概念，在编译时确保内存安全，有效避免了空指针异常、悬挂指针和数据竞争等问题。Rust支持高效的并发编程，并提供了高层次抽象而无运行时开销，保证程序性能。其自带的包管理和构建工具Cargo简化了依赖管理和构建流程。Rust适用于多种场景，包括操作系统、嵌入式系统、WebAssembly、游戏开发及高性能网络服务。凭借现代化的语法、强大的工具链支持（如rustfmt和clippy）以及跨平台兼容性，Rust在追求高效和安全的项目中展现出色。活跃的开源社区和丰富的学习资源进一步增强了它的吸引力，使其成为开发下一代可靠软件的理想选择。</p>
+<h2 id="创建rust项目">创建Rust项目</h2>
+<ol type="1">
+<li><p>安装Rust: 各种系统中Rust的安装，请参考<a
+target="_blank" rel="noopener" href="https://www.rust-lang.org/?spm=5176.28103460.0.0.297c451ef56Kw8">Rust官网说明</a>.
+在ArchLinux环境下，安装命令为 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S rust</span><br></pre></td></tr></table></figure></p></li>
+<li><p>创建新项目 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cargo new hello_world</span><br><span class="line"><span class="built_in">cd</span> hello_world</span><br></pre></td></tr></table></figure> <div class="note primary"><p>运行<code>cargo new hello_world</code>后，会建立一个文件夹<code>hello_world</code>,
+其内部包含：<code>Cargo.lock</code>,<code>Cargo.toml</code>,<code>src</code>,<code>target</code>.</p>
+</div></p></li>
+<li><p>编辑<code>src/main.rs</code>:
+打开<code>src/main.rs</code>文件，并添加一些简单的Rust代码，比如打印斐波那契数列的前10项：
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">fibonacci</span>(n: <span class="type">u32</span>) <span class="punctuation">-&gt;</span> <span class="type">u32</span> &#123;</span><br><span class="line">    <span class="keyword">match</span> n &#123;</span><br><span class="line">        <span class="number">0</span> =&gt; <span class="number">0</span>,</span><br><span class="line">        <span class="number">1</span> =&gt; <span class="number">1</span>,</span><br><span class="line">        _ =&gt; <span class="title function_ invoke__">fibonacci</span>(n - <span class="number">1</span>) + <span class="title function_ invoke__">fibonacci</span>(n - <span class="number">2</span>),</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">for</span> <span class="variable">i</span> <span class="keyword">in</span> <span class="number">0</span>..<span class="number">10</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;fibonacci(&#123;&#125;) = &#123;&#125;&quot;</span>, i, <span class="title function_ invoke__">fibonacci</span>(i));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>编译并运行项目： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo run</span><br></pre></td></tr></table></figure> <div class="note primary"><p>运行上述命令后，将输出斐波那契数列的前10项。</p>
+</div></p></li>
+</ol>
+<h2 id="使用evcxr进行交互式探索">使用EVCXR进行交互式探索</h2>
+<p>为了能够更灵活地试验代码片段而不必每次都通过<code>cargo run</code>执行整个程序，我们可以使用<code>evcxr</code>，这是一个为<code>Rust</code>设计的<code>Jupyter</code>内核，也可以作为独立的<code>REPL</code>使用。</p>
+<ol type="1">
+<li><p>安装<code>EVCXR</code>: <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo install evcxr</span><br></pre></td></tr></table></figure></p></li>
+<li><p>启动<code>EVCXR</code> <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">evcxr</span><br></pre></td></tr></table></figure></p></li>
+<li><p>在<code>EVCXR</code>中试验代码：一旦进入了<code>evcxr</code>环境，您可以直接输入<code>Rust</code>表达式或小段代码进行试验，例如尝试上面定义的斐波那契函数：
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义斐波那契函数</span></span><br><span class="line">:dep num_traits</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">fibonacci</span>(n: <span class="type">u32</span>) <span class="punctuation">-&gt;</span> <span class="type">u32</span> &#123;</span><br><span class="line">    <span class="keyword">match</span> n &#123;</span><br><span class="line">        <span class="number">0</span> =&gt; <span class="number">0</span>,</span><br><span class="line">        <span class="number">1</span> =&gt; <span class="number">1</span>,</span><br><span class="line">        _ =&gt; <span class="title function_ invoke__">fibonacci</span>(n - <span class="number">1</span>) + <span class="title function_ invoke__">fibonacci</span>(n - <span class="number">2</span>),</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试斐波那契函数</span></span><br><span class="line"><span class="keyword">for</span> <span class="variable">i</span> <span class="keyword">in</span> <span class="number">0</span>..<span class="number">10</span> &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;fibonacci(&#123;&#125;) = &#123;&#125;&quot;</span>, i, <span class="title function_ invoke__">fibonacci</span>(i));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <div class="note primary"><p>请注意，在<code>evcxr</code>中，您可能需要先声明对外部依赖项（如果有的话）使用<code>:dep</code>命令。在这个特定的例子中，我们实际上不需要额外的依赖项，所以可以忽略<code>:dep num_traits</code>这一行。
+通过这种方式，您可以在不离开终端的情况下快速测试<code>Rust</code>代码片段，这对于学习语言特性、调试问题或简单地验证想法都非常有用。此外，由于<code>evcxr</code>支持类似<code>Jupyter notebook</code>的交互方式，它也适合用于教学和演示目的。</p>
+</div></p></li>
+</ol>
+<h2 id="rust代码编译">Rust代码编译</h2>
+<ol type="1">
+<li><p>确保处于正确的目录:
+请确保您位于包含<code>Cargo.toml</code>文件的项目根目录下。这个文件定义了项目的配置、依赖和其他相关信息。在上述例子中，就是位于目录<code>hello_world</code>下.</p></li>
+<li><p>编译项目： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo build</span><br></pre></td></tr></table></figure> <div class="note primary"><p>这将根据当前环境（调试或发布）编译项目。默认情况下，<code>cargo build</code>会在调试模式下进行编译，生成的二进制文件会位于<code>target/debug/</code>目录下。</p>
+</div></p></li>
+<li><p>编译优化版本（发布模式）: <figure class="highlight sh"><figcaption><span>编译优化后的版本（适用于生产环境）</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo build --release</span><br></pre></td></tr></table></figure> <div class="note primary"><p>这将在<code>target/release/</code>目录下生成经过优化的二进制文件。相比调试模式，发布模式下的编译会花费更多时间，但是生成的二进制文件通常更小且执行速度更快。</p>
+</div></p></li>
+<li><p>直接运行可执行文件:</p></li>
+</ol>
+<ul>
+<li>对于调试模式编译的二进制文件，可以直接从<code>target/debug/</code>目录下运行：
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./target/debug/your_project_name</span><br></pre></td></tr></table></figure></li>
+<li>对于发布模式编译的二进制文件，则从<code>target/release/</code>目录下运行：
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./target/release/your_project_name</span><br></pre></td></tr></table></figure> <div class="note primary"><p>这里的<code>your_project_name</code>是指您<code>Cargo</code>项目的名称，也就是<code>Cargo.toml</code>文件中的<code>[package] name</code>字段所指定的名字。</p>
+</div></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1192,91 +1310,6 @@ class="math inline">\(dy\)</span>的情况。进一步将此值追加到<span
 class="math inline">\(y\)</span>，同时<span
 class="math inline">\(dx\)</span>追加到<span
 class="math inline">\(x\)</span>后，再进行下一个点的判断。所以蒙特卡洛方法基于大数定理是一个有效的方法。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/18/%E4%BD%BF%E7%94%A8%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E8%AE%A1%E7%AE%97%E5%9C%86%E5%91%A8%E7%8E%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/02/18/%E4%BD%BF%E7%94%A8%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E8%AE%A1%E7%AE%97%E5%9C%86%E5%91%A8%E7%8E%87/" class="post-title-link" itemprop="url">使用蒙特卡洛方法计算圆周率</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-02-18 10:38:17" itemprop="dateCreated datePublished" datetime="2025-02-18T10:38:17+08:00">2025-02-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="使用蒙特卡洛方法估算圆周率">使用蒙特卡洛方法估算圆周率</h1>
-<p>在这篇博客文章中，我们将探讨如何使用蒙特卡洛方法来估算圆周率 <span
-class="math inline">\(\pi\)</span>
-的值，并提供一个简单的Python代码示例以及详细的代码解析。</p>
-<h2 id="蒙特卡洛方法简介">蒙特卡洛方法简介</h2>
-<p>蒙特卡洛方法是一种通过随机抽样进行数值计算的方法。它广泛应用于物理、工程、金融等领域。本文将演示如何利用这种方法估算圆周率
-<span class="math inline">\(\pi\)</span>。</p>
-<h2 id="python代码实现与解析">Python代码实现与解析</h2>
-<h3 id="完整代码及解析">完整代码及解析</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入random模块，用于生成伪随机数</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义函数estimate_pi，接受参数num_samples表示要生成的随机点的数量</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">estimate_pi</span>(<span class="params">num_samples</span>):</span><br><span class="line">    <span class="comment"># 初始化计数器变量num_points_in_circle为0，用于记录落在单位圆内的点的数量</span></span><br><span class="line">    num_points_in_circle = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 使用for循环迭代num_samples次，下划线_表示我们不关心循环变量的具体值</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(num_samples):</span><br><span class="line">        <span class="comment"># 在每次循环中，使用random.uniform(-1, 1)生成两个介于-1到1之间的随机浮点数，分别赋给变量x和y</span></span><br><span class="line">        x, y = random.uniform(-<span class="number">1</span>, <span class="number">1</span>), random.uniform(-<span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">        <span class="comment"># 如果该点位于半径为1的单位圆内（即检查x^2 + y^2 &lt;= 1），则增加num_points_in_circle计数器的值</span></span><br><span class="line">        <span class="keyword">if</span> x**<span class="number">2</span> + y**<span class="number">2</span> &lt;= <span class="number">1</span>:</span><br><span class="line">            num_points_in_circle += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 根据公式4 * num_points_in_circle / num_samples来估算π的值</span></span><br><span class="line">    pi_estimate = <span class="number">4</span> * num_points_in_circle / num_samples</span><br><span class="line">    <span class="comment"># 返回计算出的π的估计值</span></span><br><span class="line">    <span class="keyword">return</span> pi_estimate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置模拟次数为100,000</span></span><br><span class="line">num_samples = <span class="number">100000</span></span><br><span class="line"><span class="comment"># 调用estimate_pi函数获取π的估计值</span></span><br><span class="line">pi_estimate = estimate_pi(num_samples)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果，显示使用了多少个样本以及基于这些样本估计得到的π的值</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Estimated value of Pi using <span class="subst">&#123;num_samples&#125;</span> samples: <span class="subst">&#123;pi_estimate&#125;</span>&quot;</span>) </span><br></pre></td></tr></table></figure>
 
       
     </div>
