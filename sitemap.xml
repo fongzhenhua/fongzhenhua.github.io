@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2025/04/10/%E8%8F%B2%E5%85%8B%E5%AE%9A%E5%BE%8B/</loc>
+    
+    <lastmod>2025-04-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/%E5%AF%BC%E8%88%AA/index.html</loc>
     
     <lastmod>2025-04-09</lastmod>
@@ -4819,7 +4828,7 @@
 
   <url>
     <loc>http://example.com/</loc>
-    <lastmod>2025-04-09</lastmod>
+    <lastmod>2025-04-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -4827,56 +4836,56 @@
   
   <url>
     <loc>http://example.com/tags/%E7%94%B5%E8%84%91%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2025-04-09</lastmod>
+    <lastmod>2025-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/%E6%97%A5%E5%B8%B8%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2025-04-09</lastmod>
+    <lastmod>2025-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/%E7%A7%91%E7%A0%94%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2025-04-09</lastmod>
+    <lastmod>2025-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2025-04-09</lastmod>
+    <lastmod>2025-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/Hexo/</loc>
-    <lastmod>2025-04-09</lastmod>
+    <lastmod>2025-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/%E6%95%99%E5%AD%A6%E8%BE%85%E5%8A%A9/</loc>
-    <lastmod>2025-04-09</lastmod>
+    <lastmod>2025-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/VBA%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2025-04-09</lastmod>
+    <lastmod>2025-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/%E5%8A%A9%E6%95%99/</loc>
-    <lastmod>2025-04-09</lastmod>
+    <lastmod>2025-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
