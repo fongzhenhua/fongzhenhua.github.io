@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">535</span>
+          <span class="site-state-item-count">536</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -372,6 +372,125 @@ target="_blank" rel="noopener" href="https://endeavouros.com">Endeavour</a>
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/17/Gnome3%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E7%8E%B0%E4%BB%A3%E6%92%AD%E6%94%BE%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/06/17/Gnome3%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E7%8E%B0%E4%BB%A3%E6%92%AD%E6%94%BE%E5%99%A8/" class="post-title-link" itemprop="url">Gnome3桌面环境下的现代播放器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-06-17 14:34:22 / 修改时间：14:43:37" itemprop="dateCreated datePublished" datetime="2025-06-17T14:34:22+08:00">2025-06-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>伴随 Gnome
+的升级迭代，一些软件开始变得不再特别适配新的系统，因此本文介绍三款更加现代的播放器：Decibels
+音乐播放器，Showtime 视频播放器，Clapper 视频播放器。</p>
+<h2 id="showtime-视频播放器">Showtime 视频播放器</h2>
+<p><strong>Showtime</strong> 是一款即将在GNOME
+49桌面环境中替代Totem视频播放器的新应用。它基于GTK4和libadwaita构建，强调提供沉浸式的观影体验。该播放器采用无边框窗口设计，控制界面默认隐藏，以便用户能够专注于视频内容展示。</p>
+<h3 id="特性">特性：</h3>
+<ul>
+<li><strong>技术栈</strong>：使用GStreamer支持多种音视频文件格式。</li>
+<li><strong>功能集</strong>：调节播放速度、切换字幕与音轨、旋转画面、循环播放等。</li>
+<li><strong>限制</strong>：当前版本不支持DVD播放。</li>
+</ul>
+<h3 id="安装">安装：</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S showtime</span><br></pre></td></tr></table></figure>
+<h2 id="clapper-视频播放器">Clapper 视频播放器</h2>
+<p><strong>Clapper</strong>
+是一款专为GNOME桌面环境打造的媒体播放器，采用了最新的GTK4工具包和GStreamer引擎，并且利用OpenGL进行渲染。这款播放器以其简约的设计理念著称，旨在为用户提供一个既现代又易于使用的视频观看体验。</p>
+<h3 id="特性-1">特性：</h3>
+<ul>
+<li><strong>易用性</strong>：直观的用户界面，无需复杂的配置过程。</li>
+<li><strong>核心功能</strong>：基本但必要的视频播放功能，极简主义设计。</li>
+<li><strong>技术细节</strong>：包括Clapper库（负责播放逻辑）和ClapperGtk库（确保与GTK4的无缝整合）。</li>
+<li><strong>扩展性</strong>：支持GObject
+Introspection绑定，提供了Rust语言的绑定选项。</li>
+</ul>
+<h3 id="安装-1">安装：</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S clapper</span><br></pre></td></tr></table></figure>
+<h2 id="decibels-音乐播放器">Decibels 音乐播放器</h2>
+<p><strong>Decibels</strong> 是GNOME
+48中引入的核心音频播放器，用于填补GNOME桌面环境中长期缺乏官方音频播放解决方案的空白。该项目从GNOME孵化器项目中晋升为核心应用程序。</p>
+<h3 id="特性-2">特性：</h3>
+<ul>
+<li><strong>技术栈</strong>：使用TypeScript编写，基于GTK4工具包和libadwaita。</li>
+<li><strong>简单功能</strong>：目前作为一款非常基础的音频播放器运作。</li>
+<li><strong>挑战</strong>：由于编程语言的选择，可能会面临短期内在一些Linux发行版中的集成障碍。</li>
+</ul>
+<h3 id="安装-2">安装：</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S decibels</span><br></pre></td></tr></table></figure>
+<h2 id="参考文章">参考文章</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://cn.linux-terminal.com/?p=8689">GNOME 49 最终将
+Showtime 作为默认视频播放器</a></li>
+<li><a target="_blank" rel="noopener" href="https://tigress.cc/2025/03/17/gnome-showtime/">Showtime：
+适用于 GNOME 的现代视频播放器</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://kaiyuanapp.cn/clapper-%e7%ae%80%e6%b4%81%e7%8e%b0%e4%bb%a3%e7%9a%84-gnome-%e5%aa%92%e4%bd%93%e6%92%ad%e6%94%be%e5%99%a8/">lapper
+– 简洁现代的 GNOME 媒体播放器</a></li>
+<li><a target="_blank" rel="noopener" href="https://cn.linux-console.net/?p=35474">GNOME
+又一个有争议的决定</a></li>
+</ul>
+
       
     </div>
 
@@ -1460,167 +1579,6 @@ class="math display">\[\begin{equation}\label{eq:ybzt5}
 class="math inline">\(\eqref{eq:ybzt5}\)</span>表明，总体方差<span
 class="math inline">\(\sigma^2\)</span>可以由样本方差<span
 class="math inline">\(s^2\)</span>求期望获得。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/14/%E5%9E%82%E7%9B%B4%E7%9B%98%E5%92%8C%E5%8F%A0%E7%93%A6%E7%9B%98%E8%AF%A6%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/04/14/%E5%9E%82%E7%9B%B4%E7%9B%98%E5%92%8C%E5%8F%A0%E7%93%A6%E7%9B%98%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">垂直盘和叠瓦盘详解</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-04-14 10:34:00 / 修改时间：10:34:40" itemprop="dateCreated datePublished" datetime="2025-04-14T10:34:00+08:00">2025-04-14</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>随着存储技术的不断发展，硬盘的存储密度和性能也在不断提升。垂直盘（CMR，Conventional
-Magnetic Recording）和叠瓦盘（SMR，Shingled Magnetic
-Recording）是两种常见的硬盘存储技术。本文将详细介绍这两种技术，并通过对比列表帮助读者更好地理解它们的区别。</p>
-<hr />
-<h2 id="什么是垂直盘cmr">什么是垂直盘（CMR）？</h2>
-<p><strong>垂直盘</strong>，即传统磁记录（Conventional Magnetic
-Recording），是一种经典的硬盘存储技术。在这种技术中，数据以垂直方向写入磁盘表面，每个磁道之间保持一定的间隔，避免数据之间的干扰。</p>
-<h3 id="特点">特点：</h3>
-<ul>
-<li><strong>独立磁道</strong>：每个磁道是独立的，读写操作不会影响相邻磁道。</li>
-<li><strong>高性能</strong>：由于磁道之间无重叠，随机写入和改写速度较快。</li>
-<li><strong>高可靠性</strong>：数据修改时无需重新整理邻近磁道的数据，降低了出错概率。</li>
-<li><strong>适用场景</strong>：适合需要频繁读写操作的场景，如数据库、虚拟机和视频编辑。</li>
-</ul>
-<hr />
-<h2 id="什么是叠瓦盘smr">什么是叠瓦盘（SMR）？</h2>
-<p><strong>叠瓦盘</strong>，即叠瓦式磁记录（Shingled Magnetic
-Recording），是一种提高存储密度的技术。在这种技术中，数据磁道像瓦片一样部分重叠，从而在相同物理空间内存储更多的数据。</p>
-<h3 id="特点-1">特点：</h3>
-<ul>
-<li><strong>高存储密度</strong>：通过磁道重叠显著提升了单位面积的存储容量。</li>
-<li><strong>写入性能较低</strong>：由于磁道重叠，改写数据时需要先将受影响的邻近磁道数据迁移到缓存，再重新写入，导致写入速度较慢。</li>
-<li><strong>成本较低</strong>：相比垂直盘，叠瓦盘在相同容量下成本更低。</li>
-<li><strong>适用场景</strong>：适合以顺序写入为主的场景，如冷数据存储、备份和归档。</li>
-</ul>
-<hr />
-<h2 id="垂直盘cmr与叠瓦盘smr对比">垂直盘（CMR）与叠瓦盘（SMR）对比</h2>
-<table>
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 40%" />
-<col style="width: 40%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>对比维度</th>
-<th>垂直盘（CMR）</th>
-<th>叠瓦盘（SMR）</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>技术原理</strong></td>
-<td>数据以垂直方向写入，磁道独立</td>
-<td>数据以部分重叠的方式写入，磁道相互覆盖</td>
-</tr>
-<tr class="even">
-<td><strong>存储密度</strong></td>
-<td>较低</td>
-<td>较高</td>
-</tr>
-<tr class="odd">
-<td><strong>写入性能</strong></td>
-<td>高</td>
-<td>较低</td>
-</tr>
-<tr class="even">
-<td><strong>随机写入能力</strong></td>
-<td>强</td>
-<td>弱</td>
-</tr>
-<tr class="odd">
-<td><strong>成本</strong></td>
-<td>较高</td>
-<td>较低</td>
-</tr>
-<tr class="even">
-<td><strong>可靠性</strong></td>
-<td>高</td>
-<td>较低</td>
-</tr>
-<tr class="odd">
-<td><strong>适用场景</strong></td>
-<td>数据库、虚拟机、视频编辑等高频读写场景</td>
-<td>冷数据存储、备份、归档等顺序写入场景</td>
-</tr>
-<tr class="even">
-<td><strong>优点</strong></td>
-<td>高性能、高可靠性</td>
-<td>高存储密度、低成本</td>
-</tr>
-<tr class="odd">
-<td><strong>缺点</strong></td>
-<td>存储密度有限，成本较高</td>
-<td>写入性能低，随机写入效率差</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="总结">总结</h2>
-<p>垂直盘（CMR）和叠瓦盘（SMR）各有优劣，选择哪种技术取决于具体的应用场景。如果您的需求是高性能和高可靠性，例如运行数据库或虚拟机，那么垂直盘是更好的选择。如果您更关注存储密度和成本，且主要进行顺序写入操作，例如数据备份或归档，那么叠瓦盘会更适合。</p>
-<p>希望本文能帮助您更好地理解这两种硬盘技术，并根据实际需求做出明智的选择！</p>
 
       
     </div>
