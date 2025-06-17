@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2022/03/01/ArchLinux%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/2025/06/17/Gnome3%E4%B8%AD%E7%9A%84%E7%8E%B0%E4%BB%A3%E9%98%85%E8%AF%BB%E5%99%A8papers%E5%8F%96%E4%BB%A3evince/</loc>
     
     <lastmod>2025-06-17</lastmod>
@@ -174,15 +183,6 @@
   
   <url>
     <loc>http://example.com/2025/04/05/Shell%E5%8F%82%E6%95%B0%E6%8B%93%E5%B1%95%E8%AF%A6%E8%A7%A3/</loc>
-    
-    <lastmod>2025-04-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/2022/03/01/ArchLinux%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</loc>
     
     <lastmod>2025-04-05</lastmod>
     
