@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">536</span>
+          <span class="site-state-item-count">537</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,111 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/08/10/Linux%E7%BB%88%E7%AB%AF%E6%89%93%E5%8D%B0Unicode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/08/10/Linux%E7%BB%88%E7%AB%AF%E6%89%93%E5%8D%B0Unicode/" class="post-title-link" itemprop="url">Linux终端打印Unicode</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-08-10 16:32:02" itemprop="dateCreated datePublished" datetime="2024-08-10T16:32:02+08:00">2024-08-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>编写<code>Shell</code>脚本的过程中，使用常用的图标符号增加美观的同时也增强了易用性,
+比如使用软盘符💾、个人电脑符💻 等。
+本文总结在<code>Shell</code>脚本中显示<code>Unicode</code>符号的方法：</p>
+<h2 id="查询-unicode-编码">查询 Unicode 编码</h2>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://www.unicodery.com/">https://www.unicodery.com/</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.lddgo.net/string/unicode-chart">在线Unicode编码字符查看</a></li>
+<li><a target="_blank" rel="noopener" href="https://unicodeplus.com/">https://unicodeplus.com/</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.rapidtables.org/zh-CN/code/text/unicode-characters.html">Unicode字符表</a></li>
+<li><a target="_blank" rel="noopener" href="https://symbl.cc/cn/">https://symbl.cc/cn/</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.nerdfonts.com/cheat-sheet">https://www.nerdfonts.com/cheat-sheet</a></li>
+</ul>
+<h2 id="使用-echo-命令">使用 echo 命令</h2>
+<p>例如查询到💾的Unicode编码为<code>U+1F4BE</code>,
+则使用<code>echo</code>应当开启<code>-e</code>选项，即：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;\u0001F4BE&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用-printf-命令">使用 printf 命令</h2>
+<p>同样输出💾，使用<code>printf</code>命令为:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span> <span class="string">&quot;\u0001F4BE&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用-python-脚本">使用 Python 脚本</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">u&quot;\U0001F4BE&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="使用-perl-脚本">使用 Perl 脚本</h2>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> <span class="string">&quot;\x&#123;1F4BE&#125;\n&quot;</span> ;</span><br></pre></td></tr></table></figure>
+<h2 id="在-html-中使用-unicode">在 Html 中使用 Unicode</h2>
+<p><code>Html</code>中使用<code>Unicode</code>应当使用其专用的格式，例如<a
+target="_blank" rel="noopener" href="https://www.unicodery.com/">https://www.unicodery.com/</a>会直接给出。输出💾的源码为<code>&amp;#x1F4BE;</code>.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1339,107 +1444,6 @@ API 或其他功能，<code>Current</code>
 <p><code>Node.js</code> 的 <code>Current</code> 版本和 <code>LTS</code>
 版本之间存在明显的区别，涵盖了稳定性、新特性、性能、维护、社区支持和升级频率等方面。在选择适合你的版本时，需要综合考虑你的项目需求和优先级。无论你选择哪个版本，都要确保了解该版本的特性和限制，并采取适当的测试和监控措施，以确保应用程序的稳定性和性能。在任何情况下，<code>Node.js</code>
 的强大生态系统和活跃的社区都将为你提供支持和资源，帮助你构建出色的应用程序。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/08/02/%E5%86%85%E5%AD%98%E9%A2%91%E7%8E%87%E5%B9%B6%E9%9D%9E%E8%B6%8A%E9%AB%98%E8%B6%8A%E5%A5%BD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/08/02/%E5%86%85%E5%AD%98%E9%A2%91%E7%8E%87%E5%B9%B6%E9%9D%9E%E8%B6%8A%E9%AB%98%E8%B6%8A%E5%A5%BD/" class="post-title-link" itemprop="url">内存频率并非越高越好</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-08-02 14:51:47" itemprop="dateCreated datePublished" datetime="2024-08-02T14:51:47+08:00">2024-08-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>很多人觉得内存频率越高速度越快，尤其是在英特尔12代酷睿处理器支持DDR5之后，不少人都想升级到DDR5，以为升级到DDR5就能获得更高的性能。事实真的是这样吗？如下图两内存，都是同样的芝奇的DDR4
-3600MHz
-16GBx2的内存，为什么会有500+的价格差？因为它们有不同的CL时序，一个是18-22-22-42，另一个是16-19-19-39，这点区别就值500+。那么内存CL时序到底是什么？对性能又有什么影响？</p>
-<p><img src="https://thumbsnap.com/i/rpssrcWZ.jpg" /></p>
-<p>内存在存取数据时是以行列的方式进行，跟Excel表格类似，通过行列的方式定位数据。内存时序代表的是行列访问所需要的周期数（周期数不等于时间），主要有四个分别是CL，tRCD，tRP，tRAS。CL代表内存访问一次列所需的周期数，下图为16，tRCD表示内存访问一次行所需的最小周期数，下图中的19，tRP表示打开下一行的最小周期数，下图中为19，tRAS代表的是行活动到发出打开下一行的最小周期数。看起来很复杂，最重要的就是第一个，即CL。</p>
-<p><img src="https://thumbsnap.com/i/Tm3zwE8v.jpg" /></p>
-<p>CL全称CAS
-latency，内存访问一次列的延迟时间，在频率相同的情况下，CL值越小内存速度越快。就跟我们看小说一样，只要定位到了行，剩下的就是读行中的每一列，直到读完一行才会读下一行。内存只要定位到了数据所在的行，剩下的基本就是列操作，直到读完一行才会进行一次行操作。所以CL值对内存来说非常重要。</p>
-<p><img src="https://thumbsnap.com/i/PPyvUBcU.jpg" /></p>
-<p>从下表中可以发现CL（表中的CAS
-Latency）的值是随着内存频率的增加而增大的。DDR5
-4800MHz的CL值为40个时钟周期，比DDR4更大。这也是为什么DDR5比DDR4提升不大的原因，频率高了延迟更大。由于CL是时钟周期与内存频率相关不好比较，所以要换成时间。CL延迟时时间=1/（DDR频率/2）*
-CL周期数*1000。</p>
-<p><img src="https://thumbsnap.com/i/nQRdzqHh.jpg" /></p>
-<p>公式中的1代表1秒钟，内存频率除以2，是因为DDR的全称是Double Data
-Rate即双倍数据传输速率，如下图SDR不用除，QDR要除以4才是内存的时钟频率，因此上图的DDR4，DDR5都要除以2
-。乘1000是为了把微秒换成纳秒。所以上图DDR5
-4800MHz的CL延迟时间=1/（4800/2）*40*1000=16.67ns。</p>
-<p><img src="https://thumbsnap.com/i/68eD9NZA.jpg" /></p>
-<p>内存的CL，tRCD等都是可以通过BIOS修改的，如下图修改成1600MHz
-16CL和1500MHz
-15CL哪个更快？用上面的公式算CL延迟都是10ns，所以几乎一样快。决定内存速度的除了CL延迟以外，还有其它几个。但CL影响更大。</p>
-<p><img src="https://thumbsnap.com/i/7RhG2BXY.jpg" /></p>
-<p>现在我们来解决第一张图为什么后者比前者更贵的问题。2099的CL延迟时间为8.89ns，而1549的CL延迟时间为10ns，2099的存取速度更快，也因此更贵。</p>
-<p>引用：<a
-target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1722749333299450599">对内存频率的误解！以为频率越高速度就越快，真相未必是这样</a></p>
 
       
     </div>

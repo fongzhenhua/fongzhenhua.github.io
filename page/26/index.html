@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">536</span>
+          <span class="site-state-item-count">537</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,123 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/06/Neovim%E7%9A%84%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/06/Neovim%E7%9A%84%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/" class="post-title-link" itemprop="url">Neovim的插件管理器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-06 14:37:52" itemprop="dateCreated datePublished" datetime="2024-06-06T14:37:52+08:00">2024-06-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Neovim
+是一个现代的、快速的且与vim完全兼容的文本编辑器。它支持插件、LSP、GUI、web
+browsers
+等等。各种各样的插件可以极大的提高Neovim的工作效率，随着使用时间的增加安装的插件也越来越多，所以有必要使用一个管理插件的插件来规范管理大量的插件，这样的插件称为插件管理器。Neovim
+有各种各样的插件管理器，本文的目的就是列出这些常用的插件管理器，以方便读者选择。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/folke/lazy.nvim">lazy.nvim</a>:
+lazy.nvim is a modern plugin manager for Neovim.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lewis6991/pckr.nvim">pckr.nvim</a>:
+Spiritual successor of <a
+target="_blank" rel="noopener" href="https://github.com/wbthomason/packer.nvim">https://github.com/wbthomason/packer.nvim</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/wbthomason/packer.nvim">packer.nvim</a>:
+packer.nvim is currently unmaintained. For the time being (as of August,
+2023), it is recommended to use one of the following plugin managers
+instead: <code>lazy.nvim</code> or <code>pckr.nvim</code></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/savq/paq-nvim">paq-nvim</a>: Paq is a
+Neovim package manager written in Lua.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ii14/neopm">neopm</a>:Plugin manager for
+neovim, pre-alpha stage. Expect breaking changes.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/chiyadev/dep">dep</a>: A versatile,
+declarative and correct neovim package manager in Lua. Originally
+written for personal use by luaneko.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/notomo/optpack.nvim">optpack.nvim</a>:
+This is a neovim plugin manager that uses only opt package.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rktjmp/pact.nvim">pact.nvim</a>: pact is
+a semver focused, pessimistic plugin manager for Neovim.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/junegunn/vim-plug">vim-plug</a>:A
+minimalist Vim plugin manager.Just one file with no dependencies. Super
+easy to set up.</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/VundleVim/Vundle.vim">Vundle.vim</a>:Vundle is
+short for Vim bundle and is a Vim plugin manager.</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/tpope/vim-pathogen">pathogen.vim</a>:Manage
+your 'runtimepath' with ease. In practical terms, pathogen.vim makes it
+super easy to install plugins and runtime files in their own private
+directories.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Shougo/dein.vim">dein.vim</a>: Dein.vim
+is a dark powered Vim/Neovim plugin manager.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/vim-volt/volt">volt</a>: Multi-platform
+CLI tool managing Vim plugin life</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1300,90 +1417,6 @@ target="_blank" rel="noopener" href="http://www.baidu.com/">http://www.baidu.com
 </tr>
 </tbody>
 </table>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/23/Gnome3%E8%AE%BE%E7%BD%AE%E6%89%93%E5%BC%80%E7%BB%88%E7%AB%AF%E5%BF%AB%E6%8D%B7%E9%94%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/05/23/Gnome3%E8%AE%BE%E7%BD%AE%E6%89%93%E5%BC%80%E7%BB%88%E7%AB%AF%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="post-title-link" itemprop="url">Gnome3设置打开终端快捷键</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-05-23 15:55:25" itemprop="dateCreated datePublished" datetime="2024-05-23T15:55:25+08:00">2024-05-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>旧版的Gnome3默认的终端叫<code>gnome-terminal</code>,
-新版（2023年5月之后)的新终端控制台启动命令叫<code>kgx</code>,
-于是解决方法为:
-<code>设置</code>→<code>键盘</code>→<code>自定义键盘</code>→<code>设置自定义快捷键</code></p>
-<figure>
-<img src="/Picture/kgx.png" title="Console 设置快捷键"
-alt="Console 设置启动快捷键" />
-<figcaption aria-hidden="true">Console 设置启动快捷键</figcaption>
-</figure>
 
       
     </div>

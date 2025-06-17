@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">536</span>
+          <span class="site-state-item-count">537</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,83 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/11/10/Diary%E7%A8%8B%E5%BA%8F%E5%8D%87%E7%BA%A7%E5%A2%9E%E5%8A%A0Next%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%96%B0%E5%8A%9F%E8%83%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/11/10/Diary%E7%A8%8B%E5%BA%8F%E5%8D%87%E7%BA%A7%E5%A2%9E%E5%8A%A0Next%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%96%B0%E5%8A%9F%E8%83%BD/" class="post-title-link" itemprop="url">Diary程序升级增加Next主题更新功能</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-11-10 14:19:19" itemprop="dateCreated datePublished" datetime="2023-11-10T14:19:19+08:00">2023-11-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><code>diary.sh</code>脚本已经比较完善了，但是还有一个功能就是主题升级，由于本博客对<code>Next</code>主题做了比较深入的定制，改变了基本配色，所以若直接升级<code>Next</code>主题，又需要重新配置一遍，这很浪费时间。但是，如果不对主题升级，那对于性能的改进和错误的修复及新功能的增加都不能享受，所以综合考虑后，在<code>diary.sh</code>脚本中增加了主题升级这一功能，使用脚本自动修改对应主题的配置，这样既可以保证主题最新，又可以保证快速的使用定制版的主题。</p>
+<figure class="highlight sh"><figcaption><span>diary.sh升级代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ThemeNextColor=#006600</span><br><span class="line"><span class="function"><span class="title">ThemeUpdate</span></span>()&#123;</span><br><span class="line">    <span class="built_in">rm</span> -rf <span class="variable">$DIARYPATH</span>/themes/next</span><br><span class="line">        git <span class="built_in">clone</span> https://gitlab.com/hexo-theme-next/hexo-theme-next.git <span class="variable">$DIARYPATH</span>/themes/next</span><br><span class="line">        <span class="built_in">cd</span> <span class="variable">$DIARYPATH</span>/themes/next</span><br><span class="line">        git checkout $(git describe --tags $(git rev-list --tags --max-count=1))</span><br><span class="line">        sed -i <span class="string">&quot;s/^\$black-deep.*$/\$black-deep = &quot;</span><span class="variable">$ThemeNextColor</span><span class="string">&quot;/g&quot;</span>  <span class="variable">$DIARYPATH</span>/themes/next/source/css/_variables/base.styl</span><br><span class="line">        sed -i <span class="string">&quot;s/#222/&quot;</span><span class="variable">$ThemeNextColor</span><span class="string">&quot;/g&quot;</span> <span class="variable">$DIARYPATH</span>/_config.next.yml</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;\$content-desktop     = 900px;&quot;</span> &gt;&gt; <span class="variable">$DIARYPATH</span>/themes/next/source/css/_variables/Muse.styl</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;\$content-desktop-large     = 1200px;&quot;</span> &gt;&gt; <span class="variable">$DIARYPATH</span>/themes/next/source/css/_variables/Muse.styl</span><br><span class="line">        sed -i <span class="string">&quot;s/background: var(--btn-default-bg);//g&quot;</span> <span class="variable">$DIARYPATH</span>/themes/next/source/css/_schemes/Muse/_header.styl    </span><br><span class="line">        <span class="built_in">cd</span> <span class="variable">$DIARYPATH</span></span><br><span class="line">        hexo g</span><br><span class="line">        <span class="built_in">cd</span> <span class="variable">$NOWPATH</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;The next theme of hexo has been updated, happy diary !!&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1112,92 +1189,6 @@ target="_blank" rel="noopener" href="https://www.zhihu.com/question/445290918">�
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/10/26/neovim%E6%8F%92%E4%BB%B6telescope/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/23/vimtex%E6%8F%92%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/23/vimtex%E6%8F%92%E4%BB%B6/" class="post-title-link" itemprop="url">vimtex插件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-10-23 18:21:33" itemprop="dateCreated datePublished" datetime="2023-10-23T18:21:33+08:00">2023-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>2023年10月23日星期一霾北京市北京师范大学,
-虽然很多文章一直声称<code>vimtex</code>是现代的<code>latex</code>插件，但是我并没有发现它比<code>latex-suite</code>强多少，至少在一些特定符号的输入方面<code>latex-suite</code>是无人能及的，但是<code>vimtex</code>也提供了一些跳转的特性，二者并不冲突，所以两个都装上了。但是对于<code>vimtex</code>都说它是现代化的插件，想必一定有它的理由，所以现在将相关的使用资料，官方位于<code>github</code>访问不方便，于是转到此处以供参考。</p>
-<p>按官方使用说明档发现一款软件 <code>menyoki</code>,
-它是制作终端<code>gif</code>图像的强大工具，但是由于时间，不想现在去学习使用了，因此将其<code>README.md</code>放于此处，以供日后学习之用。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/10/23/vimtex%E6%8F%92%E4%BB%B6/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
