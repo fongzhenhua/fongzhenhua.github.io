@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">538</span>
+          <span class="site-state-item-count">539</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,120 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/19/Windows%E6%94%AF%E6%8C%81%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E5%8F%8A%E5%85%B6%E7%89%B9%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/07/19/Windows%E6%94%AF%E6%8C%81%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E5%8F%8A%E5%85%B6%E7%89%B9%E7%82%B9/" class="post-title-link" itemprop="url">Windows支持的三种文件格式及其特点</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-19 17:01:51" itemprop="dateCreated datePublished" datetime="2024-07-19T17:01:51+08:00">2024-07-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>exFAT很好，MAC、WIN都支持，还可以支持大硬盘和大文件
+，但它有一个问题，有时会很严重。如果你拿它存电影、音乐等，或者暴雪的游戏，都没关系，都是大文件。如果你拿它存一堆小文件，每个不超过128K，问题就出现了。</p>
+<p>1T硬盘，一个分区:</p>
+<ul>
+<li>NTFS每个簇4K，就是说你的文件要是10K，占三个簇，浪费2K。<br />
+</li>
+<li>exFAT每个簇256K，10K的文件占一个簇，浪费246K。</li>
+</ul>
+<p>曾经在装的一个cygwin，4.8G:</p>
+<ul>
+<li>在NTFS分区，占5.2G，还好。<br />
+</li>
+<li>在exFAT分区，大概占50G吧，因为多数文件都只有几十K甚至不到1K。</li>
+</ul>
+<p>在NTFS里只占不到400G的数据（各种文件，电影、游戏、文档、程序源文件等），移到exFAT都快600G了。</p>
+<p>exFAT分区小于512G的话，每个簇128K，还稍微节约一点，所以可以分至少两个区，每个512G。</p>
+<p>一个NTFS，存放一堆小文件，或者变化不大的文件，可以用虚拟机里的WIN系统来修改。另一个是exFAT，放大文件或经常修改的文件。还有一个方案就是把一堆小文件弄成磁盘映像，DMG或ISO，只要装载了就可以直接用，但里面的内容不方便修改。存成压缩文件亦可，都不会显出exFAT的问题。</p>
+<p>在格式化U盘的时候，会有一个U盘格式的选择，一般是两个，有的是三个，FAT32/exFAT/NTFS，那么这三个格式具体有什么区别呢？相信很多人都知道如果要拷贝超过4G大小的文件就得用NTFS格式，但其实他们之间的区别可不只这个。</p>
+<p>首先先给大家介绍下这三种格式的特点。</p>
+<h2 id="fat32"><strong>FAT32</strong></h2>
+<p>FAT32文件系统用4个字节（32位）空间来表示每个扇区配置文件的情形，所以叫FAT32。分区容量最低是512M，而上限的话不同的操作系统都不一样，WinXP系统最大可以做到2TB的FAT32分区。</p>
+<h2 id="ntfs"><strong>NTFS</strong></h2>
+<p>NTFS文件系统是windows
+NT核心和高级服务器网络操作系统环境的文件系统。NTFS系统比FAT32的可靠性更高，可以支持更大的分区和更大的文件，此外还有不少FAT32没有的功能，比如压缩分区、文件索引、数据保护和恢复、加密访问等。</p>
+<h2 id="exfat"><strong>exFAT</strong></h2>
+<p>exFAT文件系统是微软在windows
+embeded5.0以上引入的一种适合于闪存的文件系统，主要是为了解决FAT32不支持4G或更大文件的问题而推出的。</p>
+<h2
+id="fat32与exfat可用4gb文件的区别"><strong>FAT32与exFAT可用4GB文件的区别：</strong></h2>
+<p>大多数优盘在格式化时默认FAT32，最大优点就是在一个不超过8GB的分区中，FAT32的每个簇容量都固定为4KB，与前代相比可以大大地减少磁盘的浪费，提高磁盘利用率。</p>
+<p>虽然对于最大分区容量的支持上面，FAT32的2TB最大分区容量至今仍不过时，但FAT32无法传输并存放超过4GB容量的光盘ISO镜像、高清视频、各种图形作品文件等等，这是最致命的弊端。而exFAT格式在苹果本或者是Windows电脑上都可以格式化，并且在两个系统之间可以互相无障碍使用。相比之下，exFAT格式就没有4GB文件传输限制了。</p>
+<p>其实FAT32与exFAT存在着一个升级关系，这两种文件系统都支持OS
+X系统与Windows系统，如果你将U盘格式化成这两种文件系统，在不同操作系统电脑上可以畅通无阻地使用。</p>
+<h2
+id="ntfs相比fat会让闪存性能降低"><strong>NTFS相比FAT会让闪存性能降低</strong></h2>
+<p>NTFS是相当流行的，但多见于硬盘。XP、Vista、Win7默认都会将分区格式化为NTFS系统，可以说NTFS是目前最好的磁盘文件系统。</p>
+<p>优盘在格式化为NTFS时，实际可用容量与其他文件系统形式也有所差别，虽然使用中感受并不是很大。另外，在格式化U盘时，容量在64G甚至更大规格时，系统识别自动格式化为exFAT与NTFS格式，会便于优盘在不同操作系统电脑上无障碍使用。</p>
+<p>但是，NTFS也有他的缺点，NTFS分区采用“日志式”，因为要记录磁盘的详细读写操作，对U盘这种快闪存储介质会造成较大的负担，比如同样存取一个文件或目录，在NTFS上的读写次数就会比FAT32更多，理论上NTFS格式的U盘比较容易损坏。并且由于U盘带宽有限，NTFS频繁读写占据通道会让磁盘性能降低。</p>
+<p>以上便是关于U盘文件系统FAT32、exFAT、NTFS之间的区别和特点介绍，FAT32与exFAT之间最大的差别在于能否支持4GB及以上容量单个文件的传输、查看与编辑；而FAT系列文件系统与NTFS之间最大的区分在于文件存取的方式，后者长期使用可能会让闪存类存储产品性能降低.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1491,101 +1605,6 @@ target="_blank" rel="noopener" href="https://tug.org/texlive/">https://tug.org/t
 href="/2022/03/01/ArchLinux安装指南">ArchLinux安装指南</a></li>
 </ul>
 </div>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/08/LaTeX%E4%B8%AD%E6%96%87%E6%A1%A3%E7%B1%BBrevtex4%E4%B8%AD%E7%A6%81%E6%AD%A2%E5%BC%95%E7%94%A8%E6%96%87%E7%8C%AE%E4%B8%AD%E6%98%BE%E7%A4%BA%E8%84%9A%E6%B3%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/07/08/LaTeX%E4%B8%AD%E6%96%87%E6%A1%A3%E7%B1%BBrevtex4%E4%B8%AD%E7%A6%81%E6%AD%A2%E5%BC%95%E7%94%A8%E6%96%87%E7%8C%AE%E4%B8%AD%E6%98%BE%E7%A4%BA%E8%84%9A%E6%B3%A8/" class="post-title-link" itemprop="url">LaTeX中文档类revtex4中禁止引用文献中显示脚注</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-07-08 12:58:14" itemprop="dateCreated datePublished" datetime="2024-07-08T12:58:14+08:00">2024-07-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="简介">简介</h3>
-<p>Includes styles for American Physical Society, American Institute of
-Physics, and Optical Society of America. The distribution consists of
-the RevTeX class itself, and several support packages.</p>
-<h3 id="文献引用显示和隐藏脚注">文献引用显示和隐藏脚注</h3>
-<p>在使用<code>revtex4</code>编写论文时，发现所有的<code>footnote</code>都会在引用文献中出现，调用其说明文档<a
-target="_blank" rel="noopener" href="https://mirrors.cloud.tencent.com/CTAN/obsolete/macros/latex/contrib/revtex4-1/revtex4-1.pdf">revtex4.pdf</a>后发现其使用规则并没有详细介绍。于是经过一翻查找得到设置方法：即使用选项<code>footinbib</code>实现在参考文献列表中出现<code>footnote</code>的内容，使用选项<code>nofootinbib</code>则不在参考文献中出现<code>footnote</code>.
-即</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>[footinbib]&#123;revtex4&#125;   <span class="comment">%默认启用此选项</span></span><br><span class="line"><span class="keyword">\documentclass</span>[nofootinbib]&#123;revtex4&#125; <span class="comment">%关闭需手动设置</span></span><br></pre></td></tr></table></figure>
-<h3 id="参考文章">参考文章</h3>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://journals.aps.org/revtex">REVTeX Home Page</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://cdn.journals.aps.org/files/revtex/index.html">REVTeX 4
-Home Page</a></li>
-<li><a target="_blank" rel="noopener" href="https://ctan.org/pkg/revtex4-1">revtex4-1 -Styles for
-various Physics Journals</a></li>
-<li><a target="_blank" rel="noopener" href="https://ctan.org/pkg/revtex">revtex -Styles for various
-Physics Journals</a></li>
-</ul>
 
       
     </div>

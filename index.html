@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">538</span>
+          <span class="site-state-item-count">539</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -372,6 +372,114 @@ target="_blank" rel="noopener" href="https://endeavouros.com">Endeavour</a>
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/19/File-Roller%E8%A7%A3%E5%8E%8B%E7%BC%A9%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/06/19/File-Roller%E8%A7%A3%E5%8E%8B%E7%BC%A9%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3/" class="post-title-link" itemprop="url">File-Roller解压缩乱码问题的解决</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-06-19 14:45:33 / 修改时间：15:21:42" itemprop="dateCreated datePublished" datetime="2025-06-19T14:45:33+08:00">2025-06-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在 Linux 使用系统自带的 File-Roller
+文件归档器解压缩文件时有时会遇到中文文件名解压后乱码的问题，此时我们可以使用命令行工具<code>unar</code>执行<code>unar yourfile.zip</code>实现中文名文件的解压缩，但是对于正在进行图形工作的任务时，切换命令行会降低效率。因此，解决
+File-Roller 的中文解压缩乱码问题是一个相当重要的问题。</p>
+<h2 id="乱码的原因">乱码的原因</h2>
+<ul>
+<li>编码不一致(主要原因)：Windows (GBK)和 Linux
+(UTF-8)系统下默认的字符编码不同，导致在交叉使用时出现乱码。</li>
+<li>软件版本问题：某些软件版本对编码支持不全，也会导致乱码的出现。</li>
+</ul>
+<h2 id="旧版本-file-roller-解决方案">旧版本 File-Roller 解决方案</h2>
+<ol type="1">
+<li>打开 File-Roller, 选择 “工具” 菜单中的 “配置文件管理器” 。</li>
+<li>在 “编码” 选项卡中，将 “自动检测” 设置为
+“否”，并手动添加<code>GB18030</code>, <code>GBK</code>,
+<code>GB2312</code>等编码。</li>
+<li>保存并关闭配置文件管理器。</li>
+</ol>
+<h2 id="新版本-file-roller-解决方案">新版本 File-Roller 解决方案</h2>
+<p>在 GNOME 48
+环境下，File-Roller（归档管理器）的界面已更新，不再提供旧版的 工具
+菜单和
+配置文件管理器。但底层仍支持通过配置文件（<code>fr-encodings.json</code>）自定义编码列表。修改配置文件后，
+File-Roller 会优先使用列表中的编码尝试解压（等同于关闭自动检测）。</p>
+<ol type="1">
+<li>打开终端。</li>
+<li>编辑 File-Roller 的配置文件： <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/.config/file-roller</span><br><span class="line">nvim ~/.config/file-roller/fr-encodings.json</span><br></pre></td></tr></table></figure></li>
+<li>将以下内容粘贴到文件中： <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;encodings&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;GB18030&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;GBK&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;GB2312&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;UTF-8&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;CURRENT&quot;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>GB18030</code>,<code>BGK</code>,<code>BG2312</code>是手动添加的中文编码。</li>
+<li><code>UTF-8</code>, <code>CURRENT</code>是保留的默认编码。</li>
+</ul></li>
+<li>重启 File-Roller 即可生效。</li>
+</ol>
+<h2 id="解压时手动选择编码">解压时手动选择编码</h2>
+<ol type="1">
+<li>双击打开压缩文件。</li>
+<li>点击右上解的<code>⋮（菜单）</code>→<code>使用其他编码打开...</code>。</li>
+<li>从列表中选择<code>GB18030</code>,<code>BGK</code>或<code>GB2312</code>。</li>
+</ol>
+
       
     </div>
 
@@ -1224,175 +1332,6 @@ E)=\frac{\sigma_{s,k}(E&#39;)}{(1-\alpha_k)E&#39;}
 \end{equation}\]</span></p>
 <p>式<span
 class="math inline">\(\eqref{eq:tanxing5}\)</span>正是共振能区的散射截面，此式的建立可以使中子输运方程得以进一步简化。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/19/Word%E4%B8%AD%E4%BD%BF%E7%94%A8zotero%E6%8F%92%E5%85%A5%E6%96%87%E7%8C%AE%E6%8C%87%E5%8D%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/04/19/Word%E4%B8%AD%E4%BD%BF%E7%94%A8zotero%E6%8F%92%E5%85%A5%E6%96%87%E7%8C%AE%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">Word中使用zotero插入文献指南</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-04-19 01:58:37 / 修改时间：15:20:43" itemprop="dateCreated datePublished" datetime="2025-04-19T01:58:37+08:00">2025-04-19</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="准备工作">准备工作</h2>
-<ol type="1">
-<li><strong>安装 Zotero 和 Zotero Connector</strong>：
-<ul>
-<li>下载并安装 Zotero 客户端（<a
-target="_blank" rel="noopener" href="https://www.zotero.org/">Zotero官网</a>）。</li>
-<li>安装 Zotero Connector 浏览器插件，用于从网页上抓取文献信息。</li>
-</ul></li>
-<li><strong>安装 Zotero Word 插件</strong>：
-<ul>
-<li>安装 Zotero 时，默认会附带一个 Word 插件（适用于 Microsoft Word 和
-LibreOffice）。</li>
-<li>确保在安装 Zotero 时勾选了“安装 Word 插件”选项。</li>
-<li>如果没有自动安装插件，可以手动下载 Zotero 的 Word 插件（<a
-target="_blank" rel="noopener" href="https://www.zotero.org/support/word_processor_plugin_installation">Zotero
-Word Plugin</a>）。</li>
-</ul></li>
-<li><strong>配置 Zotero 引文样式</strong>：
-<ul>
-<li>打开 Zotero 客户端，点击菜单栏中的
-<code>编辑 &gt; 首选项 &gt; 引文</code>。</li>
-<li>在“默认输出格式”中选择你需要的引用格式（如 APA、MLA、Chicago
-等）。</li>
-<li>如果需要的格式未列出，可以点击“获取更多样式”链接，选择并安装其他引文样式。</li>
-</ul></li>
-</ol>
-<hr />
-<h2 id="在-word-中插入文献">在 Word 中插入文献</h2>
-<h3 id="步骤-1打开-zotero-word-插件">步骤 1：打开 Zotero Word 插件</h3>
-<ol type="1">
-<li>打开 Microsoft Word 文档。</li>
-<li>在 Word 的功能区（Ribbon）中找到 <strong>Zotero</strong> 或
-<strong>Add-ins</strong> 选项卡（具体名称可能因版本不同而异）。</li>
-<li>点击该选项卡，你会看到 Zotero 插件工具栏。</li>
-</ol>
-<h3 id="步骤-2插入引文">步骤 2：插入引文</h3>
-<ol type="1">
-<li>将光标放在文档中需要插入引文的位置。</li>
-<li>在 Zotero 工具栏中，点击 <strong>“添加/编辑引文”</strong>
-按钮（通常是一个小引号图标）。</li>
-<li>第一次使用时，可能会弹出一个对话框，要求你选择引文样式。选择适合你文档的样式后，点击
-<strong>OK</strong>。</li>
-<li>Zotero
-会弹出一个搜索框，输入关键词（如作者姓名、标题等）来查找你要引用的文献。</li>
-<li>从搜索结果中选择目标文献，按 Enter 键确认。</li>
-</ol>
-<h3 id="步骤-3插入参考文献列表">步骤 3：插入参考文献列表</h3>
-<ol type="1">
-<li>在文档末尾或其他需要放置参考文献列表的地方，点击 Zotero 工具栏中的
-<strong>“添加/编辑参考文献列表”</strong>
-按钮（通常是一个带有三条横线的图标）。</li>
-<li>Zotero
-会自动生成参考文献列表，并根据你在文档中引用的文献进行更新。</li>
-</ol>
-<hr />
-<h2 id="注意事项">注意事项</h2>
-<ol type="1">
-<li><strong>实时更新</strong>：
-<ul>
-<li>如果你在 Zotero 客户端中修改了某篇文献的信息（如作者、标题等），Word
-文档中的引文和参考文献列表会自动更新。</li>
-<li>更新方法：点击 Zotero 工具栏中的 <strong>“刷新”</strong> 按钮。</li>
-</ul></li>
-<li><strong>更改引文样式</strong>：
-<ul>
-<li>如果需要更改引文样式，可以在 Zotero 工具栏中点击
-<strong>“文档首选项”</strong> 按钮，然后选择新的样式。</li>
-</ul></li>
-<li><strong>删除引文</strong>：
-<ul>
-<li>如果需要删除某个引文，直接在 Word
-文档中删除即可。参考文献列表会自动更新。</li>
-</ul></li>
-<li><strong>兼容性问题</strong>：
-<ul>
-<li>确保 Zotero 和 Word
-的版本兼容。如果遇到插件无法加载的问题，尝试重新安装 Zotero 或更新
-Word。</li>
-</ul></li>
-</ol>
-<hr />
-<h2 id="常见问题及解决方法">常见问题及解决方法</h2>
-<ol type="1">
-<li><strong>插件未显示</strong>：
-<ul>
-<li>检查 Zotero 是否已正确安装。</li>
-<li>确保 Word 的宏功能已启用。</li>
-<li>如果插件仍不显示，尝试重新安装 Zotero 和 Word 插件。</li>
-</ul></li>
-<li><strong>引文样式缺失</strong>：
-<ul>
-<li>在 Zotero 客户端中，进入
-<code>编辑 &gt; 首选项 &gt; 引文</code>，点击“获取更多样式”链接，下载所需的样式。</li>
-</ul></li>
-<li><strong>参考文献列表未更新</strong>：
-<ul>
-<li>点击 Zotero 工具栏中的 <strong>“刷新”</strong>
-按钮，强制更新参考文献列表。</li>
-</ul></li>
-</ol>
 
       
     </div>
