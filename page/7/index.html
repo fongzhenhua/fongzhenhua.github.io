@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">540</span>
+          <span class="site-state-item-count">541</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,109 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/19/%E4%BD%BF%E7%94%A8dig%E6%89%B9%E9%87%8F%E6%9F%A5%E8%AF%A2IP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/01/19/%E4%BD%BF%E7%94%A8dig%E6%89%B9%E9%87%8F%E6%9F%A5%E8%AF%A2IP/" class="post-title-link" itemprop="url">使用dig批量查询IP</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-01-19 19:27:24" itemprop="dateCreated datePublished" datetime="2025-01-19T19:27:24+08:00">2025-01-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-07-25 09:33:58" itemprop="dateModified" datetime="2025-07-25T09:33:58+08:00">2025-07-25</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="dig-命令简介"><code>dig</code> 命令简介</h1>
+<p><code>dig</code>（Domain Information Groper）是 Linux 和 Unix
+系统中用于查询 DNS（域名系统）的强大工具。它提供了对 DNS
+查询的详细控制，并且可以用来执行各种类型的 DNS 查询，包括但不限于 A
+记录、MX 记录、NS 记录、CNAME 记录、TXT 记录等。<code>dig</code>
+是网络管理员和开发者调试 DNS
+问题、验证域名配置以及获取有关互联网资源信息的重要工具。</p>
+<h2 id="主要特点">主要特点</h2>
+<ul>
+<li><strong>多功能性</strong>：支持多种查询类型和选项，能够满足复杂的
+DNS 查询需求。</li>
+<li><strong>详细的输出</strong>：提供详尽的查询结果信息，默认情况下输出格式易于阅读，同时也支持简洁模式（如
+<code>+short</code>）。</li>
+<li><strong>灵活性</strong>：用户可以通过命令行参数自定义查询行为，例如指定
+DNS 服务器、设置查询超时时间、递归查询等。</li>
+<li><strong>批处理能力</strong>：支持从文件批量读取域名进行查询（使用
+<code>-f</code> 参数），适合自动化脚本或大规模 DNS 数据收集。</li>
+</ul>
+<h2 id="基本用法">基本用法</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig [选项] [域名] [记录类型] </span><br></pre></td></tr></table></figure>
+<h3 id="查询特定dns服务器">查询特定DNS服务器</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig @8.8.8.8 www.baidu.com</span><br></pre></td></tr></table></figure>
+<h3 id="批量查询文件">批量查询文件</h3>
+<p>创建一个包含域名列表的文本文件，并使用<code>-f</code>参数进行批量查询。</p>
+<div class="tabs" id="批量查询"><ul class="nav-tabs"><li class="tab active"><a href="#批量查询-1">批量查询文件</a></li><li class="tab"><a href="#批量查询-2">domains.txt</a></li></ul><div class="tab-content"><div class="tab-pane active" id="批量查询-1"><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig -f domains.txt</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="批量查询-2"><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">www.baidu.com</span><br><span class="line">www.bing.com</span><br><span class="line">www.sina.com</span><br></pre></td></tr></table></figure></div></div></div>
+<h3 id="批量查询数组">批量查询数组</h3>
+<p>创建一个包含域名列表的数组，并使用<code>-f</code>参数进行批量查询。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MH=(</span><br><span class="line">www.baidu.com</span><br><span class="line">www.bing.com</span><br><span class="line">www.sina.com</span><br><span class="line">)</span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot;%s\n&quot;</span> <span class="string">&quot;<span class="variable">$&#123;MH[@]&#125;</span>&quot;</span> | dig @119.29.29.29 -f /dev/stdin +noall +answer | awk <span class="string">&#x27;&#123;print $5, $1&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1236,100 +1339,8 @@ CLI 登录： <figure class="highlight sh"><table><tr><td class="gutter"><pre><s
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/06/%E4%BD%BF%E7%94%A8Pandoc%E5%B0%86Markdown%E8%BD%ACPDF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/01/06/%E4%BD%BF%E7%94%A8Pandoc%E5%B0%86Markdown%E8%BD%ACPDF/" class="post-title-link" itemprop="url">使用Pandoc将Markdown转PDF</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-01-06 17:41:17" itemprop="dateCreated datePublished" datetime="2025-01-06T17:41:17+08:00">2025-01-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-07-25 09:33:58" itemprop="dateModified" datetime="2025-07-25T09:33:58+08:00">2025-07-25</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="安装好-pandoc">安装好 Pandoc</h2>
-<p>详细可以参考 <a target="_blank" rel="noopener" href="https://pandoc.org/installing.html">Pandoc -
-Installing pandoc</a>。</p>
-<p>先安装依赖软件<code>wkhtmltopdf</code></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paru -S wkhtmltopdf</span><br></pre></td></tr></table></figure>
-<p>官网上给出的简单的不修改格式的将 Markdown 转换为 PDF 命令如下：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandoc file.md -f markdown -t html -o index.pdf</span><br></pre></td></tr></table></figure>
-<h2 id="参考文章">参考文章</h2>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://tex.stackexchange.com/questions/73016/how-do-i-install-an-individual-package-on-a-linux-system">installing
-- How do I install an individual package on a Linux system? - TeX -
-LaTeX Stack Exchange</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/u013019701/article/details/119512493">使用
-Pandoc 来转换 Markdown 为漂亮的 PDF 格式</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
