@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">541</span>
+          <span class="site-state-item-count">542</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,106 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%B1%82%E5%AF%BC%E6%95%B0%E7%9A%84%E6%95%B0%E5%AD%A6%E7%90%86%E8%AE%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/07/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%B1%82%E5%AF%BC%E6%95%B0%E7%9A%84%E6%95%B0%E5%AD%A6%E7%90%86%E8%AE%BA/" class="post-title-link" itemprop="url">计算机求导数的数学理论</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-12 12:26:20" itemprop="dateCreated datePublished" datetime="2024-07-12T12:26:20+08:00">2024-07-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-07-25 09:33:58" itemprop="dateModified" datetime="2025-07-25T09:33:58+08:00">2025-07-25</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>对于解析函数，可以将其Taylor展开为： <span
+class="math display">\[\begin{equation}\label{eq:taylor}
+f(x_{i+1})=f(x_i)+f&#39;(x_i)h+\frac{f&#39;&#39;(x_i)}{2}h^2+\cdots
+\end{equation}\]</span> 现在据式<span
+class="math inline">\(\eqref{eq:taylor}\)</span>来计算多阶导数，取近似到二阶项，则一阶导数为
+<span class="math display">\[\begin{equation}\label{eq:taylor1}
+f&#39;(x_i)=\frac{f(x_{i+1})-f(x_i)}{h}+O(h)
+\end{equation}\]</span> 将式<span
+class="math inline">\(\eqref{eq:taylor1}\)</span>中的函数<span
+class="math inline">\(f\)</span>替换为相应的导数<span
+class="math inline">\(f&#39;\)</span>得二阶导数,然后出现的一阶导数使用式<span
+class="math inline">\(\eqref{eq:taylor1}\)</span>替换，从而得到二阶导数用零阶导数表达的算式
+<span class="math display">\[\begin{equation}\label{eq:taylor2}
+f&#39;&#39;(x_i)=-\frac{f(x_{i+2})-2f(x_{i+1})+f(x_i)}{h^{2}}+O(h)
+\end{equation}\]</span>
+按前述方法可以求出任意阶导数使用零阶导数表达的算式，于是可以将式<span
+class="math inline">\(\eqref{eq:taylor}\)</span>取更多的项以提高其导数<span
+class="math inline">\(f&#39;(x_i)\)</span>的精度，比如取到二阶项 <span
+class="math display">\[\begin{equation}\label{eq:taylor3}
+f&#39;(x_i)=\frac{f(x_{i+1})-f(x_i)}{h}-\frac{f(x_{i+2})-2f(x_{i+1})+f(x_i)}{2h^{2}}h+O(h^2)
+\end{equation}\]</span> 化简式<span
+class="math inline">\(\eqref{eq:taylor3}\)</span>得 <span
+class="math display">\[\begin{equation}\label{eq:taylor4}
+f&#39;(x_i)=\frac{-f(x_{i+2})+4f(x_{i+1})-3f(x_i)}{2h}+O(h^2)
+\end{equation}\]</span></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1252,102 +1352,6 @@ CPU、内存的进程；可以检查是否安装了合适的图形驱动程序�
 <p>这源自于<code>paru</code>的配置文件<code>/etc/paru.conf</code>中出现了错误，即将<code>[bin]</code>前的注释去掉，即修改为：</p>
 <figure class="highlight sh"><figcaption><span>/etc/paru.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Binary OPTIONS</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">[bin]</span><br><span class="line">FileManager = vifm</span><br></pre></td></tr></table></figure>
 <p>注意：在之前的配置中我的<code>[bin]</code>是被注释掉的，但是能正常工作，或许是升级后作者修复了这个<code>bug</code>，因些需要严格的启动这个选项。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/03/%E8%89%BE%E8%BE%BE%E8%89%BEPPT%E7%94%9F%E6%88%90%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/07/03/%E8%89%BE%E8%BE%BE%E8%89%BEPPT%E7%94%9F%E6%88%90%E5%99%A8/" class="post-title-link" itemprop="url">艾达艾PPT生成器</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-07-03 21:32:40" itemprop="dateCreated datePublished" datetime="2024-07-03T21:32:40+08:00">2024-07-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-07-25 09:33:58" itemprop="dateModified" datetime="2025-07-25T09:33:58+08:00">2025-07-25</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>工作和学习中编写<code>PPT</code>是一件很平常的事情，但是做的多了就需要提高效率。目前网络上的<code>AI</code>生成<code>PPT</code>的工具有很多，但是大多需要注册或者有使用次数限制，这非常不方便。本文隆重介绍一个永久免费的，免注册的工具<label style="color:red">艾达艾PPT生成器</label>。点击官网直接进入：</p>
-<blockquote class="blockquote-center">
-<p><a
-target="_blank" rel="noopener" href="https://aippt.antdanceai.com">https://aippt.antdanceai.com</a></p>
-
-</blockquote>
-<p>官方的介绍：</p>
-<p>adAI 艾达艾ai一键生成ppt工具，是adAI
-艾达艾旗下一个通过ai能力，一键全自动生成图文信息的ppt工具。adAI 艾达艾ai
-ppt工具，可以在2分钟内，根据用户输入的对ppt制作的要求，一键生成精美页面的ppt文字内容和针对性配图。</p>
-<p>adAI
-艾达艾ai一键生成ppt工具，通过针对数十万种ppt生成格式的训练，用户只需要通过简洁清晰描述需求，即可转化为高质量的ppt文字结构的内容。并且通过针对每页的ppt标题，智能理解标题语义并根据语义，智能匹配对应的配图。实现了一键自动化生成图文并茂的ppt。并且支持一键免费下载生成的ppt。如果对生成的ppt需要进行编辑和调整，只需要通过wps
-或PowerPoint打开后即可编辑。</p>
-<p>adAI 艾达艾ai
-ppt还创新的采用了新的商业模式。对于用户而言，这是一个真正免费的
-，并且免注册登录的，也无需科学上网即可使用的ai
-ppt生成工具。只是在生成的ppt最后一页带有
-广告。用户可以随时删除。这个广告是通过adAI
-艾达艾的千人千面ai算法实现基于用户输入的ppt提示词智能匹配的。比如用户输入如果策划一场车展，那么匹配的广告会跟：车、展会、策划相关。做到精准广告匹配。</p>
-<p>adAI 艾达艾人工智能科技有限公司，致力于通过ai重构传统营销模式，除了ai
-ppt工具以外，还提供基于 ai的全自动内容营销服务。</p>
 
       
     </div>

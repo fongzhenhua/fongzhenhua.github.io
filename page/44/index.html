@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">541</span>
+          <span class="site-state-item-count">542</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,84 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/11/vim%E4%B8%80%E9%94%AE%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/11/vim%E4%B8%80%E9%94%AE%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F/" class="post-title-link" itemprop="url">vim一键运行程序</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-11 00:52:48" itemprop="dateCreated datePublished" datetime="2023-05-11T00:52:48+08:00">2023-05-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-07-25 09:33:58" itemprop="dateModified" datetime="2025-07-25T09:33:58+08:00">2025-07-25</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <mark class="label success">2023年05月11日星期四多云北京市北京师范大学</mark>
+<p>今天决定在ThinkPad-T490上删除matlab,改用octave执行matlab脚本，同时为了方便编写python等程序，为vim配置了一键执行命令。如下</p>
+<figure class="highlight bash"><figcaption><span>~/.vimrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;Set  F5 to run all language program</span></span><br><span class="line"><span class="string">map &lt;F5&gt; :call  CompileRunGcc()&lt;CR&gt;</span></span><br><span class="line"><span class="string">func! CompileRunGcc()</span></span><br><span class="line"><span class="string">   exec &quot;</span>w<span class="string">&quot;</span></span><br><span class="line"><span class="string">   if &amp;filetype == &#x27;sh&#x27;</span></span><br><span class="line"><span class="string">      :!time bash %</span></span><br><span class="line"><span class="string">   elseif &amp;filetype == &#x27;python&#x27;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!<span class="keyword">time</span> python3 %<span class="string">&quot;</span></span><br><span class="line"><span class="string">   elseif &amp;filetype == &#x27;c&#x27;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!g++ % -o %&lt;<span class="string">&quot;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!<span class="keyword">time</span> ./%&lt;<span class="string">&quot;</span></span><br><span class="line"><span class="string">   elseif &amp;filetype == &#x27;cpp&#x27;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!g++ % -o %&lt;<span class="string">&quot;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!<span class="keyword">time</span> ./%&lt;<span class="string">&quot;</span></span><br><span class="line"><span class="string">   elseif &amp;filetype == &#x27;java&#x27;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!javac %<span class="string">&quot;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!<span class="keyword">time</span> java %&lt;<span class="string">&quot;</span></span><br><span class="line"><span class="string">   elseif &amp;filetype == &#x27;html&#x27;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!firefox % &amp;<span class="string">&quot;</span></span><br><span class="line"><span class="string">   elseif &amp;filetype == &#x27;go&#x27;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!go build %&lt;<span class="string">&quot;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!<span class="keyword">time</span> go run %<span class="string">&quot;</span></span><br><span class="line"><span class="string">   elseif &amp;filetype == &#x27;mkd&#x27;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!~/.vim/markdown.pl % &gt; %.html &amp;<span class="string">&quot;</span></span><br><span class="line"><span class="string">      exec &quot;</span>!firefox %.html &amp;<span class="string">&quot;</span></span><br><span class="line"><span class="string">   endif</span></span><br><span class="line"><span class="string">endfunc</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1136,89 +1214,6 @@ target="_blank" rel="noopener" href="https://yianwillis.github.io/vimcdoc/doc/he
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/04/24/vim-nvim%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/22/Python%E4%B9%8B%E7%BE%8E%E7%AC%AC%E5%8D%81%E6%AC%A1%E4%BD%9C%E4%B8%9A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/04/22/Python%E4%B9%8B%E7%BE%8E%E7%AC%AC%E5%8D%81%E6%AC%A1%E4%BD%9C%E4%B8%9A/" class="post-title-link" itemprop="url">Python之美第十次作业</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-22 13:45:41" itemprop="dateCreated datePublished" datetime="2023-04-22T13:45:41+08:00">2023-04-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-07-25 09:33:58" itemprop="dateModified" datetime="2025-07-25T09:33:58+08:00">2025-07-25</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>2023年04月22日星期六阴北京市北京师范大学,今天完成了第十次作业，同样还是在vim上完成，然后贴到Jupyter上，插入图片展示作业。同时今天获得vim整块代码移到的技巧，比如选中前十行，然后按<code>shift+&gt;</code>右移，同时<code>shift+&lt;</code>左移。第二个方法是命令模式，使用<code>:m,n&gt;</code>将第m行到第n行，右移<code>shiftwidth</code>，同时<code>:m,n&lt;</code>将第m行到第n行，左移<code>shiftwidth</code>,其中<code>shiftwidth=4</code>可以在<code>/etc/vimrc</code>中设置参数。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/04/22/Python%E4%B9%8B%E7%BE%8E%E7%AC%AC%E5%8D%81%E6%AC%A1%E4%BD%9C%E4%B8%9A/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

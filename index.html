@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">541</span>
+          <span class="site-state-item-count">542</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -372,6 +372,97 @@ target="_blank" rel="noopener" href="https://endeavouros.com">Endeavour</a>
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/07/Shell%E8%84%9A%E6%9C%AC%E8%8E%B7%E5%8F%96%E7%BB%88%E7%AB%AF%E5%B0%BA%E5%AF%B8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/07/Shell%E8%84%9A%E6%9C%AC%E8%8E%B7%E5%8F%96%E7%BB%88%E7%AB%AF%E5%B0%BA%E5%AF%B8/" class="post-title-link" itemprop="url">Shell脚本获取终端尺寸</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-08-07 19:52:59 / 修改时间：20:09:27" itemprop="dateCreated datePublished" datetime="2025-08-07T19:52:59+08:00">2025-08-07</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在编写 shell
+脚本时经常使用的函数可以封闭到一个脚本中，然后其他脚本使用 source
+命令直接调用即可，这样不仅有利于新脚本的开发，更有利于维护。但是今天在编写新的脚本
+<code>chaos.sh</code>
+时调用了我之前在<code>diary.sh</code>中调用过的菜单脚本，然而却出现错误。一直提示"
+stty: 标准输入: 对设备不适当的 ioctl 操作" 。</p>
+<p>造成这个问题的原因是：使用 <code>Neovim</code>
+内置命令运行脚本时并没有真正在一个终端中运行，而菜单脚本使用<code>tty</code>获取终端的尺寸，此时没有可用的<code>tty</code>,
+因此出现报错。</p>
+<p>一个更健壮的获取终端尺寸的方法（在非终端环境下，如 Neovim
+<code>:!sh ./chaos.sh</code> 等也不会报错）,是使用<code>tput</code>,
+这是一具兼容度最好的方案。具体原因是</p>
+<ul>
+<li><code>tput</code> 会尝试从环境变量或<code>terminfo</code>
+中获取尺寸</li>
+<li>在非终端环境下返回空或错误，可用<code>||</code>提供默认值</li>
+<li>不会像<code>stty size</code> 那样报错</li>
+</ul>
+<p>一般情况下，使用<code>stty size</code> 与
+<code>tput</code>会获得相同的结果，为了确保与之前脚本的兼容性，修改获取尺寸函数为：</p>
+<figure class="highlight sh"><figcaption><span>~/.Share_Fun/Share_Fun_Menu.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列表程序</span></span><br><span class="line"><span class="function"><span class="title">DY_SET_SIZE</span></span>()&#123;</span><br><span class="line">    <span class="keyword">if</span> [ -t 0 ]; <span class="keyword">then</span></span><br><span class="line">        TTY_H=$(<span class="built_in">stty</span> size|awk <span class="string">&#x27;&#123;print $1&#125;&#x27;</span>)</span><br><span class="line">        TTY_W=$(<span class="built_in">stty</span> size|awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        TTY_H=$(tput lines 2&gt;/dev/null) || TTY_H=37</span><br><span class="line">        TTY_W=$(tput cols 2&gt;/dev/null) || TTY_W=147</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    <span class="built_in">let</span> TTY_H-=2</span><br><span class="line">&#125;</span><br><span class="line">DY_SET_SIZE</span><br></pre></td></tr></table></figure>
+<p>通过<code>[ -t 0 ]</code>来判断运行程序时是否在终端，若在终端仍然使用<code>stty size</code>获取终端尺寸，否则使用<code>tput</code>获取。这样重新定义获取尺寸函数后，问题彻底解决。</p>
+
       
     </div>
 
@@ -1158,117 +1249,6 @@ Under Review, Required Reviews Completed 等）。</li>
 </ul>
 <h1 id="结论">结论</h1>
 <p><code>&#123;&#125;</code>占位符提供了一种灵活且强大的方式来处理字符串中的动态数据。正确理解和使用它可以极大地增强代码的功能性和灵活性。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/07/%E4%B8%BA%E6%96%87%E4%BB%B6%E6%B7%BB%E5%8A%A0%E7%BB%9F%E4%B8%80%E7%9A%84%E5%89%8D%E7%BC%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/05/07/%E4%B8%BA%E6%96%87%E4%BB%B6%E6%B7%BB%E5%8A%A0%E7%BB%9F%E4%B8%80%E7%9A%84%E5%89%8D%E7%BC%80/" class="post-title-link" itemprop="url">为文件添加统一的前缀</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-05-07 11:08:02" itemprop="dateCreated datePublished" datetime="2025-05-07T11:08:02+08:00">2025-05-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-07-25 09:33:58" itemprop="dateModified" datetime="2025-07-25T09:33:58+08:00">2025-07-25</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>当管理大量的PDF电子书时，对于某一系列的书籍而言，统一添加上相应系列的前缀或后缀是一个非常好的习惯，这特别有利于检索。在Linux下，有几种方法可以方便的实现这个功能。</p>
-<h1 id="通用命令解决方案">通用命令解决方案</h1>
-<figure class="highlight sh"><figcaption><span>xargs 和 mv 组成管道命令</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> | xargs -I &#123;&#125; <span class="built_in">mv</span> &#123;&#125; prefix_&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>这段命令的工作原理是：首先列出当前目录下的所有文件名，然后对每个文件名执行mv命令，将其重命名为带有前缀的新名称。</p>
-<h2 id="注意事项">注意事项</h2>
-<ul>
-<li>上面的例子不会处理隐藏文件（以<code>.</code>开头的文件）。如果需要包括隐藏文件，请相应地调整通配符或命令。</li>
-<li>在执行这些命令之前，建议先备份重要数据，以防不测发生误操作。</li>
-<li>如果你的文件名中包含空格或其他特殊字符，可能需要对上述命令进行适当的修改，例如使用find结合-print0和xargs
--0来安全处理这些文件名。</li>
-</ul>
-<h1 id="使用-rename-命令perl版本">使用 rename 命令（Perl版本）</h1>
-<p>对于大多数Linux发行版，你可以直接使用Perl版本的rename命令，它非常适合这类任务。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename <span class="string">&#x27;s/^/prefix_/&#x27;</span> *</span><br></pre></td></tr></table></figure>
-<h1 id="使用-shell-脚本">使用 Shell 脚本</h1>
-<h2 id="为当前目录下所有文件添加前缀">为当前目录下所有文件添加前缀</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> *; <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">mv</span> <span class="string">&quot;<span class="variable">$file</span>&quot;</span> <span class="string">&quot;prefix_<span class="variable">$file</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<h3 id="注意事项-1">注意事项</h3>
-<ul>
-<li>这个命令不会重命名目录本身。</li>
-<li>如果有子目录，这个命令也不会进入子目录。</li>
-<li>不会重命名隐藏文件（以 . 开头的文件），如需包括，请看进阶用法。</li>
-</ul>
-<h2
-id="只为普通文件添加前缀跳过目录">只为普通文件添加前缀（跳过目录）</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> *; <span class="keyword">do</span></span><br><span class="line">    <span class="keyword">if</span> [ -f <span class="string">&quot;<span class="variable">$file</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">mv</span> <span class="string">&quot;<span class="variable">$file</span>&quot;</span> <span class="string">&quot;prefix_<span class="variable">$file</span>&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<h2 id="为指定类型文件添加前缀如-.txt-文件">为指定类型文件添加前缀（如
-.txt 文件）</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> *.txt; <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">mv</span> <span class="string">&quot;<span class="variable">$file</span>&quot;</span> <span class="string">&quot;prefix_<span class="variable">$file</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<h2
-id="递归为当前目录及其子目录中的文件添加前缀">递归为当前目录及其子目录中的文件添加前缀</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> f | <span class="keyword">while</span> <span class="built_in">read</span> file; <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">dir</span>=$(<span class="built_in">dirname</span> <span class="string">&quot;<span class="variable">$file</span>&quot;</span>)</span><br><span class="line">    base=$(<span class="built_in">basename</span> <span class="string">&quot;<span class="variable">$file</span>&quot;</span>)</span><br><span class="line">    <span class="built_in">mv</span> <span class="string">&quot;<span class="variable">$file</span>&quot;</span> <span class="string">&quot;<span class="variable">$dir</span>/prefix_<span class="variable">$base</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<h2 id="添加时间戳作为前缀">添加时间戳作为前缀</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">prefix=$(<span class="built_in">date</span> +%Y%m%d)</span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> *; <span class="keyword">do</span></span><br><span class="line">    <span class="keyword">if</span> [ -f <span class="string">&quot;<span class="variable">$file</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">mv</span> <span class="string">&quot;<span class="variable">$file</span>&quot;</span> <span class="string">&quot;<span class="variable">$&#123;prefix&#125;</span>_<span class="variable">$file</span>&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<h1 id="特别注意">特别注意！</h1>
-<p>在进行大规模文件重命名之前，建议先备份重要数据，并考虑在一个小样本上测试你的命令。</p>
 
       
     </div>
