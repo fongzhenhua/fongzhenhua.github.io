@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">542</span>
+          <span class="site-state-item-count">543</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,92 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/08/ArchLinux%E9%85%8D%E7%BD%AE%E8%84%9A%E6%9C%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/07/08/ArchLinux%E9%85%8D%E7%BD%AE%E8%84%9A%E6%9C%AC/" class="post-title-link" itemprop="url">ArchLinux配置脚本</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-07-08 01:37:09" itemprop="dateCreated datePublished" datetime="2023-07-08T01:37:09+08:00">2023-07-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-07-25 09:33:58" itemprop="dateModified" datetime="2025-07-25T09:33:58+08:00">2025-07-25</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>2023年07月07日星期五多云北京市北京师范大学,
+完成了自动化配置Vim和NeoVim的脚本，原本是想尝试一下LazyVim的，但是发现有时候功能太多了就失去了Vim的简洁，于是决定自动化我个人的配置后，放在Gitlab上，方便今后配置系统。</p>
+<h3 id="配置vim">配置Vim</h3>
+<figure class="highlight bash"><figcaption><span>配置Vim</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span>  https://gitlab.com/fengzhenhua/vimconfig.git  ~/vimconfig</span><br><span class="line"><span class="built_in">cd</span> ~/vimconfig</span><br><span class="line"><span class="built_in">chmod</span> +x ./InstallVim.sh </span><br><span class="line">./InstallVim.sh</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/07/08/ArchLinux%E9%85%8D%E7%BD%AE%E8%84%9A%E6%9C%AC/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1071,104 +1157,6 @@ Lua 脚本配置好了基本的 Neovim , 所以准备逐步完善 Neovim 配置�
 ,但是后者提供的关于Latex的模板并不好用，所以决定使用vim-latex处理所有的latex文件。但是从vim转移到nvim后，发现模板功能并不能使用，于是将原来vim配置插件时的latex模板，完全复制到packer插件管理器中的对应位置即可，即</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> ~/.vim/bundle/vim-latex/ftplugin/latex-suite/templates/*</span><br><span class="line">   ~/.local/share/nvim/site/pack/packer/start/vim-latex/ftplugin/latex-suite/templates</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/06/20/%E5%9C%A8Neovim%E4%B8%AD%E4%BD%BF%E7%94%A8Lua/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/06/20/%E5%9C%A8Neovim%E4%B8%AD%E4%BD%BF%E7%94%A8Lua/" class="post-title-link" itemprop="url">在Neovim中使用Lua</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-06-20 10:19:49" itemprop="dateCreated datePublished" datetime="2023-06-20T10:19:49+08:00">2023-06-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-07-25 09:33:58" itemprop="dateModified" datetime="2025-07-25T09:33:58+08:00">2025-07-25</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="在-neovim-中使用-lua">在 neovim 中使用 Lua</h1>
-<p>本文本最初来源是<a
-target="_blank" rel="noopener" href="https://gitee.com/zhengqijun/nvim-lua-guide-zh/blob/main/README.md">nvim-lua-guide</a>,由于这段时间一直在学习使用Lua配置Neovim,
-但是没有系统的教材，而这篇文章却恰好给了一个大致的框架，所以本文最初借用此文，待时机成熟再正式开始写作。</p>
-<p><a
-target="_blank" rel="noopener" href="https://github.com/nanotee/nvim-lua-guide">nvim-lua-guide</a>
-中文版简易教程</p>
-<p>译者：Neovim Core Developer</p>
-<p>:arrow_upper_left: （感觉太多太杂乱？使用 Github TOC
-来浏览大纲！）</p>
-<h2 id="简介">简介</h2>
-<p>Lua 作为 Neovim
-中的一等语言的集成正在成为它的杀手级特性之一。然而，学习如何用 Lua
-编写插件的教程数量并不像用 Vimscript
-编写插件那样多。这是一种尝试，试图提供一些基本信息，让人们可以使用 Lua
-编写 Neovim 插件。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/06/20/%E5%9C%A8Neovim%E4%B8%AD%E4%BD%BF%E7%94%A8Lua/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 

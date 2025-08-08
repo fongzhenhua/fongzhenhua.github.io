@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">542</span>
+          <span class="site-state-item-count">543</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,101 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/30/Grep%E8%BF%87%E6%BB%A4%E6%96%87%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/11/30/Grep%E8%BF%87%E6%BB%A4%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">Grep过滤文件</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-11-30 20:46:29" itemprop="dateCreated datePublished" datetime="2024-11-30T20:46:29+08:00">2024-11-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-07-25 09:33:58" itemprop="dateModified" datetime="2025-07-25T09:33:58+08:00">2025-07-25</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在Linux中，可以使用grep命令去除重复行。grep命令是一个强大的文本搜索工具，但是默认情况下它只会输出匹配的行，而不会去除重复的行。要去除重复行，可以使用grep命令的<code>-v</code>选项结合<code>sort</code>和<code>uniq</code>命令来实现。</p>
+<p>下面是使用grep命令去除重复行的步骤：</p>
+<ol type="1">
+<li>使用grep命令搜索匹配的行，将输出重定向到一个临时文件。</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep “pattern” file.txt &gt; temp.txt  </span><br></pre></td></tr></table></figure>
+<p>其中，<code>pattern</code>是你要匹配的模式，<code>file.txt</code>是要搜索的文件。</p>
+<ol start="2" type="1">
+<li>使用sort命令对临时文件进行排序。</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sort</span> temp.txt &gt; sorted.txt  </span><br></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li>使用uniq命令去除重复行。</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">uniq</span> sorted.txt &gt; result.txt  </span><br></pre></td></tr></table></figure>
+<ol start="4" type="1">
+<li>可选：删除临时文件。</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> temp.txt sorted.txt  </span><br></pre></td></tr></table></figure>
+<p>这样，就可以得到一个去除重复行的结果文件result.txt。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1457,243 +1552,6 @@ target="_blank" rel="noopener" href="http://standards.freedesktop.org/icon-theme
 <li><a
 target="_blank" rel="noopener" href="https://dev59.com/askubuntu/iUPXs4cB2Jgan1znl_8m">.desktop文件：如何指定图标路径</a></li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/28/SCI%E6%8A%95%E7%A8%BF7%E4%B8%AA%E9%98%B6%E6%AE%B5%E7%9A%84%E9%82%AE%E4%BB%B6%E6%A8%A1%E6%9D%BF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/11/28/SCI%E6%8A%95%E7%A8%BF7%E4%B8%AA%E9%98%B6%E6%AE%B5%E7%9A%84%E9%82%AE%E4%BB%B6%E6%A8%A1%E6%9D%BF/" class="post-title-link" itemprop="url">SCI投稿7个阶段的邮件模板</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-11-28 00:19:59" itemprop="dateCreated datePublished" datetime="2024-11-28T00:19:59+08:00">2024-11-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-07-25 09:33:58" itemprop="dateModified" datetime="2025-07-25T09:33:58+08:00">2025-07-25</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="最初投稿coverletter">1.最初投稿Coverletter</h2>
-<p>DearEditors:<br />
-We would like to submit the enclosed manuscript entitled“Paper Title”,
-which we wish to be considered forpublication in “Journal Name”. No
-conflict of interestexits in the submission of this manuscript, and
-manuscript isapproved by all authors for publication. I would like to
-declare onbehalf of my co-authors that the work described was original
-researchthat has not been published previously, and not under
-considerationfor publication elsewhere, in whole or in part. All the
-authorslisted have approved the manuscript that is enclosed.</p>
-<p>In thiswork, we evaluated …… (简要介绍一下论文的创新性).I hope this
-paper is suitable for “Journal Name”.</p>
-<p>Thefollowing is a list of possible reviewers for your
-consideration:</p>
-<p>1)Name A E-mail: ××××@××××</p>
-<p>2)Name B E-mail: ××××@××××</p>
-<p>Wedeeply appreciate your consideration of our manuscript, and we
-lookforward to receiving comments from the reviewers. If you have
-anyqueries, please don’t hesitate to contact me at the addressbelow.</p>
-<p>Thank you and best regards.</p>
-<p>Yourssincerely,<br />
-××××××<br />
-Correspondingauthor: <br />
-Name: ×××<br />
-E-mail: ××××@××××</p>
-<h2 id="催稿信">2.催稿信</h2>
-<p>DearProf. ×××:</p>
-<p>Sorry for disturbing you. I am notsure if it is the right time to
-contact you to inquire about thestatus of my submitted manuscript titled
-“Paper Title”.(ID: 文章稿号),although the status of “With Editor” has
-been lasting formore than two months, since submitted to journal three
-months ago. Iam just wondering that my manuscript has been sent to
-reviewers ornot?</p>
-<p>I would be greatly appreciated if you could spend some ofyour time
-check the status for us. I am very pleased to hear from youon the
-reviewer’s comments.</p>
-<p>Thank you very much for yourconsideration.</p>
-<p>Best regards! <br />
-Yourssincerely,<br />
-××××××<br />
-Correspondingauthor: <br />
-Name: ×××<br />
-E-mail: ××××@××××</p>
-<h2 id="修改稿coverletter">3.修改稿Coverletter</h2>
-<p>DearDr/
-Prof..（写上负责你文章编辑的姓名，显得尊重，因为第一次的投稿不知道具体负责的编辑，只能用通用的Editors）:</p>
-<p>Onbehalf of my co-authors, we thank you very much for giving us
-anopportunity to revise our manuscript, we appreciate editor
-andreviewers very much for their positive and constructive comments
-andsuggestions on our manuscript entitled “Paper
-Title”.(ID: 文章稿号).</p>
-<p>Wehave studied reviewer’s comments carefully and have maderevision
-which marked in red in the paper. We have tried our best torevise our
-manuscript according to the comments. Attached please findthe revised
-version, which we would like to submit for your kindconsideration.</p>
-<p>We would like to express our great appreciation toyou and reviewers
-for comments on our paper. Looking forward tohearing from you.<br />
-Thank you and best regards.</p>
-<p>Yourssincerely,<br />
-××××××<br />
-Correspondingauthor:<br />
-Name: ×××<br />
-E-mail: ××××@××××</p>
-<h2
-id="修改稿回答审稿人意见最重要的部分">4.修改稿回答审稿人意见（最重要的部分）</h2>
-<p>Listof Responses<br />
-Dear Editors and Reviewers:<br />
-Thank you for yourletter and for the reviewers’ comments concerning
-ourmanuscript entitled “Paper Title” (ID: 文章稿号).Those comments are
-all valuable and very helpful for revising andimproving our paper, as
-well as the important guiding significance toour researches. We have
-studied comments carefully and have madecorrection which we hope meet
-with approval. Revised portion aremarked in red in the paper. The main
-corrections in the paper and theresponds to the reviewer’s comments are
-as flowing:</p>
-<p>Respondsto the reviewer’s comments:</p>
-<p>Reviewer #1: <br />
-1. Response tocomment: (……简要列出意见……)<br />
-Response:××××××<br />
-2. Response to comment:(……简要列出意见……)<br />
-Response:××××××<br />
-。。。。。。逐条意见回答，切忌一定不能有遗漏</p>
-<p>针对不同的问题有下列几个礼貌术语可适当用用：<br />
-Weare very sorry for our negligence of ……...<br />
-We arevery sorry for our incorrect writing ……...<br />
-It isreally true as Reviewer suggested that……<br />
-We havemade correction according to the Reviewer’s comments.<br />
-Wehave re-written this part according to the Reviewer’ssuggestion<br />
-As Reviewer suggested that……<br />
-Consideringthe Reviewer’s suggestion, we have ……</p>
-<p>最后特意感谢一下这个审稿人的意见：<br />
-Specialthanks to you for your good comments. </p>
-<p>Reviewer #2:</p>
-<p>同上述</p>
-<p>Reviewer#3:<br />
-××××××<br />
-Other changes:<br />
-1. Line 60-61, the statements of “……”were corrected as “…………”<br />
-2.Line 107, “……” was added <br />
-3. Line 129,“……” was deleted<br />
-××××××</p>
-<p>Wetried our best to improve the manuscript and made some changes in
-themanuscript. These changes will not influence the content andframework
-of the paper. And here we did not list the changes butmarked in red in
-revised paper.</p>
-<p>We appreciate forEditors/Reviewers’ warm work earnestly, and hope
-that thecorrection will meet with approval.</p>
-<p>Once again, thank you verymuch for your comments and suggestions.</p>
-<h2
-id="文章接收后感谢信根据需要感谢负责文章的编辑或主编">5.文章接收后感谢信（根据需要感谢负责文章的编辑或主编）</h2>
-<p>DearProf. ××××××:</p>
-<p>Thanks very muchfor your kind work and consideration on publication
-of our paper. Onbehalf of my co-authors, we would like to express our
-greatappreciation to editor and reviewers.</p>
-<p>Thank you and bestregards.</p>
-<p>Yours sincerely,<br />
-××××××<br />
-Correspondingauthor:<br />
-Name: ×××<br />
-E-mail: ××××@××××</p>
-<h2 id="询问校稿信件">6.询问校稿信件</h2>
-<p>Dear×××:</p>
-<p>Sorry for disturbing you. I am not sure ifit is the right time to
-contact you to inquire about the status ofour accepted manuscript titled
-“Paper Title” (ID: 文章稿号),since the copyright agreement for
-publication has been sent to youtwo months ago. I am just wondering that
-how long I can receive theproof of our manuscript from you?<br />
-I would be greatly appreciatedif you could spend some of your time for a
-reply. I am very pleasedto hear from you.</p>
-<p>Thank you very much for yourconsideration.</p>
-<p>Yours sincerely,<br />
-××××××<br />
-Correspondingauthor:<br />
-Name: ×××<br />
-E-mail: ××××@××××</p>
-<h2 id="文章校稿信件">7.文章校稿信件</h2>
-<p>DearMr. ×××:</p>
-<p>Thanks very much for your kind letterabout the proof of our paper
-titled “Paper Title” (ID:文章稿号)for publication in “Journal Name”. We
-have finished theproof reading and checking carefully, and some
-corrections about theproof and the answers to the queries are provided
-below.</p>
-<p>Corrections:<br />
-1. In ****** should be **** (Page ***, Rightcolumn, line***)<br />
-2. In **** the “*****” should be“****” (Page ****, Right column,
-line****)</p>
-<p>Answers for“author queries”:<br />
-1. *********************.<br />
-2.**********************<br />
-3. **********************</p>
-<p>We greatlyappreciate the efficient, professional and rapid processing
-of ourpaper by your team. If there is anything else we should do, please
-donot hesitate to let us know.</p>
-<p>Thank you and best regards.<br />
-Yourssincerely,<br />
-××××××<br />
-Correspondingauthor:<br />
-Name: ×××<br />
-E-mail: ××××@××××</p>
-<h2 id="引用">引用</h2>
-<p>全文引用自：<a
-target="_blank" rel="noopener" href="https://blog.csdn.net/Angelina_Jolie/article/details/131838025">SCI投稿7个阶段的邮件模板</a></p>
 
       
     </div>

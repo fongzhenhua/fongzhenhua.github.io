@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">542</span>
+          <span class="site-state-item-count">543</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -372,6 +372,79 @@ target="_blank" rel="noopener" href="https://endeavouros.com">Endeavour</a>
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/08/Shell%E8%84%9A%E6%9C%AC%E5%8F%98%E9%87%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%8F%98%E9%87%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/08/Shell%E8%84%9A%E6%9C%AC%E5%8F%98%E9%87%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%8F%98%E9%87%8F/" class="post-title-link" itemprop="url">Shell脚本变量与函数变量</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-08-08 11:18:23 / 修改时间：11:24:07" itemprop="dateCreated datePublished" datetime="2025-08-08T11:18:23+08:00">2025-08-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在 shell 脚本中使用<code>$1</code>， <code>$2</code>
+等表示变量，它们不仅可以表示脚本的参数，也可以表示函数的参数。但是，如果一个函数它自己有参变量，同时又需要引用脚本的参变量，那这个函数就无法识别<code>$1</code>是脚本的还是函数的，这会导致矛盾。为了解决函数参数覆盖脚本参数的问题，一个简单安全的方法是提前保存脚本参数，即</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># 调用前保存脚本参数到全局变量</span></span><br><span class="line">script_args=(<span class="string">&quot;<span class="variable">$@</span>&quot;</span>)  <span class="comment"># 保存所有参数到数组</span></span><br><span class="line"><span class="function"><span class="title">process_args</span></span>() &#123;</span><br><span class="line">    <span class="comment"># 函数参数</span></span><br><span class="line">    <span class="built_in">local</span> func_param=<span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">    <span class="comment"># 访问脚本参数</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;脚本第一个参数: <span class="variable">$&#123;script_args[0]&#125;</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;脚本第二个参数: <span class="variable">$&#123;script_args[1]&#125;</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;函数参数: <span class="variable">$func_param</span>&quot;</span></span><br><span class="line">    <span class="comment"># 遍历所有脚本参数</span></span><br><span class="line">    <span class="keyword">for</span> arg <span class="keyword">in</span> <span class="string">&quot;<span class="variable">$&#123;script_args[@]&#125;</span>&quot;</span>; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;脚本参数: <span class="variable">$arg</span>&quot;</span></span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 调用函数并传递函数参数</span></span><br><span class="line">process_args <span class="string">&quot;函数参数值&quot;</span></span><br></pre></td></tr></table></figure>
+<p>此法能确保在函数中正确访问脚本参数，同时保持代码清晰和可维护性。</p>
+
       
     </div>
 
@@ -1151,104 +1224,6 @@ XYZ123），以帮助系统正确识别。</li>
 <li>如果担心邮件未被收到，可以通过投稿系统检查是否有新的状态更新（如
 Under Review, Required Reviews Completed 等）。</li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/07/%E5%8D%A0%E4%BD%8D%E7%AC%A6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/05/07/%E5%8D%A0%E4%BD%8D%E7%AC%A6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">占位符使用指南</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-05-07 11:51:00" itemprop="dateCreated datePublished" datetime="2025-05-07T11:51:00+08:00">2025-05-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-07-25 09:33:58" itemprop="dateModified" datetime="2025-07-25T09:33:58+08:00">2025-07-25</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="概述">概述</h2>
-<p>在编程和软件开发领域，占位符是一种用于表示后续将被替换为特定值的符号或字符串。<code>&#123;&#125;</code>作为最常见的占位符之一，广泛应用于多种编程语言和框架中，如Python、JavaScript等，尤其是在字符串格式化方面。</p>
-<h2 id="用途">用途</h2>
-<p><code>&#123;&#125;</code>占位符主要用于以下场景：</p>
-<ul>
-<li>字符串格式化：允许开发者在运行时动态地插入变量值。</li>
-<li>国际化与本地化：简化文本翻译流程，便于不同语言环境下的内容替换。</li>
-<li>数据绑定：在模板引擎中，用于数据展示前的临时占位。</li>
-</ul>
-<h2 id="使用方法">使用方法</h2>
-<h3 id="python-示例">Python 示例</h3>
-<p>在Python中，<code>&#123;&#125;</code>占位符常与<code>str.format()</code>方法结合使用。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">&quot;Alice&quot;</span></span><br><span class="line">age = <span class="number">25</span></span><br><span class="line">formatted_string = <span class="string">&quot;My name is &#123;&#125; and I&#x27;m &#123;&#125; years old.&quot;</span>.<span class="built_in">format</span>(name, age)</span><br><span class="line"><span class="built_in">print</span>(formatted_string)  <span class="comment"># 输出: My name is Alice and I&#x27;m 25 years old. </span></span><br></pre></td></tr></table></figure>
-<h3 id="javascript-示例">JavaScript 示例</h3>
-<p>在ES6及以上版本中，通过反引号创建的模板字符串可以使用<code>$&#123;&#125;</code>来替代传统的<code>&#123;&#125;</code>占位符，实现类似的功能。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> name = <span class="string">&#x27;Bob&#x27;</span>;</span><br><span class="line"><span class="built_in">let</span> age = 30;</span><br><span class="line"><span class="built_in">let</span> sentence = `Hello, my name is <span class="variable">$&#123;name&#125;</span> and I<span class="string">&#x27;m $&#123;age&#125; years old.`;</span></span><br><span class="line"><span class="string">console.log(sentence); // 输出: Hello, my name is Bob and I&#x27;</span>m 30 years old.</span><br></pre></td></tr></table></figure>
-<h3 id="注意事项">注意事项</h3>
-<ul>
-<li>确保提供的参数数量与占位符匹配，避免出现格式错误。</li>
-<li>根据具体的应用场景选择合适的占位符语法，以提高代码的可读性和维护性。</li>
-</ul>
-<h1 id="结论">结论</h1>
-<p><code>&#123;&#125;</code>占位符提供了一种灵活且强大的方式来处理字符串中的动态数据。正确理解和使用它可以极大地增强代码的功能性和灵活性。</p>
 
       
     </div>
