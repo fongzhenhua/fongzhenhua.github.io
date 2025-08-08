@@ -329,7 +329,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-08-08 11:18:23 / 修改时间：11:24:07" itemprop="dateCreated datePublished" datetime="2025-08-08T11:18:23+08:00">2025-08-08</time>
+      <time title="创建时间：2025-08-08 11:18:23 / 修改时间：11:44:03" itemprop="dateCreated datePublished" datetime="2025-08-08T11:18:23+08:00">2025-08-08</time>
     </span>
 
   
@@ -344,7 +344,52 @@
     <div class="post-body" itemprop="articleBody"><p>在 shell 脚本中使用<code>$1</code>， <code>$2</code>
 等表示变量，它们不仅可以表示脚本的参数，也可以表示函数的参数。但是，如果一个函数它自己有参变量，同时又需要引用脚本的参变量，那这个函数就无法识别<code>$1</code>是脚本的还是函数的，这会导致矛盾。为了解决函数参数覆盖脚本参数的问题，一个简单安全的方法是提前保存脚本参数，即</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># 调用前保存脚本参数到全局变量</span></span><br><span class="line">script_args=(<span class="string">&quot;<span class="variable">$@</span>&quot;</span>)  <span class="comment"># 保存所有参数到数组</span></span><br><span class="line"><span class="function"><span class="title">process_args</span></span>() &#123;</span><br><span class="line">    <span class="comment"># 函数参数</span></span><br><span class="line">    <span class="built_in">local</span> func_param=<span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">    <span class="comment"># 访问脚本参数</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;脚本第一个参数: <span class="variable">$&#123;script_args[0]&#125;</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;脚本第二个参数: <span class="variable">$&#123;script_args[1]&#125;</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;函数参数: <span class="variable">$func_param</span>&quot;</span></span><br><span class="line">    <span class="comment"># 遍历所有脚本参数</span></span><br><span class="line">    <span class="keyword">for</span> arg <span class="keyword">in</span> <span class="string">&quot;<span class="variable">$&#123;script_args[@]&#125;</span>&quot;</span>; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;脚本参数: <span class="variable">$arg</span>&quot;</span></span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 调用函数并传递函数参数</span></span><br><span class="line">process_args <span class="string">&quot;函数参数值&quot;</span></span><br></pre></td></tr></table></figure>
-<p>此法能确保在函数中正确访问脚本参数，同时保持代码清晰和可维护性。</p>
+<p>此法能确保在函数中正确访问脚本参数，同时保持代码清晰和可维护性。
+这里需要注意变量<code>$0</code>和<code>$?</code>不会被函数参数覆盖，这里将各变量列表如下：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">变量</th>
+<th style="text-align: left;">是否被函数参数覆盖</th>
+<th style="text-align: left;">作用域</th>
+<th style="text-align: left;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>$0</code></td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">全局</td>
+<td style="text-align: left;">始终表示脚本名称</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>$?</code></td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">动态更新</td>
+<td style="text-align: left;">始终表示上一个命令的退出状态</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>$1-$9</code></td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">函数内局部</td>
+<td style="text-align: left;">在函数内被函数参数覆盖</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>$#</code></td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">函数内局部</td>
+<td style="text-align: left;">在函数内表示函数参数个数</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>$@</code></td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">函数内局部</td>
+<td style="text-align: left;">在函数内表示函数参数列表</td>
+</tr>
+</tbody>
+</table>
+<p>所以综合考虑，将<code>$0</code>也在脚本开头保存，以便规范使用。于是前面的脚本可以进一步写为：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># 调用前保存脚本参数到全局变量</span></span><br><span class="line">script_args=(<span class="string">&quot;<span class="variable">$0</span>&quot;</span> <span class="string">&quot;<span class="variable">$@</span>&quot;</span>)  <span class="comment"># 保存所有参数到数组</span></span><br><span class="line"><span class="function"><span class="title">process_args</span></span>() &#123;</span><br><span class="line">    <span class="comment"># 函数参数</span></span><br><span class="line">    <span class="built_in">local</span> func_param=<span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">    <span class="comment"># 访问脚本参数</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;脚本第一个参数: <span class="variable">$&#123;script_args[0]&#125;</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;脚本第二个参数: <span class="variable">$&#123;script_args[1]&#125;</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;函数参数: <span class="variable">$func_param</span>&quot;</span></span><br><span class="line">    <span class="comment"># 遍历所有脚本参数</span></span><br><span class="line">    <span class="keyword">for</span> arg <span class="keyword">in</span> <span class="string">&quot;<span class="variable">$&#123;script_args[@]&#125;</span>&quot;</span>; <span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;脚本参数: <span class="variable">$arg</span>&quot;</span></span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 调用函数并传递函数参数</span></span><br><span class="line">process_args <span class="string">&quot;函数参数值&quot;</span></span><br></pre></td></tr></table></figure>
 
     </div>
 
