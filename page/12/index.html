@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">547</span>
+          <span class="site-state-item-count">548</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,134 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/29/Linux%E8%A7%A3%E5%86%B3%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E5%AD%A6%E6%9C%AF%E7%BD%91%E7%AB%99%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/11/29/Linux%E8%A7%A3%E5%86%B3%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E5%AD%A6%E6%9C%AF%E7%BD%91%E7%AB%99%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">Linux解决无法访问学术网站的问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-11-29 01:06:49" itemprop="dateCreated datePublished" datetime="2024-11-29T01:06:49+08:00">2024-11-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>科研工作中需要经常访问学术网站，然而有时候却无法访问或速度太慢，以致于论文无法下载。为解决这一问题，本文提出修改<code>/etc/hosts</code>文件的方法。</p>
+<h2 id="解决追加内容到-hosts-时无权限问题">解决追加内容到 hosts
+时无权限问题</h2>
+<h3 id="使用子命令">1. 使用子命令</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> bash -c <span class="string">&quot;cat &gt;&gt; /etc/hosts&quot;</span> &lt;&lt; <span class="string">EOF</span></span><br><span class="line"><span class="string">172.67.9.71                  journals.aps.org</span></span><br><span class="line"><span class="string">104.26.5.132                 doi.org</span></span><br><span class="line"><span class="string">66.22.61.221                 iopscience.iop.org</span></span><br><span class="line"><span class="string">EOF</span></span><br></pre></td></tr></table></figure>
+<h3 id="使用tee命令">2. 使用tee命令</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">tee</span> -a /etc/hosts &gt; /dev/null &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">172.67.9.71                  journals.aps.org</span></span><br><span class="line"><span class="string">104.26.5.132                 doi.org</span></span><br><span class="line"><span class="string">66.22.61.221                 iopscience.iop.org</span></span><br><span class="line"><span class="string">EOF</span></span><br></pre></td></tr></table></figure>
+<h2 id="ip-查询">Ip 查询</h2>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://zh-hans.ipshu.com/">https://zh-hans.ipshu.com</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ip138.com/">https://www.ip138.com</a></li>
+<li><a target="_blank" rel="noopener" href="https://uutool.cn/nslookup/">https://uutool.cn</a></li>
+<li><a target="_blank" rel="noopener" href="https://ip.cn/">https://ip.cn</a></li>
+<li><a target="_blank" rel="noopener" href="https://iplark.com/search">https://iplark.com</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ipuu.net/Home">https://www.ipuu.net</a></li>
+<li><a target="_blank" rel="noopener" href="https://ip.weirain.com/">https://ip.weirain.com/</a></li>
+</ul>
+<div class="note primary"><p>注意：选择上述任意的一个网站，然后输入你要访问的学术网站的域名，查询到对应的<code>IP</code>地址，保存下来。</p>
+</div>
+<h2 id="写入到-hosts">写入到 hosts</h2>
+<figure class="highlight sh"><figcaption><span>updatehost.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/sh</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Program  : updatehost.sh</span></span><br><span class="line"><span class="comment"># Version  : v1.1</span></span><br><span class="line"><span class="comment"># Date     : 2023-10-08</span></span><br><span class="line"><span class="comment"># Author   : fengzhenhua</span></span><br><span class="line"><span class="comment"># Email    : fengzhenhua@outlook.com</span></span><br><span class="line"><span class="comment"># CopyRight: Copyright (C) 2022-2025 FengZhenhua(冯振华)</span></span><br><span class="line"><span class="comment"># License  : Distributed under terms of the MIT license.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">OutHost=<span class="string">&quot;/etc/hosts&quot;</span></span><br><span class="line"><span class="built_in">sudo</span> curl -o <span class="variable">$OutHost</span> https://gitlab.com/ineo6/hosts/-/raw/master/next-hosts\?inline\=<span class="literal">false</span></span><br><span class="line"><span class="built_in">sudo</span> sh -c <span class="string">&quot;cat &gt;&gt; <span class="variable">$OutHost</span>&quot;</span> &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">172.67.9.71                  journals.aps.org</span></span><br><span class="line"><span class="string">104.26.5.132                 doi.org</span></span><br><span class="line"><span class="string">66.22.61.221                 iopscience.iop.org</span></span><br><span class="line"><span class="string">104.20.229.70                orcid.org</span></span><br><span class="line"><span class="string">172.64.146.247               www.researchgate.net</span></span><br><span class="line"><span class="string">151.101.3.42                 arxiv.org</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl restart NetworkManager</span><br></pre></td></tr></table></figure>
+<h2 id="windows下修改hosts">Windows下修改hosts</h2>
+<ul>
+<li>打开文本编辑器:
+在<code>管理员权限</code>下打开你选择的文本编辑器。</li>
+<li>打开hosts文件:
+在文本编辑器中，选择<code>文件</code>→<code>打开</code>，找到的<code>hosts</code>文件
+<br> <code>C:\Windows\System32\drivers\etc\hosts</code>。</li>
+<li>编辑hosts文件:
+在<code>hosts</code>文件的最后一行，添加你需要的域名和对应的IP地址。例如，你想将
+<br>
+<code>www.example.com</code>指向本地的<code>127.0.0.1</code>，那么可以在<code>hosts</code>文件中添加以下内容：
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1       www.example.com</span><br></pre></td></tr></table></figure>
+每个映射关系应该占据一行，IP地址和域名之间使用制表符或空格进行分隔。</li>
+<li>保存文件: 在编辑完成后，保存hosts文件。</li>
+<li>刷新DNS缓存
+<ul>
+<li>打开命令提示符：
+在开始菜单中搜索“命令提示符”，并以管理员权限打开。</li>
+<li>执行命令： 在命令提示符中输入以下命令，并按下回车键：
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig/flushdns</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul>
+<h2 id="参考文章">参考文章</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.amjun.com/1628.html">Linux 执行 cat
+命令往文件写入内容提示 Permission denied</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/438447914">如何修改hosts文件？几种修改hosts文件的方法</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_55846296/article/details/131451501">一步步教你修改Windows本地hosts文件，轻松修改域名指向！</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1567,153 +1695,6 @@ title="application-launcher-4" alt="application-launcher-4" />
 <div class="note primary"><p>文章引用自：<a target="_blank" rel="noopener" href="https://linux.cn/article-9199-1.html">为你的
 Linux 应用创建 .desktop 文件</a></p>
 </div>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/13/%E4%B8%80%E6%AC%BE%E5%BC%BA%E5%A4%A7%E7%9A%84PDF%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7StirlingPDF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/11/13/%E4%B8%80%E6%AC%BE%E5%BC%BA%E5%A4%A7%E7%9A%84PDF%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7StirlingPDF/" class="post-title-link" itemprop="url">一款强大的PDF处理工具StirlingPDF</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-11-13 22:25:02" itemprop="dateCreated datePublished" datetime="2024-11-13T22:25:02+08:00">2024-11-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="简介">简介</h1>
-<p><a
-target="_blank" rel="noopener" href="https://github.com/Stirling-Tools/Stirling-PDF">Stirling-PDF</a>
-是一个基于 spring-boot 开发的开源项目，旨在提供一个功能强大本地托管的
-PDF 操作工具。它使您能够对 PDF
-文件进行多种操作，包括拆分、合并、转换、重新组织、添加图片、旋转、压缩等。该本地托管应用最初由
-ChatGPT 完全开发，并已发展成一个功能齐全的工具，可满足您的各种 PDF
-需求。</p>
-<p>日常生活中经常需要处理 PDF 文件， 当前也有好多处理 PDF
-的在线工具，但要么需要会员，要么需要登录等繁琐操作，而且我们的文件也存在泄漏等安全隐患。由于
-Stirling-PDF 是一个可以托管到本地的操作工具，对于不习惯使用 <a
-href="/2023/03/22/pdftk常用命令">pdftk</a>
-命令的朋友，安装此软件将是一个相当正确的选择。</p>
-<h1 id="linux-下的安装使用">Linux 下的安装使用</h1>
-<h2 id="使用-paru-安装">使用 paru 安装</h2>
-<p>在 ArchLinux 下安装 Stirling-PDF 是一件相当容易的事情，因为
-Stirling-PDF 可以在 Aur 仓库找到，只需要一条命令即可：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paru -S stirling-pdf-bin</span><br></pre></td></tr></table></figure>
-<div class="note primary"><p>注意：Stirling-PDF 依赖于最新版的 libreoffice-fresh, 所以安装前把
-libreoffice-still 替换为 libreoffice-fresh.</p>
-</div>
-<h2 id="手动启动">手动启动</h2>
-<h3 id="起动停止和重启服务">起动、停止和重启服务</h3>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl status stirlingpdf.service</span><br><span class="line"><span class="built_in">sudo</span> systemctl start stirlingpdf.service</span><br><span class="line"><span class="built_in">sudo</span> systemctl stop stirlingpdf.service</span><br><span class="line"><span class="built_in">sudo</span> systemctl restart stirlingpdf.service</span><br></pre></td></tr></table></figure>
-<h3 id="使用">使用</h3>
-<ul>
-<li>启动服务<code>sudo systemctl start stirlingpdf.service</code></li>
-<li>游览器打开：<a
-target="_blank" rel="noopener" href="http://localhost:8080">http://localhost:8080</a></li>
-<li>关闭服务<code>sudo systemctl stop stirlingpdf.service</code></li>
-<li>因为处理<code>PDF</code>文件对于个人来讲不是高频率操作，所以手动操作即可。如查想设置为默认启动，请执行
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> stirlingpdf.service</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="安装到启动器">安装到启动器</h2>
-<div class="note primary"><p>注意：按照官方的安装方法<a
-target="_blank" rel="noopener" href="https://github.com/Stirling-Tools/Stirling-PDF/blob/main/LocalRunGuide.md">LocalRunGuide</a>配置好启动器，经过测试是无法运行的。原因是<label style="color:red">
-Exec
-键必须包含命令行。命令行由可选的可执行程序组成，后面跟着一个或多个参数。</label>,
-如果使用 <code>&amp;&amp;</code> 或<code>||</code>
-等一次写入多条命令，则第二个可执行文件被读取为一个参数。所以，最佳方式是单独建立一个运行脚本，然后在
-<code>Stirling-PDF.desktop</code>文件中直接调用。</p>
-</div>
-<h3 id="查看软件安装位置">查看软件安装位置</h3>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Ql stirling-pdf-bin</span><br></pre></td></tr></table></figure>
-<h3 id="获取图标文件">获取图标文件</h3>
-<p>由于使用<code>paru</code>安装的<code>stirling-pdf-bin</code>，其并不包括创建<code>.desktop</code>文件，所以也就没有<code>icons</code>图标。因此，需要从<code>github</code>上获取<code>icons</code>图标.
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/Stirling-Tools/Stirling-PDF.git</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">cp</span> -r ./Stirling-PDF/docs /usr/share/icons/stirling</span><br></pre></td></tr></table></figure></p>
-<h3 id="编写程序脚本">编写程序脚本</h3>
-<figure class="highlight sh"><figcaption><span>/usr/local/bin/stirling</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/sh</span></span><br><span class="line"><span class="built_in">nohup</span> java -jar /usr/share/java/stirling-pdf.jar &amp;&gt; /dev/null</span><br><span class="line">xdg-open http://localhost:8080</span><br></pre></td></tr></table></figure>
-<h3 id="编写启动器文件">编写启动器文件</h3>
-<figure class="highlight sh"><figcaption><span>~/.local/share/applications/Stirling-PDF.desktop</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Type=Application</span><br><span class="line">Name=Stirling PDF</span><br><span class="line">GenericName=Launch StirlingPDF and open its WebGUI</span><br><span class="line">Categories=Office</span><br><span class="line">Exec=stirling</span><br><span class="line">Icon=/usr/share/icons/stirling/stirling-transparent.svg</span><br><span class="line">Keywords=pdf</span><br><span class="line">Type=Application</span><br><span class="line">NoDisplay=<span class="literal">false</span></span><br><span class="line">Terminal=fals</span><br></pre></td></tr></table></figure>
-<h2 id="参考网站">参考网站</h2>
-<p>此处给出几个测试网站，可以使用，但是<label style="color:red">为了保护隐私，请安装到本地使用</label>。</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://stirlingpdf.io">https://stirlingpdf.io</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://pdf.tplant.com.au">https://pdf.tplant.com.au</a></li>
-<li><a target="_blank" rel="noopener" href="https://pdf.hi.sy/">https://pdf.hi.sy/</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://stirlingpdf.blablalinux.be/">https://stirlingpdf.blablalinux.be/</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://stirling-pdf.framalab.org/">https://stirling-pdf.framalab.org/</a></li>
-<li><a target="_blank" rel="noopener" href="https://pdf.3n1tech.com/">https://pdf.3n1tech.com/</a></li>
-</ul>
-<h1 id="windows-下安装使用">Windows 下安装使用</h1>
-<h2 id="下载windows版">下载Windows版</h2>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://github.com/Stirling-Tools/Stirling-PDF?tab=readme-ov-file">Stirling-PDF-with-login.exe
-或 Stirling-PDF.exe</a></li>
-<li>按 Windows 安装程序的标准步骤双击安装。</li>
-</ul>
 
       
     </div>

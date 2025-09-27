@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">547</span>
+          <span class="site-state-item-count">548</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,151 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/16/Linux%E4%B8%ADWhitesur%E4%B8%BB%E9%A2%98%E5%88%87%E6%8D%A24k%E6%98%BE%E7%A4%BA%E5%99%A8%E8%AE%BE%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/10/16/Linux%E4%B8%ADWhitesur%E4%B8%BB%E9%A2%98%E5%88%87%E6%8D%A24k%E6%98%BE%E7%A4%BA%E5%99%A8%E8%AE%BE%E7%BD%AE/" class="post-title-link" itemprop="url">Linux中Whitesur主题切换4k显示器设置</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-10-16 22:28:50" itemprop="dateCreated datePublished" datetime="2024-10-16T22:28:50+08:00">2024-10-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>2M 今天升级了一下台式机的显示器为三星<code>LS27D806UACXXF</code>,
+这是一块<code>4k</code>高清屏，连接后完美驱动。但是由于分辨率由<code>1920x1080</code>提高到<code>3849x2160</code>,
+<code>ArchLinux</code>下<code>Gnome3</code>自适应了高分屏，但是还需要做一些设置才能完美使用。</p>
+<h2 id="系统缩放设置">系统缩放设置</h2>
+<p><code>系统</code>→<code>显示器</code>→选择屏幕→<code>200%</code></p>
+<h2 id="gdm-登陆界面的-4k-hidpi-缩放设置">GDM 登陆界面的 4K HiDPI
+缩放设置</h2>
+<p>在使用 4K 显示器时，我通常会把 Gnome 桌面的缩放设置为
+200%，这样看起来眼睛不会太累。但每次开机时会发现 GDM
+登陆界面并没有使用这个缩放值，还是按 100%
+无缩放的效果显示的。我希望登陆界面也能使用和桌面一样的缩放值。</p>
+<h3 id="解决方法">解决方法</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> /home/feng/.config/monitors.xml /var/lib/gdm/.config/</span><br><span class="line"><span class="built_in">chown</span> gdm:gdm /var/lib/gdm/.config/monitors.xml</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p>在执行上述命令时，先使用<code>su</code>切换到<code>root</code>，然后再运行。其中第二条命令设置了文件的所属用户和用户组。重启系统，登录界面和桌面一样，使用2倍的缩放显示。</p>
+</div>
+<h3 id="参考文章">参考文章</h3>
+<p><a
+target="_blank" rel="noopener" href="https://www.zzxworld.com/posts/gdm-4k-hidpi-scale-setting">GDM
+登陆界面的 4K HiDPI 缩放设置</a></p>
+<h2 id="grub-的高分屏设置">GRUB 的高分屏设置</h2>
+<h3 id="安装-whitesur-4k-主题">1. 安装 whitesur 4k 主题</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/vinceliuice/grub2-themes.git</span><br><span class="line"><span class="built_in">cd</span> ./grub2-themes</span><br><span class="line"><span class="built_in">sudo</span> ./install.sh -t whitesur -s 4k -i whitesur</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p>注意：在安装主题时，如果之前已经安装并且修改过，那请一定将<code>/etc/grub/config</code>中的<code>GRUB_FONT</code>行注释掉，否则生成会出错。所以这应当作为首要步骤检查！！</p>
+</div>
+<h3 id="将字体转换为-grub-可读格式">2. 将字体转换为 GRUB 可读格式</h3>
+<p>鉴于引导前环境的限制，<code>GRUB</code>
+字体经过优化，以确保易读性和简洁性。它们不具备在完全加载的操作系统中使用的字体所具有的抗锯齿或印刷级别的优化。所以您不能简单地将
+<code>TTF</code>、<code>OTF</code>、<code>WOFF</code>
+等格式的字体直接用于 <code>GRUB</code>, 可以借助
+<code>grub-mkfont</code> 命令将几乎任何字体转换为 <code>GRUB</code>
+兼容的格式。</p>
+<p>由于在中文环境下菜单会出现中文，所以应当选择那些同时支持中文和英文的字体。因为启动过程中会有终端输出信息，所以我们选择与终端中使用相同的字体<code>DroidSansMono Nerd Fonts</code>.</p>
+<figure class="highlight sh"><figcaption><span>生成grub字体的不同命令方式</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S nerd-fonts</span><br><span class="line"><span class="built_in">sudo</span> grub-mkfont -v --output=/usr/share/grub/themes/whitesur/dsmfm40.pf2 --size=40 /usr/share/fonts/OTF/DroidSansMNerdFontMono-Regular.otf</span><br><span class="line"><span class="built_in">sudo</span> grub-mkfont -v -s 40 -o /usr/share/grub/themes/whitesur/dvsm40.pf2 /usr/share/fonts/TTF/DejaVuSansMono.ttf</span><br><span class="line"><span class="built_in">sudo</span> grub-mkfont -v -s 40 -o /usr/share/grub/themes/whitesur/wqy40.pf2 /usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc</span><br><span class="line"><span class="built_in">sudo</span> grub-mkfont -v -s 40 -o /usr/share/grub/themes/whitesur/msyh40.pf2 /usr/share/fonts/Windows11/msyh.ttc</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p>因为自定义安装了<code>whitesur</code>主题,
+所以将生成的字体保存在相应的目录<code>/usr/share/grub/themes/whitesur/</code>.
+此处生成了多个字体，但是由于生成<code>GRUB</code>配置文件时，有时不显示中文，而微软雅黑是一款中英文都支持的比较全的字体，当切换到它时一定可以同时显示中英文，只是终端输出时不太好看。然后，切换到<code>DejaVuSansMono</code>时，<code>GRUB</code>仍然可以正常显示中文，详细原因不是很清楚，暂时这样使用。2024-10-17
+21:40</p>
+</div>
+<h3 id="修改-grub-配置文件">3. 修改 GRUB 配置文件</h3>
+<figure class="highlight sh"><figcaption><span>/etc/default/grub</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GRUB boot loader configuration</span></span><br><span class="line"></span><br><span class="line">GRUB_DEFAULT=0</span><br><span class="line"><span class="comment"># GRUB_DEFAULT=saved</span></span><br><span class="line">GRUB_TIMEOUT=5</span><br><span class="line">GRUB_DISTRIBUTOR=<span class="string">&quot;Arch&quot;</span></span><br><span class="line">GRUB_CMDLINE_LINUX_DEFAULT=<span class="string">&quot;loglevel=0 quiet nvidia-drm.modeset=1&quot;</span></span><br><span class="line">GRUB_CMDLINE_LINUX=<span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Preload both GPT and MBR modules so that they are not missed</span></span><br><span class="line">GRUB_PRELOAD_MODULES=<span class="string">&quot;part_gpt part_msdos&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment to enable booting from LUKS encrypted devices</span></span><br><span class="line"><span class="comment">#GRUB_ENABLE_CRYPTODISK=y</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Set to &#x27;countdown&#x27; or &#x27;hidden&#x27; to change timeout behavior,</span></span><br><span class="line"><span class="comment"># press ESC key to display menu.</span></span><br><span class="line">GRUB_TIMEOUT_STYLE=menu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment to use basic console</span></span><br><span class="line">GRUB_TERMINAL_INPUT=console</span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment to disable graphical terminal</span></span><br><span class="line"><span class="comment">#GRUB_TERMINAL_OUTPUT=console</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The resolution used on graphical terminal</span></span><br><span class="line"><span class="comment"># note that you can use only modes which your graphic card supports via VBE</span></span><br><span class="line"><span class="comment"># you can see them in real GRUB with the command `videoinfo&#x27;</span></span><br><span class="line">GRUB_GFXMODE=3840x2160,auto</span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment to allow the kernel use the same resolution used by grub</span></span><br><span class="line">GRUB_GFXPAYLOAD_LINUX=keep</span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment if you want GRUB to pass to the Linux kernel the old parameter</span></span><br><span class="line"><span class="comment"># format &quot;root=/dev/xxx&quot; instead of &quot;root=/dev/disk/by-uuid/xxx&quot;</span></span><br><span class="line"><span class="comment">#GRUB_DISABLE_LINUX_UUID=true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment to disable generation of recovery mode menu entries</span></span><br><span class="line">GRUB_DISABLE_RECOVERY=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment and set to the desired menu colors.  Used by normal and wallpaper</span></span><br><span class="line"><span class="comment"># modes only.  Entries specified as foreground/background.</span></span><br><span class="line"><span class="comment">#GRUB_COLOR_NORMAL=&quot;light-blue/black&quot;</span></span><br><span class="line"><span class="comment">#GRUB_COLOR_HIGHLIGHT=&quot;light-cyan/blue&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment one of them for the gfx desired, a image background or a gfxtheme</span></span><br><span class="line">GRUB_BACKGROUND=<span class="string">&quot;/usr/share/grub/themes/whitesur/background.jpg&quot;</span></span><br><span class="line">GRUB_THEME=<span class="string">&quot;/usr/share/grub/themes/whitesur/theme.txt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment to get a beep at GRUB start</span></span><br><span class="line"><span class="comment">#GRUB_INIT_TUNE=&quot;480 440 1&quot;</span></span><br><span class="line">GRUB_FONT=<span class="string">&quot;/usr/share/grub/themes/whitesur/dvsm40.pf2&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment to make GRUB remember the last selection. This requires</span></span><br><span class="line"><span class="comment"># setting &#x27;GRUB_DEFAULT=saved&#x27; above.</span></span><br><span class="line"><span class="comment"># GRUB_SAVEDEFAULT=true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment to disable submenus in boot menu</span></span><br><span class="line"><span class="comment"># GRUB_DISABLE_SUBMENU=y</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Probing for other operating systems is disabled for security reasons. Read</span></span><br><span class="line"><span class="comment"># documentation on GRUB_DISABLE_OS_PROBER, if still want to enable this</span></span><br><span class="line"><span class="comment"># functionality install os-prober and uncomment to detect and include other</span></span><br><span class="line"><span class="comment"># operating systems.</span></span><br><span class="line">GRUB_DISABLE_OS_PROBER=<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<div class="note primary"><p>注意：<code>GRUB_FONT</code>使用绝对路径为上一步生成的字体所在位置，同时<code>GRUB_GFXMODE</code>修改为当前的分辨率<code>3840x2160, auto</code>.</p>
+</div>
+<h3 id="修改主题字体配置文件">4. 修改主题字体配置文件</h3>
+<figure class="highlight sh"><figcaption><span>/usr/share/grub/themes/whitesur/theme.txt</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># GRUB2 gfxmenu Linux theme</span></span><br><span class="line"><span class="comment"># Designed for any resolution</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Global Property</span></span><br><span class="line">title-text: <span class="string">&quot;&quot;</span></span><br><span class="line">desktop-image: <span class="string">&quot;background.jpg&quot;</span></span><br><span class="line">desktop-color: <span class="string">&quot;#000000&quot;</span></span><br><span class="line">terminal-font: <span class="string">&quot;DejaVu Sans Mono Regular 40&quot;</span></span><br><span class="line">terminal-box: <span class="string">&quot;terminal_box_*.png&quot;</span></span><br><span class="line">terminal-left: <span class="string">&quot;0&quot;</span></span><br><span class="line">terminal-top: <span class="string">&quot;0&quot;</span></span><br><span class="line">terminal-width: <span class="string">&quot;100%&quot;</span></span><br><span class="line">terminal-height: <span class="string">&quot;100%&quot;</span></span><br><span class="line">terminal-border: <span class="string">&quot;0&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Show the boot menu</span></span><br><span class="line">+ boot_menu &#123;</span><br><span class="line">  left = 30%</span><br><span class="line">  top = 30%</span><br><span class="line">  width = 40%</span><br><span class="line">  height = 40%</span><br><span class="line">  item_font = <span class="string">&quot;DejaVu Sans Mono Regular 40&quot;</span></span><br><span class="line">  item_color = <span class="string">&quot;#cccccc&quot;</span></span><br><span class="line">  selected_item_color = <span class="string">&quot;#ffffff&quot;</span></span><br><span class="line">  icon_width = 64</span><br><span class="line">  icon_height = 64</span><br><span class="line">  item_icon_space = 36</span><br><span class="line">  item_height = 80</span><br><span class="line">  item_padding = 12</span><br><span class="line">  item_spacing = 24</span><br><span class="line">  selected_item_pixmap_style = <span class="string">&quot;select_*.png&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ image &#123;</span><br><span class="line">  top = 100%-100</span><br><span class="line">  left = 50%-480</span><br><span class="line">  width = 960</span><br><span class="line">  height = 84</span><br><span class="line">  file = <span class="string">&quot;info.png&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Show a countdown message using the label component</span></span><br><span class="line">+ label &#123;</span><br><span class="line">  top = 82%</span><br><span class="line">  left = 32%</span><br><span class="line">  width = 36%</span><br><span class="line">  align = <span class="string">&quot;center&quot;</span></span><br><span class="line">  <span class="built_in">id</span> = <span class="string">&quot;__timeout__&quot;</span></span><br><span class="line">  text = <span class="string">&quot;Booting in %d seconds&quot;</span></span><br><span class="line">  color = <span class="string">&quot;#cccccc&quot;</span></span><br><span class="line">  font = <span class="string">&quot;DejaVu Sans Mono Regular 40&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p>注意：在配置文件<code>theme.txt</code>文件中字体使用的是字体名字，它由<code>grub-mkfont</code>命令生成<code>GRUB</code>字体时的<code>-v</code>选项给出，也可以由<code>fc-list |grep msyh.ttc</code>
+查询到，然后加上生成字体的字号<code>40</code>或其他值即可。</p>
+</div>
+<h3 id="更新-grub-配置">5. 更新 GRUB 配置</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
+<h3 id="bug-暂存">6. BUG 暂存</h3>
+<p>当设置<code>GRUB</code>为<code>4k</code>时，启动特别慢，已经确定是<code>GRUB</code>的<code>BUG</code>,
+所以暂时使用现有配置待上游作者修复<code>BUG</code>后再更新。</p>
+<h3 id="参考文章-1">7. 参考文章</h3>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/GtjY3m3cbuIWCuozu70YqQ?poc_token=HL6GEGejY8wqlgJu9BDNTR7CwC5BjWUS6oWRiJ_n">没别的！就关于
+Linux GRUB 的技巧</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/m0_69493559/article/details/141297330">【信创】麒麟桌面操作系统修改GRUB界面字体大小</a></li>
+<li><a href="/2023/12/07/最简配置zsh">最简配置zsh</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://askubuntu.com/questions/1227735/grub-is-extremely-slow-1-second-per-key-input">GRUB
+is extremely slow - 1 second per key input</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://superuser.com/questions/1521376/grub-with-higher-resolutions-really-slow">GRUB
+with higher resolutions - really slow</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://askoverflow.dev/ubuntu/question/1502332/ultrawide-grub-slowness/">GRUB
+超慢</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1205,180 +1350,6 @@ vim-template</code>就可以获得全部可配置变量，在此不再记录。
 </p>
 </div></div></div></div>
 <p>除了上述列出的几个关键修改为适配<code>lua</code>配置的插件外，还有其他的配置，不再一一列出。如您需要其他配置，请发邮件联系本人索取。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/06/MatheMatica%E7%9A%84%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/10/06/MatheMatica%E7%9A%84%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">MatheMatica_V14.1.0的安装教程</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-10-06 20:56:51" itemprop="dateCreated datePublished" datetime="2024-10-06T20:56:51+08:00">2024-10-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="简介">简介</h1>
-<p><a
-target="_blank" rel="noopener" href="https://www.wolfram.com/mathematica/">Mathematica</a>是一款由<code>Wolfram Research</code>公司开发的科学计算软件，它将<strong>数值和符号计算引擎、图形系统、编程语言、文本系统以及其他应用程序的高级连接</strong>完美结合在一起。这款软件自1988年发布以来，已经在科技和其他领域产生了深远的影响，被广泛认为是现代科技计算的开端。</p>
-<details>
-<summary>
-基本功能(点击查看)
-</summary>
-<ul>
-<li><p><strong>数值和符号计算</strong>：Mathematica能够进行高效的数值计算和精确的符号计算，如多项式求解、方程求解、极限求解、积分求解等。</p></li>
-<li><p><strong>图形系统</strong>：提供强大的图形绘制功能，可用于创建高质量的二维和三维图形。</p></li>
-<li><p><strong>编程语言</strong>：集成了高级程序设计语言，允许用户编写自定义脚本和函数。</p></li>
-<li><p><strong>文本系统</strong>：支持文本编辑和处理，方便用户记录和分享计算过程。</p></li>
-<li><p><strong>应用程序连接</strong>：能够与其他应用程序建立高级连接，实现数据和功能的集成。
-主要应用领域 Mathematica的应用领域非常广泛，包括但不限于：</p></li>
-<li><p><strong>科学研究</strong>：用于解决复杂的科学和工程问题，如物理、化学、生物学等领域的研究。</p></li>
-<li><p><strong>工程设计</strong>：在航空航天、汽车制造等行业中用于模拟和分析。</p></li>
-<li><p><strong>数据分析</strong>：处理和分析大量数据，提取有价值的信息。</p></li>
-<li><p><strong>教育和学习</strong>：作为教学和学习的工具，帮助学生和专业人士掌握数学和编程技能。
-在科研和教育中的重要性</p></li>
-<li><p><strong>科研</strong>：Mathematica的强大计算能力和丰富的功能使其成为科研人员解决复杂问题的有力工具，加速了科研进程。</p></li>
-</ul>
-</details>
-<h1 id="下载安装">下载安装</h1>
-<ul>
-<li><p><a
-target="_blank" rel="noopener" href="https://www.wolfram.com/download-center/">Mathematica最新版官方下载(推荐)</a>:
-官网会根据您的操作系统自动选择版，一般而言Windows系统用户使用此软件多一些，选择下载版本将获得<code>Wolfram_14.1.0_WIN_Bndl_DLM_CN.exe</code>,
-双击安装，它将自动从官网下载最新的<code>Mathematica 14.1.0</code>,
-下载完成后进入到保存目录，双击<code>setup.exe</code>安装即可。</p></li>
-<li><p><a
-target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Colj7Hqv21A1pPNijzZAbw">百度网盘+提取码<label style="color:red">gqsc</label></a>:
-网速感人，推荐有百度<code>SVIP</code>的用户下载，这样能快一点。为了确保文件的安全，压缩文件添加了密码，在<a
-target="_blank" rel="noopener" href="https://www.jb51.net/">脚本之家</a>下载的软件一般默认压缩文件的解压密码为<label style="color:red">www.jb51.net</label>或<label style="color:red">0daydown</label>.</p></li>
-</ul>
-<h1 id="破解测试">破解测试</h1>
-<p>本人坚决支持正版，请大家购买正版软件。但本博客引用网络上的技术，记录一下破解技术以供大家体验测试之用，测试完成后请及时删除并购买正版。</p>
-<p><strong>激活步骤：</strong></p>
-<ol type="1">
-<li>启动<code>Mathematica</code></li>
-</ol>
-<figure>
-<img
-src="https://img.yutu.cn/soft/2024/20240826/c33a923f2af3b6008bdfa78ced9f3781.png"
-alt="启动Mathematica" />
-<figcaption aria-hidden="true">启动Mathematica</figcaption>
-</figure>
-<ol start="2" type="1">
-<li>在开始菜单点击程序，启动<code>Mathematica</code>,
-选择"其他激活方式“</li>
-</ol>
-<figure>
-<img
-src="https://img.yutu.cn/soft/2024/20240826/e3c707fe3202a555ddb905a84a5f204e.png"
-alt="其他激活方式" />
-<figcaption aria-hidden="true">其他激活方式</figcaption>
-</figure>
-<ol start="3" type="1">
-<li>选择激活的方法</li>
-</ol>
-<figure>
-<img
-src="https://img.yutu.cn/soft/2024/20240826/25de7341b4af8c81d8e0ab98a4f6838b.png"
-alt="通过激活密钥和请求的密码离线激活" />
-<figcaption
-aria-hidden="true">通过激活密钥和请求的密码离线激活</figcaption>
-</figure>
-<ol start="4" type="1">
-<li>获取<code>MachineID</code>, 并复制这个<code>MachineID</code></li>
-</ol>
-<figure>
-<img
-src="https://img.yutu.cn/soft/2024/20240826/e16cd46dc4786c2e570940fd7583cc28.png"
-alt="离线激活获取MachineID" />
-<figcaption aria-hidden="true">离线激活获取MachineID</figcaption>
-</figure>
-<ol start="5" type="1">
-<li>获取激活密钥和密码</li>
-</ol>
-<p>打开下述网站之一：</p>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://wu-yijun.github.io/Mathematica-Keygen-Mechanism/">MathPass(推荐)</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://paran3xus.github.io/2024/08/24/mathematica-14.1-crack/">Wolfram
-Mathematica 14.1 Key Generator</a></li>
-</ul>
-<p>将<code>MachineID</code>粘贴到网站的<code>Math id</code>对话框，然后点击<code>Generate Activation Key And Password!</code>或<code>生成密钥</code>,
-此时就会生成对应的激活密钥和密码。将<code>Activation Key</code>和<code>Password</code>分别填入软件的对话框中，点击激活即可完成激活。</p>
-<h1 id="参考文章">参考文章</h1>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.yutu.cn/softhtml/showsoft_9202.html">Wolfram
-Mathematica 14.1（附破解文件）简体中文破解版</a></li>
-<li><a target="_blank" rel="noopener" href="https://software.3d66.com/list/setup_9202.html">Wolfram
-Mathematica 14.1最新版【数学计算软件】破解版</a></li>
-<li><a target="_blank" rel="noopener" href="https://lemmingh.github.io/InstallTutorial/">Mathematica
-激活指南</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.jb51.net/softs/922352.html">数学软件Wolfram
-Mathematica 14.1.0 Mac中文免费版(附安装教程)</a></li>
-</ul>
 
       
     </div>

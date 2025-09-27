@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">547</span>
+          <span class="site-state-item-count">548</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,100 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/16/Linux%E4%B8%8B%E8%A7%A3%E5%8E%8Bzip%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/12/16/Linux%E4%B8%8B%E8%A7%A3%E5%8E%8Bzip%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">Linux下解压zip文件乱码的解决方案</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-12-16 21:27:39" itemprop="dateCreated datePublished" datetime="2023-12-16T21:27:39+08:00">2023-12-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在Linux下打开或解压从Windows系统拷贝的zip文件，中文部分乱码,这个问题的根本原因是<label style="color:red">编码问题</label>，windows下默认gb2312与linux中默认utf-8不兼容。</p>
+<div class="tabs" id="解决乱码问题"><ul class="nav-tabs"><li class="tab active"><a href="#解决乱码问题-1">KDE-Plasma Ark</a></li><li class="tab"><a href="#解决乱码问题-2">Gnome3 File-Roller</a></li></ul><div class="tab-content"><div class="tab-pane active" id="解决乱码问题-1"><p>Ark
+是KDE默认的解压缩软件，出现乱码的直接原因是Ark中用于zip打开和解压的插件不支持gb2312,
+解决方案为：</p>
+<ol type="1">
+<li><p>安装<code>p7zip-natspec</code>(cn源里面有此软件)
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S ark</span><br><span class="line"><span class="built_in">sudo</span> pacman -S p7zip-natspec unarchiver lzop lrzip arj</span><br></pre></td></tr></table></figure></p></li>
+<li><p>在Ark中禁用libzip插件（该插件优先级高于p7zip）:
+<code>Ark</code>菜单→设置→配置<code>Ark</code>→插件→取消<code>Libzip</code>插件对应的复选框→应用。同时应当确保<code>p7zip</code>插件使用中。</p></li>
+<li><p>其他选择，使用<code>unzip-natspec</code>或<code>unzip-iconv</code>.</p></li>
+</ol></div><div class="tab-pane" id="解决乱码问题-2"><ol type="1">
+<li><p>安装<code>p7zip-natspec</code>(cn源里面有此软件)
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S file-roller</span><br><span class="line"><span class="built_in">sudo</span> pacman -S p7zip-natspec unarchiver lzop lrzip arj</span><br></pre></td></tr></table></figure></p></li>
+<li><p>在环境变量中，指定unzip参数，总是以指定的字符集显示和解压文件,
+即在<code>/etc/environment</code>中加入 <figure class="highlight sh"><figcaption><span>/etc/environment</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UNZIP=<span class="string">&quot;-O CP936&quot;</span></span><br><span class="line">ZIPINFO=<span class="string">&quot;-O CP936&quot;</span></span><br></pre></td></tr></table></figure></p></li>
+</ol>
+<p>这样Gnome桌面的归档文件管理器(file-roller)可以正常使用unzip解压中文，但是file-roller本身并不能设置编码传递给unzip。</p></div></div></div>
+<p>如果您习惯于使用命令，由于已经安装了<code>unarchiver</code>,
+所以直接使用命令<code>unar</code>解压<code>zip</code>文件也是可以解决文件名乱码问题的，这在所有Linux中都是一个通用的方案。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1069,92 +1163,6 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/diqiudq/article/detai
 <p>参考文章：<a
 target="_blank" rel="noopener" href="https://blog.csdn.net/crabdave/article/details/84877079">sed修改第一个匹配的行</a></p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/07/%E6%9C%80%E7%AE%80%E9%85%8D%E7%BD%AEzsh/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/07/%E6%9C%80%E7%AE%80%E9%85%8D%E7%BD%AEzsh/" class="post-title-link" itemprop="url">最简配置zsh</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-07 15:44:12" itemprop="dateCreated datePublished" datetime="2023-12-07T15:44:12+08:00">2023-12-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>之前配置好了<code>oh-my-zsh</code>,
-但是作为一个终端来讲没必要配置很多插件，因为我们的需要是有限的，而安装<code>oh-my-zsh</code>仅仅是为了实现一个主题而己，这显然不太符合<code>Archlinux</code>的精神。本文就是基于<code>zsh</code>自身的功能定制了一个最简配置，使用<code>pacman</code>来管理<code>zsh</code>必要的几个插件，这样更方便升级更新。</p>
-<h2 id="安装插件">安装插件</h2>
-<figure class="highlight sh"><figcaption><span>安装zsh的和必要插件</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S zsh-autosuggestions</span><br><span class="line"><span class="built_in">sudo</span> pacman -S zsh-completions</span><br><span class="line"><span class="built_in">sudo</span> pacman -S zsh-theme-powerlevel10k</span><br><span class="line"><span class="built_in">sudo</span> pacman -S zsh-syntax-highlighting-git</span><br><span class="line">paru -S zsh-z-git</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/12/07/%E6%9C%80%E7%AE%80%E9%85%8D%E7%BD%AEzsh/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 

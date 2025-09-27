@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">547</span>
+          <span class="site-state-item-count">548</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,89 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/05/%E8%A7%A3%E5%86%B3%E5%8D%87%E7%BA%A7archlinux%E5%90%8Eneovim%E6%8A%A5%E9%94%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/05/%E8%A7%A3%E5%86%B3%E5%8D%87%E7%BA%A7archlinux%E5%90%8Eneovim%E6%8A%A5%E9%94%99/" class="post-title-link" itemprop="url">解决升级archlinux后neovim报错</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-05 09:35:06" itemprop="dateCreated datePublished" datetime="2023-05-05T09:35:06+08:00">2023-05-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <mark class="label success">2023年05月05日星期五阴北京市北京师范大学</mark>
+<p>在宿舍执行<code>sudo pacman -Syu</code>,使用neovim编辑了一篇日记，但是发现插入字符时一操作就会报错，出现如下提示</p>
+<!-- ```[language] [title] [url] [link text] [additional options] -->
+<figure class="highlight python"><figcaption><span>nvim报错</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Python 3 provider (optional) </span></span><br><span class="line"><span class="number">30</span>   - WARNING: No Python executable found that can `<span class="keyword">import</span> neovim`. Using the first available executable <span class="keyword">for</span> diagnostics.                                    </span><br><span class="line"><span class="number">31</span>   - ERROR: Python provider error:                                                                                                                                </span><br><span class="line"><span class="number">32</span>     - ADVICE:                                                                                                                                                    </span><br><span class="line"><span class="number">33</span>       - provider/pythonx: Could <span class="keyword">not</span> load Python <span class="number">3</span>:                                                                                                               </span><br><span class="line"><span class="number">34</span>           python3 <span class="keyword">not</span> found <span class="keyword">in</span> search path <span class="keyword">or</span> <span class="keyword">not</span> executable.                                                                                                    </span><br><span class="line"><span class="number">35</span>           python3<span class="number">.7</span> <span class="keyword">not</span> found <span class="keyword">in</span> search path <span class="keyword">or</span> <span class="keyword">not</span> executable.                                                                                                  </span><br><span class="line"><span class="number">36</span>           python3<span class="number">.6</span> <span class="keyword">not</span> found <span class="keyword">in</span> search path <span class="keyword">or</span> <span class="keyword">not</span> executable.                                                                                                  </span><br><span class="line"><span class="number">37</span>           python3<span class="number">.5</span> <span class="keyword">not</span> found <span class="keyword">in</span> search path <span class="keyword">or</span> <span class="keyword">not</span> executable.                                                                                                  </span><br><span class="line"><span class="number">38</span>           python3<span class="number">.4</span> <span class="keyword">not</span> found <span class="keyword">in</span> search path <span class="keyword">or</span> <span class="keyword">not</span> executable.                                                                                                  </span><br><span class="line"><span class="number">39</span>           python3<span class="number">.3</span> <span class="keyword">not</span> found <span class="keyword">in</span> search path <span class="keyword">or</span> <span class="keyword">not</span> executable.                                                                                                  </span><br><span class="line"><span class="number">40</span>           python <span class="keyword">not</span> found <span class="keyword">in</span> search path <span class="keyword">or</span> <span class="keyword">not</span> executable.                                                                                                     </span><br><span class="line"><span class="number">41</span>   - INFO: Executable: Not found      </span><br></pre></td></tr></table></figure>
+<p>解决方法为：为<code>neovim</code>添加python支持</p>
+<figure class="highlight python"><figcaption><span>添加python支持</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m pip install --user --upgrade pynvim</span><br></pre></td></tr></table></figure>
+<div class="note warning"><p>注意：不要使用sudo执行，虽然我执行成功了，但是后面提示有可能有影响什么权限的问题。所以使用普通权限又安装了一遍。</p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1125,90 +1208,6 @@ target="_blank" rel="noopener" href="https://www.latexlive.com">https://www.late
 class="math inline">\(\LaTeX\)</span>的符号输入方法，所以没有书籍的时候这是一个相当不错的选择:
 <a target="_blank" rel="noopener" href="https://www.latexlive.com/help">LaTeXLive帮助文档</a></p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/15/Python%E4%B9%8B%E7%BE%8E%E7%AC%AC%E4%B9%9D%E6%AC%A1%E4%BD%9C%E4%B8%9A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/04/15/Python%E4%B9%8B%E7%BE%8E%E7%AC%AC%E4%B9%9D%E6%AC%A1%E4%BD%9C%E4%B8%9A/" class="post-title-link" itemprop="url">Python之美第九次作业</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-15 12:50:33" itemprop="dateCreated datePublished" datetime="2023-04-15T12:50:33+08:00">2023-04-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>2023年04月15日星期六晴北京市北京师范大学,
-今天完成了Python的作业，但是之前都是从Jupyter上完成，这个东西做作业还行，要是编辑调试大一点的程度就很无语了。所以今天配置了一下vim,直接在vim下编辑了Python脚本，完成了第九次作业。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/04/15/Python%E4%B9%8B%E7%BE%8E%E7%AC%AC%E4%B9%9D%E6%AC%A1%E4%BD%9C%E4%B8%9A/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 
