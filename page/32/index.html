@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">546</span>
+          <span class="site-state-item-count">547</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,90 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/29/Linux%E6%9F%A5%E7%9C%8BPCI%E8%AE%BE%E5%A4%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/01/29/Linux%E6%9F%A5%E7%9C%8BPCI%E8%AE%BE%E5%A4%87/" class="post-title-link" itemprop="url">Linux查看PCI设备</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-29 19:32:43" itemprop="dateCreated datePublished" datetime="2024-01-29T19:32:43+08:00">2024-01-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="linux-查看pci设备命令lspci">Linux 查看PCI设备命令—lspci</h2>
+<h3 id="选项与参数">选项与参数：</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-v ：显示更多的 PCI 接口装置的详细信息</span><br><span class="line">-vv ：比 -v 还要更详细的信息</span><br><span class="line">-n ：直接观察 PCI 的 ID 而不是厂商名称</span><br></pre></td></tr></table></figure>
+<h3 id="查看一般详细信息">查看一般详细信息</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lspci -v</span><br></pre></td></tr></table></figure>
+<h3 id="查看网卡详细信息">查看网卡详细信息：</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lspci -s 04:00.0 -vv</span><br><span class="line"></span><br><span class="line">-s ：后面接的是每个设备的总线、插槽与相关函数功能</span><br><span class="line"></span><br><span class="line">或：</span><br><span class="line"></span><br><span class="line"> lspci -n -d 8086:3002 -vvv</span><br></pre></td></tr></table></figure>
+<h3 id="选项详情">选项详情</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">-vv</span><br><span class="line">    使得 lspci 以过冗余模式显示更详细的信息 (事实上是 PCI 设备能给出的所有东西)。这些数据的确切意义没有在此手册页中解释，如果你想知道更多，请参照 /usr/include/linux/pci.h 或者 PCI 规范。</span><br><span class="line">-n</span><br><span class="line">    以数字形式显示 PCI 生产厂商和设备号，而不是在 PCI ID 数据库中查找它们。</span><br><span class="line">-x</span><br><span class="line">    以十六进制显示 PCI 配置空间 (configuration space) 的前64个字节映象 (标准头部信息)。此参数对调试驱动和 lspci 本身很有用。</span><br><span class="line">-xxx</span><br><span class="line">    以十六进制显示所有 PCI 配置空间的映象。此选项只有 root 可用，并且很多 PCI 设备在你试图读取配置空间的未定义部分时会崩溃 (此操作可能不违反PCI标准，但是它至少非常愚蠢)。</span><br><span class="line">-b</span><br><span class="line">    以总线为中心进行查看。显示所有 IRQ 号和内存地址，就象 PCI 总线上的卡看到的一样，而不是内核看到的内容。</span><br><span class="line">-t</span><br><span class="line">    以树形方式显示包含所有总线、桥、设备和它们的连接的图表。</span><br><span class="line">-s [[&amp;lt;bus&amp;gt;]:][&amp;lt;slot&amp;gt;][.[&amp;lt;func&amp;gt;]]</span><br><span class="line">    仅显示指定总线、插槽上的设备或设备上的功能块信息。设备地址的任何部分都可以忽略，或以“*”代替 (意味着所有值)。所有数字都是十六进制。例如：“0：”指的是在0号总线上的所有设备；“0”指的是在任意总线上0号设备的所有功能块；“0.3”选择 了所有总线上0号设备的第三个功能块；“.4”则是只列出每一设备上的第四个功能块。</span><br><span class="line">-d [&amp;lt;vendor&amp;gt;]:[&amp;lt;device&amp;gt;]</span><br><span class="line">    只显示指定生产厂商和设备 ID 的设备。 这两个 ID 都以十六进制表示，可以忽略或者以“*”代替 (意味着所有值)。</span><br><span class="line">-i &amp;lt;file&amp;gt;</span><br><span class="line">    使用 &amp;lt;file&amp;gt; 作为 PCI ID 数据库而不是使用默认的 /usr/share/hwdata/pci.ids。</span><br><span class="line">-p &amp;lt;dir&amp;gt;</span><br><span class="line">    使用 &amp;lt;dir&amp;gt; 作为包含 PCI 总线信息的目录而不是使用默认的目录 /proc/bus/pci。</span><br><span class="line">-m</span><br><span class="line">    以机器可读的方式转储 PCI 设备数据 (支持两种模式：普通和冗余)，便于脚本解析。</span><br><span class="line">-M</span><br><span class="line">    使用总线映射模式，这种模式对总线进行全面地扫描以查明总线上的所有设备，包括配置错误的桥之后的设备。请注意，此操作只应在调试时使 用，并可能造成系统崩溃 (只在设备有错误的时候，但是不幸的是它们存在)，此命令只有 root 可以使用。同时，在不直接接触硬件的 PCI 访问模式中使用 -M 参数没有意义，因为显示的结果 (排除 lspci 中的 bug 的影响) 与普通的列表模式相同。</span><br><span class="line">--version</span><br><span class="line">    显示 lspci 的版本。这个选项应当单独使用。</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1487,90 +1571,6 @@ target="_blank" rel="noopener" href="https://github.com/github/gitignore">https:
 <h2 id="参考文章">参考文章</h2>
 <p><a
 target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/52885189">[Git].gitignore文件的配置使用</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/19/vim-latex%E6%8F%92%E4%BB%B6%E5%BC%80%E5%90%AFAlt%E5%BF%AB%E6%8D%B7%E9%94%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/01/19/vim-latex%E6%8F%92%E4%BB%B6%E5%BC%80%E5%90%AFAlt%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="post-title-link" itemprop="url">vim-latex插件开启Alt快捷键</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-01-19 01:03:44" itemprop="dateCreated datePublished" datetime="2024-01-19T01:03:44+08:00">2024-01-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在决定全面使用<code>vim-latex</code>来编写<code>latex</code>文件后，发现<code>Alt</code>键一直没有启用。于是在<code>nvim</code>下查询帮助<code>:help latex-suite.txt</code>
-, 然后找到<code>Alt</code>相关，即</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Latex-Suite utilizes a set of macros originally created by Carl Mueller in</span><br><span class="line">auctex.vim to make inserting all the \left ... \right stuff very easy and to</span><br><span class="line">also make some use of the heavily under-utilized &lt;Alt&gt; key.</span><br><span class="line"></span><br><span class="line">NOTE: By default, the mappings involving the &lt;Alt&gt; key are turned off for</span><br><span class="line">      compatibility with inserting non-ASCII characters. It can be enabled by</span><br><span class="line">      setting   </span><br><span class="line">          let g:Tex_AdvancedMath = 1</span><br><span class="line">      in your $VIM/ftplugin/tex.vim.</span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">NOTE: By default, typing Alt-&lt;key&gt; in Vim takes focus to the menu bar if a menu</span><br><span class="line">      with the hotkey &lt;key&gt; exists. If in your case, there are conflicts due to</span><br><span class="line">      this behavior, you will need to set   </span><br><span class="line">          set winaltkeys=no</span><br><span class="line">      in your $VIM/ftplugin/tex.vim in order to use these maps.</span><br></pre></td></tr></table></figure>
-<p>由于我是在<code>neovim</code>下使用的<code>vim-latex</code>,
-于是找到路径为：<code>~/.local/share/nvim/lazy/vim-latex/ftplugin/</code>
-但是发现没有文件<code>tex.vim</code>,
-于是<label style="color:red">需要新建一个文件tex.vim</label>, 即</p>
-<figure class="highlight vim"><figcaption><span>~/.local/share/nvim/lazy/vim-latex/ftplugin/tex.vim</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">g:Tex_AdvancedMath</span> = <span class="number">1</span></span><br><span class="line"><span class="keyword">set</span> winaltkeys=<span class="keyword">no</span></span><br></pre></td></tr></table></figure>
-<p>经过上述设置后<code>Alt</code>键终于被启用了，我目前使用的主要是它智能插入<code>item</code>的功能。</p>
 
       
     </div>
