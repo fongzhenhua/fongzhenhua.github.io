@@ -148,7 +148,7 @@ CPU下的启动BUG</span></a></li><li class="nav-item nav-level-3"><a class="nav
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">548</span>
+          <span class="site-state-item-count">549</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -343,7 +343,7 @@ CPU下的启动BUG</span></a></li><li class="nav-item nav-level-3"><a class="nav
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-07-28 10:29:04" itemprop="dateModified" datetime="2025-07-28T10:29:04+08:00">2025-07-28</time>
+      <time title="修改时间：2025-09-29 10:18:46" itemprop="dateModified" datetime="2025-09-29T10:18:46+08:00">2025-09-29</time>
     </span>
 
   
@@ -367,7 +367,7 @@ CPU下的启动BUG</span></a></li><li class="nav-item nav-level-3"><a class="nav
 <div class="note primary"><p><a
 target="_blank" rel="noopener" href="https://archlinux.org/">ArchLinux</a>是一款灵活、强大、可定制的Linux发行版，提供丰富的软件包和工具，支持滚动更新和多种桌面环境，拥有庞大的社区支持和方便的包管理器，适合各种用户需求和使用场景。<a
 target="_blank" rel="noopener" href="https://endeavouros.com">Endeavour</a>
-是一个基于ArchLinux的轻量级和用户友好的发行版，预装了桌面环境和预配置的软件包，旨在提供一个无忧的ArchLinux体验。<img align="right" src="https://img.shields.io/badge/Version-V4.5.4-purple" /></p>
+是一个基于ArchLinux的轻量级和用户友好的发行版，预装了桌面环境和预配置的软件包，旨在提供一个无忧的ArchLinux体验。<img align="right" src="https://img.shields.io/badge/Version-V4.5.6-purple" /></p>
 </div>
 <span id="more"></span>
 <h2 id="linux版本选择">Linux版本选择</h2>
@@ -1557,7 +1557,7 @@ target="_blank" rel="noopener" href="https://extensions.gnome.org/">https://exte
 <ul>
 <li>安装<code>Gnome</code> 主题</li>
 </ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">paru --skipreview --needed --noconfirm -S whitesur-cursor-theme-git phinger-cursors</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/vinceliuice/WhiteSur-gtk-theme.git --depth=1</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/vinceliuice/WhiteSur-icon-theme.git --depth=1</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/vinceliuice/WhiteSur-wallpapers.git</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/vinceliuice/grub2-themes.git</span><br><span class="line">./WhiteSur-gtk-theme/tweaks.sh -f alt</span><br><span class="line"><span class="built_in">sudo</span> ./WhiteSur-gtk-theme/tweaks.sh -g</span><br><span class="line">./WhiteSur-gtk-theme/install.sh -l           <span class="comment"># 默认是普通深色主题</span></span><br><span class="line">./WhiteSur-gtk-theme/install.sh -l -c light  <span class="comment"># 为 libadwaita 安装浅色主题</span></span><br><span class="line"><span class="built_in">sudo</span> ./WhiteSur-icon-theme/install.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">paru --skipreview --needed --noconfirm -S whitesur-cursor-theme-git phinger-cursors</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/vinceliuice/WhiteSur-gtk-theme.git --depth=1</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/vinceliuice/WhiteSur-icon-theme.git --depth=1</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/vinceliuice/WhiteSur-wallpapers.git</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/vinceliuice/grub2-themes.git</span><br><span class="line">./WhiteSur-gtk-theme/tweaks.sh -f alt</span><br><span class="line"><span class="built_in">sudo</span> ./WhiteSur-gtk-theme/tweaks.sh -g</span><br><span class="line">./WhiteSur-gtk-theme/install.sh --shell -i apple      <span class="comment"># 默认主题, 但菜单是apple</span></span><br><span class="line"><span class="built_in">sudo</span> ./WhiteSur-icon-theme/install.sh</span><br></pre></td></tr></table></figure>
 <div id="gnome-theme" class="tabs">
 <ul class="nav-tabs">
 <li class="tab active">
@@ -1576,7 +1576,7 @@ href="/2024/10/16/Linux中Whitesur主题切换4k显示器设置/">Linux中Whites
 </p>
 </div>
 <div id="gnome-theme-2" class="tab-pane">
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./WhiteSur-gtk-theme/install.sh --shell -i apple -l -c Light</span><br><span class="line">./WhiteSur-wallpapers/install-wallpapers.sh</span><br><span class="line"><span class="built_in">sudo</span> ./WhiteSur-wallpapers/install-gnome-backgrounds.sh</span><br><span class="line"><span class="built_in">sudo</span> ./grub2-themes/install.sh -t whitesur</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./WhiteSur-gtk-theme/install.sh --shell -i apple</span><br><span class="line">./WhiteSur-wallpapers/install-wallpapers.sh</span><br><span class="line"><span class="built_in">sudo</span> ./WhiteSur-wallpapers/install-gnome-backgrounds.sh</span><br><span class="line"><span class="built_in">sudo</span> ./grub2-themes/install.sh -t whitesur</span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
@@ -1603,6 +1603,11 @@ href="/2024/10/16/Linux中Whitesur主题切换4k显示器设置/">Linux中Whites
 <li>
 2025年04月05日,
 <code>whitesur-cursor-theme-git</code>修复了<code>4k</code>支持，为了使主题一致，可以从<code>phinger-cursors</code>切换回来了。
+</li>
+<li>
+2025年09月29日,
+发现安装<code>papers</code>后，阅读<code>pdf</code>文件时不显示分隔页，经多次测试原因在于安装<code>WhiteSur-gtk-theme</code>时采用了选项<code>-l</code>,
+当去掉这一选项后恢复正常。
 </li>
 </ul>
 </div>
