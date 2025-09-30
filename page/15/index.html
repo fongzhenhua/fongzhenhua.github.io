@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">549</span>
+          <span class="site-state-item-count">550</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,162 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/20/Linux%E4%B8%AD%E7%9A%84%E6%9C%BA%E5%99%A8%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/10/20/Linux%E4%B8%AD%E7%9A%84%E6%9C%BA%E5%99%A8%E7%A0%81/" class="post-title-link" itemprop="url">Linux中的机器码</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-10-20 15:06:02" itemprop="dateCreated datePublished" datetime="2024-10-20T15:06:02+08:00">2024-10-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>许多操作要验证电脑的唯一性，但是电脑的名字等等都是有可能相同的，使用硬盘的<code>UUID</code>等，也有可能因为更换硬盘而变化。电脑标识唯一性的要求在<code>Linux</code>中早就被解决了，这就是<code>机器ID</code>.</p>
+<h2 id="简介">1. 简介</h2>
+<p>机器 ID
+是一个由操作系统生成的字符串，用于标识特定的计算机。它在系统启动时自动生成，并且在系统的整个生命周期中保持不变。本文将详细介绍机器
+ID 的作用、生成方式以及在 Linux 系统中的应用。</p>
+<h2 id="机器-id-的生成方式">2. 机器 ID 的生成方式</h2>
+<p>Linux 系统中的机器 ID 是通过以下方式生成的：</p>
+<h3 id="systemd">2.1. systemd</h3>
+<p>在现代的 Linux 发行版中，机器 ID 是由 systemd 生成和管理的。systemd
+是一个系统和服务管理器，它负责启动、停止和管理系统上的各种进程和服务。当系统启动时，systemd
+会生成一个机器 ID 并将其存储在 <code>/etc/machine-id</code>
+文件中。这个文件是一个只包含机器 ID 的纯文本文件。</p>
+<h3 id="生成规则">2.2. 生成规则</h3>
+<p>机器 ID 是一个 32 位的十六进制字符串，由 16 个字符组成。生成机器 ID
+的规则如下：</p>
+<ul>
+<li>首先，系统会尝试读取 <code>/etc/machine-id</code>
+文件。如果该文件存在且内容有效，则将其用作机器 ID。</li>
+<li>如果 <code>/etc/machine-id</code>
+文件不存在或内容无效，则系统会生成一个新的机器 ID，并将其写入
+<code>/etc/machine-id</code> 文件中。</li>
+</ul>
+<h2 id="机器-id-的作用">3. 机器 ID 的作用</h2>
+<p>机器 ID 在 Linux 系统中具有以下作用：</p>
+<h3 id="唯一标识符">3.1. 唯一标识符</h3>
+<p>机器 ID 是用来唯一标识一台计算机的。通过机器
+ID，系统可以识别不同的计算机，并进行一些特定的操作和配置。</p>
+<h3 id="许可验证">3.2. 许可验证</h3>
+<p>一些软件和服务提供商可能使用机器 ID 来验证许可证和授权。通过检查机器
+ID，他们可以确定软件是否在授权范围内运行。</p>
+<h3 id="安全性">3.3. 安全性</h3>
+<p>机器 ID
+在安全性方面也起到了一定的作用。它可以用于生成一些加密密钥或用于加密通信，以确保只有具有特定机器
+ID 的计算机才能解密和访问数据。</p>
+<h3 id="系统配置">3.4. 系统配置</h3>
+<p>机器 ID 还可以用于系统配置和管理。一些配置文件和脚本可能会根据机器 ID
+进行不同的操作或应用不同的设置。</p>
+<h2 id="使用机器-id">4. 使用机器 ID</h2>
+<p>在 Linux 系统中，可以使用机器 ID 来进行一些操作和配置。</p>
+<h3 id="查看机器-id">4.1. 查看机器 ID</h3>
+<p>要查看当前计算机的机器 ID，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/machine-id</span><br></pre></td></tr></table></figure>
+<h3 id="使用机器-id-进行其他操作">4.2. 使用机器 ID 进行其他操作</h3>
+<p>除了查看机器 ID，还可以在以下情况下使用机器 ID 进行操作和配置：</p>
+<ul>
+<li>许可验证：某些软件和服务可能需要验证机器 ID
+才能使用许可证进行授权。在这种情况下，你可以将机器 ID
+提供给软件或服务提供商以进行许可证验证。</li>
+<li>系统配置：一些配置文件或脚本可能会使用机器 ID
+进行不同的操作或应用不同的设置。你可以根据机器 ID
+编写脚本或配置文件，以根据不同的机器 ID 进行特定的配置。</li>
+<li>安全性：机器 ID 可用于增加系统的安全性。例如，你可以使用机器 ID
+生成一些加密密钥，以确保只有具有特定机器 ID
+的计算机才能解密和访问数据。</li>
+</ul>
+<h2 id="机器-id-的注意事项">5. 机器 ID 的注意事项</h2>
+<p>在使用机器 ID 时，需要注意以下事项：</p>
+<ul>
+<li>唯一性：机器 ID 应该是唯一的，每台计算机都应该有不同的机器
+ID。确保在克隆或复制系统时更新机器 ID。</li>
+<li>保密性：机器 ID 是一个敏感信息，应该妥善保管。避免将机器 ID
+泄露给不信任的人或系统。</li>
+<li>持久性：机器 ID
+在系统的整个生命周期中保持不变。在更换硬件或重新安装操作系统时，机器 ID
+通常不会改变。</li>
+</ul>
+<h2 id="总结">6. 总结</h2>
+<p>机器 ID 是 Linux 系统中用于唯一标识计算机的标识符。它由 systemd
+生成并存储在 <code>/etc/machine-id</code> 文件中。机器 ID
+在许可验证、安全性和系统配置方面发挥着重要作用。通过机器
+ID，系统可以识别不同的计算机并进行特定的操作和配置。在使用机器 ID
+时，请确保唯一性、保密性和持久性，并根据需要使用相应的命令和配置文件来操作和配置系统。</p>
+<h2 id="引用和参考文章">引用和参考文章</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://bbs.huaweicloud.com/blogs/402082">什么是 Linux
+中的机器 ID？</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bmabk.com/index.php/post/221000.html">什么是
+Linux 中的机器 ID？</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.idc.net/help/161609/">「深入浅出」Linux 主机
+id：快速获取系统唯一标识符 (linux 主机 id)</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1301,100 +1457,6 @@ docs</a> 的配置，其他的支持均没有问题，而<code>perl</code>出现
 <figure class="highlight sh"><figcaption><span>:checkhealth provider-perl</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">provider.perl: require(<span class="string">&quot;provider.perl.health&quot;</span>).check()</span><br><span class="line"></span><br><span class="line">Perl provider (optional) ~</span><br><span class="line">- perl executable: /usr/bin/perl</span><br><span class="line">- OK Latest <span class="string">&quot;Neovim::Ext&quot;</span> cpan module is installed: class is experimental at (<span class="built_in">eval</span> 8) line 2.</span><br><span class="line">  field is experimental at (<span class="built_in">eval</span> 8) line 4.</span><br><span class="line">  method is experimental at (<span class="built_in">eval</span> 8) line 5.</span><br><span class="line">  field is experimental at (<span class="built_in">eval</span> 8) line 6.</span><br><span class="line">  method is experimental at (<span class="built_in">eval</span> 8) line 7.</span><br><span class="line">  field is experimental at (<span class="built_in">eval</span> 8) line 8.</span><br><span class="line">  method is experimental at (<span class="built_in">eval</span> 8) line 9.</span><br><span class="line">  field is experimental at (<span class="built_in">eval</span> 8) line 10.</span><br><span class="line">  method is experimental at (<span class="built_in">eval</span> 8) line 11.</span><br><span class="line">  field is experimental at (<span class="built_in">eval</span> 8) line 12.</span><br><span class="line">  method is experimental at (<span class="built_in">eval</span> 8) line 13.</span><br><span class="line">  field is experimental at (<span class="built_in">eval</span> 8) line 14.</span><br><span class="line">  method is experimental at (<span class="built_in">eval</span> 8) line 15.</span><br><span class="line">  class is experimental at (<span class="built_in">eval</span> 9) line 2.</span><br><span class="line">  field is experimental at (<span class="built_in">eval</span> 9) line 4.</span><br><span class="line">  method is experimental at (<span class="built_in">eval</span> 9) line 5.</span><br><span class="line">  field is experimental at (<span class="built_in">eval</span> 9) line 6.</span><br><span class="line">  method is experimental at (<span class="built_in">eval</span> 9) line 7.</span><br><span class="line">  0.06</span><br></pre></td></tr></table></figure>
 <h2 id="总结">总结</h2>
 <p>这个问题困扰了我一整天，因为总觉得这不应该是一个重大问题，但是两台电脑几乎配置一样，但笔记本上总是不能解决。此次计算机事故，应当牢记遇到问题一般重装程序或模块，同时使用默认配置就可以解决问题。但是，此次没有解决问题的主要原因是对<code>cpanm</code>不够熟悉！所以在<code>cpanm --help</code>后，获取其详细使用规则后就解决了问题。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/08/Neovim%E5%AF%B9%E9%BD%90%E6%8F%92%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/10/08/Neovim%E5%AF%B9%E9%BD%90%E6%8F%92%E4%BB%B6/" class="post-title-link" itemprop="url">Neovim对齐插件mini.align</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-10-08 12:08:07" itemprop="dateCreated datePublished" datetime="2024-10-08T12:08:07+08:00">2024-10-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在使用<code>Neovim</code>编辑文件时，为了提高代码的可读性，按照指定字符对齐是十分必要的。于是今天配置了完全使用<code>lua</code>实现的插件:
-<a target="_blank" rel="noopener" href="https://github.com/echasnovski/mini.align">mini.align</a>,
-它是<code>mini.nvim</code>插件集中的一个，但是可以作为单独的插件使用，为了保证插件简洁性，单独安装使用。</p>
-<h2 id="安装插件">安装插件</h2>
-<p>在<code>folke/lazy.nvim</code>插件管理器中安装： <figure class="highlight lua"><figcaption><span>~/.config/nvim/lua/lazy-init.lua</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&#x27;echasnovski/mini.align&#x27;</span>,</span><br><span class="line">    version = <span class="literal">false</span>,</span><br><span class="line">    <span class="built_in">config</span> = <span class="function"><span class="keyword">function</span><span class="params">()</span></span></span><br><span class="line">        <span class="built_in">require</span>(<span class="string">&quot;mini.align&quot;</span>).setup(&#123;&#125;)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
-<p>在启用插件时，即可以在<code>~/.config/nvim/init.lua</code>中使用<code>require</code>单独调用，也可以将配置文件象上述方法一样直接使用<code>config</code>选项写在<code>lazy-init.lua</code>中。前者更适合那些需要大量修改为自定义的插件，后者更适合使用默认配置的插件。一般而言，我更建议大家使用官方默认配置，这样在配置新的电脑时可以更快的进入工作，而不用耗费大量时间来配置插件。除了按这里我的配置外，大家也可以根据官方的<code>README.md</code>来配置，如果只是安装成功了，也可以使用命令<code>:help mini.align</code>来查看配置和使用方法。</p>
-<details>
-<summary>
-默认配置(点击查看)
-</summary>
-<figure class="highlight lua"><figcaption><span>Default config</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- No need to copy this inside `setup()`. Will be used automatically.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">-- Module mappings. Use `&#x27;&#x27;` (empty string) to disable one.</span></span><br><span class="line">  mappings = &#123;</span><br><span class="line">    start = <span class="string">&#x27;ga&#x27;</span>,</span><br><span class="line">    start_with_preview = <span class="string">&#x27;gA&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">-- Modifiers changing alignment steps and/or options</span></span><br><span class="line">  modifiers = &#123;</span><br><span class="line">    <span class="comment">-- Main option modifiers</span></span><br><span class="line">    [<span class="string">&#x27;s&#x27;</span>] = <span class="comment">--&lt;function: enter split pattern&gt;,</span></span><br><span class="line">    [<span class="string">&#x27;j&#x27;</span>] = <span class="comment">--&lt;function: choose justify side&gt;,</span></span><br><span class="line">    [<span class="string">&#x27;m&#x27;</span>] = <span class="comment">--&lt;function: enter merge delimiter&gt;,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">-- Modifiers adding pre-steps</span></span><br><span class="line">    [<span class="string">&#x27;f&#x27;</span>] = <span class="comment">--&lt;function: filter parts by entering Lua expression&gt;,</span></span><br><span class="line">    [<span class="string">&#x27;i&#x27;</span>] = <span class="comment">--&lt;function: ignore some split matches&gt;,</span></span><br><span class="line">    [<span class="string">&#x27;p&#x27;</span>] = <span class="comment">--&lt;function: pair parts&gt;,</span></span><br><span class="line">    [<span class="string">&#x27;t&#x27;</span>] = <span class="comment">--&lt;function: trim parts&gt;,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">-- Delete some last pre-step</span></span><br><span class="line">    [<span class="string">&#x27;&lt;BS&gt;&#x27;</span>] = <span class="comment">--&lt;function: delete some last pre-step&gt;,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">-- Special configurations for common splits</span></span><br><span class="line">    [<span class="string">&#x27;=&#x27;</span>] = <span class="comment">--&lt;function: enhanced setup for &#x27;=&#x27;&gt;,</span></span><br><span class="line">    [<span class="string">&#x27;,&#x27;</span>] = <span class="comment">--&lt;function: enhanced setup for &#x27;,&#x27;&gt;,</span></span><br><span class="line">    [<span class="string">&#x27; &#x27;</span>] = <span class="comment">--&lt;function: enhanced setup for &#x27; &#x27;&gt;,</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">-- Default options controlling alignment process</span></span><br><span class="line">  options = &#123;</span><br><span class="line">    split_pattern = <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    justify_side = <span class="string">&#x27;left&#x27;</span>,</span><br><span class="line">    merge_delimiter = <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">-- Default steps performing alignment (if `nil`, default is used)</span></span><br><span class="line">  steps = &#123;</span><br><span class="line">    pre_split = &#123;&#125;,</span><br><span class="line">    split = <span class="literal">nil</span>,</span><br><span class="line">    pre_justify = &#123;&#125;,</span><br><span class="line">    justify = <span class="literal">nil</span>,</span><br><span class="line">    pre_merge = &#123;&#125;,</span><br><span class="line">    merge = <span class="literal">nil</span>,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">-- Whether to disable showing non-error feedback</span></span><br><span class="line">  silent = <span class="literal">false</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</details>
-<h2 id="使用方法">使用方法</h2>
-<ul>
-<li>选中要对齐的文本内容</li>
-<li>快速输入<code>ga</code>或<code>gA</code></li>
-<li>在命令行中就会出现提示信息，按左、中、右，分隔符对应输入就可以了。</li>
-<li>也可以使用命令<code>:help mini.align</code>查看具体实例和操作。</li>
-</ul>
 
       
     </div>

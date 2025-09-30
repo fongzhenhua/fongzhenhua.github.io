@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">549</span>
+          <span class="site-state-item-count">550</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,133 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/24/Shell%E8%84%9A%E6%9C%AC%E8%A7%A3%E6%9E%90YAML%E6%95%B0%E6%8D%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/24/Shell%E8%84%9A%E6%9C%AC%E8%A7%A3%E6%9E%90YAML%E6%95%B0%E6%8D%AE/" class="post-title-link" itemprop="url">Shell脚本解析YAML数据</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-24 10:14:06" itemprop="dateCreated datePublished" datetime="2024-06-24T10:14:06+08:00">2024-06-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="yaml语言简介">YAML语言简介</h2>
+<p><code>AML</code> 是"YAML Ain't a Markup Language"（<code>YAML</code>
+不是一种标记语言）的递归缩写。在开发的这种语言时，<code>YAML</code>
+的意思其实是："Yet Another Markup Language"（仍是一种标记语言）。</p>
+<p><code>YAML</code> 的语法和其他高级语言类似，
+并且可以简单表达清单、散列表， 标量等数据形态。
+它使用空白符号缩进和大量依赖外观的特色，
+特别适合用来表达或编辑数据结构、各种配置文件、倾印调试内容、文件大纲（例如：许多电子邮件标题格式和<code>YAML</code>非常接近）。</p>
+<p><code>YAML</code>常在<code>Linux</code>作为一种配置文件出现，详细使用规则参考：<a
+target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/yaml-intro.html">YAML入门教程</a></p>
+<h2 id="shell中解析yaml">Shell中解析YAML</h2>
+<p>在 Bash 中直接操作 YAML 需要一点创造性，因为 Bash 没有内置支持解析
+YAML。然而，你可以使用外部工具，如
+<code>yq</code>（一个轻量级且便携的命令行 YAML 处理器），来高效地与 YAML
+文件交互。</p>
+<h3 id="安装yaml解析器">安装YAML解析器</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S yq</span><br></pre></td></tr></table></figure>
+<p>假设你有一个名为 <code>config.yaml</code> 的文件，内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">database:</span> </span><br><span class="line">    <span class="attr">host:</span> <span class="string">localhost</span> </span><br><span class="line">    <span class="attr">port:</span> <span class="number">5432</span> </span><br><span class="line"><span class="attr">user:</span> </span><br><span class="line">    <span class="attr">name:</span> <span class="string">admin</span> </span><br><span class="line">    <span class="attr">password:</span> <span class="string">secret</span></span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li>要读取数据库主机，你可以如下使用 <code>yq</code>：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yq e <span class="string">&#x27;.database.host&#x27;</span> config.yaml</span><br><span class="line">&gt;localhost</span><br></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li>要在 <code>config.yaml</code> 中更新用户的名称，使用带
+<code>-i</code>（就地）选项的 <code>yq eval</code> 命令：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yq e <span class="string">&#x27;.user.name = &quot;newadmin&quot;&#x27;</span> -i config.yaml</span><br></pre></td></tr></table></figure>
+<p>用以下命令验证更改：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yq e <span class="string">&#x27;.user.name&#x27;</span> config.yaml</span><br><span class="line">&gt; newadmin</span><br></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li>要在数据库部分下添加一个新字段 <code>timeout</code>：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yq e <span class="string">&#x27;.database.timeout = 30&#x27;</span> -i config.yaml</span><br></pre></td></tr></table></figure>
+<ol start="4" type="1">
+<li>要移除用户下的密码：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yq e <span class="string">&#x27;del(.user.password)&#x27;</span> -i config.yaml</span><br></pre></td></tr></table></figure>
+<p>此操作将从配置中删除密码字段。</p>
+<div class="note primary"><p>记住，<code>yq</code> 是一款强大的工具，具有更多功能，包括将 YAML
+转换为 JSON、合并文件，甚至更复杂的操作。请参考 <code>yq</code>
+文档以进一步探索。</p>
+</div>
+<h2 id="参考文章">参考文章</h2>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://lyyao09.github.io/2019/08/02/tools/The-usage-of-yq-read-write/">YAML处理工具yq之读写篇</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2357396">linux下轻量级工具：yq（json,yaml）格式转换工具安装和使用</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mikefarah/yq">yq官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://mikefarah.gitbook.io/yq">yq-gitbook</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1165,547 +1292,6 @@ sort 命令</a></li>
 <figure class="highlight sh"><figcaption><span>bash正则表达式删除前缀</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ARRAY=( pre.one pre.two pre.three me.four )</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;ARRAY[@]#pre.&#125;</span></span><br><span class="line">&gt; one two three me.four</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;ARRAY[@]#*.&#125;</span></span><br><span class="line">&gt; one two three four</span><br></pre></td></tr></table></figure>
 <div class="note primary"><p>注意：在删除前后缀中，使用的<code>*</code>是正则表达式，表示任意个字符，若要删除指定字符，应当输入具体的字符。</p>
 </div>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/15/Shell%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/15/Shell%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">Shell中的正则表达式</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-15 15:38:50" itemprop="dateCreated datePublished" datetime="2024-06-15T15:38:50+08:00">2024-06-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>正则表达式可以极大的提高程序效率，本文提供Shell中的正则表达相关知识。</p>
-<h2 id="分类">分类</h2>
-<p><a
-target="_blank" rel="noopener" href="https://www.runoob.com/regexp/regexp-syntax.html">正则表达式</a>最早在
-1950 年代由美国数学家 <code>Stephen Cole Kleene</code> 提出，后来被
-<code>Unix</code> 操作系统的文本处理工具广泛使用。</p>
-<p>经过多年的发展和实践，最终形成两大标准，一个是 <code>POSIX</code>
-标准，另一个是 <code>Perl</code> 标准。后者本是为 <code>Perl</code>
-语言实现的，由于其功能非常强大，被
-<code>Java</code>、<code>JavaScript</code>等语言广泛借鉴，从而被广泛使用。</p>
-<p>这里将正则表达式分为三类：</p>
-<ul>
-<li>基本正则表达式（<code>Basic Regular Expression</code> 简称
-<code>BRE</code>），由 <code>POSIX</code> 标准定义。</li>
-<li>扩展正则表达式（<code>Extended Regular Expression</code> 简称
-<code>ERE</code>），也由 <code>POSIX</code> 标准定义。</li>
-<li><code>Perl</code> 的正则表达式（<code>Perl Regular Expression</code>
-简称 <code>PRE</code>），由 <code>Perl</code> 语言定义。</li>
-</ul>
-<h2 id="组成部分">组成部分</h2>
-<h3 id="基本组成部分">基本组成部分</h3>
-<table style="width:100%;">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">正则表达式</th>
-<th style="text-align: left;">描述</th>
-<th style="text-align: left;">示例</th>
-<th style="text-align: left;">Basic RegEx</th>
-<th style="text-align: left;">Extended RegEx</th>
-<th style="text-align: left;">Perl regEx</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><code>\</code></td>
-<td
-style="text-align: left;">转义符，将特殊字符进行转义，忽略其特殊意义</td>
-<td
-style="text-align: left;">a.b匹配a.b，但不能匹配ajb，.被转义为特殊意义</td>
-<td style="text-align: left;"><code>\</code></td>
-<td style="text-align: left;"><code>\</code></td>
-<td style="text-align: left;"><code>\</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">^</td>
-<td style="text-align: left;">匹配行首</td>
-<td style="text-align: left;">^tux匹配以tux开头的行</td>
-<td style="text-align: left;">^</td>
-<td style="text-align: left;">^</td>
-<td style="text-align: left;">^</td>
-</tr>
-<tr>
-<td style="text-align: left;">$</td>
-<td style="text-align: left;">匹配行尾</td>
-<td style="text-align: left;">tux$匹配以tux结尾的行</td>
-<td style="text-align: left;">$</td>
-<td style="text-align: left;">$</td>
-<td style="text-align: left;">$</td>
-</tr>
-<tr>
-<td style="text-align: left;">.</td>
-<td style="text-align: left;">匹配除换行符\n之外的任意单个字符</td>
-<td
-style="text-align: left;">ab.匹配abc或bad，不可匹配abcd或abde，只能匹配单字符</td>
-<td style="text-align: left;">.</td>
-<td style="text-align: left;">.</td>
-<td style="text-align: left;">.</td>
-</tr>
-<tr>
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">匹配包含在[字符]之中的任意一个字符</td>
-<td style="text-align: left;">coo[kl]可以匹配cook或cool</td>
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">[]</td>
-</tr>
-<tr>
-<td style="text-align: left;">[^]</td>
-<td style="text-align: left;">匹配<a
-href="#fn-1">1</a>之外的任意一个字符</td>
-<td style="text-align: left;">123<a
-href="#fn-2">2</a>不可以匹配1234或1235，1236、1237都可以</td>
-<td style="text-align: left;">[^]</td>
-<td style="text-align: left;">[^]</td>
-<td style="text-align: left;">[^]</td>
-</tr>
-<tr>
-<td style="text-align: left;">[-]</td>
-<td
-style="text-align: left;">匹配[]中指定范围内的任意一个字符，要写成递增</td>
-<td
-style="text-align: left;">[0-9]可以匹配1、2或3等其中任意一个数字</td>
-<td style="text-align: left;">[-]</td>
-<td style="text-align: left;">[-]</td>
-<td style="text-align: left;">[-]</td>
-</tr>
-<tr>
-<td style="text-align: left;">?</td>
-<td style="text-align: left;">匹配之前的项1次或者0次</td>
-<td
-style="text-align: left;">colou?r可以匹配color或者colour，不能匹配colouur</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">?</td>
-<td style="text-align: left;">?</td>
-</tr>
-<tr>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;">匹配之前的项1次或者多次</td>
-<td style="text-align: left;">sa-6+匹配sa-6、sa-666，不能匹配sa-</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">+</td>
-<td style="text-align: left;">+</td>
-</tr>
-<tr>
-<td style="text-align: left;">*</td>
-<td style="text-align: left;">匹配之前的项0次或者多次</td>
-<td style="text-align: left;">co*l匹配cl、col、cool、coool等</td>
-<td style="text-align: left;">*</td>
-<td style="text-align: left;">*</td>
-<td style="text-align: left;">*</td>
-</tr>
-<tr>
-<td style="text-align: left;">()</td>
-<td style="text-align: left;">匹配表达式，创建一个用于匹配的子串</td>
-<td style="text-align: left;">ma(tri)?匹配max或maxtrix</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">()</td>
-<td style="text-align: left;">()</td>
-</tr>
-<tr>
-<td style="text-align: left;">{n}</td>
-<td style="text-align: left;">匹配之前的项n次，n是可以为0的正整数</td>
-<td
-style="text-align: left;">[0-9]{3}匹配任意一个三位数，可以扩展为0-9[0-9]</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">{n}</td>
-<td style="text-align: left;">{n}</td>
-</tr>
-<tr>
-<td style="text-align: left;">{n,}</td>
-<td style="text-align: left;">之前的项至少需要匹配n次</td>
-<td style="text-align: left;">[0-9]{2,}匹配任意一个两位数或更多位数</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">{n,}</td>
-<td style="text-align: left;">{n,}</td>
-</tr>
-<tr>
-<td style="text-align: left;">{n,m}</td>
-<td
-style="text-align: left;">指定之前的项至少匹配n次，最多匹配m次，n&lt;=m</td>
-<td
-style="text-align: left;">[0-9]{2,5}匹配从两位数到五位数之间的任意一个数字</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">{n,m}</td>
-<td style="text-align: left;">{n,m}</td>
-</tr>
-<tr>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">交替匹配</td>
-<td style="text-align: left;">两边的任意一项</td>
-<td style="text-align: left;">ab(c</td>
-<td style="text-align: left;">d)匹配abc或abd</td>
-</tr>
-</tbody>
-</table>
-<h3 id="posix-字符类">POSIX 字符类</h3>
-<p>POSIX字符类是一个形如<code>[:...:]</code>的特殊元序列（meta
-sequence），他可以用于匹配特定的字符范围。</p>
-<table style="width:100%;">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">正则表达式</th>
-<th style="text-align: left;">描述</th>
-<th style="text-align: left;">示例</th>
-<th style="text-align: left;">Basic RegEx</th>
-<th style="text-align: left;">Extended RegEx</th>
-<th style="text-align: left;">Perl RegEx</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">[:alnum:]</td>
-<td style="text-align: left;">匹配任意一个字母或数字字符</td>
-<td style="text-align: left;">[[:alnum:]]+</td>
-<td style="text-align: left;">[:alnum:]</td>
-<td style="text-align: left;">[:alnum:]</td>
-<td style="text-align: left;">[:alnum:]</td>
-</tr>
-<tr>
-<td style="text-align: left;">[:alpha:]</td>
-<td
-style="text-align: left;">匹配任意一个字母字符（包括大小写字母）</td>
-<td style="text-align: left;">[[:alpha:]]{4}</td>
-<td style="text-align: left;">[:alpha:]</td>
-<td style="text-align: left;">[:alpha:]</td>
-<td style="text-align: left;">[:alpha:]</td>
-</tr>
-<tr>
-<td style="text-align: left;">[:blank:]</td>
-<td style="text-align: left;">空格与制表符（横向和纵向）</td>
-<td style="text-align: left;">[[:blank:]]*</td>
-<td style="text-align: left;">[:blank:]</td>
-<td style="text-align: left;">[:blank:]</td>
-<td style="text-align: left;">[:blank:]</td>
-</tr>
-<tr>
-<td style="text-align: left;">[:digit:]</td>
-<td style="text-align: left;">匹配任意一个数字字符</td>
-<td style="text-align: left;">[[:digit:]]?</td>
-<td style="text-align: left;">[:digit:]</td>
-<td style="text-align: left;">[:digit:]</td>
-<td style="text-align: left;">[:digit:]</td>
-</tr>
-<tr>
-<td style="text-align: left;">[:lower:]</td>
-<td style="text-align: left;">匹配小写字母</td>
-<td style="text-align: left;">[[:lower:]]{5,}</td>
-<td style="text-align: left;">[:lower:]</td>
-<td style="text-align: left;">[:lower:]</td>
-<td style="text-align: left;">[:lower:]</td>
-</tr>
-<tr>
-<td style="text-align: left;">[:upper:]</td>
-<td style="text-align: left;">匹配大写字母</td>
-<td style="text-align: left;">([[:upper:]]+)?</td>
-<td style="text-align: left;">[:upper:]</td>
-<td style="text-align: left;">[:upper:]</td>
-<td style="text-align: left;">[:upper:]</td>
-</tr>
-<tr>
-<td style="text-align: left;">[:punct:]</td>
-<td style="text-align: left;">匹配标点符号</td>
-<td style="text-align: left;">[[:punct:]]</td>
-<td style="text-align: left;">[:punct:]</td>
-<td style="text-align: left;">[:punct:]</td>
-<td style="text-align: left;">[:punct:]</td>
-</tr>
-<tr>
-<td style="text-align: left;">[:space:]</td>
-<td
-style="text-align: left;">匹配一个包括换行符、回车等在内的所有空白符</td>
-<td style="text-align: left;">[[:space:]]+</td>
-<td style="text-align: left;">[:space:]</td>
-<td style="text-align: left;">[:space:]</td>
-<td style="text-align: left;">[:space:]</td>
-</tr>
-<tr>
-<td style="text-align: left;">[:graph:]</td>
-<td
-style="text-align: left;">匹配任何一个可以看得见的且可以打印的字符</td>
-<td style="text-align: left;">[[:graph:]]</td>
-<td style="text-align: left;">[:graph:]</td>
-<td style="text-align: left;">[:graph:]</td>
-<td style="text-align: left;">[:graph:]</td>
-</tr>
-<tr>
-<td style="text-align: left;">[:xdigit:]</td>
-<td
-style="text-align: left;">任何一个十六进制数（即：0-9，a-f，A-F）</td>
-<td style="text-align: left;">[[:xdigit:]]+</td>
-<td style="text-align: left;">[:xdigit:]</td>
-<td style="text-align: left;">[:xdigit:]</td>
-<td style="text-align: left;">[:xdigit:]</td>
-</tr>
-<tr>
-<td style="text-align: left;">[:cntrl:]</td>
-<td
-style="text-align: left;">任何一个控制字符（ASCII字符集中的前32个字符)</td>
-<td style="text-align: left;">[[:cntrl:]]</td>
-<td style="text-align: left;">[:cntrl:]</td>
-<td style="text-align: left;">[:cntrl:]</td>
-<td style="text-align: left;">[:cntrl:]</td>
-</tr>
-<tr>
-<td style="text-align: left;">[:print:]</td>
-<td style="text-align: left;">任何一个可以打印的字符</td>
-<td style="text-align: left;">[[:print:]]</td>
-<td style="text-align: left;">[:print:]</td>
-<td style="text-align: left;">[:print:]</td>
-<td style="text-align: left;">[:print:]</td>
-</tr>
-</tbody>
-</table>
-<h3 id="元字符">元字符</h3>
-<p>元字符（meta character）是一种 Perl
-风格的正则表达式，只有一部分文本处理工具支持它，并不是所有的文本处理工具都支持。</p>
-<table style="width:100%;">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">正则表达式</th>
-<th style="text-align: left;">描述</th>
-<th style="text-align: left;">示例</th>
-<th style="text-align: left;">Basic RegEx</th>
-<th style="text-align: left;">Extended RegEx</th>
-<th style="text-align: left;">Perl RegEx</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">\b</td>
-<td style="text-align: left;">单词边界</td>
-<td style="text-align: left;">\bcool\b 匹配cool，不匹配coolant</td>
-<td style="text-align: left;">\b</td>
-<td style="text-align: left;">\b</td>
-<td style="text-align: left;">\b</td>
-</tr>
-<tr>
-<td style="text-align: left;">\B</td>
-<td style="text-align: left;">非单词边界</td>
-<td style="text-align: left;">cool\B 匹配coolant，不匹配cool</td>
-<td style="text-align: left;">\B</td>
-<td style="text-align: left;">\B</td>
-<td style="text-align: left;">\B</td>
-</tr>
-<tr>
-<td style="text-align: left;">\d</td>
-<td style="text-align: left;">单个数字字符</td>
-<td style="text-align: left;">b\db 匹配b2b，不匹配bcb</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">\d</td>
-</tr>
-<tr>
-<td style="text-align: left;">\D</td>
-<td style="text-align: left;">单个非数字字符</td>
-<td style="text-align: left;">b\Db 匹配bcb，不匹配b2b</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">\D</td>
-</tr>
-<tr>
-<td style="text-align: left;">\w</td>
-<td style="text-align: left;">单个单词字符（字母、数字与_）</td>
-<td style="text-align: left;">\w 匹配1或a，不匹配&amp;</td>
-<td style="text-align: left;">\w</td>
-<td style="text-align: left;">\w</td>
-<td style="text-align: left;">\w</td>
-</tr>
-<tr>
-<td style="text-align: left;">\W</td>
-<td style="text-align: left;">单个非单词字符</td>
-<td style="text-align: left;">\W 匹配&amp;，不匹配1或a</td>
-<td style="text-align: left;">\W</td>
-<td style="text-align: left;">\W</td>
-<td style="text-align: left;">\W</td>
-</tr>
-<tr>
-<td style="text-align: left;">\n</td>
-<td style="text-align: left;">换行符</td>
-<td style="text-align: left;">\n 匹配一个新行</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">\n</td>
-</tr>
-<tr>
-<td style="text-align: left;">\s</td>
-<td style="text-align: left;">单个空白字符</td>
-<td style="text-align: left;">x\sx 匹配x x，不匹配xx</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">\s</td>
-</tr>
-<tr>
-<td style="text-align: left;">\S</td>
-<td style="text-align: left;">单个非空白字符</td>
-<td style="text-align: left;">x\S\x 匹配xkx，不匹配xx</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">\S</td>
-</tr>
-<tr>
-<td style="text-align: left;">\r</td>
-<td style="text-align: left;">回车</td>
-<td style="text-align: left;">\r 匹配回车</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">\r</td>
-</tr>
-<tr>
-<td style="text-align: left;">\t</td>
-<td style="text-align: left;">横向制表符</td>
-<td style="text-align: left;">\t 匹配一个横向制表符</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">\t</td>
-</tr>
-<tr>
-<td style="text-align: left;">\v</td>
-<td style="text-align: left;">垂直制表符</td>
-<td style="text-align: left;">\v 匹配一个垂直制表符</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">\v</td>
-</tr>
-<tr>
-<td style="text-align: left;">\f</td>
-<td style="text-align: left;">换页符</td>
-<td style="text-align: left;">\f 匹配一个换页符</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">不支持</td>
-<td style="text-align: left;">\f</td>
-</tr>
-</tbody>
-</table>
-<h2 id="常见命令中的使用">常见命令中的使用</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">命令</th>
-<th style="text-align: left;">Basic RegEx</th>
-<th style="text-align: left;">Extended RegEx</th>
-<th style="text-align: left;">Perl RegEx</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">grep</td>
-<td style="text-align: left;">支持</td>
-<td style="text-align: left;">需加 <code>-E</code> 参数</td>
-<td style="text-align: left;">需加 <code>-P</code> 参数</td>
-</tr>
-<tr>
-<td style="text-align: left;">egrep</td>
-<td style="text-align: left;">支持</td>
-<td style="text-align: left;">支持</td>
-<td style="text-align: left;">需加 <code>-P</code> 参数</td>
-</tr>
-<tr>
-<td style="text-align: left;">sed</td>
-<td style="text-align: left;">支持</td>
-<td style="text-align: left;">需加 <code>-r</code> 参数</td>
-<td style="text-align: left;">不支持</td>
-</tr>
-<tr>
-<td style="text-align: left;">awk</td>
-<td style="text-align: left;">支持</td>
-<td style="text-align: left;">支持</td>
-<td style="text-align: left;">不支持</td>
-</tr>
-</tbody>
-</table>
 
       
     </div>

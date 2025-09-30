@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">549</span>
+          <span class="site-state-item-count">550</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,6 +289,113 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/06/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E8%AE%A1%E7%AE%97%E5%9C%86%E5%91%A8%E7%8E%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/03/06/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E8%AE%A1%E7%AE%97%E5%9C%86%E5%91%A8%E7%8E%87/" class="post-title-link" itemprop="url">蒙特卡洛方法计算圆周率</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-03-06 02:30:06" itemprop="dateCreated datePublished" datetime="2025-03-06T02:30:06+08:00">2025-03-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>使用蒙特卡洛方法求解圆周率的一个经典方法是取一个单位圆和外接正四边形，则正四边形的面积为1,
+随机生成点数，统计落在圆内的点的数目m,
+然后再以m除以总点数n,获得随机点落在圆内的概率，再乘以正方形的面积就得到了圆周率。
+但是本文不计划采用这个方法，我们使用积分来计算，即</p>
+<p><span class="math display">\[\pi=2\int_0^1 \frac{1}{\sqrt{1-x^2}}
+dx\]</span></p>
+<p>按积分中值定理，在<span
+class="math inline">\((0,1)\)</span>内必存在一点<span
+class="math inline">\(\xi\)</span>满足</p>
+<p><span
+class="math display">\[\pi=2\frac{1}{\sqrt{1-\xi^2}}(1-0)\]</span></p>
+<p>如果我们任意取<span
+class="math inline">\((0,1)\)</span>中的一个点，那必然不一定满足上式，但是按照大数定理，当在<span
+class="math inline">\((0,1)\)</span>内随机取值的数量达到足够大，并且平均时，按统计规律积分值将接近真实结果，并且随随机取点的数量增大而提高精度。</p>
+<h2 id="python-实现">Python 实现</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python3</span></span><br><span class="line"><span class="comment"># vim:fenc=utf-8</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 定义函数f(x)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>/(<span class="number">1</span>-x**<span class="number">2</span>)**<span class="number">0.5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Monte Carlo方法求积分</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">monte_carlo_integral</span>(<span class="params">f, a, b, num_samples=<span class="number">90000000</span></span>):</span><br><span class="line">    <span class="comment"># 在区间[a, b]内随机生成num_samples个样本点</span></span><br><span class="line">    samples = np.random.uniform(a, b, num_samples)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 计算这些样本点对应的函数值</span></span><br><span class="line">    y_values = f(samples)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 根据平均高度估计积分值，乘以区间的宽度得到近似面积</span></span><br><span class="line">    integral_estimate = (b - a) * np.mean(y_values)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>*integral_estimate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用Monte Carlo方法估计积分</span></span><br><span class="line">a, b = <span class="number">0</span>, <span class="number">1</span>  <span class="comment"># 定义积分区间</span></span><br><span class="line">estimated_integral = monte_carlo_integral(f, a, b)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Pi&quot;</span>, estimated_integral)</span><br></pre></td></tr></table></figure>
+<h2 id="rust-实现">Rust 实现</h2>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> rand::distributions::&#123;Distribution, Uniform&#125;;</span><br><span class="line"><span class="keyword">use</span> std::<span class="type">f64</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">f</span>(x: <span class="type">f64</span>) <span class="punctuation">-&gt;</span> <span class="type">f64</span> &#123;</span><br><span class="line">    <span class="number">1.0</span> / (<span class="number">1.0</span> - x.<span class="title function_ invoke__">powi</span>(<span class="number">2</span>)).<span class="title function_ invoke__">sqrt</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">monte_carlo_integral</span>(a: <span class="type">f64</span>, b: <span class="type">f64</span>, num_samples: <span class="type">usize</span>) <span class="punctuation">-&gt;</span> <span class="type">f64</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">between</span> = Uniform::<span class="title function_ invoke__">new</span>(a, b);</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">rng</span> = rand::<span class="title function_ invoke__">thread_rng</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">sum</span> = <span class="number">0.0</span>;</span><br><span class="line">    <span class="keyword">for</span> <span class="variable">_</span> <span class="keyword">in</span> <span class="number">0</span>..num_samples &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">sample</span> = between.<span class="title function_ invoke__">sample</span>(&amp;<span class="keyword">mut</span> rng);</span><br><span class="line">        sum += <span class="title function_ invoke__">f</span>(sample);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> <span class="variable">integral_estimate</span> = (b - a) * (sum / num_samples <span class="keyword">as</span> <span class="type">f64</span>);</span><br><span class="line">    <span class="number">2.0</span> * integral_estimate</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">a</span> = <span class="number">0.0</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">b</span> = <span class="number">1.0</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">num_samples</span> = <span class="number">90_000_000</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> <span class="variable">estimated_integral</span> = <span class="title function_ invoke__">monte_carlo_integral</span>(a, b, num_samples);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Pi: &#123;&#125;&quot;</span>, estimated_integral);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这个例子中，我们使用了 <code>rand crate</code>
+来生成随机数。因此，在你的 <code>Cargo.toml</code>
+文件中需要添加以下依赖：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[dependencies]</span></span><br><span class="line"><span class="attr">rand</span> = <span class="string">&quot;0.8&quot;</span></span><br></pre></td></tr></table></figure>
+<p>使用<code>cargo build --release</code>编译后再运行代码，可以明显感觉到比<code>Python</code>要快的多。</p>
+<div class="note primary"><ul>
+<li>运行环境：ArchLinux，ThinkPad T490, Intel(R) Core(TM) i5-8265U (8) @
+3.90 GHz，NVIDIA GeForce MX250 [Discrete]，Memory 16G</li>
+<li>Python 执行总用时<code>1.255s</code></li>
+<li>Rust 执行总用时<code>0.466s</code></li>
+<li>它们的精度都能达到<code>3.14xxx</code>,
+通过这个例子也显示出了Rust的优越性，在这个例子它需要的时间只是Python的<code>0.37</code>倍。</li>
+</ul>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1227,102 +1334,6 @@ IMC）方法是一种处理复杂系统中随机过程的高级数值模拟技�
 <p>在开始和面前，你可以先做一个小规模的实验或根据经验预估，比如，如果你加了一定量的水后，估计需要多少面粉才能达到理想的湿度。基于上述预估，你可以做出更精确的调整，少量多次地添加面粉，并随时观察面团的状态，避免过度纠正带来的问题。</p>
 <hr />
 <p>这三个例子共同展示了隐式蒙特卡洛方法的核心思想：<strong>不仅仅是基于当前状态做决策，还要考虑到未来可能的状态及其对当前决策的影响</strong>。这种方法允许我们在面对复杂系统时做出更加稳定和有效的调整，无论是物理模拟还是日常生活中的应用。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/18/%E4%BB%8E%E6%95%B0%E5%80%BC%E6%96%B9%E6%B3%95%E5%88%B0%E9%9A%90%E5%BC%8F%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/02/18/%E4%BB%8E%E6%95%B0%E5%80%BC%E6%96%B9%E6%B3%95%E5%88%B0%E9%9A%90%E5%BC%8F%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">从数值方法到隐式蒙特卡洛方法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-02-18 16:49:16" itemprop="dateCreated datePublished" datetime="2025-02-18T16:49:16+08:00">2025-02-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>隐式（Implicit）这一概念在不同的领域有着不同的应用和含义，但总体来说，它指的是那些依赖于未来状态或间接定义的过程，而不是直接明确地给出解决方案。下面我们将从数值分析、编程及隐式蒙特卡洛方法三个角度来探讨隐式的含义。</p>
-<h2 id="数值分析中的隐式方法">数值分析中的隐式方法</h2>
-<h3 id="定义与对比">定义与对比</h3>
-<p>在数值分析中，特别是在解决微分方程时，隐式方法是指那些在计算下一个时间步的解时需要用到该时间步未知解的方法。这意味着为了求得下一时刻的状态，我们需要通过求解一个方程组来获得结果，因为方程中包含了待求解的变量。</p>
-<ul>
-<li><p><strong>显式方法</strong>：基于当前已知的信息预测下一时间步的状态。例如，在向前欧拉法中，我们利用当前时刻的状态直接计算出下一时刻的状态。</p></li>
-<li><p><strong>隐式方法</strong>：考虑了未来时间点的信息。例如，在向后欧拉法中，为了确定下一时刻的状态，不仅需要当前时刻的状态信息，还需要该状态自身的未来值。这就导致了需要求解一个包含未知数的方程来找到确切的值。隐式方法的一个主要优点是可以使用较大的时间步长而不牺牲稳定性，特别适用于处理刚性问题。</p></li>
-</ul>
-<h2 id="编程中的隐式">编程中的隐式</h2>
-<p>在编程领域，“隐式”通常指不需要开发者直接指定所有细节的行为。这些行为由编译器、解释器或其他机制自动推断或执行。</p>
-<ul>
-<li><p><strong>隐式类型转换</strong>：比如在某些语言中，当两个不同类型的数值进行运算时，可能会自动将一种类型转换为另一种类型以完成操作，而无需程序员手动指定转换过程。例如，在JavaScript中，数字和字符串可以直接相加，其中数字会自动转换为字符串再进行连接。</p></li>
-<li><p><strong>隐式函数声明</strong>：在一些编程语言中，如果函数没有预先声明，编译器或解释器会根据函数调用的方式自动为其生成一个默认的声明。</p></li>
-</ul>
-<h2 id="隐式蒙特卡洛方法">隐式蒙特卡洛方法</h2>
-<p>隐式蒙特卡洛（Implicit Monte Carlo,
-IMC）是一种专门设计用来解决辐射传输问题的高级蒙特卡洛技术。IMC方法通过引入隐式时间离散化，显著提升了数值模拟的稳定性和准确性，尤其适用于处理复杂的辐射与物质相互作用问题。</p>
-<ul>
-<li><p><strong>传统蒙特卡洛方法</strong>：粒子（如光子）的轨迹是根据当前物理状态逐次随机抽样得到的。这种方法对于线性问题非常有效，但在处理非线性问题时可能遇到困难。</p></li>
-<li><p><strong>隐式蒙特卡洛方法</strong>：通过对粒子行为的概率分布进行调整，使得计算过程能够更准确地反映真实的物理过程。具体来说，IMC通过考虑未来时间点的状态信息，即在计算下一时刻的状态时，不仅依赖于当前已知的信息，还考虑到该状态自身的未来值，从而提高了计算的稳定性和准确性。</p></li>
-</ul>
 
       
     </div>
