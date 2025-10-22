@@ -128,7 +128,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%B1%E7%A0%81%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">乱码的原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A7%E7%89%88%E6%9C%AC-file-roller-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">2.</span> <span class="nav-text">旧版本 File-Roller 解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E7%89%88%E6%9C%AC-file-roller-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">3.</span> <span class="nav-text">新版本 File-Roller 解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%8E%8B%E6%97%B6%E6%89%8B%E5%8A%A8%E9%80%89%E6%8B%A9%E7%BC%96%E7%A0%81"><span class="nav-number">4.</span> <span class="nav-text">解压时手动选择编码</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%B1%E7%A0%81%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">乱码的原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="nav-number">2.</span> <span class="nav-text">安装依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A7%E7%89%88%E6%9C%AC-file-roller-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">3.</span> <span class="nav-text">旧版本 File-Roller 解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E7%89%88%E6%9C%AC-file-roller-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">4.</span> <span class="nav-text">新版本 File-Roller 解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%8E%8B%E6%97%B6%E6%89%8B%E5%8A%A8%E9%80%89%E6%8B%A9%E7%BC%96%E7%A0%81"><span class="nav-number">5.</span> <span class="nav-text">解压时手动选择编码</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -334,9 +334,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-06-19 14:45:33 / 修改时间：15:21:42" itemprop="dateCreated datePublished" datetime="2025-06-19T14:45:33+08:00">2025-06-19</time>
+      <time title="创建时间：2025-06-19 14:45:33" itemprop="dateCreated datePublished" datetime="2025-06-19T14:45:33+08:00">2025-06-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-10-22 16:13:40" itemprop="dateModified" datetime="2025-10-22T16:13:40+08:00">2025-10-22</time>
     </span>
 
   
@@ -357,6 +363,13 @@ File-Roller 的中文解压缩乱码问题是一个相当重要的问题。</p>
 (UTF-8)系统下默认的字符编码不同，导致在交叉使用时出现乱码。</li>
 <li>软件版本问题：某些软件版本对编码支持不全，也会导致乱码的出现。</li>
 </ul>
+<h2 id="安装依赖">安装依赖</h2>
+<p><code>p7zip-natspec</code>包，它增加了对本地语言编码的支持，所以使用<code>p7zip-natspec</code>取代<code>p7zip</code>，同时安装
+<code>p7zip-natspec</code> 后， <code>File Roller</code> 在解压
+<code>7z</code>、<code>rar</code>，有时也包括 <code>zip</code>
+格式时，应会优先调用这个能识别编码的 <code>7z</code>
+版本。这通常能有效解决这些格式压缩包内的中文乱码问题。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S p7zip-natspec</span><br></pre></td></tr></table></figure>
 <h2 id="旧版本-file-roller-解决方案">旧版本 File-Roller 解决方案</h2>
 <ol type="1">
 <li>打开 File-Roller, 选择 “工具” 菜单中的 “配置文件管理器” 。</li>
