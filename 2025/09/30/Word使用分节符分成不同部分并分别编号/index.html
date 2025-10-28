@@ -335,9 +335,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-09-30 09:05:45 / 修改时间：09:32:38" itemprop="dateCreated datePublished" datetime="2025-09-30T09:05:45+08:00">2025-09-30</time>
+      <time title="创建时间：2025-09-30 09:05:45" itemprop="dateCreated datePublished" datetime="2025-09-30T09:05:45+08:00">2025-09-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-10-28 09:34:33" itemprop="dateModified" datetime="2025-10-28T09:34:33+08:00">2025-10-28</time>
     </span>
 
   
@@ -350,7 +356,7 @@
     
     
     <div class="post-body" itemprop="articleBody"><p>由于工作的需要不得不再次使用<code>word</code>,
-本文针对使用<code>word</code>出题给出模板，将整个<code>word</code>分成试题和答案两部分，并且两部分分别统计页数和分别从1开始编号，也即是在Word中实现分节页码并显示<code>第一节共X页</code>和<code>第二节共Y页</code>.</p>
+本文针对使用<code>word</code>出题给出模板，将整个<code>word</code>分成试题和答案两部分，并且两部分分别统计页数和分别从1开始编号，也即是在Word中实现分节页码并显示<code>第x页 共X页</code>和<code>第x页 共Y页</code>.</p>
 <h1 id="一正确插入分节符并设置页码">一、正确插入分节符并设置页码</h1>
 <ul>
 <li>插入分节符：
@@ -374,32 +380,36 @@
 <li><p>在第一节最后一页的页脚中：</p>
 <ul>
 <li>双击页脚区域进入编辑模式</li>
-<li>在页脚中输入：<code>第一节共x页</code></li>
+<li>在页脚中输入：<code>第x页 共x页</code></li>
 <li>按<code>Alt + F9</code>打开域代码视图（或点击<code>插入</code> →
 <code>文档部件</code>→<code>域</code>）</li>
 <li>在域代码对话框中，选择<code>SectionPages</code>域</li>
 <li>点击<code>确定</code>，域代码会显示为<code>&#123; SECTIONPAGES &#125;</code></li>
-<li>输入页，完成输入：第一节共<code>&#123; SECTIONPAGES &#125;</code>页</li>
-<li>按<code>Alt + F9</code>切换回正常视图，显示为<code>第一节共5页</code>（假设第一节有5页）</li>
+<li>输入页，完成输入：第<code>&#123; PAGE &#125;</code>页
+共<code>&#123; SECTIONPAGES &#125;</code>页</li>
+<li>按<code>Alt + F9</code>切换回正常视图，显示为<code>第3页 共5页</code>（假设第一节有5页）</li>
 <li>按<code>F9</code>更新域，显示正确的页数</li>
 </ul></li>
 <li><p>在第二节最后一页的页脚中：</p>
 <ul>
 <li>双击页脚区域进入编辑模式</li>
-<li>在页脚中输入：<code>第二节共y页</code></li>
+<li>在页脚中输入：<code>第x页 共y页</code></li>
 <li>按<code>Alt + F9</code>打开域代码视图</li>
+<li>插入<code>&#123; PAGE &#125;</code>域</li>
 <li>插入<code>&#123; SECTIONPAGES &#125;</code>域</li>
-<li>输入页，完成输入：第二节共<code>&#123; SECTIONPAGES &#125;</code>页</li>
+<li>输入页，完成输入：第<code>&#123;PAGE&#125;</code>页
+共<code>&#123; SECTIONPAGES &#125;</code>页</li>
 <li>按<code>F9</code>更新域，显示正确的页数</li>
 </ul></li>
 </ul>
 <h1 id="三重要说明">三、重要说明</h1>
 <ul>
-<li><p>域代码更新：<code>Word</code>的域代码在文档内容变化后不会自动更新。每次修改文档后，需要按F9更新域，或在打印预览时自动更新。</p></li>
+<li><p>域代码更新：<code>Word</code>的域代码在文档内容变化后不会自动更新。每次修改文档后，需要按<code>F9</code>更新域，或在打印预览时自动更新。</p></li>
 <li><p>域代码格式：您看到的<code>&#123; SECTIONPAGES &#125;</code>是域代码，实际显示时会自动替换为当前节的总页数。</p></li>
+<li><p>通常情况下使用分节可以分别生成第一节为试题，第二节为答案，用于简单的命题工作。</p></li>
 </ul>
 <h1 id="四总结">四、总结</h1>
-<p>使用<code>Word</code>的域代码<code>&#123; SECTIONPAGES &#125;</code>，您可以在每节的最后一页自动显示<code>第一节共X页</code>和<code>第二节共Y页</code>，无需手动计算和输入。只需在每节的最后一页页脚中插入相应的域代码，然后按<code>F9</code>更新即可。</p>
+<p>使用<code>Word</code>的域代码<code>&#123; SECTIONPAGES &#125;</code>，您可以在每节的最后一页自动显示<code>第x页 共X页</code>和<code>第x页 共Y页</code>，无需手动计算和输入。只需在每节的最后一页页脚中插入相应的域代码，然后按<code>F9</code>更新即可。</p>
 
     </div>
 
