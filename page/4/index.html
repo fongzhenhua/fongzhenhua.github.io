@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">550</span>
+          <span class="site-state-item-count">551</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -295,6 +295,264 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/31/LaTeX%E6%96%87%E6%A1%A3%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F%E5%85%A8%E9%9D%A2%E8%A7%A3%E6%9E%90%EF%BC%9A%E4%BA%94%E7%A7%8D%E6%96%B9%E6%B3%95%E7%9A%84%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E4%B8%8E%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/03/31/LaTeX%E6%96%87%E6%A1%A3%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F%E5%85%A8%E9%9D%A2%E8%A7%A3%E6%9E%90%EF%BC%9A%E4%BA%94%E7%A7%8D%E6%96%B9%E6%B3%95%E7%9A%84%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">LaTeX文档组织方式全面解析：五种方法的综合评价与使用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-03-31 10:09:15 / 修改时间：10:21:05" itemprop="dateCreated datePublished" datetime="2025-03-31T10:09:15+08:00">2025-03-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在 <code>LaTeX</code>
+中，文档组织是提高效率、维护清晰结构的关键。本文将详细讲解五种常见的文档组织方式（<code>\input</code>、<code>import</code>
+宏包、<code>\include</code>、<code>\subfile</code> 和
+<code>standalone</code>
+宏包），并按功能和使用便捷程度进行综合评价排名，帮助你选择最适合的方法。</p>
+<h2 id="input">1. <code>\input</code></h2>
+<h3 id="功能">功能</h3>
+<ul>
+<li><code>\input&#123;filename&#125;</code>
+将指定文件的内容直接插入到当前文档中。</li>
+<li>文件名不需要扩展名（默认是 <code>.tex</code>）。</li>
+</ul>
+<h3 id="优点">优点</h3>
+<ul>
+<li><strong>简单易用</strong>：适合将小段内容或代码片段嵌入主文档。</li>
+<li><strong>灵活轻便</strong>：不会引入额外的结构，适用于任何规模的文档。</li>
+<li><strong>无额外开销</strong>：不会生成额外的辅助文件，也不会影响编译流程。</li>
+</ul>
+<h3 id="使用场景">使用场景</h3>
+<ul>
+<li>插入公式、表格、代码片段等较小的内容。</li>
+<li>将章节或部分拆分为多个文件以便于管理，但不涉及复杂的文档结构。</li>
+</ul>
+<h3 id="推荐目录结构">推荐目录结构</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">project/</span><br><span class="line">│</span><br><span class="line">├── main.tex                <span class="comment"># 主文档文件</span></span><br><span class="line">├── introduction.tex         <span class="comment"># 引言部分</span></span><br><span class="line">├── methods.tex              <span class="comment"># 方法论部分</span></span><br><span class="line">├── results.tex              <span class="comment"># 结果分析部分</span></span><br><span class="line">└── conclusion.tex           <span class="comment"># 结论部分</span></span><br></pre></td></tr></table></figure>
+<h2 id="import-宏包">2. <code>import</code> 宏包</h2>
+<h3 id="功能-1">功能</h3>
+<ul>
+<li><code>import</code>
+宏包提供了更强大的文件包含功能，尤其是对于嵌套目录结构的支持。</li>
+<li>提供了两个主要命令：<code>\import&#123;path&#125;&#123;filename&#125;</code> 和
+<code>\subimport&#123;path&#125;&#123;filename&#125;</code>。</li>
+</ul>
+<h3 id="优点-1">优点</h3>
+<ul>
+<li><strong>支持相对路径引用</strong>：使得在复杂的项目中管理不同目录下的文件更加方便。</li>
+<li><strong>自动调整路径</strong>：<code>\subimport</code>
+命令会自动调整路径，使其相对于当前文件而不是主文档。</li>
+</ul>
+<h3 id="使用场景-1">使用场景</h3>
+<ul>
+<li>当项目中有多个层次的子目录时，使用 <code>import</code>
+可以简化文件路径的管理。</li>
+<li>在团队合作或者大型项目中，有助于维护清晰的文档结构。</li>
+</ul>
+<h3 id="示例目录结构">示例目录结构</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">project/</span><br><span class="line">│</span><br><span class="line">├── main.tex                <span class="comment"># 主文档文件</span></span><br><span class="line">├── sections/               <span class="comment"># 存放章节文件的目录</span></span><br><span class="line">│   ├── chapter1/           <span class="comment"># 章节1的目录</span></span><br><span class="line">│   │   ├── section1.tex    <span class="comment"># 章节1的部分1</span></span><br><span class="line">│   │   └── section2.tex    <span class="comment"># 章节1的部分2</span></span><br><span class="line">│   └── chapter2.tex        <span class="comment"># 章节2</span></span><br><span class="line">└── images/                 <span class="comment"># 图片资源目录（可选）</span></span><br></pre></td></tr></table></figure>
+<p>在 <code>main.tex</code> 中使用：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\usepackage</span>&#123;import&#125;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">\import</span>&#123;sections/chapter1/&#125;&#123;section1&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用-include">3. 使用 <code>\include</code></h2>
+<h3 id="功能-2">功能</h3>
+<ul>
+<li><code>\include&#123;filename&#125;</code>
+用于将指定文件的内容插入到主文档中，同时强制分页（会自动在插入点开始新一页）。</li>
+<li>需要配合 <code>\includeonly</code> 使用来选择性编译某些部分。</li>
+</ul>
+<h3 id="好处">好处</h3>
+<ul>
+<li><strong>模块化管理</strong>：适合将文档按章节或部分划分为独立的文件。</li>
+<li><strong>选择性编译</strong>：通过
+<code>\includeonly&#123;filename1, filename2&#125;</code>
+可以只编译指定的部分，从而加快编译速度。</li>
+<li><strong>自动生成辅助文件</strong>：每个 <code>\include</code>
+的文件都会生成独立的 <code>.aux</code>
+文件，便于管理交叉引用和书签。</li>
+</ul>
+<h3 id="使用场景-2">使用场景</h3>
+<ul>
+<li>编写长篇文档（如书籍、论文、报告），需要按章节划分文件。</li>
+<li>需要频繁修改某一部分内容时，可以通过 <code>\includeonly</code>
+提高编译效率。</li>
+</ul>
+<h3 id="注意事项">注意事项</h3>
+<ul>
+<li>强制分页可能不适合某些布局需求。</li>
+<li>不能在 <code>\input</code> 文件中嵌套使用
+<code>\include</code>。</li>
+</ul>
+<h3 id="推荐目录结构-1">推荐目录结构</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">project/</span><br><span class="line">│</span><br><span class="line">├── main.tex                <span class="comment"># 主文档文件</span></span><br><span class="line">├── chapters/               <span class="comment"># 存放章节文件的目录</span></span><br><span class="line">│   ├── introduction.tex    <span class="comment"># 引言部分</span></span><br><span class="line">│   ├── methods.tex         <span class="comment"># 方法论部分</span></span><br><span class="line">│   ├── results.tex         <span class="comment"># 结果分析部分</span></span><br><span class="line">│   └── conclusion.tex      <span class="comment"># 结论部分</span></span><br><span class="line">└── images/                 <span class="comment"># 图片资源目录（可选）</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用-subfile">4. 使用 <code>\subfile</code></h2>
+<h3 id="功能-3">功能</h3>
+<ul>
+<li><code>\subfile&#123;filename&#125;</code> 是 <code>subfiles</code>
+宏包提供的命令，允许子文件既可以作为独立文档编译，也可以被主文档包含。</li>
+<li>子文件需要使用 <code>\documentclass[main]&#123;subfiles&#125;</code>
+来指定主文档。</li>
+</ul>
+<h3 id="优点-2">优点</h3>
+<ul>
+<li><strong>独立编译</strong>：子文件可以单独编译，方便调试和查看效果。</li>
+<li><strong>统一管理</strong>：子文件继承主文档的设置（如页眉、页脚、宏包等），无需重复定义。</li>
+<li><strong>灵活性高</strong>：既能作为整体的一部分，又能独立运行，适合团队协作或复杂文档。</li>
+</ul>
+<h3 id="使用场景-3">使用场景</h3>
+<ul>
+<li>多人协作编写文档，每个人负责一个子文件。</li>
+<li>需要频繁单独查看某个部分的效果（如单个章节或附录）。</li>
+</ul>
+<h3 id="注意事项-1">注意事项</h3>
+<ul>
+<li>需要加载 <code>subfiles</code> 宏包。</li>
+<li>子文件需要正确配置
+<code>\documentclass[main]&#123;subfiles&#125;</code>，否则无法正常编译。</li>
+</ul>
+<h3 id="推荐目录结构-2">推荐目录结构</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">project/</span><br><span class="line">│</span><br><span class="line">├── main.tex                <span class="comment"># 主文档文件</span></span><br><span class="line">├── subfiles/               <span class="comment"># 存放子文件的目录</span></span><br><span class="line">│   ├── introduction.tex    <span class="comment"># 引言部分</span></span><br><span class="line">│   ├── methods.tex         <span class="comment"># 方法论部分</span></span><br><span class="line">│   ├── results.tex         <span class="comment"># 结果分析部分</span></span><br><span class="line">│   └── conclusion.tex      <span class="comment"># 结论部分</span></span><br><span class="line">└── preamble.tex            <span class="comment"># 预定义宏包、设置等（可选）</span></span><br></pre></td></tr></table></figure>
+<h2 id="standalone-宏包">5. <code>standalone</code> 宏包</h2>
+<h3 id="功能-4">功能</h3>
+<ul>
+<li><code>standalone</code>
+宏包允许你创建独立编译的小文档，并且这些小文档可以被包含到更大的文档中。</li>
+<li>它与 <code>\subfile</code>
+类似，但提供了更多的选项来控制输出格式和内容。</li>
+</ul>
+<h3 id="优点-3">优点</h3>
+<ul>
+<li><strong>独立编译</strong>：小文档可以单独编译成 PDF 或者 PNG
+等格式，方便快速查看效果。</li>
+<li><strong>灵活输出</strong>：可以通过设置选项来决定是否包含前言、页眉页脚等元素。</li>
+</ul>
+<h3 id="使用场景-4">使用场景</h3>
+<ul>
+<li>当你需要生成单个图形、表格或其他元素作为独立文件时非常有用。</li>
+<li>对于需要频繁预览特定部分结果的工作流程来说，<code>standalone</code>
+提供了极大的便利。</li>
+</ul>
+<h3 id="示例目录结构-1">示例目录结构</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">project/</span><br><span class="line">│</span><br><span class="line">├── main.tex                <span class="comment"># 主文档文件</span></span><br><span class="line">├── figures/                <span class="comment"># 存放图表文件的目录</span></span><br><span class="line">│   ├── figure1.tex         <span class="comment"># 图表1</span></span><br><span class="line">│   └── figure2.tex         <span class="comment"># 图表2</span></span><br><span class="line">└── preamble.tex            <span class="comment"># 预定义宏包、设置等（可选）</span></span><br></pre></td></tr></table></figure>
+<p>在 <code>figure1.tex</code> 中：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>[beamer,convert=&#123;density=300,size=1080x800,outext=.png&#125;]&#123;standalone&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="comment">% Your TikZ or other drawing code here</span></span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<p>然后，在 <code>main.tex</code> 中包含：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\usepackage</span>&#123;standalone&#125;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">\includestandalone</span>&#123;figures/figure1&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="综合排名">综合排名</h2>
+<table>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 13%" />
+<col style="width: 10%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr>
+<th>排名</th>
+<th>方法</th>
+<th>便捷性</th>
+<th>功能特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>\input</code></td>
+<td>高</td>
+<td>简单直接，适合包含小段内容或代码片段。</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>import</code> 宏包</td>
+<td>中到高</td>
+<td>支持复杂的目录结构，简化路径管理，适合多级子目录项目。</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>\include</code></td>
+<td>中等</td>
+<td>强制分页，支持选择性编译，适合长篇文档按章节划分。</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>\subfile</code></td>
+<td>中等</td>
+<td>子文件既可以独立编译也可以被主文档包含，适合团队协作和频繁单独查看部分内容。</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>standalone</code> 宏包</td>
+<td>中等</td>
+<td>适合生成独立的图表或其他元素，但在普通文档组织中略显复杂。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="总结">总结</h2>
+<p>尽管 <code>\input</code>、<code>\include</code> 和
+<code>\subfile</code> 是最常用的三种组织 LaTeX
+文档的方式，但在某些特定情况下，<code>import</code> 和
+<code>standalone</code>
+宏包也能够提供独特的解决方案，帮助更好地管理和组织文档。选择哪种方法取决于你的具体需求，包括项目的规模、复杂性以及是否需要对部分内容进行独立编译等。</p>
+<p>希望这篇文章能帮助你找到最适合自己的 LaTeX 文档组织方式！</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1698,151 +1956,8 @@ sudo 验证失败导致的账户锁定问题。</p>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/24/Paru%E7%9A%84%E5%A2%9E%E5%BC%BA%E4%B8%8B%E8%BD%BD%E8%84%9A%E6%9C%ACParia/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/03/24/Paru%E7%9A%84%E5%A2%9E%E5%BC%BA%E4%B8%8B%E8%BD%BD%E8%84%9A%E6%9C%ACParia/" class="post-title-link" itemprop="url">Paru的增强下载脚本Paria</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-03-24 14:17:13" itemprop="dateCreated datePublished" datetime="2025-03-24T14:17:13+08:00">2025-03-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>ArchLinux是一款备受推崇的Linux发行版，以其滚动更新机制、最新软件包支持和高度可定制性而闻名。然而，在使用Paru从AUR（Arch
-User
-Repository）安装软件时，很多用户遇到了因依赖于GitHub上的资源无法访问而导致的问题。为了解决这一挑战，我最初开发了名为“<a
-href="./2024/11/06/Paru的增强下载脚本ParuAxel">ParuAxel.sh</a>”的脚本，以帮助用户更顺畅地安装软件。</p>
-<p>随着进一步的优化升级，我决定采用更为高效的多线程下载工具Aria2，并对脚本进行了全面改进。为了更好地反映这些变化，我将这个新版本的脚本重命名为“Paria.sh”。通过使用Aria2，“<a
-target="_blank" rel="noopener" href="https://github.com/fungzhenhua/script">Paria.sh</a>”不仅解决了由于网络限制导致的GitHub资源访问问题，还大幅提升了下载速度与稳定性，为用户提供了一个更加流畅可靠的软件包管理体验。</p>
-<p>“Paria.sh”专注于增强ArchLinux用户的AUR软件安装过程，使得即使面对复杂的依赖关系或网络波动，也能轻松完成软件的下载与安装。它体现了我对提升用户体验的持续努力，旨在让每一位ArchLinux用户都能享受更加高效便捷的软件管理过程。</p>
-<h1 id="paria.sh脚本及其配置">Paria.sh脚本及其配置</h1>
-<div class="tabs" id="paria"><ul class="nav-tabs"><li class="tab active"><a href="#paria-1">Paria.sh</a></li><li class="tab"><a href="#paria-2">makepkg.conf</a></li><li class="tab"><a href="#paria-3">install</a></li></ul><div class="tab-content"><div class="tab-pane active" id="paria-1"><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/sh</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Program: Paria.sh</span></span><br><span class="line"><span class="comment"># Version: V2.0</span></span><br><span class="line"><span class="comment"># Author : Zhen-Hua Feng</span></span><br><span class="line"><span class="comment"># Email  : fengzhenhua@outlook.com</span></span><br><span class="line"><span class="comment"># Date   : 2025-03-24 11:45</span></span><br><span class="line"><span class="comment"># Copyright (C) 2023-2025 feng &lt;feng@arch&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Distributed under terms of the MIT license.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">GIT_DOMIN=`<span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$2</span>&quot;</span> | <span class="built_in">cut</span> -f3 -d<span class="string">&#x27;/&#x27;</span>`;</span><br><span class="line">GIT_OTHER=`<span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$2</span>&quot;</span> | <span class="built_in">cut</span> -f4- -d<span class="string">&#x27;/&#x27;</span>`;</span><br><span class="line">GIT_INIT=<span class="string">&quot;https://github.com/&quot;</span></span><br><span class="line">DNS_SERVERS=<span class="string">&quot;1.0.0.1,1.0.0.2,1.0.0.3&quot;</span></span><br><span class="line">GCF=/home/<span class="variable">$USER</span>/.gitconfig</span><br><span class="line">GIT_SIT=($(grep -oP <span class="string">&#x27;\[url\s+&quot;\Khttps://[^&quot;]+&#x27;</span> <span class="variable">$GCF</span>))</span><br><span class="line"><span class="function"><span class="title">mirror_available</span></span>() &#123;</span><br><span class="line">    <span class="built_in">local</span> url=<span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">    <span class="keyword">if</span> curl -fsL --max-time 5 --<span class="built_in">head</span> <span class="string">&quot;<span class="variable">$url</span>&quot;</span> &gt;/dev/null 2&gt;&amp;1; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">return</span> 0</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">return</span> 1</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">case</span> <span class="string">&quot;<span class="variable">$GIT_DOMIN</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">    <span class="string">&quot;github.com&quot;</span>)</span><br><span class="line">        GIT_URL=<span class="string">&quot;<span class="variable">$2</span>&quot;</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;Download from mirror <span class="variable">$GIT_URL</span>&quot;</span>;</span><br><span class="line">        /usr/bin/aria2c --async-dns-server=<span class="string">&quot;<span class="variable">$DNS_SERVERS</span>&quot;</span> --<span class="built_in">split</span>=12 --max-connection-per-server=15 -k 1M --auto-file-renaming=<span class="literal">false</span> -o <span class="string">&quot;<span class="variable">$1</span>&quot;</span> <span class="string">&quot;<span class="variable">$GIT_URL</span>&quot;</span> ;</span><br><span class="line">        <span class="keyword">if</span> [[ $? -ne 0 ]]; <span class="keyword">then</span></span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;[WARN] GitHub 原始地址下载失败，启动镜像检测...&quot;</span></span><br><span class="line">            <span class="keyword">if</span> [ -e <span class="variable">$GCF</span> ]; <span class="keyword">then</span></span><br><span class="line">                GIT_SIT=($(grep -oP <span class="string">&#x27;\[url\s+&quot;\Khttps://[^&quot;]+&#x27;</span> <span class="variable">$GCF</span>))</span><br><span class="line">                <span class="keyword">for</span> mirror <span class="keyword">in</span> <span class="string">&quot;<span class="variable">$&#123;GIT_SIT[@]&#125;</span>&quot;</span>; <span class="keyword">do</span></span><br><span class="line">                    <span class="keyword">if</span> [[ <span class="string">&quot;<span class="variable">$&#123;mirror&#125;</span>&quot;</span> =~ <span class="string">&quot;/$&quot;</span> ]]; <span class="keyword">then</span></span><br><span class="line">                        GIT_URL=<span class="string">&quot;<span class="variable">$&#123;mirror&#125;</span><span class="variable">$&#123;GIT_PATH&#125;</span>&quot;</span></span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                        GIT_URL=<span class="string">&quot;<span class="variable">$&#123;mirror&#125;</span>/<span class="variable">$&#123;GIT_PATH&#125;</span>&quot;</span></span><br><span class="line">                    <span class="keyword">fi</span></span><br><span class="line">                    <span class="keyword">if</span> mirror_available <span class="string">&quot;<span class="variable">$&#123;GIT_URL&#125;</span>&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                        /usr/bin/aria2c --<span class="built_in">split</span>=12 --max-connection-per-server=15 -k 1M --auto-file-renaming=<span class="literal">false</span> -o <span class="string">&quot;<span class="variable">$1</span>&quot;</span> <span class="string">&quot;<span class="variable">$GIT_URL</span>&quot;</span> ;</span><br><span class="line">                        <span class="keyword">if</span> [[ $? -eq 0 ]]; <span class="keyword">then</span></span><br><span class="line">                            <span class="built_in">exit</span> 0  <span class="comment"># 下载成功则退出</span></span><br><span class="line">                        <span class="keyword">else</span></span><br><span class="line">                            <span class="built_in">echo</span> <span class="string">&quot;[ERROR] 镜像下载失败: <span class="variable">$GIT_URL</span> (状态码: $?)&quot;</span> &gt;&amp;2</span><br><span class="line">                        <span class="keyword">fi</span></span><br><span class="line">                    <span class="keyword">fi</span></span><br><span class="line">                <span class="keyword">done</span></span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">            <span class="comment"># 所有镜像失败后直接退出（不回退 GitHub）</span></span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;[FATAL] 所有下载尝试失败，请检查网络或镜像配置&quot;</span></span><br><span class="line">            <span class="built_in">exit</span> 1</span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">        ;;</span><br><span class="line">    *)</span><br><span class="line">        /usr/bin/aria2c --<span class="built_in">split</span>=12 --max-connection-per-server=15 -k 1M --auto-file-renaming=<span class="literal">false</span> -o <span class="string">&quot;<span class="variable">$1</span>&quot;</span> <span class="string">&quot;<span class="variable">$2</span>&quot;</span> ;</span><br><span class="line">        ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="paria-2"><figure class="highlight sh"><figcaption><span>/etc/makepkg.conf 中对应DLAGENTS部分</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DLAGENTS=(<span class="string">&#x27;file::/usr/bin/curl -qgC - -o %o %u&#x27;</span></span><br><span class="line">          <span class="string">&#x27;ftp::/usr/bin/aria2c -s 15 -x 15 -k 1M --auto-file-renaming=false -o %o %u&#x27;</span></span><br><span class="line">          <span class="string">&#x27;http::/usr/bin/aria2c -s 15 -x 15 -k 1M --auto-file-renaming=false -o %o %u&#x27;</span></span><br><span class="line">          <span class="string">&#x27;https::/usr/bin/Paria %o %u&#x27;</span></span><br><span class="line">          <span class="string">&#x27;rsync::/usr/bin/rsync --no-motd -z %u %o&#x27;</span></span><br><span class="line">          <span class="string">&#x27;scp::/usr/bin/scp -C %u %o&#x27;</span>)</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="paria-3"><figure class="highlight sh"><figcaption><span>install.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/sh</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 项目：install.sh</span></span><br><span class="line"><span class="comment"># 版本：V1.4</span></span><br><span class="line"><span class="comment"># Copyright (C) 2023 feng &lt;feng@arch&gt;</span></span><br><span class="line"><span class="comment"># Distributed under terms of the MIT license.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -S --needed --noconfirm aria &amp;&gt; /dev/null</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">cp</span> ./makepkg.conf /etc/makepkg.conf</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">cp</span> ./Paria.sh  /usr/bin/Paria</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> 755 /usr/bin/Paria</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Paria 安装成功，paru配置完毕 !! &quot;</span></span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure></div></div></div>
-<div class="note primary"><p>注意为了方便您的使用，请将上述三个脚本文件放置在同一个目录下，然后赋于执行权限，运行<code>./intsll.sh</code>即可完成安装。</p>
-</div>
-<h1 id="paruaxel-与-paria-功能对比">ParuAxel 与 Paria 功能对比</h1>
-<table>
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 34%" />
-<col style="width: 48%" />
-</colgroup>
-<thead>
-<tr>
-<th>特性</th>
-<th>ParuAxel.sh (V1.4)</th>
-<th>Paria.sh (V2.0)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>下载工具</td>
-<td><code>curl</code>(单线)或<code>axel</code>(多线程)</td>
-<td><code>aria2c</code>（多线程，默认启用）</td>
-</tr>
-<tr>
-<td>镜像检测逻辑</td>
-<td>优先遍历镜像，失败后回退 GitHub</td>
-<td>先尝试原始地址，失败后遍历镜像，不自动回退</td>
-</tr>
-<tr>
-<td>URL 拼接处理</td>
-<td>简单拼接，可能产生双斜杠或路径错误</td>
-<td>检查结尾斜杠，确保路径拼接正确</td>
-</tr>
-<tr>
-<td>DNS 配置</td>
-<td>无</td>
-<td>自定义 DNS 服务器（Cloudflare）</td>
-</tr>
-<tr>
-<td>错误处理</td>
-<td>简单回退，无详细日志</td>
-<td>详细错误分级（WARN/ERROR/FATAL），明确退出码</td>
-</tr>
-<tr>
-<td>镜像检测方法</td>
-<td><code>wget --spider</code></td>
-<td><code>curl --head</code></td>
-</tr>
-<tr>
-<td>代码结构</td>
-<td>字符串处理复杂，多次替换</td>
-<td>使用正则提取配置，逻辑更简洁</td>
-</tr>
-</tbody>
-</table>
-<h1 id="git克隆修改为ssh">Git克隆修改为SSH</h1>
-<p>由于在执行依赖安装时，有时候<code>Paru</code>会调用<code>git clone</code>
-命令，但是默认是从 <code>https://github.com</code>
-克隆仓库，而当它无法访问时可以尝试配置好<code>ssh</code>后采用<code>ssh</code>方法来克隆，于是全局修改<code>https://github.com</code>为<code>git@github.com:github.com</code>.</p>
-<figure class="highlight sh"><figcaption><span>~/.gitconfig</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[user]</span><br><span class="line">	email = YourEmail</span><br><span class="line">	name = YourName</span><br><span class="line">[url <span class="string">&quot;git@github.com:&quot;</span>]</span><br><span class="line">	insteadOf = https://github.com/</span><br><span class="line">[init]</span><br><span class="line">	defaultBranch = main</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>

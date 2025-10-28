@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">550</span>
+          <span class="site-state-item-count">551</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -295,6 +295,103 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/07/Shell%E8%84%9A%E6%9C%AC%E8%8E%B7%E5%8F%96%E7%BB%88%E7%AB%AF%E5%B0%BA%E5%AF%B8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/07/Shell%E8%84%9A%E6%9C%AC%E8%8E%B7%E5%8F%96%E7%BB%88%E7%AB%AF%E5%B0%BA%E5%AF%B8/" class="post-title-link" itemprop="url">Shell脚本获取终端尺寸</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-08-07 19:52:59" itemprop="dateCreated datePublished" datetime="2025-08-07T19:52:59+08:00">2025-08-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-08-16 20:44:29" itemprop="dateModified" datetime="2025-08-16T20:44:29+08:00">2025-08-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在编写 shell
+脚本时经常使用的函数可以封闭到一个脚本中，然后其他脚本使用 source
+命令直接调用即可，这样不仅有利于新脚本的开发，更有利于维护。但是今天在编写新的脚本
+<code>chaos.sh</code>
+时调用了我之前在<code>diary.sh</code>中调用过的菜单脚本，然而却出现错误。一直提示"
+stty: 标准输入: 对设备不适当的 ioctl 操作" 。</p>
+<p>造成这个问题的原因是：使用 <code>Neovim</code>
+内置命令运行脚本时并没有真正在一个终端中运行，而菜单脚本使用<code>tty</code>获取终端的尺寸，此时没有可用的<code>tty</code>,
+因此出现报错。</p>
+<p>一个更健壮的获取终端尺寸的方法（在非终端环境下，如 Neovim
+<code>:!sh ./chaos.sh</code> 等也不会报错）,是使用<code>tput</code>,
+这是一具兼容度最好的方案。具体原因是</p>
+<ul>
+<li><code>tput</code> 会尝试从环境变量或<code>terminfo</code>
+中获取尺寸</li>
+<li>在非终端环境下返回空或错误，可用<code>||</code>提供默认值</li>
+<li>不会像<code>stty size</code> 那样报错</li>
+</ul>
+<p>一般情况下，使用<code>stty size</code> 与
+<code>tput</code>会获得相同的结果，为了确保与之前脚本的兼容性，修改获取尺寸函数为：</p>
+<figure class="highlight sh"><figcaption><span>~/.Share_Fun/Share_Fun_Menu.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列表程序</span></span><br><span class="line"><span class="function"><span class="title">DY_SET_SIZE</span></span>()&#123;</span><br><span class="line">    <span class="keyword">if</span> [ -t 0 ]; <span class="keyword">then</span></span><br><span class="line">        TTY_H=$(<span class="built_in">stty</span> size|awk <span class="string">&#x27;&#123;print $1&#125;&#x27;</span>)</span><br><span class="line">        TTY_W=$(<span class="built_in">stty</span> size|awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        TTY_H=$(tput lines 2&gt;/dev/null) || TTY_H=37</span><br><span class="line">        TTY_W=$(tput cols 2&gt;/dev/null) || TTY_W=147</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    <span class="built_in">let</span> TTY_H-=2</span><br><span class="line">&#125;</span><br><span class="line">DY_SET_SIZE</span><br></pre></td></tr></table></figure>
+<p>通过<code>[ -t 0 ]</code>来判断运行程序时是否在终端，若在终端仍然使用<code>stty size</code>获取终端尺寸，否则使用<code>tput</code>获取。这样重新定义获取尺寸函数后，问题彻底解决。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1183,162 +1280,8 @@ id="递归为当前目录及其子目录中的文件添加前缀">递归为当�
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/21/%E7%9E%AC%E5%8F%91%E4%B8%AD%E5%AD%90%E5%92%8C%E7%BC%93%E5%8F%91%E4%B8%AD%E5%AD%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/04/21/%E7%9E%AC%E5%8F%91%E4%B8%AD%E5%AD%90%E5%92%8C%E7%BC%93%E5%8F%91%E4%B8%AD%E5%AD%90/" class="post-title-link" itemprop="url">瞬发中子和缓发中子</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-04-21 20:53:52 / 修改时间：20:54:04" itemprop="dateCreated datePublished" datetime="2025-04-21T20:53:52+08:00">2025-04-21</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在核反应过程中，中子的释放可以分为两类：<strong>瞬发中子</strong>和<strong>缓发中子</strong>。它们的主要区别在于释放的时间尺度以及来源。</p>
-<h2 id="瞬发中子-prompt-neutrons">1. 瞬发中子 (Prompt Neutrons)</h2>
-<ul>
-<li><strong>定义</strong>:
-瞬发中子是指在核裂变发生后几乎立即释放出来的中子。</li>
-<li><strong>时间尺度</strong>: 它们通常在裂变发生后的 <span
-class="math inline">\(10^{-14}\)</span> 秒到 <span
-class="math inline">\(10^{-4}\)</span> 秒之间被释放。</li>
-<li><strong>特点</strong>:
-<ul>
-<li>数量较多，占裂变中子总数的绝大部分（约 99%）。</li>
-<li>能量分布较广，从几 keV 到十几 MeV 不等。</li>
-<li>对于维持链式反应至关重要，因为它们能够迅速引发新的裂变事件。</li>
-</ul></li>
-<li><strong>作用</strong>:
-<ul>
-<li>在核反应堆中，瞬发中子是维持链式反应的主要驱动力。</li>
-<li>由于其快速释放特性，瞬发中子对反应堆的动力学行为影响显著。</li>
-</ul></li>
-</ul>
-<h2 id="缓发中子-delayed-neutrons">2. 缓发中子 (Delayed Neutrons)</h2>
-<ul>
-<li><strong>定义</strong>:
-缓发中子是指由裂变产物（裂变碎片）经过一段时间衰变后释放出来的中子。</li>
-<li><strong>时间尺度</strong>:
-它们的释放时间比瞬发中子长得多，通常在几毫秒到几十秒之间。</li>
-<li><strong>特点</strong>:
-<ul>
-<li>数量较少，仅占裂变中子总数的约
-0.6%-1%（具体比例取决于裂变材料）。</li>
-<li>能量较低，一般在 0.1 MeV 左右。</li>
-<li>来源于特定的裂变产物（如某些放射性同位素），这些同位素在衰变过程中释放中子。</li>
-</ul></li>
-<li><strong>作用</strong>:
-<ul>
-<li>尽管数量较少，缓发中子在核反应堆控制中起着关键作用。</li>
-<li>它们延长了链式反应的时间响应，使得操作人员有足够的时间调整控制棒等参数，从而避免失控。</li>
-<li>缓发中子的存在大大提高了核反应堆的可控性。</li>
-</ul></li>
-</ul>
-<h2 id="比较">3. 比较</h2>
-<table>
-<colgroup>
-<col style="width: 24%" />
-<col style="width: 39%" />
-<col style="width: 36%" />
-</colgroup>
-<thead>
-<tr>
-<th>特性</th>
-<th>瞬发中子</th>
-<th>缓发中子</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>释放时间</strong></td>
-<td><span class="math inline">\(10^{-14}\)</span> 秒到 <span
-class="math inline">\(10^{-4}\)</span> 秒</td>
-<td>几毫秒到几十秒</td>
-</tr>
-<tr>
-<td><strong>占比</strong></td>
-<td>约 99%</td>
-<td>约 0.6%-1%</td>
-</tr>
-<tr>
-<td><strong>能量范围</strong></td>
-<td>几 keV 到十几 MeV</td>
-<td>0.1 MeV 左右</td>
-</tr>
-<tr>
-<td><strong>来源</strong></td>
-<td>直接来自核裂变过程</td>
-<td>来自裂变产物的放射性衰变</td>
-</tr>
-<tr>
-<td><strong>对反应堆的影响</strong></td>
-<td>维持链式反应</td>
-<td>提高反应堆的可控性</td>
-</tr>
-</tbody>
-</table>
-<h2 id="总结">4. 总结</h2>
-<p>瞬发中子和缓发中子在核裂变过程中扮演着不同的角色。瞬发中子是链式反应的主要驱动力，而缓发中子虽然数量少，但对反应堆的稳定性和控制至关重要。理解这两者的特性和差异，对于核能工程和反应堆设计具有重要意义。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>

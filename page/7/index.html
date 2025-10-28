@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">550</span>
+          <span class="site-state-item-count">551</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -295,6 +295,106 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/19/%E9%9A%90%E5%BC%8F%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/02/19/%E9%9A%90%E5%BC%8F%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E9%80%9A%E4%BF%97%E8%A7%A3%E9%87%8A/" class="post-title-link" itemprop="url">隐式蒙特卡洛方法通俗解释</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-02-19 17:07:29" itemprop="dateCreated datePublished" datetime="2025-02-19T17:07:29+08:00">2025-02-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="隐式蒙特卡洛方法通俗解释">隐式蒙特卡洛方法通俗解释</h1>
+<p>隐式蒙特卡洛（Implicit Monte Carlo,
+IMC）方法是一种处理复杂系统中随机过程的高级数值模拟技术。为了帮助大家更好地理解IMC的核心思想，本文通过三个贴近生活的例子进行解释。</p>
+<h2 id="例子一烤面包">例子一：烤面包</h2>
+<p>想象你在做一个实验，目的是了解如何最有效地用烤箱烤好一片面包。在这个过程中，你有两个关键因素需要考虑：烤箱的温度和面包吸收热量并变热的速度。</p>
+<h3 id="传统方法的问题">传统方法的问题</h3>
+<p>如果按照传统的方法来做这个实验，你可能会频繁地检查面包的状态，并根据当前面包的热度调整烤箱的温度。这样做可能导致难以控制面包的加热过程，尤其是在快速加热而不让它烧焦的时候。</p>
+<h3 id="隐式蒙特卡洛方法">隐式蒙特卡洛方法</h3>
+<p>在每个步骤中，除了观察当前面包的热度外，你还尝试估计接下来一段时间内面包将会变得多么热。基于这种预估，你调整烤箱的温度设置或加热时间。比如，如果预估到面包很快就会太热，你就降低烤箱的温度；反之，如果觉得加热不够快，你就增加温度或延长加热时间。</p>
+<hr />
+<h2 id="例子二加热游泳池">例子二：加热游泳池</h2>
+<p>假设你有一个室外的大型游泳池，你想通过太阳能加热系统来加热水温。</p>
+<h3 id="传统方法的挑战">传统方法的挑战</h3>
+<p>如果你使用传统的加热方法，你会根据当前水温来决定是否需要更多的热量。这种方法难以适应快速变化的环境条件，如天气突然变冷或变暖。</p>
+<h3 id="隐式蒙特卡洛方法的应用">隐式蒙特卡洛方法的应用</h3>
+<p>首先，你不会只看当前的水温来做决策。相反，你会考虑未来的天气预报、一天中不同时间段的太阳强度等因素，预测接下来几个小时甚至几天内水温的变化趋势。基于这些预测，你可以更智能地调整太阳能加热系统的运行，以实现更加稳定和高效的加热过程。</p>
+<hr />
+<h2 id="例子三和面">例子三：和面</h2>
+<p>假设你需要准备2斤和好的面团，但是仅凭经验和直觉来加水和面粉（即传统的方法），可能会遇到以下问题：</p>
+<h3 id="传统方法">传统方法</h3>
+<p>当你发现面团太湿时，就加面粉；如果面团太干，则加水。这样反复调整可能导致最终使用的材料远超过最初计划的量。</p>
+<h3 id="隐式蒙特卡洛方法-1">隐式蒙特卡洛方法</h3>
+<p>在开始和面前，你可以先做一个小规模的实验或根据经验预估，比如，如果你加了一定量的水后，估计需要多少面粉才能达到理想的湿度。基于上述预估，你可以做出更精确的调整，少量多次地添加面粉，并随时观察面团的状态，避免过度纠正带来的问题。</p>
+<hr />
+<p>这三个例子共同展示了隐式蒙特卡洛方法的核心思想：<strong>不仅仅是基于当前状态做决策，还要考虑到未来可能的状态及其对当前决策的影响</strong>。这种方法允许我们在面对复杂系统时做出更加稳定和有效的调整，无论是物理模拟还是日常生活中的应用。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1294,111 +1394,8 @@ target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/ask/sof
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/19/%E4%BD%BF%E7%94%A8dig%E6%89%B9%E9%87%8F%E6%9F%A5%E8%AF%A2IP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/01/19/%E4%BD%BF%E7%94%A8dig%E6%89%B9%E9%87%8F%E6%9F%A5%E8%AF%A2IP/" class="post-title-link" itemprop="url">使用dig批量查询IP</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-01-19 19:27:24" itemprop="dateCreated datePublished" datetime="2025-01-19T19:27:24+08:00">2025-01-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="dig-命令简介"><code>dig</code> 命令简介</h1>
-<p><code>dig</code>（Domain Information Groper）是 Linux 和 Unix
-系统中用于查询 DNS（域名系统）的强大工具。它提供了对 DNS
-查询的详细控制，并且可以用来执行各种类型的 DNS 查询，包括但不限于 A
-记录、MX 记录、NS 记录、CNAME 记录、TXT 记录等。<code>dig</code>
-是网络管理员和开发者调试 DNS
-问题、验证域名配置以及获取有关互联网资源信息的重要工具。</p>
-<h2 id="主要特点">主要特点</h2>
-<ul>
-<li><strong>多功能性</strong>：支持多种查询类型和选项，能够满足复杂的
-DNS 查询需求。</li>
-<li><strong>详细的输出</strong>：提供详尽的查询结果信息，默认情况下输出格式易于阅读，同时也支持简洁模式（如
-<code>+short</code>）。</li>
-<li><strong>灵活性</strong>：用户可以通过命令行参数自定义查询行为，例如指定
-DNS 服务器、设置查询超时时间、递归查询等。</li>
-<li><strong>批处理能力</strong>：支持从文件批量读取域名进行查询（使用
-<code>-f</code> 参数），适合自动化脚本或大规模 DNS 数据收集。</li>
-</ul>
-<h2 id="基本用法">基本用法</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig [选项] [域名] [记录类型] </span><br></pre></td></tr></table></figure>
-<h3 id="查询特定dns服务器">查询特定DNS服务器</h3>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig @8.8.8.8 www.baidu.com</span><br></pre></td></tr></table></figure>
-<h3 id="批量查询文件">批量查询文件</h3>
-<p>创建一个包含域名列表的文本文件，并使用<code>-f</code>参数进行批量查询。</p>
-<div class="tabs" id="批量查询"><ul class="nav-tabs"><li class="tab active"><a href="#批量查询-1">批量查询文件</a></li><li class="tab"><a href="#批量查询-2">domains.txt</a></li></ul><div class="tab-content"><div class="tab-pane active" id="批量查询-1"><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig -f domains.txt</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="批量查询-2"><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">www.baidu.com</span><br><span class="line">www.bing.com</span><br><span class="line">www.sina.com</span><br></pre></td></tr></table></figure></div></div></div>
-<h3 id="批量查询数组">批量查询数组</h3>
-<p>创建一个包含域名列表的数组，并使用<code>-f</code>参数进行批量查询。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MH=(</span><br><span class="line">www.baidu.com</span><br><span class="line">www.bing.com</span><br><span class="line">www.sina.com</span><br><span class="line">)</span><br><span class="line"><span class="built_in">printf</span> <span class="string">&quot;%s\n&quot;</span> <span class="string">&quot;<span class="variable">$&#123;MH[@]&#125;</span>&quot;</span> | dig @119.29.29.29 -f /dev/stdin +noall +answer | awk <span class="string">&#x27;&#123;print $5, $1&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>

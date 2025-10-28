@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">550</span>
+          <span class="site-state-item-count">551</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -295,6 +295,149 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/24/Paru%E7%9A%84%E5%A2%9E%E5%BC%BA%E4%B8%8B%E8%BD%BD%E8%84%9A%E6%9C%ACParia/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/03/24/Paru%E7%9A%84%E5%A2%9E%E5%BC%BA%E4%B8%8B%E8%BD%BD%E8%84%9A%E6%9C%ACParia/" class="post-title-link" itemprop="url">Paru的增强下载脚本Paria</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-03-24 14:17:13" itemprop="dateCreated datePublished" datetime="2025-03-24T14:17:13+08:00">2025-03-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>ArchLinux是一款备受推崇的Linux发行版，以其滚动更新机制、最新软件包支持和高度可定制性而闻名。然而，在使用Paru从AUR（Arch
+User
+Repository）安装软件时，很多用户遇到了因依赖于GitHub上的资源无法访问而导致的问题。为了解决这一挑战，我最初开发了名为“<a
+href="./2024/11/06/Paru的增强下载脚本ParuAxel">ParuAxel.sh</a>”的脚本，以帮助用户更顺畅地安装软件。</p>
+<p>随着进一步的优化升级，我决定采用更为高效的多线程下载工具Aria2，并对脚本进行了全面改进。为了更好地反映这些变化，我将这个新版本的脚本重命名为“Paria.sh”。通过使用Aria2，“<a
+target="_blank" rel="noopener" href="https://github.com/fungzhenhua/script">Paria.sh</a>”不仅解决了由于网络限制导致的GitHub资源访问问题，还大幅提升了下载速度与稳定性，为用户提供了一个更加流畅可靠的软件包管理体验。</p>
+<p>“Paria.sh”专注于增强ArchLinux用户的AUR软件安装过程，使得即使面对复杂的依赖关系或网络波动，也能轻松完成软件的下载与安装。它体现了我对提升用户体验的持续努力，旨在让每一位ArchLinux用户都能享受更加高效便捷的软件管理过程。</p>
+<h1 id="paria.sh脚本及其配置">Paria.sh脚本及其配置</h1>
+<div class="tabs" id="paria"><ul class="nav-tabs"><li class="tab active"><a href="#paria-1">Paria.sh</a></li><li class="tab"><a href="#paria-2">makepkg.conf</a></li><li class="tab"><a href="#paria-3">install</a></li></ul><div class="tab-content"><div class="tab-pane active" id="paria-1"><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/sh</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Program: Paria.sh</span></span><br><span class="line"><span class="comment"># Version: V2.0</span></span><br><span class="line"><span class="comment"># Author : Zhen-Hua Feng</span></span><br><span class="line"><span class="comment"># Email  : fengzhenhua@outlook.com</span></span><br><span class="line"><span class="comment"># Date   : 2025-03-24 11:45</span></span><br><span class="line"><span class="comment"># Copyright (C) 2023-2025 feng &lt;feng@arch&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Distributed under terms of the MIT license.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">GIT_DOMIN=`<span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$2</span>&quot;</span> | <span class="built_in">cut</span> -f3 -d<span class="string">&#x27;/&#x27;</span>`;</span><br><span class="line">GIT_OTHER=`<span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$2</span>&quot;</span> | <span class="built_in">cut</span> -f4- -d<span class="string">&#x27;/&#x27;</span>`;</span><br><span class="line">GIT_INIT=<span class="string">&quot;https://github.com/&quot;</span></span><br><span class="line">DNS_SERVERS=<span class="string">&quot;1.0.0.1,1.0.0.2,1.0.0.3&quot;</span></span><br><span class="line">GCF=/home/<span class="variable">$USER</span>/.gitconfig</span><br><span class="line">GIT_SIT=($(grep -oP <span class="string">&#x27;\[url\s+&quot;\Khttps://[^&quot;]+&#x27;</span> <span class="variable">$GCF</span>))</span><br><span class="line"><span class="function"><span class="title">mirror_available</span></span>() &#123;</span><br><span class="line">    <span class="built_in">local</span> url=<span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">    <span class="keyword">if</span> curl -fsL --max-time 5 --<span class="built_in">head</span> <span class="string">&quot;<span class="variable">$url</span>&quot;</span> &gt;/dev/null 2&gt;&amp;1; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">return</span> 0</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">return</span> 1</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">case</span> <span class="string">&quot;<span class="variable">$GIT_DOMIN</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">    <span class="string">&quot;github.com&quot;</span>)</span><br><span class="line">        GIT_URL=<span class="string">&quot;<span class="variable">$2</span>&quot;</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;Download from mirror <span class="variable">$GIT_URL</span>&quot;</span>;</span><br><span class="line">        /usr/bin/aria2c --async-dns-server=<span class="string">&quot;<span class="variable">$DNS_SERVERS</span>&quot;</span> --<span class="built_in">split</span>=12 --max-connection-per-server=15 -k 1M --auto-file-renaming=<span class="literal">false</span> -o <span class="string">&quot;<span class="variable">$1</span>&quot;</span> <span class="string">&quot;<span class="variable">$GIT_URL</span>&quot;</span> ;</span><br><span class="line">        <span class="keyword">if</span> [[ $? -ne 0 ]]; <span class="keyword">then</span></span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;[WARN] GitHub 原始地址下载失败，启动镜像检测...&quot;</span></span><br><span class="line">            <span class="keyword">if</span> [ -e <span class="variable">$GCF</span> ]; <span class="keyword">then</span></span><br><span class="line">                GIT_SIT=($(grep -oP <span class="string">&#x27;\[url\s+&quot;\Khttps://[^&quot;]+&#x27;</span> <span class="variable">$GCF</span>))</span><br><span class="line">                <span class="keyword">for</span> mirror <span class="keyword">in</span> <span class="string">&quot;<span class="variable">$&#123;GIT_SIT[@]&#125;</span>&quot;</span>; <span class="keyword">do</span></span><br><span class="line">                    <span class="keyword">if</span> [[ <span class="string">&quot;<span class="variable">$&#123;mirror&#125;</span>&quot;</span> =~ <span class="string">&quot;/$&quot;</span> ]]; <span class="keyword">then</span></span><br><span class="line">                        GIT_URL=<span class="string">&quot;<span class="variable">$&#123;mirror&#125;</span><span class="variable">$&#123;GIT_PATH&#125;</span>&quot;</span></span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                        GIT_URL=<span class="string">&quot;<span class="variable">$&#123;mirror&#125;</span>/<span class="variable">$&#123;GIT_PATH&#125;</span>&quot;</span></span><br><span class="line">                    <span class="keyword">fi</span></span><br><span class="line">                    <span class="keyword">if</span> mirror_available <span class="string">&quot;<span class="variable">$&#123;GIT_URL&#125;</span>&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                        /usr/bin/aria2c --<span class="built_in">split</span>=12 --max-connection-per-server=15 -k 1M --auto-file-renaming=<span class="literal">false</span> -o <span class="string">&quot;<span class="variable">$1</span>&quot;</span> <span class="string">&quot;<span class="variable">$GIT_URL</span>&quot;</span> ;</span><br><span class="line">                        <span class="keyword">if</span> [[ $? -eq 0 ]]; <span class="keyword">then</span></span><br><span class="line">                            <span class="built_in">exit</span> 0  <span class="comment"># 下载成功则退出</span></span><br><span class="line">                        <span class="keyword">else</span></span><br><span class="line">                            <span class="built_in">echo</span> <span class="string">&quot;[ERROR] 镜像下载失败: <span class="variable">$GIT_URL</span> (状态码: $?)&quot;</span> &gt;&amp;2</span><br><span class="line">                        <span class="keyword">fi</span></span><br><span class="line">                    <span class="keyword">fi</span></span><br><span class="line">                <span class="keyword">done</span></span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">            <span class="comment"># 所有镜像失败后直接退出（不回退 GitHub）</span></span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;[FATAL] 所有下载尝试失败，请检查网络或镜像配置&quot;</span></span><br><span class="line">            <span class="built_in">exit</span> 1</span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">        ;;</span><br><span class="line">    *)</span><br><span class="line">        /usr/bin/aria2c --<span class="built_in">split</span>=12 --max-connection-per-server=15 -k 1M --auto-file-renaming=<span class="literal">false</span> -o <span class="string">&quot;<span class="variable">$1</span>&quot;</span> <span class="string">&quot;<span class="variable">$2</span>&quot;</span> ;</span><br><span class="line">        ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="paria-2"><figure class="highlight sh"><figcaption><span>/etc/makepkg.conf 中对应DLAGENTS部分</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DLAGENTS=(<span class="string">&#x27;file::/usr/bin/curl -qgC - -o %o %u&#x27;</span></span><br><span class="line">          <span class="string">&#x27;ftp::/usr/bin/aria2c -s 15 -x 15 -k 1M --auto-file-renaming=false -o %o %u&#x27;</span></span><br><span class="line">          <span class="string">&#x27;http::/usr/bin/aria2c -s 15 -x 15 -k 1M --auto-file-renaming=false -o %o %u&#x27;</span></span><br><span class="line">          <span class="string">&#x27;https::/usr/bin/Paria %o %u&#x27;</span></span><br><span class="line">          <span class="string">&#x27;rsync::/usr/bin/rsync --no-motd -z %u %o&#x27;</span></span><br><span class="line">          <span class="string">&#x27;scp::/usr/bin/scp -C %u %o&#x27;</span>)</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="paria-3"><figure class="highlight sh"><figcaption><span>install.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/sh</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 项目：install.sh</span></span><br><span class="line"><span class="comment"># 版本：V1.4</span></span><br><span class="line"><span class="comment"># Copyright (C) 2023 feng &lt;feng@arch&gt;</span></span><br><span class="line"><span class="comment"># Distributed under terms of the MIT license.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -S --needed --noconfirm aria &amp;&gt; /dev/null</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">cp</span> ./makepkg.conf /etc/makepkg.conf</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">cp</span> ./Paria.sh  /usr/bin/Paria</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> 755 /usr/bin/Paria</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Paria 安装成功，paru配置完毕 !! &quot;</span></span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure></div></div></div>
+<div class="note primary"><p>注意为了方便您的使用，请将上述三个脚本文件放置在同一个目录下，然后赋于执行权限，运行<code>./intsll.sh</code>即可完成安装。</p>
+</div>
+<h1 id="paruaxel-与-paria-功能对比">ParuAxel 与 Paria 功能对比</h1>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 34%" />
+<col style="width: 48%" />
+</colgroup>
+<thead>
+<tr>
+<th>特性</th>
+<th>ParuAxel.sh (V1.4)</th>
+<th>Paria.sh (V2.0)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>下载工具</td>
+<td><code>curl</code>(单线)或<code>axel</code>(多线程)</td>
+<td><code>aria2c</code>（多线程，默认启用）</td>
+</tr>
+<tr>
+<td>镜像检测逻辑</td>
+<td>优先遍历镜像，失败后回退 GitHub</td>
+<td>先尝试原始地址，失败后遍历镜像，不自动回退</td>
+</tr>
+<tr>
+<td>URL 拼接处理</td>
+<td>简单拼接，可能产生双斜杠或路径错误</td>
+<td>检查结尾斜杠，确保路径拼接正确</td>
+</tr>
+<tr>
+<td>DNS 配置</td>
+<td>无</td>
+<td>自定义 DNS 服务器（Cloudflare）</td>
+</tr>
+<tr>
+<td>错误处理</td>
+<td>简单回退，无详细日志</td>
+<td>详细错误分级（WARN/ERROR/FATAL），明确退出码</td>
+</tr>
+<tr>
+<td>镜像检测方法</td>
+<td><code>wget --spider</code></td>
+<td><code>curl --head</code></td>
+</tr>
+<tr>
+<td>代码结构</td>
+<td>字符串处理复杂，多次替换</td>
+<td>使用正则提取配置，逻辑更简洁</td>
+</tr>
+</tbody>
+</table>
+<h1 id="git克隆修改为ssh">Git克隆修改为SSH</h1>
+<p>由于在执行依赖安装时，有时候<code>Paru</code>会调用<code>git clone</code>
+命令，但是默认是从 <code>https://github.com</code>
+克隆仓库，而当它无法访问时可以尝试配置好<code>ssh</code>后采用<code>ssh</code>方法来克隆，于是全局修改<code>https://github.com</code>为<code>git@github.com:github.com</code>.</p>
+<figure class="highlight sh"><figcaption><span>~/.gitconfig</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[user]</span><br><span class="line">	email = YourEmail</span><br><span class="line">	name = YourName</span><br><span class="line">[url <span class="string">&quot;git@github.com:&quot;</span>]</span><br><span class="line">	insteadOf = https://github.com/</span><br><span class="line">[init]</span><br><span class="line">	defaultBranch = main</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -2061,109 +2204,8 @@ $ x=0 $ 处的三阶导数不存在），皮亚诺余项可能是唯一可行的
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/06/Gnome3%E6%98%BE%E7%A4%BA%E6%A1%8C%E9%9D%A2%E5%9B%BE%E6%A0%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/03/06/Gnome3%E6%98%BE%E7%A4%BA%E6%A1%8C%E9%9D%A2%E5%9B%BE%E6%A0%87/" class="post-title-link" itemprop="url">Gnome3显示桌面图标</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-03-06 10:59:38" itemprop="dateCreated datePublished" datetime="2025-03-06T10:59:38+08:00">2025-03-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="gtk4-desktop-icons-ng-ding-简介">Gtk4 Desktop Icons NG (DING)
-简介</h2>
-<p><code>Gtk4 Desktop Icons NG (DING)</code> 是一个GNOME
-Shell扩展，旨在为使用GTK4的GNOME桌面环境提供增强的桌面图标管理功能。这个扩展是对原有支持GTK3的<code>Desktop Icons NG</code>的一个更新版本，它带来了对GTK4的支持，并引入了一系列改进和新特性，以提升用户体验。</p>
-<p><img src="https://extensions.gnome.org/extension-data/screenshots/screenshot_5263_jRdjQyF.png" alt="Gtk4 Desktop Icons NG" style="width:40%;"></p>
-<h2 id="主要特点包括">主要特点包括：</h2>
-<ul>
-<li><p><strong>灵活的图标布局</strong>：图标可以自由放置在桌面上任何位置，或者选择对齐到网格，方便用户根据个人喜好组织桌面。</p></li>
-<li><p><strong>桌面链接创建</strong>：允许用户直接在桌面上创建文件或文件夹的快捷方式，便于快速访问重要资源。</p></li>
-<li><p><strong>GSconnect集成</strong>：通过与GSconnect的集成，用户可以直接从桌面发送文件到连接的设备（如手机），极大地提高了跨设备文件传输的便捷性。</p></li>
-<li><p><strong>拖放支持</strong>：支持将文件拖放到Dock、Dash上，或反向操作，即从Dock、Dash拖放到桌面上，增强了操作灵活性。</p></li>
-<li><p><strong>现代化的代码库</strong>：采用了更新的技术栈，包括移植到ESM模块和使用Gio菜单，确保了更好的性能和更高的稳定性。所有翻译工作都在Weblate平台上进行，确保多语言支持的质量。</p></li>
-<li><p><strong>异步函数</strong>：尽可能采用异步处理的方式实现各种功能，提升了响应速度和整体性能。</p></li>
-<li><p><strong>兼容性</strong>：支持Gnome
-45及更高版本，确保用户可以在最新的GNOME环境中享受这些改进。</p></li>
-</ul>
-<p>总的来说，<code>Gtk4 Desktop Icons NG (DING)</code>
-提供了一个更加现代化、功能丰富的解决方案来管理和定制你的GNOME桌面环境中的图标显示，特别适合那些希望获得更传统桌面体验并享受最新技术带来的优势的用户。</p>
-<h2 id="插件安装">插件安装</h2>
-<ol type="1">
-<li>访问插件网站：<a
-target="_blank" rel="noopener" href="https://extensions.gnome.org/?spm=5176.28103460.0.0.297c451eWSvcfg">GNOME
-Extensions</a>.</li>
-<li>搜索<code>Gtk4 Desktop Icons NG (DING)</code>,
-点击右侧的按钮<code>On</code>.</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
