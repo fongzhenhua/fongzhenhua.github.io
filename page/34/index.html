@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">552</span>
+          <span class="site-state-item-count">553</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -301,6 +301,127 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/05/%E8%A7%A3%E5%86%B3CDNJS%E8%AE%BF%E9%97%AE%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/01/05/%E8%A7%A3%E5%86%B3CDNJS%E8%AE%BF%E9%97%AE%E5%A4%AA%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">解决CDNJS访问太慢的问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-05 15:40:47" itemprop="dateCreated datePublished" datetime="2024-01-05T15:40:47+08:00">2024-01-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>CDNJS是一个JS资料库，可以直接在网页上应用它上面拥有的一些JS文件。为什么不直接引用自己下载下来的库而要引用上面的文件呢？因为引用上面的文件可以使用户浏览网站的速度更佳，可以提高用户体验。Next主题的CDNJS直接调用的<a
+target="_blank" rel="noopener" href="https://cdnjs.cloudflare.com">https://cdnjs.cloudflare.com</a>,
+按Next主题<a
+target="_blank" rel="noopener" href="https://theme-next.js.org/docs/advanced-settings/vendors.html?highlight=cdnjs">官方说法</a></p>
+<div class="note warning"><p>Particularly, if you are a Chinese blogger or most of your visits
+come from China, please note that the CDNJS is blocked in some parts of
+China, don't use it as your CDN provider.</p>
+</div>
+<p>Next主题默认检测网站根目录安装的插件，将其视为内部的插件，对于某些未检测到的插件视为第三方插件。知道这个特性后，我们首先要做的就是安装<code>@next-theme/plugins</code>,
+这样适配<code>Next</code>主题的特定插件就会在托管的网站内部加载，这可以保证<code>Next</code>的各项功能正常工作。操作如下：
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">diary --ThemeUpdate</span><br><span class="line">npm install @next-theme/plugins</span><br></pre></td></tr></table></figure></p>
+<p>先更新<code>Next</code>主题的目的是匹配最新的<code>@next-theme/plugins</code>,
+于是可以保证主题内部插件工作良好。然而<code>Next</code>主题的一些部分还采用了图标，这些图标并不在<code>@next-theme/plugins</code>范围内，其中最重要的<code>local-search</code>插件也会受到影响，所以需要加载<code>CDN</code>网站到第三方插件。目前国内有很多
+NPM 的
+CDN，可以支持相关包文件的高速访问下载，其中库比较全的CDN推荐以下三个：</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />Zstatic: <a
+target="_blank" rel="noopener" href="https://s4.zstatic.net">https://s4.zstatic.net</a></label></li>
+<li><label><input type="checkbox" checked="" />渺软: <a
+target="_blank" rel="noopener" href="https://cdn.onmicrosoft.cn">https://cdn.onmicrosoft.cn</a></label></li>
+<li><label><input type="checkbox" checked="" />南方科技大学: <a
+target="_blank" rel="noopener" href="https://mirrors.sustech.edu.cn/cdnjs">https://mirrors.sustech.edu.cn/cdnjs</a></label></li>
+<li><label><input type="checkbox" />饿了么1(unpkg): <a
+target="_blank" rel="noopener" href="https://github.elemencdn.com">https://github.elemencdn.com</a></label></li>
+<li><label><input type="checkbox" />饿了么2(unpkg): <a
+target="_blank" rel="noopener" href="https://npm.elemencdn.com">https://npm.elemencdn.com</a></label></li>
+<li><label><input type="checkbox" />知乎: <a
+target="_blank" rel="noopener" href="https://unpkg.zhimg.com">https://unpkg.zhimg.com</a></label></li>
+</ul>
+<p>其中<code>Zstatic</code>用到了镜像回源，也就是说只要访问一次，文件就会被存储到国内的服务器上，再也不用担心缓存过期了，所以网络文章建议优先用这个,但是在本博客主题上测试效果并不好。如果您使用
+<code>cdnjs.com</code> 只需要替换 <code>cdnjs.cloudflare.com</code> 为
+<code>s4.zstatic.net</code> 即可，如 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure> 替换成
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://s4.zstatic.net/ajax/libs/jquery/3.2.1/jquery.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>如果您使用 unpkg.com 只需要替换 unpkg.com 为 s4.zstatic.net/npm
+即可，如 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react@16.7.0/umd/react.production.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure> 替换成 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://s4.zstatic.net/npm/react@16.7.0/umd/react.production.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>批量替换代码： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> f -<span class="built_in">exec</span> sed -i <span class="string">&#x27;s#https://unpkg.com#https://s4.zstatic.net/npm#g&#x27;</span> &#123;&#125; +</span><br><span class="line">find . -<span class="built_in">type</span> f -<span class="built_in">exec</span> sed -i <span class="string">&#x27;s#https://cdnjs.cloudflare.com#https://s4.zstatic.net#</span></span><br></pre></td></tr></table></figure></p>
+<div class="note info"><ul>
+<li>Hexo
+Next主题在V8.19.0版本后就支持自定义cdnjs了，所以配置了<code>s4.zstatic.net</code>,
+测试访问速度可以。2024年01月22日发现本博客的<code>PDF</code>组件无法使用，于是判断是<code>s4.zstatic.net</code>同步的<code>js</code>不全导致，更换为<code>cdn.onmicrosoft.cn</code>
+或<code>mirrors.sustech.edu.cn/cdnjs</code>后问题解决，尽管在网络上看到文章推荐使用前者，但是在博客中表现来看后二者更佳，并且南科大镜像更加快速一些，完美适配了我的<code>Next</code>主题。</li>
+<li>2024年09月27日,
+南方科技大学的<code>cdn</code>镜像访问出现问题，于是为保证网站正常访问不得不修复此问题。经过研究，安装<code>@next-theme/plugins</code>后，可以保证<code>PDF</code>等<code>Next</code>主题依赖的插件由站内加载，其他部分则由<code>cdn</code>镜像加载，于是多数的镜像均可以正常使用了，为确保访问的稳定重新切换为<code>s4.zstatic.net</code>,
+经测试效果良好.</li>
+</ul>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1298,102 +1419,6 @@ target="_blank" rel="noopener" href="https://hub.yzuu.cf/rlue/vim-barbaric">rlue
 <div class="note warning"><p>注意：由于这些插件我并没有一一测试，所以请大家自行决定如何选择使用。</p>
 </div>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/21/Neovim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86Packer%E5%88%87%E6%8D%A2%E4%B8%BALazy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/21/Neovim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86Packer%E5%88%87%E6%8D%A2%E4%B8%BALazy/" class="post-title-link" itemprop="url">Neovim插件管理Packer切换为Lazy</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-21 19:39:29" itemprop="dateCreated datePublished" datetime="2023-12-21T19:39:29+08:00">2023-12-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>今天本想解决<code>Neovim</code>自动化配置脚本编写问题，意外得知<code>Packer</code>已经不再维护，其官方仓库<a
-target="_blank" rel="noopener" href="https://github.com/wbthomason/packer.nvim">packer.nvim</a>
-写到：</p>
-<div class="note info"><p>This repository is currently unmaintained. For the time being (as of
-August, 2023), it is recommended to use one of the following plugin
-managers instead:</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/folke/lazy.nvim">lazy.nvim</a>: Most
-stable and maintained plugin manager for Nvim.</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/lewis6991/pckr.nvim">pckr.nvim</a>:
-Spiritual successor of packer.nvim. Functional but not as stable as
-lazy.nvim.</li>
-</ul>
-</div>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/12/21/Neovim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86Packer%E5%88%87%E6%8D%A2%E4%B8%BALazy/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 
