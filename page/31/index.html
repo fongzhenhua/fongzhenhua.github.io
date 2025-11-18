@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">551</span>
+          <span class="site-state-item-count">552</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -301,6 +301,86 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/15/Vim%E5%92%8CNeovim%E8%AE%BE%E7%BD%AE%E6%96%87%E4%BB%B6%E7%BC%96%E7%A0%81%E8%87%AA%E5%8A%A8%E8%AF%86%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/04/15/Vim%E5%92%8CNeovim%E8%AE%BE%E7%BD%AE%E6%96%87%E4%BB%B6%E7%BC%96%E7%A0%81%E8%87%AA%E5%8A%A8%E8%AF%86%E5%88%AB/" class="post-title-link" itemprop="url">Vim和Neovim设置文件编码自动识别</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-15 17:57:56" itemprop="dateCreated datePublished" datetime="2024-04-15T17:57:56+08:00">2024-04-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天在打开同学的论文时发现乱码，这显然是由于他的LaTeX文件是在Windows下编辑的，默认编码为GBK编码，于是需要配置vim和neovim来自动转换编码到UTF-8才行。处理方法为：</p>
+<div class="tabs" id="encodings"><ul class="nav-tabs"><li class="tab active"><a href="#encodings-1">vim encodings</a></li><li class="tab"><a href="#encodings-2">neovim encodings</a></li></ul><div class="tab-content"><div class="tab-pane active" id="encodings-1"><figure class="highlight vim"><figcaption><span>~/.vimrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&quot; 设置编码为utf-8</span></span><br><span class="line"><span class="keyword">set</span> encoding=utf-<span class="number">8</span></span><br><span class="line"><span class="comment">&quot; 如下设置，则无论所打开的文件是否为utf-8编码，保存时都强制保存为utf-8</span></span><br><span class="line"><span class="comment">&quot;set fenc=utf-8</span></span><br><span class="line"><span class="comment">&quot; 设置多编码文件</span></span><br><span class="line"><span class="keyword">set</span> fileencodings=utf-<span class="number">8</span>,gbk,cp936,gb18030,big5,euc-jp,euc-kr,latin1,ucs-bom,ucs</span><br><span class="line"><span class="comment">&quot; 设置终端显示编码为utf-8</span></span><br><span class="line"><span class="keyword">set</span> termencoding=utf-<span class="number">8</span></span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="encodings-2"><figure class="highlight lua"><figcaption><span>~/.config/nvim/lua/lsp/base.lua</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 设置编码为UTF-8</span></span><br><span class="line">vim.o.encoding = <span class="string">&quot;utf-8&quot;</span></span><br><span class="line"><span class="comment">-- 如下设置，则无论所打开的文件是否为utf-8编码，保存时都强制保存为utf-8</span></span><br><span class="line"><span class="comment">-- vim.o.fenc=UTF-8</span></span><br><span class="line"><span class="comment">-- 设置多编码文件</span></span><br><span class="line">vim.o.fileencodings = <span class="string">&quot;utf-8,gbk,big5,cp936,gb18030,euc-jp,euc-kr,latin1,ucs-bom,ucs &quot;</span></span><br></pre></td></tr></table></figure></div></div></div>
+<div class="note primary"><p>由于<code>neovim</code>取消了对<code>termencoding</code>的支持，所以在<code>neovim</code>的配置中去除了这一项。详情参考<a
+target="_blank" rel="noopener" href="https://github.com/neovim/neovim/commit/abaabd1d0">commit-abaabd1d0</a></p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1098,92 +1178,6 @@ Icons”，如果你通过 KDE 系统设置安装，这套图标将会被自动�
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/03/06/11%E4%B8%AAKDE%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/02/02/%E6%8A%8AWindows11%E5%AE%89%E8%A3%85%E5%88%B0%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/02/02/%E6%8A%8AWindows11%E5%AE%89%E8%A3%85%E5%88%B0%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98/" class="post-title-link" itemprop="url">把Windows11安装到移动硬盘</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-02-02 23:45:22" itemprop="dateCreated datePublished" datetime="2024-02-02T23:45:22+08:00">2024-02-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>先来说明一下我想把Windows11安装到移动硬盘的原因，由于在Thinkpad-T490上安装了双系统，然后在WWAN口上加装了一块1T的2242固态硬盘，但是Linux识别硬件的方式是完全依靠Bios,
-而Windows则是依靠系统，于是这块硬盘在Windows下可以正常识别，但在Linux下不能识别。我的办公主力系统是Linux,
-而Windows几乎不怎么开启，所以这就导致了2242固态硬盘几乎不被使用，也就失去了加装的价值！综合考虑后，将2242固态硬盘制作成了移动硬盘，同时将原硬盘中的Windows彻底删除，然后在我的128G的固态U盘中安装上windows,
-这样只是在使用Windows时才插入U盘临时用一下，不使用时U盘就放在包里面就可以了。基于安装windows到U盘的需要，我选择了将知呼上的这篇文章完整转载到我的博客。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/02/02/%E6%8A%8AWindows11%E5%AE%89%E8%A3%85%E5%88%B0%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

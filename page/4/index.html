@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">551</span>
+          <span class="site-state-item-count">552</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -301,6 +301,129 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/05/Shell%E5%8F%82%E6%95%B0%E6%8B%93%E5%B1%95%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/04/05/Shell%E5%8F%82%E6%95%B0%E6%8B%93%E5%B1%95%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">Shell参数拓展详解：`${1:-}` 的作用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-04-05 14:22:17 / 修改时间：15:16:08" itemprop="dateCreated datePublished" datetime="2025-04-05T14:22:17+08:00">2025-04-05</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在编写 Shell 脚本时，参数扩展是一个非常实用的功能。本文将详细讲解
+<code>$&#123;1:-&#125;</code> 的含义、使用场景以及实际应用中的注意事项。</p>
+<hr />
+<h2 id="语法解析">语法解析</h2>
+<p><code>$&#123;1:-&#125;</code> 是一种参数扩展的语法，具体含义如下：</p>
+<ul>
+<li><strong><code>$&#123;1&#125;</code></strong>：引用第一个位置参数（<code>$1</code>），即脚本或函数的第一个命令行参数。</li>
+<li><strong><code>:-</code></strong>：这是一个默认值操作符，表示如果
+<code>$&#123;1&#125;</code> 为空或者未设置，则使用 <code>:</code>
+后面的值作为默认值。</li>
+</ul>
+<p>因此，<code>$&#123;1:-&#125;</code> 的作用可以总结为：</p>
+<ul>
+<li>如果 <code>$1</code> 已被设置且非空，则直接使用 <code>$1</code>
+的值。</li>
+<li>如果 <code>$1</code>
+未被设置或为空，则使用一个空字符串作为默认值。</li>
+</ul>
+<hr />
+<h2 id="使用场景">使用场景</h2>
+<p>在实际脚本中，<code>$&#123;1:-&#125;</code> 常用于处理用户的输入参数。例如，在
+<code>case</code> 语句中，它可以帮助我们优雅地处理未提供参数的情况：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="variable">$&#123;1:-&#125;</span> <span class="keyword">in</span></span><br><span class="line">    start)</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;Starting the service...&quot;</span></span><br><span class="line">        ;;</span><br><span class="line">    stop)</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;Stopping the service...&quot;</span></span><br><span class="line">        ;;</span><br><span class="line">    *)</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;Usage: <span class="variable">$0</span> &#123;start|stop&#125;&quot;</span></span><br><span class="line">        <span class="built_in">exit</span> 1</span><br><span class="line">        ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+<h2 id="解释">解释</h2>
+<h3 id="用户提供了参数">用户提供了参数：</h3>
+<p>如果用户运行脚本时提供了参数（如
+<code>./script.sh start</code>），<code>$&#123;1:-&#125;</code>
+会使用提供的参数值。 在这种情况下，<code>case</code> 语句会匹配到
+<code>start</code> 分支并执行相应的代码。</p>
+<h3 id="用户未提供参数">用户未提供参数：</h3>
+<p>如果用户未提供任何参数（如直接运行
+<code>./script.sh</code>），<code>$&#123;1:-&#125;</code> 会返回空字符串。
+此时，<code>case</code> 语句会匹配到 <code>*</code>
+分支，并提示用户正确的用法。</p>
+<p>通过这种方式，我们可以确保脚本在没有参数的情况下不会报错，同时还能给出友好的提示信息。</p>
+<hr />
+<h2 id="总结">总结</h2>
+<p>通过使用
+<code>$&#123;1:-&#125;</code>，我们可以确保脚本更加健壮和容错。这种参数扩展方式不仅适用于
+<code>$1</code>，还可以扩展到其他变量，例如
+<code>$&#123;var:-default&#125;</code>，用来为任意变量设置默认值。</p>
+<h3 id="优点">优点</h3>
+<ul>
+<li><strong>提高脚本的健壮性</strong>：避免因未定义变量而导致的错误。</li>
+<li><strong>简化逻辑</strong>：无需额外检查变量是否为空。</li>
+<li><strong>增强用户体验</strong>：当用户未提供参数时，能够给出清晰的提示。</li>
+</ul>
+<h3 id="注意事项">注意事项</h3>
+<ul>
+<li>如果需要为变量设置非空的默认值，可以直接在 <code>:-</code>
+后面指定，例如 <code>$&#123;1:-default_value&#125;</code>。</li>
+<li>如果只想在变量未定义时设置默认值，而不包括变量为空的情况，可以使用
+<code>$&#123;1-default_value&#125;</code>。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1841,109 +1964,6 @@ Shell
 <h1 id="总结">总结</h1>
 <p>无论是通过内置库还是自定义库，编程语言都提供了一套机制来促进代码复用。对于同一语言内的库调用相对简单，但对于跨语言调用，则需要借助标准化的接口或协议。理解这些基本原理有助于我们更好地设计和组织代码，同时也能在面对复杂系统时找到合适的解决方案。</p>
 <p>掌握如何有效地使用库以及如何跨越语言障碍实现功能共享，是每个程序员应当具备的核心技能之一。希望本文能为您提供有价值的见解，并帮助您更高效地进行软件开发。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/25/Sudo%E5%AF%86%E7%A0%81%E7%9A%84%E5%AD%98%E5%82%A8%E5%92%8C%E8%87%AA%E5%8A%A8%E8%B0%83%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/03/25/Sudo%E5%AF%86%E7%A0%81%E7%9A%84%E5%AD%98%E5%82%A8%E5%92%8C%E8%87%AA%E5%8A%A8%E8%B0%83%E7%94%A8/" class="post-title-link" itemprop="url">Sudo密码的存储和自动调用</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-03-25 21:02:07" itemprop="dateCreated datePublished" datetime="2025-03-25T21:02:07+08:00">2025-03-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="简介">简介</h2>
-<p><code>keysudo.sh</code>是一个用于安全存储和调用 sudo 密码的 Bash
-脚本工具，通过 GNOME Keyring
-实现敏感信息的加密存储。脚本设计目标是通过密钥环系统减少密码的明文暴露，同时解决
-sudo 验证失败导致的账户锁定问题。</p>
-<h2 id="主要功能">主要功能</h2>
-<ul>
-<li>🔐 自动将 sudo 密码存储至 GNOME Keyring</li>
-<li>🔄 支持 3 次验证尝试（可配置）</li>
-<li>⚠️ 智能检测系统环境（支持 Arch/RHEL 系）</li>
-<li>🔒 密码输入支持 systemd-ask-password 工具</li>
-<li>🛡️ 密码错误时自动重置 sudo 失败计数</li>
-<li>🚫 杜绝密码明文存储和传输</li>
-</ul>
-<h2 id="快速使用">快速使用</h2>
-<h3 id="基础用法">基础用法</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取密码（自动触发存储流程）</span></span><br><span class="line">syndns_password=$(./keysudo.sh)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用示例（建议立即清理变量）</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$syndns_password</span> | <span class="built_in">sudo</span> -S your_command</span><br><span class="line"><span class="built_in">unset</span> syndns_password</span><br></pre></td></tr></table></figure>
-<h3 id="安装依赖">安装依赖</h3>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Arch 系系统</span></span><br><span class="line"><span class="built_in">sudo</span> pacman -S pambase libsecret</span><br><span class="line"></span><br><span class="line"><span class="comment"># RHEL/CentOS 系系统</span></span><br><span class="line"><span class="built_in">sudo</span> yum install pam libsecret-tools</span><br></pre></td></tr></table></figure>
-<h3 id="卸载密码">卸载密码</h3>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">secret-tool clear syndns_password_key syndns_password</span><br></pre></td></tr></table></figure>
-<h2 id="常见问题">常见问题</h2>
-<h3 id="q1-密码无法存储到密钥环">Q1: 密码无法存储到密钥环</h3>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查密钥环服务状态</span></span><br><span class="line">gnome-keyring-daemon --start</span><br><span class="line"><span class="comment"># 验证存储功能</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;test&quot;</span> | secret-tool store --label=<span class="string">&quot;Test&quot;</span> test_key test_value</span><br></pre></td></tr></table></figure>
-<h3 id="q2-sudo-被锁定后如何处理">Q2: sudo 被锁定后如何处理</h3>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示当前失败计数（RHEL系）</span></span><br><span class="line"><span class="built_in">sudo</span> pam_tally2 --user <span class="variable">$USER</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制解锁所有用户（Arch系）</span></span><br><span class="line"><span class="built_in">sudo</span> faillock --reset</span><br></pre></td></tr></table></figure>
-<h2 id="程序源码">程序源码</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Program  : keysudo.sh</span></span><br><span class="line"><span class="comment"># Author   : Zhen-Hua Feng(冯振华)</span></span><br><span class="line"><span class="comment"># Email    : fengzhenhua@outlook.com</span></span><br><span class="line"><span class="comment"># Date     : 2025-01-10 20:41</span></span><br><span class="line"><span class="comment"># CopyRight: Copyright (C) 2025--</span></span><br><span class="line"><span class="comment"># License  : Distributed under terms of the MIT license.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 定义标识符</span></span><br><span class="line">SYN_KEY=<span class="string">&quot;syndns_password&quot;</span>  <span class="comment"># 密钥环中的唯一标识符</span></span><br><span class="line">SYN_SUDO_NUM_MAX=<span class="string">&quot;3&quot;</span>       <span class="comment"># 确保这个数值与您系统中sudo验证次数一致，以免进入死循环</span></span><br><span class="line"><span class="comment"># 检测依赖，确保secret-tool正确安装</span></span><br><span class="line"><span class="keyword">if</span> ! <span class="built_in">command</span> -v secret-tool &amp;&gt;/dev/null; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;错误：需要安装 secret-tool（包名：libsecret-tools）&quot;</span> &gt;&amp;2</span><br><span class="line">  <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment"># 探测系统sud解锁程序</span></span><br><span class="line">SYN_RES_CMD=<span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">command</span> -v faillock &amp;&gt;/dev/null; <span class="keyword">then</span></span><br><span class="line">    SYN_RES_CMD=<span class="string">&quot;faillock --user <span class="variable">$USER</span> --reset&quot;</span></span><br><span class="line"><span class="keyword">elif</span> <span class="built_in">command</span> -v pam_tally2 &amp;&gt;/dev/null; <span class="keyword">then</span></span><br><span class="line">    SYN_RES_CMD=<span class="string">&quot;pam_tally2 --user <span class="variable">$USER</span> --reset&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;错误：未找到可用SUDO解锁工具 !&quot;</span> &gt;&amp;2</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;请安装：Arch系安装pambase，RHEL系安装pam&quot;</span> &gt;&amp;2</span><br><span class="line">    <span class="built_in">exit</span> 1  <span class="comment"># 正确终止脚本</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment"># 存储密码到 GNOME Keyring</span></span><br><span class="line"><span class="comment"># 测试密码过程中存在sudo次数限制，如果sudo被锁定了，那本脚本在首次没有完成密码保存的工作后将处于锁定状态</span></span><br><span class="line"><span class="function"><span class="title">SYN_KEY_GET</span></span>()&#123;</span><br><span class="line">    <span class="built_in">local</span> SYN_AMT=<span class="string">&quot;<span class="variable">$SYN_SUDO_NUM_MAX</span>&quot;</span></span><br><span class="line">    <span class="keyword">while</span> [[ <span class="string">&quot;<span class="variable">$SYN_AMT</span>&quot;</span> -gt 0 ]]; <span class="keyword">do</span></span><br><span class="line">        SYN_KEY_X=$(secret-tool lookup syndns_password_key <span class="string">&quot;<span class="variable">$SYN_KEY</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> [[ -z <span class="string">&quot;<span class="variable">$SYN_KEY_X</span>&quot;</span> ]]; <span class="keyword">then</span></span><br><span class="line">            <span class="built_in">unset</span> SYN_KEY_DATA</span><br><span class="line">            <span class="comment"># 使用专业密码输入工具</span></span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">command</span> -v systemd-ask-password &amp;&gt;/dev/null; <span class="keyword">then</span></span><br><span class="line">                SYN_KEY_DATA=$(systemd-ask-password --<span class="built_in">timeout</span>=30 <span class="string">&quot;请求sudo密码:&quot;</span>)</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="built_in">printf</span> <span class="string">&quot;<span class="variable">$0</span> 请求输入sudo密码(30秒超时):&quot;</span> &gt;&amp;2</span><br><span class="line">                <span class="comment"># 增加超时后的清理逻辑</span></span><br><span class="line">                <span class="keyword">if</span> ! <span class="built_in">read</span> -rs -t 30 SYN_KEY_DATA; <span class="keyword">then</span></span><br><span class="line">                    <span class="built_in">printf</span> <span class="string">&quot;\n输入超时，操作取消。\n&quot;</span> &gt;&amp;2</span><br><span class="line">                    <span class="built_in">unset</span> SYN_KEY_DATA</span><br><span class="line">                    <span class="built_in">exit</span> 1</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">            <span class="keyword">if</span> [[ -z <span class="string">&quot;<span class="variable">$SYN_KEY_DATA</span>&quot;</span> ]]; <span class="keyword">then</span></span><br><span class="line">                <span class="built_in">printf</span> <span class="string">&quot;\n密码不能为空，请重新输入。\n&quot;</span> &gt;&amp;2</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">if</span> <span class="built_in">printf</span> <span class="string">&quot;%s&quot;</span> <span class="string">&quot;<span class="variable">$SYN_KEY_DATA</span>&quot;</span> | secret-tool store --label=<span class="string">&quot;Syndns Password&quot;</span> syndns_password_key <span class="string">&quot;<span class="variable">$SYN_KEY</span>&quot;</span>; <span class="keyword">then</span></span><br><span class="line">                    <span class="built_in">sudo</span> -k</span><br><span class="line">                    <span class="keyword">if</span> <span class="built_in">printf</span> <span class="string">&quot;%s&quot;</span> <span class="string">&quot;<span class="variable">$SYN_KEY_DATA</span>&quot;</span> | <span class="built_in">sudo</span> -S -v 2&gt;/dev/null; <span class="keyword">then</span></span><br><span class="line">                        <span class="comment"># 存储成功后立即清理</span></span><br><span class="line">                        <span class="built_in">unset</span> SYN_KEY_DATA</span><br><span class="line">                        <span class="built_in">printf</span> <span class="string">&quot;\n密码已成功存储到 GNOME Keyring 中。\n&quot;</span> &gt;&amp;2</span><br><span class="line">                        <span class="built_in">return</span> 0</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                        SYN_AMT=$((SYN_AMT - <span class="number">1</span>))</span><br><span class="line">                        SYN_FAIL_RES <span class="string">&quot;警告：当前系统可能需要手动重置失败计数!&quot;</span></span><br><span class="line">                    <span class="keyword">fi</span></span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    <span class="built_in">printf</span> <span class="string">&quot;\n无法存储密码，请检查 GNOME Keyring 是否可用。\n&quot;</span> &gt;&amp;2</span><br><span class="line">                    <span class="built_in">exit</span> 1</span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">sudo</span> -k</span><br><span class="line">            <span class="keyword">if</span> ! <span class="built_in">printf</span> <span class="string">&quot;%s&quot;</span> <span class="string">&quot;<span class="variable">$SYN_KEY_X</span>&quot;</span> | <span class="built_in">sudo</span> -S -v 2&gt;/dev/null; <span class="keyword">then</span></span><br><span class="line">                SYN_AMT=$((SYN_AMT - <span class="number">1</span>))</span><br><span class="line">                secret-tool clear syndns_password_key <span class="string">&quot;<span class="variable">$SYN_KEY</span>&quot;</span> <span class="comment"># 清空密码，重新循环才能进入设置</span></span><br><span class="line">                SYN_FAIL_RES <span class="string">&quot;警告：当前系统可能需要手动重置失败计数!&quot;</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="built_in">return</span> 0</span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line">    <span class="built_in">printf</span> <span class="string">&quot;尝试次数已达上限，操作终止。\n&quot;</span> &gt;&amp;2</span><br><span class="line">    SYN_FAIL_RES <span class="string">&quot;请切换至ROOT权限解除锁定: <span class="variable">$SYN_RES_CMD</span>&quot;</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">SYN_FAIL_RES</span></span>()&#123;</span><br><span class="line">    <span class="keyword">if</span> grep -qi <span class="string">&#x27;arch&#x27;</span> /etc/os-release 2&gt;/dev/null; <span class="keyword">then</span></span><br><span class="line">        faillock --user <span class="variable">$USER</span> --reset</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="comment"># 优先显示传入的定制化提示</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;<span class="variable">$1</span> \n&quot;</span> &gt;&amp;2</span><br><span class="line">        <span class="comment"># 补充建议命令（带sudo前缀）</span></span><br><span class="line">        [ -n <span class="string">&quot;<span class="variable">$SYN_RES_CMD</span>&quot;</span> ] &amp;&amp; <span class="built_in">echo</span> <span class="string">&quot;可尝试执行: sudo <span class="variable">$SYN_RES_CMD</span>&quot;</span> &gt;&amp;2</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">sudo</span> -k  <span class="comment"># 清除sudo缓存</span></span><br><span class="line">SYN_KEY_GET</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$SYN_KEY_X</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
