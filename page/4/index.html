@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">556</span>
+          <span class="site-state-item-count">557</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -301,6 +301,171 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/15/%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE%E4%B8%8E%E6%95%B4%E4%BD%93%E6%96%B9%E5%B7%AE%E7%9A%84%E5%85%B3%E7%B3%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/04/15/%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE%E4%B8%8E%E6%95%B4%E4%BD%93%E6%96%B9%E5%B7%AE%E7%9A%84%E5%85%B3%E7%B3%BB/" class="post-title-link" itemprop="url">样本方差与整体方差的关系</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-04-15 18:53:53 / 修改时间：20:27:13" itemprop="dateCreated datePublished" datetime="2025-04-15T18:53:53+08:00">2025-04-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="期望和方差定义">期望和方差定义</h1>
+<p>设整体样本数为<span class="math inline">\(N\)</span>,
+则期望定义为</p>
+<p><span class="math display">\[\begin{equation}\label{eq:qiwang}
+E(x)=\overline{x}=\frac{1}{N}\sum_{i=1}^Nx_i
+\end{equation}\]</span></p>
+<p>方差定义为</p>
+<p><span class="math display">\[\begin{equation}\label{eq:fangcha}
+Var(x)=\frac{1}{N}\sum_{i=1}^N(x_i-\overline{x})^2
+\end{equation}\]</span></p>
+<h1 id="基本关系">基本关系</h1>
+<h2 id="方差与期望的关系">方差与期望的关系</h2>
+<p>仍然取任意的两个常数<span class="math inline">\(a\)</span>和<span
+class="math inline">\(b\)</span>, 则</p>
+<p><span class="math display">\[\begin{equation}\label{eq:fangcha0}
+Var(x)=\frac{1}{N}\sum_{i=1}^N(x_i-\overline{x})^2=\frac{1}{N}\sum_{i=1}^Nx_i^2-2\frac{1}{N}\sum_{i=1}^Nx_i\overline{x}+\overline{x}^2
+=E(x^2)-[E(x)]^2
+\end{equation}\]</span></p>
+<h2 id="期望线性关系">期望线性关系</h2>
+<p>取任意的两个常数<span class="math inline">\(a\)</span>和<span
+class="math inline">\(b\)</span>, 则</p>
+<p><span class="math display">\[\begin{equation}\label{eq:qiwang0}
+E(ax+b)=\frac{1}{N}\sum_{i=1}^N (ax_i+b)=a(\frac{1}{N}\sum_{i=1}^N
+x_i)+b=aE(x)+b
+\end{equation}\]</span></p>
+<h2 id="方差线性关系">方差线性关系</h2>
+<p>取任意的两个常数<span class="math inline">\(a\)</span>和<span
+class="math inline">\(b\)</span>, 则</p>
+<p><span class="math display">\[\begin{equation}\label{eq:fangcha1}
+Var(ax+b)=\frac{1}{N}\sum_{i=1}^N \{(ax_i+b)-(a\overline{x}+b)\}^2
+=a^2\frac{1}{N}\sum_{i=1}^N(x_i-\overline{x})^2=a^2Var(x)
+\end{equation}\]</span></p>
+<h2 id="独立分布的期望">独立分布的期望</h2>
+<p>取任意的一个变量<span class="math inline">\(x_i\)</span>,
+它的期望等于无穷次取样后的平均值，即<span
+class="math inline">\(E(x_i)=\overline{x}\)</span>, 于是可得</p>
+<p><span class="math display">\[\begin{equation}\label{eq:dlqw}
+E(\sum_{i=1}^nx_i)=\sum_{i=1}^nE(x_i)=n\overline{x}
+\end{equation}\]</span></p>
+<h2 id="独立分布的方差">独立分布的方差</h2>
+<p><span class="math display">\[\begin{align}
+Var(\sum_{i=1}^nx_i)
+&amp;=\frac{1}{N}\sum_{k=1}^N (\sum_{i=1}^nx_{ki} -n\overline{x})^2
+\notag \\
+&amp;=\frac{1}{N}\sum_{k=1}^N [\sum_{i=1}^n(x_{ki} -\overline{x})]^2
+\notag \\
+&amp;=\sum_{i=1}^n\frac{1}{N}\sum_{k=1}^N (x_{ki}
+-\overline{x})^2+\frac{1}{N}\sum_{k=1}^N\sum_{j=1}^N(x_{ki}
+-\overline{x})(x_{ji} -\overline{x}) \notag \\
+&amp;=\sum_{i=1}^n\frac{1}{N}\sum_{k=1}^N (x_{ki} -\overline{x})^2
+\notag \\
+&amp;=nVar(x)
+\label{eq:dlfc}
+\end{align}\]</span></p>
+<h1 id="样本方差与整体方差的关系">样本方差与整体方差的关系</h1>
+<p>取样本数<span class="math inline">\(n\)</span>, 记样本期望记为<span
+class="math inline">\(\overline{x}\)</span>, 整体期望记为<span
+class="math inline">\(\mu\)</span>, 样本方差记为<span
+class="math inline">\(s^2\)</span>, 整体方差记为<span
+class="math inline">\(\sigma^2\)</span>, 则</p>
+<p><span class="math display">\[\begin{equation}
+\sum_{i=1}^n(x_i-\overline{x})^2
+=\sum_{i=1}^nx_i^2-n\overline{x}^2
+\label{eq:ybzt}
+\end{equation}\]</span></p>
+<p>对式<span class="math inline">\(\eqref{eq:ybzt}\)</span>求期望得
+<span class="math display">\[\begin{equation}\label{eq:ybzt1}
+E[\sum_{i=1}^n(x_i-\overline{x})^2]
+=E[\sum_{i=1}^nx_i^2]-nE[\overline{x}^2]
+\end{equation}\]</span></p>
+<p>由式<span class="math inline">\(\eqref{eq:fangcha0}\)</span>和式<span
+class="math inline">\(\eqref{eq:dlfc}\)</span>可得 <span
+class="math display">\[\begin{equation}\label{eq:ybzt2}
+E[\sum_{i=1}^nx_i^2]=nE(x_i^2)=n\sigma^2+n\mu^2
+\end{equation}\]</span></p>
+<p>再由式<span
+class="math inline">\(\eqref{eq:fangcha0}\)</span>和式<span
+class="math inline">\(\eqref{eq:dlqw}\)</span>可得 <span
+class="math display">\[\begin{equation}\label{eq:ybzt3}
+E[\overline{x}^2]=Var(\overline{x})+[E(\overline{x})]^2=\frac{1}{n}\sigma^2+\mu^2
+\end{equation}\]</span></p>
+<p>将式<span class="math inline">\(\eqref{eq:ybzt2}\)</span>与式<span
+class="math inline">\(\eqref{eq:ybzt3}\)</span>代入到式<span
+class="math inline">\(\eqref{eq:ybzt1}\)</span>得 <span
+class="math display">\[\begin{equation}\label{eq:ybzt4}
+E[\sum_{i=1}^n(x_i-\overline{x})^2]
+=(n-1)\sigma^2
+\end{equation}\]</span></p>
+<p>进一步可以写为 <span
+class="math display">\[\begin{equation}\label{eq:ybzt5}
+\sigma^2=E[\frac{1}{n-1}\sum_{i=1}^n(x_i-\overline{x})^2]
+\end{equation}\]</span></p>
+<p>式<span
+class="math inline">\(\eqref{eq:ybzt5}\)</span>表明，总体方差<span
+class="math inline">\(\sigma^2\)</span>可以由样本方差<span
+class="math inline">\(s^2\)</span>求期望获得。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1661,197 +1826,6 @@ Linux等著名的发行版。</li>
 <hr />
 <h2 id="总结">总结</h2>
 <p>设计一个支持命令映射和透明化执行的跨发行版包管理工具，不仅可以大幅降低用户的迁移成本，还能提升操作的一致性和效率。通过聚焦于主流发行版，我们能够确保为最广泛的用户群体提供最大的价值。这种工具不仅有助于简化Linux的使用体验，还能推动Linux在更广泛的用户群体中的普及。通过结合社区的力量，我们可以共同打造一个更加统一、灵活且易用的Linux生态系统。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/29/%E5%BE%AE%E8%A7%82%E6%88%AA%E9%9D%A2%E4%B8%8E%E5%AE%8F%E8%A7%82%E6%88%AA%E9%9D%A2%E7%9A%84%E5%85%B3%E7%B3%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/03/29/%E5%BE%AE%E8%A7%82%E6%88%AA%E9%9D%A2%E4%B8%8E%E5%AE%8F%E8%A7%82%E6%88%AA%E9%9D%A2%E7%9A%84%E5%85%B3%E7%B3%BB/" class="post-title-link" itemprop="url">微观截面 ($\sigma$) 与宏观截面 ($\Sigma$) 的关系</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-03-29 12:02:35 / 修改时间：12:06:22" itemprop="dateCreated datePublished" datetime="2025-03-29T12:02:35+08:00">2025-03-29</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="微观截面-sigma">微观截面 <span
-class="math inline">\(\sigma\)</span></h2>
-<ul>
-<li><strong>定义</strong>:
-单个原子核与中子发生相互作用的等效“靶面积”（单位：<span
-class="math inline">\(cm^2\)</span>）。</li>
-<li><strong>物理意义</strong>:
-中子通过该面积时才会与原子核发生碰撞，概率上等效为作用可能性。</li>
-</ul>
-<h2 id="宏观截面-sigma">宏观截面 <span
-class="math inline">\(\Sigma\)</span></h2>
-<ul>
-<li><strong>定义</strong>: <span class="math inline">\(\Sigma = N \cdot
-\sigma\)</span>，其中：
-<ul>
-<li><span class="math inline">\(N =\)</span>
-材料中单位体积的原子核数（<span
-class="math inline">\(cm^{-3}\)</span>），</li>
-<li><span class="math inline">\(\sigma =\)</span>
-单个原子核的总微观截面（<span
-class="math inline">\(cm^2\)</span>）。</li>
-</ul></li>
-<li><strong>单位推导</strong>: <span class="math inline">\(\Sigma =
-[cm^{-3}] \cdot [cm^2] = cm^{-1}\)</span>。</li>
-<li><strong>物理意义</strong>: 单位长度（1
-cm）内中子与材料中所有原子核发生碰撞的概率密度。</li>
-</ul>
-<h2 id="为什么单位是长度的倒数">为什么单位是“长度的倒数”？</h2>
-<ul>
-<li><strong>概率密度的本质</strong>:
-<ul>
-<li>若 <span class="math inline">\(\Sigma = 0.1 \,
-cm^{-1}\)</span>，表示中子每移动1 cm，平均有10%的概率发生碰撞。</li>
-<li>单位距离的碰撞概率：直接由<span
-class="math inline">\(\Sigma\)</span>的数值给出（<span
-class="math inline">\(\Sigma =\)</span> 概率/cm）。</li>
-</ul></li>
-<li><strong>与微观截面的联系</strong>:
-<ul>
-<li>宏观截面是微观截面在单位体积内的“总和”，但通过单位体积（<span
-class="math inline">\(cm^{-3}\)</span>）的归一化，最终转换为单位长度（<span
-class="math inline">\(cm^{-1}\)</span>）的概率密度。</li>
-</ul></li>
-</ul>
-<h2 id="名称中保留截面一词的原因">名称中保留“截面”一词的原因</h2>
-<ul>
-<li><strong>历史传承</strong>:
-<ul>
-<li>核物理中，“截面”最初描述单个原子核的等效靶面积（<span
-class="math inline">\(\sigma\)</span>）。</li>
-<li>当扩展到宏观材料时（<span class="math inline">\(\Sigma =
-N\sigma\)</span>），名称沿用“截面”，强调其源于微观相互作用的本质。</li>
-</ul></li>
-<li><strong>物理逻辑一致性</strong>:
-<ul>
-<li>微观截面 <span
-class="math inline">\(\sigma\)</span>：面积单位（<span
-class="math inline">\(cm^2\)</span>），描述单个原子核的相互作用概率。</li>
-<li>宏观截面 <span
-class="math inline">\(\Sigma\)</span>：概率密度单位（<span
-class="math inline">\(cm^{-1}\)</span>），但名称保留“截面”以体现其物理根源。</li>
-</ul></li>
-</ul>
-<h2 id="碰撞概率的数学表达">碰撞概率的数学表达</h2>
-<ul>
-<li><strong>单位距离内的概率</strong>:
-<ul>
-<li>移动距离<span class="math inline">\(L\)</span>时的总碰撞概率为：
-<span class="math display">\[
-P = 1 - e^{-\Sigma L}
-\]</span></li>
-<li>当 <span class="math inline">\(\Sigma L \ll 1\)</span>
-时，可近似为： <span class="math display">\[
-P \approx \Sigma L \quad (\text{例如: } \Sigma = 0.1 \, cm^{-1}, L = 0.5
-\, cm \Rightarrow P \approx 5\%)
-\]</span></li>
-</ul></li>
-</ul>
-<hr />
-<h3 id="实际应用示例">5. 实际应用示例</h3>
-<ul>
-<li><strong>计算宏观截面</strong>：
-<ul>
-<li>若材料密度 <span class="math inline">\(N = 10^{22} \,
-atoms/cm^3\)</span>，单个原子核的微观截面 <span
-class="math inline">\(\sigma_t = 10^{-24} \, cm^2\)</span>，则： <span
-class="math display">\[
-\Sigma_t = N \cdot \sigma_t = 10^{22} \times 10^{-24} = 0.01 \, cm^{-1}
-\]</span></li>
-<li>平均自由程 <span class="math inline">\(\lambda = \frac{1}{\Sigma_t}
-= \frac{1}{0.01} = 100 \, cm\)</span></li>
-</ul></li>
-<li><strong>物理意义</strong>：
-<ul>
-<li>中子需平均移动 100 cm 才会发生一次碰撞，每 1 cm 有 1%
-的碰撞概率。</li>
-</ul></li>
-</ul>
-<hr />
-<h3 id="中子输运方程中的体现">6. 中子输运方程中的体现</h3>
-<ul>
-<li><strong>未碰撞中子数的演化</strong>： <span class="math display">\[
-  N(r + \Omega v \Delta t, \Omega, E, t + \Delta t) = N(r, \Omega, E, t)
-[1 - \Sigma_t v \Delta t]
-  \]</span>
-<ul>
-<li><strong>物理逻辑</strong>：未碰撞的中子从位置 <span
-class="math inline">\(r\)</span> 移动到 <span class="math inline">\(r +
-\Omega v \Delta t\)</span>，其数量因碰撞概率 <span
-class="math inline">\(\Sigma_t v \Delta t\)</span> 而衰减。</li>
-</ul></li>
-</ul>
-<hr />
-<h3 id="总结">总结</h3>
-<ul>
-<li>宏观截面 <span class="math inline">\(\Sigma_t\)</span>
-是单位体积内原子核的等效总截面，单位为 <span
-class="math inline">\(cm^{-1}\)</span>，直接对应单位距离内的碰撞概率密度。</li>
-<li>名称中的“截面”保留了微观物理（<span
-class="math inline">\(\sigma\)</span>
-的靶面积）的基因，尽管在宏观尺度下单位已转换为概率密度。</li>
-</ul>
 
       
     </div>

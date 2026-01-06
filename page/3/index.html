@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">556</span>
+          <span class="site-state-item-count">557</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -301,6 +301,86 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/17/SuperTuxKart%E8%A7%A3%E9%94%81%E6%89%80%E6%9C%89%E5%85%B3%E5%8D%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/06/17/SuperTuxKart%E8%A7%A3%E9%94%81%E6%89%80%E6%9C%89%E5%85%B3%E5%8D%A1/" class="post-title-link" itemprop="url">SuperTuxKart解锁所有关卡</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-06-17 20:37:59 / 修改时间：20:47:12" itemprop="dateCreated datePublished" datetime="2025-06-17T20:37:59+08:00">2025-06-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>办公累了，偶尔也找款游戏玩玩，其中 SuperTuxKart 类似于 Windows
+下的泡泡卡丁车。由于 Linux
+的开源特性，我们可以直接修改配置文件而解锁所有关卡。方法是：</p>
+<ul>
+<li>找到本地配置文件
+<code>~/.config/supertuxkart/config-0.10/players.xml</code></li>
+<li>找到标签 <code>&lt;story-mode&gt;</code>, 然后修改
+<code>solved="none"</code> 为 <code>solved="easy"</code> 或
+<code>solved="hard"</code>.</li>
+<li>修改好的文件内容为： <figure class="highlight xml"><figcaption><span>~/.config/supertuxkart/config-0.10/players.xml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">story-mode</span> <span class="attr">first-time</span>=<span class="string">&quot;false&quot;</span> <span class="attr">finished</span>=<span class="string">&quot;false&quot;</span> <span class="attr">speedrun-finished</span>=<span class="string">&quot;false&quot;</span></span></span><br><span class="line"><span class="tag"><span class="attr">story-ms</span>=<span class="string">&quot;1023726&quot;</span> <span class="attr">speedrun-ms</span>=<span class="string">&quot;1291839&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">abyss</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">candela_city</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">cocoa_temple</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">cornfield_crossing</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">fortmagma</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">gp1</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">gp2</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">gp3</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">gp4</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">granparadiso_island</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">green_valley</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hacienda</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">lighthouse</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mansion</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mines</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">minigolf</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">olivermath</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">sandtrack</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">scotland</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">snowmountain</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">snowpeak</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">stk_enterprise</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">unlock_bonus_kart1</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">unlock_bonus_kart2</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">unlock_supertux</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">volcano_island</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">xr591</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">zengarden</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">story-mode</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1429,171 +1509,6 @@ eV</strong>）的中子，根据具体能量进一步分为：</p>
 <li>快中子屏蔽需先慢化，再用吸收剂捕获热中子</li>
 </ul></li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/15/%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE%E4%B8%8E%E6%95%B4%E4%BD%93%E6%96%B9%E5%B7%AE%E7%9A%84%E5%85%B3%E7%B3%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/04/15/%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE%E4%B8%8E%E6%95%B4%E4%BD%93%E6%96%B9%E5%B7%AE%E7%9A%84%E5%85%B3%E7%B3%BB/" class="post-title-link" itemprop="url">样本方差与整体方差的关系</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-04-15 18:53:53 / 修改时间：20:27:13" itemprop="dateCreated datePublished" datetime="2025-04-15T18:53:53+08:00">2025-04-15</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="期望和方差定义">期望和方差定义</h1>
-<p>设整体样本数为<span class="math inline">\(N\)</span>,
-则期望定义为</p>
-<p><span class="math display">\[\begin{equation}\label{eq:qiwang}
-E(x)=\overline{x}=\frac{1}{N}\sum_{i=1}^Nx_i
-\end{equation}\]</span></p>
-<p>方差定义为</p>
-<p><span class="math display">\[\begin{equation}\label{eq:fangcha}
-Var(x)=\frac{1}{N}\sum_{i=1}^N(x_i-\overline{x})^2
-\end{equation}\]</span></p>
-<h1 id="基本关系">基本关系</h1>
-<h2 id="方差与期望的关系">方差与期望的关系</h2>
-<p>仍然取任意的两个常数<span class="math inline">\(a\)</span>和<span
-class="math inline">\(b\)</span>, 则</p>
-<p><span class="math display">\[\begin{equation}\label{eq:fangcha0}
-Var(x)=\frac{1}{N}\sum_{i=1}^N(x_i-\overline{x})^2=\frac{1}{N}\sum_{i=1}^Nx_i^2-2\frac{1}{N}\sum_{i=1}^Nx_i\overline{x}+\overline{x}^2
-=E(x^2)-[E(x)]^2
-\end{equation}\]</span></p>
-<h2 id="期望线性关系">期望线性关系</h2>
-<p>取任意的两个常数<span class="math inline">\(a\)</span>和<span
-class="math inline">\(b\)</span>, 则</p>
-<p><span class="math display">\[\begin{equation}\label{eq:qiwang0}
-E(ax+b)=\frac{1}{N}\sum_{i=1}^N (ax_i+b)=a(\frac{1}{N}\sum_{i=1}^N
-x_i)+b=aE(x)+b
-\end{equation}\]</span></p>
-<h2 id="方差线性关系">方差线性关系</h2>
-<p>取任意的两个常数<span class="math inline">\(a\)</span>和<span
-class="math inline">\(b\)</span>, 则</p>
-<p><span class="math display">\[\begin{equation}\label{eq:fangcha1}
-Var(ax+b)=\frac{1}{N}\sum_{i=1}^N \{(ax_i+b)-(a\overline{x}+b)\}^2
-=a^2\frac{1}{N}\sum_{i=1}^N(x_i-\overline{x})^2=a^2Var(x)
-\end{equation}\]</span></p>
-<h2 id="独立分布的期望">独立分布的期望</h2>
-<p>取任意的一个变量<span class="math inline">\(x_i\)</span>,
-它的期望等于无穷次取样后的平均值，即<span
-class="math inline">\(E(x_i)=\overline{x}\)</span>, 于是可得</p>
-<p><span class="math display">\[\begin{equation}\label{eq:dlqw}
-E(\sum_{i=1}^nx_i)=\sum_{i=1}^nE(x_i)=n\overline{x}
-\end{equation}\]</span></p>
-<h2 id="独立分布的方差">独立分布的方差</h2>
-<p><span class="math display">\[\begin{align}
-Var(\sum_{i=1}^nx_i)
-&amp;=\frac{1}{N}\sum_{k=1}^N (\sum_{i=1}^nx_{ki} -n\overline{x})^2
-\notag \\
-&amp;=\frac{1}{N}\sum_{k=1}^N [\sum_{i=1}^n(x_{ki} -\overline{x})]^2
-\notag \\
-&amp;=\sum_{i=1}^n\frac{1}{N}\sum_{k=1}^N (x_{ki}
--\overline{x})^2+\frac{1}{N}\sum_{k=1}^N\sum_{j=1}^N(x_{ki}
--\overline{x})(x_{ji} -\overline{x}) \notag \\
-&amp;=\sum_{i=1}^n\frac{1}{N}\sum_{k=1}^N (x_{ki} -\overline{x})^2
-\notag \\
-&amp;=nVar(x)
-\label{eq:dlfc}
-\end{align}\]</span></p>
-<h1 id="样本方差与整体方差的关系">样本方差与整体方差的关系</h1>
-<p>取样本数<span class="math inline">\(n\)</span>, 记样本期望记为<span
-class="math inline">\(\overline{x}\)</span>, 整体期望记为<span
-class="math inline">\(\mu\)</span>, 样本方差记为<span
-class="math inline">\(s^2\)</span>, 整体方差记为<span
-class="math inline">\(\sigma^2\)</span>, 则</p>
-<p><span class="math display">\[\begin{equation}
-\sum_{i=1}^n(x_i-\overline{x})^2
-=\sum_{i=1}^nx_i^2-n\overline{x}^2
-\label{eq:ybzt}
-\end{equation}\]</span></p>
-<p>对式<span class="math inline">\(\eqref{eq:ybzt}\)</span>求期望得
-<span class="math display">\[\begin{equation}\label{eq:ybzt1}
-E[\sum_{i=1}^n(x_i-\overline{x})^2]
-=E[\sum_{i=1}^nx_i^2]-nE[\overline{x}^2]
-\end{equation}\]</span></p>
-<p>由式<span class="math inline">\(\eqref{eq:fangcha0}\)</span>和式<span
-class="math inline">\(\eqref{eq:dlfc}\)</span>可得 <span
-class="math display">\[\begin{equation}\label{eq:ybzt2}
-E[\sum_{i=1}^nx_i^2]=nE(x_i^2)=n\sigma^2+n\mu^2
-\end{equation}\]</span></p>
-<p>再由式<span
-class="math inline">\(\eqref{eq:fangcha0}\)</span>和式<span
-class="math inline">\(\eqref{eq:dlqw}\)</span>可得 <span
-class="math display">\[\begin{equation}\label{eq:ybzt3}
-E[\overline{x}^2]=Var(\overline{x})+[E(\overline{x})]^2=\frac{1}{n}\sigma^2+\mu^2
-\end{equation}\]</span></p>
-<p>将式<span class="math inline">\(\eqref{eq:ybzt2}\)</span>与式<span
-class="math inline">\(\eqref{eq:ybzt3}\)</span>代入到式<span
-class="math inline">\(\eqref{eq:ybzt1}\)</span>得 <span
-class="math display">\[\begin{equation}\label{eq:ybzt4}
-E[\sum_{i=1}^n(x_i-\overline{x})^2]
-=(n-1)\sigma^2
-\end{equation}\]</span></p>
-<p>进一步可以写为 <span
-class="math display">\[\begin{equation}\label{eq:ybzt5}
-\sigma^2=E[\frac{1}{n-1}\sum_{i=1}^n(x_i-\overline{x})^2]
-\end{equation}\]</span></p>
-<p>式<span
-class="math inline">\(\eqref{eq:ybzt5}\)</span>表明，总体方差<span
-class="math inline">\(\sigma^2\)</span>可以由样本方差<span
-class="math inline">\(s^2\)</span>求期望获得。</p>
 
       
     </div>

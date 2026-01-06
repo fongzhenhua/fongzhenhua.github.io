@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">556</span>
+          <span class="site-state-item-count">557</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -301,6 +301,86 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/05/ArchLinux%E9%95%BF%E6%97%B6%E9%97%B4%E4%B8%8D%E6%9B%B4%E6%96%B0%E5%AF%BC%E8%87%B4%E9%94%99%E8%AF%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/10/05/ArchLinux%E9%95%BF%E6%97%B6%E9%97%B4%E4%B8%8D%E6%9B%B4%E6%96%B0%E5%AF%BC%E8%87%B4%E9%94%99%E8%AF%AF/" class="post-title-link" itemprop="url">ArchLinux长时间不更新导致错误</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-10-05 23:21:59" itemprop="dateCreated datePublished" datetime="2024-10-05T23:21:59+08:00">2024-10-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天更新我的笔记本电脑发现总是出错，错误信息如下：</p>
+<figure class="highlight sh"><figcaption><span>sudo pacman -Syu</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">:: 进行安装吗？ [Y/n] y</span><br><span class="line">:: 正在获取软件包......</span><br><span class="line">pandoc-cli-0.1.1.1-141-x86_64.pkg.tar.zst下载失败</span><br><span class="line"> 全部 (1/8)                             171.5 KiB   318 KiB/s 00:01 [#####################################] 100%</span><br><span class="line">错误：无法从 mirrors.tuna.tsinghua.edu.cn : The requested URL returned error: 404 获取文件 <span class="string">&#x27;pandoc-cli-0.1.1.1-141-x86_64.pkg.tar.zst&#x27;</span></span><br><span class="line">错误：无法从 mirrors.tuna.tsinghua.edu.cn : The requested URL returned error: 404 获取文件 <span class="string">&#x27;pandoc-cli-0.1.1.1-141-x86_64.pkg.tar.zst&#x27;</span></span><br><span class="line">错误：无法从 mirrors.tuna.tsinghua.edu.cn : Protocol <span class="string">&quot;rsync&quot;</span> not supported 获取文件 <span class="string">&#x27;pandoc-cli-0.1.1.1-141-x86_64.pkg.tar.zst&#x27;</span></span><br><span class="line">警告：mirrors.tuna.tsinghua.edu.cn 返回错误过多，将在此事务的剩余部分中跳过</span><br><span class="line">错误：无法从 rsync.mirrors.ustc.edu.cn : Protocol <span class="string">&quot;rsync&quot;</span> not supported 获取文件 <span class="string">&#x27;pandoc-cli-0.1.1.1-141-x86_64.pkg.tar.zst&#x27;</span></span><br><span class="line">警告：无法获取某些文件</span><br><span class="line">错误：无法提交处理 (无法获取某些文件)</span><br><span class="line">发生错误，没有软件包被更新。</span><br></pre></td></tr></table></figure>
+<p>造成错误的原因是办公室和宿舍同时配置了台式机，所以较长时间没有更新和使用我的<code>Thinkpad T490</code>
+了. 解决方法为：重新生成一下源文件，然后再更新。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> reflector --verbose -c China --latest 12 --<span class="built_in">sort</span> rate --threads 100 --save /etc/pacman.d/mirrorlist</span><br><span class="line"><span class="built_in">sudo</span> pacman -Syu</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1722,121 +1802,6 @@ Themes</a></li>
 <h2 id="手动解决gnome插件适配">手动解决Gnome插件适配</h2>
 <p>在2024年09月21日升级系统后采用的锁定<code>ArchLinux</code>到指定日期的稳键策略，而2024年09月27日放开了更新后发现只有插件<code>Hide Top Bar</code>仍然没有适配，于是在百度后发现可以追加版本后修复，因为<code>Gnome 47</code>更新并没有大量改变<code>java script</code>接口，所以这个方法是可行的。具体修改为</p>
 <figure class="highlight sh"><figcaption><span>/usr/share/gnome-shell/extensions/hidetopbar@mathieu.bidon.ca/metadata.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;shell-version&quot;</span>: [<span class="string">&quot;45&quot;</span>, <span class="string">&quot;46&quot;</span>, <span class="string">&quot;47&quot;</span> ],</span><br><span class="line">  <span class="string">&quot;uuid&quot;</span>: <span class="string">&quot;hidetopbar@mathieu.bidon.ca&quot;</span>,</span><br><span class="line">  <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Hide Top Bar&quot;</span>,</span><br><span class="line">  <span class="string">&quot;settings-schema&quot;</span>: <span class="string">&quot;org.gnome.shell.extensions.hidetopbar&quot;</span>,</span><br><span class="line">  <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Hides the top bar, except in overview. However, there is an option to show the panel whenever the mouse pointer approaches the edge of the screen. And if \&quot;intellihide\&quot; is enabled, the panel only hides when a window takes the space.\n\n- Press backspace to remove keyboard shortcut.\n- Log off and on again when there is an error after upgrading.&quot;</span>,</span><br><span class="line">  <span class="string">&quot;url&quot;</span>: <span class="string">&quot;https://gitlab.gnome.org/tuxor1337/hidetopbar&quot;</span>,</span><br><span class="line">  <span class="string">&quot;gettext-domain&quot;</span>: <span class="string">&quot;hidetopbar@mathieu.bidon.ca&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/09/20/RSS%E8%AE%A2%E9%98%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/09/20/RSS%E8%AE%A2%E9%98%85/" class="post-title-link" itemprop="url">RSS订阅</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-09-20 13:56:38" itemprop="dateCreated datePublished" datetime="2024-09-20T13:56:38+08:00">2024-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="rss订阅简介">RSS订阅简介</h2>
-<p>RSS（Really Simple
-Syndication）订阅是一种允许用户跟踪网站更新的技术，无需频繁访问这些网站来检查是否有新内容。RSS是一种XML格式的标准，它允许发布者将摘要、链接和其他元数据打包成“feed”，供订阅者使用RSS阅读器（也称为聚合器或RSS阅读器）来接收。</p>
-<h3 id="以下是rss订阅的一些关键特点">以下是RSS订阅的一些关键特点</h3>
-<ul>
-<li>内容聚合：通过RSS订阅，用户可以从多个来源获取信息，而不必逐个访问每个网站。</li>
-<li>自动更新：一旦有新的内容发布，RSS阅读器会自动下载更新，这样用户就可以立即看到最新信息。</li>
-<li>个性化阅读体验：用户可以选择他们感兴趣的站点进行订阅，并根据自己的喜好调整阅读列表。</li>
-<li>无广告干扰：RSS通常只包含文章标题、摘要和链接，不会包含网页上的广告或其他干扰元素。</li>
-<li>跨平台支持：有许多不同类型的RSS阅读器，包括桌面应用程序、移动应用和基于网页的服务，这使得RSS订阅可以在多种设备上使用。</li>
-</ul>
-<h3 id="使用rss订阅的基本步骤">使用RSS订阅的基本步骤</h3>
-<ul>
-<li>寻找RSS源：大多数网站都会提供一个RSS图标（通常是橙色的），点击该图标可以获得网站的RSS
-feed链接。</li>
-<li>添加到RSS阅读器：用户需要将找到的RSS
-feed链接添加到他们的RSS阅读器中。</li>
-<li>阅读更新：RSS阅读器会定期检查已订阅的feed，并显示最新的条目。</li>
-</ul>
-<p>RSS订阅对于那些希望高效管理来自多个来源的信息流的人来说非常有用。虽然随着社交媒体和电子邮件简报的流行，RSS的使用有所下降，但它仍然是许多用户获取新闻和博客更新的有效工具。</p>
-<h2 id="订阅archlinux新闻">订阅ArchLinux新闻</h2>
-<p>由于<code>ArchLinux</code>是滚动升级模式，为了在工作中稳定使用，在升级前看一下有什么重大更新再决定是否升级是必要的。但是每次都到官网<a
-target="_blank" rel="noopener" href="https://archlinux.org/">https://archlinux.org/</a>查看消息有所不便，因此我想起了<code>RSS</code>,
-到官网发现订阅地址为：</p>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://archlinux.org/feeds/news/">https://archlinux.org/feeds/news/</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://archlinux.org/feeds/packages/">https://archlinux.org/feeds/packages/</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://aur.archlinux.org/rss">https://aur.archlinux.org/rss</a></li>
-</ul>
-<h2 id="订阅百度新闻">订阅百度新闻</h2>
-<p>百度新闻也是支持订阅的，其聚合订阅地址为：</p>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://www.baidu.com/search/rss.html">https://www.baidu.com/search/rss.html</a></li>
-</ul>
-<h2 id="thunderbird订阅方法">Thunderbird订阅方法</h2>
-<p><code>帐户设置</code>→<code>帐户操作</code>→<code>新建新闻组帐户</code>→主页面右键<code>博客和新闻收取点</code>→<code>订阅...</code>→<code>收取点网址</code>→<code>添加</code>→<code>完成</code>.</p>
 
       
     </div>
