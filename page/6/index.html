@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">557</span>
+          <span class="site-state-item-count">558</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -301,6 +301,484 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/19/Linux%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/03/19/Linux%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">Linux系统信息查询终极指南</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-03-19 14:20:39" itemprop="dateCreated datePublished" datetime="2025-03-19T14:20:39+08:00">2025-03-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在Linux环境中，了解如何有效地查询和展示系统信息是非常重要的。无论是为了调试、监控还是单纯地想了解更多关于你正在使用的硬件和软件的信息，下面列出的一系列命令和工具都将对你有所帮助。</p>
+<hr />
+<p><strong>符号说明</strong>：✅需要安装，❌无需安装，🔑需sudo权限，🔓无需sudo权限。</p>
+<hr />
+<h2 id="系统级硬件信息"><strong>系统级硬件信息</strong></h2>
+<table>
+<thead>
+<tr>
+<th>命令/工具</th>
+<th>功能描述</th>
+<th style="text-align: center;">安装</th>
+<th style="text-align: center;">Sudo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lshw</code></td>
+<td>硬件树状信息（支持过滤、XML输出）</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">🔑</td>
+</tr>
+<tr>
+<td><code>inxi</code></td>
+<td>一键查询系统/硬件综合信息</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+<tr>
+<td><code>dmidecode</code></td>
+<td>主板/BIOS详细信息（需root权限）</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔑</td>
+</tr>
+<tr>
+<td><code>neofetch</code></td>
+<td>图形化系统信息（支持主题）</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+<tr>
+<td><code>screenfetch</code></td>
+<td>ASCII艺术系统信息</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+<tr>
+<td><code>fastfetch</code></td>
+<td>高性能跨平台系统信息工具</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+<tr>
+<td><code>hyfetch</code></td>
+<td>支持LGBTQ+主题的系统信息工具</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+<tr>
+<td><code>sysinfo</code></td>
+<td>简单轻量级系统信息工具</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="cpu信息"><strong>CPU信息</strong></h2>
+<table>
+<thead>
+<tr>
+<th>命令/工具</th>
+<th>功能描述</th>
+<th style="text-align: center;">安装</th>
+<th style="text-align: center;">Sudo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lscpu</code></td>
+<td>CPU架构/核心/缓存信息</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+<tr>
+<td><code>/proc/cpuinfo</code></td>
+<td>CPU原始参数（型号/频率/物理核心）</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+<tr>
+<td><code>cpufreq-info</code></td>
+<td>CPU频率监控（需<code>cpufrequtils</code>）</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="存储设备"><strong>存储设备</strong></h2>
+<table>
+<thead>
+<tr>
+<th>命令/工具</th>
+<th>功能描述</th>
+<th style="text-align: center;">安装</th>
+<th style="text-align: center;">Sudo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lsblk</code></td>
+<td>块设备列表（含挂载点/UUID）</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+<tr>
+<td><code>fdisk -l</code></td>
+<td>磁盘分区表（MBR/GPT支持）</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔑</td>
+</tr>
+<tr>
+<td><code>parted -l</code></td>
+<td>分区详细信息（GPT/MBR支持）</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔑</td>
+</tr>
+<tr>
+<td><code>smartctl</code></td>
+<td>硬盘SMART状态（需驱动）</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">🔑</td>
+</tr>
+<tr>
+<td><code>df</code></td>
+<td>文件系统空间使用统计</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+<tr>
+<td><code>du</code></td>
+<td>目录/文件空间分析</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="网络信息"><strong>网络信息</strong></h2>
+<table>
+<thead>
+<tr>
+<th>命令/工具</th>
+<th>功能描述</th>
+<th style="text-align: center;">安装</th>
+<th style="text-align: center;">Sudo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ip</code></td>
+<td>网络接口/IP/路由表</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+<tr>
+<td><code>ethtool</code></td>
+<td>网卡参数（速度/驱动/链路状态）</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">🔑</td>
+</tr>
+<tr>
+<td><code>lspci</code></td>
+<td>PCI设备列表（含网卡）</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+<tr>
+<td><code>netstat</code></td>
+<td>网络连接/路由统计</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+<tr>
+<td><code>ss</code></td>
+<td>套接字连接状态</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+<tr>
+<td><code>curl</code></td>
+<td>网络资源下载（HTTP/HTTPS/FTP）</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="gpu显卡信息"><strong>GPU/显卡信息</strong></h2>
+<table>
+<thead>
+<tr>
+<th>命令/工具</th>
+<th>功能描述</th>
+<th style="text-align: center;">安装</th>
+<th style="text-align: center;">Sudo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lspci</code></td>
+<td>显卡PCI信息（型号/厂商）</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+<tr>
+<td><code>nvidia-smi</code></td>
+<td>NVIDIA显卡状态（温度/显存/功耗）</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+<tr>
+<td><code>glxinfo</code></td>
+<td>OpenGL/显卡驱动信息</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+<tr>
+<td><code>radeontop</code></td>
+<td>AMD GPU实时监控</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="主板和bios"><strong>主板和BIOS</strong></h2>
+<table>
+<thead>
+<tr>
+<th>命令/工具</th>
+<th>功能描述</th>
+<th style="text-align: center;">安装</th>
+<th style="text-align: center;">Sudo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dmidecode</code></td>
+<td>BIOS/主板硬件信息</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔑</td>
+</tr>
+<tr>
+<td><code>lshw</code></td>
+<td>主板芯片组/总线信息</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">🔑</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="usb设备"><strong>USB设备</strong></h2>
+<table>
+<thead>
+<tr>
+<th>命令/工具</th>
+<th>功能描述</th>
+<th style="text-align: center;">安装</th>
+<th style="text-align: center;">Sudo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lsusb</code></td>
+<td>USB设备列表（厂商/速度）</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+<tr>
+<td><code>usb-devices</code></td>
+<td>USB设备详细信息（路径/驱动）</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="温度和传感器"><strong>温度和传感器</strong></h2>
+<table>
+<thead>
+<tr>
+<th>命令/工具</th>
+<th>功能描述</th>
+<th style="text-align: center;">安装</th>
+<th style="text-align: center;">Sudo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sensors</code></td>
+<td>CPU/GPU温度/风扇/电压监控</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">🔑</td>
+</tr>
+<tr>
+<td><code>htop</code></td>
+<td>实时资源监控（含温度）</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="其他设备"><strong>其他设备</strong></h2>
+<table>
+<thead>
+<tr>
+<th>命令/工具</th>
+<th>功能描述</th>
+<th style="text-align: center;">安装</th>
+<th style="text-align: center;">Sudo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lspci -v</code></td>
+<td>详细PCI设备信息（驱动/配置）</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+<tr>
+<td><code>dmesg</code></td>
+<td>系统启动日志（硬件检测/错误）</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="系统版本查询"><strong>系统版本查询</strong></h2>
+<table>
+<thead>
+<tr>
+<th>命令/工具</th>
+<th>功能描述</th>
+<th style="text-align: center;">安装</th>
+<th style="text-align: center;">Sudo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lsb_release -a</code></td>
+<td>发行版信息（名称/版本/代号）</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+<tr>
+<td><code>cat /etc/os-release</code></td>
+<td>系统版本详细信息（文件）</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+<tr>
+<td><code>uname -a</code></td>
+<td>内核版本及系统信息</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">🔓</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="关键说明"><strong>关键说明</strong></h3>
+<ol type="1">
+<li><strong>Fetch类工具</strong>：
+<ul>
+<li><strong><code>fastfetch</code></strong>：高性能跨平台工具，推荐优先使用。</li>
+<li><strong><code>hyfetch</code></strong>：支持主题定制，适合个性化需求。</li>
+<li><strong><code>neofetch</code>/<code>screenfetch</code></strong>：经典工具，但前者已停止维护。</li>
+</ul></li>
+<li><strong>专业检测工具</strong>：
+<ul>
+<li><strong><code>hwinfo</code></strong>：详细硬件检测（需安装，支持传感器）。</li>
+<li><strong><code>lshw</code></strong>：综合硬件树状信息（支持XML/HTML输出）。</li>
+<li><strong><code>dmidecode</code></strong>：BIOS/主板深度信息（需root权限）。</li>
+</ul></li>
+<li><strong>网络与存储</strong>：
+<ul>
+<li><strong><code>ethtool</code></strong>：网卡参数调整（需sudo）。</li>
+<li><strong><code>smartctl</code></strong>：硬盘健康状态检测（需<code>smartmontools</code>）。</li>
+</ul></li>
+<li><strong>系统版本</strong>：
+<ul>
+<li><strong><code>/etc/os-release</code></strong>：标准系统版本文件，跨发行版通用。</li>
+</ul></li>
+</ol>
+<hr />
+<h3 id="安装建议"><strong>安装建议</strong></h3>
+<ul>
+<li><strong>基础工具</strong>：<code>sudo pacman -S lshw dmidecode neofetch inxi</code></li>
+<li><strong>进阶工具</strong>：<code>sudo pacman -S hwinfo smartmontools nvidia-smi</code></li>
+<li><strong>Fetch类</strong>：<code>sudo pacman -S fastfetch hyfetch</code></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1351,107 +1829,6 @@ C++，程序员必须手动分配和释放内存，这容易导致错误。Rust
 <h2 id="结论">结论</h2>
 <p>Rust
 的所有权系统是一种独特的方法，用于解决内存管理和并发问题，同时保持性能。虽然一开始可能看起来有些复杂，但它极大地减少了运行时错误，提高了代码的安全性和可靠性。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/05/Rust%E7%94%9F%E6%88%90CSV%E6%95%B0%E6%8D%AE%E5%B9%B6%E4%BD%BF%E7%94%A8Veusz%E7%BB%98%E5%88%B6%E5%87%BD%E6%95%B0%E8%B1%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/03/05/Rust%E7%94%9F%E6%88%90CSV%E6%95%B0%E6%8D%AE%E5%B9%B6%E4%BD%BF%E7%94%A8Veusz%E7%BB%98%E5%88%B6%E5%87%BD%E6%95%B0%E8%B1%A1/" class="post-title-link" itemprop="url">Rust生成CSV数据并使用Veusz绘制函数像</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-03-05 22:04:05" itemprop="dateCreated datePublished" datetime="2025-03-05T22:04:05+08:00">2025-03-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>使用<code>Rust</code>编写的程序由于是编译型的语言，其速度远超<code>Python</code>等脚本程序，所以本文尝试使用<code>Rust</code>编写一段<span
-class="math inline">\(f(x)=x^2\)</span>在区间<span
-class="math inline">\((0,10)\)</span>上的值，并将其保存在<code>function_data.csv</code>文件中，以供<code>veusz</code>调用，绘制函数图像。</p>
-<h2 id="编写rust程序">编写Rust程序</h2>
-<ol type="1">
-<li><p>建立项目: drawfunction <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cargo new drawfunction</span><br><span class="line"><span class="built_in">cd</span> drawfunction</span><br></pre></td></tr></table></figure></p></li>
-<li><p>确保<code>Cargo.toml</code>文件中添加了必要的依赖项：
-<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[dependencies]</span></span><br><span class="line"><span class="attr">csv</span> = <span class="string">&quot;1.1&quot;</span></span><br></pre></td></tr></table></figure></p></li>
-<li><p>编辑源码： <figure class="highlight rust"><figcaption><span>drawfunction/src/main.rs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> csv::Writer;</span><br><span class="line"><span class="keyword">use</span> std::error::Error;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() <span class="punctuation">-&gt;</span> <span class="type">Result</span>&lt;(), <span class="type">Box</span>&lt;<span class="keyword">dyn</span> Error&gt;&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">wtr</span> = Writer::<span class="title function_ invoke__">from_path</span>(<span class="string">&quot;function_data.csv&quot;</span>)?;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 写入CSV头部</span></span><br><span class="line">    wtr.<span class="title function_ invoke__">write_record</span>(&amp;[<span class="string">&quot;x&quot;</span>, <span class="string">&quot;x_squared&quot;</span>])?;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生成数据并写入CSV</span></span><br><span class="line">    <span class="keyword">for</span> <span class="variable">x</span> <span class="keyword">in</span> <span class="number">0</span>..=<span class="number">100</span> &#123; <span class="comment">// 使用0到10之间的101个点</span></span><br><span class="line">        <span class="keyword">let</span> <span class="variable">x_val</span> = (x <span class="keyword">as</span> <span class="type">f64</span>) / <span class="number">10.0</span>;</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">y_val</span> = x_val.<span class="title function_ invoke__">powi</span>(<span class="number">2</span>);</span><br><span class="line">        wtr.<span class="title function_ invoke__">write_record</span>(&amp;[x_val.<span class="title function_ invoke__">to_string</span>(), y_val.<span class="title function_ invoke__">to_string</span>()])?;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    wtr.<span class="title function_ invoke__">flush</span>()?;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;CSV data has been written.&quot;</span>);</span><br><span class="line">    <span class="title function_ invoke__">Ok</span>(())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> <div class="note primary"><p>使用<code>cargo run</code>运行这个程序将会在当前目录下生成一个名为<code>function_data.csv</code>的文件，其中包含了我们计算的数据。</p>
-</div></p></li>
-<li><p>编译程序： <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cargo build --release</span><br><span class="line">./drawfunction/target/release/montecarlo</span><br></pre></td></tr></table></figure> <div class="note primary"><p>第1行为编译程序，第2行为运行这个程序.
-可以明显的感觉到程序运行时,瞬间在当前目录下生成一个名为<code>function_data.csv</code>的文件，其中包含了我们计算的数据。</p>
-</div></p></li>
-</ol>
-<h2 id="使用veusz绘图">使用Veusz绘图</h2>
-<ol type="1">
-<li>启动<code>veusz</code>: 打开Veusz应用程序。</li>
-<li>导入数据：通过“数据-&gt;导入”菜单选项导入你用Rust生成的<code>function_data.csv</code>文件。</li>
-<li>创建图表：</li>
-</ol>
-<ul>
-<li>在<code>Veusz</code>中，选择<code>Insert--&gt;add Graph</code>以创建一个新的图形窗口。</li>
-<li>在工具栏中选择<code>Plot points with lines and eorrbars</code>.</li>
-<li>选中上述组件，在<code>X data</code> 中选择 <code>x</code> ,
-<code>Y data</code> 中选择<code>x_squared</code>.</li>
-</ul>
 
       
     </div>

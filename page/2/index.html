@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">557</span>
+          <span class="site-state-item-count">558</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -301,6 +301,92 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/29/%E7%A6%81%E7%94%A8win11%E6%9B%B4%E6%96%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/09/29/%E7%A6%81%E7%94%A8win11%E6%9B%B4%E6%96%B0/" class="post-title-link" itemprop="url">禁用win11更新</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-09-29 10:18:47 / 修改时间：10:29:37" itemprop="dateCreated datePublished" datetime="2025-09-29T10:18:47+08:00">2025-09-29</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>windows 11
+会强制更新，这给需要稳定工作的人造成了麻烦，甚至是损失。一般情况下不允许永久关闭，所以本文介绍一个变通的方法，超长时间禁用更新以达到稳定使用系统的目标。</p>
+<h2 id="暂停更新">暂停更新</h2>
+<p>创建一个 <code>txt</code> 文件导入以下代码</p>
+<figure class="highlight txt"><figcaption><span>暂停更新至2042年</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings]</span><br><span class="line">&quot;FlightSettingsMaxPauseDays&quot;=dword:00001b58</span><br><span class="line">&quot;PauseFeatureUpdatesStartTime&quot;=&quot;2023-07-07T10:00:52Z&quot;</span><br><span class="line">&quot;PauseFeatureUpdatesEndTime&quot;=&quot;2042-09-05T09:59:52Z&quot;</span><br><span class="line">&quot;PauseQualityUpdatesStartTime&quot;=&quot;2023-07-07T10:00:52Z&quot;</span><br><span class="line">&quot;PauseQualityUpdatesEndTime&quot;=&quot;2042-09-05T09:59:52Z&quot;</span><br><span class="line">&quot;PauseUpdatesStartTime&quot;=&quot;2023-07-07T09:59:52Z&quot;</span><br><span class="line">&quot;PauseUpdatesExpiryTime&quot;=&quot;2042-09-05T09:59:52Z&quot;</span><br></pre></td></tr></table></figure>
+<p>另存为 .reg 文件即可双击使用.</p>
+<h2 id="恢复更新">恢复更新</h2>
+<p>同理可以建立恢复默认，即</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings]</span><br><span class="line">&quot;FlightSettingsMaxPauseDays&quot;=-</span><br><span class="line">&quot;PauseFeatureUpdatesStartTime&quot;=-</span><br><span class="line">&quot;PauseFeatureUpdatesEndTime&quot;=-</span><br><span class="line">&quot;PauseQualityUpdatesStartTime&quot;=-</span><br><span class="line">&quot;PauseQualityUpdatesEndTime&quot;=-</span><br><span class="line">&quot;PauseUpdatesStartTime&quot;=-</span><br><span class="line">&quot;PauseUpdatesExpiryTime&quot;=-</span><br></pre></td></tr></table></figure>
+<p>另存为 .reg 文件即可双击使用.</p>
+<h2 id="参考文章">参考文章</h2>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://www.disktool.cn/content-center/win11-do-not-turn-off-automatic-update-method-1016.html">win11千万要关闭系统更新！附4种彻底关闭系统更新的方法</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/642914883">唯一无副作用禁用Win10/11更新方法，一键暂停1000周</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1162,127 +1248,6 @@ target="_blank" rel="noopener" href="https://github.com/languagetool-org/languag
 <p>解决方法为：使用<code>yarn</code>对应的命令清理缓存和重装.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yarn cache clean</span><br><span class="line"><span class="built_in">rm</span> -rf node_modules</span><br><span class="line">yarn install</span><br></pre></td></tr></table></figure>
 <p>之后使用<code>hexo g</code>, 重新生成仓库后问题解决。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/19/File-Roller%E8%A7%A3%E5%8E%8B%E7%BC%A9%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/06/19/File-Roller%E8%A7%A3%E5%8E%8B%E7%BC%A9%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3/" class="post-title-link" itemprop="url">File-Roller解压缩乱码问题的解决</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-06-19 14:45:33" itemprop="dateCreated datePublished" datetime="2025-06-19T14:45:33+08:00">2025-06-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-10-22 16:13:40" itemprop="dateModified" datetime="2025-10-22T16:13:40+08:00">2025-10-22</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在 Linux 使用系统自带的 File-Roller
-文件归档器解压缩文件时有时会遇到中文文件名解压后乱码的问题，此时我们可以使用命令行工具<code>unar</code>执行<code>unar yourfile.zip</code>实现中文名文件的解压缩，但是对于正在进行图形工作的任务时，切换命令行会降低效率。因此，解决
-File-Roller 的中文解压缩乱码问题是一个相当重要的问题。</p>
-<h2 id="乱码的原因">乱码的原因</h2>
-<ul>
-<li>编码不一致(主要原因)：Windows (GBK)和 Linux
-(UTF-8)系统下默认的字符编码不同，导致在交叉使用时出现乱码。</li>
-<li>软件版本问题：某些软件版本对编码支持不全，也会导致乱码的出现。</li>
-</ul>
-<h2 id="安装依赖">安装依赖</h2>
-<p><code>p7zip-natspec</code>包，它增加了对本地语言编码的支持，所以使用<code>p7zip-natspec</code>取代<code>p7zip</code>，同时安装
-<code>p7zip-natspec</code> 后， <code>File Roller</code> 在解压
-<code>7z</code>、<code>rar</code>，有时也包括 <code>zip</code>
-格式时，应会优先调用这个能识别编码的 <code>7z</code>
-版本。这通常能有效解决这些格式压缩包内的中文乱码问题。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S p7zip-natspec</span><br></pre></td></tr></table></figure>
-<h2 id="旧版本-file-roller-解决方案">旧版本 File-Roller 解决方案</h2>
-<ol type="1">
-<li>打开 File-Roller, 选择 “工具” 菜单中的 “配置文件管理器” 。</li>
-<li>在 “编码” 选项卡中，将 “自动检测” 设置为
-“否”，并手动添加<code>GB18030</code>, <code>GBK</code>,
-<code>GB2312</code>等编码。</li>
-<li>保存并关闭配置文件管理器。</li>
-</ol>
-<h2 id="新版本-file-roller-解决方案">新版本 File-Roller 解决方案</h2>
-<p>在 GNOME 48
-环境下，File-Roller（归档管理器）的界面已更新，不再提供旧版的 工具
-菜单和
-配置文件管理器。但底层仍支持通过配置文件（<code>fr-encodings.json</code>）自定义编码列表。修改配置文件后，
-File-Roller 会优先使用列表中的编码尝试解压（等同于关闭自动检测）。</p>
-<ol type="1">
-<li>打开终端。</li>
-<li>编辑 File-Roller 的配置文件： <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/.config/file-roller</span><br><span class="line">nvim ~/.config/file-roller/fr-encodings.json</span><br></pre></td></tr></table></figure></li>
-<li>将以下内容粘贴到文件中： <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;encodings&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;GB18030&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;GBK&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;GB2312&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;UTF-8&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;CURRENT&quot;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>GB18030</code>,<code>BGK</code>,<code>BG2312</code>是手动添加的中文编码。</li>
-<li><code>UTF-8</code>, <code>CURRENT</code>是保留的默认编码。</li>
-</ul></li>
-<li>重启 File-Roller 即可生效。</li>
-</ol>
-<h2 id="解压时手动选择编码">解压时手动选择编码</h2>
-<ol type="1">
-<li>双击打开压缩文件。</li>
-<li>点击右上解的<code>⋮（菜单）</code>→<code>使用其他编码打开...</code>。</li>
-<li>从列表中选择<code>GB18030</code>,<code>BGK</code>或<code>GB2312</code>。</li>
-</ol>
 
       
     </div>

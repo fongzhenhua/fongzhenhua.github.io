@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">557</span>
+          <span class="site-state-item-count">558</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -301,6 +301,95 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/29/%E8%A7%A3%E5%86%B3KDE%E4%BD%BF%E7%94%A8ntfs3%E6%8C%82%E8%BD%BDntfs%E7%A1%AC%E7%9B%98%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/12/29/%E8%A7%A3%E5%86%B3KDE%E4%BD%BF%E7%94%A8ntfs3%E6%8C%82%E8%BD%BDntfs%E7%A1%AC%E7%9B%98%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">解决KDE使用ntfs3挂载ntfs硬盘失败的问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-12-29 11:05:59" itemprop="dateCreated datePublished" datetime="2023-12-29T11:05:59+08:00">2023-12-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>近期重装了<code>ArchLinux</code>，但是又遇到<code>KDE Plasma5</code>桌面环境下无法挂载<code>Windows</code>所在硬盘问题，具体是什么原因造成的尚不明确，但是百度之后找到了解决方法：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> ntfsfix -d /dev/nvme0n1p6</span><br></pre></td></tr></table></figure>
+<p>注意：第一条命令需要加参数<code>-d</code>,
+按好多资料没有加<code>-d</code>修复无效。原因参考资料：<a
+target="_blank" rel="noopener" href="https://bbs.archlinux.org/viewtopic.php?id=271650">Mounting ntfs
+partition by ntfs3 failed</a>：</p>
+<div class="note info"><p>Check your dmesg for errors with ntfs3. Chances are the volume is
+still marked dirty, and ntfs3 will not mount a partition where that is
+the case without the force option. ntfsfix without any arguments will
+actively set the dirty bit, so that a chkdsk from Windows can do a real
+check/analysis. If you don't have that handy and want to clear the dirty
+bit despite ntfsfix not being entirely a good checking tool you can pass
+the -d argument to ntfsfix.</p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1280,100 +1369,6 @@ file you can name it <code>cppmain.template</code> or
 <li>新版本搜索: <code>browser.urlbar.decodeURLsOnCopy</code> 配置为
 <label style="color:red">true</label></li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/16/Linux%E4%B8%8B%E8%A7%A3%E5%8E%8Bzip%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/16/Linux%E4%B8%8B%E8%A7%A3%E5%8E%8Bzip%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">Linux下解压zip文件乱码的解决方案</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-16 21:27:39" itemprop="dateCreated datePublished" datetime="2023-12-16T21:27:39+08:00">2023-12-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在Linux下打开或解压从Windows系统拷贝的zip文件，中文部分乱码,这个问题的根本原因是<label style="color:red">编码问题</label>，windows下默认gb2312与linux中默认utf-8不兼容。</p>
-<div class="tabs" id="解决乱码问题"><ul class="nav-tabs"><li class="tab active"><a href="#解决乱码问题-1">KDE-Plasma Ark</a></li><li class="tab"><a href="#解决乱码问题-2">Gnome3 File-Roller</a></li></ul><div class="tab-content"><div class="tab-pane active" id="解决乱码问题-1"><p>Ark
-是KDE默认的解压缩软件，出现乱码的直接原因是Ark中用于zip打开和解压的插件不支持gb2312,
-解决方案为：</p>
-<ol type="1">
-<li><p>安装<code>p7zip-natspec</code>(cn源里面有此软件)
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S ark</span><br><span class="line"><span class="built_in">sudo</span> pacman -S p7zip-natspec unarchiver lzop lrzip arj</span><br></pre></td></tr></table></figure></p></li>
-<li><p>在Ark中禁用libzip插件（该插件优先级高于p7zip）:
-<code>Ark</code>菜单→设置→配置<code>Ark</code>→插件→取消<code>Libzip</code>插件对应的复选框→应用。同时应当确保<code>p7zip</code>插件使用中。</p></li>
-<li><p>其他选择，使用<code>unzip-natspec</code>或<code>unzip-iconv</code>.</p></li>
-</ol></div><div class="tab-pane" id="解决乱码问题-2"><ol type="1">
-<li><p>安装<code>p7zip-natspec</code>(cn源里面有此软件)
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S file-roller</span><br><span class="line"><span class="built_in">sudo</span> pacman -S p7zip-natspec unarchiver lzop lrzip arj</span><br></pre></td></tr></table></figure></p></li>
-<li><p>在环境变量中，指定unzip参数，总是以指定的字符集显示和解压文件,
-即在<code>/etc/environment</code>中加入 <figure class="highlight sh"><figcaption><span>/etc/environment</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UNZIP=<span class="string">&quot;-O CP936&quot;</span></span><br><span class="line">ZIPINFO=<span class="string">&quot;-O CP936&quot;</span></span><br></pre></td></tr></table></figure></p></li>
-</ol>
-<p>这样Gnome桌面的归档文件管理器(file-roller)可以正常使用unzip解压中文，但是file-roller本身并不能设置编码传递给unzip。</p></div></div></div>
-<p>如果您习惯于使用命令，由于已经安装了<code>unarchiver</code>,
-所以直接使用命令<code>unar</code>解压<code>zip</code>文件也是可以解决文件名乱码问题的，这在所有Linux中都是一个通用的方案。</p>
 
       
     </div>

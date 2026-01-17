@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">557</span>
+          <span class="site-state-item-count">558</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -301,6 +301,127 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/19/File-Roller%E8%A7%A3%E5%8E%8B%E7%BC%A9%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/06/19/File-Roller%E8%A7%A3%E5%8E%8B%E7%BC%A9%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3/" class="post-title-link" itemprop="url">File-Roller解压缩乱码问题的解决</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-06-19 14:45:33" itemprop="dateCreated datePublished" datetime="2025-06-19T14:45:33+08:00">2025-06-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-10-22 16:13:40" itemprop="dateModified" datetime="2025-10-22T16:13:40+08:00">2025-10-22</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在 Linux 使用系统自带的 File-Roller
+文件归档器解压缩文件时有时会遇到中文文件名解压后乱码的问题，此时我们可以使用命令行工具<code>unar</code>执行<code>unar yourfile.zip</code>实现中文名文件的解压缩，但是对于正在进行图形工作的任务时，切换命令行会降低效率。因此，解决
+File-Roller 的中文解压缩乱码问题是一个相当重要的问题。</p>
+<h2 id="乱码的原因">乱码的原因</h2>
+<ul>
+<li>编码不一致(主要原因)：Windows (GBK)和 Linux
+(UTF-8)系统下默认的字符编码不同，导致在交叉使用时出现乱码。</li>
+<li>软件版本问题：某些软件版本对编码支持不全，也会导致乱码的出现。</li>
+</ul>
+<h2 id="安装依赖">安装依赖</h2>
+<p><code>p7zip-natspec</code>包，它增加了对本地语言编码的支持，所以使用<code>p7zip-natspec</code>取代<code>p7zip</code>，同时安装
+<code>p7zip-natspec</code> 后， <code>File Roller</code> 在解压
+<code>7z</code>、<code>rar</code>，有时也包括 <code>zip</code>
+格式时，应会优先调用这个能识别编码的 <code>7z</code>
+版本。这通常能有效解决这些格式压缩包内的中文乱码问题。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S p7zip-natspec</span><br></pre></td></tr></table></figure>
+<h2 id="旧版本-file-roller-解决方案">旧版本 File-Roller 解决方案</h2>
+<ol type="1">
+<li>打开 File-Roller, 选择 “工具” 菜单中的 “配置文件管理器” 。</li>
+<li>在 “编码” 选项卡中，将 “自动检测” 设置为
+“否”，并手动添加<code>GB18030</code>, <code>GBK</code>,
+<code>GB2312</code>等编码。</li>
+<li>保存并关闭配置文件管理器。</li>
+</ol>
+<h2 id="新版本-file-roller-解决方案">新版本 File-Roller 解决方案</h2>
+<p>在 GNOME 48
+环境下，File-Roller（归档管理器）的界面已更新，不再提供旧版的 工具
+菜单和
+配置文件管理器。但底层仍支持通过配置文件（<code>fr-encodings.json</code>）自定义编码列表。修改配置文件后，
+File-Roller 会优先使用列表中的编码尝试解压（等同于关闭自动检测）。</p>
+<ol type="1">
+<li>打开终端。</li>
+<li>编辑 File-Roller 的配置文件： <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/.config/file-roller</span><br><span class="line">nvim ~/.config/file-roller/fr-encodings.json</span><br></pre></td></tr></table></figure></li>
+<li>将以下内容粘贴到文件中： <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;encodings&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;GB18030&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;GBK&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;GB2312&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;UTF-8&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;CURRENT&quot;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>GB18030</code>,<code>BGK</code>,<code>BG2312</code>是手动添加的中文编码。</li>
+<li><code>UTF-8</code>, <code>CURRENT</code>是保留的默认编码。</li>
+</ul></li>
+<li>重启 File-Roller 即可生效。</li>
+</ol>
+<h2 id="解压时手动选择编码">解压时手动选择编码</h2>
+<ol type="1">
+<li>双击打开压缩文件。</li>
+<li>点击右上解的<code>⋮（菜单）</code>→<code>使用其他编码打开...</code>。</li>
+<li>从列表中选择<code>GB18030</code>,<code>BGK</code>或<code>GB2312</code>。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1306,209 +1427,6 @@ Word。</li>
 按钮，强制更新参考文献列表。</li>
 </ul></li>
 </ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/16/%E5%BF%AB%E4%B8%AD%E5%AD%90%E5%92%8C%E6%85%A2%E4%B8%AD%E5%AD%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/04/16/%E5%BF%AB%E4%B8%AD%E5%AD%90%E5%92%8C%E6%85%A2%E4%B8%AD%E5%AD%90/" class="post-title-link" itemprop="url">快中子和慢中子</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-04-16 15:43:02 / 修改时间：15:43:48" itemprop="dateCreated datePublished" datetime="2025-04-16T15:43:02+08:00">2025-04-16</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在核反应堆物理和中子物理学中，<strong>快中子</strong>和<strong>慢中子</strong>是根据中子能量（或速度）分类的两种主要中子类型。它们的能量范围、行为特点以及在核反应中的作用有显著差异。</p>
-<hr />
-<h2 id="快中子fast-neutrons">1. 快中子（Fast Neutrons）</h2>
-<h3 id="定义">定义</h3>
-<p>快中子是指能量较高（通常 &gt; <strong>0.1 MeV</strong>，约对应速度
-&gt; 1.4×10⁷ m/s）的中子。</p>
-<h3 id="典型能量范围">典型能量范围</h3>
-<ul>
-<li>0.1 MeV – 10 MeV（裂变中子平均能量约 <strong>2 MeV</strong>）</li>
-<li>某些场景下（如聚变反应），能量可达 14 MeV 以上</li>
-</ul>
-<h3 id="特点">特点</h3>
-<ul>
-<li><strong>产生来源</strong>：
-<ul>
-<li>核裂变（如铀-235、钚-239裂变时直接释放的快中子）</li>
-<li>聚变反应（如D-T反应释放的14.1 MeV中子）</li>
-</ul></li>
-<li><strong>相互作用</strong>：
-<ul>
-<li>与原子核的相互作用以<strong>非弹性散射</strong>和<strong>弹性散射</strong>为主</li>
-<li>由于能量高，不易被大多数核素直接吸收，但可能引发<strong>阈能反应</strong></li>
-</ul></li>
-<li><strong>应用</strong>：
-<ul>
-<li><strong>快中子反应堆</strong>（如钠冷快堆）</li>
-<li>中子活化分析、材料辐照测试等</li>
-</ul></li>
-</ul>
-<hr />
-<h2 id="慢中子slow-neutrons">2. 慢中子（Slow Neutrons）</h2>
-<h3 id="定义-1">定义</h3>
-<p>慢中子指能量较低（通常 &lt; <strong>1
-eV</strong>）的中子，根据具体能量进一步分为：</p>
-<h4 id="分类">分类</h4>
-<ul>
-<li><strong>热中子（Thermal Neutrons）</strong>：
-<ul>
-<li>能量 ≈ <strong>0.025 eV</strong>（速度约 2200 m/s）</li>
-</ul></li>
-<li><strong>超热中子（Epithermal Neutrons）</strong>：
-<ul>
-<li>能量 0.1 eV – 1 eV</li>
-</ul></li>
-<li><strong>冷中子（Cold Neutrons）</strong>：
-<ul>
-<li>能量 &lt; 0.025 eV</li>
-</ul></li>
-</ul>
-<h3 id="特点-1">特点</h3>
-<ul>
-<li><strong>产生来源</strong>：
-<ul>
-<li>快中子通过<strong>慢化剂</strong>（如水、石墨、重水）的弹性散射逐渐减速而来</li>
-</ul></li>
-<li><strong>相互作用</strong>：
-<ul>
-<li>与核素的<strong>吸收截面显著增大</strong></li>
-<li>易引发<strong>裂变反应</strong>或<strong>俘获反应</strong></li>
-</ul></li>
-<li><strong>应用</strong>：
-<ul>
-<li><strong>热中子反应堆</strong>（如压水堆、沸水堆）</li>
-<li>中子衍射、医学治疗（如硼中子俘获疗法BNCT）</li>
-</ul></li>
-</ul>
-<hr />
-<h2 id="快中子-vs.-慢中子对比">3. 快中子 vs. 慢中子对比</h2>
-<table>
-<colgroup>
-<col style="width: 27%" />
-<col style="width: 36%" />
-<col style="width: 36%" />
-</colgroup>
-<thead>
-<tr>
-<th><strong>特性</strong></th>
-<th><strong>快中子</strong></th>
-<th><strong>慢中子</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>能量范围</strong></td>
-<td>&gt; 0.1 MeV</td>
-<td>&lt; 1 eV（热中子≈0.025 eV）</td>
-</tr>
-<tr>
-<td><strong>速度</strong></td>
-<td>~10⁷ m/s</td>
-<td>~10³ m/s</td>
-</tr>
-<tr>
-<td><strong>主要反应类型</strong></td>
-<td>非弹性散射、阈能裂变</td>
-<td>俘获、热中子裂变</td>
-</tr>
-<tr>
-<td><strong>截面（吸收概率）</strong></td>
-<td>低</td>
-<td>高</td>
-</tr>
-<tr>
-<td><strong>慢化需求</strong></td>
-<td>无需慢化</td>
-<td>需慢化剂</td>
-</tr>
-<tr>
-<td><strong>典型应用</strong></td>
-<td>快堆、增殖燃料</td>
-<td>热堆、中子散射实验</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="中子慢化过程">4. 中子慢化过程</h2>
-<p>快中子通过<strong>弹性散射</strong>（与轻核如氢、氘、碳碰撞）逐渐损失能量，最终变为热中子：</p>
-<ul>
-<li><strong>平均对数能降（ξ）</strong>：每次碰撞的平均能量损失</li>
-<li><strong>慢化长度</strong>：快中子减速为热中子所需的平均距离</li>
-</ul>
-<hr />
-<h2 id="实际意义">5. 实际意义</h2>
-<ul>
-<li><strong>反应堆设计</strong>：
-<ul>
-<li>热中子堆需优化慢化剂与燃料比例</li>
-<li>快中子堆需避免慢化，使用高密度燃料</li>
-</ul></li>
-<li><strong>屏蔽设计</strong>：
-<ul>
-<li>快中子屏蔽需先慢化，再用吸收剂捕获热中子</li>
-</ul></li>
-</ul>
 
       
     </div>
