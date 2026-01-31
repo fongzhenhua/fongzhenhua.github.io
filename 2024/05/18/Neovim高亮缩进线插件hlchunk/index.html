@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#9400D3"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://s4.zstatic.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#9400D3">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.21.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#9400D3","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+
+
+<link rel="canonical" href="http://example.com/2024/05/18/Neovim%E9%AB%98%E4%BA%AE%E7%BC%A9%E8%BF%9B%E7%BA%BF%E6%8F%92%E4%BB%B6hlchunk/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2024/05/18/Neovim%E9%AB%98%E4%BA%AE%E7%BC%A9%E8%BF%9B%E7%BA%BF%E6%8F%92%E4%BB%B6hlchunk/","path":"2024/05/18/Neovim高亮缩进线插件hlchunk/","title":"Neovim高亮缩进线插件hlchunk"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Neovim高亮缩进线插件hlchunk | BNU-FZH</title>
+  
+
+
+
+
+
+
+
+<script async src="/lib/fireworks.js"></script>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">BNU-FZH</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">fengzhenhua@outlook.com</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-导航"><a href="/%E5%AF%BC%E8%88%AA/" rel="section"><i class="fa fa-paper-plane fa-fw"></i>导航</a></li><li class="menu-item menu-item-软件"><a href="/%E8%BD%AF%E4%BB%B6/" rel="section"><i class="fa fa-briefcase fa-fw"></i>软件</a></li><li class="menu-item menu-item-收藏"><a href="/%E6%94%B6%E8%97%8F/" rel="section"><i class="fa fa-folder fa-fw"></i>收藏</a></li><li class="menu-item menu-item-工作"><a href="/%E5%B7%A5%E4%BD%9C/" rel="section"><i class="fa fa-folder fa-fw"></i>工作</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">安装和配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#blank"><span class="nav-number">2.</span> <span class="nav-text">blank</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#blank-%E5%8F%AF%E4%BB%A5%E7%94%A8%E6%9D%A5%E5%81%9A%E4%BB%80%E4%B9%88"><span class="nav-number">2.1.</span> <span class="nav-text">blank 可以用来做什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%A1%B9"><span class="nav-number">2.2.</span> <span class="nav-text">配置项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#example"><span class="nav-number">2.3.</span> <span class="nav-text">example</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chunk"><span class="nav-number">3.</span> <span class="nav-text">chunk</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#chunk-%E7%94%A8%E6%9D%A5%E5%81%9A%E4%BB%80%E4%B9%88"><span class="nav-number">3.1.</span> <span class="nav-text">chunk 用来做什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%A1%B9-1"><span class="nav-number">3.2.</span> <span class="nav-text">配置项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#example-1"><span class="nav-number">3.3.</span> <span class="nav-text">example</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#indent"><span class="nav-number">4.</span> <span class="nav-text">indent</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#indent-%E7%94%A8%E6%9D%A5%E5%81%9A%E4%BB%80%E4%B9%88"><span class="nav-number">4.1.</span> <span class="nav-text">indent 用来做什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%A1%B9-2"><span class="nav-number">4.2.</span> <span class="nav-text">配置项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#example-2"><span class="nav-number">4.3.</span> <span class="nav-text">example</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#line_num"><span class="nav-number">5.</span> <span class="nav-text">line_num</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#line_num-%E7%94%A8%E6%9D%A5%E5%81%9A%E4%BB%80%E4%B9%88"><span class="nav-number">5.1.</span> <span class="nav-text">line_num 用来做什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%A1%B9-3"><span class="nav-number">5.2.</span> <span class="nav-text">配置项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#example-3"><span class="nav-number">5.3.</span> <span class="nav-text">example</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">559</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://www.zxxk.com/" title="学科资源 → https:&#x2F;&#x2F;www.zxxk.com&#x2F;" rel="noopener me" target="_blank"><i class="fa-solid fa-cloud fa-fw"></i>学科资源</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://zujuan.xkw.com/" title="组卷题库 → https:&#x2F;&#x2F;zujuan.xkw.com&#x2F;" rel="noopener me" target="_blank"><i class="fa-solid fa-cloud fa-fw"></i>组卷题库</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://192.168.1.14/" title="实验信息 → http:&#x2F;&#x2F;192.168.1.14&#x2F;" rel="noopener me" target="_blank"><i class="fa-solid fa-cloud fa-fw"></i>实验信息</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhixue.com/" title="智学阅卷 → https:&#x2F;&#x2F;www.zhixue.com" rel="noopener me" target="_blank"><i class="fa-solid fa-cloud fa-fw"></i>智学阅卷</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://chat.deepseek.com/" title="深度求索 → https:&#x2F;&#x2F;chat.deepseek.com&#x2F;" rel="noopener me" target="_blank"><i class="fa-solid fa-brain fa-fw"></i>深度求索</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.tongyi.com/" title="通义千问 → https:&#x2F;&#x2F;www.tongyi.com&#x2F;" rel="noopener me" target="_blank"><i class="fa-solid fa-brain fa-fw"></i>通义千问</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.scnet.cn/ui/chatbot/" title="国家超算 → https:&#x2F;&#x2F;www.scnet.cn&#x2F;ui&#x2F;chatbot&#x2F;" rel="noopener me" target="_blank"><i class="fa-solid fa-brain fa-fw"></i>国家超算</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://yuanbao.tencent.com/chat" title="腾讯元宝 → https:&#x2F;&#x2F;yuanbao.tencent.com&#x2F;chat" rel="noopener me" target="_blank"><i class="fa-solid fa-brain fa-fw"></i>腾讯元宝</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://cn.bing.com/" title="必应搜索 → https:&#x2F;&#x2F;cn.bing.com" rel="noopener me" target="_blank"><i class="fa fa-search fa-fw"></i>必应搜索</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.hao268.com/" title="网址之家 → https:&#x2F;&#x2F;www.hao268.com" rel="noopener me" target="_blank"><i class="fa fa-search fa-fw"></i>网址之家</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://ac.scmor.com/" title="思谋学术 → https:&#x2F;&#x2F;ac.scmor.com" rel="noopener me" target="_blank"><i class="fa fa-graduation-cap fa-fw"></i>思谋学术</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://search.essclick.com/" title="爱思学术 → https:&#x2F;&#x2F;search.essclick.com" rel="noopener me" target="_blank"><i class="fa fa-graduation-cap fa-fw"></i>爱思学术</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://scholar.lanfanshu.cn/" title="番薯学术 → https:&#x2F;&#x2F;scholar.lanfanshu.cn&#x2F;" rel="noopener me" target="_blank"><i class="fas fa-book fa-fw"></i>番薯学术</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://xmsoushu.com/" title="熊猫搜书 → https:&#x2F;&#x2F;xmsoushu.com&#x2F;" rel="noopener me" target="_blank"><i class="fas fa-book fa-fw"></i>熊猫搜书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://cn.bing.com/translator" title="必应翻译 → https:&#x2F;&#x2F;cn.bing.com&#x2F;translator" rel="noopener me" target="_blank"><i class="fa fa-language fa-fw"></i>必应翻译</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://fanyi.baidu.com/#zh/en" title="百度翻译 → https:&#x2F;&#x2F;fanyi.baidu.com&#x2F;#zh&#x2F;en" rel="noopener me" target="_blank"><i class="fa fa-language fa-fw"></i>百度翻译</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://fanyi.youdao.com/?keyfrom=fanyi.logo" title="有道翻译 → https:&#x2F;&#x2F;fanyi.youdao.com&#x2F;?keyfrom&#x3D;fanyi.logo" rel="noopener me" target="_blank"><i class="fa fa-language fa-fw"></i>有道翻译</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.oxfordlearnersdictionaries.com/definition/english/" title="牛津翻译 → https:&#x2F;&#x2F;www.oxfordlearnersdictionaries.com&#x2F;definition&#x2F;english&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-language fa-fw"></i>牛津翻译</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://wx.qq.com/" title="网页微信 → https:&#x2F;&#x2F;wx.qq.com" rel="noopener me" target="_blank"><i class="fab fa-weixin fa-fw"></i>网页微信</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://login.partner.microsoftonline.cn/" title="微软办公 → https:&#x2F;&#x2F;login.partner.microsoftonline.cn" rel="noopener me" target="_blank"><i class="fas fa-file fa-fw"></i>微软办公</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mathsolver.microsoft.com/" title="微软数学 → https:&#x2F;&#x2F;mathsolver.microsoft.com" rel="noopener me" target="_blank"><i class="fas fa-file fa-fw"></i>微软数学</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.mail.bnu.edu.cn/" title="师大邮箱 → https:&#x2F;&#x2F;www.mail.bnu.edu.cn" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>师大邮箱</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.sina.com.cn/" title="新浪邮箱 → https:&#x2F;&#x2F;mail.sina.com.cn" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>新浪邮箱</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.aliyundrive.com/sign/in" title="阿里云盘 → https:&#x2F;&#x2F;www.aliyundrive.com&#x2F;sign&#x2F;in" rel="noopener me" target="_blank"><i class="fa fa-hdd fa-fw"></i>阿里云盘</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://yun.139.com/w/#/" title="移动云盘 → https:&#x2F;&#x2F;yun.139.com&#x2F;w&#x2F;#&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-hdd fa-fw"></i>移动云盘</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianguoyun.com/d/login" title="坚果网盘 → https:&#x2F;&#x2F;www.jianguoyun.com&#x2F;d&#x2F;login" rel="noopener me" target="_blank"><i class="fa fa-hdd fa-fw"></i>坚果网盘</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://efss.qloud.my/index.php/login?clear=1" title="Next云盘 → https:&#x2F;&#x2F;efss.qloud.my&#x2F;index.php&#x2F;login?clear&#x3D;1" rel="noopener me" target="_blank"><i class="fa fa-hdd fa-fw"></i>Next云盘</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.123pan.com/" title="123 网盘 → https:&#x2F;&#x2F;www.123pan.com&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-hdd fa-fw"></i>123 网盘</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://annas-archive.org/" title="安娜档案 → https:&#x2F;&#x2F;annas-archive.org&#x2F;" rel="noopener me" target="_blank"><i class="fas fa-book fa-fw"></i>安娜档案</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://book.sciencereading.cn/" title="科学文库 → https:&#x2F;&#x2F;book.sciencereading.cn" rel="noopener me" target="_blank"><i class="fas fa-book fa-fw"></i>科学文库</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://ylibrary.org/" title="Ylibrary → https:&#x2F;&#x2F;ylibrary.org&#x2F;" rel="noopener me" target="_blank"><i class="fas fa-book fa-fw"></i>Ylibrary</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.tboxn.com/sites/320.html" title="Zlibrary → https:&#x2F;&#x2F;www.tboxn.com&#x2F;sites&#x2F;320.html" rel="noopener me" target="_blank"><i class="fas fa-book fa-fw"></i>Zlibrary</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.koushare.com/" title="蔻享官网 → https:&#x2F;&#x2F;www.koushare.com" rel="noopener me" target="_blank"><i class="fas fa-globe-asia fa-fw"></i>蔻享官网</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.duolingo.cn/" title="多邻国官 → https:&#x2F;&#x2F;www.duolingo.cn" rel="noopener me" target="_blank"><i class="fas fa-school fa-fw"></i>多邻国官</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.bnu.edu.cn/" title="师大官网 → https:&#x2F;&#x2F;www.bnu.edu.cn" rel="noopener me" target="_blank"><i class="fas fa-university fa-fw"></i>师大官网</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://one.bnu.edu.cn/" title="数字京师 → https:&#x2F;&#x2F;one.bnu.edu.cn" rel="noopener me" target="_blank"><i class="fas fa-university fa-fw"></i>数字京师</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.runoob.com/font-awesome/fontawesome-icons-brand.html" title="图站图标 → https:&#x2F;&#x2F;www.runoob.com&#x2F;font-awesome&#x2F;fontawesome-icons-brand.html" rel="noopener me" target="_blank"><i class="fas fa-globe fa-fw"></i>图站图标</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://shields.io/badges" title="项目微标 → https:&#x2F;&#x2F;shields.io&#x2F;badges" rel="noopener me" target="_blank"><i class="fas fa-globe fa-fw"></i>项目微标</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jd.com/" title="京东购物 → https:&#x2F;&#x2F;www.jd.com&#x2F;" rel="noopener me" target="_blank"><i class="fa-solid fa-cart-shopping fa-fw"></i>京东购物</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.taobao.com/" title="淘宝购物 → https:&#x2F;&#x2F;www.taobao.com&#x2F;" rel="noopener me" target="_blank"><i class="fa-solid fa-cart-shopping fa-fw"></i>淘宝购物</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.latexlive.com/" title="LaTeXLiv → https:&#x2F;&#x2F;www.latexlive.com" rel="noopener me" target="_blank"><i class="fas fa-globe fa-fw"></i>LaTeXLiv</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.latexlive.com/help" title="LaTeXHel → https:&#x2F;&#x2F;www.latexlive.com&#x2F;help" rel="noopener me" target="_blank"><i class="fas fa-globe fa-fw"></i>LaTeXHel</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://p2t.breezedeus.com/" title="Pix2Text → https:&#x2F;&#x2F;p2t.breezedeus.com" rel="noopener me" target="_blank"><i class="fas fa-globe fa-fw"></i>Pix2Text</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://simpletex.cn/" title="Simplete → https:&#x2F;&#x2F;simpletex.cn" rel="noopener me" target="_blank"><i class="fas fa-globe fa-fw"></i>Simplete</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/18/Neovim%E9%AB%98%E4%BA%AE%E7%BC%A9%E8%BF%9B%E7%BA%BF%E6%8F%92%E4%BB%B6hlchunk/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Neovim高亮缩进线插件hlchunk | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Neovim高亮缩进线插件hlchunk
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-18 20:24:37" itemprop="dateCreated datePublished" datetime="2024-05-18T20:24:37+08:00">2024-05-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>之前一直使用有名的高亮缩进插件<a
+target="_blank" rel="noopener" href="https://github.com/lukas-reineke/indent-blankline.nvim">indent-blankline.nvim</a>
+, 同时也有一个专门用于配置<code>indent-blankline</code>彩虹缩进的插件<a
+target="_blank" rel="noopener" href="https://github.com/TheGLander/indent-rainbowline.nvim">indent-rainbowline</a>.
+但是自从昨天升级后发现这个插件报错，而且我也不愿意再消耗时间去修复这个<code>bug</code>，
+于是经过搜索发现了另一个替代品<a
+target="_blank" rel="noopener" href="https://github.com/shellRaining/hlchunk.nvim">hlchunk.nvim</a>,
+同时配置好以后发现还是挺好用的, 本文记录我的电脑配置以方便大众。</p>
+<p>2024年05月31日,
+由于官方对<code>hlchunk.nvim</code>做了大量更新，所以其配置相应发生变化，为了确保最新版本的使用，今天更新为可用的配置。</p>
+<h1 id="安装和配置">安装和配置</h1>
+<ol type="1">
+<li><p>在<code>Lazy.nvim</code>中，找到文件<code>~/.config/nvim/lua/lazy-init.lua</code>，
+然后添加 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;shellRaining/hlchunk.nvim&quot;</span>,</span><br><span class="line">    event = &#123; <span class="string">&quot;BufReadPre&quot;</span>, <span class="string">&quot;BufNewFile&quot;</span> &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p></li>
+<li><p>编写配置文件<code>~/.config/nvim/lua/plg/hlchunk.lua</code>
+<figure class="highlight lua"><figcaption><span>~/.config/nvim/lua/plg/hlchunk.lua</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">#! /usr/bin/env lua</span><br><span class="line"><span class="comment">-- hlchunk.lua</span></span><br><span class="line"><span class="comment">-- https://fengzhenhua.gitlab.io/2024/05/18/Neovim高亮缩进线插件hlchunk</span></span><br><span class="line"><span class="comment">-- Copyright (C) 2024 feng &lt;feng@archlinux&gt;</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&#x27;hlchunk&#x27;</span>).setup(&#123;</span><br><span class="line">    blank = &#123;</span><br><span class="line">        enable = <span class="literal">false</span>,</span><br><span class="line">        chars = &#123;</span><br><span class="line">            <span class="string">&quot; &quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        style = &#123;</span><br><span class="line">            &#123; bg = <span class="string">&quot;#434437&quot;</span> &#125;,</span><br><span class="line">            &#123; bg = <span class="string">&quot;#2f4440&quot;</span> &#125;,</span><br><span class="line">            &#123; bg = <span class="string">&quot;#433054&quot;</span> &#125;,</span><br><span class="line">            &#123; bg = <span class="string">&quot;#284251&quot;</span> &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    chunk = &#123;</span><br><span class="line">        enable = <span class="literal">true</span>,</span><br><span class="line">        chars = &#123;</span><br><span class="line">            horizontal_line = <span class="string">&quot;─&quot;</span>,</span><br><span class="line">            vertical_line = <span class="string">&quot;│&quot;</span>,</span><br><span class="line">            left_top = <span class="string">&quot;┌&quot;</span>,</span><br><span class="line">            left_bottom = <span class="string">&quot;└&quot;</span>,</span><br><span class="line">            right_arrow = <span class="string">&quot;─&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        style = <span class="string">&quot;#00ffff&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">	indent = &#123;</span><br><span class="line">        enable = <span class="literal">true</span>,</span><br><span class="line">        use_treesitter = <span class="literal">false</span>,</span><br><span class="line">		<span class="comment">-- chars = &#123; &quot;│&quot;, &quot;¦&quot;, &quot;┆&quot;, &quot;┊&quot;, &#125;, -- more code can be found in https://unicodeplus.com/</span></span><br><span class="line">		chars = &#123; <span class="string">&quot;│&quot;</span> &#125;,</span><br><span class="line">		style = &#123;</span><br><span class="line">            <span class="comment">-- hlchunk 配色</span></span><br><span class="line">			<span class="string">&quot;#8B00FF&quot;</span>,</span><br><span class="line">			<span class="string">&quot;#FF0000&quot;</span>,</span><br><span class="line">			<span class="string">&quot;#FF7F00&quot;</span>,</span><br><span class="line">			<span class="string">&quot;#FFFF00&quot;</span>,</span><br><span class="line">			<span class="string">&quot;#00FF00&quot;</span>,</span><br><span class="line">			<span class="string">&quot;#00FFFF&quot;</span>,</span><br><span class="line">			<span class="string">&quot;#0000FF&quot;</span>,</span><br><span class="line">			<span class="string">&quot;#8B00FF&quot;</span>,</span><br><span class="line">            <span class="comment">-- indent-blankline 配色</span></span><br><span class="line">			<span class="comment">-- &quot;#E06c75&quot;,</span></span><br><span class="line">			<span class="comment">-- &quot;#E5C07B&quot;,</span></span><br><span class="line">			<span class="comment">-- &quot;#61AFEF&quot;,</span></span><br><span class="line">			<span class="comment">-- &quot;#D19A66&quot;,</span></span><br><span class="line">			<span class="comment">-- &quot;#98C379&quot;,</span></span><br><span class="line">			<span class="comment">-- &quot;#C678DD&quot;,</span></span><br><span class="line">			<span class="comment">-- &quot;#56B6C2&quot;,</span></span><br><span class="line">			<span class="comment">-- &quot;#8B00FF&quot;,</span></span><br><span class="line">		&#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    line_num = &#123;</span><br><span class="line">        style = <span class="string">&quot;#806d9c&quot;</span>,</span><br><span class="line">        priority = <span class="number">10</span>,</span><br><span class="line">        use_treesitter = <span class="literal">false</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p></li>
+<li><p>启用<code>hlchunk</code> <figure class="highlight lua"><figcaption><span>~/.config/nvim/init.vim</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lua <span class="built_in">require</span>(<span class="string">&#x27;plg/hlchunk&#x27;</span>)</span><br></pre></td></tr></table></figure></p></li>
+</ol>
+<details>
+<summary>
+官方仓库中的说明
+</summary>
+<h1 id="blank">blank</h1>
+<h2 id="blank-可以用来做什么">blank 可以用来做什么</h2>
+<p>我们代码的缩进一般是由空格或者 tab
+组成的，因此可以在这些空位上动一些手脚，比如添加特殊字符表示这是一个空格，或者添加背景颜色，做出彩虹的效果。这个
+mod 实质上继承自 indent，重写了 render 方法而已。</p>
+<h2 id="配置项">配置项</h2>
+<p>由于继承自 indent，他们的配置几乎相似和通用。blank mod
+的默认配置如下：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> default_conf = &#123;</span><br><span class="line">    priority = <span class="number">9</span>,</span><br><span class="line">    chars = &#123; <span class="string">&quot;․&quot;</span> &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>chars</code> 是一个 lua 表，其中的字符用来指示如何渲染 blank
+字符，你可以设置为下面这样，来循环使用这些字符（尽管这样设置并不会很好看）：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">chars = &#123;</span><br><span class="line">    <span class="string">&quot; &quot;</span>,</span><br><span class="line">    <span class="string">&quot;․&quot;</span>,</span><br><span class="line">    <span class="string">&quot;⁚&quot;</span>,</span><br><span class="line">    <span class="string">&quot;⁖&quot;</span>,</span><br><span class="line">    <span class="string">&quot;⁘&quot;</span>,</span><br><span class="line">    <span class="string">&quot;⁙&quot;</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p><code>style</code> 继承自 indent，因此和 indent
+的颜色实际上是一样的，并且配置方式一样。详情见 <a
+href="./indent.md">indent</a></p>
+<h2 id="example">example</h2>
+<p>下面是默认的 blank 样式</p>
+<p><img width="500" alt="image" src="https://raw.githubusercontent.com/shellRaining/img/main/2303/12_hlblank_default.png"></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">blank = &#123;</span><br><span class="line">    chars = &#123;</span><br><span class="line">        <span class="string">&quot;․&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    style = &#123;</span><br><span class="line">        &#123; vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(<span class="string">&quot;Whitespace&quot;</span>)), <span class="string">&quot;fg&quot;</span>, <span class="string">&quot;gui&quot;</span>), <span class="string">&quot;&quot;</span> &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>你也可以将空格设置的像是彩虹一般 🌈</p>
+<figure>
+<img
+src="https://github.com/shellRaining/hlchunk.nvim/assets/55068959/8c9cb644-cf1e-4fc9-adb8-33e12a4c7401"
+alt="screenshot" />
+<figcaption aria-hidden="true">screenshot</figcaption>
+</figure>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">blank = &#123;</span><br><span class="line">    enable = <span class="literal">true</span>,</span><br><span class="line">    chars = &#123;</span><br><span class="line">        <span class="string">&quot; &quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    style = &#123;</span><br><span class="line">        &#123; bg = <span class="string">&quot;#434437&quot;</span> &#125;,</span><br><span class="line">        &#123; bg = <span class="string">&quot;#2f4440&quot;</span> &#125;,</span><br><span class="line">        &#123; bg = <span class="string">&quot;#433054&quot;</span> &#125;,</span><br><span class="line">        &#123; bg = <span class="string">&quot;#284251&quot;</span> &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p><img width="500" alt="image" src="https://raw.githubusercontent.com/shellRaining/img/main/2303/07_hlchunk7.png"></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">indent = &#123;</span><br><span class="line">    chars = &#123;</span><br><span class="line">        <span class="string">&quot;․&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    style = &#123;</span><br><span class="line">        &#123; vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(<span class="string">&quot;Whitespace&quot;</span>)), <span class="string">&quot;fg&quot;</span>, <span class="string">&quot;gui&quot;</span>), <span class="string">&quot;&quot;</span> &#125;,</span><br><span class="line">        <span class="string">&quot;#806d9c&quot;</span>,</span><br><span class="line">        <span class="string">&quot;#c06f98&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你也可以设置多种字符类型</p>
+<p><img width="500" alt="image" src="https://raw.githubusercontent.com/shellRaining/img/main/2303/08_hlblank1.png"></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">indent = &#123;</span><br><span class="line">    chars = &#123;</span><br><span class="line">            <span class="string">&quot;․&quot;</span>,</span><br><span class="line">            <span class="string">&quot;⁚&quot;</span>,</span><br><span class="line">            <span class="string">&quot;⁖&quot;</span>,</span><br><span class="line">            <span class="string">&quot;⁘&quot;</span>,</span><br><span class="line">            <span class="string">&quot;⁙&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    style = &#123;</span><br><span class="line">        <span class="string">&quot;#666666&quot;</span>,</span><br><span class="line">        <span class="string">&quot;#555555&quot;</span>,</span><br><span class="line">        <span class="string">&quot;#444444&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后，他还可以设置背景颜色</p>
+<p><img width='500' src='https://raw.githubusercontent.com/shellRaining/img/main/2303/11_hlblank2.png'></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">blank = &#123;</span><br><span class="line">    enable = <span class="literal">true</span>,</span><br><span class="line">    chars = &#123;</span><br><span class="line">        <span class="string">&quot; &quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    style = &#123;</span><br><span class="line">        &#123; bg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(<span class="string">&quot;cursorline&quot;</span>)), <span class="string">&quot;bg&quot;</span>, <span class="string">&quot;gui&quot;</span>) &#125;,</span><br><span class="line">        &#123; bg = <span class="string">&quot;&quot;</span>, fg = <span class="string">&quot;&quot;</span> &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="chunk">chunk</h1>
+<h2 id="chunk-用来做什么">chunk 用来做什么</h2>
+<p>这个 mod 可以用来指示当前光标所在的一个 chunk（比如
+function_declaration，if_statement）等。并且提供了 textobject
+方便你快速的操作这个 chunk。</p>
+<h2 id="配置项-1">配置项</h2>
+<p>该 mod 的默认配置如下：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> default_conf = &#123;</span><br><span class="line">    priority = <span class="number">15</span>,</span><br><span class="line">    style = &#123;</span><br><span class="line">        &#123; fg = <span class="string">&quot;#806d9c&quot;</span> &#125;,</span><br><span class="line">        &#123; fg = <span class="string">&quot;#c21f30&quot;</span> &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    use_treesitter = <span class="literal">true</span>,</span><br><span class="line">    chars = &#123;</span><br><span class="line">        horizontal_line = <span class="string">&quot;─&quot;</span>,</span><br><span class="line">        vertical_line = <span class="string">&quot;│&quot;</span>,</span><br><span class="line">        left_top = <span class="string">&quot;╭&quot;</span>,</span><br><span class="line">        left_bottom = <span class="string">&quot;╰&quot;</span>,</span><br><span class="line">        right_arrow = <span class="string">&quot;&gt;&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    textobject = <span class="string">&quot;&quot;</span>,</span><br><span class="line">    max_file_size = <span class="number">1024</span> * <span class="number">1024</span>,</span><br><span class="line">    error_sign = <span class="literal">true</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>独有的配置项为
+<code>use_treesitter</code>，<code>chars</code>，<code>textobject</code>，<code>max_file_size</code>，<code>error_sign</code></p>
+<ul>
+<li><p><code>use_treesitter</code> 是用来控制是否使用 treesitter
+来高亮代码块，默认为 true。 如果该项被设置为
+true，他是通过自底向上的查找树的节点，直至找到匹配的节点类型，以此获取相应的
+chunk 范围的。而如果设置为 false，将使用 vim 的 <code>searchpair</code>
+来查找最近的相邻大括号来推断位置（也因此导致 Python
+等脚本语言无法正常使用该 mod）</p></li>
+<li><p><code>chars</code> 是一个表，其中的字符用来指示用哪些字符来渲染
+chunk，这个表中包含五个部分</p>
+<ul>
+<li>horizontal_line</li>
+<li>vertical_line</li>
+<li>left_top</li>
+<li>left_bottom</li>
+<li>right_arrow</li>
+</ul></li>
+<li><p><code>textobject</code>
+是一个字符串，默认没有值。他用来表示想要用哪些字符来表示
+textobject，比如我使用的就是 <code>ic</code>，意为
+<code>inner chunk</code>，你也可以修改为其他顺手的字符</p></li>
+<li><p><code>max_file_size</code> 是一个数字，默认为
+<code>1MB</code>，当打开的文件大小超过这个值时，将自动关闭该
+mod</p></li>
+<li><p><code>error_sign</code> 是一个布尔值，默认为 true，如果你使用
+treesitter 来高亮代码块，当遇到错误的代码块时，它将会把 chunk
+的颜色设置为枫叶红（或者你想要的其他颜色），要启用这个选项，style
+应该有两个颜色， 默认的 style 为</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">style = &#123;</span><br><span class="line">    <span class="string">&quot;#806d9c&quot;</span>, <span class="comment">-- 紫罗兰色</span></span><br><span class="line">    <span class="string">&quot;#c21f30&quot;</span>, <span class="comment">-- 枫叶红色</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>对于通用的配置（在 <a href="../../README.zh-CN.md">README</a>
+中有提到），仅有部分需要特别注意：</p>
+<ul>
+<li><code>style</code> 是一个字符串或者 Lua 表。如果是字符串，必须是一个
+RGB
+十六进制字符串。如果是一个表，接收一到两个表示十六进制颜色的字符串，如果只有一个颜色，那么只会使用一个颜色来渲染
+chunk，如果有两个颜色，那么会使用两个颜色来渲染
+chunk，第一个颜色用来渲染正常的 chunk，第二个颜色用来渲染错误的
+chunk。</li>
+</ul>
+<p>除此之外，还可以使用这样的配置来动态的切换 chunk
+的颜色，这是为了解决<a
+target="_blank" rel="noopener" href="https://github.com/shellRaining/hlchunk.nvim/issues/46">这个
+issue</a></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> cb = <span class="function"><span class="keyword">function</span><span class="params">()</span></span></span><br><span class="line">    <span class="keyword">if</span> vim.g.colors_name == <span class="string">&quot;tokyonight&quot;</span> <span class="keyword">then</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;#806d9c&quot;</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;#00ffff&quot;</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">chunk = &#123;</span><br><span class="line">    style = &#123;</span><br><span class="line">        &#123; fg = cb &#125;,</span><br><span class="line">        &#123; fg = <span class="string">&quot;#f35336&quot;</span> &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="example-1">example</h2>
+<p>下面是默认的 chunk 样式</p>
+<p><img width="500" alt="image" src="https://raw.githubusercontent.com/shellRaining/img/main/2302/23_hlchunk1.png"></p>
+<p>他的配置方式为</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">chunk = &#123;</span><br><span class="line">    chars = &#123;</span><br><span class="line">        horizontal_line = <span class="string">&quot;─&quot;</span>,</span><br><span class="line">        vertical_line = <span class="string">&quot;│&quot;</span>,</span><br><span class="line">        left_top = <span class="string">&quot;╭&quot;</span>,</span><br><span class="line">        left_bottom = <span class="string">&quot;╰&quot;</span>,</span><br><span class="line">        right_arrow = <span class="string">&quot;&gt;&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    style = <span class="string">&quot;#806d9c&quot;</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p><a id='chunk_gif'>你可以按照下面的配置来使你的样式看起来像是 GIF
+里演示的那样</a></p>
+<p><img width="500" alt="image" src="https://raw.githubusercontent.com/shellRaining/img/main/2303/08_hlchunk8.gif"></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">chunk = &#123;</span><br><span class="line">    chars = &#123;</span><br><span class="line">        horizontal_line = <span class="string">&quot;─&quot;</span>,</span><br><span class="line">        vertical_line = <span class="string">&quot;│&quot;</span>,</span><br><span class="line">        left_top = <span class="string">&quot;┌&quot;</span>,</span><br><span class="line">        left_bottom = <span class="string">&quot;└&quot;</span>,</span><br><span class="line">        right_arrow = <span class="string">&quot;─&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    style = <span class="string">&quot;#00ffff&quot;</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h1 id="indent">indent</h1>
+<h2 id="indent-用来做什么">indent 用来做什么</h2>
+<p>我们写代码有时候会遇到嵌套很多层等情况，而为了确定某些代码是否在同一层级，我们需要缩进线来帮助定位。</p>
+<h2 id="配置项-2">配置项</h2>
+<p>该 mod 的默认配置如下：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> default_conf = &#123;</span><br><span class="line">    priority = <span class="number">10</span>,</span><br><span class="line">    style = &#123; vim.api.nvim_get_hl(<span class="number">0</span>, &#123; name = <span class="string">&quot;Whitespace&quot;</span> &#125;) &#125;,</span><br><span class="line">    use_treesitter = <span class="literal">false</span>,</span><br><span class="line">    chars = &#123; <span class="string">&quot;│&quot;</span> &#125;,</span><br><span class="line">    ahead_lines = <span class="number">5</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>独有的配置为
+<code>use_treesitter</code>，<code>chars</code>，<code>ahead_lines</code></p>
+<ul>
+<li><p><code>use_treesitter</code> 是用来控制是否使用 treesitter 来判断
+indent 的层数，默认为
+false（因为性能问题）。如果你对缩进的精确要求很高，你可以尝试设置为
+true，详情见这个 <a
+target="_blank" rel="noopener" href="https://github.com/shellRaining/hlchunk.nvim/issues/77#issuecomment-1817530409">issue</a></p></li>
+<li><p><code>chars</code> 是一个表，其中的字符用来指示用什么字符来渲染
+indent line，你可以尝试设置为下面这样：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">chars = &#123;</span><br><span class="line">    <span class="string">&quot;│&quot;</span>,</span><br><span class="line">    <span class="string">&quot;¦&quot;</span>,</span><br><span class="line">    <span class="string">&quot;┆&quot;</span>,</span><br><span class="line">    <span class="string">&quot;┊&quot;</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>实际渲染的时候，第一个层级会采用第一个字符，第二个层级会采用第二个字符，以此类推，如果层级超过了你设置的字符数，那么会循环使用这些字符。</p>
+<ul>
+<li><code>ahead_lines</code>
+是一个数字，用来控制缩进线超前查看和渲染范围，默认为 5</li>
+</ul>
+<p>和 chunk 一样，我们需要额外注意 style 这个通用配置：</p>
+<ul>
+<li><p>这里的 <code>style</code> 是一个 RGB
+字符串或者一个表。如果是字符串，那么所有的缩进线将会采用这一种颜色来渲染，如果是表，可以有这两种写法：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">style = &#123;</span><br><span class="line">  <span class="string">&quot;#FF0000&quot;</span>,</span><br><span class="line">  <span class="string">&quot;#FF7F00&quot;</span>,</span><br><span class="line">  <span class="string">&quot;...&quot;</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">style = &#123;</span><br><span class="line">  &#123; bg = <span class="string">&quot;#FF0000&quot;</span>, fg = <span class="string">&quot;#FFFFFF&quot;</span> &#125;,</span><br><span class="line">  &#123; bg = <span class="string">&quot;#FF7F00&quot;</span>, fg = <span class="string">&quot;FF7F00&quot;</span> &#125;,</span><br><span class="line">  <span class="comment">-- ...</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>如果你设置了背景颜色，那么缩进线将会采用背景颜色来渲染。</p></li>
+</ul>
+<h2 id="example-2">example</h2>
+<p>下面是默认的 indent 样式</p>
+<p><img width="500" alt="image" src="https://raw.githubusercontent.com/shellRaining/img/main/2302/23_hlchunk1.png"></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">indent = &#123;</span><br><span class="line">    chars = &#123;</span><br><span class="line">        <span class="string">&quot;│&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    style = &#123;</span><br><span class="line">        vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(<span class="string">&quot;Whitespace&quot;</span>)), <span class="string">&quot;fg&quot;</span>, <span class="string">&quot;gui&quot;</span>),</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你也可以将缩进线设置的像是彩虹一般 🌈</p>
+<p><img width="500" alt="image" src="https://raw.githubusercontent.com/shellRaining/img/main/2302/23_hlchunk2.png"></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">indent = &#123;</span><br><span class="line">    chars = &#123;</span><br><span class="line">        <span class="string">&quot;│&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    style = &#123;</span><br><span class="line">        <span class="string">&quot;#FF0000&quot;</span>,</span><br><span class="line">        <span class="string">&quot;#FF7F00&quot;</span>,</span><br><span class="line">        <span class="string">&quot;#FFFF00&quot;</span>,</span><br><span class="line">        <span class="string">&quot;#00FF00&quot;</span>,</span><br><span class="line">        <span class="string">&quot;#00FFFF&quot;</span>,</span><br><span class="line">        <span class="string">&quot;#0000FF&quot;</span>,</span><br><span class="line">        <span class="string">&quot;#8B00FF&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你也可以设置多种字符类型</p>
+<p><img width="500" alt="image" src="https://raw.githubusercontent.com/shellRaining/img/main/2303/01_hlchunk5.png"></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">indent = &#123;</span><br><span class="line">    chars = &#123;</span><br><span class="line">        <span class="string">&quot;│&quot;</span>,</span><br><span class="line">        <span class="string">&quot;¦&quot;</span>,</span><br><span class="line">        <span class="string">&quot;┆&quot;</span>,</span><br><span class="line">        <span class="string">&quot;┊&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    style = &#123;</span><br><span class="line">        vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(<span class="string">&quot;Whitespace&quot;</span>)), <span class="string">&quot;fg&quot;</span>, <span class="string">&quot;gui&quot;</span>),</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果你喜欢更粗的显示效果，你可以设置渲染的背景颜色</p>
+<p><img width="500" alt="image" src="https://raw.githubusercontent.com/shellRaining/img/main/2303/13_hlindent_bg.png"></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">indent = &#123;</span><br><span class="line">    enable = <span class="literal">true</span>,</span><br><span class="line">    use_treesitter = <span class="literal">false</span>,</span><br><span class="line">    chars = &#123;</span><br><span class="line">        <span class="string">&quot; &quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    style = &#123;</span><br><span class="line">        &#123; bg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(<span class="string">&quot;Whitespace&quot;</span>)), <span class="string">&quot;fg&quot;</span>, <span class="string">&quot;gui&quot;</span>) &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    exclude_filetype = exclude_ft,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="line_num">line_num</h1>
+<h2 id="line_num-用来做什么">line_num 用来做什么</h2>
+<p>其实他和 chunk 的功能相同，只是可能有些人不喜欢
+chunk，偏好高亮行号的形式，因此有了这个 mod</p>
+<h2 id="配置项-3">配置项</h2>
+<p>该 mod 的默认配置如下：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> default_conf = &#123;</span><br><span class="line">    style = <span class="string">&quot;#806d9c&quot;</span>,</span><br><span class="line">    priority = <span class="number">10</span>,</span><br><span class="line">    use_treesitter = <span class="literal">false</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>独有的配置项为 <code>use_treesitter</code>，用法和 chunk
+的该项一样，详情见 <a href="./chunk.md">chunk</a></p>
+<p>和 chunk 一样，我们需要额外注意 style
+这个通用配置：他只接收一个字符串，表示十六进制颜色，来表示行号的颜色</p>
+<h2 id="example-3">example</h2>
+<p>下面是默认的 line_num 样式</p>
+<p><img width="500" alt="image" src="https://raw.githubusercontent.com/shellRaining/img/main/2302/25_hlchunk3.png"></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">line_num = &#123;</span><br><span class="line">    style = <span class="string">&quot;#806d9c&quot;</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+未来还会添加更多有意思的样式…… 如果你有好的想法，非常欢迎来提建议 😊
+</details>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%94%B5%E8%84%91%E6%8A%80%E6%9C%AF/" rel="tag"># 电脑技术</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/05/16/Latex-Suite%E4%B8%AD%E7%9A%84Alt%E9%94%AE/" rel="prev" title="Latex-Suite中的Alt键">
+                  <i class="fa fa-angle-left"></i> Latex-Suite中的Alt键
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/05/23/KDE-Plasma%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="next" title="KDE-Plasma桌面环境提高效率的快捷键">
+                  KDE-Plasma桌面环境提高效率的快捷键 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; Sat Sep 03 2022 08:00:00 GMT+0800 (中国标准时间) – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa-solid fa-star"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">fengzhenhua</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/fungzhenhua" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://s4.zstatic.net/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://s4.zstatic.net/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://s4.zstatic.net/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://s4.zstatic.net/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://s4.zstatic.net/ajax/libs/pdfobject/2.3.0/pdfobject.min.js","integrity":"sha256-JJZNsid68vnh3/zyj0lY9BN5ynxVX/12XgOa1TlaYN0="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://s4.zstatic.net/ajax/libs/mermaid/11.4.0/mermaid.min.js","integrity":"sha256-G8ouPAnw4zzMbnAenHnVz6h9XpKbNdOkrqTh7AadyHs="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://s4.zstatic.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
