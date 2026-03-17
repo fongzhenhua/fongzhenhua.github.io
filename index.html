@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">559</span>
+          <span class="site-state-item-count">560</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -390,6 +390,101 @@ target="_blank" rel="noopener" href="https://endeavouros.com">Endeavour</a>
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/03/17/ArchLinux%E4%BD%BF%E7%94%A8PcamanHooks%E8%A7%A3%E5%86%B3GDM%E6%81%A2%E5%A4%8D%E9%BB%98%E8%AE%A4%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/03/17/ArchLinux%E4%BD%BF%E7%94%A8PcamanHooks%E8%A7%A3%E5%86%B3GDM%E6%81%A2%E5%A4%8D%E9%BB%98%E8%AE%A4%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">ArchLinux使用PcamanHooks解决GDM恢复默认的问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-03-17 14:26:09 / 修改时间：14:41:18" itemprop="dateCreated datePublished" datetime="2026-03-17T14:26:09+08:00">2026-03-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>ArchLinux 是我的主力办公系统，我配置了完整的 WhiteSur
+主题，当然也细致到了使用 WhiteSur 的 GDM 主题。但是我发现有时候系统使用
+Pacman 升级后 GDM 主题会恢复到默认状态，其根源在于 GDM （GNOME
+显示管理器）的主题是通过直接替换系统文件<code>/usr/share/gnome-shell/gnome-shell-theme.gresource</code>
+来实现的。当<code>gnome-shell</code>
+软件包升级时，这个文件会被包管理器自动恢复为默认版本，所以美化的登录界面就消失了。</p>
+<p>永久解决这个问题的核心思路是让系统在每次<code>gnome-shell</code>更新后，自动重新应用一次<code>WhiteSur</code>主题。在ArchLinux上，最优雅的方式就是使用<code>Pacman钩子(hook)</code>,
+具体步骤为：</p>
+<ul>
+<li><p>创建钩子文件：使用<code>root</code>权限在<code>/usr/share/libalpm/hooks/</code>目录下创建一个新的钩子文件，例如命名为<code>reapply-whitesur-gdm.hook</code>,
+如果你按装了<code>nvim</code>则执行 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nvim /usr/share/libalpm/hooks/reapply-whitesur-gdm.hook</span><br></pre></td></tr></table></figure></p></li>
+<li><p>编写钩子内容： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Trigger]</span><br><span class="line">Operation = Upgrade</span><br><span class="line">Type = Package</span><br><span class="line">Target = gnome-shell</span><br><span class="line"></span><br><span class="line">[Action]</span><br><span class="line">Description = Reapplying WhiteSur GDM theme after gnome-shell upgrade...</span><br><span class="line">When = PostTransaction</span><br><span class="line">Exec = /bin/sh -c <span class="string">&#x27;cd /路径/你的/WhiteSur-gtk-theme &amp;&amp; sudo ./tweaks.sh -g&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><code>[Trigger]</code>部分：定义了钩子的触发条件,
+即<code>gnome-shell</code>或<code>gdm</code>包升级(<code>Upgrade</code>)后触发。</li>
+<li><code>[Action]</code>部分：定义了要执行的动作。</li>
+<li><code>Exec</code>:
+最关键的一行。它需要指定一个完整的<code>shell</code>命令来重新应用主题。</li>
+</ul></li>
+<li><p>原理验证：保存文件后，这个钩子就生效了。下一次当你运行
+<code>sudo pacman -Syu</code> 并且更新列表里包含
+<code>gnome-shell</code>或<code>gdm</code>
+时，你会在升级输出中看到你设置的 <code>Description</code>
+文字，随后主题会被自动重新应用。升级完成后，你的 <code>GDM</code>
+登录界面将保持为 <code>WhiteSur 主题</code>，再也不会被重置了。</p></li>
+</ul>
+
       
     </div>
 
@@ -1191,86 +1286,6 @@ Player的编解码能力。</p>
 Codec
 Pack，你可以为系统提供全面的解码支持，解决绝大多数视频播放问题。</p>
 <p>记住，在重要的演示之前，务必在目标设备上<strong>提前测试</strong>所有媒体文件的播放情况，避免出现尴尬的技术故障。同时，考虑将视频转换为兼容性更好的格式（如MP4），并使用PowerPoint的"优化兼容性"功能，进一步确保演示的顺利进行。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/28/4k%E6%98%BE%E7%A4%BA%E5%99%A8%E8%B0%83%E6%95%B4Geogebra%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/10/28/4k%E6%98%BE%E7%A4%BA%E5%99%A8%E8%B0%83%E6%95%B4Geogebra%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F/" class="post-title-link" itemprop="url">4k显示器调整Geogebra字体大小</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-10-28 19:42:47 / 修改时间：19:45:05" itemprop="dateCreated datePublished" datetime="2025-10-28T19:42:47+08:00">2025-10-28</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在 4K 显示器上使用 GeoGebra
-时，由于高分辨率可能导致界面元素（包括字体）显得过小，你可以通过以下方法来调整字体大小，使其更清晰易读：</p>
-<ul>
-<li>打开 <code>GeoGebra</code>（桌面版，如 <code>Classic 5</code> 或
-<code>Classic 6</code>）。</li>
-<li>点击菜单栏的 “选项”（<code>Options</code>）。</li>
-<li>选择 “字体大小”（<code>Font Size</code>）。</li>
-<li>在弹出的子菜单中选择一个更大的字号（如
-<code>16</code>、<code>20</code>、<code>24</code> 等）。</li>
-<li>这会同时影响图形视图中的标签、坐标轴、代数区等的字体大小。</li>
-</ul>
 
       
     </div>

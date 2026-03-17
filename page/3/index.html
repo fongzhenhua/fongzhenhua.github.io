@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">559</span>
+          <span class="site-state-item-count">560</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -307,6 +307,99 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/06/Mason%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/06/Mason%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/" class="post-title-link" itemprop="url">Mason加速下载</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-08-06 18:09:58" itemprop="dateCreated datePublished" datetime="2025-08-06T18:09:58+08:00">2025-08-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-08-16 20:44:29" itemprop="dateModified" datetime="2025-08-16T20:44:29+08:00">2025-08-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Neovim 配置好 LSP 后可以极大的增强功能，其中 Mason
+可以方便的管理和配置 LSP, 而 <code>ltex-ls</code>
+可以实现离线<code>latex</code>,
+<code>markdown</code>等的语法检测，所以这是一个重要 LSP.
+然而，在近几天使用 <code>Neovim</code> 打开
+<code>latex</code>文件时总是报错如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JDK 24 - Cannot load or parse input stream of <span class="string">&#x27;/org/languagetool/rules/en/grammar.xml&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>根据 <a
+target="_blank" rel="noopener" href="https://github.com/languagetool-org/languagetool/issues/11125">https://github.com/languagetool-org/languagetool/issues/11125</a>
+的提示，将<code>ltex-ls</code>替换为<code>ltex-ls-plus</code>可以解决问题，同时后者是前者的增强版本也是一个更好的选择。但是在安装时发现<code>ltex-ls-plus</code>的体积非常大，使用Mason直接安装多次未成功。于是将<code>Maso</code>的默认下载工具调整为<code>aria2</code>,
+实现了快速下载，最终成功安装<code>ltex-ls-plus</code>.</p>
+<h2 id="安装-aria2">安装 aria2</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S aria</span><br></pre></td></tr></table></figure>
+<h2 id="配置-mason">配置 Mason</h2>
+<p>设置如下：</p>
+<figure class="highlight lua"><figcaption><span>~/.config/nvim/lua/lsp/mason.lua</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">&quot;mason&quot;</span>).setup(&#123;</span><br><span class="line">    ... ,</span><br><span class="line">	download = &#123;</span><br><span class="line">	   cmd = <span class="string">&quot;aria2c&quot;</span>,</span><br><span class="line">	   args = &#123; <span class="string">&quot;--continue&quot;</span>, <span class="string">&quot;--out=$FILE&quot;</span>, <span class="string">&quot;$URL&quot;</span> &#125;</span><br><span class="line">	&#125;,</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<p>为方便使用，我的完整文件内容展示如下：</p>
+<figure class="highlight lua"><figcaption><span>~/.config/nvim/lua/lsp/mason.lua</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- :h mason-default-settings</span></span><br><span class="line"><span class="comment">-- ~/.local/share/nvim/mason</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="keyword">local</span> servers = &#123;</span><br><span class="line">   lua_ls = <span class="built_in">require</span> <span class="string">&quot;lsp.lua&quot;</span>, <span class="comment">-- /lua/lsp/lua.lua</span></span><br><span class="line">   ltex = <span class="built_in">require</span> <span class="string">&quot;lsp.ltex&quot;</span>, <span class="comment">-- /lua/lsp/ltex.lua</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&quot;mason&quot;</span>).setup(&#123;</span><br><span class="line">        github = &#123;</span><br><span class="line">            since <span class="number">1.0</span><span class="number">.0</span></span><br><span class="line">            download_url_template = <span class="string">&quot;https://github.com/%s/releases/download/%s/%s&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        ui = &#123;</span><br><span class="line">            icons = &#123;</span><br><span class="line">                package_installed = <span class="string">&quot;✓&quot;</span>,</span><br><span class="line">                package_pending = <span class="string">&quot;➜&quot;</span>,</span><br><span class="line">                package_uninstalled = <span class="string">&quot;✗&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">	download = &#123;</span><br><span class="line">	   cmd = <span class="string">&quot;aria2c&quot;</span>,</span><br><span class="line">	   args = &#123; <span class="string">&quot;--continue&quot;</span>, <span class="string">&quot;--out=$FILE&quot;</span>, <span class="string">&quot;$URL&quot;</span> &#125;</span><br><span class="line">	&#125;,</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 添加安装的插件,使用Mason命令查询插件名称</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&quot;mason-lspconfig&quot;</span>).setup &#123;</span><br><span class="line">   ensure_installed = &#123;</span><br><span class="line">      <span class="string">&quot;lua_ls&quot;</span>,</span><br><span class="line">      <span class="string">&quot;rust_analyzer&quot;</span>,</span><br><span class="line">      <span class="comment">-- &quot;ltex_plus&quot;,</span></span><br><span class="line">      <span class="string">&quot;pyright&quot;</span>,</span><br><span class="line">      <span class="string">&quot;vimls&quot;</span>,</span><br><span class="line">      <span class="string">&quot;texlab&quot;</span>,</span><br><span class="line">   &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1238,114 +1331,6 @@ class="math inline">\(10^{-4}\)</span> 秒</td>
 </table>
 <h2 id="总结">4. 总结</h2>
 <p>瞬发中子和缓发中子在核裂变过程中扮演着不同的角色。瞬发中子是链式反应的主要驱动力，而缓发中子虽然数量少，但对反应堆的稳定性和控制至关重要。理解这两者的特性和差异，对于核能工程和反应堆设计具有重要意义。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/19/%E5%85%B1%E6%8C%AF%E8%83%BD%E5%8C%BA%E7%9A%84%E6%95%A3%E5%B0%84%E6%88%AA%E9%9D%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/04/19/%E5%85%B1%E6%8C%AF%E8%83%BD%E5%8C%BA%E7%9A%84%E6%95%A3%E5%B0%84%E6%88%AA%E9%9D%A2/" class="post-title-link" itemprop="url">共振能区的散射截面</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-04-19 20:52:05 / 修改时间：21:17:28" itemprop="dateCreated datePublished" datetime="2025-04-19T20:52:05+08:00">2025-04-19</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在共振能量范围内，中子与原子核发生的弹性散射是中子在反应堆中发生慢化的主要途径，超过百分之九十九的裂变中子都是快中子，所以这些快中子对共振能量范围内的能谱影响较小，故可以忽略。在简化计算中子输运方程中，弹性散射截面可以视为各向同性的，所以可以近似认为</p>
-<p><span class="math display">\[\begin{equation}\label{eq:tanxing}
-\int_{E}^{E&#39;}\sigma_{s,k}(E&#39;\to E)dE=\sigma_{s,k}(E&#39;)
-\end{equation}\]</span></p>
-<p>设原子核初始处于静止状态，中子的初始速度为<span
-class="math inline">\(v_0^\prime\)</span>, 碰后的速度大小为<span
-class="math inline">\(v\)</span>,
-则对心正碰时中子传递给原子核的能量最多，也就是中子损失的能量最多。按对心正碰计算碰后的最小能量与碰前的能量之比，设中子质量为<span
-class="math inline">\(m\)</span>, 原子核质量为<span
-class="math inline">\(M\)</span>, 则弹性碰撞的质心速度为</p>
-<p><span class="math display">\[\begin{equation}\label{eq:tanxing0}
-v_c=\frac{mv_0^\prime+0}{m+M}
-\end{equation}\]</span></p>
-<p>对于中子而言，其碰后速度容易根据牛顿碰撞定律获得为</p>
-<p><span class="math display">\[\begin{equation}\label{eq:tanxing1}
-v=2v_c-v_0^\prime=\frac{m-M}{m+M}v_0^\prime
-\end{equation}\]</span></p>
-<p>于是可得，碰后和碰前的中子能量比为</p>
-<p><span class="math display">\[\begin{equation}\label{eq:tanxing2}
-\frac{E}{E&#39;}=\frac{v^2}{v_0^{\prime2}}=\left(\frac{m-M}{m+M}\right)^2
-\end{equation}\]</span></p>
-<p>令<span class="math inline">\(A_k=\frac{M}{m}\)</span>, 则<span
-class="math inline">\(\eqref{eq:tanxing2}\)</span>可以进一步写为</p>
-<p><span class="math display">\[\begin{equation}\label{eq:tanxing3}
-\frac{E}{E&#39;}=\left(\frac{A_k-1}{A_k+1}\right)^2=\alpha_k
-\end{equation}\]</span></p>
-<p>于是式<span
-class="math inline">\(\eqref{eq:tanxing}\)</span>可以近似写为 <span
-class="math display">\[\begin{equation}\label{eq:tanxing4}
-\sigma_{s,k}(E&#39;\to E)(E&#39;-E)=\sigma_{s,k}(E&#39;\to
-E)(1-\alpha_k)E&#39;=\sigma_{s,k}(E&#39;)
-\end{equation}\]</span></p>
-<p>进一步可得 <span
-class="math display">\[\begin{equation}\label{eq:tanxing5}
-\sigma_{s,k}(E&#39;\to
-E)=\frac{\sigma_{s,k}(E&#39;)}{(1-\alpha_k)E&#39;}
-\end{equation}\]</span></p>
-<p>式<span
-class="math inline">\(\eqref{eq:tanxing5}\)</span>正是共振能区的散射截面，此式的建立可以使中子输运方程得以进一步简化。</p>
 
       
     </div>

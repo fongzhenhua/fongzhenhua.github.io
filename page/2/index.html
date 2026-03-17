@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">559</span>
+          <span class="site-state-item-count">560</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -307,6 +307,86 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/28/4k%E6%98%BE%E7%A4%BA%E5%99%A8%E8%B0%83%E6%95%B4Geogebra%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/10/28/4k%E6%98%BE%E7%A4%BA%E5%99%A8%E8%B0%83%E6%95%B4Geogebra%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F/" class="post-title-link" itemprop="url">4k显示器调整Geogebra字体大小</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-10-28 19:42:47 / 修改时间：19:45:05" itemprop="dateCreated datePublished" datetime="2025-10-28T19:42:47+08:00">2025-10-28</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在 4K 显示器上使用 GeoGebra
+时，由于高分辨率可能导致界面元素（包括字体）显得过小，你可以通过以下方法来调整字体大小，使其更清晰易读：</p>
+<ul>
+<li>打开 <code>GeoGebra</code>（桌面版，如 <code>Classic 5</code> 或
+<code>Classic 6</code>）。</li>
+<li>点击菜单栏的 “选项”（<code>Options</code>）。</li>
+<li>选择 “字体大小”（<code>Font Size</code>）。</li>
+<li>在弹出的子菜单中选择一个更大的字号（如
+<code>16</code>、<code>20</code>、<code>24</code> 等）。</li>
+<li>这会同时影响图形视图中的标签、坐标轴、代数区等的字体大小。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1209,99 +1289,6 @@ stty: 标准输入: 对设备不适当的 ioctl 操作" 。</p>
 <code>tput</code>会获得相同的结果，为了确保与之前脚本的兼容性，修改获取尺寸函数为：</p>
 <figure class="highlight sh"><figcaption><span>~/.Share_Fun/Share_Fun_Menu.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列表程序</span></span><br><span class="line"><span class="function"><span class="title">DY_SET_SIZE</span></span>()&#123;</span><br><span class="line">    <span class="keyword">if</span> [ -t 0 ]; <span class="keyword">then</span></span><br><span class="line">        TTY_H=$(<span class="built_in">stty</span> size|awk <span class="string">&#x27;&#123;print $1&#125;&#x27;</span>)</span><br><span class="line">        TTY_W=$(<span class="built_in">stty</span> size|awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        TTY_H=$(tput lines 2&gt;/dev/null) || TTY_H=37</span><br><span class="line">        TTY_W=$(tput cols 2&gt;/dev/null) || TTY_W=147</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    <span class="built_in">let</span> TTY_H-=2</span><br><span class="line">&#125;</span><br><span class="line">DY_SET_SIZE</span><br></pre></td></tr></table></figure>
 <p>通过<code>[ -t 0 ]</code>来判断运行程序时是否在终端，若在终端仍然使用<code>stty size</code>获取终端尺寸，否则使用<code>tput</code>获取。这样重新定义获取尺寸函数后，问题彻底解决。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/06/Mason%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/08/06/Mason%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/" class="post-title-link" itemprop="url">Mason加速下载</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-08-06 18:09:58" itemprop="dateCreated datePublished" datetime="2025-08-06T18:09:58+08:00">2025-08-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-08-16 20:44:29" itemprop="dateModified" datetime="2025-08-16T20:44:29+08:00">2025-08-16</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Neovim 配置好 LSP 后可以极大的增强功能，其中 Mason
-可以方便的管理和配置 LSP, 而 <code>ltex-ls</code>
-可以实现离线<code>latex</code>,
-<code>markdown</code>等的语法检测，所以这是一个重要 LSP.
-然而，在近几天使用 <code>Neovim</code> 打开
-<code>latex</code>文件时总是报错如下：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JDK 24 - Cannot load or parse input stream of <span class="string">&#x27;/org/languagetool/rules/en/grammar.xml&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>根据 <a
-target="_blank" rel="noopener" href="https://github.com/languagetool-org/languagetool/issues/11125">https://github.com/languagetool-org/languagetool/issues/11125</a>
-的提示，将<code>ltex-ls</code>替换为<code>ltex-ls-plus</code>可以解决问题，同时后者是前者的增强版本也是一个更好的选择。但是在安装时发现<code>ltex-ls-plus</code>的体积非常大，使用Mason直接安装多次未成功。于是将<code>Maso</code>的默认下载工具调整为<code>aria2</code>,
-实现了快速下载，最终成功安装<code>ltex-ls-plus</code>.</p>
-<h2 id="安装-aria2">安装 aria2</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S aria</span><br></pre></td></tr></table></figure>
-<h2 id="配置-mason">配置 Mason</h2>
-<p>设置如下：</p>
-<figure class="highlight lua"><figcaption><span>~/.config/nvim/lua/lsp/mason.lua</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">&quot;mason&quot;</span>).setup(&#123;</span><br><span class="line">    ... ,</span><br><span class="line">	download = &#123;</span><br><span class="line">	   cmd = <span class="string">&quot;aria2c&quot;</span>,</span><br><span class="line">	   args = &#123; <span class="string">&quot;--continue&quot;</span>, <span class="string">&quot;--out=$FILE&quot;</span>, <span class="string">&quot;$URL&quot;</span> &#125;</span><br><span class="line">	&#125;,</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-<p>为方便使用，我的完整文件内容展示如下：</p>
-<figure class="highlight lua"><figcaption><span>~/.config/nvim/lua/lsp/mason.lua</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- :h mason-default-settings</span></span><br><span class="line"><span class="comment">-- ~/.local/share/nvim/mason</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="keyword">local</span> servers = &#123;</span><br><span class="line">   lua_ls = <span class="built_in">require</span> <span class="string">&quot;lsp.lua&quot;</span>, <span class="comment">-- /lua/lsp/lua.lua</span></span><br><span class="line">   ltex = <span class="built_in">require</span> <span class="string">&quot;lsp.ltex&quot;</span>, <span class="comment">-- /lua/lsp/ltex.lua</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&quot;mason&quot;</span>).setup(&#123;</span><br><span class="line">        github = &#123;</span><br><span class="line">            since <span class="number">1.0</span><span class="number">.0</span></span><br><span class="line">            download_url_template = <span class="string">&quot;https://github.com/%s/releases/download/%s/%s&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        ui = &#123;</span><br><span class="line">            icons = &#123;</span><br><span class="line">                package_installed = <span class="string">&quot;✓&quot;</span>,</span><br><span class="line">                package_pending = <span class="string">&quot;➜&quot;</span>,</span><br><span class="line">                package_uninstalled = <span class="string">&quot;✗&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">	download = &#123;</span><br><span class="line">	   cmd = <span class="string">&quot;aria2c&quot;</span>,</span><br><span class="line">	   args = &#123; <span class="string">&quot;--continue&quot;</span>, <span class="string">&quot;--out=$FILE&quot;</span>, <span class="string">&quot;$URL&quot;</span> &#125;</span><br><span class="line">	&#125;,</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 添加安装的插件,使用Mason命令查询插件名称</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&quot;mason-lspconfig&quot;</span>).setup &#123;</span><br><span class="line">   ensure_installed = &#123;</span><br><span class="line">      <span class="string">&quot;lua_ls&quot;</span>,</span><br><span class="line">      <span class="string">&quot;rust_analyzer&quot;</span>,</span><br><span class="line">      <span class="comment">-- &quot;ltex_plus&quot;,</span></span><br><span class="line">      <span class="string">&quot;pyright&quot;</span>,</span><br><span class="line">      <span class="string">&quot;vimls&quot;</span>,</span><br><span class="line">      <span class="string">&quot;texlab&quot;</span>,</span><br><span class="line">   &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
