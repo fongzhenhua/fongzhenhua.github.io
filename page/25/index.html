@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">560</span>
+          <span class="site-state-item-count">561</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -307,6 +307,163 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/02/Hexo%E4%B8%AD%E8%BE%93%E5%85%A5%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/07/02/Hexo%E4%B8%AD%E8%BE%93%E5%85%A5%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/" class="post-title-link" itemprop="url">Hexo中输入数学公式</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-02 17:04:41" itemprop="dateCreated datePublished" datetime="2024-07-02T17:04:41+08:00">2024-07-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>根据<code>Next</code>主题官方文档<a
+target="_blank" rel="noopener" href="https://theme-next.js.org/docs/third-party-services/math-equations.html?highlight=latex">Math
+Equation</a>配置好<code>Hexo</code>对数学公式的支持，对于一些小问题可以写成<code>LaTeX</code>记录在博客中。但是这里面遇到的问题是，<code>MarkDown</code>毕竟不是针对<code>LaTeX</code>设计的，所以一些特殊的宏包在博客中是不能使用的，对于一些特殊复杂的公式需要撰写<code>tex</code>文件编译，而不是发表在博客上。对于一些简单的公式，如果在<code>Hexo</code>博客上编写，应当注意使用原始的<code>LaTeX</code>命令，以增强其兼容性，对于一些数学符号的输入，请参考：<a
+target="_blank" rel="noopener" href="https://www.latexlive.com/help#d15">关于LaTeX公式编辑
+Introduce</a>,
+而对于<code>Hexo</code>支持的数学公式格式，为了方便使用，直接引用其官方的例子。</p>
+<h2 id="支持的数学公式">支持的数学公式</h2>
+<p>在<code>Hexo</code>中开启数学支持，有两种插件支持，其中<code>MathJax</code>依赖<code>JavaScript</code>,但其支持的数学公式更多，而<code>KaTeX</code>不依赖<code>JavaScript</code>,
+同时速度更快，但是其持的数学公式少一些，因些根据<code>Next</code>主题官方，推荐使用<code>MathJax</code>.它们支持的<code>TeX/LaTeX</code>命令参考:</p>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://docs.mathjax.org/en/latest/input/tex/macros/index.html">MathJax支持的TeX/LaTeX命令</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://katex.org/docs/supported.html">KaTeX支持的TeX/LaTeX命令</a></li>
+</ul>
+<h2 id="simple-equations">Simple Equations</h2>
+<p>For simple equations, use the following form to give a tag,</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span><span class="keyword">\begin</span>&#123;equation&#125; <span class="keyword">\label</span>&#123;eq1&#125;</span><br><span class="line">e=mc<span class="built_in">^</span>2</span><br><span class="line"><span class="keyword">\end</span>&#123;equation&#125;<span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
+<p><span class="math display">\[\begin{equation} \label{eq1}
+e=mc^2
+\end{equation}\]</span></p>
+<p>Then, you can refer to this equation in your text easily by using
+something like:</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The famous matter-energy equation <span class="built_in">$</span><span class="keyword">\eqref</span>&#123;eq1&#125;<span class="built_in">$</span> proposed by Einstein...</span><br></pre></td></tr></table></figure>
+<p>The famous matter-energy equation <span
+class="math inline">\(\eqref{eq1}\)</span> proposed by Einstein...</p>
+<h2 id="multi-line-equations">Multi-line Equations</h2>
+<p>For multi-line equations, inside the <code>equation</code>
+environment, you can use the <code>aligned</code> environment to split
+it into multiple lines:</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span><span class="keyword">\begin</span>&#123;equation&#125; <span class="keyword">\label</span>&#123;eq2&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;aligned&#125;</span><br><span class="line">a <span class="built_in">&amp;</span>= b + c <span class="keyword">\\</span></span><br><span class="line">  <span class="built_in">&amp;</span>= d + e + f + g <span class="keyword">\\</span></span><br><span class="line">  <span class="built_in">&amp;</span>= h + i</span><br><span class="line"><span class="keyword">\end</span>&#123;aligned&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;equation&#125;<span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
+<p><span class="math display">\[\begin{equation} \label{eq2}
+\begin{aligned}
+a &amp;= b + c \\
+  &amp;= d + e + f + g \\
+  &amp;= h + i
+\end{aligned}
+\end{equation}\]</span></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Equation <span class="built_in">$</span><span class="keyword">\eqref</span>&#123;eq2&#125;<span class="built_in">$</span> is a multi-line equation.</span><br></pre></td></tr></table></figure>
+<p>Equation <span class="math inline">\(\eqref{eq2}\)</span> is a
+multi-line equation.</p>
+<h2 id="multiple-aligned-equations">Multiple Aligned Equations</h2>
+<p>We can use <code>align</code> environment to align multiple
+equations. Each of these equations will get its own numbers.</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span><span class="keyword">\begin</span>&#123;align&#125;</span><br><span class="line">a <span class="built_in">&amp;</span>= b + c <span class="keyword">\label</span>&#123;eq3&#125; <span class="keyword">\\</span></span><br><span class="line">x <span class="built_in">&amp;</span>= yz <span class="keyword">\label</span>&#123;eq4&#125; <span class="keyword">\\</span></span><br><span class="line">l <span class="built_in">&amp;</span>= m - n <span class="keyword">\label</span>&#123;eq5&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;align&#125;<span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
+<p><span class="math display">\[\begin{align}
+a &amp;= b + c \label{eq3} \\
+x &amp;= yz \label{eq4} \\
+l &amp;= m - n \label{eq5}
+\end{align}\]</span></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">There are three aligned equations: equation <span class="built_in">$</span><span class="keyword">\eqref</span>&#123;eq3&#125;<span class="built_in">$</span>, equation <span class="built_in">$</span><span class="keyword">\eqref</span>&#123;eq4&#125;<span class="built_in">$</span> and equation <span class="built_in">$</span><span class="keyword">\eqref</span>&#123;eq5&#125;<span class="built_in">$</span>.</span><br></pre></td></tr></table></figure>
+<p>There are three aligned equations: equation <span
+class="math inline">\(\eqref{eq3}\)</span>, equation <span
+class="math inline">\(\eqref{eq4}\)</span> and equation <span
+class="math inline">\(\eqref{eq5}\)</span>.</p>
+<p>Since <code>align</code> in and of itself is a complete equation
+environment (read <a
+target="_blank" rel="noopener" href="https://tex.stackexchange.com/questions/95402/what-is-the-difference-between-aligned-in-displayed-mode-and-starred-align">here</a>
+about the difference between <code>aligned</code> and <code>align</code>
+in LaTeX). You do not need to wrap it with equation environment.</p>
+<h2 id="exclude-equations-from-numbering">Exclude Equations from
+Numbering</h2>
+<p>In the <code>align</code> environment, if you do not want to number
+one or some equations, just use <code>\nonumber</code> right behind
+these equations. Like the following:</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span><span class="keyword">\begin</span>&#123;align&#125;</span><br><span class="line">-4 + 5x <span class="built_in">&amp;</span>= 2 + y <span class="keyword">\nonumber</span> <span class="keyword">\\</span></span><br><span class="line">w + 2 <span class="built_in">&amp;</span>= -1 + w <span class="keyword">\\</span></span><br><span class="line">ab <span class="built_in">&amp;</span>= cb</span><br><span class="line"><span class="keyword">\end</span>&#123;align&#125;<span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
+<p><span class="math display">\[\begin{align}
+-4 + 5x &amp;= 2 + y \nonumber \\
+w + 2 &amp;= -1 + w \\
+ab &amp;= cb
+\end{align}\]</span></p>
+<h2 id="use-tag-to-tag-equations">Use <code>\tag</code> to Tag
+Equations</h2>
+<p>Sometimes, you want to use more «exotic» style to refer your
+equation. You can use <code>\tag&#123;&#125;</code> to achieve this. For
+example:</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span>x+1<span class="keyword">\over</span><span class="keyword">\sqrt</span>&#123;1-x<span class="built_in">^</span>2&#125; <span class="keyword">\tag</span>&#123;i&#125;<span class="keyword">\label</span>&#123;eq<span class="built_in">_</span>tag&#125;<span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
+<p><span class="math display">\[x+1\over\sqrt{1-x^2}
+\tag{i}\label{eq_tag}\]</span></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Equation <span class="built_in">$</span><span class="keyword">\eqref</span>&#123;eq<span class="built_in">_</span>tag&#125;<span class="built_in">$</span> use `<span class="keyword">\tag</span>&#123;&#125;` instead of automatic numbering.</span><br></pre></td></tr></table></figure>
+<p>Equation <span class="math inline">\(\eqref{eq_tag}\)</span> use
+<code>\tag&#123;&#125;</code> instead of automatic numbering.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1515,145 +1672,8 @@ target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/170649893
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/24/Shell%E8%84%9A%E6%9C%AC%E8%A7%A3%E6%9E%90JASON%E6%95%B0%E6%8D%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/24/Shell%E8%84%9A%E6%9C%AC%E8%A7%A3%E6%9E%90JASON%E6%95%B0%E6%8D%AE/" class="post-title-link" itemprop="url">Shell脚本解析JASON数据</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-24 10:36:20" itemprop="dateCreated datePublished" datetime="2024-06-24T10:36:20+08:00">2024-06-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="jason-语言简介">JASON 语言简介</h2>
-<ul>
-<li>JSON 指的是 JavaScript 对象表示法（JavaScript Object Notation）</li>
-<li>JSON 是轻量级的文本数据交换格式</li>
-<li>JSON 独立于语言：JSON 使用 Javascript语法来描述数据对象，但是 JSON
-仍然独立于语言和平台。JSON 解析器和 JSON 库支持许多不同的编程语言。
-目前非常多的动态（PHP，JSP，.NET）编程语言都支持 JSON</li>
-<li>JSON 具有自我描述性，更易理解</li>
-</ul>
-<p>详细参考：<a
-target="_blank" rel="noopener" href="https://blog.csdn.net/cserchen/article/details/6232341">jason数据格式</a></p>
-<h2 id="shell脚本解析jason数据">Shell脚本解析JASON数据</h2>
-<h3 id="使用jq解析jason数据">使用<code>jq</code>解析JASON数据</h3>
-<p><code>jq</code>
-是一个小型跨平台解决方案，用于以更短、更简单、更轻松的方式管理 JSON
-数据。安装<code>jq</code></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S jq</span><br></pre></td></tr></table></figure>
-<ol type="1">
-<li><code>jq .</code> 命令美化 json 数据。</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl <span class="string">&quot;https://jsonplaceholder.typicode.com/posts&quot;</span> | jq .</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;userId&quot;: 1,</span><br><span class="line">      &quot;id&quot;: 1,</span><br><span class="line">      &quot;title&quot;: &quot;delectus aut autem&quot;,</span><br><span class="line">      &quot;completed&quot;: false</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;userId&quot;: 1,</span><br><span class="line">      &quot;id&quot;: 2,</span><br><span class="line">      &quot;title&quot;: &quot;quis ut nam facilis et officia qui&quot;,</span><br><span class="line">      &quot;completed&quot;: false</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;userId&quot;: 1,</span><br><span class="line">      &quot;id&quot;: 3,</span><br><span class="line">      &quot;title&quot;: &quot;fugiat veniam minus&quot;,</span><br><span class="line">      &quot;completed&quot;: false</span><br><span class="line">    &#125;</span><br><span class="line">    ... // remaining list of data</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<ol start="2" type="1">
-<li>从 JSON 获取特定字段的值</li>
-</ol>
-<p>我们可以使用 <code>jq.[].field_name</code> 从 JSON
-数据数组中获取任何特定字段的值。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl <span class="string">&quot;https://jsonplaceholder.typicode.com/posts&quot;</span> | jq <span class="string">&#x27;.[].id&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<ol start="3" type="1">
-<li>从 JSON 中获取第一个项目的标题</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl <span class="string">&quot;https://jsonplaceholder.typicode.com/posts&quot;</span> | jq <span class="string">&#x27;.[0].title&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;delectus aut autem&quot;</span></span><br></pre></td></tr></table></figure>
-<h2
-id="使用grep解析json">使用<code>grep</code>解析<code>JSON</code></h2>
-<p><code>grep</code> 命令也可用于解析 JSON 数据。</p>
-<p>示例 JSON 文件：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Andres Gustov&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;andddy7@gmail.com&quot;</span></span><br><span class="line">     <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Anthony Marklov&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;antman33@gmail.com&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-<p>示例脚本：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -o <span class="string">&#x27;&quot;email&quot;: &quot;[^&quot;]*&#x27;</span> examplejsonfile.json | grep -o <span class="string">&#x27;[^&quot;]*$&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>我们使用 <code>-o</code>
-选项仅选择与给定模式匹配的行。然后，我们指定模式<code>'"email": "[^"]*'</code>，这意味着我们想要键
-<code>email</code> 的所有值。之后，我们传递 JSON
-文件来查找模式。最后，我们使用另一个 <code>grep -o</code>
-命令将结果通过管道输出，以删除除值之外的所有内容。</p>
-<p>输出：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">andddy7@gmail.com </span><br><span class="line">antman33@gmail.com</span><br></pre></td></tr></table></figure>
-<h2 id="使用python3解析json">使用<code>python3</code>解析JSON</h2>
-<p>我们还可以使用 python 的 <code>json</code> 模块来处理 JSON 操作。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s <span class="string">&#x27;https://jsonplaceholder.typicode.com/posts&#x27;</span> | \ python3 -c <span class="string">&quot;import sys, json; print(json.load(sys.stdin))&quot;</span></span><br></pre></td></tr></table></figure>
-<h3 id="获取特定字段值">获取特定字段值</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl <span class="string">&quot;https://jsonplaceholder.typicode.com/posts&quot;</span> | \ </span><br><span class="line">    python3 -c <span class="string">&quot;import sys, json; data=json.load(sys.stdin); print([d[&#x27;id&#x27;] for d in data])&quot;</span></span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h3 id="获取第一个项目的标题">获取第一个项目的标题</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl <span class="string">&quot;https://jsonplaceholder.typicode.com/posts&quot;</span> | \ </span><br><span class="line">    python3 -c <span class="string">&quot;import sys, json; print(json.load(sys.stdin)[0][&#x27;title&#x27;])&quot;</span></span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;delectus aut autem&quot;</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/24/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><span class="page-number current">25</span><a class="page-number" href="/page/26/">26</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/26/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/24/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><span class="page-number current">25</span><a class="page-number" href="/page/26/">26</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/26/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>

@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">560</span>
+          <span class="site-state-item-count">561</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -390,6 +390,106 @@ target="_blank" rel="noopener" href="https://endeavouros.com">Endeavour</a>
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/03/24/Wacom%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/03/24/Wacom%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">Wacom的配置和使用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-03-24 13:01:02 / 修改时间：13:45:02" itemprop="dateCreated datePublished" datetime="2026-03-24T13:01:02+08:00">2026-03-24</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天网购的数位板Wacom PTK670
+收到了，做工相当精制，铝合金机身，超薄设计，厚度仅有4mm,
+使用体验了一下，相当好用。我的电脑装配的是 ArchLinux 系统，而 Linux
+内核默认是包含 Wacom 驱动的，这也构成了我选择 Wacom 的理由，同时在使用
+Gnome+wayland 的组合中不需要任何设置就能完美运行。</p>
+<h2 id="archlinux-的设置">ArchLinux 的设置</h2>
+<ul>
+<li><p>安装支持手写的软件 <code>xournall++</code> 和
+<code>Openboard</code> <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S xournalpp openboard</span><br></pre></td></tr></table></figure></p></li>
+<li><p>配置快捷键，支持更高效的工作。Wacom PTK670
+左右各有一个滚轮和四个方向键，根据操作的频繁程度，我规划了自定义键：</p>
+<ul>
+<li>打开设置：设置→ 数位板→自定义功能</li>
+<li>左侧：转轮逆时针向上，顺时针向下, 上键对应<code>PgUp</code>,
+下键<code>PgDn</code>,
+左键<code>Ctrl Z</code>撤销，右键<code>Ctrl y</code>,</li>
+<li>右侧：转轮逆时针缩小，顺时针放大,
+上键对应<code>Ctrl+Shift+Delte</code> 删除当前页,
+下键<code>Ctrl+D</code>新增一页, 左键保留，右键保留.</li>
+</ul></li>
+</ul>
+<h2 id="设置触控笔">设置触控笔</h2>
+<ul>
+<li>压力感应设置，启动<code>xournalpp</code>,
+然后依次点击：编辑→触控笔→最小压力<code>0.01</code>→压力增强<code>4.00</code>.</li>
+<li>触控笔按钮：按钮1<code>手形工具</code>, 按钮2<code>高亮</code>,
+按钮3<code>橡皮</code>.</li>
+</ul>
+<p>目前暂做上述设定，在使用中再逐步改善。</p>
+<h2 id="书定文件转打印体">书定文件转打印体</h2>
+<p>将书写的内容复制图片，粘贴到通义千问或DeepSeek中，让Ai帮助识别成打印体，实验的结果是只要字不是非常草，文字和公式都能正确识别，然后让Ai以LaTeX源格式输出，只需复制粘贴到LaTeX文件中即可实现编译成PDF文档。这个方法对于大规模的写解答题的答案等是相当可高效的。</p>
+
       
     </div>
 
@@ -1187,125 +1287,8 @@ space），也称为硬空格。</p>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/18/PPT%E4%B8%AD%E8%A7%86%E9%A2%91%E6%97%A0%E6%B3%95%E6%92%AD%E6%94%BE%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/11/18/PPT%E4%B8%AD%E8%A7%86%E9%A2%91%E6%97%A0%E6%B3%95%E6%92%AD%E6%94%BE%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">PPT中视频无法播放的解决方案</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-11-18 16:16:52 / 修改时间：16:21:42" itemprop="dateCreated datePublished" datetime="2025-11-18T16:16:52+08:00">2025-11-18</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="问题描述">问题描述</h1>
-<p>在日常使用PowerPoint制作演示文稿时，很多人可能都遇到过这样的困扰：精心准备的视频在PPT中无法播放，只显示黑色框框或错误提示。这种情况往往并非PowerPoint软件本身的问题，而是系统缺少相应的<strong>视频编解码器</strong>所致。今天，我们就来探讨如何通过安装K-Lite
-Codec Pack这一强大工具，彻底解决PPT中视频无法播放的难题。</p>
-<h2 id="为什么ppt中的视频无法播放">为什么PPT中的视频无法播放？</h2>
-<p>在深入解决方案之前，我们首先需要理解问题的根源。PowerPoint并非独立的媒体播放器，它依赖于操作系统中的<strong>编解码器</strong>来播放视频和音频文件。</p>
-<p>编解码器（Codec）是一种能够对视频或音频流进行编码和解码的软件，它压缩大尺寸的媒体文件以便存储和传输，然后在播放时解压缩。当你尝试在PPT中插入一个视频时，如果系统没有安装相应的编解码器，就会出现无法播放的情况。</p>
-<p>导致PPT媒体播放问题的常见原因包括：</p>
-<ul>
-<li><strong>不支持的视频格式</strong>：PPT对视频格式有特定要求，某些特殊格式无法直接嵌入</li>
-<li><strong>缺少合适的编解码器</strong>：系统没有安装相应的解码器来解析视频文件</li>
-<li><strong>文件损坏</strong>：视频文件本身可能已损坏或不完整</li>
-<li><strong>兼容性问题</strong>：使用不同版本的PowerPoint可能导致兼容性问题</li>
-<li><strong>链接断开</strong>：如果是链接到外部视频文件，文件被移动或删除会导致无法播放</li>
-</ul>
-<p>值得注意的是，WPS演示同样需要调用系统中的视频解码器来播放视频，出现此问题也是由于系统中缺乏相应的解码器导致的。</p>
-<h2 id="什么是k-lite-codec-pack">什么是K-Lite Codec Pack？</h2>
-<p>K-Lite Codec
-Pack被广泛认为是<strong>解码器包的鼻祖</strong>，功能非常强大且便捷实用。它在编解码器领域有着悠久的历史和良好的声誉，支持绝大多数你在网络上常见的影音格式。</p>
-<h3 id="k-lite-codec-pack的主要特点">K-Lite Codec Pack的主要特点：</h3>
-<ul>
-<li><strong>兼容性好</strong>：与各种媒体播放器和应用程序良好兼容</li>
-<li><strong>资源占用小</strong>：不插启动项，不拖慢系统速度</li>
-<li><strong>安装简便</strong>：安装和卸载都不用重启计算机</li>
-<li><strong>全面支持</strong>：包含绝大多数常见影音格式的解码器</li>
-</ul>
-<h2 id="如何安装k-lite-codec-pack">如何安装K-Lite Codec Pack？</h2>
-<p>安装K-Lite Codec Pack并不复杂，以下是基本步骤：</p>
-<ol type="1">
-<li><p><strong>下载和解压</strong>：从<a
-target="_blank" rel="noopener" href="https://www.codecguide.com/download_kl.htm">K-Lite Codec Pack
-官网</a>下载安装程序，解压压缩文件并运行安装程序</p></li>
-<li><p><strong>选择安装模式</strong>：共有三种模式可选：</p>
-<ul>
-<li><strong>简单模式</strong>：提供较少的自定义选项，多数选项按照默认设置</li>
-<li><strong>一般模式</strong>：提供所有选项，可选择是否安装Media Player
-Classic播放器</li>
-<li><strong>高级模式</strong>：所有选项可选，并可选择安装位置</li>
-</ul></li>
-<li><p><strong>完成安装</strong>：点击"Install"开始安装，等待进度条完成即可</p></li>
-</ol>
-<p>对于大多数用户，选择<strong>简单模式</strong>即可满足需求。安装过程中，确保勾选与Windows
-Media Player相关的选项，因为PowerPoint依赖Windows Media
-Player的编解码能力。</p>
-<h2 id="总结">总结</h2>
-<p>PowerPoint中视频无法播放是一个常见但令人沮丧的问题，大多数情况下根源在于<strong>缺少适当的编解码器</strong>。通过安装K-Lite
-Codec
-Pack，你可以为系统提供全面的解码支持，解决绝大多数视频播放问题。</p>
-<p>记住，在重要的演示之前，务必在目标设备上<strong>提前测试</strong>所有媒体文件的播放情况，避免出现尴尬的技术故障。同时，考虑将视频转换为兼容性更好的格式（如MP4），并使用PowerPoint的"优化兼容性"功能，进一步确保演示的顺利进行。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>

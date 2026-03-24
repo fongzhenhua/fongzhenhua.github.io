@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">560</span>
+          <span class="site-state-item-count">561</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -307,6 +307,86 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/27/Linux%E7%BB%88%E7%AB%AF%E4%B8%8B%E4%BD%BF%E7%94%A8%E9%BB%98%E8%AE%A4%E7%A8%8B%E5%BA%8F%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/27/Linux%E7%BB%88%E7%AB%AF%E4%B8%8B%E4%BD%BF%E7%94%A8%E9%BB%98%E8%AE%A4%E7%A8%8B%E5%BA%8F%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">Linux终端下使用默认程序打开文件</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-27 16:17:15" itemprop="dateCreated datePublished" datetime="2024-05-27T16:17:15+08:00">2024-05-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在日常编写脚本的过程中，不可避免的可打开一些文件进行编辑，对于一些特定的文件可以使用某相应的软件打开。但是，若脚本需要处理的有各种各样的文件，若针对每一个文件都设计一个对应程序来打开，原理上可行，但是比较麻烦。现在的<code>Linux</code>基本都内置了命令<code>xdg-open</code>,
+它可以自动调用系统的默认程序打开文件，可以大大提高脚本的效率。为了方便查询，此贴出它的帮助文件：</p>
+<figure class="highlight txt"><figcaption><span>xdg-open --help</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   xdg-open -- opens a file or URL in the user&#x27;s preferred</span><br><span class="line">   application</span><br><span class="line"></span><br><span class="line">Synopsis</span><br><span class="line"></span><br><span class="line">   xdg-open &#123; file | URL &#125;</span><br><span class="line"></span><br><span class="line">   xdg-open &#123; --help | --manual | --version &#125;</span><br><span class="line"></span><br><span class="line">Use &#x27;man xdg-open&#x27; or &#x27;xdg-open --manual&#x27; for additional info.</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p>提出这个要求是因为我今天在脚本<code>xugit.sh</code>中加入了根据选项打开文件，避免每次都切换路径的麻烦。尽管有<code>z-lua</code>等路径切换插件，但是在连接<code>U盘</code>时，使用<code>ugit -l</code>选择文件再打开，更加直接。</p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1727,100 +1807,8 @@ alt="iVentoy启动截图" />
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/11/Nautilus%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%90%8C%E7%9A%84%E9%A2%9C%E8%89%B2%E6%A0%87%E8%AE%B0%E6%96%87%E4%BB%B6%E5%A4%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/05/11/Nautilus%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%90%8C%E7%9A%84%E9%A2%9C%E8%89%B2%E6%A0%87%E8%AE%B0%E6%96%87%E4%BB%B6%E5%A4%B9/" class="post-title-link" itemprop="url">Nautilus使用不同的颜色标记文件夹</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-05-11 15:23:20" itemprop="dateCreated datePublished" datetime="2024-05-11T15:23:20+08:00">2024-05-11</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在日常工作中，通过改变文件夹的颜色为某个特定颜色可以使其醒目，因此一些重要的或有特定用途的文件夹可以采用此方案。在<code>Gnome3</code>
-上我们有一个 <code>Nautilus</code> 的插件<a
-target="_blank" rel="noopener" href="https://github.com/costales/folder-color">folder-color-nautilus</a>来实现，但是它并没有被<code>Archlinux</code>官方收录到<code>pacman</code>仓库，因此大家需要在<code>aur</code>中安装。</p>
-<ul>
-<li><p><code>ArchLinux</code>中安装插件 <figure class="highlight sh"><figcaption><span>for nautilus</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paru -S --noconfirm folder-color-nautilus</span><br></pre></td></tr></table></figure></p></li>
-<li><p>其他文件管理器<code>nemo</code>和<code>caja</code>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">paru -S --noconfirm folder-color-nemo</span><br><span class="line">paru -S --noconfirm folder-color-caja</span><br></pre></td></tr></table></figure></p></li>
-</ul>
-<p>安装完成后，你可以进入文件管理器，右键单击文件夹或文件。你会在上下文菜单中看到
-Folder Color 的选项。你将在此处看到颜色和标志选项。</p>
-<figure>
-<img
-src="https://pic2.zhimg.com/v2-cb8e2020894b4426657e08b50380e619_b.jpg"
-alt="右键菜单" />
-<figcaption aria-hidden="true">右键菜单</figcaption>
-</figure>
-<p>你还可以通过在菜单<strong>通过选择“默认”恢复原始文件夹颜色</strong>。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/28/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><span class="page-number current">29</span><a class="page-number" href="/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/30/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/28/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><span class="page-number current">29</span><a class="page-number" href="/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/30/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>

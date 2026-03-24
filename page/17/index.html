@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">560</span>
+          <span class="site-state-item-count">561</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -307,6 +307,110 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/09/Neovim%E9%85%8D%E7%BD%AEPerl%E6%94%AF%E6%8C%81%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/10/09/Neovim%E9%85%8D%E7%BD%AEPerl%E6%94%AF%E6%8C%81%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">Neovim配置Perl支持问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-10-09 16:37:26" itemprop="dateCreated datePublished" datetime="2024-10-09T16:37:26+08:00">2024-10-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Neovim 将部分功能交给 <code>provider</code>
+方式支持，具体技术细节参见：<a
+target="_blank" rel="noopener" href="https://neovim.io/doc/user/provider.html">Provider-Neovim
+docs</a>, 对于<code>python</code>, <code>ruby</code>,
+<code>node.js</code>和<code>clipboard</code>等配置均比较完美。</p>
+<h2 id="问题描述">问题描述</h2>
+<p>出现问题的是<code>perl</code>的配置，在我的<code>Thinkpad T490</code>
+上发现检查<code>Neovim</code>的健康时无法检测到<code>perl</code>，但是确实已经装上<code>perl</code>了，根据
+<a target="_blank" rel="noopener" href="https://neovim.io/doc/user/provider.html">Provider-Neovim
+docs</a> 的配置，其他的支持均没有问题，而<code>perl</code>出现警告：</p>
+<figure class="highlight sh"><figcaption><span>:checkhealth provider-perl</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Perl provider (optional) ~</span><br><span class="line">- WARNING <span class="string">&quot;Neovim::Ext&quot;</span> cpan module is not installed</span><br><span class="line">  - ADVICE:</span><br><span class="line">    - See :<span class="built_in">help</span> |provider-perl| <span class="keyword">for</span> more information.</span><br><span class="line">    - You may <span class="built_in">disable</span> this provider (and warning) by adding `<span class="built_in">let</span> g:loaded_perl_provider = 0` to your init.vim</span><br><span class="line">- WARNING No usable perl executable found</span><br></pre></td></tr></table></figure>
+<h2 id="解决方案2024-10-09-2233">解决方案(2024-10-09 22:33)</h2>
+<h3 id="反复安装模块neovimext">反复安装模块<code>Neovim::Ext</code></h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> cpanm -n Neovim::Ext</span><br><span class="line"></span><br><span class="line">Neovim::Ext is up to <span class="built_in">date</span>. (0.06)</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p>上述命令无论有没有<code>-n</code>选项都会出现这个提示，不加<code>sudo</code>也是这个提示，这误让我认为我已经安装好模块<code>Neovim::Ext</code>
+!!</p>
+</div>
+<h3 id="卸载模块neovimext">卸载模块<code>Neovim::Ext</code></h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> cpanm -U Neovim::Ext</span><br><span class="line"></span><br><span class="line">!Neovim::Ext is not found <span class="keyword">in</span> the following directories and can<span class="string">&#x27;t be uninstalled.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> /usr/lib/perl5/5.40/site_perl</span></span><br><span class="line"><span class="string"> /usr/share/perl5/site_perl</span></span><br></pre></td></tr></table></figure>
+<div class="note primary"><p>这条卸载命令让我意识到，我的系统中其实没有正确安装模块<code>Neovim::Ext</code>，同时新版的<code>Neovim</code>对于在<code>.zshrc</code>中设置的路径方式不再依赖！其实它现在可以直接运行<code>sudo</code>的命令了。</p>
+</div>
+<h3 id="重新安装模块neovimext">重新安装模块<code>Neovim::Ext</code></h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> cpanm --reinstall Neovim::Ext</span><br><span class="line"></span><br><span class="line">--&gt; Working on Neovim::Ext</span><br><span class="line">Fetching https://www.cpan.org/authors/id/J/JA/JACQUESG/Neovim-Ext-0.06.tar.gz ...OK</span><br><span class="line">...</span><br><span class="line">12 distributions installed</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p>运行完这条命令，则模块<code>Neovim::Ext</code>重新安装成功，再启动<code>nvim</code>运行<code>:checkhealth provider.perl</code>
+便得到下述内容：</p>
+</div>
+<figure class="highlight sh"><figcaption><span>:checkhealth provider-perl</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">provider.perl: require(<span class="string">&quot;provider.perl.health&quot;</span>).check()</span><br><span class="line"></span><br><span class="line">Perl provider (optional) ~</span><br><span class="line">- perl executable: /usr/bin/perl</span><br><span class="line">- OK Latest <span class="string">&quot;Neovim::Ext&quot;</span> cpan module is installed: class is experimental at (<span class="built_in">eval</span> 8) line 2.</span><br><span class="line">  field is experimental at (<span class="built_in">eval</span> 8) line 4.</span><br><span class="line">  method is experimental at (<span class="built_in">eval</span> 8) line 5.</span><br><span class="line">  field is experimental at (<span class="built_in">eval</span> 8) line 6.</span><br><span class="line">  method is experimental at (<span class="built_in">eval</span> 8) line 7.</span><br><span class="line">  field is experimental at (<span class="built_in">eval</span> 8) line 8.</span><br><span class="line">  method is experimental at (<span class="built_in">eval</span> 8) line 9.</span><br><span class="line">  field is experimental at (<span class="built_in">eval</span> 8) line 10.</span><br><span class="line">  method is experimental at (<span class="built_in">eval</span> 8) line 11.</span><br><span class="line">  field is experimental at (<span class="built_in">eval</span> 8) line 12.</span><br><span class="line">  method is experimental at (<span class="built_in">eval</span> 8) line 13.</span><br><span class="line">  field is experimental at (<span class="built_in">eval</span> 8) line 14.</span><br><span class="line">  method is experimental at (<span class="built_in">eval</span> 8) line 15.</span><br><span class="line">  class is experimental at (<span class="built_in">eval</span> 9) line 2.</span><br><span class="line">  field is experimental at (<span class="built_in">eval</span> 9) line 4.</span><br><span class="line">  method is experimental at (<span class="built_in">eval</span> 9) line 5.</span><br><span class="line">  field is experimental at (<span class="built_in">eval</span> 9) line 6.</span><br><span class="line">  method is experimental at (<span class="built_in">eval</span> 9) line 7.</span><br><span class="line">  0.06</span><br></pre></td></tr></table></figure>
+<h2 id="总结">总结</h2>
+<p>这个问题困扰了我一整天，因为总觉得这不应该是一个重大问题，但是两台电脑几乎配置一样，但笔记本上总是不能解决。此次计算机事故，应当牢记遇到问题一般重装程序或模块，同时使用默认配置就可以解决问题。但是，此次没有解决问题的主要原因是对<code>cpanm</code>不够熟悉！所以在<code>cpanm --help</code>后，获取其详细使用规则后就解决了问题。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1513,340 +1617,8 @@ target="_blank" rel="noopener" href="https://www.sysgeek.cn/ubuntu-use-deepin-de
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/09/27/MSOffice%E9%80%9A%E7%94%A8%E6%89%B9%E9%87%8F%E8%AE%B8%E5%8F%AF%E8%AF%81%E5%AF%86%E9%92%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/09/27/MSOffice%E9%80%9A%E7%94%A8%E6%89%B9%E9%87%8F%E8%AE%B8%E5%8F%AF%E8%AF%81%E5%AF%86%E9%92%A5/" class="post-title-link" itemprop="url">MSOffice通用批量许可证密钥</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-09-27 17:24:47" itemprop="dateCreated datePublished" datetime="2024-09-27T17:24:47+08:00">2024-09-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>默认情况下，<code>Office</code> 的批量许可版本（如
-<code>Office LTSC 2024</code>）使用通用批量许可证密钥
-（<code>GVLK</code>） 进行安装。<code>GVLK</code> 使 <code>Office</code>
-能够自动发现并激活您的密钥管理服务 （<code>KMS</code>） 主机或
-<code>Active Directory</code> 基础结构。</p>
-<h2 id="gvlks-for-office-ltsc-2024">GVLKs for Office LTSC 2024</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Product</th>
-<th style="text-align: left;">GVLK</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Office LTSC Professional Plus 2024</td>
-<td style="text-align: left;">XJ2XN-FW8RK-P4HMP-DKDBV-GCVGB</td>
-</tr>
-<tr>
-<td style="text-align: left;">Office LTSC Standard 2024</td>
-<td style="text-align: left;">V28N4-JG22K-W66P8-VTMGK-H6HGR</td>
-</tr>
-<tr>
-<td style="text-align: left;">Project Professional 2024</td>
-<td style="text-align: left;">FQQ23-N4YCY-73HQ3-FM9WC-76HF4</td>
-</tr>
-<tr>
-<td style="text-align: left;">Project Standard 2024</td>
-<td style="text-align: left;">PD3TT-NTHQQ-VC7CY-MFXK3-G87F8</td>
-</tr>
-<tr>
-<td style="text-align: left;">Visio LTSC Professional 2024</td>
-<td style="text-align: left;">B7TN8-FJ8V3-7QYCP-HQPMV-YY89G</td>
-</tr>
-<tr>
-<td style="text-align: left;">Visio LTSC Standard 2024</td>
-<td style="text-align: left;">JMMVY-XFNQC-KK4HK-9H7R3-WQQTV</td>
-</tr>
-<tr>
-<td style="text-align: left;">Access LTSC 2024</td>
-<td style="text-align: left;">82FTR-NCHR7-W3944-MGRHM-JMCWD</td>
-</tr>
-<tr>
-<td style="text-align: left;">Excel LTSC 2024</td>
-<td style="text-align: left;">F4DYN-89BP2-WQTWJ-GR8YC-CKGJG</td>
-</tr>
-<tr>
-<td style="text-align: left;">Outlook LTSC 2024</td>
-<td style="text-align: left;">D2F8D-N3Q3B-J28PV-X27HD-RJWB9</td>
-</tr>
-<tr>
-<td style="text-align: left;">PowerPoint LTSC 2024</td>
-<td style="text-align: left;">CW94N-K6GJH-9CTXY-MG2VC-FYCWP</td>
-</tr>
-<tr>
-<td style="text-align: left;">Skype for Business LTSC 2024</td>
-<td style="text-align: left;">4NKHF-9HBQF-Q3B6C-7YV34-F64P3</td>
-</tr>
-<tr>
-<td style="text-align: left;">Word LTSC 2024</td>
-<td style="text-align: left;">MQ84N-7VYDM-FXV7C-6K7CC-VFW9J</td>
-</tr>
-</tbody>
-</table>
-<h2 id="gvlks-for-office-ltsc-2021">GVLKs for Office LTSC 2021</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Product</th>
-<th style="text-align: left;">GVLK</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Office LTSC Professional Plus 2021</td>
-<td style="text-align: left;">FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH</td>
-</tr>
-<tr>
-<td style="text-align: left;">Office LTSC Standard 2021</td>
-<td style="text-align: left;">KDX7X-BNVR8-TXXGX-4Q7Y8-78VT3</td>
-</tr>
-<tr>
-<td style="text-align: left;">Project Professional 2021</td>
-<td style="text-align: left;">FTNWT-C6WBT-8HMGF-K9PRX-QV9H8</td>
-</tr>
-<tr>
-<td style="text-align: left;">Project Standard 2021</td>
-<td style="text-align: left;">J2JDC-NJCYY-9RGQ4-YXWMH-T3D4T</td>
-</tr>
-<tr>
-<td style="text-align: left;">Visio LTSC Professional 2021</td>
-<td style="text-align: left;">KNH8D-FGHT4-T8RK3-CTDYJ-K2HT4</td>
-</tr>
-<tr>
-<td style="text-align: left;">Visio LTSC Standard 2021</td>
-<td style="text-align: left;">MJVNY-BYWPY-CWV6J-2RKRT-4M8QG</td>
-</tr>
-<tr>
-<td style="text-align: left;">Access LTSC 2021</td>
-<td style="text-align: left;">WM8YG-YNGDD-4JHDC-PG3F4-FC4T4</td>
-</tr>
-<tr>
-<td style="text-align: left;">Excel LTSC 2021</td>
-<td style="text-align: left;">NWG3X-87C9K-TC7YY-BC2G7-G6RVC</td>
-</tr>
-<tr>
-<td style="text-align: left;">Outlook LTSC 2021</td>
-<td style="text-align: left;">C9FM6-3N72F-HFJXB-TM3V9-T86R9</td>
-</tr>
-<tr>
-<td style="text-align: left;">PowerPoint LTSC 2021</td>
-<td style="text-align: left;">TY7XF-NFRBR-KJ44C-G83KF-GX27K</td>
-</tr>
-<tr>
-<td style="text-align: left;">Publisher LTSC 2021</td>
-<td style="text-align: left;">2MW9D-N4BXM-9VBPG-Q7W6M-KFBGQ</td>
-</tr>
-<tr>
-<td style="text-align: left;">Skype for Business LTSC 2021</td>
-<td style="text-align: left;">HWCXN-K3WBT-WJBKY-R8BD9-XK29P</td>
-</tr>
-<tr>
-<td style="text-align: left;">Word LTSC 2021</td>
-<td style="text-align: left;">TN8H9-M34D3-Y64V9-TR72V-X79KV</td>
-</tr>
-</tbody>
-</table>
-<h2 id="gvlks-for-office-2019">GVLKs for Office 2019</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Product</th>
-<th style="text-align: left;">GVLK</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Office Professional Plus 2019</td>
-<td style="text-align: left;">NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP</td>
-</tr>
-<tr>
-<td style="text-align: left;">Office Standard 2019</td>
-<td style="text-align: left;">6NWWJ-YQWMR-QKGCB-6TMB3-9D9HK</td>
-</tr>
-<tr>
-<td style="text-align: left;">Project Professional 2019</td>
-<td style="text-align: left;">B4NPR-3FKK7-T2MBV-FRQ4W-PKD2B</td>
-</tr>
-<tr>
-<td style="text-align: left;">Project Standard 2019</td>
-<td style="text-align: left;">C4F7P-NCP8C-6CQPT-MQHV9-JXD2M</td>
-</tr>
-<tr>
-<td style="text-align: left;">Visio Professional 2019</td>
-<td style="text-align: left;">9BGNQ-K37YR-RQHF2-38RQ3-7VCBB</td>
-</tr>
-<tr>
-<td style="text-align: left;">Visio Standard 2019</td>
-<td style="text-align: left;">7TQNQ-K3YQQ-3PFH7-CCPPM-X4VQ2</td>
-</tr>
-<tr>
-<td style="text-align: left;">Access 2019</td>
-<td style="text-align: left;">9N9PT-27V4Y-VJ2PD-YXFMF-YTFQT</td>
-</tr>
-<tr>
-<td style="text-align: left;">Excel 2019</td>
-<td style="text-align: left;">TMJWT-YYNMB-3BKTF-644FC-RVXBD</td>
-</tr>
-<tr>
-<td style="text-align: left;">Outlook 2019</td>
-<td style="text-align: left;">7HD7K-N4PVK-BHBCQ-YWQRW-XW4VK</td>
-</tr>
-<tr>
-<td style="text-align: left;">PowerPoint 2019</td>
-<td style="text-align: left;">RRNCX-C64HY-W2MM7-MCH9G-TJHMQ</td>
-</tr>
-<tr>
-<td style="text-align: left;">Publisher 2019</td>
-<td style="text-align: left;">G2KWX-3NW6P-PY93R-JXK2T-C9Y9V</td>
-</tr>
-<tr>
-<td style="text-align: left;">Skype for Business 2019</td>
-<td style="text-align: left;">NCJ33-JHBBY-HTK98-MYCV8-HMKHJ</td>
-</tr>
-<tr>
-<td style="text-align: left;">Word 2019</td>
-<td style="text-align: left;">PBX3G-NWMT6-Q7XBW-PYJGG-WXD33</td>
-</tr>
-</tbody>
-</table>
-<h2 id="gvlks-for-office-2016">GVLKs for Office 2016</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Product</th>
-<th style="text-align: left;">GVLK</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Office Professional Plus 2016</td>
-<td style="text-align: left;">XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99</td>
-</tr>
-<tr>
-<td style="text-align: left;">Office Standard 2016</td>
-<td style="text-align: left;">JNRGM-WHDWX-FJJG3-K47QV-DRTFM</td>
-</tr>
-<tr>
-<td style="text-align: left;">Project Professional 2016</td>
-<td style="text-align: left;">YG9NW-3K39V-2T3HJ-93F3Q-G83KT</td>
-</tr>
-<tr>
-<td style="text-align: left;">Project Standard 2016</td>
-<td style="text-align: left;">GNFHQ-F6YQM-KQDGJ-327XX-KQBVC</td>
-</tr>
-<tr>
-<td style="text-align: left;">Visio Professional 2016</td>
-<td style="text-align: left;">PD3PC-RHNGV-FXJ29-8JK7D-RJRJK</td>
-</tr>
-<tr>
-<td style="text-align: left;">Visio Standard 2016</td>
-<td style="text-align: left;">7WHWN-4T7MP-G96JF-G33KR-W8GF4</td>
-</tr>
-<tr>
-<td style="text-align: left;">Access 2016</td>
-<td style="text-align: left;">GNH9Y-D2J4T-FJHGG-QRVH7-QPFDW</td>
-</tr>
-<tr>
-<td style="text-align: left;">Excel 2016</td>
-<td style="text-align: left;">9C2PK-NWTVB-JMPW8-BFT28-7FTBF</td>
-</tr>
-<tr>
-<td style="text-align: left;">OneNote 2016</td>
-<td style="text-align: left;">DR92N-9HTF2-97XKM-XW2WJ-XW3J6</td>
-</tr>
-<tr>
-<td style="text-align: left;">Outlook 2016</td>
-<td style="text-align: left;">R69KK-NTPKF-7M3Q4-QYBHW-6MT9B</td>
-</tr>
-<tr>
-<td style="text-align: left;">PowerPoint 2016</td>
-<td style="text-align: left;">J7MQP-HNJ4Y-WJ7YM-PFYGF-BY6C6</td>
-</tr>
-<tr>
-<td style="text-align: left;">Publisher 2016</td>
-<td style="text-align: left;">F47MM-N3XJP-TQXJ9-BP99D-8K837</td>
-</tr>
-<tr>
-<td style="text-align: left;">Skype for Business 2016</td>
-<td style="text-align: left;">869NQ-FJ69K-466HW-QYCP2-DDBV6</td>
-</tr>
-<tr>
-<td style="text-align: left;">Word 2016</td>
-<td style="text-align: left;">WXY84-JN2Q9-RBCCQ-3Q3J3-3PFJ6</td>
-</tr>
-</tbody>
-</table>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/16/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/18/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/16/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/18/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
