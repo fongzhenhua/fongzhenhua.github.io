@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">567</span>
+          <span class="site-state-item-count">568</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -307,6 +307,140 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/01/17/Linux%E4%B8%AD%E7%9A%84%E6%8E%92%E5%BA%8F%E5%91%BD%E4%BB%A4sort/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/01/17/Linux%E4%B8%AD%E7%9A%84%E6%8E%92%E5%BA%8F%E5%91%BD%E4%BB%A4sort/" class="post-title-link" itemprop="url">Linux中的排序命令sort</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-01-17 16:57:22 / 修改时间：17:09:01" itemprop="dateCreated datePublished" datetime="2026-01-17T16:57:22+08:00">2026-01-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在给学生上完课后，我需要将希沃白板的板书保存下来，合成为一个 PDF
+文件，发送给学生，以便学生能够及时复习。但是，在板书超过10页后，发现直接使用
+<code>magick</code> 命令合成，那第
+10页会跑到第1页前面，于是我修改文件名后完成了操作。但是这也太麻烦了，于是决定编写一个脚本自动处理合成任务，其中的关键是根据
+seewo
+白板按时间加页码命名的默认方式进行排序。为了完成正确的排序，需要借助<code>sort</code>
+命令。</p>
+<h2 id="sort-命令简介">sort 命令简介</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">排序需求</th>
+<th style="text-align: left;">命令示例</th>
+<th style="text-align: left;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">默认字典序（ASCII顺序）</td>
+<td style="text-align: left;"><code>ls \| sort</code></td>
+<td
+style="text-align: left;">最基本排序，大写字母（A-Z）排在小写字母（a-z）之前。</td>
+</tr>
+<tr>
+<td style="text-align: left;">智能版本序(含数字时推荐)</td>
+<td style="text-align: left;"><code>ls \| sort -V</code></td>
+<td style="text-align: left;">能识别数字并按数值大小排，将 1, 2, 10 排成
+1, 2, 10（而不是 1, 10, 2）。</td>
+</tr>
+<tr>
+<td style="text-align: left;">忽略大小写</td>
+<td style="text-align: left;"><code>ls \| sort -f</code></td>
+<td style="text-align: left;">将 a.png 和 B.png 视为相同字母排序。</td>
+</tr>
+<tr>
+<td style="text-align: left;">按修改时间（时间倒序）</td>
+<td style="text-align: left;"><code>ls -t</code></td>
+<td style="text-align: left;">注意：这是 ls 命令的参数 (-t)，不是 sort
+的功能。</td>
+</tr>
+<tr>
+<td style="text-align: left;">反转排序结果</td>
+<td style="text-align: left;"><code>ls \| sort -r</code></td>
+<td style="text-align: left;">-r 参数可与其他参数组合，如 sort -Vr
+为版本序反转。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="核心用法">核心用法</h2>
+<p>sort
+通常不直接操作文件，而是对它接收到的文本输入流进行排序。因此，你需要先用
+ls、find 或 echo 生成文件列表，再通过管道 | 传给 sort。</p>
+<h3 id="图片合成-pdf-命令">图片合成 pdf 命令</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">magick $(<span class="built_in">ls</span> *.png | <span class="built_in">sort</span> -V) output.pdf</span><br></pre></td></tr></table></figure>
+<h3 id="进阶技巧">进阶技巧</h3>
+<p>如果你想获得类似文件管理器那种“按名称排序，但文件夹在前”的列表，可以结合
+ls 和 sort：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -la | <span class="built_in">sort</span> -k 9  <span class="comment"># 按第9列（默认文件名列）排序</span></span><br></pre></td></tr></table></figure>
+<p>注：这种方法比较脆弱，因为 ls -l
+的输出格式固定，列位置可能因系统而异。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1163,96 +1297,6 @@ target="_blank" rel="noopener" href="https://www.disktool.cn/content-center/win1
 <li><a
 target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/642914883">唯一无副作用禁用Win10/11更新方法，一键暂停1000周</a></li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/27/ArchLinux%E5%AE%89%E8%A3%85%E5%A5%94%E5%9B%BEP3370DN%E6%89%93%E5%8D%B0%E6%9C%BA%E9%A9%B1%E5%8A%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/09/27/ArchLinux%E5%AE%89%E8%A3%85%E5%A5%94%E5%9B%BEP3370DN%E6%89%93%E5%8D%B0%E6%9C%BA%E9%A9%B1%E5%8A%A8/" class="post-title-link" itemprop="url">ArchLinux安装奔图P3370DN打印机驱动</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-09-27 19:44:48 / 修改时间：19:58:38" itemprop="dateCreated datePublished" datetime="2025-09-27T19:44:48+08:00">2025-09-27</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="问题描述">问题描述</h1>
-<p>办公室配置的奔图P3370DN打印机，在其<a
-target="_blank" rel="noopener" href="https://www.pantum.cn/search/download-driver/?s=3370">奔图官网驱动下载</a>站点可以看到该打印机是有Linux驱动的，但是它是针对Debian系列的Linux设计的，在ArchLinux上就无法直接安装了。</p>
-<h1 id="解决方案">解决方案</h1>
-<ul>
-<li>安装<code>system-config-printer</code>, 即运行命令</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S system-config-printer</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>在菜单中找到<code>打印机设置</code>→<code>解锁</code>→<code>添加</code>→<code>网络打印机</code>.</p></li>
-<li><p>选择局域网内的打印机，此时默认会显示打印机的<code>IP</code>和<code>端口</code>,
-同时下方显示连接<code>AppSocket/HP JetDirect</code>,
-点击转发,然后等待搜索驱动.</p></li>
-<li><p>在上方选中<code>从数据库中选择打印机</code>,下方选中<code>Generic(推荐)</code>,
-然后点转发。</p></li>
-<li><p>进一步<code>选择驱动程序</code>→<code>PostScript</code>,
-然后在右侧显示驱动程序<code>Generic PostScript Printer（推荐）</code>,
-再点转发，设置成功。</p></li>
-</ul>
-<h1 id="注意">注意</h1>
-<p>由于奔图打印机在github上没有公开驱动程序，所以使用paru也无法实现驱动安装，通过一系列测试，使用Linux系统的通用打印驱动即可实现完美打印。</p>
 
       
     </div>

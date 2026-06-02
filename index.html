@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">567</span>
+          <span class="site-state-item-count">568</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -390,6 +390,116 @@ target="_blank" rel="noopener" href="https://endeavouros.com">Endeavour</a>
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/06/02/%E4%BD%BF%E7%94%A8Ollama%E9%85%8D%E7%BD%AE%E6%9C%AC%E5%9C%B0Ai/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/06/02/%E4%BD%BF%E7%94%A8Ollama%E9%85%8D%E7%BD%AE%E6%9C%AC%E5%9C%B0Ai/" class="post-title-link" itemprop="url">使用Ollama配置本地Ai</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-06-02 18:39:18 / 修改时间：19:03:19" itemprop="dateCreated datePublished" datetime="2026-06-02T18:39:18+08:00">2026-06-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>2026年5月30日将原来的<code>GTX 1660s</code>
+升级为<code>GTX 5060 Ti 16G</code>，
+于是本机具备了本地运行<code>Ai</code>的能力。今天配置成功了
+<code>Ollama</code>, 于是此篇博客正式记录这一配置过程。</p>
+<h1 id="安装-ollama">安装 Ollama</h1>
+<p>我的电脑是 <code>ArchLinux</code>, 于是直接使用命令安装即可：</p>
+<h2 id="nvidia-显卡安装ollama-cuda">Nvidia 显卡安装ollama-cuda</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S ollama-cuda</span><br></pre></td></tr></table></figure>
+<h2 id="amd-显卡安装ollama-rocm">Amd 显卡安装ollama-rocm</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S ollama-rocm</span><br></pre></td></tr></table></figure>
+<p>如果直接安装ollama ， 默认使用 cpu 工作，所以需要安装
+<code>ollama-cuda</code> 版本。</p>
+<h2 id="安装大模型-deepseek-r17b">安装大模型: deepseek-r1:7b</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama pull deepseek-r1:7b</span><br></pre></td></tr></table></figure>
+<h2 id="运行大模型-deepseek-r17b">运行大模型: deepseek-r1:7b</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama run deepseek-r1:7b</span><br></pre></td></tr></table></figure>
+<p>至上此可以在终端下运动大模型了，但是当涉及到一些 LaTeX
+公式时，在终端下无法显示公式，只能显示源码，因此需要下面的配置<code>open webui</code>，
+使得浏览器可以使用本地的大模型。</p>
+<h1 id="配置open-webui">配置<code>open webui</code></h1>
+<h2 id="安装-docker">安装 docker</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S docker</span><br></pre></td></tr></table></figure>
+<h2 id="配置docker国内源">配置docker国内源</h2>
+<figure class="highlight sh"><figcaption><span>/etc/docker/daemon.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;https://docker.xuanyuan.me&quot;</span>,</span><br><span class="line">    <span class="string">&quot;https://docker.1ms.run&quot;</span>,</span><br><span class="line">    <span class="string">&quot;https://docker.mirrors.ustc.edu.cn&quot;</span>,</span><br><span class="line">    <span class="string">&quot;https://docker.m.daocloud.io&quot;</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="重新加载docker-配置并重启动">重新加载Docker 配置并重启动</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl daemon-reload</span><br><span class="line"><span class="built_in">sudo</span> systemctl restart docker</span><br></pre></td></tr></table></figure>
+<h2 id="验证配置是否生效">验证配置是否生效</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker info | grep -A 1 <span class="string">&quot;Registry Mirrors&quot;</span></span><br></pre></td></tr></table></figure>
+<p>如果成功，输出中会显示您配置的其他镜像地址。</p>
+<h2 id="使用国内镜像源安装open-webui">使用国内镜像源安装Open WebUI</h2>
+<p>配置好镜像加速器后，拉取镜像时已无需特殊前缀，Docker
+会自动从国内镜像源获取官方镜像。但如果您的网络环境较为特殊，也可以直接指定国内镜像源的完整地址进行拉取。</p>
+<p>例如南京大学镜像：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull ghcr.nju.edu.cn/open-webui/open-webui:latest</span><br></pre></td></tr></table></figure>
+<p>拉取完成后，验证镜像是否已经成功下载：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images | grep open-webui</span><br></pre></td></tr></table></figure>
+<p>看到类似<code>ghcr.nju.edu.cn/open-webui/open-webui:latest</code>的输出即表示成功。</p>
+<h2 id="启动-open-webui-容器">启动 Open WebUI 容器</h2>
+<p>拉取成功后，启动 Open WebUI 容器。启动前请确认您的 Ollama
+服务已正常运行。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --network=host \</span><br><span class="line">  -v open-webui:/app/backend/data \</span><br><span class="line">  -e OLLAMA_BASE_URL=http://127.0.0.1:11434 \</span><br><span class="line">  -e WEBUI_PORT=3000 \</span><br><span class="line">  --name open-webui --restart always \</span><br><span class="line">  ghcr.nju.edu.cn/open-webui/open-webui:latest</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -1236,140 +1346,6 @@ Pacman 升级后 GDM 主题会恢复到默认状态，其根源在于 GDM （GNO
 <h2 id="参考文章">参考文章</h2>
 <p><a
 href="./2025/09/27/ArchLinux安装奔图P3370DN打印机驱动">ArchLinux安装奔图P3370DN打印机驱动</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2026/01/17/Linux%E4%B8%AD%E7%9A%84%E6%8E%92%E5%BA%8F%E5%91%BD%E4%BB%A4sort/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2026/01/17/Linux%E4%B8%AD%E7%9A%84%E6%8E%92%E5%BA%8F%E5%91%BD%E4%BB%A4sort/" class="post-title-link" itemprop="url">Linux中的排序命令sort</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2026-01-17 16:57:22 / 修改时间：17:09:01" itemprop="dateCreated datePublished" datetime="2026-01-17T16:57:22+08:00">2026-01-17</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在给学生上完课后，我需要将希沃白板的板书保存下来，合成为一个 PDF
-文件，发送给学生，以便学生能够及时复习。但是，在板书超过10页后，发现直接使用
-<code>magick</code> 命令合成，那第
-10页会跑到第1页前面，于是我修改文件名后完成了操作。但是这也太麻烦了，于是决定编写一个脚本自动处理合成任务，其中的关键是根据
-seewo
-白板按时间加页码命名的默认方式进行排序。为了完成正确的排序，需要借助<code>sort</code>
-命令。</p>
-<h2 id="sort-命令简介">sort 命令简介</h2>
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">排序需求</th>
-<th style="text-align: left;">命令示例</th>
-<th style="text-align: left;">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">默认字典序（ASCII顺序）</td>
-<td style="text-align: left;"><code>ls \| sort</code></td>
-<td
-style="text-align: left;">最基本排序，大写字母（A-Z）排在小写字母（a-z）之前。</td>
-</tr>
-<tr>
-<td style="text-align: left;">智能版本序(含数字时推荐)</td>
-<td style="text-align: left;"><code>ls \| sort -V</code></td>
-<td style="text-align: left;">能识别数字并按数值大小排，将 1, 2, 10 排成
-1, 2, 10（而不是 1, 10, 2）。</td>
-</tr>
-<tr>
-<td style="text-align: left;">忽略大小写</td>
-<td style="text-align: left;"><code>ls \| sort -f</code></td>
-<td style="text-align: left;">将 a.png 和 B.png 视为相同字母排序。</td>
-</tr>
-<tr>
-<td style="text-align: left;">按修改时间（时间倒序）</td>
-<td style="text-align: left;"><code>ls -t</code></td>
-<td style="text-align: left;">注意：这是 ls 命令的参数 (-t)，不是 sort
-的功能。</td>
-</tr>
-<tr>
-<td style="text-align: left;">反转排序结果</td>
-<td style="text-align: left;"><code>ls \| sort -r</code></td>
-<td style="text-align: left;">-r 参数可与其他参数组合，如 sort -Vr
-为版本序反转。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="核心用法">核心用法</h2>
-<p>sort
-通常不直接操作文件，而是对它接收到的文本输入流进行排序。因此，你需要先用
-ls、find 或 echo 生成文件列表，再通过管道 | 传给 sort。</p>
-<h3 id="图片合成-pdf-命令">图片合成 pdf 命令</h3>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">magick $(<span class="built_in">ls</span> *.png | <span class="built_in">sort</span> -V) output.pdf</span><br></pre></td></tr></table></figure>
-<h3 id="进阶技巧">进阶技巧</h3>
-<p>如果你想获得类似文件管理器那种“按名称排序，但文件夹在前”的列表，可以结合
-ls 和 sort：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -la | <span class="built_in">sort</span> -k 9  <span class="comment"># 按第9列（默认文件名列）排序</span></span><br></pre></td></tr></table></figure>
-<p>注：这种方法比较脆弱，因为 ls -l
-的输出格式固定，列位置可能因系统而异。</p>
 
       
     </div>
