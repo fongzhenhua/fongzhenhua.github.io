@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">568</span>
+          <span class="site-state-item-count">569</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -390,6 +390,180 @@ target="_blank" rel="noopener" href="https://endeavouros.com">Endeavour</a>
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/06/03/Neovim%E9%9B%86%E6%88%90Ai%E5%8A%9F%E8%83%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/06/03/Neovim%E9%9B%86%E6%88%90Ai%E5%8A%9F%E8%83%BD/" class="post-title-link" itemprop="url">Neovim集成Ai功能</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-06-03 21:33:48 / 修改时间：21:52:36" itemprop="dateCreated datePublished" datetime="2026-06-03T21:33:48+08:00">2026-06-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>随着时代的进步和世界的发展，我决定从今天开始在 Neovim 上集成
+AI，以增强编辑功能。其中一个为 Neovim 增加 AI 能力的工具是
+<code>Gen.nvim</code>，但在安装插件之前，请确保已配置好
+<code>ollama</code> 并拉取所需的模型。</p>
+<h1 id="安装配置-gen.nvim">安装配置 Gen.nvim</h1>
+<figure class="highlight sh"><figcaption><span>~/.config/nvim/lua/lazy-init.lua</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="string">&quot;David-Kunz/gen.nvim&quot;</span>,</span><br><span class="line">opts = &#123;</span><br><span class="line">    -- model = <span class="string">&quot;qwen2.5-coder:latest&quot;</span>, -- 或您已下载的任意模型</span><br><span class="line">    model = <span class="string">&quot;qwen2.5:14b&quot;</span>, -- 或您已下载的任意模型</span><br><span class="line">    quit_map = <span class="string">&quot;q&quot;</span>,   -- 关闭响应窗口的快捷键</span><br><span class="line">    retry_map = <span class="string">&quot;&lt;c-r&gt;&quot;</span>, -- 重试的快捷键</span><br><span class="line">    accept_map = <span class="string">&quot;&lt;c-cr&gt;&quot;</span>, -- 接受并替换文本的快捷键</span><br><span class="line">    host = <span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">    port = <span class="string">&quot;11434&quot;</span>,</span><br><span class="line">    display_mode = <span class="string">&quot;float&quot;</span>, -- 以浮动窗口展示结果</span><br><span class="line">    -- hidden = <span class="literal">true</span>, -- 启用无窗口模式，直接替换</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>这样，在启动Neovim时，<code>lazy.nvim</code>会自动安装<code>gen.nvim</code>插件。</p>
+<h1 id="gen.nvim-的使用">Gen.nvim 的使用</h1>
+<p><code>Gen.nvim</code> 插件提供的核心 AI
+功能涵盖了从代码到文本的各种协作场景。插件将这些功能封装为一系列“预设指令
+(Prompts)”，用户可以直接在 Neovim 中通过 <code>:Gen</code>
+命令调用，无需频繁复制粘贴、切换窗口或手动编写提示词。</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">功能类别</th>
+<th style="text-align: left;">选项</th>
+<th style="text-align: left;">主要功能与使用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">理解与获取</td>
+<td style="text-align: left;">Ask</td>
+<td style="text-align: left;">直接向 AI
+提问任何问题（如查询概念、解释原理）</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Chat</td>
+<td
+style="text-align: left;">开启一个多轮对话窗口，适合需要上下文连续交流的场景</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Summarize</td>
+<td
+style="text-align: left;">快速总结当前选中的文本或代码，抓住核心内容</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Review Code</td>
+<td style="text-align: left;">让 AI
+审阅代码，分析可读性、性能和安全问题，并提出改进建议</td>
+</tr>
+<tr>
+<td style="text-align: left;">代码与文本优化</td>
+<td style="text-align: left;">Change Code</td>
+<td
+style="text-align: left;">根据你的指令直接修改选中的代码，类似于“把这段代码改成……”</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Enhance Code</td>
+<td
+style="text-align: left;">在不改变核心逻辑的前提下，优化选中代码的结构、性能和可读性</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Change</td>
+<td style="text-align: left;">选中文本后，让 AI
+根据你的自然语言指令进行修改（如“把语气改得更正式”）</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Enhance Wording</td>
+<td
+style="text-align: left;">优化措辞、改善表达，使书面表达更清晰、流畅、专业。</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Enhance Grammar Spelling</td>
+<td style="text-align: left;">专门检查并修正文本中的语法和拼写错误</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Make Concise</td>
+<td
+style="text-align: left;">简化冗余的长文本，提炼关键信息，且不改变原意。</td>
+</tr>
+<tr>
+<td style="text-align: left;">生成与整理</td>
+<td style="text-align: left;">Generate</td>
+<td
+style="text-align: left;">根据你的要求生成全新的内容，不仅限于代码，也可以是邮件、报告大纲等</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Make List</td>
+<td
+style="text-align: left;">将散乱的文本或笔记自动整理成结构化列表</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Make Table</td>
+<td
+style="text-align: left;">将相关数据或信息分析整理后，呈现为表格形式</td>
+</tr>
+</tbody>
+</table>
+
       
     </div>
 
@@ -1255,97 +1429,6 @@ Pacman 升级后 GDM 主题会恢复到默认状态，其根源在于 GDM （GNO
 文字，随后主题会被自动重新应用。升级完成后，你的 <code>GDM</code>
 登录界面将保持为 <code>WhiteSur 主题</code>，再也不会被重置了。</p></li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2026/01/27/ArchLinux%E5%AE%89%E8%A3%85%E5%85%84%E5%BC%9FDCP7180DN%E6%89%93%E5%8D%B0%E6%9C%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2026/01/27/ArchLinux%E5%AE%89%E8%A3%85%E5%85%84%E5%BC%9FDCP7180DN%E6%89%93%E5%8D%B0%E6%9C%BA/" class="post-title-link" itemprop="url">ArchLinux安装兄弟DCP7180DN打印机</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2026-01-27 08:38:43 / 修改时间：09:07:38" itemprop="dateCreated datePublished" datetime="2026-01-27T08:38:43+08:00">2026-01-27</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>近期更换了办公室，所以需要安装该办公室的打印机兄弟DCP7180DN打印机，但是我的ArchLinux
-上没有相应的驱动，所以需要安装。</p>
-<h2 id="安装打印机配置程序">安装打印机配置程序</h2>
-<p>安装<code>system-config-printer</code>, 打开终端运行命令</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S system-config-printer</span><br></pre></td></tr></table></figure>
-<h2 id="安装brother-dcp7180dn驱动">安装brother-dcp7180dn驱动</h2>
-<ul>
-<li>使用<code>paru</code>检索驱动 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paru -Ss brother |grep 7180</span><br></pre></td></tr></table></figure></li>
-<li>确定驱动的全称<code>brother-dcp7180dn</code>, 执行安装
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paru -S brother-dcp7180dn</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="配置打印机">配置打印机</h2>
-<ul>
-<li><p>在菜单中找到<code>打印机设置</code>→<code>解锁</code>→<code>添加</code>→<code>网络打印机</code>.</p></li>
-<li><p>选择局域网内的打印机，此时输入打印机的<code>IP</code>和使用默认<code>端口9100</code>,
-同时下方显示连接<code>AppSocket/HP JetDirect</code>, 点击转发,
-然后等待搜索驱动.</p></li>
-<li><p>由于已经安装了<code>brother-dcp7180dn</code>驱动，所以点击<code>确定</code>后就可以使用了。</p></li>
-</ul>
-<h2 id="参考文章">参考文章</h2>
-<p><a
-href="./2025/09/27/ArchLinux安装奔图P3370DN打印机驱动">ArchLinux安装奔图P3370DN打印机驱动</a></p>
 
       
     </div>
