@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">570</span>
+          <span class="site-state-item-count">571</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -307,6 +307,110 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/31/%E8%A7%A3%E5%86%B3GIT%E6%97%A0%E6%B3%95PULL%E4%BB%93%E5%BA%93%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/12/31/%E8%A7%A3%E5%86%B3GIT%E6%97%A0%E6%B3%95PULL%E4%BB%93%E5%BA%93%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">解决GIT无法PULL仓库的问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-12-31 12:12:39" itemprop="dateCreated datePublished" datetime="2024-12-31T12:12:39+08:00">2024-12-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>时光匆匆，转眼间到了2024年的最后一天，似乎2024还没有写习惯，又不得不写2025。
+这是切换回 <code>github</code>
+的第一篇文章，在此恭祝大家2025元旦快乐，学业有成！</p>
+<h1 id="问题描述">问题描述</h1>
+<p>今天遇到了无法使用<code>git</code>拉取仓库的问题,
+同时百度获知有好多人遇到了同样的问题，其的原因是"DNS 污染"。
+同样也有人遇到了下面的错误：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git pull</span><br><span class="line">ssh: connect to host github.com port 22: Connection refused</span><br><span class="line">fatal: Could not <span class="built_in">read</span> from remote repository.</span><br><span class="line"></span><br><span class="line">Please make sure you have the correct access rights</span><br><span class="line">and the repository exists.</span><br></pre></td></tr></table></figure>
+<p>同样，在使用<code>ssh</code>克隆仓库时也会遇到相同的问题，表现为：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -vT git@github.com</span><br><span class="line">OpenSSH_9.0p1, OpenSSL 1.1.1o  3 May 2022</span><br><span class="line">debug1: Reading configuration data /etc/ssh/ssh_config</span><br><span class="line">debug1: Connecting to github.com [::1] port 22.</span><br><span class="line">debug1: connect to address ::1 port 22: Connection refused</span><br><span class="line">debug1: Connecting to github.com [127.0.0.1] port 22.</span><br><span class="line">debug1: connect to address 127.0.0.1 port 22: Connection refused</span><br><span class="line">ssh: connect to host github.com port 22: Connection refused</span><br></pre></td></tr></table></figure>
+<h1 id="解决方法">解决方法</h1>
+<p>在<code>/etc/hosts</code>文件中，增加一条<code>github.com</code>的域名映射：</p>
+<figure class="highlight txt"><figcaption><span>/etc/hosts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">140.82.113.4 github.com</span><br></pre></td></tr></table></figure>
+<h1 id="参考文章">参考文章</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/521340971">坑：ssh: connect to
+host github.com port 22: Connection refused</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37866436/article/details/109456501">解决git使用ssh克隆失败的问题</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://smallhdcc.github.io/2024/01/25/Git%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8SSH%20%E4%BF%AE%E5%A4%8D/index.html">Git无法使用SSH
+bug修复</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/544864281">遇到ssh: connect to
+host github.com port 22: Connection refused的解决办法</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.dns.com/news/3351.html">DNS污染的防护措施有哪些？</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://thax.cn/6608.html">什么是域名DNS污染，如何挽救被污染的域名</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1266,204 +1370,8 @@ target="_blank" rel="noopener" href="https://wuli.wiki/online/UniMat.html">正�
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/07/Python%E4%BD%BF%E7%94%A8Numpy%E5%8F%98%E6%8D%A2%E6%95%B0%E7%BB%84%E5%BD%A2%E7%8A%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/12/07/Python%E4%BD%BF%E7%94%A8Numpy%E5%8F%98%E6%8D%A2%E6%95%B0%E7%BB%84%E5%BD%A2%E7%8A%B6/" class="post-title-link" itemprop="url">Python使用Numpy变换数组形状</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-12-07 21:49:21" itemprop="dateCreated datePublished" datetime="2024-12-07T21:49:21+08:00">2024-12-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-26 18:21:20" itemprop="dateModified" datetime="2025-03-26T18:21:20+08:00">2025-03-26</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="一-修改数组的形状">一、 修改数组的形状</h1>
-<h2 id="重塑数组形状">1、重塑数组形状</h2>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>reshape()</td>
-<td>不修改原数组的形状，返回一个视图，会影响原数组的数据</td>
-</tr>
-<tr>
-<td>resize()</td>
-<td>直接作用于原数组</td>
-</tr>
-<tr>
-<td>shape()</td>
-<td>直接作用于原数组</td>
-</tr>
-</tbody>
-</table>
-<p>若不理解视图，可以通过 <a
-target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_41805096/article/details/108589557">视图与拷贝</a>
-这篇博客进行了解。</p>
-<ul>
-<li><code>ndarry.reshape()</code></li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ndarry.reshape(shape)</span><br><span class="line">shape:填入生成的数组形状（元组）</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line">1、有返回值，返回一个视图</span><br><span class="line">2、不直接作用于原数组（不改变原数组的形状），但影响原数组的元素</span><br></pre></td></tr></table></figure>
-<p>代码：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">n1 = np.array([[<span class="number">2</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>],[<span class="number">8</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">9</span>],[<span class="number">8</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">9</span>]])</span><br><span class="line"><span class="comment"># 形状</span></span><br><span class="line">n1.shape</span><br><span class="line"><span class="comment"># (3, 4)</span></span><br><span class="line"><span class="comment"># reshape</span></span><br><span class="line">n1.reshape((<span class="number">4</span>,<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>ndarry.resize()</code></li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">resize(shape) :谨慎使用!</span><br><span class="line"></span><br><span class="line">shape:填入生成的数组形状（元组）</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line">1、无返回值</span><br><span class="line">2、直接作用于原数组（改变原数组的形状）</span><br></pre></td></tr></table></figure>
-<p>代码</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">n1 = np.array([[<span class="number">2</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>],[<span class="number">8</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">9</span>],[<span class="number">8</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">9</span>]])</span><br><span class="line">n1.resize(<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># n1形状已修改</span></span><br><span class="line">n1.shape</span><br><span class="line"><span class="comment"># (2, 2, 3)</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>ndarry.shape</code></li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shape</span><br><span class="line">通过属性直接赋值修改（改变原数组的形状）</span><br></pre></td></tr></table></figure>
-<p>代码</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">n1 = np.array([[<span class="number">2</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>],[<span class="number">8</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">9</span>],[<span class="number">8</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">9</span>]])</span><br><span class="line"><span class="comment"># 数组的原始形状</span></span><br><span class="line">n1.shape</span><br><span class="line"><span class="comment"># (4, 3)</span></span><br><span class="line">n1.shape = (<span class="number">2</span>,<span class="number">6</span>)</span><br><span class="line">n1</span><br></pre></td></tr></table></figure>
-<h2 id="多维数换向一维数组转换">2、多维数换向一维数组转换</h2>
-<ul>
-<li><code>ndarry.ravel()</code></li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ndarry.ravel(order=)</span><br><span class="line"></span><br><span class="line">当不设置参数order，默认将数组横向展平为一维数组</span><br><span class="line">当设置参数order = <span class="string">&#x27;F&#x27;</span>，即为将数组纵向展平为一维数组</span><br><span class="line"></span><br><span class="line">注意：</span><br><span class="line">    使用ravel函数修改形状，得到一个视图，不会改变原数组的形状，但会会改变原数组中的元素！</span><br></pre></td></tr></table></figure>
-<p>代码</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">n1</span><br><span class="line"><span class="comment"># array([[2, 4, 3],</span></span><br><span class="line"><span class="comment">#        [2, 8, 4],</span></span><br><span class="line"><span class="comment">#        [2, 9, 8],</span></span><br><span class="line"><span class="comment">#        [3, 4, 9]])</span></span><br><span class="line"><span class="comment"># 横向展平为一维数组</span></span><br><span class="line">n1.ravel()</span><br><span class="line"><span class="comment"># array([2, 4, 3, 2, 8, 4, 2, 9, 8, 3, 4, 9])</span></span><br><span class="line"><span class="comment"># 纵向展平为一维数组</span></span><br><span class="line">n1.ravel(order=<span class="string">&#x27;F&#x27;</span>)</span><br><span class="line"><span class="comment"># array([2, 2, 2, 3, 4, 8, 9, 4, 3, 4, 8, 9])</span></span><br><span class="line"><span class="comment"># 原数组形状未改变</span></span><br><span class="line">n1</span><br><span class="line"><span class="comment"># array([[2, 4, 3],</span></span><br><span class="line"><span class="comment">#        [2, 8, 4],</span></span><br><span class="line"><span class="comment">#        [2, 9, 8],</span></span><br><span class="line"><span class="comment">#        [3, 4, 9]])</span></span><br><span class="line"><span class="comment"># 修改元素</span></span><br><span class="line">n1.ravel()[<span class="number">3</span>] = <span class="number">77</span></span><br><span class="line"><span class="comment"># 原数组数据被修改</span></span><br><span class="line">n1</span><br><span class="line"><span class="comment"># array([[ 2,  4,  3],</span></span><br><span class="line"><span class="comment">#        [77,  8,  4],</span></span><br><span class="line"><span class="comment">#        [ 2,  9,  8],</span></span><br><span class="line"><span class="comment">#        [ 3,  4,  9]])</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>ndarry.flatten()</code></li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ndarry.flatten(order=)</span><br><span class="line"></span><br><span class="line">当不设置参数order，默认为将数组横向展平为一维数组</span><br><span class="line">当设置参数order = <span class="string">&#x27;F&#x27;</span>，则将数组纵向展平为一维数组</span><br><span class="line"></span><br><span class="line">注意：</span><br><span class="line">    使用flatten函数不会对原数组产生任何影响</span><br><span class="line">    （原数组形状和元素都不受其影响）</span><br></pre></td></tr></table></figure>
-<p>代码</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">n1</span><br><span class="line"><span class="comment"># array([[ 2,  4,  3],</span></span><br><span class="line"><span class="comment">#        [77,  8,  4],</span></span><br><span class="line"><span class="comment">#        [ 2,  9,  8],</span></span><br><span class="line"><span class="comment">#        [ 3,  4,  9]])</span></span><br><span class="line"><span class="comment"># # 将数组横向展平成一维数组</span></span><br><span class="line">n1.flatten()</span><br><span class="line"><span class="comment"># array([ 2,  4,  3, 77,  8,  4,  2,  9,  8,  3,  4,  9])</span></span><br><span class="line"><span class="comment"># 展平时候的形状</span></span><br><span class="line">n1.flatten().shape</span><br><span class="line"><span class="comment"># (12,)</span></span><br><span class="line"><span class="comment"># 将数组纵向展平成一维数组</span></span><br><span class="line">n1.flatten(order=<span class="string">&#x27;F&#x27;</span>)</span><br><span class="line"><span class="comment"># array([ 2, 77,  2,  3,  4,  8,  9,  4,  3,  4,  8,  9])</span></span><br><span class="line"><span class="comment"># flatten修改元素数值</span></span><br><span class="line">n1.flatten()[<span class="number">1</span>] = <span class="number">6</span></span><br><span class="line"><span class="comment"># 不影响原数组的形状和元素数据</span></span><br><span class="line">n1</span><br><span class="line"><span class="comment"># array([[ 2,  4,  3],</span></span><br><span class="line"><span class="comment">#        [77,  8,  4],</span></span><br><span class="line"><span class="comment">#        [ 2,  9,  8],</span></span><br><span class="line"><span class="comment">#        [ 3,  4,  9]])</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>ndarry.reshape(-1)</code></li>
-</ul>
-<p><a
-target="_blank" rel="noopener" href="https://marketing.csdn.net/p/3127db09a98e0723b83b2914d9256174?pId=2782&amp;utm_source=glcblog&amp;spm=1001.2101.3001.7020">函数</a>说明</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">n1.reshape(-1)</span><br><span class="line">-1：表示自动计算</span><br><span class="line"></span><br><span class="line">n1.reshape(m,-1)</span><br><span class="line">指定行为m，列自动计算</span><br><span class="line"></span><br><span class="line">n1.reshape(-1,n)</span><br><span class="line">指定列为n，行自动计算</span><br><span class="line"></span><br><span class="line">注意：</span><br><span class="line">    1、不影响原数组的形状</span><br><span class="line">    2、影响原数组的元素</span><br></pre></td></tr></table></figure>
-<p>代码</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">n1</span><br><span class="line"><span class="comment"># array([[ 2,  4,  3],</span></span><br><span class="line"><span class="comment">#        [77,  8,  4],</span></span><br><span class="line"><span class="comment">#        [ 2,  9,  8],</span></span><br><span class="line"><span class="comment">#        [ 3,  4,  9]])</span></span><br><span class="line"><span class="comment"># 横向展平</span></span><br><span class="line">n1.reshape(-<span class="number">1</span>)</span><br><span class="line"><span class="comment"># array([ 2,  4,  3, 77,  8,  4,  2,  9,  8,  3,  4,  9])</span></span><br><span class="line"><span class="comment"># 同n1.reshape(-1) 数组只有一个维度，自动计算长度</span></span><br><span class="line">n1.reshape(-<span class="number">1</span>,)</span><br><span class="line"><span class="comment"># array([ 2,  4,  3, 77,  8,  4,  2,  9,  8,  3,  4,  9])</span></span><br><span class="line"><span class="comment"># 指定列数，自动计算行数</span></span><br><span class="line">n1.reshape(-<span class="number">1</span>,<span class="number">6</span>)</span><br><span class="line"><span class="comment"># array([[ 2,  4,  3, 77,  8,  4],</span></span><br><span class="line"><span class="comment">#        [ 2,  9,  8,  3,  4,  9]])</span></span><br><span class="line"><span class="comment"># 指定行数</span></span><br><span class="line">n1.reshape(<span class="number">3</span>,-<span class="number">1</span>)</span><br><span class="line"><span class="comment"># array([[ 2,  4,  3, 77],</span></span><br><span class="line"><span class="comment">#        [ 8,  4,  2,  9],</span></span><br><span class="line"><span class="comment">#        [ 8,  3,  4,  9]])</span></span><br><span class="line"><span class="comment"># 不改变原数组的形状</span></span><br><span class="line">n1</span><br><span class="line"><span class="comment"># array([[ 2,  4,  3],</span></span><br><span class="line"><span class="comment">#        [77,  8,  4],</span></span><br><span class="line"><span class="comment">#        [ 2,  9,  8],</span></span><br><span class="line"><span class="comment">#        [ 3,  4,  9]])</span></span><br><span class="line"><span class="comment"># 通过reshape修改元素，原数组元素数据产生变化</span></span><br><span class="line">n1.reshape(-<span class="number">1</span>,)[<span class="number">0</span>] = <span class="number">12</span></span><br><span class="line">n1</span><br><span class="line"><span class="comment"># array([[12,  4,  3],</span></span><br><span class="line"><span class="comment">#        [77,  8,  4],</span></span><br><span class="line"><span class="comment">#        [ 2,  9,  8],</span></span><br><span class="line"><span class="comment">#        [ 3,  4,  9]])</span></span><br></pre></td></tr></table></figure>
-<h2 id="增加一个维度">3、 增加一个维度</h2>
-<ul>
-<li><code>np.newaxis()</code> 所在位置增加一个维度</li>
-</ul>
-<p>一维扩展为二维</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一维度数组</span></span><br><span class="line">n2 = np.arange(<span class="number">10</span>)</span><br><span class="line">n2</span><br><span class="line"><span class="comment"># array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</span></span><br><span class="line">n2.shape</span><br><span class="line"><span class="comment"># (10,)</span></span><br><span class="line"><span class="comment"># 行方向增加一个维度</span></span><br><span class="line">n2[np.newaxis,:]</span><br><span class="line"><span class="comment"># array([[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]])</span></span><br><span class="line">n2[np.newaxis,:].shape</span><br><span class="line"><span class="comment"># (1, 10)</span></span><br><span class="line"><span class="comment"># 列方向增加一个维度</span></span><br><span class="line">n2[:,np.newaxis]</span><br><span class="line"><span class="comment"># array([[0],</span></span><br><span class="line"><span class="comment">#        [1],</span></span><br><span class="line"><span class="comment">#        [2],</span></span><br><span class="line"><span class="comment">#        [3],</span></span><br><span class="line"><span class="comment">#        [4],</span></span><br><span class="line"><span class="comment">#        [5],</span></span><br><span class="line"><span class="comment">#        [6],</span></span><br><span class="line"><span class="comment">#        [7],</span></span><br><span class="line"><span class="comment">#        [8],</span></span><br><span class="line"><span class="comment">#        [9]])</span></span><br><span class="line"></span><br><span class="line">n2[:,].shape</span><br><span class="line"><span class="comment"># (10, 1)</span></span><br></pre></td></tr></table></figure>
-<p>二维扩展为三维</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 二维度数组</span></span><br><span class="line">n2 = np.arange(<span class="number">10</span>).reshape(<span class="number">2</span>,<span class="number">5</span>)</span><br><span class="line">n2.shape</span><br><span class="line"><span class="comment"># (2, 5)</span></span><br><span class="line">n2[np.newaxis,:,:]</span><br><span class="line"><span class="comment"># array([[[0, 1, 2, 3, 4],</span></span><br><span class="line"><span class="comment">#         [5, 6, 7, 8, 9]]])</span></span><br><span class="line">n2[np.newaxis,:,:].shape</span><br><span class="line"><span class="comment"># (1, 2, 5)</span></span><br></pre></td></tr></table></figure>
-<p>以此类推，将小维度数组扩展成更多维的数组。</p>
-<h2 id="数组行列转置">4、数组行列转置</h2>
-<ul>
-<li><code>ndarray.T 属性</code></li>
-</ul>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">n2</span><br><span class="line"><span class="comment"># array([[0, 1, 2, 3, 4],</span></span><br><span class="line"><span class="comment">#        [5, 6, 7, 8, 9]])</span></span><br><span class="line"><span class="comment"># ndarray.T 将数据按照对角线进行行列倒置，行变成了列，列变成了行</span></span><br><span class="line">n2.T</span><br><span class="line"><span class="comment"># array([[0, 5],</span></span><br><span class="line"><span class="comment">#        [1, 6],</span></span><br><span class="line"><span class="comment">#        [2, 7],</span></span><br><span class="line"><span class="comment">#        [3, 8],</span></span><br><span class="line"><span class="comment">#        [4, 9]])</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>ndarray.transpose()</code></li>
-</ul>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 同ndarray.T </span></span><br><span class="line">n2.transpose()</span><br><span class="line"><span class="comment"># array([[0, 5],</span></span><br><span class="line"><span class="comment">#        [1, 6],</span></span><br><span class="line"><span class="comment">#        [2, 7],</span></span><br><span class="line"><span class="comment">#        [3, 8],</span></span><br><span class="line"><span class="comment">#        [4, 9]])</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>ndarray.swapaxes(1,0)</code></li>
-</ul>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 必须填入两个参数，进行行列转换</span></span><br><span class="line">n2.swapaxes(<span class="number">1</span>,<span class="number">0</span>)</span><br><span class="line"><span class="comment"># array([[0, 5],</span></span><br><span class="line"><span class="comment">#        [1, 6],</span></span><br><span class="line"><span class="comment">#        [2, 7],</span></span><br><span class="line"><span class="comment">#        [3, 8],</span></span><br><span class="line"><span class="comment">#        [4, 9]])</span></span><br></pre></td></tr></table></figure>
-<h1 id="二数据的拼接合并">二、数据的拼接（合并）</h1>
-<ul>
-<li><code>np.hstack()</code> 水平拼接</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">np.hstack(tup) 数组的水平拼接</span><br><span class="line">水平拼接即为横向拼接，数组的行数要一致</span><br><span class="line"></span><br><span class="line">tup：ndarray序列</span><br></pre></td></tr></table></figure>
-<p>代码</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 准备数组1</span></span><br><span class="line">a1 = np.array([[<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],[<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>],[<span class="number">8</span>,<span class="number">9</span>,<span class="number">4</span>]])</span><br><span class="line">a1</span><br><span class="line"><span class="comment"># array([[3, 4, 5],</span></span><br><span class="line"><span class="comment">#        [2, 4, 1],</span></span><br><span class="line"><span class="comment">#        [8, 9, 4]])</span></span><br><span class="line"><span class="comment"># 准备数组2</span></span><br><span class="line">a2 = np.array([[<span class="number">7</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">5</span>],[<span class="number">3</span>,<span class="number">9</span>,<span class="number">4</span>,<span class="number">1</span>],[<span class="number">2</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">4</span>]])</span><br><span class="line">a2</span><br><span class="line"><span class="comment"># array([[7, 3, 1, 5],</span></span><br><span class="line"><span class="comment">#        [3, 9, 4, 1],</span></span><br><span class="line"><span class="comment">#        [2, 8, 7, 4]])</span></span><br><span class="line"><span class="comment"># 进行水平拼接</span></span><br><span class="line">np.hstack([a1,a2])</span><br><span class="line"><span class="comment"># array([[3, 4, 5, 7, 3, 1, 5],</span></span><br><span class="line"><span class="comment">#        [2, 4, 1, 3, 9, 4, 1],</span></span><br><span class="line"><span class="comment">#        [8, 9, 4, 2, 8, 7, 4]])</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>np.vstack()</code> 竖直拼接</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">np.vstack(tup) 数组的水平拼接</span><br><span class="line">竖直拼接即为纵向拼接，数组的列数要一致</span><br><span class="line"></span><br><span class="line">tup：ndarray序列</span><br></pre></td></tr></table></figure>
-<p>代码</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 准备数组1</span></span><br><span class="line">a2 = np.array([[<span class="number">7</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">5</span>],[<span class="number">3</span>,<span class="number">9</span>,<span class="number">4</span>,<span class="number">1</span>],[<span class="number">2</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">4</span>]])</span><br><span class="line">a2</span><br><span class="line"><span class="comment"># array([[7, 3, 1, 5],</span></span><br><span class="line"><span class="comment">#        [3, 9, 4, 1],</span></span><br><span class="line"><span class="comment">#        [2, 8, 7, 4]])</span></span><br><span class="line"><span class="comment"># 准备数组2</span></span><br><span class="line">a3=np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line"><span class="comment"># array([[ 0,  1,  2,  3],</span></span><br><span class="line"><span class="comment">#        [ 4,  5,  6,  7],</span></span><br><span class="line"><span class="comment">#        [ 8,  9, 10, 11]])</span></span><br><span class="line"><span class="comment"># 进行竖直拼接</span></span><br><span class="line">np.vstack((a3,a2))</span><br><span class="line"><span class="comment"># array([[ 0,  1,  2,  3],</span></span><br><span class="line"><span class="comment">#        [ 4,  5,  6,  7],</span></span><br><span class="line"><span class="comment">#        [ 8,  9, 10, 11],</span></span><br><span class="line"><span class="comment">#        [ 7,  3,  1,  5],</span></span><br><span class="line"><span class="comment">#        [ 3,  9,  4,  1],</span></span><br><span class="line"><span class="comment">#        [ 2,  8,  7,  4]])</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>np.concatenate()</code> 指定数组的拼接方向</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">np.concatenate((a1, a2, ...), axis=<span class="number">0</span>, out=None)</span><br><span class="line"></span><br><span class="line">axis = <span class="number">0</span> ：按照行的方向进行拼接，竖直拼接</span><br><span class="line">axis = <span class="number">1</span> ：按照列的方向进行拼接，横向拼接</span><br></pre></td></tr></table></figure>
-<p>代码</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 准备数组1</span></span><br><span class="line">a1 = np.array([[<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],[<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>],[<span class="number">8</span>,<span class="number">9</span>,<span class="number">4</span>]])</span><br><span class="line">a1</span><br><span class="line"><span class="comment"># array([[3, 4, 5],</span></span><br><span class="line"><span class="comment">#        [2, 4, 1],</span></span><br><span class="line"><span class="comment">#        [8, 9, 4]])</span></span><br><span class="line"><span class="comment"># 准备数组2</span></span><br><span class="line">a2 = np.array([[<span class="number">7</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">5</span>],[<span class="number">3</span>,<span class="number">9</span>,<span class="number">4</span>,<span class="number">1</span>],[<span class="number">2</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">4</span>]])</span><br><span class="line">a2</span><br><span class="line"><span class="comment"># array([[7, 3, 1, 5],</span></span><br><span class="line"><span class="comment">#        [3, 9, 4, 1],</span></span><br><span class="line"><span class="comment">#        [2, 8, 7, 4]])</span></span><br><span class="line"><span class="comment"># 按照列的方向进行拼接，横向拼接</span></span><br><span class="line">np.concatenate((a1,a2),axis = <span class="number">1</span>)</span><br><span class="line"><span class="comment"># array([[3, 4, 5, 7, 3, 1, 5],</span></span><br><span class="line"><span class="comment">#        [2, 4, 1, 3, 9, 4, 1],</span></span><br><span class="line"><span class="comment">#        [8, 9, 4, 2, 8, 7, 4]])</span></span><br><span class="line"><span class="comment"># 准备数组3</span></span><br><span class="line">a3=np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line"><span class="comment"># array([[ 0,  1,  2,  3],</span></span><br><span class="line"><span class="comment">#        [ 4,  5,  6,  7],</span></span><br><span class="line"><span class="comment">#        [ 8,  9, 10, 11]])</span></span><br><span class="line"><span class="comment"># 按照行的方向进行拼接，竖直拼接</span></span><br><span class="line">np.concatenate((a3,a2),axis = <span class="number">0</span>)</span><br><span class="line"><span class="comment"># array([[ 0,  1,  2,  3],</span></span><br><span class="line"><span class="comment">#        [ 4,  5,  6,  7],</span></span><br><span class="line"><span class="comment">#        [ 8,  9, 10, 11],</span></span><br><span class="line"><span class="comment">#        [ 7,  3,  1,  5],</span></span><br><span class="line"><span class="comment">#        [ 3,  9,  4,  1],</span></span><br><span class="line"><span class="comment">#        [ 2,  8,  7,  4]])</span></span><br></pre></td></tr></table></figure>
-<h1 id="三-数据的复制">三、 数据的复制</h1>
-<ul>
-<li><code>np.tile(ndarry,(m,n))</code> 指定数组的方向复制</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">np.tile(ndarry,(m,n))</span><br><span class="line">tile是瓷砖的意思，顾名思义，这个函数就是把数组像瓷砖一样铺展开来。</span><br><span class="line">m：表示按照行的方向进行复制，铺展m次</span><br><span class="line">m：表示按照列的方向进行复制，铺展n次</span><br></pre></td></tr></table></figure>
-<p>代码</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">a2</span><br><span class="line"><span class="comment"># array([[7, 3, 1, 5],</span></span><br><span class="line"><span class="comment">#        [3, 9, 4, 1],</span></span><br><span class="line"><span class="comment">#        [2, 8, 7, 4]])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 按照行的方向进行复制，铺展3次，竖直铺展</span></span><br><span class="line">np.tile(a2,(<span class="number">3</span>,<span class="number">1</span>))</span><br><span class="line"><span class="comment"># array([[7, 3, 1, 5],</span></span><br><span class="line"><span class="comment">#        [3, 9, 4, 1],</span></span><br><span class="line"><span class="comment">#        [2, 8, 7, 4],</span></span><br><span class="line"><span class="comment">#        [7, 3, 1, 5],</span></span><br><span class="line"><span class="comment">#        [3, 9, 4, 1],</span></span><br><span class="line"><span class="comment">#        [2, 8, 7, 4],</span></span><br><span class="line"><span class="comment">#        [7, 3, 1, 5],</span></span><br><span class="line"><span class="comment">#        [3, 9, 4, 1],</span></span><br><span class="line"><span class="comment">#        [2, 8, 7, 4]])</span></span><br><span class="line"><span class="comment"># 按照列的方向进行复制，铺展2次，横向铺展</span></span><br><span class="line">np.tile(a2,(<span class="number">1</span>,<span class="number">2</span>))</span><br><span class="line"><span class="comment"># array([[7, 3, 1, 5, 7, 3, 1, 5],</span></span><br><span class="line"><span class="comment">#        [3, 9, 4, 1, 3, 9, 4, 1],</span></span><br><span class="line"><span class="comment">#        [2, 8, 7, 4, 2, 8, 7, 4]])</span></span><br><span class="line"><span class="comment"># 分别按照行列方向进行铺展</span></span><br><span class="line">np.tile(a2,(<span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line"><span class="comment"># array([[7, 3, 1, 5, 7, 3, 1, 5, 7, 3, 1, 5],</span></span><br><span class="line"><span class="comment">#        [3, 9, 4, 1, 3, 9, 4, 1, 3, 9, 4, 1],</span></span><br><span class="line"><span class="comment">#        [2, 8, 7, 4, 2, 8, 7, 4, 2, 8, 7, 4],</span></span><br><span class="line"><span class="comment">#        [7, 3, 1, 5, 7, 3, 1, 5, 7, 3, 1, 5],</span></span><br><span class="line"><span class="comment">#        [3, 9, 4, 1, 3, 9, 4, 1, 3, 9, 4, 1],</span></span><br><span class="line"><span class="comment">#        [2, 8, 7, 4, 2, 8, 7, 4, 2, 8, 7, 4]])</span></span><br></pre></td></tr></table></figure>
-<h1 id="参考文章">参考文章</h1>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_41805096/article/details/108680836">Numpy_04_ndarray数据形状的变换（一维到多维、多维变一维、数据合并等）</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_41805096/article/details/108589557">NumPy_03_视图与拷贝</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/13/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/58/">58</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/13/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
