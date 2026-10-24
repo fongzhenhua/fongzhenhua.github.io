@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">576</span>
+          <span class="site-state-item-count">577</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -712,6 +712,122 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/20661114713948
 <li><a target="_blank" rel="noopener" href="https://yunpan.plus/t/8064-1-1">Ubuntu 24.04
 LTS安装COSMIC桌面环境指南：与GNOME共存体验</a></li>
 </ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/07/05/Windows10LTSC2021%E8%BE%93%E5%85%A5%E6%B3%95%E5%AF%B9%E8%AF%9D%E6%A1%86%E6%B6%88%E5%A4%B1%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/07/05/Windows10LTSC2021%E8%BE%93%E5%85%A5%E6%B3%95%E5%AF%B9%E8%AF%9D%E6%A1%86%E6%B6%88%E5%A4%B1%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">Windows10LTSC2021输入法对话框消失的解决方案</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-07-05 21:05:55" itemprop="dateCreated datePublished" datetime="2026-07-05T21:05:55+08:00">2026-07-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-10-24 14:21:42" itemprop="dateModified" datetime="2026-10-24T14:21:42+08:00">2026-10-24</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天决定把我的 <code>Thinkpad T490</code> 的双系统改为单一的
+<code>Windows10LTSC2021</code>, 原因是我的台式机已经配置了
+<code>ArchLinux</code> + <code>Windows11</code> 双系统，平时的办公主力为
+<code>ArchLinux</code> , 如果笔记本使用 <code>Windows10LTSC2021</code>,
+则在 <code>Windows</code>
+下的工作直接使用笔记本办公即可。但是，在安装完成
+<code>Windows10LTSC2021</code> 后发现输入法的候选框不显示，这是
+<code>Windows10LTSC2021</code> 的一个已知的 <code>Bug</code>,
+其根本原因在于，微软在精简这个版本时，不小心删除了新版自由软件拼音输入法所依赖的
+<code>桌面桥运动时(Desktop Bridge Runtime)</code>
+组件。因为缺少必要的运行库，所以输入法就无法正常显示候选框。</p>
+<h1 id="方案一切换到旧版输入法">方案一：切换到旧版输入法</h1>
+<p>这是最快捷的临时解决方案，能让输入法立刻恢复正常，操作步骤为：</p>
+<ul>
+<li>在任务栏右下角右键点击“中/英”输入法图标，选择<code>设置</code></li>
+<li>在设置窗口中点击<code>常规</code></li>
+<li>找到<code>兼容性</code>部分，打开<code>使用以前版本的微软拼音输入法</code>开关。</li>
+</ul>
+<h1
+id="方案二安装缺失的依赖库更彻底">方案二：安装缺失的依赖库（更彻底）</h1>
+<p>这是从根源上解决问题的方法，并且已经被广泛验证有效。其步骤为：</p>
+<ol type="1">
+<li>下载文件：依赖库文件<code>Microsoft.VCLibs</code> <a
+target="_blank" rel="noopener" href="https://dl.lancdn.com/landian/soft/vclibs">https://dl.lancdn.com/landian/soft/vclibs</a></li>
+<li>解压文件：将下载的压缩包解压，你会得到两个<code>.Appx</code>格式的文件。</li>
+<li>放置文件：将这两个<code>.Appx</code>文件复制到<code>C:</code>盘的目录下。</li>
+<li>安装文件：
+<ul>
+<li>右键点击<code>开始</code>菜单，选择<code>Windows PowerShell(管理员)</code>或<code>终端(管理员)</code></li>
+<li>在打开的窗口中，根据你的系统类型，输入以下命令并回车
+<ul>
+<li>64位系统 <figure class="highlight sh"><figcaption><span>PowerShell</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Add-AppxPackage -Path <span class="string">&quot;C:\Microsoft.VCLibs.140.00_14.0.30704.0_x64__8wekyb3d8bbwe.Appx&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li>32位系统 <figure class="highlight sh"><figcaption><span>PowerShell</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Add-AppxPackage -Path <span class="string">&quot;C:\Microsoft.VCLibs.140.00_14.0.30704.0_x86__8wekyb3d8bbwe.Appx&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+<li>重启电脑：命令执行成功后，重启电脑即可生效。</li>
+</ol>
+<blockquote>
+<p>[!WARNING]
+如果提示“部署失败”或“资源正在使用中”，可以重启电脑后再试一次。</p>
+</blockquote>
 
       
     </div>
@@ -1362,130 +1478,6 @@ style="text-align: left;">将相关数据或信息分析整理后，呈现为表
 </tr>
 </tbody>
 </table>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2026/06/02/%E4%BD%BF%E7%94%A8Ollama%E9%85%8D%E7%BD%AE%E6%9C%AC%E5%9C%B0Ai/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2026/06/02/%E4%BD%BF%E7%94%A8Ollama%E9%85%8D%E7%BD%AE%E6%9C%AC%E5%9C%B0Ai/" class="post-title-link" itemprop="url">使用Ollama配置本地Ai</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2026-06-02 18:39:18" itemprop="dateCreated datePublished" datetime="2026-06-02T18:39:18+08:00">2026-06-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-02 08:03:44" itemprop="dateModified" datetime="2026-07-02T08:03:44+08:00">2026-07-02</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>2026年5月30日将原来的<code>GTX 1660s</code>
-升级为<code>GTX 5060 Ti 16G</code>，
-于是本机具备了本地运行<code>Ai</code>的能力。今天配置成功了
-<code>Ollama</code>, 于是此篇博客正式记录这一配置过程。</p>
-<h1 id="安装-ollama">安装 Ollama</h1>
-<p>我的电脑是 <code>ArchLinux</code>, 于是直接使用命令安装即可：</p>
-<h2 id="nvidia-显卡安装ollama-cuda">Nvidia 显卡安装ollama-cuda</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S ollama-cuda</span><br></pre></td></tr></table></figure>
-<h2 id="amd-显卡安装ollama-rocm">Amd 显卡安装ollama-rocm</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S ollama-rocm</span><br></pre></td></tr></table></figure>
-<p>如果直接安装ollama ， 默认使用 cpu 工作，所以需要安装
-<code>ollama-cuda</code> 版本。</p>
-<h2 id="查找支持的大模型">查找支持的大模型</h2>
-<p>要浏览Ollama支持的所有模型，需要去它的官方模型库网站进行搜索：</p>
-<ul>
-<li>访问地址：<a
-target="_blank" rel="noopener" href="https://ollama.com/search">https://ollama.com/search</a>。</li>
-<li>在网站上，你可以按“Most
-popular”（最受欢迎）等条件排序，或直接搜索你感兴趣的模型。</li>
-</ul>
-<h2 id="安装大模型-deepseek-r17b">安装大模型: deepseek-r1:7b</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama pull deepseek-r1:7b</span><br></pre></td></tr></table></figure>
-<h2 id="运行大模型-deepseek-r17b">运行大模型: deepseek-r1:7b</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama run deepseek-r1:7b</span><br></pre></td></tr></table></figure>
-<p>至上此可以在终端下运动大模型了，但是当涉及到一些 LaTeX
-公式时，在终端下无法显示公式，只能显示源码，因此需要下面的配置<code>open webui</code>，
-使得浏览器可以使用本地的大模型。</p>
-<h1 id="配置open-webui">配置<code>open webui</code></h1>
-<h2 id="安装-docker">安装 docker</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S docker</span><br></pre></td></tr></table></figure>
-<h2 id="配置docker国内源">配置docker国内源</h2>
-<figure class="highlight sh"><figcaption><span>/etc/docker/daemon.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;https://docker.xuanyuan.me&quot;</span>,</span><br><span class="line">    <span class="string">&quot;https://docker.1ms.run&quot;</span>,</span><br><span class="line">    <span class="string">&quot;https://docker.mirrors.ustc.edu.cn&quot;</span>,</span><br><span class="line">    <span class="string">&quot;https://docker.m.daocloud.io&quot;</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="重新加载docker-配置并重启动">重新加载Docker 配置并重启动</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl daemon-reload</span><br><span class="line"><span class="built_in">sudo</span> systemctl restart docker</span><br></pre></td></tr></table></figure>
-<h2 id="验证配置是否生效">验证配置是否生效</h2>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker info | grep -A 1 <span class="string">&quot;Registry Mirrors&quot;</span></span><br></pre></td></tr></table></figure>
-<p>如果成功，输出中会显示您配置的其他镜像地址。</p>
-<h2 id="使用国内镜像源安装open-webui">使用国内镜像源安装Open WebUI</h2>
-<p>配置好镜像加速器后，拉取镜像时已无需特殊前缀，Docker
-会自动从国内镜像源获取官方镜像。但如果您的网络环境较为特殊，也可以直接指定国内镜像源的完整地址进行拉取。</p>
-<p>例如南京大学镜像：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull ghcr.nju.edu.cn/open-webui/open-webui:latest</span><br></pre></td></tr></table></figure>
-<p>拉取完成后，验证镜像是否已经成功下载：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images | grep open-webui</span><br></pre></td></tr></table></figure>
-<p>看到类似<code>ghcr.nju.edu.cn/open-webui/open-webui:latest</code>的输出即表示成功。</p>
-<h2 id="启动-open-webui-容器">启动 Open WebUI 容器</h2>
-<p>拉取成功后，启动 Open WebUI 容器。启动前请确认您的 Ollama
-服务已正常运行。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --network=host \</span><br><span class="line">  -v open-webui:/app/backend/data \</span><br><span class="line">  -e OLLAMA_BASE_URL=http://127.0.0.1:11434 \</span><br><span class="line">  -e WEBUI_PORT=3000 \</span><br><span class="line">  --name open-webui --restart always \</span><br><span class="line">  ghcr.nju.edu.cn/open-webui/open-webui:latest</span><br></pre></td></tr></table></figure>
 
       
     </div>
