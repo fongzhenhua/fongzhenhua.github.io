@@ -167,7 +167,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">578</span>
+          <span class="site-state-item-count">579</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -417,6 +417,97 @@ target="_blank" rel="noopener" href="https://endeavouros.com">Endeavour</a>
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/10/25/Fcitx5%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/10/25/Fcitx5%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">Fcitx5配置问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-10-25 17:11:48 / 修改时间：17:24:36" itemprop="dateCreated datePublished" datetime="2026-10-25T17:11:48+08:00">2026-10-25</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>随着<code>Fcitx5</code>的升级，它的功能不断完善，根据 <a
+target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/Fcitx_5">Fcitx5 ArchWiki</a>
+的记录，我的
+<code>Gnome Wayland</code>环境（其他桌面环境请参考前述Fcitx5
+ArchWiki）需要做出如下设置：</p>
+<ol type="1">
+<li>修改整体环境变量 <code>/etc/environment</code>, 去掉
+<code>GTK_IM_MODULE=fcitx</code>, 但是务必保留
+<code>XMODIFIERS=@im=fcitx</code> 和 <code>QT_IM_MODULE=fcitx</code> ,
+于是我的 <code>environment</code> 文件为：</li>
+</ol>
+<figure class="highlight sh"><figcaption><span>/etc/environment</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># This file is parsed by pam_env module</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Syntax: simple &quot;KEY=VAL&quot; pairs on separate lines</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 为支持Xwayland支持Fcitx5</span></span><br><span class="line">XMODIFIERS=@im=fcitx</span><br><span class="line"><span class="comment"># 2026年10月24日，已经按官方推荐不再设置这一变量</span></span><br><span class="line"><span class="comment"># GTK_IM_MODULE=fcitx</span></span><br><span class="line">QT_IM_MODULE=fcitx</span><br><span class="line"><span class="comment"># set nvidia force GBM as a backend</span></span><br><span class="line">GBM_BACKEND=nvidia-drm</span><br><span class="line">__GLX_VENDOR_LIBRARY_NAME=nvidia</span><br><span class="line">MUTTER_DEBUG_KMS_THREAD_TYPE=user</span><br><span class="line"><span class="comment"># For firefox language</span></span><br><span class="line">LANG=zh_CN.UTF-8</span><br><span class="line">LANGUAGE=zh_CN:zh</span><br></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li>为支持运动于<code>Xwayland</code>的GTK软件，在<code>~/.config/gtk-3.0/settings.ini</code>和<code>~/.config/gtk-4.0/settings.ini</code>中添加：</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[Settings]</span><br><span class="line">gtk-im-module=fcitx</span><br></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li><code>Gnome Wayland</code> 输入框精准定位</li>
+</ol>
+<p>由于<code>Gnome</code>的工作原理，使得<code>Fcitx5</code>暂时不能完成在一些程序中的输入框精准定位和无法在<code>gnome-shell UI</code>上显示候选窗口，则需要安装插件<code>gnome-shell-extension-kimpanel-git</code>,
+即</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paru -S gnome-shell-extension-kimpanel-git</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -1350,98 +1441,6 @@ target="_blank" rel="noopener" href="https://github.com/fungzhenhua/script">fung
 <code>Firefox</code> 的高级配置来强制禁用整个 <code>HSTS</code>
 预加载列表。请注意，这会显著降低您浏览器访问其他网站的安全性，请您谨慎操作并自行承担风险。</p>
 </blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2026/06/04/Neovim%E5%AF%B9LaTeX%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E8%AE%BE%E7%BD%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2026/06/04/Neovim%E5%AF%B9LaTeX%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E8%AE%BE%E7%BD%AE/" class="post-title-link" itemprop="url">Neovim对LaTeX文件的语法高亮设置</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2026-06-04 16:47:00" itemprop="dateCreated datePublished" datetime="2026-06-04T16:47:00+08:00">2026-06-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-24 14:11:19" itemprop="dateModified" datetime="2026-10-24T14:11:19+08:00">2026-10-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>近期为我的 <code>Neovim</code> 配置了 <code>Ai</code>
-功能，但是发现每次打开 <code>LaTeX</code>
-文件会有报错，同时语法高亮了会出现问题。今天经过研究发现是
-<code>nvim-treesitter</code> 升级后导致了的兼容性问题，具体请参考：<a
-href="nvim-treesitter/nvim-treesitter">https://github.com/nvim-treesitter/nvim-treesitter</a>,
-其官方 <code>README.md</code>中说明：</p>
-<blockquote>
-<p>[!CAUTION] This is a full, incompatible, rewrite: Treat this as a
-different plugin you need to set up from scratch following the
-instructions below. If you can't or don't want to update, specify the
-master branch (which is locked but will remain available for backward
-compatibility with Nvim 0.11).</p>
-</blockquote>
-<h2 id="新版-nvim-treesitter-的配置">新版 nvim-treesitter 的配置</h2>
-<div class="tabs" id="nvim-treesitter-new"><ul class="nav-tabs"><li class="tab active"><a href="#nvim-treesitter-new-1">vim-latex.lua</a></li><li class="tab"><a href="#nvim-treesitter-new-2">treesitter.lua</a></li></ul><div class="tab-content"><div class="tab-pane active" id="nvim-treesitter-new-1"><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">#! /usr/bin/env lua</span><br><span class="line">vim.api.nvim_create_autocmd(<span class="string">&quot;FileType&quot;</span>,&#123;</span><br><span class="line">    pattern = <span class="string">&quot;tex&quot;</span>,</span><br><span class="line">    callback = <span class="function"><span class="keyword">function</span><span class="params">()</span></span></span><br><span class="line">        <span class="comment">-- 配置F4打开模板</span></span><br><span class="line">        vim.api.nvim_set_keymap(<span class="string">&quot;n&quot;</span>, <span class="string">&quot;&lt;F4&gt;&quot;</span>, <span class="string">&quot;:TTemplate&lt;CR&gt;&quot;</span>, &#123;noremap = <span class="literal">true</span>, silent = <span class="literal">true</span>&#125;)</span><br><span class="line">        <span class="comment">-- 配置pdflatex编译，原vim-latex中使用\ll 默认 xelatex 编译, 注意使用%:t:r 截取文件名</span></span><br><span class="line">        vim.api.nvim_set_keymap(<span class="string">&quot;n&quot;</span>, <span class="string">&quot;&lt;F6&gt;&quot;</span>, <span class="string">[[&lt;cmd&gt;!pdflatex % ; bibtex %:t:r.aux ; pdflatex % ; pdflatex % &lt;CR&gt;]]</span>, &#123;noremap = <span class="literal">true</span>, silent = <span class="literal">true</span>&#125;)</span><br><span class="line">        vim.api.nvim_set_keymap(<span class="string">&quot;n&quot;</span>, <span class="string">&quot;&lt;F8&gt;&quot;</span>, <span class="string">[[&lt;cmd&gt;!xelatex % ; bibtex %:t:r.aux ; xelatex % ; xelatex % &lt;CR&gt;]]</span>, &#123;noremap = <span class="literal">true</span>, silent = <span class="literal">true</span>&#125;)</span><br><span class="line">        <span class="comment">-- 配置F10编译多合一文件时，以当前目录名为主文件，以节省时间</span></span><br><span class="line">        vim.api.nvim_set_keymap(<span class="string">&quot;n&quot;</span>, <span class="string">&quot;&lt;F10&gt;&quot;</span>, <span class="string">[[&lt;cmd&gt;!xelatex $(echo $PWD|awk -F&quot;/&quot; &#x27;&#123;print $NF&#125;&#x27;).tex &lt;CR&gt;]]</span>, &#123;noremap = <span class="literal">true</span>, silent = <span class="literal">true</span>&#125;)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">&#125;)</span><br><span class="line">vim.api.nvim_create_autocmd(<span class="string">&#x27;FileType&#x27;</span>, &#123;</span><br><span class="line">   pattern = <span class="string">&#x27;tex&#x27;</span>,</span><br><span class="line">   callback = <span class="function"><span class="keyword">function</span><span class="params">(args)</span></span></span><br><span class="line">      <span class="comment">-- 尝试停止可能存在的旧 Tree-sitter 实例（可选，更保险）</span></span><br><span class="line">      <span class="built_in">pcall</span>(vim.treesitter.stop, args.buf)</span><br><span class="line">      <span class="comment">-- 为当前 buffer 启动 Tree-sitter 解析器和高亮</span></span><br><span class="line">      vim.treesitter.start(args.buf, <span class="string">&#x27;latex&#x27;</span>)</span><br><span class="line">      <span class="comment">-- 关键步骤：显式关闭 Vim 原生的正则表达式高亮，避免冲突</span></span><br><span class="line">      vim.bo[args.buf].syntax = <span class="string">&#x27;OFF&#x27;</span></span><br><span class="line">   <span class="keyword">end</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">-- neovim将Shift+F5映射为F17,Shift+F7 映射为F19</span></span><br><span class="line">vim.api.nvim_set_keymap(<span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;&lt;F17&gt;&#x27;</span> , <span class="string">&#x27;&lt;S-F5&gt;&#x27;</span>, &#123; &#125;)</span><br><span class="line">vim.api.nvim_set_keymap(<span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;&lt;F17&gt;&#x27;</span> , <span class="string">&#x27;&lt;S-F5&gt;&#x27;</span>, &#123; &#125;)</span><br><span class="line">vim.api.nvim_set_keymap(<span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;&lt;F19&gt;&#x27;</span> , <span class="string">&#x27;&lt;S-F7&gt;&#x27;</span>, &#123; &#125;)</span><br><span class="line">vim.api.nvim_set_keymap(<span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;&lt;F19&gt;&#x27;</span> , <span class="string">&#x27;&lt;S-F7&gt;&#x27;</span>, &#123; &#125;)</span><br><span class="line"><span class="comment">-- set for vim-latex/latex-suit:winaltkeys</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_Menus&#x27;</span>] = <span class="number">0</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_Flavor&#x27;</span>] = <span class="string">&#x27;latex&#x27;</span></span><br><span class="line"><span class="comment">-- vim.g[&#x27;Tex_IgnoreLevel&#x27;] = 8</span></span><br><span class="line"><span class="comment">-- vim.g[&#x27;Tex_GotoError&#x27;] = 0</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_DefaultTargetFormat&#x27;</span>] = <span class="string">&#x27;pdf&#x27;</span></span><br><span class="line"><span class="comment">-- 配置默认编译引擎为 xelatex</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_CompileRule_pdf&#x27;</span>] = <span class="string">&#x27;xelatex -synctex=1 -interaction=nonstopmode -file-line-error-style $*&#x27;</span></span><br><span class="line"><span class="comment">-- 获取桌面环境，并根据桌面环境选择默认的PDF阅读器</span></span><br><span class="line"><span class="keyword">if</span>  <span class="built_in">os</span>.<span class="built_in">getenv</span>(<span class="string">&quot;DESKTOP_SESSION&quot;</span>) == <span class="string">&quot;plasma&quot;</span>  <span class="keyword">then</span></span><br><span class="line">    vim.g[<span class="string">&#x27;Tex_ViewRule_pdf&#x27;</span>] = <span class="string">&#x27;okular&#x27;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    vim.g[<span class="string">&#x27;Tex_ViewRule_pdf&#x27;</span>] = <span class="string">&#x27;papers&#x27;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">-- 控制统计过程中的警告信息</span></span><br><span class="line"><span class="comment">-- vim.g[&#x27;TCLevel&#x27;] = 5</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_IgnoredWarnings&#x27;</span>] = <span class="string">[[</span></span><br><span class="line"><span class="string">LaTeX Font Warning:</span></span><br><span class="line"><span class="string">LaTeX Warning:</span></span><br><span class="line"><span class="string">Warning:</span></span><br><span class="line"><span class="string">Overfull</span></span><br><span class="line"><span class="string">]]</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_IgnoreLevel&#x27;</span>] = <span class="number">4</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_GotoError&#x27;</span>] = <span class="number">0</span></span><br><span class="line"><span class="comment">-- 配置自定义模板路径</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_CustomTemplateDirectory&#x27;</span>] = <span class="string">&quot;~/.latex-templates/&quot;</span></span><br><span class="line"><span class="comment">-- 取消自动缩进</span></span><br><span class="line">vim.g[<span class="string">&#x27;tex_indent_items&#x27;</span>] = <span class="number">0</span></span><br><span class="line"><span class="comment">-- 开启Alt键</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_AdvancedMath&#x27;</span>] = <span class="number">1</span></span><br><span class="line">vim.api.nvim_set_option(<span class="string">&#x27;winaltkeys&#x27;</span>,<span class="string">&#x27;no&#x27;</span>)</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="nvim-treesitter-new-2"><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#! /usr/bin/env lua</span><br><span class="line"><span class="built_in">require</span>(<span class="string">&#x27;nvim-treesitter&#x27;</span>).setup &#123;</span><br><span class="line">   <span class="comment">-- 确保语法成功安装</span></span><br><span class="line">   ensure_installed = &#123;<span class="string">&quot;bash&quot;</span>,<span class="string">&quot;python&quot;</span>,<span class="string">&quot;markdown&quot;</span>,<span class="string">&quot;latex&quot;</span>,<span class="string">&quot;vim&quot;</span>, <span class="string">&quot;lua&quot;</span>, <span class="string">&quot;html&quot;</span>, <span class="string">&quot;ssh_config&quot;</span>, <span class="string">&quot;yaml&quot;</span>, <span class="string">&quot;css&quot;</span>,  <span class="string">&quot;javascript&quot;</span>, <span class="string">&quot;typescript&quot;</span>, <span class="string">&quot;c&quot;</span>, <span class="string">&quot;cpp&quot;</span>,<span class="string">&quot;fortran&quot;</span>, <span class="string">&quot;haskell&quot;</span>, <span class="string">&quot;perl&quot;</span>, <span class="string">&quot;json5&quot;</span>, <span class="string">&quot;rust&quot;</span>, <span class="string">&quot;go&quot;</span> &#125;,</span><br><span class="line">   <span class="comment">-- 启用代码高亮</span></span><br><span class="line">   highlight = &#123;</span><br><span class="line">      enable = <span class="literal">true</span>,</span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="comment">--启用增量选择</span></span><br><span class="line">   incremental_selection = &#123;</span><br><span class="line">      enable = <span class="literal">true</span>,</span><br><span class="line">      keymaps = &#123;</span><br><span class="line">	 init_selection = <span class="string">&#x27;&lt;CR&gt;&#x27;</span>,</span><br><span class="line">	 node_incremental = <span class="string">&#x27;&lt;CR&gt;&#x27;</span>,</span><br><span class="line">	 node_decremental = <span class="string">&#x27;&lt;BS&gt;&#x27;</span>,</span><br><span class="line">	 scope_incremental = <span class="string">&#x27;&lt;TAB&gt;&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="comment">-- 启用基于 Treesitter 的代码格式化(=)</span></span><br><span class="line">   indent = &#123;</span><br><span class="line">      enable = <span class="literal">true</span></span><br><span class="line">   &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">-- 开启代码折叠</span></span><br><span class="line">vim.wo.foldmethod = <span class="string">&#x27;expr&#x27;</span></span><br><span class="line">vim.wo.foldexpr = <span class="string">&#x27;nvim_treesitter#foldexpr()&#x27;</span></span><br><span class="line"><span class="comment">-- 默认不折叠</span></span><br><span class="line">vim.wo.foldlevel = <span class="number">99</span></span><br></pre></td></tr></table></figure></div></div></div>
-<h2 id="旧版-nvim-treesitter-的配置">旧版 nvim-treesitter 的配置</h2>
-<div class="tabs" id="nvim-treesitter-old"><ul class="nav-tabs"><li class="tab active"><a href="#nvim-treesitter-old-1">vim-latex.lua</a></li><li class="tab"><a href="#nvim-treesitter-old-2">treesitter.lua</a></li></ul><div class="tab-content"><div class="tab-pane active" id="nvim-treesitter-old-1"><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">#! /usr/bin/env lua</span><br><span class="line"><span class="comment">--绑定快捷键</span></span><br><span class="line">vim.api.nvim_create_autocmd(<span class="string">&quot;FileType&quot;</span>,&#123;</span><br><span class="line">    pattern = <span class="string">&quot;tex&quot;</span>,</span><br><span class="line">    callback = <span class="function"><span class="keyword">function</span><span class="params">()</span></span></span><br><span class="line">        <span class="comment">-- 配置F4打开模板</span></span><br><span class="line">        vim.api.nvim_set_keymap(<span class="string">&quot;n&quot;</span>, <span class="string">&quot;&lt;F4&gt;&quot;</span>, <span class="string">&quot;:TTemplate&lt;CR&gt;&quot;</span>, &#123;noremap = <span class="literal">true</span>, silent = <span class="literal">true</span>&#125;)</span><br><span class="line">        <span class="comment">-- 配置pdflatex编译，原vim-latex中使用\ll 默认 xelatex 编译, 注意使用%:t:r 截取文件名</span></span><br><span class="line">        vim.api.nvim_set_keymap(<span class="string">&quot;n&quot;</span>, <span class="string">&quot;&lt;F6&gt;&quot;</span>, <span class="string">[[&lt;cmd&gt;!pdflatex % ; bibtex %:t:r.aux ; pdflatex % ; pdflatex % &lt;CR&gt;]]</span>, &#123;noremap = <span class="literal">true</span>, silent = <span class="literal">true</span>&#125;)</span><br><span class="line">        vim.api.nvim_set_keymap(<span class="string">&quot;n&quot;</span>, <span class="string">&quot;&lt;F8&gt;&quot;</span>, <span class="string">[[&lt;cmd&gt;!xelatex % ; bibtex %:t:r.aux ; xelatex % ; xelatex % &lt;CR&gt;]]</span>, &#123;noremap = <span class="literal">true</span>, silent = <span class="literal">true</span>&#125;)</span><br><span class="line">        <span class="comment">-- 配置F10编译多合一文件时，以当前目录名为主文件，以节省时间</span></span><br><span class="line">        vim.api.nvim_set_keymap(<span class="string">&quot;n&quot;</span>, <span class="string">&quot;&lt;F10&gt;&quot;</span>, <span class="string">[[&lt;cmd&gt;!xelatex $(echo $PWD|awk -F&quot;/&quot; &#x27;&#123;print $NF&#125;&#x27;).tex &lt;CR&gt;]]</span>, &#123;noremap = <span class="literal">true</span>, silent = <span class="literal">true</span>&#125;)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">-- 开启treesitter提供的语法高亮</span></span><br><span class="line">vim.api.nvim_create_autocmd( <span class="string">&#x27;FileType&#x27;</span>, &#123; pattern = <span class="string">&#x27;tex&#x27;</span>,</span><br><span class="line">    callback = <span class="function"><span class="keyword">function</span><span class="params">(args)</span></span></span><br><span class="line">        vim.treesitter.start(args.buf, <span class="string">&#x27;latex&#x27;</span>)</span><br><span class="line">        vim.bo[args.buf].syntax = <span class="string">&#x27;on&#x27;</span>  <span class="comment">-- only if additional legacy syntax is needed</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">-- neovim将Shift+F5映射为F17,Shift+F7 映射为F19</span></span><br><span class="line">vim.api.nvim_set_keymap(<span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;&lt;F17&gt;&#x27;</span> , <span class="string">&#x27;&lt;S-F5&gt;&#x27;</span>, &#123; &#125;)</span><br><span class="line">vim.api.nvim_set_keymap(<span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;&lt;F17&gt;&#x27;</span> , <span class="string">&#x27;&lt;S-F5&gt;&#x27;</span>, &#123; &#125;)</span><br><span class="line">vim.api.nvim_set_keymap(<span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;&lt;F19&gt;&#x27;</span> , <span class="string">&#x27;&lt;S-F7&gt;&#x27;</span>, &#123; &#125;)</span><br><span class="line">vim.api.nvim_set_keymap(<span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;&lt;F19&gt;&#x27;</span> , <span class="string">&#x27;&lt;S-F7&gt;&#x27;</span>, &#123; &#125;)</span><br><span class="line"><span class="comment">-- set for vim-latex/latex-suit:winaltkeys</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_Menus&#x27;</span>] = <span class="number">0</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_Flavor&#x27;</span>] = <span class="string">&#x27;latex&#x27;</span></span><br><span class="line"><span class="comment">-- vim.g[&#x27;Tex_IgnoreLevel&#x27;] = 8</span></span><br><span class="line"><span class="comment">-- vim.g[&#x27;Tex_GotoError&#x27;] = 0</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_DefaultTargetFormat&#x27;</span>] = <span class="string">&#x27;pdf&#x27;</span></span><br><span class="line"><span class="comment">-- 配置默认编译引擎为 xelatex</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_CompileRule_pdf&#x27;</span>] = <span class="string">&#x27;xelatex -synctex=1 -interaction=nonstopmode -file-line-error-style $*&#x27;</span></span><br><span class="line"><span class="comment">-- 获取桌面环境，并根据桌面环境选择默认的PDF阅读器</span></span><br><span class="line"><span class="keyword">if</span>  <span class="built_in">os</span>.<span class="built_in">getenv</span>(<span class="string">&quot;DESKTOP_SESSION&quot;</span>) == <span class="string">&quot;plasma&quot;</span>  <span class="keyword">then</span></span><br><span class="line">    vim.g[<span class="string">&#x27;Tex_ViewRule_pdf&#x27;</span>] = <span class="string">&#x27;okular&#x27;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    vim.g[<span class="string">&#x27;Tex_ViewRule_pdf&#x27;</span>] = <span class="string">&#x27;papers&#x27;</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">-- 控制统计过程中的警告信息</span></span><br><span class="line"><span class="comment">-- vim.g[&#x27;TCLevel&#x27;] = 5</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_IgnoredWarnings&#x27;</span>] = <span class="string">[[</span></span><br><span class="line"><span class="string">LaTeX Font Warning:</span></span><br><span class="line"><span class="string">LaTeX Warning:</span></span><br><span class="line"><span class="string">Warning:</span></span><br><span class="line"><span class="string">Overfull</span></span><br><span class="line"><span class="string">]]</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_IgnoreLevel&#x27;</span>] = <span class="number">4</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_GotoError&#x27;</span>] = <span class="number">0</span></span><br><span class="line"><span class="comment">-- 配置自定义模板路径</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_CustomTemplateDirectory&#x27;</span>] = <span class="string">&quot;~/.latex-templates/&quot;</span></span><br><span class="line"><span class="comment">-- 取消自动缩进</span></span><br><span class="line">vim.g[<span class="string">&#x27;tex_indent_items&#x27;</span>] = <span class="number">0</span></span><br><span class="line"><span class="comment">-- 开启Alt键</span></span><br><span class="line">vim.g[<span class="string">&#x27;Tex_AdvancedMath&#x27;</span>] = <span class="number">1</span></span><br><span class="line">vim.api.nvim_set_option(<span class="string">&#x27;winaltkeys&#x27;</span>,<span class="string">&#x27;no&#x27;</span>)</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="nvim-treesitter-old-2"><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#! /usr/bin/env lua</span><br><span class="line"><span class="keyword">for</span> _, <span class="built_in">config</span> <span class="keyword">in</span> <span class="built_in">pairs</span>(<span class="built_in">require</span>(<span class="string">&quot;nvim-treesitter.parsers&quot;</span>).get_parser_configs()) <span class="keyword">do</span></span><br><span class="line">   <span class="built_in">config</span>.install_info.url = <span class="built_in">config</span>.install_info.url:<span class="built_in">gsub</span>(<span class="string">&quot;git@github.com:&quot;</span>, <span class="string">&quot;something else&quot;</span>)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&#x27;nvim-treesitter.configs&#x27;</span>).setup(&#123;</span><br><span class="line">    <span class="comment">-- 支持的语言</span></span><br><span class="line">    ensure_installed = &#123;<span class="string">&quot;bash&quot;</span>,<span class="string">&quot;python&quot;</span>,<span class="string">&quot;markdown&quot;</span>,<span class="string">&quot;latex&quot;</span>,<span class="string">&quot;vim&quot;</span>, <span class="string">&quot;lua&quot;</span>, <span class="string">&quot;html&quot;</span>, <span class="string">&quot;ssh_config&quot;</span>, <span class="string">&quot;yaml&quot;</span>, <span class="string">&quot;css&quot;</span>,  <span class="string">&quot;javascript&quot;</span>, <span class="string">&quot;typescript&quot;</span>, <span class="string">&quot;c&quot;</span>, <span class="string">&quot;cpp&quot;</span>,<span class="string">&quot;fortran&quot;</span>, <span class="string">&quot;haskell&quot;</span>, <span class="string">&quot;perl&quot;</span>, <span class="string">&quot;json5&quot;</span>, <span class="string">&quot;rust&quot;</span>, <span class="string">&quot;go&quot;</span> &#125;,</span><br><span class="line">    <span class="comment">-- 启用代码高亮</span></span><br><span class="line">    highlight = &#123;</span><br><span class="line">        enable = <span class="literal">true</span>,</span><br><span class="line">        <span class="comment">-- additional_vim_regex_highlighting = true,</span></span><br><span class="line">        disable = &#123; <span class="string">&quot;latex&quot;</span> &#125;,</span><br><span class="line">        additional_vim_regex_highlighting = &#123; <span class="string">&quot;latex&quot;</span>, <span class="string">&quot;markdown&quot;</span> &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">--启用增量选择</span></span><br><span class="line">    incremental_selection = &#123;</span><br><span class="line">        enable = <span class="literal">true</span>,</span><br><span class="line">        keymaps = &#123;</span><br><span class="line">            init_selection = <span class="string">&#x27;&lt;CR&gt;&#x27;</span>,</span><br><span class="line">            node_incremental = <span class="string">&#x27;&lt;CR&gt;&#x27;</span>,</span><br><span class="line">            node_decremental = <span class="string">&#x27;&lt;BS&gt;&#x27;</span>,</span><br><span class="line">            scope_incremental = <span class="string">&#x27;&lt;TAB&gt;&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">-- 启用基于 Treesitter 的代码格式化(=)</span></span><br><span class="line">    indent = &#123;</span><br><span class="line">        enable = <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">-- 开启代码折叠</span></span><br><span class="line">vim.wo.foldmethod = <span class="string">&#x27;expr&#x27;</span></span><br><span class="line">vim.wo.foldexpr = <span class="string">&#x27;nvim_treesitter#foldexpr()&#x27;</span></span><br><span class="line"><span class="comment">-- 默认不折叠</span></span><br><span class="line">vim.wo.foldlevel = <span class="number">99</span></span><br></pre></td></tr></table></figure></div></div></div>
 
       
     </div>
