@@ -167,7 +167,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">577</span>
+          <span class="site-state-item-count">578</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -334,6 +334,102 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/27/ArchLinux%E5%AE%89%E8%A3%85%E5%A5%94%E5%9B%BEP3370DN%E6%89%93%E5%8D%B0%E6%9C%BA%E9%A9%B1%E5%8A%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/09/27/ArchLinux%E5%AE%89%E8%A3%85%E5%A5%94%E5%9B%BEP3370DN%E6%89%93%E5%8D%B0%E6%9C%BA%E9%A9%B1%E5%8A%A8/" class="post-title-link" itemprop="url">ArchLinux安装奔图P3370DN打印机驱动</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-09-27 19:44:48" itemprop="dateCreated datePublished" datetime="2025-09-27T19:44:48+08:00">2025-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-10-24 14:11:19" itemprop="dateModified" datetime="2026-10-24T14:11:19+08:00">2026-10-24</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="问题描述">问题描述</h1>
+<p>办公室配置的奔图P3370DN打印机，在其<a
+target="_blank" rel="noopener" href="https://www.pantum.cn/search/download-driver/?s=3370">奔图官网驱动下载</a>站点可以看到该打印机是有Linux驱动的，但是它是针对Debian系列的Linux设计的，在ArchLinux上就无法直接安装了。</p>
+<h1 id="解决方案">解决方案</h1>
+<ul>
+<li>安装<code>system-config-printer</code>, 即运行命令</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S system-config-printer</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>在菜单中找到<code>打印机设置</code>→<code>解锁</code>→<code>添加</code>→<code>网络打印机</code>.</p></li>
+<li><p>选择局域网内的打印机，此时默认会显示打印机的<code>IP</code>和<code>端口</code>,
+同时下方显示连接<code>AppSocket/HP JetDirect</code>,
+点击转发,然后等待搜索驱动.</p></li>
+<li><p>在上方选中<code>从数据库中选择打印机</code>,下方选中<code>Generic(推荐)</code>,
+然后点转发。</p></li>
+<li><p>进一步<code>选择驱动程序</code>→<code>PostScript</code>,
+然后在右侧显示驱动程序<code>Generic PostScript Printer（推荐）</code>,
+再点转发，设置成功。</p></li>
+</ul>
+<h1 id="注意">注意</h1>
+<p>由于奔图打印机在github上没有公开驱动程序，所以使用paru也无法实现驱动安装，通过一系列测试，使用Linux系统的通用打印驱动即可实现完美打印。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1250,92 +1346,6 @@ File-Roller 会优先使用列表中的编码尝试解压（等同于关闭自�
 <li>点击右上解的<code>⋮（菜单）</code>→<code>使用其他编码打开...</code>。</li>
 <li>从列表中选择<code>GB18030</code>,<code>BGK</code>或<code>GB2312</code>。</li>
 </ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/17/SuperTuxKart%E8%A7%A3%E9%94%81%E6%89%80%E6%9C%89%E5%85%B3%E5%8D%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/06/17/SuperTuxKart%E8%A7%A3%E9%94%81%E6%89%80%E6%9C%89%E5%85%B3%E5%8D%A1/" class="post-title-link" itemprop="url">SuperTuxKart解锁所有关卡</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-06-17 20:37:59" itemprop="dateCreated datePublished" datetime="2025-06-17T20:37:59+08:00">2025-06-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-24 14:11:19" itemprop="dateModified" datetime="2026-10-24T14:11:19+08:00">2026-10-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>办公累了，偶尔也找款游戏玩玩，其中 SuperTuxKart 类似于 Windows
-下的泡泡卡丁车。由于 Linux
-的开源特性，我们可以直接修改配置文件而解锁所有关卡。方法是：</p>
-<ul>
-<li>找到本地配置文件
-<code>~/.config/supertuxkart/config-0.10/players.xml</code></li>
-<li>找到标签 <code>&lt;story-mode&gt;</code>, 然后修改
-<code>solved="none"</code> 为 <code>solved="easy"</code> 或
-<code>solved="hard"</code>.</li>
-<li>修改好的文件内容为： <figure class="highlight xml"><figcaption><span>~/.config/supertuxkart/config-0.10/players.xml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">story-mode</span> <span class="attr">first-time</span>=<span class="string">&quot;false&quot;</span> <span class="attr">finished</span>=<span class="string">&quot;false&quot;</span> <span class="attr">speedrun-finished</span>=<span class="string">&quot;false&quot;</span></span></span><br><span class="line"><span class="tag"><span class="attr">story-ms</span>=<span class="string">&quot;1023726&quot;</span> <span class="attr">speedrun-ms</span>=<span class="string">&quot;1291839&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">abyss</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">candela_city</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">cocoa_temple</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">cornfield_crossing</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">fortmagma</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">gp1</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">gp2</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">gp3</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">gp4</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">granparadiso_island</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">green_valley</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hacienda</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">lighthouse</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mansion</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mines</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">minigolf</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">olivermath</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">sandtrack</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">scotland</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">snowmountain</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">snowpeak</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">stk_enterprise</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">unlock_bonus_kart1</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">unlock_bonus_kart2</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">unlock_supertux</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">volcano_island</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">xr591</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">zengarden</span> <span class="attr">solved</span>=<span class="string">&quot;easy&quot;</span> <span class="attr">best_while_slower</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">story-mode</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
 
       
     </div>

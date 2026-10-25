@@ -167,7 +167,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">577</span>
+          <span class="site-state-item-count">578</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -334,6 +334,127 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/14/Linux%E4%B8%AD%E5%9B%9B%E4%B8%AA%E6%9F%A5%E6%89%BE%E5%91%BD%E4%BB%A4%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E7%94%A8%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/14/Linux%E4%B8%AD%E5%9B%9B%E4%B8%AA%E6%9F%A5%E6%89%BE%E5%91%BD%E4%BB%A4%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E7%94%A8%E6%B3%95/" class="post-title-link" itemprop="url">Linux中四个查找命令的区别和用法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-14 14:11:03" itemprop="dateCreated datePublished" datetime="2024-06-14T14:11:03+08:00">2024-06-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-10-24 14:11:19" itemprop="dateModified" datetime="2026-10-24T14:11:19+08:00">2026-10-24</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="find-locate-whereis-和which-的区别">find , locate, whereis
+和which 的区别</h1>
+<ul>
+<li><p><code>which</code>：常用于查找可直接执行的命令。只能查找可执行文件，该命令基本只在<code>$PATH</code>路径中搜索，查找范围最小，查找速度快。默认只返回第一个匹配的文件路径，通过选项
+<code>-a</code> 可以返回所有匹配结果。</p></li>
+<li><p><code>whereis</code>：不只可以查找命令，其他文件类型都可以（<code>man</code>中说只能查命令、源文件和<code>man</code>文件，实际测试可以查大多数文件）。在<code>$PATH</code>路径基础上增加了一些系统目录的查找，查找范围比<code>which</code>稍大，查找速度快。可以通过
+<code>-b</code> 选项，限定只搜索二进制文件。</p></li>
+<li><p><code>locate</code>：超快速查找任意文件。它会从<code>linux</code>内置的索引数据库查找文件的路径，索引速度超快。刚刚新建的文件可能需要一定时间才能加入该索引数据库，可以通过执行<code>updatedb</code>命令来强制更新一次索引，这样确保不会遗漏文件。该命令通常会返回大量匹配项，可以使用
+<code>-r</code> 选项通过正则表达式来精确匹配。</p></li>
+<li><p><code>find</code>：直接搜索整个文件目录，默认直接从根目录开始搜索，建议在以上命令都无法解决问题时才用它，功能最强大但速度超慢。除非你指定一个很小的搜索范围。通过
+<code>-name</code> 选项指定要查找的文件名，支持通配符。</p></li>
+</ul>
+<h1 id="find-locate-whereis-和which-的用法">find , locate, whereis
+和which 的用法</h1>
+<p><strong>1. find</strong></p>
+<p>find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件。</p>
+<p>find的使用格式如下：</p>
+<p>　　<strong>$ find <指定目录> <指定条件> <指定动作></strong></p>
+<p>　　- <指定目录>： 所要搜索的目录及其所有子目录。默认为当前目录。</p>
+<p>　　- <指定条件>： 所要搜索的文件的特征。</p>
+<p>　　- <指定动作>： 对搜索结果进行特定的处理。</p>
+<p>如果什么参数也不加，find默认搜索当前目录及其子目录，并且不过滤任何结果（也就是返回所有文件），将它们全都显示在屏幕上。</p>
+<p>find的使用实例：</p>
+<p>　　<strong>$ find . -name "my*"</strong></p>
+<p>搜索当前目录（含子目录，以下同）中，所有文件名以my开头的文件。</p>
+<p>　　<strong>$ find . -name "my*" -ls</strong></p>
+<p>搜索当前目录中，所有文件名以my开头的文件，并显示它们的详细信息。</p>
+<p>　　<strong>$ find . -type f -mmin -10</strong></p>
+<p>搜索当前目录中，所有过去10分钟中更新过的普通文件。如果不加-type
+f参数，则搜索普通文件+特殊文件+目录。</p>
+<p><strong>2. locate</strong></p>
+<p>locate命令其实是“find
+-name”的另一种写法，但是要比后者快得多，原因在于它不搜索具体目录，而是搜索一个数据库（/var/lib/locatedb），这个数据库中含有本地所有文件信息。Linux系统自动创建这个数据库，并且每天自动更新一次，所以使用locate命令查不到最新变动过的文件。为了避免这种情况，可以在使用locate之前，先使用<strong>updatedb</strong>命令，手动更新数据库。</p>
+<p>locate命令的使用实例：</p>
+<p>　　<strong>$ locate /etc/sh</strong></p>
+<p>搜索etc目录下所有以sh开头的文件。</p>
+<p>　　<strong>$ locate ~/m</strong></p>
+<p>搜索用户主目录下，所有以m开头的文件。</p>
+<p>　　<strong>$ locate -i ~/m</strong></p>
+<p>搜索用户主目录下，所有以m开头的文件，并且忽略大小写。</p>
+<p><strong>3. whereis</strong></p>
+<p>whereis命令只能用于程序名的搜索，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）。如果省略参数，则返回所有信息。</p>
+<figure class="highlight sh"><figcaption><span>whereis 命令的使用实例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ whereis grep </span><br><span class="line">grep: /usr/bin/grep /usr/share/man/man1/grep.1.gz /usr/share/man/man1p/grep.1p.gz /usr/share/info/grep.info.gz</span><br></pre></td></tr></table></figure>
+<p><strong>4. which</strong></p>
+<p>which命令的作用是，在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。也就是说，使用which命令，就可以看到某个系统命令是否存在，以及执行的到底是哪一个位置的命令。</p>
+<figure class="highlight sh"><figcaption><span>which 命令使用实例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">which</span> <span class="built_in">date</span></span><br><span class="line">/usr/bin/date</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -2081,123 +2202,6 @@ executable('rubocop')查看rubocop是否可用，一般用来排查格式化代�
 <ul>
 <li><a
 target="_blank" rel="noopener" href="https://juejin.cn/post/7084462939595341831">Neovim的常见快捷键和命令</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/06/Neovim%E7%9A%84%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/06/Neovim%E7%9A%84%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/" class="post-title-link" itemprop="url">Neovim的插件管理器</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-06 14:37:52" itemprop="dateCreated datePublished" datetime="2024-06-06T14:37:52+08:00">2024-06-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-24 14:11:19" itemprop="dateModified" datetime="2026-10-24T14:11:19+08:00">2026-10-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Neovim
-是一个现代的、快速的且与vim完全兼容的文本编辑器。它支持插件、LSP、GUI、web
-browsers
-等等。各种各样的插件可以极大的提高Neovim的工作效率，随着使用时间的增加安装的插件也越来越多，所以有必要使用一个管理插件的插件来规范管理大量的插件，这样的插件称为插件管理器。Neovim
-有各种各样的插件管理器，本文的目的就是列出这些常用的插件管理器，以方便读者选择。</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/folke/lazy.nvim">lazy.nvim</a>:
-lazy.nvim is a modern plugin manager for Neovim.</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/lewis6991/pckr.nvim">pckr.nvim</a>:
-Spiritual successor of <a
-target="_blank" rel="noopener" href="https://github.com/wbthomason/packer.nvim">https://github.com/wbthomason/packer.nvim</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/wbthomason/packer.nvim">packer.nvim</a>:
-packer.nvim is currently unmaintained. For the time being (as of August,
-2023), it is recommended to use one of the following plugin managers
-instead: <code>lazy.nvim</code> or <code>pckr.nvim</code></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/savq/paq-nvim">paq-nvim</a>: Paq is a
-Neovim package manager written in Lua.</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/ii14/neopm">neopm</a>:Plugin manager for
-neovim, pre-alpha stage. Expect breaking changes.</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/chiyadev/dep">dep</a>: A versatile,
-declarative and correct neovim package manager in Lua. Originally
-written for personal use by luaneko.</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/notomo/optpack.nvim">optpack.nvim</a>:
-This is a neovim plugin manager that uses only opt package.</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/rktjmp/pact.nvim">pact.nvim</a>: pact is
-a semver focused, pessimistic plugin manager for Neovim.</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/junegunn/vim-plug">vim-plug</a>:A
-minimalist Vim plugin manager.Just one file with no dependencies. Super
-easy to set up.</li>
-<li><a
-target="_blank" rel="noopener" href="https://github.com/VundleVim/Vundle.vim">Vundle.vim</a>:Vundle is
-short for Vim bundle and is a Vim plugin manager.</li>
-<li><a
-target="_blank" rel="noopener" href="https://github.com/tpope/vim-pathogen">pathogen.vim</a>:Manage
-your 'runtimepath' with ease. In practical terms, pathogen.vim makes it
-super easy to install plugins and runtime files in their own private
-directories.</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/Shougo/dein.vim">dein.vim</a>: Dein.vim
-is a dark powered Vim/Neovim plugin manager.</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/vim-volt/volt">volt</a>: Multi-platform
-CLI tool managing Vim plugin life</li>
 </ul>
 
       
