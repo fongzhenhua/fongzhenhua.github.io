@@ -69,7 +69,7 @@
 <script src="/js/third-party/math/mathjax.js" defer></script>
 
 
-<script async src="/lib/fireworks.js"></script>
+<script defer src="/lib/fireworks.js"></script>
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -395,7 +395,7 @@
     
     <div class="post-body" itemprop="articleBody"><h2 id="单括号-和-test">1. 单括号[ ] 和 test</h2>
 <p>左括号<code>[</code>和<code>test</code>本质是一样的，是shell的内部命令，所以<code>&gt;</code>和<code>&lt;</code>等会被解释为<code>重定向</code>符号，而不是比较符号：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bash-3.2$ type [ [[ test</span><br><span class="line">[ is a shell builtin</span><br><span class="line">[[ is a shell keyword</span><br><span class="line">test is a shell builtin</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">bash-3.2$ </span><span class="language-bash"><span class="built_in">type</span> [ [[ <span class="built_in">test</span></span></span><br><span class="line">[ is a shell builtin</span><br><span class="line">[[ is a shell keyword</span><br><span class="line">test is a shell builtin</span><br></pre></td></tr></table></figure>
 <p>右括号<code>]</code>表示判断结束，可以通过<code>man [</code>查看支持的判断语句：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">man [</span></span><br></pre></td></tr></table></figure>
 <h3 id="文件相关判断">1.1 文件相关判断</h3>
