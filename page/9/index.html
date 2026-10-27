@@ -167,7 +167,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">579</span>
+          <span class="site-state-item-count">580</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -334,6 +334,119 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/05/Rust%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E6%9D%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/03/05/Rust%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E6%9D%83/" class="post-title-link" itemprop="url">Rust语言中的所有权</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-03-05 22:50:39" itemprop="dateCreated datePublished" datetime="2025-03-05T22:50:39+08:00">2025-03-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-10-24 14:11:19" itemprop="dateModified" datetime="2026-10-24T14:11:19+08:00">2026-10-24</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="理解-rust-的所有权系统">理解 Rust 的所有权系统</h1>
+<p>Rust
+的所有权（Ownership）是其核心特性之一，旨在确保内存安全的同时提供高性能。通过所有权系统，Rust
+能够在编译时自动管理内存，避免了诸如空指针引用、数据竞争等常见问题，而无需垃圾回收机制。</p>
+<h2 id="什么是所有权">什么是所有权？</h2>
+<p>每个程序都需要管理它使用的内存资源。在低级语言中，如 C 或
+C++，程序员必须手动分配和释放内存，这容易导致错误。Rust
+使用所有权系统来自动化这一过程，并且保证了内存的安全性。</p>
+<h3 id="主要概念">主要概念</h3>
+<ul>
+<li><strong>所有权</strong>：控制着堆上数据的生命周期。</li>
+<li><strong>借用</strong>：允许临时访问某个值而不获取其所有权。</li>
+<li><strong>生命周期</strong>：定义了引用的有效范围，确保引用始终有效。</li>
+</ul>
+<h2 id="所有权规则">所有权规则</h2>
+<ol type="1">
+<li><strong>每个值都有一个变量，称为它的所有者。</strong></li>
+<li><strong>每个值在同一时间只能有一个所有者。</strong></li>
+<li><strong>当所有者离开作用域时，该值将被丢弃。</strong></li>
+</ol>
+<h3 id="示例代码">示例代码</h3>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s1</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;hello&quot;</span>); <span class="comment">// s1 是所有者</span></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s2</span> = s1; <span class="comment">// s1 的所有权转移给 s2，s1 不再有效</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// println!(&quot;&#123;&#125;&quot;, s1); // 这行会报错，因为 s1 已经不再有效</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, s2); <span class="comment">// 正确，s2 拥有 &quot;hello&quot;</span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<h2 id="借用">借用</h2>
+<p>为了避免所有权转移带来的不便，Rust
+允许我们通过借用（borrowing）来临时访问数据。</p>
+<h2 id="引用与解引用">引用与解引用</h2>
+<ul>
+<li>引用：<code>&amp;</code>
+符号用来创建一个引用，允许你使用值但不拥有它。</li>
+<li>解引用：<code>*</code> 符号用来访问引用指向的实际数据。</li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s1</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">len</span> = <span class="title function_ invoke__">calculate_length</span>(&amp;s1); <span class="comment">// 将 s1 的引用传递给函数</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The length of &#x27;&#123;&#125;&#x27; is &#123;&#125;.&quot;</span>, s1, len);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">calculate_length</span>(s: &amp;<span class="type">String</span>) <span class="punctuation">-&gt;</span> <span class="type">usize</span> &#123; <span class="comment">// s 是一个引用</span></span><br><span class="line">    s.<span class="title function_ invoke__">len</span>()</span><br><span class="line">&#125; <span class="comment">// 这里 s 离开作用域，但因为它只是引用，所以不会影响原始数据</span></span><br></pre></td></tr></table></figure>
+<h2 id="切片类型">切片类型</h2>
+<p>切片让你可以引用集合的一部分，而不需要整个集合的所有权。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">hello</span> = &amp;s[<span class="number">0</span>..<span class="number">5</span>]; <span class="comment">// 字符串切片</span></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">world</span> = &amp;s[<span class="number">6</span>..<span class="number">11</span>];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;First word: &#123;&#125;&quot;</span>, hello);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Second word: &#123;&#125;&quot;</span>, world);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="结论">结论</h2>
+<p>Rust
+的所有权系统是一种独特的方法，用于解决内存管理和并发问题，同时保持性能。虽然一开始可能看起来有些复杂，但它极大地减少了运行时错误，提高了代码的安全性和可靠性。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1255,109 +1368,6 @@ IMC）是一种专门设计用来解决辐射传输问题的高级蒙特卡洛�
 <li><p><strong>传统蒙特卡洛方法</strong>：粒子（如光子）的轨迹是根据当前物理状态逐次随机抽样得到的。这种方法对于线性问题非常有效，但在处理非线性问题时可能遇到困难。</p></li>
 <li><p><strong>隐式蒙特卡洛方法</strong>：通过对粒子行为的概率分布进行调整，使得计算过程能够更准确地反映真实的物理过程。具体来说，IMC通过考虑未来时间点的状态信息，即在计算下一时刻的状态时，不仅依赖于当前已知的信息，还考虑到该状态自身的未来值，从而提高了计算的稳定性和准确性。</p></li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/18/%E4%BD%BF%E7%94%A8%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E6%B1%82%E8%A7%A3%E5%AE%9A%E7%A7%AF%E5%88%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/02/18/%E4%BD%BF%E7%94%A8%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%E6%B1%82%E8%A7%A3%E5%AE%9A%E7%A7%AF%E5%88%86/" class="post-title-link" itemprop="url">使用蒙特卡洛方法求解定积分</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-02-18 14:15:10" itemprop="dateCreated datePublished" datetime="2025-02-18T14:15:10+08:00">2025-02-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-24 14:11:19" itemprop="dateModified" datetime="2026-10-24T14:11:19+08:00">2026-10-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="基本原理">基本原理</h1>
-<p>蒙特卡洛方法求解定积分的理论依据是积分中值定理和大数定理。即</p>
-<p><span
-class="math display">\[\int_a^bf(x)dx=f(\xi)\cdot(b-a)\]</span></p>
-<p>其中<span class="math inline">\(a\leq\xi\leq b\)</span>.
-蒙特卡洛方法是随机在<span
-class="math inline">\((a,b)\)</span>区间取点，然后将这个点当作<span
-class="math inline">\(\xi\)</span>来计算面积，但是由于点<span
-class="math inline">\(\xi\)</span>当前是随机的，这个积分值就不是准确的，但是当大量取点时，由于函数<span
-class="math inline">\(f(x)\)</span>本身的作用，根据大数定量最终会稳定到准确值的附近，因为接近真实值的情况出现的概率更大。</p>
-<h1 id="一维函数的定积分">一维函数的定积分</h1>
-<p>假设我们想要计算如下函数在区间 <span class="math inline">\([0,
-1]\)</span> 上的积分:</p>
-<p><span class="math display">\[\int_0^1x^2dx\]</span></p>
-<p>该积分的解析解是<span class="math inline">\(\frac{1}{3}\)</span>.
-使用Python代码实现蒙特卡洛积分的代码为:</p>
-<figure class="highlight python"><figcaption><span>一维函数积分</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">monte_carlo_integral</span>(<span class="params">f, a, b, N</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    使用蒙特卡洛方法估计函数f在[a,b]上的积分。</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    参数:</span></span><br><span class="line"><span class="string">        f: 要积分的函数。</span></span><br><span class="line"><span class="string">        a (float): 积分下限。</span></span><br><span class="line"><span class="string">        b (float): 积分上限。</span></span><br><span class="line"><span class="string">        N (int): 随机样本的数量。</span></span><br><span class="line"><span class="string">    返回:</span></span><br><span class="line"><span class="string">        float: 积分的蒙特卡洛估计值。</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    samples = np.random.uniform(a, b, N)  <span class="comment"># 在[a, b]上生成N个均匀分布的随机数</span></span><br><span class="line">    evaluations = f(samples)  <span class="comment"># 计算每个随机样本点处函数的值</span></span><br><span class="line">    integral_estimate = (b - a) * np.mean(evaluations)  <span class="comment"># 积分估计</span></span><br><span class="line">    <span class="keyword">return</span> integral_estimate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义要积分的函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> x**<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行蒙特卡洛积分</span></span><br><span class="line">a, b = <span class="number">0</span>, <span class="number">1</span>  <span class="comment"># 积分范围</span></span><br><span class="line">N = <span class="number">100000</span>   <span class="comment"># 样本数量</span></span><br><span class="line">integral = monte_carlo_integral(f, a, b, N)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;蒙特卡洛积分估计值: <span class="subst">&#123;integral&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;真实值: <span class="subst">&#123;<span class="number">1</span>/<span class="number">3</span>&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="二维函数的定积分">二维函数的定积分</h1>
-<p>二维函数的定积分同样也满足积分中值定理，所以蒙特卡洛方法是求解定积分的有效工具。本节我们求解定义在<span
-class="math inline">\([0,1]\times[0,1]\)</span>上的二重积分:</p>
-<p><span
-class="math display">\[\iint_{[0,1]\times[0,1]]}(x^2+y^2)dxdy\]</span></p>
-<p>该积分的解可以直接解析求得为<span
-class="math inline">\(\frac{2}{3}\)</span>. 其 Python 代码实现为:</p>
-<figure class="highlight python"><figcaption><span>二维函数定积分</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">monte_carlo_double_integral</span>(<span class="params">f, a1, b1, a2, b2, N</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    使用蒙特卡洛方法估计函数f在[a1,b1] x [a2,b2]上的二重积分。</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    参数:</span></span><br><span class="line"><span class="string">        f: 要积分的函数，接受两个参数x和y。</span></span><br><span class="line"><span class="string">        a1, b1 (float): 第一维的积分下限和上限。</span></span><br><span class="line"><span class="string">        a2, b2 (float): 第二维的积分下限和上限。</span></span><br><span class="line"><span class="string">        N (int): 随机样本的数量。</span></span><br><span class="line"><span class="string">    返回:</span></span><br><span class="line"><span class="string">        float: 积分的蒙特卡洛估计值。</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># 在[a1, b1]和[a2, b2]上生成N个均匀分布的随机数对</span></span><br><span class="line">    x_samples = np.random.uniform(a1, b1, N)</span><br><span class="line">    y_samples = np.random.uniform(a2, b2, N)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 计算每个随机样本点处函数的值</span></span><br><span class="line">    evaluations = f(x_samples, y_samples)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 积分估计</span></span><br><span class="line">    area = (b1 - a1) * (b2 - a2)</span><br><span class="line">    integral_estimate = area * np.mean(evaluations)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> integral_estimate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义要积分的函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">integrand</span>(<span class="params">x, y</span>):</span><br><span class="line">    <span class="keyword">return</span> x**<span class="number">2</span> + y**<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行蒙特卡洛二重积分</span></span><br><span class="line">a1, b1 = <span class="number">0</span>, <span class="number">1</span>  <span class="comment"># 第一维积分范围</span></span><br><span class="line">a2, b2 = <span class="number">0</span>, <span class="number">1</span>  <span class="comment"># 第二维积分范围</span></span><br><span class="line">N = <span class="number">100000</span>     <span class="comment"># 样本数量</span></span><br><span class="line"></span><br><span class="line">integral = monte_carlo_double_integral(integrand, a1, b1, a2, b2, N)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;蒙特卡洛积分估计值: <span class="subst">&#123;integral&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;真实值: <span class="subst">&#123;<span class="number">2</span>/<span class="number">3</span>&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
-<div class="note primary"><p>通过增加样本数量
-<code>N</code>，可以提高积分估计的精度。尽管对于这个简单的二重积分问题，传统数值积分方法可能更高效且准确，但对于更高维度或复杂形状的积分区域，蒙特卡洛方法就显得尤为重要了。这种方法提供了一种通用的方法来解决那些难以通过常规手段求解的积分问题。</p>
-</div>
 
       
     </div>

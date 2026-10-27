@@ -167,7 +167,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">579</span>
+          <span class="site-state-item-count">580</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -334,6 +334,95 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/23/Shell%E8%84%9A%E6%9C%AC%E6%9B%BF%E6%8D%A2%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/23/Shell%E8%84%9A%E6%9C%AC%E6%9B%BF%E6%8D%A2%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">Shell脚本替换字符串的几种方法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-23 21:08:07" itemprop="dateCreated datePublished" datetime="2024-06-23T21:08:07+08:00">2024-06-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-10-24 14:11:19" itemprop="dateModified" datetime="2026-10-24T14:11:19+08:00">2026-10-24</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>变量<code>a</code>是一个带空格的字符串，现在用"hdpusr400"替换变量<code>a</code>中的"hduser302"：</p>
+<h2 id="字符串变量的替换方式">字符串变量的替换方式</h2>
+<figure class="highlight bash"><figcaption><span>定义变量a</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[liusiyi@localhost ~]$ <span class="built_in">echo</span> <span class="variable">$a</span></span><br><span class="line">hduser302 hduser302 /apps/hduser302/student/</span><br></pre></td></tr></table></figure>
+<h3 id="用变量替换a做字符替换">用变量替换${a//}做字符替换</h3>
+<figure class="highlight sh"><figcaption><span>用变量替换$&#123;a//&#125;做字符替换</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#替换第一个匹配的字符串　</span></span><br><span class="line">[liusiyi@localhost ~]$ <span class="built_in">echo</span> <span class="variable">$&#123;a/hduser302/hdpusr400&#125;</span> </span><br><span class="line">hdpusr400 hduser302 /apps/hduser302/student/</span><br><span class="line"></span><br><span class="line"><span class="comment">#替换所有匹配的字符串　</span></span><br><span class="line">[liusiyi@localhost ~]$ <span class="built_in">echo</span> <span class="variable">$&#123;a//hduser302/hdpusr400&#125;</span>　　</span><br><span class="line">hdpusr400 hdpusr400 /apps/hdpusr400/student/</span><br></pre></td></tr></table></figure>
+<h3 id="用-sed-做字符串替换">用 sed 做字符串替换</h3>
+<figure class="highlight sh"><figcaption><span>用sed做字符串替换</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#替换第一个匹配的字符串　</span></span><br><span class="line">[liusiyi@localhost ~]$ <span class="built_in">echo</span> <span class="variable">$a</span> | sed <span class="string">&#x27;s/hduser302/hdpusr400/&#x27;</span> 　　</span><br><span class="line">hdpusr400 hduser302 /apps/hduser302/student/</span><br><span class="line"></span><br><span class="line"><span class="comment">#替换所有匹配的字符串　</span></span><br><span class="line">[liusiyi@localhost ~]$ <span class="built_in">echo</span> <span class="variable">$a</span> | sed <span class="string">&#x27;s/hduser302/hdpusr400/&#x27;</span> 　　</span><br><span class="line">hdpusr400 hdpusr400 /apps/hdpusr400/student/</span><br></pre></td></tr></table></figure>
+<h3 id="用-awk-做字符串替换">用 awk 做字符串替换</h3>
+<figure class="highlight sh"><figcaption><span>用awk做字符串替换</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#替换第一个匹配的字符串　</span></span><br><span class="line">[liusiyi@localhost ~]$ <span class="built_in">echo</span> <span class="variable">$a</span> | awk <span class="string">&#x27;&#123;gsub(/hduser302/,&quot;hdpusr400&quot;,$3);print $0&#125;&#x27;</span></span><br><span class="line">hdpusr400 hduser302 /apps/hduser302/student/</span><br><span class="line"></span><br><span class="line"><span class="comment">#替换所有匹配的字符串　</span></span><br><span class="line">[liusiyi@localhost ~]$ <span class="built_in">echo</span> <span class="variable">$a</span> | awk <span class="string">&#x27;&#123;gsub(/hduser302/,&quot;hdpusr400&quot;);print $0&#125;&#x27;</span> 　　</span><br><span class="line">hdpusr400 hdpusr400 /apps/hdpusr400/student/</span><br></pre></td></tr></table></figure>
+<h2 id="数组所有元中的字符串替换">数组所有元中的字符串替换</h2>
+<figure class="highlight sh"><figcaption><span>数组所有元替换</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Arr=($(<span class="built_in">ls</span> -d /run/media/<span class="variable">$USER</span>/*/*))</span><br><span class="line">Brr=(<span class="variable">$&#123;Arr[*]//&quot;/run/media/$USER&quot;/&quot;$HOME&quot;&#125;</span>)</span><br></pre></td></tr></table></figure>
+<div class="note primary"><p><code>Arr</code>数组元中，所有元包括绝对路径<code>/run/media/$USER</code>,
+而<code>Brr</code>数组将其全部替换为<code>$HOME</code>.</p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1662,148 +1751,6 @@ style="text-align: left;">任何一个控制字符（ASCII字符集中的前32�
 </tr>
 </tbody>
 </table>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/15/Shell%E6%95%B0%E7%BB%84%E8%BF%BD%E5%8A%A0%E5%85%83%E7%B4%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/15/Shell%E6%95%B0%E7%BB%84%E8%BF%BD%E5%8A%A0%E5%85%83%E7%B4%A0/" class="post-title-link" itemprop="url">Shell数组追加元素</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-15 15:00:57" itemprop="dateCreated datePublished" datetime="2024-06-15T15:00:57+08:00">2024-06-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-24 14:11:19" itemprop="dateModified" datetime="2026-10-24T14:11:19+08:00">2026-10-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <table>
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 18%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">添加方式</th>
-<th style="text-align: left;">语法</th>
-<th style="text-align: center;">多元素</th>
-<th style="text-align: center;">下标连续</th>
-<th style="text-align: center;">下标改变</th>
-<th style="text-align: center;">覆盖原元素</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">直接下标添加</td>
-<td style="text-align: left;"><code>array_name[index]=value</code></td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">是</td>
-</tr>
-<tr>
-<td style="text-align: left;">数组长度添加</td>
-<td
-style="text-align: left;"><code>array_name[$&#123;#array_name[@]&#125;]=value</code></td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">是</td>
-</tr>
-<tr>
-<td style="text-align: left;">数组长度添加</td>
-<td
-style="text-align: left;"><code>array_name[$&#123;#array_name[*]&#125;]=value</code></td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">是</td>
-</tr>
-<tr>
-<td style="text-align: left;">重新创建数组</td>
-<td
-style="text-align: left;"><code>array_name=("$&#123;array_name[@]&#125;" value1 ... valueN)</code></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-</tr>
-<tr>
-<td style="text-align: left;">赋值运算符<code>+=</code></td>
-<td
-style="text-align: left;"><code>array_name+=(value1 ... valueN)</code></td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">是</td>
-<td style="text-align: center;">否</td>
-</tr>
-</tbody>
-</table>
-<p>综上可知，<label style="color:red">赋值运算符+=</label>是最通用的方案。</p>
 
       
     </div>
