@@ -167,7 +167,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">580</span>
+          <span class="site-state-item-count">581</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -334,6 +334,112 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/03/24/Wacom%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/03/24/Wacom%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">Wacom的配置和使用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-03-24 13:01:02" itemprop="dateCreated datePublished" datetime="2026-03-24T13:01:02+08:00">2026-03-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-10-24 14:11:19" itemprop="dateModified" datetime="2026-10-24T14:11:19+08:00">2026-10-24</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天网购的数位板Wacom PTK670
+收到了，做工相当精制，铝合金机身，超薄设计，厚度仅有4mm,
+使用体验了一下，相当好用。我的电脑装配的是 ArchLinux 系统，而 Linux
+内核默认是包含 Wacom 驱动的，这也构成了我选择 Wacom 的理由，同时在使用
+Gnome+wayland 的组合中不需要任何设置就能完美运行。</p>
+<h2 id="archlinux-的设置">ArchLinux 的设置</h2>
+<ul>
+<li><p>安装支持手写的软件 <code>xournall++</code> 和
+<code>Openboard</code> <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S xournalpp openboard</span><br></pre></td></tr></table></figure></p></li>
+<li><p>配置快捷键，支持更高效的工作。Wacom PTK670
+左右各有一个滚轮和四个方向键，根据操作的频繁程度，我规划了自定义键：</p>
+<ul>
+<li>打开设置：设置→ 数位板→自定义功能</li>
+<li>左侧：转轮逆时针向上，顺时针向下, 上键对应<code>PgUp</code>,
+下键<code>PgDn</code>,
+左键<code>Ctrl Z</code>撤销，右键<code>Ctrl y</code>,</li>
+<li>右侧：转轮逆时针缩小，顺时针放大,
+上键对应<code>Ctrl+Shift+Delte</code> 删除当前页,
+下键<code>Ctrl+D</code>新增一页, 左键保留，右键保留.</li>
+</ul></li>
+</ul>
+<h2 id="设置触控笔">设置触控笔</h2>
+<ul>
+<li>压力感应设置，启动<code>xournalpp</code>,
+然后依次点击：编辑→触控笔→最小压力<code>0.01</code>→压力增强<code>4.00</code>.</li>
+<li>触控笔按钮：按钮1<code>手形工具</code>, 按钮2<code>高亮</code>,
+按钮3<code>橡皮</code>.</li>
+</ul>
+<p>目前暂做上述设定，在使用中再逐步改善。</p>
+<h2 id="书定文件转打印体">书定文件转打印体</h2>
+<p>将书写的内容复制图片，粘贴到通义千问或DeepSeek中，让Ai帮助识别成打印体，实验的结果是只要字不是非常草，文字和公式都能正确识别，然后让Ai以LaTeX源格式输出，只需复制粘贴到LaTeX文件中即可实现编译成PDF文档。这个方法对于大规模的写解答题的答案等是相当可高效的。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1286,94 +1392,8 @@ Pack，你可以为系统提供全面的解码支持，解决绝大多数视频�
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/28/4k%E6%98%BE%E7%A4%BA%E5%99%A8%E8%B0%83%E6%95%B4Geogebra%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/10/28/4k%E6%98%BE%E7%A4%BA%E5%99%A8%E8%B0%83%E6%95%B4Geogebra%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F/" class="post-title-link" itemprop="url">4k显示器调整Geogebra字体大小</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-10-28 19:42:47" itemprop="dateCreated datePublished" datetime="2025-10-28T19:42:47+08:00">2025-10-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-24 14:11:19" itemprop="dateModified" datetime="2026-10-24T14:11:19+08:00">2026-10-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在 4K 显示器上使用 GeoGebra
-时，由于高分辨率可能导致界面元素（包括字体）显得过小，你可以通过以下方法来调整字体大小，使其更清晰易读：</p>
-<ul>
-<li>打开 <code>GeoGebra</code>（桌面版，如 <code>Classic 5</code> 或
-<code>Classic 6</code>）。</li>
-<li>点击菜单栏的 “选项”（<code>Options</code>）。</li>
-<li>选择 “字体大小”（<code>Font Size</code>）。</li>
-<li>在弹出的子菜单中选择一个更大的字号（如
-<code>16</code>、<code>20</code>、<code>24</code> 等）。</li>
-<li>这会同时影响图形视图中的标签、坐标轴、代数区等的字体大小。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/58/">58</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/59/">59</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>

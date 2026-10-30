@@ -167,7 +167,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">580</span>
+          <span class="site-state-item-count">581</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -417,6 +417,125 @@ target="_blank" rel="noopener" href="https://endeavouros.com">Endeavour</a>
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/10/30/%E7%8E%B0%E4%BB%A3%E5%8C%96ls%E6%9B%BF%E4%BB%A3%E5%B7%A5%E5%85%B7eza%E7%AE%80%E4%BB%8B%E4%B8%8E%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/10/30/%E7%8E%B0%E4%BB%A3%E5%8C%96ls%E6%9B%BF%E4%BB%A3%E5%B7%A5%E5%85%B7eza%E7%AE%80%E4%BB%8B%E4%B8%8E%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">现代化ls替代工具eza简介与配置</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-10-30 10:46:15 / 修改时间：10:48:27" itemprop="dateCreated datePublished" datetime="2026-10-30T10:46:15+08:00">2026-10-30</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在日常的终端操作中，<code>ls</code>
+是我们使用频率最高的命令之一。如果你想让枯燥的黑白文件列表变得更加美观、直观且信息丰富，那么是时候了解一下现代化的
+<code>ls</code> 替代工具——<strong>eza</strong> 了。</p>
+<h2 id="eza-简介">eza 简介</h2>
+<p><strong>eza</strong> 是一个用 Rust 语言编写的现代 <code>ls</code>
+命令替代品（它是已停止维护的 <code>exa</code>
+项目的活跃分支）。它不仅运行极快，还带来了许多令人惊艳的特性：</p>
+<ul>
+<li><strong>超强视觉表现</strong>：默认使用丰富的颜色来区分文件类型，并原生支持在文件名旁显示精美的小图标。</li>
+<li><strong>内置 Git 状态</strong>：使用 <code>--git</code>
+参数，可以直接在文件列表中查看文件的 Git 状态（如未跟踪
+<code>??</code>、已修改 <code>M</code> 等），对开发者极为友好。</li>
+<li><strong>树状视图</strong>：使用 <code>--tree</code> 参数，可以像
+<code>tree</code>
+命令一样递归展示目录结构，且速度更快、支持色彩渲染。</li>
+<li><strong>人性化细节</strong>：支持按大小、时间、扩展名等灵活排序，支持“人类可读”的文件大小显示，以及让目录优先显示等。</li>
+</ul>
+<blockquote>
+<p><strong>注意</strong>：如果你系统里仍然只有旧版的
+<code>exa</code>，建议尽快安装 <code>eza</code>。目前主流包管理器（如
+<code>apt</code>, <code>pacman</code>, <code>brew</code>）均已提供
+<code>eza</code> 的安装源。</p>
+</blockquote>
+<h2 id="前置准备安装-nerd-font">前置准备：安装 Nerd Font</h2>
+<p><code>eza</code> 的图标功能依赖于 <strong>Nerd
+Font</strong>（一种包含大量图标和特殊符号的修改版字体）。如果不配置字体，终端里可能会出现方块或乱码。</p>
+<ol type="1">
+<li><strong>下载并安装字体</strong>：前往 <a
+target="_blank" rel="noopener" href="https://www.nerdfonts.com/font-downloads">Nerd Fonts 官网</a>
+下载你喜欢的字体（如 <code>JetBrainsMono Nerd Font</code> 或
+<code>FiraCode Nerd Font</code>）。</li>
+<li><strong>配置终端</strong>：打开你使用的终端模拟器（如 Windows
+Terminal, iTerm2, Alacritty
+等），在设置中将<strong>默认字体</strong>修改为你刚刚安装的 Nerd
+Font。</li>
+<li><strong>版本建议</strong>：建议安装 <strong>Version 3</strong>
+及以上的字体版本，以获得最全的图标支持。</li>
+</ol>
+<h2 id="推荐配置">推荐配置</h2>
+<p>将以下别名（Aliases）配置添加到你的 Shell 配置文件中（如
+<code>~/.zshrc</code> 或
+<code>~/.bashrc</code>），即可享受开箱即用的极佳体验：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ==========================================</span></span><br><span class="line"><span class="comment"># eza 推荐别名配置</span></span><br><span class="line"><span class="comment"># ==========================================</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 基础 ls：显示图标（auto模式防止乱码），并让目录优先显示</span></span><br><span class="line"><span class="built_in">alias</span> <span class="built_in">ls</span>=<span class="string">&#x27;eza --icons=auto --group-directories-first&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 详细列表 (ll)：显示完整元数据、人类可读的大小、图标</span></span><br><span class="line"><span class="built_in">alias</span> ll=<span class="string">&#x27;eza -l --icons=auto --group-directories-first --human-readable&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 包含隐藏文件 (la)</span></span><br><span class="line"><span class="built_in">alias</span> la=<span class="string">&#x27;eza -la --icons=auto --group-directories-first --human-readable&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 树状图 (lt)：限制层级为2层，清晰展示目录结构</span></span><br><span class="line"><span class="built_in">alias</span> lt=<span class="string">&#x27;eza --tree --level=2 --icons=auto&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Git 状态集成 (lg)：在列表中显示文件的 Git 状态</span></span><br><span class="line"><span class="built_in">alias</span> lg=<span class="string">&#x27;eza -l --git --icons=auto&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="参数贴士">参数贴士</h3>
+<ul>
+<li><p><code>--icons=auto</code>：智能判断当前环境是否支持图标，如果不支持（例如在无字体的远程服务器上），会自动回退到无图标模式，避免乱码。</p></li>
+<li><p><code>--group-directories-first</code>：将文件夹排在文件前面，让目录结构更加清晰。</p></li>
+<li><p><code>--human-readable</code>：将文件大小显示为 <code>1K</code>,
+<code>23M</code> 等更易读的格式，而不是字节数。</p></li>
+</ul>
+
       
     </div>
 
@@ -1379,107 +1498,8 @@ target="_blank" rel="noopener" href="https://github.com/fungzhenhua/script">fung
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2026/06/18/%E8%A7%A3%E5%86%B3Neovim%E6%89%93%E5%BC%80%E8%87%AA%E8%BA%AB%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%97%B6%E7%9A%84%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2026/06/18/%E8%A7%A3%E5%86%B3Neovim%E6%89%93%E5%BC%80%E8%87%AA%E8%BA%AB%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%97%B6%E7%9A%84%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">解决Neovim打开自身配置文件时的报错问题</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2026-06-18 15:24:28" itemprop="dateCreated datePublished" datetime="2026-06-18T15:24:28+08:00">2026-06-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-24 14:11:19" itemprop="dateModified" datetime="2026-10-24T14:11:19+08:00">2026-10-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="问题描述">问题描述</h2>
-<p>今天使用 <code>Neovim</code> 打开它自己的配置文件时，出现报错信息</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LSP[lua_ls] Your workspace is <span class="built_in">set</span> to `/home/foobar`. Lua language server refused to load this directory. Please check your configuration.[learn more here](https://luals.github.io/wiki/faq#why-is-the-server-scanning-the-wrong-folder)</span><br></pre></td></tr></table></figure>
-<p>这个错误信息的意思是，<code>Lua</code>
-语言服务器（<code>lua_ls</code>）被你的编辑器（如 <code>VS Code</code>
-或 <code>Neovim</code>）告知，要将整个 <code>/home/foobar</code>
-目录作为工作区进行扫描，而服务器由于性能或安全方面的考量，拒绝了这个指令。这通常是一个配置问题，可以通过正确设置工作区解决。</p>
-<h2 id="解决方案">解决方案</h2>
-<p>在你的<code>Neovim</code>配置目录下创建<code>.luarc.json</code>文件，明确告诉<code>lua_ls</code>这就是项目根据目录。即</p>
-<figure class="highlight json"><figcaption><span>~/.config/nvim/.luarc.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;$schema&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;runtime.version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Lua 5.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;workspace.ignoreDir&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;node_modules&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;.git&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;dist&quot;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>其中：<code>runtime.version</code>一行，指明了兼容<code>Lua 5.1</code>版本。同时使用<code>workspace.ignoreDir</code>来忽略无关目录，以提高性能，所以需要配置这个忽略列表。</p>
-<h2 id="为什么之前会报错">为什么之前会报错？</h2>
-<ul>
-<li><p>默认情况下，<code>nvim-lspconfig</code> 的 <code>lua_ls</code>
-如果没有找到项目根目录，会回退到使用当前工作目录（<code>vim.loop.cwd()</code>）。如果你是在主目录下启动
-<code>Neovim</code>（例如直接运行
-<code>nvim ~/.config/nvim/init.lua</code>），那么当前工作目录就是
-<code>/home/foobar</code>，导致 <code>lua_ls</code>
-被设置为扫描整个主目录，从而触发拒绝。</p></li>
-<li><p>创建 <code>.luarc.json</code> 后，<code>root_pattern</code>
-会优先匹配，从而正确设置工作区。</p></li>
-<li><p>按上述步骤操作后，错误信息就会消失，<code>LSP</code>
-功能也能正常使用。</p></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/58/">58</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/59/">59</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
