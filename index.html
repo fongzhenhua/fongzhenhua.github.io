@@ -167,7 +167,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">581</span>
+          <span class="site-state-item-count">582</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -408,6 +408,116 @@ target="_blank" rel="noopener" href="https://endeavouros.com">Endeavour</a>
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/11/02/GNOME%E7%99%BB%E5%87%BA%E6%8C%89%E9%94%AE%E6%B6%88%E5%A4%B1%E4%B8%8E%E6%81%A2%E5%A4%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/11/02/GNOME%E7%99%BB%E5%87%BA%E6%8C%89%E9%94%AE%E6%B6%88%E5%A4%B1%E4%B8%8E%E6%81%A2%E5%A4%8D/" class="post-title-link" itemprop="url">GNOME登出按键消失与恢复</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-11-02 21:05:42 / 修改时间：21:06:31" itemprop="dateCreated datePublished" datetime="2026-11-02T21:05:42+08:00">2026-11-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>适用场景：GNOME 桌面右上角菜单中找不到“登出”选项，希望恢复显示。</p>
+</blockquote>
+<h2 id="现象说明">现象说明</h2>
+<p>GNOME 的登出按键并不是在某一个版本被“永久取消”，而是一个<strong>早在
+2012 年就已确定的设计，直到 GNOME 50
+版本才因相关错误被修复而真正生效</strong>。因此，对于许多用户来说，它看起来像是在
+GNOME 50 中被“移除”了。</p>
+<h2 id="如何恢复登出按键">如何恢复登出按键</h2>
+<p>恢复登出按键非常简单，只需在终端中执行一条 <code>gsettings</code>
+命令即可。这个设置会覆盖默认行为，让登出选项始终显示在系统菜单中。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gsettings <span class="built_in">set</span> org.gnome.shell always-show-log-out <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>执行后，登出按键应该会立即重新出现在右上角的快捷设置菜单中。</p>
+<h2 id="在哪个版本取消的">在哪个版本“取消”的？</h2>
+<p>这需要分两层来看：</p>
+<ul>
+<li><p><strong>设计理念的起源：GNOME 3.6（2012 年）</strong>
+隐藏单用户系统登出按钮的设计意图，最初是在 2012 年左右被 GNOME
+设计团队采纳的，大致与 GNOME 3.6
+版本同期。当时的目标是：当系统只有一个用户账户时，为了简化界面而隐藏登出选项。</p></li>
+<li><p><strong>设计真正生效：GNOME 50（2026 年）</strong> 尽管设计在
+2012 年就已确定，但由于 GNOME
+其他组件的多个错误，这个设计在长达十几年的时间里并没有实际生效。绝大多数用户看到的仍然是登出按钮一直显示的状态。直到
+GNOME 50 发布时，这些底层错误被修复，2012
+年最初的设计意图才终于成为用户实际体验到的默认行为。</p></li>
+</ul>
+<p>所以，如果你是在 GNOME 50
+或更高版本中突然发现登出按键不见了，这并非一个仓促的移除决定，而是一个延迟了
+14 年才落地的古老设计。</p>
+<h2 id="为什么会取消">为什么会取消？</h2>
+<p>取消单用户系统登出按键的原因，是基于一个<strong>界面简化</strong>的设计理念。</p>
+<p>核心逻辑是：如果系统上只有一个用户账户，那么“登出”和“关机/重启”在场景上似乎有所重叠——用户要么继续使用，要么就可以直接关闭计算机，单独“登出到登录界面”的步骤可能被视为多余。因此，设计团队决定在这种情况下隐藏登出选项，让菜单更简洁。</p>
+<p>然而，这个设计在实际推出后引发了大量讨论和批评。反对意见认为，登出是一个基本且普遍的用户操作，不应被隐藏。例如，在
+Wayland 会话下，某些操作（如重新加载 GNOME Shell
+扩展）可能需要登出再登录才能生效。更有观点指出，在主流桌面操作系统中，GNOME
+50 的这种行为是独一无二的，对用户来说并不直观。</p>
+<h2 id="小结">小结</h2>
+<p>GNOME 登出按键消失并非永久取消，而是单用户系统隐藏登出选项的设计在
+GNOME 50 中真正生效。若需要恢复，执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gsettings <span class="built_in">set</span> org.gnome.shell always-show-log-out <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>即可让登出选项重新显示在系统菜单中。</p>
+
       
     </div>
 
@@ -1362,115 +1472,6 @@ target="_blank" rel="noopener" href="https://dl.lancdn.com/landian/soft/vclibs">
 私有函数库<code>Share_Fun_KeySudo</code>与<code>Share_Fun_Install</code>可以到<a
 target="_blank" rel="noopener" href="https://github.com/fungzhenhua/script">fungzhenhua/script</a>下载，如果不安装则注释掉<code>source</code>的两行及<code>GIT_DEPEND</code>行，同时自行安装好<code>imagemagick</code>即可。</p>
 </blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2026/06/22/%E6%8F%90%E5%8F%96Word%E4%B8%AD%E7%9A%84%E9%AB%98%E6%B8%85%E5%9B%BE%E7%89%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2026/06/22/%E6%8F%90%E5%8F%96Word%E4%B8%AD%E7%9A%84%E9%AB%98%E6%B8%85%E5%9B%BE%E7%89%87/" class="post-title-link" itemprop="url">提取Word中的高清图片</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2026-06-22 16:39:54" itemprop="dateCreated datePublished" datetime="2026-06-22T16:39:54+08:00">2026-06-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-24 14:11:19" itemprop="dateModified" datetime="2026-10-24T14:11:19+08:00">2026-10-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>直接复制<code>Word</code>中的图片可能会因为剪贴板格式转换或<code>Word</code>默认的压缩机制导致画质下降和背景丢失。</p>
-<h1 id="docx-文档提取高清图片">docx 文档提取高清图片</h1>
-<p>为了提取无损且高清的原图，可以将<code>.docx</code>文件修改为<code>.zip</code>后解压。这种方法能够确保图像不失真。这是因为现代的
-<code>.docx</code>
-文件本质上是一个包含多种资源（包括原始图片）的压缩包。通过解压，可以直接获取未经任何处理的原始高清图片。</p>
-<p>操作步骤：</p>
-<ul>
-<li>备份文档：建议先复制一份需要提取图片的<code>Word</code>文档。</li>
-<li>更改后缀名：将文档的后缀名从 <code>.docx</code> 改为
-<code>.zip</code>（如果看不到后缀名，需在文件夹选项中开启“显示文件扩展名”）。</li>
-<li>解压文件：使用解压缩软件（如<code>7-Zip</code>、<code>WinRAR</code>等）打开或解压该<code>ZIP</code>文件。</li>
-<li>提取图片：在解压出的文件夹中，依次进入 <code>word</code> →
-<code>media</code>
-目录。这里存放了文档中所有的原始图片，您可以直接将它们复制出来。</li>
-<li>注：此方法仅适用于 <code>.docx</code> 格式，不适用于老旧的
-<code>.doc</code> 格式。</li>
-</ul>
-<h1 id="doc-文档提取高清图片">doc 文档提取高清图片</h1>
-<p>由于老旧的 <code>.doc</code> 格式并非基于 <code>XML</code>
-的压缩包结构，因此无法直接使用“修改后缀为
-<code>ZIP</code>”的方法。一种最简便的方法是使用<code>MsOffice</code>将<code>.doc</code>文档转换为<code>.docx</code>文档，然后再修改后缀为<code>.zip</code>,
-使用解压缩软件解压缩。另一种方法是另存为网页，这是最古老且最可靠的方法，能够很好的保留图片的原始画质。</p>
-<p>操作步骤：</p>
-<ul>
-<li>用 <code>Word</code> 打开需要提取图片的 <code>.doc</code>
-文档。</li>
-<li>点击左上角的“文件” → “另存为”。</li>
-<li>选择好保存位置，在 “保存类型” 下拉菜单中，选择 “网页
-(<code>*.htm</code>; <code>*.html</code>)”（注意：请勿选择
-“单个文件网页”），然后点击保存。</li>
-<li>保存后，系统会在同目录下自动生成一个名为
-“<code>[文档名]_files</code>”
-的文件夹。打开该文件夹，里面就整齐排列着文档中的所有原始高清图片。</li>
-</ul>
 
       
     </div>

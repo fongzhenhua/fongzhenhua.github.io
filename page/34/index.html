@@ -167,7 +167,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">581</span>
+          <span class="site-state-item-count">582</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -334,6 +334,111 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/14/%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2ArchLinux%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%8C%85%E8%A2%AB%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | BNU-FZH">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/04/14/%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2ArchLinux%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%8C%85%E8%A2%AB%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0/" class="post-title-link" itemprop="url">如何防止ArchLinux的软件包被自动更新</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-14 19:32:45" itemprop="dateCreated datePublished" datetime="2024-04-14T19:32:45+08:00">2024-04-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-10-24 14:11:19" itemprop="dateModified" datetime="2026-10-24T14:11:19+08:00">2026-10-24</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>ArchLinux
+是一个优秀的操作系统，但是实际使用的过程中时间给我上了一课！
+最初追逐Gnome3的简洁，同时它也是渲染效果最好的桌面环境，与之齐名的是KDE
+Plasma 桌面环境。在Plasma4的时候，由于其经常漰溃，所以切换到了Gnome3。
+但Gnome3虽然简洁好用，同时最符合我的个人需求，但是它的最大缺点就是依懒大量的插件，而我主要需要的插件是<code>hide-top-bar</code>
+、<code>dash-to-dock</code> 和<code>USER-Theme</code> ,
+每次Gnome3的大版本升级，这些插件就会大量挂掉！由于这个问题切换到了KDE
+Plasma5,
+据网传Plasma5比Plasma4要稳定的多，经过几个月的使用，证实了Plasma5稳定的传说。但是在2024年04月11日升级我的ArchLinux后，发现Plasma5已经升级到了Plasma6,
+刚刚到这个桌面环境下，由于第一次支持Wayland,
+速度提升明显，但是毕竟是刚刚发布，其稳定性堪忧，这不2024年04月14日系统就无法进入了！不得不考虑切换到其他桌面，尝试了budgie,
+其足够简洁，同时基于gnome3构建，而它比Gnome3落后太多，渲染效果并不好。综合上述使用经验，一个在生产实践中的最佳方法就是不要急于升级桌面环境，要待Gnome3的插件都稳定的跟上相应版本时升级Gnome3环境，对于Plasma也是，不要急于升级，等到Plasma版本稳定后再升级。本文就是在解决这个稳定使用的问题时提出的，这是时间和实践的教训！</p>
+<h1 id="pacman列出可用软件包组">Pacman列出可用软件包组</h1>
+<p><code>pacman</code>是<code>package manager</code>的缩写。列出可用软件包组命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Sg</span><br><span class="line"><span class="built_in">sudo</span> pacman -Sg gnome</span><br><span class="line"><span class="built_in">sudo</span> pacman -Sg gnome |<span class="built_in">wc</span> -l</span><br></pre></td></tr></table></figure>
+<div class="note primary"><ul>
+<li>第1条命令，列出可用软件包组.</li>
+<li>第2条命令，列出软件包组<code>gnome</code>所包含的软件包.</li>
+<li>第3条命令， 检查软件包组<code>gnome</code>所包含的软件包数量.</li>
+</ul>
+</div>
+<h1 id="配置软件包和软件包组禁止更新">配置软件包和软件包组禁止更新</h1>
+<p>编辑文件<code>/etc/pacman.conf</code>,
+找到<code>IgnorePkg</code>和<code>IgnoreGroup</code>,
+对应位置后添加不需要升级的软件包或软件包组的名字。如果要添加多个包，则用空格分隔两个连续的包，即</p>
+<figure class="highlight sh"><figcaption><span>禁用了gnome和gnome-extra的升级</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Pacman won&#x27;t upgrade packages listed in IgnorePkg and members of IgnoreGroup</span></span><br><span class="line"><span class="comment">#IgnorePkg   =</span></span><br><span class="line">IgnoreGroup = gnome gnome-extra kde-applications</span><br><span class="line"></span><br><span class="line"><span class="comment">#NoUpgrade   =</span></span><br><span class="line"><span class="comment">#NoExtract   =</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="临时禁止软件包或软件包组更新">临时禁止软件包或软件包组更新</h1>
+<figure class="highlight sh"><figcaption><span>此时逗号分隔多个包或组</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Syyu --ignore=linux,vim</span><br><span class="line"><span class="built_in">sudo</span> pacman -Syyu --ignoregroup=gnome, gnome-extra</span><br></pre></td></tr></table></figure>
+<h1 id="降级安装软件包">降级安装软件包</h1>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S downgrade</span><br><span class="line"><span class="built_in">sudo</span> downgrade plasm-desktop</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1112,97 +1217,6 @@ Icons”，如果你通过 KDE 系统设置安装，这套图标将会被自动�
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/02/02/%E6%8A%8AWindows11%E5%AE%89%E8%A3%85%E5%88%B0%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/30/XDM2020%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | BNU-FZH">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/01/30/XDM2020%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">XDM2020使用教程</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-01-30 21:47:35" itemprop="dateCreated datePublished" datetime="2024-01-30T21:47:35+08:00">2024-01-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-10-24 14:11:19" itemprop="dateModified" datetime="2026-10-24T14:11:19+08:00">2026-10-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Xtreme Download Manager
-2020又简称为<strong>xdm2020</strong>，这是一款功能强大，开源免费的电脑下载工具，相信经常从网页中下载文件的用户们会发现从Facebook、YouTube、Vimeo等网站的内容时网速是非常的慢，这时呢，你就可以配合xdm2020来使用啦，可轻松帮助用户将下载速度提高到500％，并支持帮助用户下载文档、压缩包、音乐、视频、程序等多种类型文件，可以很好的满足用户们的下载需求。而且该软件还内置了强大的视频转换器，可让您将下载的视频转换为其他格式，以便随后可以在手机或电视上观看，十分方便，同时本软件支持<code>Windows</code>和<code>Linux</code>,
-本文采用图文形式为您提供详细使用教程。</p>
-<figure>
-<img
-src="https://www.herecours.com/d/file/p/2023/1009/25bc821ef6f2401670675469ef4f6b77.jpg"
-alt="XDM2020" />
-<figcaption aria-hidden="true">XDM2020</figcaption>
-</figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/01/30/XDM2020%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
