@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/%E6%94%B6%E8%97%8F/index.html</loc>
+    
+    <lastmod>2026-11-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/2022/03/01/ArchLinux%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</loc>
     
     <lastmod>2026-10-31</lastmod>
@@ -48,15 +57,6 @@
   
   <url>
     <loc>http://example.com/2026/07/05/Windows10LTSC2021%E8%BE%93%E5%85%A5%E6%B3%95%E5%AF%B9%E8%AF%9D%E6%A1%86%E6%B6%88%E5%A4%B1%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
-    
-    <lastmod>2026-10-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/%E6%94%B6%E8%97%8F/index.html</loc>
     
     <lastmod>2026-10-24</lastmod>
     
