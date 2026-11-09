@@ -1,4 +1,4 @@
-<!doctype html><html lang=zh-CN data-theme=light><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=theme-color content="#9400D3" media="(prefers-color-scheme: light)"><meta name=generator content="Hugo 0.169.0"><link rel="shortcut icon" type=image/x-icon href=../../imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=../../imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=../../imgs/icons/favicon_16x16_next.png><link rel=icon type=image/png sizes=32x32 href=../../imgs/icons/favicon_32_32_next.png><link rel=apple-touch-icon sizes=180x180 href=../../imgs/icons/apple_touch_icon_next.png><meta itemprop=name content="neovim插件（nvim-treesitter）"><meta itemprop=description content><meta name=description content><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="/"><meta itemprop=keywords content="Hugo,Linux,Hexo,Physics"><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/font-awesome/6.7.2/css/all.min.css><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/viewerjs/1.11.6/viewer.min.css><link rel=stylesheet href="../../css/main.min.css?=1794212984"><style type=text/css>.post-footer hr:after{content:""}.flinks-list-footer hr:after{content:""}</style><link rel=stylesheet type=text/css href="../../css/custom_style.css?=1794212984"><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return 0[0];const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),0[0]):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>neovim插件（nvim-treesitter） - BNU-FZH</title><noscript><link rel=stylesheet href=../../css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
+<!doctype html><html lang=zh-CN data-theme=light><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=theme-color content="#9400D3" media="(prefers-color-scheme: light)"><meta name=generator content="Hugo 0.169.0"><link rel="shortcut icon" type=image/x-icon href=../../imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=../../imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=../../imgs/icons/favicon_16x16_next.png><link rel=icon type=image/png sizes=32x32 href=../../imgs/icons/favicon_32_32_next.png><link rel=apple-touch-icon sizes=180x180 href=../../imgs/icons/apple_touch_icon_next.png><meta itemprop=name content="neovim插件（nvim-treesitter）"><meta itemprop=description content><meta name=description content><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="/"><meta itemprop=keywords content="Hugo,Linux,Hexo,Physics"><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/font-awesome/6.7.2/css/all.min.css><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/viewerjs/1.11.6/viewer.min.css><link rel=stylesheet href="../../css/main.min.css?=1794226589"><style type=text/css>.post-footer hr:after{content:""}.flinks-list-footer hr:after{content:""}</style><link rel=stylesheet type=text/css href="../../css/custom_style.css?=1794226589"><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return 0[0];const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),0[0]):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>neovim插件（nvim-treesitter） - BNU-FZH</title><noscript><link rel=stylesheet href=../../css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
 <span class=toggle-line></span>
 <span class=toggle-line></span></div></div><div class=site-meta><a href=../../ class=brand rel=start><i class=logo-line></i><h1 class=site-title>BNU-FZH</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description>fengzhenhua@outlook.com</p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=../../ class=hvr-icon-pulse rel=section><i class="fa fa-home hvr-icon"></i>首页</a></li><li class="menu-item menu-item-about"><a href=../../about.html class=hvr-icon-pulse rel=section><i class="fa fa-user hvr-icon"></i>关于</a></li><li class="menu-item menu-item-导航"><a href=../../%E5%AF%BC%E8%88%AA/ class=hvr-icon-pulse rel=section><i class="fa fa-fa fa-paper-plane hvr-icon"></i>导航</a></li><li class="menu-item menu-item-软件"><a href=../../%E8%BD%AF%E4%BB%B6/ class=hvr-icon-pulse rel=section><i class="fa fa-fa fa-briefcase hvr-icon"></i>软件</a></li><li class="menu-item menu-item-收藏"><a href=../../%E6%94%B6%E8%97%8F/ class=hvr-icon-pulse rel=section><i class="fa fa-fa fa-folder hvr-icon"></i>收藏</a></li><li class="menu-item menu-item-工作"><a href=../../%E5%B7%A5%E4%BD%9C/ class=hvr-icon-pulse rel=section><i class="fa fa-fa fa-folder hvr-icon"></i>工作</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
 <span class=toggle-line></span>
@@ -103,17 +103,14 @@ Simplete</a></span></div></div></div></div></aside><div class=sidebar-dimmer></d
 configurations and abstraction layer for
 <a href=https://github.com/neovim/neovim/>Neovim</a>.</p><p><i>Logo by <a href=https://github.com/steelsojka>@steelsojka</a></i></p></div><p>The goal of <code>nvim-treesitter</code> is both to provide a simple and easy way to use the interface for
 <a href=https://github.com/tree-sitter/tree-sitter title=tree-sitter rel="noopener external nofollow noreferrer" target=_blank class=exturl>tree-sitter
-<i class="fa fa-external-link-alt"></i>
 </a>in Neovim and to provide some basic functionality such as highlighting based on it:</p><p><img src=../../imgs/img-lazy-loading.gif data-src=https://user-images.githubusercontent.com/2361214/202753610-e923bf4e-e88f-494b-bb1e-d22a7688446f.png alt=example-cpp></p><p>Traditional highlighting (left) vs Treesitter-based highlighting (right).
 More examples can be found in
 <a href=https://github.com/nvim-treesitter/nvim-treesitter/wiki/Gallery title="our gallery" rel="noopener external nofollow noreferrer" target=_blank class=exturl>our gallery
-<i class="fa fa-external-link-alt"></i>
 </a>.</p><p><strong>Warning: Treesitter and nvim-treesitter highlighting are an experimental feature of Neovim.
 Please consider the experience with this plug-in as experimental until Tree-Sitter support in Neovim is stable!
 We recommend using the nightly builds of Neovim if possible.
 You can find the current roadmap
 <a href=https://github.com/nvim-treesitter/nvim-treesitter/projects/1 title=here rel="noopener external nofollow noreferrer" target=_blank class=exturl>here
-<i class="fa fa-external-link-alt"></i>
 </a>.
 The roadmap and all features of this plugin are open to change, and any suggestion will be highly appreciated!</strong></p><p>Nvim-treesitter is based on three interlocking features:
 <a href=#language-parsers title="language parsers"><strong>language parsers</strong>
@@ -134,19 +131,15 @@ categories:</p><ul><li>电脑技术</li></ul><hr><h1 id=quickstart>Quickstart
 <a class=header-anchor href=#quickstart></a></h1><h2 id=requirements>Requirements
 <a class=header-anchor href=#requirements></a></h2><ul><li><strong>Neovim 0.9.1</strong> or later (
 <a href=https://github.com/neovim/neovim#install-from-source title=nightly rel="noopener external nofollow noreferrer" target=_blank class=exturl>nightly
-<i class="fa fa-external-link-alt"></i>
 </a>recommended)</li><li><code>tar</code> and <code>curl</code> in your path (or alternatively <code>git</code>)</li><li>A C compiler in your path and libstdc++ installed (
 <a href=https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support title="Windows users please read this!" rel="noopener external nofollow noreferrer" target=_blank class=exturl>Windows users please read this!
-<i class="fa fa-external-link-alt"></i>
 </a>).</li></ul><h2 id=installation>Installation
 <a class=header-anchor href=#installation></a></h2><p>You can install <code>nvim-treesitter</code> with your favorite package manager (or using the native <code>package</code> feature of vim, see <code>:h packages</code>).</p><p><strong>NOTE: This plugin is only guaranteed to work with specific versions of language parsers</strong> (as specified in the <code>lockfile.json</code>). <strong>When upgrading the plugin, you must make sure that all installed parsers are updated to the latest version</strong> via <code>:TSUpdate</code>.
 It is strongly recommended to automate this; e.g., if you are using
 <a href=https://github.com/junegunn/vim-plug title=vim-plug rel="noopener external nofollow noreferrer" target=_blank class=exturl>vim-plug
-<i class="fa fa-external-link-alt"></i>
 </a>, put this in your <code>init.vim</code> file:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-1-1><a class=lnlinks href=#hl-1-1>1</a>
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-vim data-lang=vim><span class=line><span class=cl><span class=nx>Plug</span> <span class=s1>&#39;nvim-treesitter/nvim-treesitter&#39;</span><span class=p>,</span> {<span class=s1>&#39;do&#39;</span>: <span class=s1>&#39;:TSUpdate&#39;</span>}</span></span></code></pre></td></tr></table></div></div><p>For other plugin managers such as <code>packer.nvim</code>, see this
 <a href=https://github.com/nvim-treesitter/nvim-treesitter/wiki/Installation title="Installation page from the wiki" rel="noopener external nofollow noreferrer" target=_blank class=exturl>Installation page from the wiki
-<i class="fa fa-external-link-alt"></i>
 </a>(Note that this page is community maintained).</p><h2 id=language-parsers>Language parsers
 <a class=header-anchor href=#language-parsers></a></h2><p>Treesitter uses a different <em>parser</em> for every language, which needs to be generated via <code>tree-sitter-cli</code> from a <code>grammar.js</code> file, then compiled to a <code>.so</code> library that needs to be placed in neovim&rsquo;s <code>runtimepath</code> (typically under <code>parser/{language}.so</code>).
 To simplify this, <code>nvim-treesitter</code> provides commands to automate this process.
@@ -266,682 +259,455 @@ It may be necessary to reload the buffer (e.g., via <code>:e</code>) after enabl
 <a class=header-anchor href=#supported-languages></a></h1><p>For <code>nvim-treesitter</code> to support a specific feature for a specific language requires both a parser for that language and an appropriate language-specific query file for that feature.</p><p>The following is a list of languages for which a parser can be installed through <code>:TSInstall</code>; a checked box means that <code>nvim-treesitter</code> also contains queries at least for the <code>highlight</code> module.</p><p>Experimental parsers are parsers that have a maintainer but are not stable enough for
 daily use yet.</p><p>We are looking for maintainers to add more parsers and to write query files for their languages. Check our
 <a href=https://github.com/nvim-treesitter/nvim-treesitter/issues/2282 title="tracking issue" rel="noopener external nofollow noreferrer" target=_blank class=exturl>tracking issue
-<i class="fa fa-external-link-alt"></i>
 </a>for open language requests.</p><ul><li><input checked disabled type=checkbox>
 <a href=https://github.com/briot/tree-sitter-ada title=ada rel="noopener external nofollow noreferrer" target=_blank class=exturl>ada
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @briot)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-agda title=agda rel="noopener external nofollow noreferrer" target=_blank class=exturl>agda
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @Decodetalkers)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/aheber/tree-sitter-sfapex title=apex rel="noopener external nofollow noreferrer" target=_blank class=exturl>apex
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @aheber)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/ObserverOfTime/tree-sitter-arduino title=arduino rel="noopener external nofollow noreferrer" target=_blank class=exturl>arduino
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @ObserverOfTime)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/virchau13/tree-sitter-astro title=astro rel="noopener external nofollow noreferrer" target=_blank class=exturl>astro
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @virchau13)</li><li><input disabled type=checkbox>
-<a href=https://github.com/Beaglefoot/tree-sitter-awk title=awk rel="noopener external nofollow noreferrer" target=_blank class=exturl>awk
-<i class="fa fa-external-link-alt"></i></a></li><li><input checked disabled type=checkbox>
+<a href=https://github.com/Beaglefoot/tree-sitter-awk title=awk rel="noopener external nofollow noreferrer" target=_blank class=exturl>awk</a></li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-bash title=bash rel="noopener external nofollow noreferrer" target=_blank class=exturl>bash
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @TravonteD)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-bass title=bass rel="noopener external nofollow noreferrer" target=_blank class=exturl>bass
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/polarmutex/tree-sitter-beancount title=beancount rel="noopener external nofollow noreferrer" target=_blank class=exturl>beancount
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @polarmutex)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/latex-lsp/tree-sitter-bibtex title=bibtex rel="noopener external nofollow noreferrer" target=_blank class=exturl>bibtex
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @theHamsta, @clason)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-bicep title=bicep rel="noopener external nofollow noreferrer" target=_blank class=exturl>bicep
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-bitbake title=bitbake rel="noopener external nofollow noreferrer" target=_blank class=exturl>bitbake
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://gitlab.com/gabmus/tree-sitter-blueprint.git title=blueprint rel="noopener external nofollow noreferrer" target=_blank class=exturl>blueprint
-<i class="fa fa-external-link-alt"></i>
 </a>(experimental, maintained by @gabmus)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-c title=c rel="noopener external nofollow noreferrer" target=_blank class=exturl>c
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-c-sharp title=c_sharp rel="noopener external nofollow noreferrer" target=_blank class=exturl>c_sharp
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @Luxed)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-cairo title=cairo rel="noopener external nofollow noreferrer" target=_blank class=exturl>cairo
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-capnp title=capnp rel="noopener external nofollow noreferrer" target=_blank class=exturl>capnp
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/ObserverOfTime/tree-sitter-chatito title=chatito rel="noopener external nofollow noreferrer" target=_blank class=exturl>chatito
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @ObserverOfTime)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/sogaiu/tree-sitter-clojure title=clojure rel="noopener external nofollow noreferrer" target=_blank class=exturl>clojure
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @sogaiu)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/uyha/tree-sitter-cmake title=cmake rel="noopener external nofollow noreferrer" target=_blank class=exturl>cmake
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @uyha)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/stsewd/tree-sitter-comment title=comment rel="noopener external nofollow noreferrer" target=_blank class=exturl>comment
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @stsewd)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/theHamsta/tree-sitter-commonlisp title=commonlisp rel="noopener external nofollow noreferrer" target=_blank class=exturl>commonlisp
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @theHamsta)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/addcninblue/tree-sitter-cooklang title=cooklang rel="noopener external nofollow noreferrer" target=_blank class=exturl>cooklang
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @addcninblue)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/jakestanger/tree-sitter-corn title=corn rel="noopener external nofollow noreferrer" target=_blank class=exturl>corn
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @jakestanger)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-cpon title=cpon rel="noopener external nofollow noreferrer" target=_blank class=exturl>cpon
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-cpp title=cpp rel="noopener external nofollow noreferrer" target=_blank class=exturl>cpp
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @theHamsta)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-css title=css rel="noopener external nofollow noreferrer" target=_blank class=exturl>css
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @TravonteD)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-csv title=csv rel="noopener external nofollow noreferrer" target=_blank class=exturl>csv
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/theHamsta/tree-sitter-cuda title=cuda rel="noopener external nofollow noreferrer" target=_blank class=exturl>cuda
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @theHamsta)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/eonpatapon/tree-sitter-cue title=cue rel="noopener external nofollow noreferrer" target=_blank class=exturl>cue
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/CyberShadow/tree-sitter-d title=d rel="noopener external nofollow noreferrer" target=_blank class=exturl>d
-<i class="fa fa-external-link-alt"></i>
 </a>(experimental, maintained by @nawordar)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/UserNobody14/tree-sitter-dart title=dart rel="noopener external nofollow noreferrer" target=_blank class=exturl>dart
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @akinsho)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/joelspadin/tree-sitter-devicetree title=devicetree rel="noopener external nofollow noreferrer" target=_blank class=exturl>devicetree
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @jedrzejboczar)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/jbellerb/tree-sitter-dhall title=dhall rel="noopener external nofollow noreferrer" target=_blank class=exturl>dhall
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/the-mikedavis/tree-sitter-diff title=diff rel="noopener external nofollow noreferrer" target=_blank class=exturl>diff
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @gbprod)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/camdencheek/tree-sitter-dockerfile title=dockerfile rel="noopener external nofollow noreferrer" target=_blank class=exturl>dockerfile
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @camdencheek)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/rydesun/tree-sitter-dot title=dot rel="noopener external nofollow noreferrer" target=_blank class=exturl>dot
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @rydesun)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-doxygen title=doxygen rel="noopener external nofollow noreferrer" target=_blank class=exturl>doxygen
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/ObserverOfTime/tree-sitter-xml title=dtd rel="noopener external nofollow noreferrer" target=_blank class=exturl>dtd
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @ObserverOfTime)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/RubixDev/ebnf title=ebnf rel="noopener external nofollow noreferrer" target=_blank class=exturl>ebnf
-<i class="fa fa-external-link-alt"></i>
 </a>(experimental, maintained by @RubixDev)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/uyha/tree-sitter-eds title=eds rel="noopener external nofollow noreferrer" target=_blank class=exturl>eds
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @uyha)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/connorlay/tree-sitter-eex title=eex rel="noopener external nofollow noreferrer" target=_blank class=exturl>eex
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @connorlay)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/elixir-lang/tree-sitter-elixir title=elixir rel="noopener external nofollow noreferrer" target=_blank class=exturl>elixir
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @connorlay)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/elm-tooling/tree-sitter-elm title=elm rel="noopener external nofollow noreferrer" target=_blank class=exturl>elm
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @zweimach)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/glapa-grossklag/tree-sitter-elsa title=elsa rel="noopener external nofollow noreferrer" target=_blank class=exturl>elsa
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @glapa-grossklag, @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/elves/tree-sitter-elvish title=elvish rel="noopener external nofollow noreferrer" target=_blank class=exturl>elvish
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @elves)</li><li><input disabled type=checkbox>
-<a href=https://github.com/tree-sitter/tree-sitter-embedded-template title=embedded_template rel="noopener external nofollow noreferrer" target=_blank class=exturl>embedded_template
-<i class="fa fa-external-link-alt"></i></a></li><li><input checked disabled type=checkbox>
+<a href=https://github.com/tree-sitter/tree-sitter-embedded-template title=embedded_template rel="noopener external nofollow noreferrer" target=_blank class=exturl>embedded_template</a></li><li><input checked disabled type=checkbox>
 <a href=https://github.com/WhatsApp/tree-sitter-erlang title=erlang rel="noopener external nofollow noreferrer" target=_blank class=exturl>erlang
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @filmor)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/travonted/tree-sitter-fennel title=fennel rel="noopener external nofollow noreferrer" target=_blank class=exturl>fennel
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @TravonteD)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-firrtl title=firrtl rel="noopener external nofollow noreferrer" target=_blank class=exturl>firrtl
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/ram02z/tree-sitter-fish title=fish rel="noopener external nofollow noreferrer" target=_blank class=exturl>fish
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @ram02z)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/FoamScience/tree-sitter-foam title=foam rel="noopener external nofollow noreferrer" target=_blank class=exturl>foam
-<i class="fa fa-external-link-alt"></i>
 </a>(experimental, maintained by @FoamScience)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/AlexanderBrevig/tree-sitter-forth title=forth rel="noopener external nofollow noreferrer" target=_blank class=exturl>forth
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/stadelmanma/tree-sitter-fortran title=fortran rel="noopener external nofollow noreferrer" target=_blank class=exturl>fortran
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/mgramigna/tree-sitter-fsh title=fsh rel="noopener external nofollow noreferrer" target=_blank class=exturl>fsh
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @mgramigna)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-func title=func rel="noopener external nofollow noreferrer" target=_blank class=exturl>func
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://gitlab.com/jirgn/tree-sitter-fusion.git title=fusion rel="noopener external nofollow noreferrer" target=_blank class=exturl>fusion
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @jirgn)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/PrestonKnopp/tree-sitter-gdscript title="Godot (gdscript)" rel="noopener external nofollow noreferrer" target=_blank class=exturl>Godot (gdscript)
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @PrestonKnopp)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/the-mikedavis/tree-sitter-git-config title=git_config rel="noopener external nofollow noreferrer" target=_blank class=exturl>git_config
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/the-mikedavis/tree-sitter-git-rebase title=git_rebase rel="noopener external nofollow noreferrer" target=_blank class=exturl>git_rebase
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @gbprod)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/ObserverOfTime/tree-sitter-gitattributes title=gitattributes rel="noopener external nofollow noreferrer" target=_blank class=exturl>gitattributes
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @ObserverOfTime)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/gbprod/tree-sitter-gitcommit title=gitcommit rel="noopener external nofollow noreferrer" target=_blank class=exturl>gitcommit
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @gbprod)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/shunsambongi/tree-sitter-gitignore title=gitignore rel="noopener external nofollow noreferrer" target=_blank class=exturl>gitignore
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @theHamsta)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/gleam-lang/tree-sitter-gleam title=gleam rel="noopener external nofollow noreferrer" target=_blank class=exturl>gleam
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/alexlafroscia/tree-sitter-glimmer title="Glimmer and Ember" rel="noopener external nofollow noreferrer" target=_blank class=exturl>Glimmer and Ember
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @NullVoxPopuli)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/theHamsta/tree-sitter-glsl title=glsl rel="noopener external nofollow noreferrer" target=_blank class=exturl>glsl
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @theHamsta)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-go title=go rel="noopener external nofollow noreferrer" target=_blank class=exturl>go
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @theHamsta, @WinWisely268)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/PrestonKnopp/tree-sitter-godot-resource title="Godot Resources (gdresource)" rel="noopener external nofollow noreferrer" target=_blank class=exturl>Godot Resources (gdresource)
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @pierpo)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/camdencheek/tree-sitter-go-mod title=gomod rel="noopener external nofollow noreferrer" target=_blank class=exturl>gomod
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @camdencheek)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-go-sum title=gosum rel="noopener external nofollow noreferrer" target=_blank class=exturl>gosum
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/omertuc/tree-sitter-go-work title=gowork rel="noopener external nofollow noreferrer" target=_blank class=exturl>gowork
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @omertuc)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/ObserverOfTime/tree-sitter-gpg-config title=gpg rel="noopener external nofollow noreferrer" target=_blank class=exturl>gpg
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @ObserverOfTime)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/bkegley/tree-sitter-graphql title=graphql rel="noopener external nofollow noreferrer" target=_blank class=exturl>graphql
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @bkegley)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/Decodetalkers/tree-sitter-groovy title=groovy rel="noopener external nofollow noreferrer" target=_blank class=exturl>groovy
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @Decodetalkers)</li><li><input disabled type=checkbox>
-<a href=https://github.com/slackhq/tree-sitter-hack title=hack rel="noopener external nofollow noreferrer" target=_blank class=exturl>hack
-<i class="fa fa-external-link-alt"></i></a></li><li><input checked disabled type=checkbox>
+<a href=https://github.com/slackhq/tree-sitter-hack title=hack rel="noopener external nofollow noreferrer" target=_blank class=exturl>hack</a></li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-hare title=hare rel="noopener external nofollow noreferrer" target=_blank class=exturl>hare
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-haskell title=haskell rel="noopener external nofollow noreferrer" target=_blank class=exturl>haskell
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @mrcjkb)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/MercuryTechnologies/tree-sitter-haskell-persistent title=haskell_persistent rel="noopener external nofollow noreferrer" target=_blank class=exturl>haskell_persistent
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @lykahb)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/MichaHoffmann/tree-sitter-hcl title=hcl rel="noopener external nofollow noreferrer" target=_blank class=exturl>hcl
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @MichaHoffmann)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/connorlay/tree-sitter-heex title=heex rel="noopener external nofollow noreferrer" target=_blank class=exturl>heex
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @connorlay)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/winston0410/tree-sitter-hjson title=hjson rel="noopener external nofollow noreferrer" target=_blank class=exturl>hjson
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @winston0410)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/theHamsta/tree-sitter-hlsl title=hlsl rel="noopener external nofollow noreferrer" target=_blank class=exturl>hlsl
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @theHamsta)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/antosha417/tree-sitter-hocon title=hocon rel="noopener external nofollow noreferrer" target=_blank class=exturl>hocon
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @antosha417)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/urbit-pilled/tree-sitter-hoon title=hoon rel="noopener external nofollow noreferrer" target=_blank class=exturl>hoon
-<i class="fa fa-external-link-alt"></i>
 </a>(experimental, maintained by @urbit-pilled)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-html title=html rel="noopener external nofollow noreferrer" target=_blank class=exturl>html
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @TravonteD)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/interdependence/tree-sitter-htmldjango title=htmldjango rel="noopener external nofollow noreferrer" target=_blank class=exturl>htmldjango
-<i class="fa fa-external-link-alt"></i>
 </a>(experimental, maintained by @ObserverOfTime)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/rest-nvim/tree-sitter-http title=http rel="noopener external nofollow noreferrer" target=_blank class=exturl>http
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/pfeiferj/tree-sitter-hurl title=hurl rel="noopener external nofollow noreferrer" target=_blank class=exturl>hurl
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @pfeiferj)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/justinmk/tree-sitter-ini title=ini rel="noopener external nofollow noreferrer" target=_blank class=exturl>ini
-<i class="fa fa-external-link-alt"></i>
 </a>(experimental, maintained by @theHamsta)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/fab4100/tree-sitter-ispc title=ispc rel="noopener external nofollow noreferrer" target=_blank class=exturl>ispc
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @fab4100)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/sogaiu/tree-sitter-janet-simple title=janet_simple rel="noopener external nofollow noreferrer" target=_blank class=exturl>janet_simple
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @sogaiu)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-java title=java rel="noopener external nofollow noreferrer" target=_blank class=exturl>java
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @p00f)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-javascript title=javascript rel="noopener external nofollow noreferrer" target=_blank class=exturl>javascript
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @steelsojka)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/flurie/tree-sitter-jq title=jq rel="noopener external nofollow noreferrer" target=_blank class=exturl>jq
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @ObserverOfTime)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-jsdoc title=jsdoc rel="noopener external nofollow noreferrer" target=_blank class=exturl>jsdoc
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @steelsojka)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-json title=json rel="noopener external nofollow noreferrer" target=_blank class=exturl>json
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @steelsojka)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/Joakker/tree-sitter-json5 title=json5 rel="noopener external nofollow noreferrer" target=_blank class=exturl>json5
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @Joakker)</li><li><input checked disabled type=checkbox>
 <a href=https://gitlab.com/WhyNotHugo/tree-sitter-jsonc.git title="JSON with comments" rel="noopener external nofollow noreferrer" target=_blank class=exturl>JSON with comments
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @WhyNotHugo)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/sourcegraph/tree-sitter-jsonnet title=jsonnet rel="noopener external nofollow noreferrer" target=_blank class=exturl>jsonnet
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @nawordar)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-julia title=julia rel="noopener external nofollow noreferrer" target=_blank class=exturl>julia
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @theHamsta)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-kconfig title=kconfig rel="noopener external nofollow noreferrer" target=_blank class=exturl>kconfig
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-kdl title=kdl rel="noopener external nofollow noreferrer" target=_blank class=exturl>kdl
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/fwcd/tree-sitter-kotlin title=kotlin rel="noopener external nofollow noreferrer" target=_blank class=exturl>kotlin
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @SalBakraa)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/traxys/tree-sitter-lalrpop title=lalrpop rel="noopener external nofollow noreferrer" target=_blank class=exturl>lalrpop
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @traxys)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/latex-lsp/tree-sitter-latex title=latex rel="noopener external nofollow noreferrer" target=_blank class=exturl>latex
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @theHamsta, @clason)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/cbarrete/tree-sitter-ledger title=ledger rel="noopener external nofollow noreferrer" target=_blank class=exturl>ledger
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @cbarrete)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/benwilliamgraham/tree-sitter-llvm title=llvm rel="noopener external nofollow noreferrer" target=_blank class=exturl>llvm
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @benwilliamgraham)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/MunifTanjim/tree-sitter-lua title=lua rel="noopener external nofollow noreferrer" target=_blank class=exturl>lua
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @muniftanjim)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-luadoc title=luadoc rel="noopener external nofollow noreferrer" target=_blank class=exturl>luadoc
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-luap title="lua patterns" rel="noopener external nofollow noreferrer" target=_blank class=exturl>lua patterns
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-luau title=luau rel="noopener external nofollow noreferrer" target=_blank class=exturl>luau
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/grahambates/tree-sitter-m68k title=m68k rel="noopener external nofollow noreferrer" target=_blank class=exturl>m68k
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @grahambates)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/alemuller/tree-sitter-make title=make rel="noopener external nofollow noreferrer" target=_blank class=exturl>make
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @lewis6991)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/MDeiml/tree-sitter-markdown title="markdown (basic highlighting)" rel="noopener external nofollow noreferrer" target=_blank class=exturl>markdown (basic highlighting)
-<i class="fa fa-external-link-alt"></i>
 </a>(experimental, maintained by @MDeiml)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/MDeiml/tree-sitter-markdown title="markdown_inline (needed for full highlighting)" rel="noopener external nofollow noreferrer" target=_blank class=exturl>markdown_inline (needed for full highlighting)
-<i class="fa fa-external-link-alt"></i>
 </a>(experimental, maintained by @MDeiml)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/acristoffers/tree-sitter-matlab title=matlab rel="noopener external nofollow noreferrer" target=_blank class=exturl>matlab
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @acristoffers)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/Kerl13/tree-sitter-menhir title=menhir rel="noopener external nofollow noreferrer" target=_blank class=exturl>menhir
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @Kerl13)</li><li><input disabled type=checkbox>
 <a href=https://github.com/monaqa/tree-sitter-mermaid title=mermaid rel="noopener external nofollow noreferrer" target=_blank class=exturl>mermaid
-<i class="fa fa-external-link-alt"></i>
 </a>(experimental)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/Decodetalkers/tree-sitter-meson title=meson rel="noopener external nofollow noreferrer" target=_blank class=exturl>meson
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @Decodetalkers)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/artagnon/tree-sitter-mlir title=mlir rel="noopener external nofollow noreferrer" target=_blank class=exturl>mlir
-<i class="fa fa-external-link-alt"></i>
 </a>(experimental, maintained by @artagnon)</li><li><input disabled type=checkbox>
-<a href=https://github.com/nickel-lang/tree-sitter-nickel title=nickel rel="noopener external nofollow noreferrer" target=_blank class=exturl>nickel
-<i class="fa fa-external-link-alt"></i></a></li><li><input checked disabled type=checkbox>
+<a href=https://github.com/nickel-lang/tree-sitter-nickel title=nickel rel="noopener external nofollow noreferrer" target=_blank class=exturl>nickel</a></li><li><input checked disabled type=checkbox>
 <a href=https://github.com/alemuller/tree-sitter-ninja title=ninja rel="noopener external nofollow noreferrer" target=_blank class=exturl>ninja
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @alemuller)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/cstrahan/tree-sitter-nix title=nix rel="noopener external nofollow noreferrer" target=_blank class=exturl>nix
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @leo60228)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/nvim-neorg/tree-sitter-norg title=norg rel="noopener external nofollow noreferrer" target=_blank class=exturl>norg
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @JoeyGrajciar, @vhyrro)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-nqc title=nqc rel="noopener external nofollow noreferrer" target=_blank class=exturl>nqc
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-objc title=objc rel="noopener external nofollow noreferrer" target=_blank class=exturl>objc
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-ocaml title=ocaml rel="noopener external nofollow noreferrer" target=_blank class=exturl>ocaml
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @undu)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-ocaml title=ocaml_interface rel="noopener external nofollow noreferrer" target=_blank class=exturl>ocaml_interface
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @undu)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/atom-ocaml/tree-sitter-ocamllex title=ocamllex rel="noopener external nofollow noreferrer" target=_blank class=exturl>ocamllex
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @undu)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-odin title=odin rel="noopener external nofollow noreferrer" target=_blank class=exturl>odin
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input disabled type=checkbox>
-<a href=https://github.com/milisims/tree-sitter-org title=org rel="noopener external nofollow noreferrer" target=_blank class=exturl>org
-<i class="fa fa-external-link-alt"></i></a></li><li><input checked disabled type=checkbox>
+<a href=https://github.com/milisims/tree-sitter-org title=org rel="noopener external nofollow noreferrer" target=_blank class=exturl>org</a></li><li><input checked disabled type=checkbox>
 <a href=https://github.com/Isopod/tree-sitter-pascal.git title=pascal rel="noopener external nofollow noreferrer" target=_blank class=exturl>pascal
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @Isopod)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/ath3/tree-sitter-passwd title=passwd rel="noopener external nofollow noreferrer" target=_blank class=exturl>passwd
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/ObserverOfTime/tree-sitter-pem title=pem rel="noopener external nofollow noreferrer" target=_blank class=exturl>pem
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @ObserverOfTime)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/ganezdragon/tree-sitter-perl title=perl rel="noopener external nofollow noreferrer" target=_blank class=exturl>perl
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @lcrownover)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-php title=php rel="noopener external nofollow noreferrer" target=_blank class=exturl>php
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @tk-shirasaka)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/claytonrcarter/tree-sitter-phpdoc title=phpdoc rel="noopener external nofollow noreferrer" target=_blank class=exturl>phpdoc
-<i class="fa fa-external-link-alt"></i>
 </a>(experimental, maintained by @mikehaertl)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/leo60228/tree-sitter-pioasm title=pioasm rel="noopener external nofollow noreferrer" target=_blank class=exturl>pioasm
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @leo60228)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/erasin/tree-sitter-po title=po rel="noopener external nofollow noreferrer" target=_blank class=exturl>po
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/ObserverOfTime/tree-sitter-poe-filter title="Path of Exile item filter" rel="noopener external nofollow noreferrer" target=_blank class=exturl>Path of Exile item filter
-<i class="fa fa-external-link-alt"></i>
 </a>(experimental, maintained by @ObserverOfTime)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-pony title=pony rel="noopener external nofollow noreferrer" target=_blank class=exturl>pony
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq, @mfelsche)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/victorhqc/tree-sitter-prisma title=prisma rel="noopener external nofollow noreferrer" target=_blank class=exturl>prisma
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @elianiva)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/MichaHoffmann/tree-sitter-promql title=promql rel="noopener external nofollow noreferrer" target=_blank class=exturl>promql
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @MichaHoffmann)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/treywood/tree-sitter-proto title=proto rel="noopener external nofollow noreferrer" target=_blank class=exturl>proto
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @treywood)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/PRQL/tree-sitter-prql title=prql rel="noopener external nofollow noreferrer" target=_blank class=exturl>prql
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @matthias-Q)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-csv title=psv rel="noopener external nofollow noreferrer" target=_blank class=exturl>psv
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/zealot128/tree-sitter-pug title=pug rel="noopener external nofollow noreferrer" target=_blank class=exturl>pug
-<i class="fa fa-external-link-alt"></i>
 </a>(experimental, maintained by @zealot128)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-puppet title=puppet rel="noopener external nofollow noreferrer" target=_blank class=exturl>puppet
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/ObserverOfTime/tree-sitter-pymanifest title="PyPA manifest" rel="noopener external nofollow noreferrer" target=_blank class=exturl>PyPA manifest
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @ObserverOfTime)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-python title=python rel="noopener external nofollow noreferrer" target=_blank class=exturl>python
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @stsewd, @theHamsta)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-ql title=ql rel="noopener external nofollow noreferrer" target=_blank class=exturl>ql
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @pwntester)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/Decodetalkers/tree-sitter-qmldir title=qmldir rel="noopener external nofollow noreferrer" target=_blank class=exturl>qmldir
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/yuja/tree-sitter-qmljs title=qmljs rel="noopener external nofollow noreferrer" target=_blank class=exturl>qmljs
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @Decodetalkers)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/nvim-treesitter/tree-sitter-query title="Tree-Sitter query language" rel="noopener external nofollow noreferrer" target=_blank class=exturl>Tree-Sitter query language
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @steelsojka)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/r-lib/tree-sitter-r title=r rel="noopener external nofollow noreferrer" target=_blank class=exturl>r
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @echasnovski)</li><li><input disabled type=checkbox>
-<a href=https://github.com/6cdh/tree-sitter-racket title=racket rel="noopener external nofollow noreferrer" target=_blank class=exturl>racket
-<i class="fa fa-external-link-alt"></i></a></li><li><input checked disabled type=checkbox>
+<a href=https://github.com/6cdh/tree-sitter-racket title=racket rel="noopener external nofollow noreferrer" target=_blank class=exturl>racket</a></li><li><input checked disabled type=checkbox>
 <a href=https://github.com/Fymyte/tree-sitter-rasi title=rasi rel="noopener external nofollow noreferrer" target=_blank class=exturl>rasi
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @Fymyte)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-re2c title=re2c rel="noopener external nofollow noreferrer" target=_blank class=exturl>re2c
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-regex title=regex rel="noopener external nofollow noreferrer" target=_blank class=exturl>regex
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @theHamsta)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/FallenAngel97/tree-sitter-rego title=rego rel="noopener external nofollow noreferrer" target=_blank class=exturl>rego
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @FallenAngel97)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/ObserverOfTime/tree-sitter-requirements title="pip requirements" rel="noopener external nofollow noreferrer" target=_blank class=exturl>pip requirements
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @ObserverOfTime)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/bamonroe/tree-sitter-rnoweb title=rnoweb rel="noopener external nofollow noreferrer" target=_blank class=exturl>rnoweb
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @bamonroe)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/Hubro/tree-sitter-robot title=robot rel="noopener external nofollow noreferrer" target=_blank class=exturl>robot
-<i class="fa fa-external-link-alt"></i>
 </a>(experimental, maintained by @ema2159)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-ron title=ron rel="noopener external nofollow noreferrer" target=_blank class=exturl>ron
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/stsewd/tree-sitter-rst title=rst rel="noopener external nofollow noreferrer" target=_blank class=exturl>rst
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @stsewd)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-ruby title=ruby rel="noopener external nofollow noreferrer" target=_blank class=exturl>ruby
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @TravonteD)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-rust title=rust rel="noopener external nofollow noreferrer" target=_blank class=exturl>rust
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-scala title=scala rel="noopener external nofollow noreferrer" target=_blank class=exturl>scala
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @stevanmilic)</li><li><input checked disabled type=checkbox>
 <a href=https://git.sr.ht/~rockorager/tree-sitter-scfg title=scfg rel="noopener external nofollow noreferrer" target=_blank class=exturl>scfg
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @WhyNotHugo)</li><li><input disabled type=checkbox>
-<a href=https://github.com/6cdh/tree-sitter-scheme title=scheme rel="noopener external nofollow noreferrer" target=_blank class=exturl>scheme
-<i class="fa fa-external-link-alt"></i></a></li><li><input checked disabled type=checkbox>
+<a href=https://github.com/6cdh/tree-sitter-scheme title=scheme rel="noopener external nofollow noreferrer" target=_blank class=exturl>scheme</a></li><li><input checked disabled type=checkbox>
 <a href=https://github.com/serenadeai/tree-sitter-scss title=scss rel="noopener external nofollow noreferrer" target=_blank class=exturl>scss
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @elianiva)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/jrmoulton/tree-sitter-slint title=slint rel="noopener external nofollow noreferrer" target=_blank class=exturl>slint
-<i class="fa fa-external-link-alt"></i>
 </a>(experimental, maintained by @jrmoulton)</li><li><input checked disabled type=checkbox>
 <a href=https://git.sr.ht/~yotam/tree-sitter-smali title=smali rel="noopener external nofollow noreferrer" target=_blank class=exturl>smali
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/indoorvivants/tree-sitter-smithy title=smithy rel="noopener external nofollow noreferrer" target=_blank class=exturl>smithy
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq, @keynmol)</li><li><input disabled type=checkbox>
 <a href=https://github.com/osthomas/tree-sitter-snakemake title=snakemake rel="noopener external nofollow noreferrer" target=_blank class=exturl>snakemake
-<i class="fa fa-external-link-alt"></i>
 </a>(experimental)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/JoranHonig/tree-sitter-solidity title=solidity rel="noopener external nofollow noreferrer" target=_blank class=exturl>solidity
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/aheber/tree-sitter-sfapex title=soql rel="noopener external nofollow noreferrer" target=_blank class=exturl>soql
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @aheber)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/aheber/tree-sitter-sfapex title=sosl rel="noopener external nofollow noreferrer" target=_blank class=exturl>sosl
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @aheber)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/BonaBeavis/tree-sitter-sparql title=sparql rel="noopener external nofollow noreferrer" target=_blank class=exturl>sparql
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @BonaBeavis)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/derekstride/tree-sitter-sql title=sql rel="noopener external nofollow noreferrer" target=_blank class=exturl>sql
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @derekstride)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-squirrel title=squirrel rel="noopener external nofollow noreferrer" target=_blank class=exturl>squirrel
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/ObserverOfTime/tree-sitter-ssh-config title=ssh_config rel="noopener external nofollow noreferrer" target=_blank class=exturl>ssh_config
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @ObserverOfTime)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-starlark title=starlark rel="noopener external nofollow noreferrer" target=_blank class=exturl>starlark
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/sigmaSd/tree-sitter-strace title=strace rel="noopener external nofollow noreferrer" target=_blank class=exturl>strace
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/madskjeldgaard/tree-sitter-supercollider title=supercollider rel="noopener external nofollow noreferrer" target=_blank class=exturl>supercollider
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @madskjeldgaard)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/connorlay/tree-sitter-surface title=surface rel="noopener external nofollow noreferrer" target=_blank class=exturl>surface
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @connorlay)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/Himujjal/tree-sitter-svelte title=svelte rel="noopener external nofollow noreferrer" target=_blank class=exturl>svelte
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @elianiva)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/alex-pinkus/tree-sitter-swift title=swift rel="noopener external nofollow noreferrer" target=_blank class=exturl>swift
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @alex-pinkus)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/RaafatTurki/tree-sitter-sxhkdrc title=sxhkdrc rel="noopener external nofollow noreferrer" target=_blank class=exturl>sxhkdrc
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @RaafatTurki)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/ok-ryoko/tree-sitter-systemtap title=systemtap rel="noopener external nofollow noreferrer" target=_blank class=exturl>systemtap
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @ok-ryoko)</li><li><input checked disabled type=checkbox>
 <a href=https://gitlab.com/xasc/tree-sitter-t32.git title=t32 rel="noopener external nofollow noreferrer" target=_blank class=exturl>t32
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @xasc)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-tablegen title=tablegen rel="noopener external nofollow noreferrer" target=_blank class=exturl>tablegen
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/euclidianAce/tree-sitter-teal title=teal rel="noopener external nofollow noreferrer" target=_blank class=exturl>teal
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @euclidianAce)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/MichaHoffmann/tree-sitter-hcl title=terraform rel="noopener external nofollow noreferrer" target=_blank class=exturl>terraform
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @MichaHoffmann)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/PorterAtGoogle/tree-sitter-textproto title=textproto rel="noopener external nofollow noreferrer" target=_blank class=exturl>textproto
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @Porter)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/duskmoon314/tree-sitter-thrift title=thrift rel="noopener external nofollow noreferrer" target=_blank class=exturl>thrift
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq, @duskmoon314)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/ambroisie/tree-sitter-tiger title=tiger rel="noopener external nofollow noreferrer" target=_blank class=exturl>tiger
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @ambroisie)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tlaplus-community/tree-sitter-tlaplus title=tlaplus rel="noopener external nofollow noreferrer" target=_blank class=exturl>tlaplus
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @ahelwer, @susliko)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/arnarg/tree-sitter-todotxt.git title=todotxt rel="noopener external nofollow noreferrer" target=_blank class=exturl>todotxt
-<i class="fa fa-external-link-alt"></i>
 </a>(experimental, maintained by @arnarg)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/ikatyang/tree-sitter-toml title=toml rel="noopener external nofollow noreferrer" target=_blank class=exturl>toml
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @tk-shirasaka)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-csv title=tsv rel="noopener external nofollow noreferrer" target=_blank class=exturl>tsv
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-typescript title=tsx rel="noopener external nofollow noreferrer" target=_blank class=exturl>tsx
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @steelsojka)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/BonaBeavis/tree-sitter-turtle title=turtle rel="noopener external nofollow noreferrer" target=_blank class=exturl>turtle
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @BonaBeavis)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/gbprod/tree-sitter-twig title=twig rel="noopener external nofollow noreferrer" target=_blank class=exturl>twig
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @gbprod)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-typescript title=typescript rel="noopener external nofollow noreferrer" target=_blank class=exturl>typescript
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @steelsojka)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/Philipp-M/tree-sitter-ungrammar title=ungrammar rel="noopener external nofollow noreferrer" target=_blank class=exturl>ungrammar
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @Philipp-M, @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/kylegoetz/tree-sitter-unison title=unison rel="noopener external nofollow noreferrer" target=_blank class=exturl>unison
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @tapegram)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/ColinKennedy/tree-sitter-usd title=usd rel="noopener external nofollow noreferrer" target=_blank class=exturl>usd
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @ColinKennedy)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/amaanq/tree-sitter-uxntal title="uxn tal" rel="noopener external nofollow noreferrer" target=_blank class=exturl>uxn tal
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/v-analyzer/v-analyzer title=v rel="noopener external nofollow noreferrer" target=_blank class=exturl>v
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @kkharji, @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/vala-lang/tree-sitter-vala title=vala rel="noopener external nofollow noreferrer" target=_blank class=exturl>vala
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @Prince781)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/tree-sitter/tree-sitter-verilog title=verilog rel="noopener external nofollow noreferrer" target=_blank class=exturl>verilog
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @zegervdv)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/charmbracelet/tree-sitter-vhs title=vhs rel="noopener external nofollow noreferrer" target=_blank class=exturl>vhs
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @caarlos0)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/neovim/tree-sitter-vim title=vim rel="noopener external nofollow noreferrer" target=_blank class=exturl>vim
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @clason)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/neovim/tree-sitter-vimdoc title=vimdoc rel="noopener external nofollow noreferrer" target=_blank class=exturl>vimdoc
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @clason)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/ikatyang/tree-sitter-vue title=vue rel="noopener external nofollow noreferrer" target=_blank class=exturl>vue
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @WhyNotHugo)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/szebniok/tree-sitter-wgsl title=wgsl rel="noopener external nofollow noreferrer" target=_blank class=exturl>wgsl
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @szebniok)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/theHamsta/tree-sitter-wgsl-bevy title=wgsl_bevy rel="noopener external nofollow noreferrer" target=_blank class=exturl>wgsl_bevy
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @theHamsta)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/winglang/wing title=wing rel="noopener external nofollow noreferrer" target=_blank class=exturl>wing
-<i class="fa fa-external-link-alt"></i>
 </a>(experimental, maintained by @gshpychka)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/ObserverOfTime/tree-sitter-xml title=xml rel="noopener external nofollow noreferrer" target=_blank class=exturl>xml
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @ObserverOfTime)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/ikatyang/tree-sitter-yaml title=yaml rel="noopener external nofollow noreferrer" target=_blank class=exturl>yaml
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @stsewd)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/Hubro/tree-sitter-yang title=yang rel="noopener external nofollow noreferrer" target=_blank class=exturl>yang
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @Hubro)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/Philipp-M/tree-sitter-yuck title=yuck rel="noopener external nofollow noreferrer" target=_blank class=exturl>yuck
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @Philipp-M, @amaanq)</li><li><input checked disabled type=checkbox>
 <a href=https://github.com/maxxnino/tree-sitter-zig title=zig rel="noopener external nofollow noreferrer" target=_blank class=exturl>zig
-<i class="fa fa-external-link-alt"></i>
 </a>(maintained by @maxxnino)</li></ul><p>For related information on the supported languages, including related plugins, see
 <a href=https://github.com/nvim-treesitter/nvim-treesitter/wiki/Supported-Languages-Information title="this wiki page" rel="noopener external nofollow noreferrer" target=_blank class=exturl>this wiki page
-<i class="fa fa-external-link-alt"></i>
 </a>.</p><h1 id=available-modules>Available modules
 <a class=header-anchor href=#available-modules></a></h1><p>Modules provide the top-level features of <code>nvim-treesitter</code>.
 The following is a list of modules included in <code>nvim-treesitter</code> and their configuration via <code>init.lua</code> (where multiple modules can be combined in a single call to <code>setup</code>).
 Note that not all modules work for all languages (depending on the queries available for them).
 Additional modules can be provided as
 <a href=https://github.com/nvim-treesitter/nvim-treesitter/wiki/Extra-modules-and-plugins title="external plugins" rel="noopener external nofollow noreferrer" target=_blank class=exturl>external plugins
-<i class="fa fa-external-link-alt"></i>
 </a>.</p><h4 id=highlight>Highlight
 <a class=header-anchor href=#highlight></a></h4><p>Consistent syntax highlighting.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-5-1><a class=lnlinks href=#hl-5-1> 1</a>
 </span><span class=lnt id=hl-5-2><a class=lnlinks href=#hl-5-2> 2</a>
@@ -1035,10 +801,8 @@ will still be considered installed. (For example if
 considered installed, even though it is not in <code>parser_install_dir</code>)</p><p>The default paths are:</p><ol><li>first the package folder. Where <code>nvim-treesitter</code> is installed.</li><li>second the site directory. This is the &ldquo;site&rdquo; subdirectory of <code>stdpath("data")</code>.</li></ol><h2 id=adding-parsers>Adding parsers
 <a class=header-anchor href=#adding-parsers></a></h2><p>If you have a parser that is not on the list of supported languages (either as a repository on Github or in a local directory), you can add it manually for use by <code>nvim-treesitter</code> as follows:</p><ol><li>Clone the repository or
 <a href=https://tree-sitter.github.io/tree-sitter/creating-parsers#project-setup title="create a new project" rel="noopener external nofollow noreferrer" target=_blank class=exturl>create a new project
-<i class="fa fa-external-link-alt"></i>
 </a>in, say, <code>~/projects/tree-sitter-zimbu</code>. Make sure that the <code>tree-sitter-cli</code> executable is installed and in your path; see
 <a href=https://tree-sitter.github.io/tree-sitter/creating-parsers#installation title=https://tree-sitter.github.io/tree-sitter/creating-parsers#installation rel="noopener external nofollow noreferrer" target=_blank class=exturl>https://tree-sitter.github.io/tree-sitter/creating-parsers#installation
-<i class="fa fa-external-link-alt"></i>
 </a>for installation instructions.</li><li>Run <code>tree-sitter generate</code> in this directory (followed by <code>tree-sitter test</code> for good measure).</li><li>Add the following snippet to your <code>init.lua</code>:</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-12-1><a class=lnlinks href=#hl-12-1> 1</a>
 </span><span class=lnt id=hl-12-2><a class=lnlinks href=#hl-12-2> 2</a>
 </span><span class=lnt id=hl-12-3><a class=lnlinks href=#hl-12-3> 3</a>
@@ -1071,7 +835,6 @@ If you want your installed grammar to be useful, you must manually
 Note also that module functionality is only triggered if your language&rsquo;s filetype is correctly identified.
 If Neovim does not detect your language&rsquo;s filetype by default, you can use
 <a href=https://neovim.io/doc/user/lua.html#vim.filetype.add%28%29 title="Neovim&rsquo;s vim.filetype.add()" rel="noopener external nofollow noreferrer" target=_blank class=exturl>Neovim&rsquo;s <code>vim.filetype.add()</code>
-<i class="fa fa-external-link-alt"></i>
 </a>to add a custom detection rule.</p><p>If you use a git repository for your parser and want to use a specific version, you can set the <code>revision</code> key
 in the <code>install_info</code> table for you parser config.</p><h2 id=adding-queries>Adding queries
 <a class=header-anchor href=#adding-queries></a></h2><p>Queries are what <code>nvim-treesitter</code> uses to extract information from the syntax tree;
@@ -1080,7 +843,6 @@ like the <code>queries</code> folder of this plugin, e.g. <code>queries/{languag
 Other modules may require additional queries such as <code>folding.scm</code>. You can find a
 list of all supported capture names in
 <a href=https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md#parser-configurations title=CONTRIBUTING.md rel="noopener external nofollow noreferrer" target=_blank class=exturl>CONTRIBUTING.md
-<i class="fa fa-external-link-alt"></i>
 </a>.</p><p>All queries found in the runtime directories will be combined.
 By convention, if you want to write a query, use the <code>queries/</code> directory,
 but if you want to extend a query use the <code>after/queries/</code> directory.</p><p>If you want to completely override a query, you can use <code>:h set_query()</code>.
@@ -1130,12 +892,10 @@ If not, you might be missing query files; see
 </a>.</p><p>Finally, ensure Neovim is correctly identifying your language&rsquo;s filetype using the <code>:echo &amp;filetype</code> command while one of your language&rsquo;s files is open in Neovim.
 If not, add a short Vimscript file to nvim-treesitter&rsquo;s <code>ftdetect</code> runtime directory following
 <a href=https://neovim.io/doc/user/filetype.html#new-filetype title="Neovim&rsquo;s documentation" rel="noopener external nofollow noreferrer" target=_blank class=exturl>Neovim&rsquo;s documentation
-<i class="fa fa-external-link-alt"></i>
 </a>on filetype detection.
 You can also quickly & temporarily set the filetype for a single buffer with the <code>:set filetype=langname</code> command to test whether it fixes the problem.</p><p>If everything is okay, then it might be an actual error.
 In that case, feel free to
 <a href=https://github.com/nvim-treesitter/nvim-treesitter/issues/new/choose title="open an issue here" rel="noopener external nofollow noreferrer" target=_blank class=exturl>open an issue here
-<i class="fa fa-external-link-alt"></i>
 </a>.</p><h4 id=i-get-module-vimtreesitterquery-not-found>I get <code>module 'vim.treesitter.query' not found</code>
 <a class=header-anchor href=#i-get-module-vimtreesitterquery-not-found></a></h4><p>Make sure you have the latest version of Neovim.</p><h4 id=i-get-error-detected-while-processing-pluginnvim-treesittervim-every-time-i-open-neovim>I get <code>Error detected while processing .../plugin/nvim-treesitter.vim</code> every time I open Neovim
 <a class=header-anchor href=#i-get-error-detected-while-processing-pluginnvim-treesittervim-every-time-i-open-neovim></a></h4><p>This is probably due to a change in a parser&rsquo;s grammar or its queries.
@@ -1143,7 +903,6 @@ Try updating the parser that you suspect has changed (<code>:TSUpdate {language}
 If the error persists after updating all parsers,
 please
 <a href=https://github.com/nvim-treesitter/nvim-treesitter/issues/new/choose title="open an issue" rel="noopener external nofollow noreferrer" target=_blank class=exturl>open an issue
-<i class="fa fa-external-link-alt"></i>
 </a>.</p><h4 id=i-get-query-error-invalid-node-type-at-position>I get <code>query error: invalid node type at position</code>
 <a class=header-anchor href=#i-get-query-error-invalid-node-type-at-position></a></h4><p>This could be due a query file outside this plugin using outdated nodes,
 or due to an outdated parser.</p><ul><li>Make sure you have the parsers up to date with <code>:TSUpdate</code></li><li>Make sure you don&rsquo;t have more than one <code>parser</code> runtime directory.
@@ -1151,13 +910,11 @@ You can execute this command <code>:echo nvim_get_runtime_file('parser', v:true)
 If you get more than one path, remove the ones that are outside this plugin (<code>nvim-treesitter</code> directory),
 so the correct version of the parser is used.</li></ul><h4 id=i-experience-weird-highlighting-issues-similar-to-78>I experience weird highlighting issues similar to
 <a href=https://github.com/nvim-treesitter/nvim-treesitter/issues/78 title=#78 rel="noopener external nofollow noreferrer" target=_blank class=exturl>#78
-<i class="fa fa-external-link-alt"></i>
 </a><a class=header-anchor href=#i-experience-weird-highlighting-issues-similar-to-78></a></h4><p>This is a well known issue, which arises when the tree and the buffer have gotten out of sync.
 As this is an upstream issue, we don&rsquo;t have any definite fix.
 To get around this, you can force reparsing the buffer with</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-18-1><a class=lnlinks href=#hl-18-1>1</a>
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-vim data-lang=vim><span class=line><span class=cl><span class=p>:</span><span class=nx>write</span> <span class=p>|</span> <span class=nx>edit</span> <span class=p>|</span> <span class=nx>TSBufEnable</span> <span class=k>highlight</span></span></span></code></pre></td></tr></table></div></div><p>This will save, restore and enable highlighting for the current buffer.</p><h4 id=i-experience-bugs-when-using-nvim-treesitters-foldexpr-similar-to-194>I experience bugs when using <code>nvim-treesitter</code>&rsquo;s <code>foldexpr</code> similar to
 <a href=https://github.com/nvim-treesitter/nvim-treesitter/issues/194 title=#194 rel="noopener external nofollow noreferrer" target=_blank class=exturl>#194
-<i class="fa fa-external-link-alt"></i>
 </a><a class=header-anchor href=#i-experience-bugs-when-using-nvim-treesitters-foldexpr-similar-to-194></a></h4><p>This might happen, and is known to happen, with <code>vim-clap</code>.
 To avoid these kind of errors, please use <code>setlocal</code> instead of <code>set</code> for the respective filetypes.</p><h4 id=i-run-into-errors-like-module-nvim-treesitterconfigs-not-found-at-startup>I run into errors like <code>module 'nvim-treesitter.configs' not found</code> at startup
 <a class=header-anchor href=#i-run-into-errors-like-module-nvim-treesitterconfigs-not-found-at-startup></a></h4><p>This is because of <code>rtp</code> management in <code>nvim</code>, adding <code>packadd nvim-treesitter</code> should fix the issue.</p><h4 id=i-want-to-use-git-instead-of-curl-for-downloading-the-parsers>I want to use Git instead of curl for downloading the parsers
@@ -1171,7 +928,6 @@ To avoid these kind of errors, please use <code>setlocal</code> instead of <code
 </span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div><p>or you can configure git via <code>.gitconfig</code> and use git instead of curl</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-21-1><a class=lnlinks href=#hl-21-1>1</a>
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-lua data-lang=lua><span class=line><span class=cl><span class=n>require</span><span class=p>(</span><span class=s2>&#34;nvim-treesitter.install&#34;</span><span class=p>).</span><span class=n>prefer_git</span> <span class=o>=</span> <span class=kc>true</span></span></span></code></pre></td></tr></table></div></div><h4 id=i-want-to-use-a-mirror-instead-of->I want to use a mirror instead of &ldquo;
 <a href=https://github.com/%22 title='https://github.com/"' rel="noopener external nofollow noreferrer" target=_blank class=exturl>https://github.com/"
-<i class="fa fa-external-link-alt"></i>
 </a><a class=header-anchor href=#i-want-to-use-a-mirror-instead-of-></a></h4><p>In your Lua config:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-22-1><a class=lnlinks href=#hl-22-1>1</a>
 </span><span class=lnt id=hl-22-2><a class=lnlinks href=#hl-22-2>2</a>
 </span><span class=lnt id=hl-22-3><a class=lnlinks href=#hl-22-3>3</a>
@@ -1194,4 +950,4 @@ To avoid these kind of errors, please use <code>setlocal</code> instead of <code
 <span class=lang-name>简体中文</span></div></div></div></div><div class=copyright>&copy;
 <span itemprop=copyrightYear>2022 - 2026
 </span><span class=with-love><i class="fa fa-heart"></i>
-</span><span class=author itemprop=copyrightHolder>Zhen-Hua Feng</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.169.0 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.8.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div></div></footer><script class=next-config data-name=page type=application/json>{"clipboard":{"js":{"alias":"clipboard","file":"dist/clipboard.min.js","name":"clipboard.js","version":"2.0.11"}},"comments":false,"expired":false,"isHome":false,"isPage":true,"math":{"js":{"file":"es5/tex-mml-svg.js","name":"mathjax","version":"3.2.2"},"render":"mathjax"},"path":"neovim%E6%8F%92%E4%BB%B6nvim-treesitter","permalink":"/post/neovim%E6%8F%92%E4%BB%B6nvim-treesitter/","title":"neovim插件（nvim-treesitter）","toc":true}</script><script type=text/javascript src=https://s4.zstatic.net/ajax/libs/animejs/3.2.2/anime.min.js crossorigin=anonymous defer></script><script type=text/javascript src=https://s4.zstatic.net/ajax/libs/viewerjs/1.11.6/viewer.min.js crossorigin=anonymous defer></script><script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#9400D3","enable":false,"save":"manual"},"copybtn":true,"darkmode":false,"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"isMultiLang":true,"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"slideInRight","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":false,"plugin":"waline"},"views":{"enable":false,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","share":{"addtoany":{"js":"https://static.addtoany.com/menu/page.js","locale":"zh-CN","num":8},"enable":false},"sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"zstatic","router":{"home":"https://www.zstatic.net","logo":"https://www.zstatic.net/logo.png","name":"zstatic","type":"modern","url":"https://s4.zstatic.net/ajax/libs"}},"version":"4.8.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":false,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"@waline/client","file":"dist/waline.css","name":"waline","version":"2.15.8"},"js":{"alias":"@waline/client","file":"dist/waline.js","name":"waline","version":"2.15.8"}}}</script><script type=text/javascript src="../../js/main.min.js?=1794212984" defer></script><script type=text/javascript src="../../js/clipboard.min.js?=1794212984" defer></script><script type=text/javascript src="../../js/math.min.js?=1794212984" defer></script></body></html>
+</span><span class=author itemprop=copyrightHolder>Zhen-Hua Feng</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.169.0 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.8.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div></div></footer><script class=next-config data-name=page type=application/json>{"clipboard":{"js":{"alias":"clipboard","file":"dist/clipboard.min.js","name":"clipboard.js","version":"2.0.11"}},"comments":false,"expired":false,"isHome":false,"isPage":true,"math":{"js":{"file":"es5/tex-mml-svg.js","name":"mathjax","version":"3.2.2"},"render":"mathjax"},"path":"neovim%E6%8F%92%E4%BB%B6nvim-treesitter","permalink":"/post/neovim%E6%8F%92%E4%BB%B6nvim-treesitter/","title":"neovim插件（nvim-treesitter）","toc":true}</script><script type=text/javascript src=https://s4.zstatic.net/ajax/libs/animejs/3.2.2/anime.min.js crossorigin=anonymous defer></script><script type=text/javascript src=https://s4.zstatic.net/ajax/libs/viewerjs/1.11.6/viewer.min.js crossorigin=anonymous defer></script><script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#9400D3","enable":false,"save":"manual"},"copybtn":true,"darkmode":false,"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"isMultiLang":true,"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"slideInRight","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":false,"plugin":"waline"},"views":{"enable":false,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","share":{"addtoany":{"js":"https://static.addtoany.com/menu/page.js","locale":"zh-CN","num":8},"enable":false},"sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"zstatic","router":{"home":"https://www.zstatic.net","logo":"https://www.zstatic.net/logo.png","name":"zstatic","type":"modern","url":"https://s4.zstatic.net/ajax/libs"}},"version":"4.8.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":false,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"@waline/client","file":"dist/waline.css","name":"waline","version":"2.15.8"},"js":{"alias":"@waline/client","file":"dist/waline.js","name":"waline","version":"2.15.8"}}}</script><script type=text/javascript src="../../js/main.min.js?=1794226588" defer></script><script type=text/javascript src="../../js/clipboard.min.js?=1794226589" defer></script><script type=text/javascript src="../../js/math.min.js?=1794226589" defer></script></body></html>
