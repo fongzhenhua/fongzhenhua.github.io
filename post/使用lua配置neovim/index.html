@@ -1,4 +1,4 @@
-<!doctype html><html lang=zh-CN data-theme=light><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=theme-color content="#9400D3" media="(prefers-color-scheme: light)"><meta name=generator content="Hugo 0.169.0"><link rel="shortcut icon" type=image/x-icon href=../../imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=../../imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=../../imgs/icons/favicon_16x16_next.png><link rel=icon type=image/png sizes=32x32 href=../../imgs/icons/favicon_32_32_next.png><link rel=apple-touch-icon sizes=180x180 href=../../imgs/icons/apple_touch_icon_next.png><meta itemprop=name content="使用Lua配置Neovim"><meta itemprop=description content><meta name=description content><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="/"><meta itemprop=keywords content="Hugo,Linux,Hexo,Physics"><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/font-awesome/6.7.2/css/all.min.css><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/viewerjs/1.11.6/viewer.min.css><link rel=stylesheet href="../../css/main.min.css?=1794144902"><style type=text/css>.post-footer hr:after{content:""}.flinks-list-footer hr:after{content:""}</style><link rel=stylesheet type=text/css href="../../css/custom_style.css?=1794144902"><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return 0[0];const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),0[0]):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>使用Lua配置Neovim - BNU-FZH</title><noscript><link rel=stylesheet href=../../css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
+<!doctype html><html lang=zh-CN data-theme=light><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=theme-color content="#9400D3" media="(prefers-color-scheme: light)"><meta name=generator content="Hugo 0.169.0"><link rel="shortcut icon" type=image/x-icon href=../../imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=../../imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=../../imgs/icons/favicon_16x16_next.png><link rel=icon type=image/png sizes=32x32 href=../../imgs/icons/favicon_32_32_next.png><link rel=apple-touch-icon sizes=180x180 href=../../imgs/icons/apple_touch_icon_next.png><meta itemprop=name content="使用Lua配置Neovim"><meta itemprop=description content><meta name=description content><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="/"><meta itemprop=keywords content="Hugo,Linux,Hexo,Physics"><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/font-awesome/6.7.2/css/all.min.css><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/viewerjs/1.11.6/viewer.min.css><link rel=stylesheet href="../../css/main.min.css?=1794212984"><style type=text/css>.post-footer hr:after{content:""}.flinks-list-footer hr:after{content:""}</style><link rel=stylesheet type=text/css href="../../css/custom_style.css?=1794212984"><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return 0[0];const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),0[0]):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>使用Lua配置Neovim - BNU-FZH</title><noscript><link rel=stylesheet href=../../css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
 <span class=toggle-line></span>
 <span class=toggle-line></span></div></div><div class=site-meta><a href=../../ class=brand rel=start><i class=logo-line></i><h1 class=site-title>BNU-FZH</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description>fengzhenhua@outlook.com</p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=../../ class=hvr-icon-pulse rel=section><i class="fa fa-home hvr-icon"></i>首页</a></li><li class="menu-item menu-item-about"><a href=../../about.html class=hvr-icon-pulse rel=section><i class="fa fa-user hvr-icon"></i>关于</a></li><li class="menu-item menu-item-导航"><a href=../../%E5%AF%BC%E8%88%AA/ class=hvr-icon-pulse rel=section><i class="fa fa-fa fa-paper-plane hvr-icon"></i>导航</a></li><li class="menu-item menu-item-软件"><a href=../../%E8%BD%AF%E4%BB%B6/ class=hvr-icon-pulse rel=section><i class="fa fa-fa fa-briefcase hvr-icon"></i>软件</a></li><li class="menu-item menu-item-收藏"><a href=../../%E6%94%B6%E8%97%8F/ class=hvr-icon-pulse rel=section><i class="fa fa-fa fa-folder hvr-icon"></i>收藏</a></li><li class="menu-item menu-item-工作"><a href=../../%E5%B7%A5%E4%BD%9C/ class=hvr-icon-pulse rel=section><i class="fa fa-fa fa-folder hvr-icon"></i>工作</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
 <span class=toggle-line></span>
@@ -107,94 +107,94 @@ Simplete</a></span></div></div></div></div></aside><div class=sidebar-dimmer></d
 <i class="fa fa-external-link-alt"></i></a></p></li><li><p><a href=https://neovim.io/doc/user/diagnostic.html#diagnostic-api title=Neovim|Diagnostics rel="noopener external nofollow noreferrer" target=_blank class=exturl>Neovim|Diagnostics
 <i class="fa fa-external-link-alt"></i></a></p></li><li><p><a href=https://neovim.io/doc/user/index.html title=Neovim|Main rel="noopener external nofollow noreferrer" target=_blank class=exturl>Neovim|Main
 <i class="fa fa-external-link-alt"></i></a></p></li></ol><p>首先需要说明的是，在进行针对 Neovim 的配置前需要先阅读一下 lua 语言，如果读者具备一定语言基础的话，那读菜鸟教程就很容易了。同时，在阅读网络教程时，不要拿过来就运行原作者的设置，因为你若不知道作者给出的代码的具体作用，那有可能会带来麻烦，同时也有可能原作者所设置的使用习惯并不一定适用你，所以为了安全和个人使用习惯请理解作者意图后再自行配置系统。</p><h1 id=目录树>目录树
-<a class=header-anchor href=#%e7%9b%ae%e5%bd%95%e6%a0%91></a></h1><p>考虑到目前 Neovim 并不是百分之百的使用 Lua 实现各种功能的插件，所以有时候就不可避免的使用原 vim 的插件，这样为了保持兼容性，我采用了这样的目录树：</p><ol><li><p>Neovim 的配置目录为：<code>~/.config/nvim/</code></p></li><li><p>在配置目录下，建立配置文件入口，使用<code>~/.config/nvim/init.vim</code> 而不是像网上的教程一样使用<code>init.lua</code>,因为这样设置可以最大程度的保证插件的兼容性。文件如下</p></li></ol><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-1> 1</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-2><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-2> 2</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-3><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-3> 3</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-4><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-4> 4</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-5><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-5> 5</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-6><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-6> 6</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-7><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-7> 7</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-8><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-8> 8</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-9><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-9> 9</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-10><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-10>10</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-11><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-11>11</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-12><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-12>12</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-13><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-13>13</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-14><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-14>14</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-15><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-15>15</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-16><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-16>16</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-17><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-17>17</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-18><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-18>18</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-19><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-19>19</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-20><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-20>20</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-21><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-21>21</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-22><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-22>22</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-23><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-23>23</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-24><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-24>24</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-25><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-25>25</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-26><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-26>26</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-27><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-27>27</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-28><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-28>28</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-29><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-29>29</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-30><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-30>30</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-31><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-31>31</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-32><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-32>32</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-33><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-33>33</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-34><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-34>34</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-35><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-35>35</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-36><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-36>36</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-37><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-37>37</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-38><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-38>38</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-39><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-39>39</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-40><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-40>40</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-41><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-41>41</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-42><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-42>42</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-43><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-43>43</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-44><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-44>44</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#e6db74>&#34;set runtimepath^=~/.vim runtimepath+=~/.vim/after
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>&#34;</span>let &amp;packpath <span style=color:#f92672>=</span> &amp;runtimepath
-</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;source ~/.vimrc
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>&#34;</span>let g:loaded_ruby_provider <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
-</span></span><span style=display:flex><span><span style=color:#e6db74>&#34; neovim 基础设置
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>lua require(&#39;lsp/base&#39;)
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>&#34;</span> Packer 插件管理
-</span></span><span style=display:flex><span>lua require<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;plg/plugins&#39;</span><span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>lua require<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;lsp/setup&#39;</span><span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>lua require<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;plg/cmp&#39;</span><span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;lua require(&#39;plugin-config/lspsaga&#39;)
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>&#34;</span> 启用tokyonight主题
-</span></span><span style=display:flex><span>lua vim.cmd<span style=color:#f92672>[[</span>colorscheme tokyonight<span style=color:#f92672>]]</span>
-</span></span><span style=display:flex><span>lua require<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;plg/tokyonight&#39;</span><span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>lua require<span style=color:#e6db74>&#39;lspconfig&#39;</span>.pyright.setup<span style=color:#f92672>{}</span>
-</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>&#34;</span> set <span style=color:#66d9ef>for</span> vim-vsnip cite from README
-</span></span><span style=display:flex><span><span style=color:#e6db74>&#34; NOTE: You can use other key to expand snippet.
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>&#34;</span> Expand
-</span></span><span style=display:flex><span>imap &lt;expr&gt; &lt;C-j&gt;   vsnip#expandable<span style=color:#f92672>()</span>  ? <span style=color:#e6db74>&#39;&lt;Plug&gt;(vsnip-expand)&#39;</span>         : <span style=color:#e6db74>&#39;&lt;C-j&gt;&#39;</span>
-</span></span><span style=display:flex><span>smap &lt;expr&gt; &lt;C-j&gt;   vsnip#expandable<span style=color:#f92672>()</span>  ? <span style=color:#e6db74>&#39;&lt;Plug&gt;(vsnip-expand)&#39;</span>         : <span style=color:#e6db74>&#39;&lt;C-j&gt;&#39;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#e6db74>&#34; Expand or jump
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>imap &lt;expr&gt; &lt;C-l&gt;   vsnip#available(1)  ? &#39;&lt;Plug&gt;(vsnip-expand-or-jump)&#39; : &#39;&lt;C-l&gt;&#39;
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>smap &lt;expr&gt; &lt;C-l&gt;   vsnip#available(1)  ? &#39;&lt;Plug&gt;(vsnip-expand-or-jump)&#39; : &#39;&lt;C-l&gt;&#39;
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>&#34;</span> Jump forward or backward
-</span></span><span style=display:flex><span>imap &lt;expr&gt; &lt;Tab&gt;   vsnip#jumpable<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span>   ? <span style=color:#e6db74>&#39;&lt;Plug&gt;(vsnip-jump-next)&#39;</span>      : <span style=color:#e6db74>&#39;&lt;Tab&gt;&#39;</span>
-</span></span><span style=display:flex><span>smap &lt;expr&gt; &lt;Tab&gt;   vsnip#jumpable<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span>   ? <span style=color:#e6db74>&#39;&lt;Plug&gt;(vsnip-jump-next)&#39;</span>      : <span style=color:#e6db74>&#39;&lt;Tab&gt;&#39;</span>
-</span></span><span style=display:flex><span>imap &lt;expr&gt; &lt;S-Tab&gt; vsnip#jumpable<span style=color:#f92672>(</span>-1<span style=color:#f92672>)</span>  ? <span style=color:#e6db74>&#39;&lt;Plug&gt;(vsnip-jump-prev)&#39;</span>      : <span style=color:#e6db74>&#39;&lt;S-Tab&gt;&#39;</span>
-</span></span><span style=display:flex><span>smap &lt;expr&gt; &lt;S-Tab&gt; vsnip#jumpable<span style=color:#f92672>(</span>-1<span style=color:#f92672>)</span>  ? <span style=color:#e6db74>&#39;&lt;Plug&gt;(vsnip-jump-prev)&#39;</span>      : <span style=color:#e6db74>&#39;&lt;S-Tab&gt;&#39;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#e6db74>&#34; Select or cut text to use as </span>$TM_SELECTED_TEXT<span style=color:#e6db74> in the next snippet.
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>&#34;</span> See https://github.com/hrsh7th/vim-vsnip/pull/50
-</span></span><span style=display:flex><span>nmap        s   &lt;Plug&gt;<span style=color:#f92672>(</span>vsnip-select-text<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>xmap        s   &lt;Plug&gt;<span style=color:#f92672>(</span>vsnip-select-text<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>nmap        S   &lt;Plug&gt;<span style=color:#f92672>(</span>vsnip-cut-text<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>xmap        S   &lt;Plug&gt;<span style=color:#f92672>(</span>vsnip-cut-text<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#e6db74>&#34; If you want to use snippet for multiple filetypes, you can `g:vsnip_filetypes` for it.
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>let g:vsnip_filetypes = {}
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>let g:vsnip_filetypes.javascriptreact = [&#39;javascript&#39;]
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>let g:vsnip_filetypes.typescriptreact = [&#39;typescript&#39;]</span></span></span></code></pre></td></tr></table></div></div><ol start=3><li>在<code>~/.config/nvim/</code>下建立目录<code>lua</code>,同时在<code>lua</code>下建立两个目录<code>lsp</code>和<code>plg</code>，其中前者用来存放和<code>language service</code>相关的<code>lua</code>配置文件，后者用来存放和插件<code>plugin</code>相关的文件。</li></ol><p>{% code ~/.config/nvim/plg/plugins.lua lang:lua %}
+<a class=header-anchor href=#%e7%9b%ae%e5%bd%95%e6%a0%91></a></h1><p>考虑到目前 Neovim 并不是百分之百的使用 Lua 实现各种功能的插件，所以有时候就不可避免的使用原 vim 的插件，这样为了保持兼容性，我采用了这样的目录树：</p><ol><li><p>Neovim 的配置目录为：<code>~/.config/nvim/</code></p></li><li><p>在配置目录下，建立配置文件入口，使用<code>~/.config/nvim/init.vim</code> 而不是像网上的教程一样使用<code>init.lua</code>,因为这样设置可以最大程度的保证插件的兼容性。文件如下</p></li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-0-1><a class=lnlinks href=#hl-0-1> 1</a>
+</span><span class=lnt id=hl-0-2><a class=lnlinks href=#hl-0-2> 2</a>
+</span><span class=lnt id=hl-0-3><a class=lnlinks href=#hl-0-3> 3</a>
+</span><span class=lnt id=hl-0-4><a class=lnlinks href=#hl-0-4> 4</a>
+</span><span class=lnt id=hl-0-5><a class=lnlinks href=#hl-0-5> 5</a>
+</span><span class=lnt id=hl-0-6><a class=lnlinks href=#hl-0-6> 6</a>
+</span><span class=lnt id=hl-0-7><a class=lnlinks href=#hl-0-7> 7</a>
+</span><span class=lnt id=hl-0-8><a class=lnlinks href=#hl-0-8> 8</a>
+</span><span class=lnt id=hl-0-9><a class=lnlinks href=#hl-0-9> 9</a>
+</span><span class=lnt id=hl-0-10><a class=lnlinks href=#hl-0-10>10</a>
+</span><span class=lnt id=hl-0-11><a class=lnlinks href=#hl-0-11>11</a>
+</span><span class=lnt id=hl-0-12><a class=lnlinks href=#hl-0-12>12</a>
+</span><span class=lnt id=hl-0-13><a class=lnlinks href=#hl-0-13>13</a>
+</span><span class=lnt id=hl-0-14><a class=lnlinks href=#hl-0-14>14</a>
+</span><span class=lnt id=hl-0-15><a class=lnlinks href=#hl-0-15>15</a>
+</span><span class=lnt id=hl-0-16><a class=lnlinks href=#hl-0-16>16</a>
+</span><span class=lnt id=hl-0-17><a class=lnlinks href=#hl-0-17>17</a>
+</span><span class=lnt id=hl-0-18><a class=lnlinks href=#hl-0-18>18</a>
+</span><span class=lnt id=hl-0-19><a class=lnlinks href=#hl-0-19>19</a>
+</span><span class=lnt id=hl-0-20><a class=lnlinks href=#hl-0-20>20</a>
+</span><span class=lnt id=hl-0-21><a class=lnlinks href=#hl-0-21>21</a>
+</span><span class=lnt id=hl-0-22><a class=lnlinks href=#hl-0-22>22</a>
+</span><span class=lnt id=hl-0-23><a class=lnlinks href=#hl-0-23>23</a>
+</span><span class=lnt id=hl-0-24><a class=lnlinks href=#hl-0-24>24</a>
+</span><span class=lnt id=hl-0-25><a class=lnlinks href=#hl-0-25>25</a>
+</span><span class=lnt id=hl-0-26><a class=lnlinks href=#hl-0-26>26</a>
+</span><span class=lnt id=hl-0-27><a class=lnlinks href=#hl-0-27>27</a>
+</span><span class=lnt id=hl-0-28><a class=lnlinks href=#hl-0-28>28</a>
+</span><span class=lnt id=hl-0-29><a class=lnlinks href=#hl-0-29>29</a>
+</span><span class=lnt id=hl-0-30><a class=lnlinks href=#hl-0-30>30</a>
+</span><span class=lnt id=hl-0-31><a class=lnlinks href=#hl-0-31>31</a>
+</span><span class=lnt id=hl-0-32><a class=lnlinks href=#hl-0-32>32</a>
+</span><span class=lnt id=hl-0-33><a class=lnlinks href=#hl-0-33>33</a>
+</span><span class=lnt id=hl-0-34><a class=lnlinks href=#hl-0-34>34</a>
+</span><span class=lnt id=hl-0-35><a class=lnlinks href=#hl-0-35>35</a>
+</span><span class=lnt id=hl-0-36><a class=lnlinks href=#hl-0-36>36</a>
+</span><span class=lnt id=hl-0-37><a class=lnlinks href=#hl-0-37>37</a>
+</span><span class=lnt id=hl-0-38><a class=lnlinks href=#hl-0-38>38</a>
+</span><span class=lnt id=hl-0-39><a class=lnlinks href=#hl-0-39>39</a>
+</span><span class=lnt id=hl-0-40><a class=lnlinks href=#hl-0-40>40</a>
+</span><span class=lnt id=hl-0-41><a class=lnlinks href=#hl-0-41>41</a>
+</span><span class=lnt id=hl-0-42><a class=lnlinks href=#hl-0-42>42</a>
+</span><span class=lnt id=hl-0-43><a class=lnlinks href=#hl-0-43>43</a>
+</span><span class=lnt id=hl-0-44><a class=lnlinks href=#hl-0-44>44</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=s2>&#34;set runtimepath^=~/.vim runtimepath+=~/.vim/after
+</span></span></span><span class=line><span class=cl><span class=s2>&#34;</span><span class=nb>let</span> <span class=p>&amp;</span><span class=nv>packpath</span> <span class=o>=</span> <span class=p>&amp;</span>runtimepath
+</span></span><span class=line><span class=cl><span class=s2>&#34;source ~/.vimrc
+</span></span></span><span class=line><span class=cl><span class=s2>&#34;</span><span class=nb>let</span> g:loaded_ruby_provider <span class=o>=</span> <span class=m>0</span>
+</span></span><span class=line><span class=cl><span class=s2>&#34; neovim 基础设置
+</span></span></span><span class=line><span class=cl><span class=s2>lua require(&#39;lsp/base&#39;)
+</span></span></span><span class=line><span class=cl><span class=s2>&#34;</span> Packer 插件管理
+</span></span><span class=line><span class=cl>lua require<span class=o>(</span><span class=s1>&#39;plg/plugins&#39;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>lua require<span class=o>(</span><span class=s1>&#39;lsp/setup&#39;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>lua require<span class=o>(</span><span class=s1>&#39;plg/cmp&#39;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=s2>&#34;lua require(&#39;plugin-config/lspsaga&#39;)
+</span></span></span><span class=line><span class=cl><span class=s2>&#34;</span> 启用tokyonight主题
+</span></span><span class=line><span class=cl>lua vim.cmd<span class=o>[[</span>colorscheme tokyonight<span class=o>]]</span>
+</span></span><span class=line><span class=cl>lua require<span class=o>(</span><span class=s1>&#39;plg/tokyonight&#39;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>lua require<span class=s1>&#39;lspconfig&#39;</span>.pyright.setup<span class=o>{}</span>
+</span></span><span class=line><span class=cl><span class=s2>&#34;
+</span></span></span><span class=line><span class=cl><span class=s2>&#34;</span> <span class=nb>set</span> <span class=k>for</span> vim-vsnip cite from README
+</span></span><span class=line><span class=cl><span class=s2>&#34; NOTE: You can use other key to expand snippet.
+</span></span></span><span class=line><span class=cl><span class=s2>
+</span></span></span><span class=line><span class=cl><span class=s2>&#34;</span> Expand
+</span></span><span class=line><span class=cl>imap &lt;expr&gt; &lt;C-j&gt;   vsnip#expandable<span class=o>()</span>  ? <span class=s1>&#39;&lt;Plug&gt;(vsnip-expand)&#39;</span>         : <span class=s1>&#39;&lt;C-j&gt;&#39;</span>
+</span></span><span class=line><span class=cl>smap &lt;expr&gt; &lt;C-j&gt;   vsnip#expandable<span class=o>()</span>  ? <span class=s1>&#39;&lt;Plug&gt;(vsnip-expand)&#39;</span>         : <span class=s1>&#39;&lt;C-j&gt;&#39;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=s2>&#34; Expand or jump
+</span></span></span><span class=line><span class=cl><span class=s2>imap &lt;expr&gt; &lt;C-l&gt;   vsnip#available(1)  ? &#39;&lt;Plug&gt;(vsnip-expand-or-jump)&#39; : &#39;&lt;C-l&gt;&#39;
+</span></span></span><span class=line><span class=cl><span class=s2>smap &lt;expr&gt; &lt;C-l&gt;   vsnip#available(1)  ? &#39;&lt;Plug&gt;(vsnip-expand-or-jump)&#39; : &#39;&lt;C-l&gt;&#39;
+</span></span></span><span class=line><span class=cl><span class=s2>
+</span></span></span><span class=line><span class=cl><span class=s2>&#34;</span> Jump forward or backward
+</span></span><span class=line><span class=cl>imap &lt;expr&gt; &lt;Tab&gt;   vsnip#jumpable<span class=o>(</span>1<span class=o>)</span>   ? <span class=s1>&#39;&lt;Plug&gt;(vsnip-jump-next)&#39;</span>      : <span class=s1>&#39;&lt;Tab&gt;&#39;</span>
+</span></span><span class=line><span class=cl>smap &lt;expr&gt; &lt;Tab&gt;   vsnip#jumpable<span class=o>(</span>1<span class=o>)</span>   ? <span class=s1>&#39;&lt;Plug&gt;(vsnip-jump-next)&#39;</span>      : <span class=s1>&#39;&lt;Tab&gt;&#39;</span>
+</span></span><span class=line><span class=cl>imap &lt;expr&gt; &lt;S-Tab&gt; vsnip#jumpable<span class=o>(</span>-1<span class=o>)</span>  ? <span class=s1>&#39;&lt;Plug&gt;(vsnip-jump-prev)&#39;</span>      : <span class=s1>&#39;&lt;S-Tab&gt;&#39;</span>
+</span></span><span class=line><span class=cl>smap &lt;expr&gt; &lt;S-Tab&gt; vsnip#jumpable<span class=o>(</span>-1<span class=o>)</span>  ? <span class=s1>&#39;&lt;Plug&gt;(vsnip-jump-prev)&#39;</span>      : <span class=s1>&#39;&lt;S-Tab&gt;&#39;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=s2>&#34; Select or cut text to use as </span><span class=nv>$TM_SELECTED_TEXT</span><span class=s2> in the next snippet.
+</span></span></span><span class=line><span class=cl><span class=s2>&#34;</span> See https://github.com/hrsh7th/vim-vsnip/pull/50
+</span></span><span class=line><span class=cl>nmap        s   &lt;Plug&gt;<span class=o>(</span>vsnip-select-text<span class=o>)</span>
+</span></span><span class=line><span class=cl>xmap        s   &lt;Plug&gt;<span class=o>(</span>vsnip-select-text<span class=o>)</span>
+</span></span><span class=line><span class=cl>nmap        S   &lt;Plug&gt;<span class=o>(</span>vsnip-cut-text<span class=o>)</span>
+</span></span><span class=line><span class=cl>xmap        S   &lt;Plug&gt;<span class=o>(</span>vsnip-cut-text<span class=o>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=s2>&#34; If you want to use snippet for multiple filetypes, you can `g:vsnip_filetypes` for it.
+</span></span></span><span class=line><span class=cl><span class=s2>let g:vsnip_filetypes = {}
+</span></span></span><span class=line><span class=cl><span class=s2>let g:vsnip_filetypes.javascriptreact = [&#39;javascript&#39;]
+</span></span></span><span class=line><span class=cl><span class=s2>let g:vsnip_filetypes.typescriptreact = [&#39;typescript&#39;]</span></span></span></code></pre></td></tr></table></div></div><ol start=3><li>在<code>~/.config/nvim/</code>下建立目录<code>lua</code>,同时在<code>lua</code>下建立两个目录<code>lsp</code>和<code>plg</code>，其中前者用来存放和<code>language service</code>相关的<code>lua</code>配置文件，后者用来存放和插件<code>plugin</code>相关的文件。</li></ol><p>{% code ~/.config/nvim/plg/plugins.lua lang:lua %}
 return require(&lsquo;packer&rsquo;).startup(function()
 &ndash; Packer can manage itself
 use &lsquo;wbthomason/packer.nvim&rsquo;
@@ -543,17 +543,17 @@ description = [=[
 https://github.com/valentjn/ltex-ls</p><p>LTeX Language Server: LSP language server for LanguageTool 🔍✔️ with support for LaTeX 🎓, Markdown 📝, and others</p><p>To install, download the latest
 <a href=https://github.com/valentjn/ltex-ls/releases title=release rel="noopener external nofollow noreferrer" target=_blank class=exturl>release
 <i class="fa fa-external-link-alt"></i>
-</a>and ensure <code>ltex-ls</code> is on your path.</p><p>This server accepts configuration via the <code>settings</code> key.</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-1>1</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-2><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-2>2</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-3><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-3>3</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-4><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-4>4</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-5><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-5>5</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-lua data-lang=lua><span style=display:flex><span>settings <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>	ltex <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>		language <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;en-GB&#34;</span>,
-</span></span><span style=display:flex><span>	},
-</span></span><span style=display:flex><span>},</span></span></code></pre></td></tr></table></div></div><p>To support org files or R sweave, users can define a custom filetype autocommand (or use a plugin which defines these filetypes):</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-1>1</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-lua data-lang=lua><span style=display:flex><span>vim.cmd <span style=color:#e6db74>[[ autocmd BufRead,BufNewFile *.org set filetype=org ]]</span></span></span></code></pre></td></tr></table></div></div><p>]=],
+</a>and ensure <code>ltex-ls</code> is on your path.</p><p>This server accepts configuration via the <code>settings</code> key.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-1-1><a class=lnlinks href=#hl-1-1>1</a>
+</span><span class=lnt id=hl-1-2><a class=lnlinks href=#hl-1-2>2</a>
+</span><span class=lnt id=hl-1-3><a class=lnlinks href=#hl-1-3>3</a>
+</span><span class=lnt id=hl-1-4><a class=lnlinks href=#hl-1-4>4</a>
+</span><span class=lnt id=hl-1-5><a class=lnlinks href=#hl-1-5>5</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-lua data-lang=lua><span class=line><span class=cl><span class=n>settings</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=n>ltex</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=n>language</span> <span class=o>=</span> <span class=s2>&#34;en-GB&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>	<span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>},</span></span></span></code></pre></td></tr></table></div></div><p>To support org files or R sweave, users can define a custom filetype autocommand (or use a plugin which defines these filetypes):</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-2-1><a class=lnlinks href=#hl-2-1>1</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-lua data-lang=lua><span class=line><span class=cl><span class=n>vim.cmd</span> <span class=s>[[ autocmd BufRead,BufNewFile *.org set filetype=org ]]</span></span></span></code></pre></td></tr></table></div></div><p>]=],
 },
 }
 {% endcode %}</p><p>{% code ~/.config/nvim/lua/lsp/python.lua lang:lua %}</p><p>local lsp_set_keymap = require(&ldquo;keybindings&rdquo;)
@@ -635,216 +635,216 @@ end</p><p>return pluginKeys
 &ldquo;body&rdquo;: &ldquo;$TM_FILENAME_BASE&rdquo;
 }
 }
-{% endcode %}</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-1>  1</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-2><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-2>  2</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-3><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-3>  3</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-4><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-4>  4</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-5><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-5>  5</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-6><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-6>  6</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-7><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-7>  7</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-8><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-8>  8</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-9><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-9>  9</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-10><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-10> 10</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-11><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-11> 11</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-12><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-12> 12</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-13><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-13> 13</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-14><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-14> 14</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-15><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-15> 15</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-16><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-16> 16</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-17><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-17> 17</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-18><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-18> 18</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-19><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-19> 19</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-20><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-20> 20</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-21><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-21> 21</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-22><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-22> 22</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-23><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-23> 23</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-24><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-24> 24</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-25><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-25> 25</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-26><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-26> 26</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-27><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-27> 27</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-28><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-28> 28</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-29><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-29> 29</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-30><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-30> 30</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-31><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-31> 31</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-32><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-32> 32</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-33><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-33> 33</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-34><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-34> 34</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-35><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-35> 35</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-36><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-36> 36</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-37><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-37> 37</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-38><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-38> 38</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-39><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-39> 39</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-40><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-40> 40</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-41><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-41> 41</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-42><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-42> 42</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-43><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-43> 43</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-44><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-44> 44</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-45><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-45> 45</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-46><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-46> 46</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-47><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-47> 47</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-48><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-48> 48</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-49><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-49> 49</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-50><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-50> 50</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-51><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-51> 51</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-52><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-52> 52</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-53><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-53> 53</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-54><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-54> 54</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-55><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-55> 55</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-56><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-56> 56</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-57><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-57> 57</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-58><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-58> 58</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-59><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-59> 59</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-60><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-60> 60</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-61><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-61> 61</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-62><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-62> 62</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-63><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-63> 63</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-64><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-64> 64</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-65><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-65> 65</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-66><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-66> 66</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-67><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-67> 67</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-68><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-68> 68</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-69><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-69> 69</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-70><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-70> 70</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-71><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-71> 71</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-72><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-72> 72</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-73><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-73> 73</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-74><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-74> 74</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-75><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-75> 75</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-76><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-76> 76</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-77><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-77> 77</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-78><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-78> 78</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-79><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-79> 79</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-80><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-80> 80</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-81><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-81> 81</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-82><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-82> 82</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-83><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-83> 83</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-84><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-84> 84</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-85><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-85> 85</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-86><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-86> 86</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-87><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-87> 87</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-88><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-88> 88</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-89><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-89> 89</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-90><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-90> 90</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-91><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-91> 91</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-92><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-92> 92</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-93><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-93> 93</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-94><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-94> 94</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-95><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-95> 95</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-96><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-96> 96</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-97><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-97> 97</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-98><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-98> 98</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-99><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-99> 99</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-100><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-100>100</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-101><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-101>101</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-102><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-102>102</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-103><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-103>103</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;code&#34;</span>: <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;prefix&#34;</span>: <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;code&#34;</span><span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;body&#34;</span>: <span style=color:#f92672>[</span>
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;{% code &lt;+title+&gt; lang:</span><span style=color:#e6db74>${</span>1|bash,python,lua,perl,yaml,ruby|<span style=color:#e6db74>}</span><span style=color:#e6db74> %}&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;&lt;+code+&gt;&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;{% endcode %}&#34;</span>
-</span></span><span style=display:flex><span>        <span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Next theme environment for Hexo&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>,
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;codeblock&#34;</span>: <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;prefix&#34;</span>: <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;codeblock&#34;</span><span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;body&#34;</span>: <span style=color:#f92672>[</span>
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;{% codeblock &lt;+title+&gt; lang:</span><span style=color:#e6db74>${</span>1|bash,python,lua,perl,yaml,ruby|<span style=color:#e6db74>}</span><span style=color:#e6db74> %}&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;&lt;+code+&gt;&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;{% endcodeblock %}&#34;</span>
-</span></span><span style=display:flex><span>        <span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Next theme environment for Hexo&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>,
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;```&#34;</span>: <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;prefix&#34;</span>: <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;```&#34;</span><span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;body&#34;</span>: <span style=color:#f92672>[</span>
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;```</span><span style=color:#e6db74>${</span>1|bash,python,lua,perl,yaml,ruby|<span style=color:#e6db74>}</span><span style=color:#e6db74> &lt;+title+&gt; &#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;&lt;+code+&gt;&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;```&#34;</span>
-</span></span><span style=display:flex><span>        <span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Next theme environment for Hexo&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>,
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;note&#34;</span>: <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;prefix&#34;</span>: <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;note&#34;</span><span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;body&#34;</span>: <span style=color:#f92672>[</span>
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;{% note </span><span style=color:#e6db74>${</span>1|default,primary,success,info,warning,danger|<span style=color:#e6db74>}</span><span style=color:#e6db74> %}&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;&lt;++&gt;&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;{% endnote %}&#34;</span>
-</span></span><span style=display:flex><span>        <span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Next theme environment for Hexo&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>,
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;tabs&#34;</span>: <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;prefix&#34;</span>: <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;tabs&#34;</span><span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;body&#34;</span>: <span style=color:#f92672>[</span>
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;{% tabs </span><span style=color:#e6db74>${</span>1:&lt;+UniqueName+&gt;<span style=color:#e6db74>}</span><span style=color:#e6db74> %}&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;&lt;!-- tab </span><span style=color:#e6db74>${</span>2:&lt;+tabcaption+&gt;<span style=color:#e6db74>}</span><span style=color:#e6db74> --&gt;&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;&lt;++&gt;&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;&lt;!-- endtab --&gt;&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;&lt;++&gt;&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;{% endtabs %}&#34;</span>
-</span></span><span style=display:flex><span>        <span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Next theme environment for Hexo&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>,
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;tab&#34;</span>: <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;prefix&#34;</span>: <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;tab&#34;</span><span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;body&#34;</span>: <span style=color:#f92672>[</span>
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;&lt;!-- tab </span><span style=color:#e6db74>${</span>2:&lt;+tabcaption+&gt;<span style=color:#e6db74>}</span><span style=color:#e6db74> --&gt;&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;&lt;++&gt;&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;&lt;!-- endtab --&gt;&#34;</span>
-</span></span><span style=display:flex><span>        <span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Next theme environment for Hexo&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>,
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;label&#34;</span>: <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;prefix&#34;</span>: <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;label&#34;</span><span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;body&#34;</span>: <span style=color:#f92672>[</span>
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;{% label </span><span style=color:#e6db74>${</span>1|default,primary,success,info,warning,danger|<span style=color:#e6db74>}</span><span style=color:#e6db74>@</span><span style=color:#e6db74>${</span>2:&lt;+content+&gt;<span style=color:#e6db74>}</span><span style=color:#e6db74> %}&#34;</span>
-</span></span><span style=display:flex><span>        <span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Next theme environment for Hexo&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>,
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;centerquote&#34;</span>: <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;prefix&#34;</span>: <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;centerquote&#34;</span><span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;body&#34;</span>: <span style=color:#f92672>[</span>
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;{% centerquote %}&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>1:&lt;+content+&gt;<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;{% endcenterquote %}&#34;</span>
-</span></span><span style=display:flex><span>        <span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Next theme environment for Hexo&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>,
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;video&#34;</span>: <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;prefix&#34;</span>: <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;video&#34;</span><span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;body&#34;</span>: <span style=color:#f92672>[</span>
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;{% video </span><span style=color:#e6db74>${</span>1|&lt;+/path/to/your/video.mp4+&gt;,https://&lt;+example.com/sample.mp4+&gt;|<span style=color:#e6db74>}</span><span style=color:#e6db74>%}&#34;</span>
-</span></span><span style=display:flex><span>        <span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Next theme environment for Hexo&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>,
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;pdf&#34;</span>: <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;prefix&#34;</span>: <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;pdf&#34;</span><span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;body&#34;</span>: <span style=color:#f92672>[</span>
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;{% pdf </span><span style=color:#e6db74>${</span>1|&lt;+/path/to/your/video.pdf+&gt;,https://&lt;+example.com/sample.pdf+&gt;|<span style=color:#e6db74>}</span><span style=color:#e6db74>%}&#34;</span>
-</span></span><span style=display:flex><span>        <span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Next theme environment for Hexo&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>,
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;grouppicture&#34;</span>: <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;prefix&#34;</span>: <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;grouppicture&#34;</span><span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;body&#34;</span>: <span style=color:#f92672>[</span>
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;{% grouppicture </span><span style=color:#e6db74>${</span>1:&lt;+number+&gt;<span style=color:#e6db74>}</span><span style=color:#e6db74>-</span><span style=color:#e6db74>${</span>2:&lt;+layout+&gt;<span style=color:#e6db74>}</span><span style=color:#e6db74> %}&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;![</span><span style=color:#e6db74>${</span>3:&lt;+picturetitle+&gt;<span style=color:#e6db74>}</span><span style=color:#e6db74>](</span><span style=color:#e6db74>${</span>4:&lt;+picture+&gt;<span style=color:#e6db74>}</span><span style=color:#e6db74>)&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;{% endgroudpicture %}&#34;</span>
-</span></span><span style=display:flex><span>        <span style=color:#f92672>]</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Next theme environment for Hexo&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>}</span></span></span></code></pre></td></tr></table></div></div></div><footer class=post-footer><hr><div class=post-nav><div class="post-nav-next post-nav-item"><a href=../../post/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92/ rel=next title=软件开发规划><i class="fa fa-chevron-left"></i> 软件开发规划</a></div><div class="post-nav-prev post-nav-item"><a href=../../post/%E9%AB%98%E9%98%B6%E8%8B%B1%E8%AF%AD%E5%A4%A7%E4%BD%9C%E4%B8%9A/ rel=prev title=高阶英语大作业>高阶英语大作业
+{% endcode %}</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-3-1><a class=lnlinks href=#hl-3-1>  1</a>
+</span><span class=lnt id=hl-3-2><a class=lnlinks href=#hl-3-2>  2</a>
+</span><span class=lnt id=hl-3-3><a class=lnlinks href=#hl-3-3>  3</a>
+</span><span class=lnt id=hl-3-4><a class=lnlinks href=#hl-3-4>  4</a>
+</span><span class=lnt id=hl-3-5><a class=lnlinks href=#hl-3-5>  5</a>
+</span><span class=lnt id=hl-3-6><a class=lnlinks href=#hl-3-6>  6</a>
+</span><span class=lnt id=hl-3-7><a class=lnlinks href=#hl-3-7>  7</a>
+</span><span class=lnt id=hl-3-8><a class=lnlinks href=#hl-3-8>  8</a>
+</span><span class=lnt id=hl-3-9><a class=lnlinks href=#hl-3-9>  9</a>
+</span><span class=lnt id=hl-3-10><a class=lnlinks href=#hl-3-10> 10</a>
+</span><span class=lnt id=hl-3-11><a class=lnlinks href=#hl-3-11> 11</a>
+</span><span class=lnt id=hl-3-12><a class=lnlinks href=#hl-3-12> 12</a>
+</span><span class=lnt id=hl-3-13><a class=lnlinks href=#hl-3-13> 13</a>
+</span><span class=lnt id=hl-3-14><a class=lnlinks href=#hl-3-14> 14</a>
+</span><span class=lnt id=hl-3-15><a class=lnlinks href=#hl-3-15> 15</a>
+</span><span class=lnt id=hl-3-16><a class=lnlinks href=#hl-3-16> 16</a>
+</span><span class=lnt id=hl-3-17><a class=lnlinks href=#hl-3-17> 17</a>
+</span><span class=lnt id=hl-3-18><a class=lnlinks href=#hl-3-18> 18</a>
+</span><span class=lnt id=hl-3-19><a class=lnlinks href=#hl-3-19> 19</a>
+</span><span class=lnt id=hl-3-20><a class=lnlinks href=#hl-3-20> 20</a>
+</span><span class=lnt id=hl-3-21><a class=lnlinks href=#hl-3-21> 21</a>
+</span><span class=lnt id=hl-3-22><a class=lnlinks href=#hl-3-22> 22</a>
+</span><span class=lnt id=hl-3-23><a class=lnlinks href=#hl-3-23> 23</a>
+</span><span class=lnt id=hl-3-24><a class=lnlinks href=#hl-3-24> 24</a>
+</span><span class=lnt id=hl-3-25><a class=lnlinks href=#hl-3-25> 25</a>
+</span><span class=lnt id=hl-3-26><a class=lnlinks href=#hl-3-26> 26</a>
+</span><span class=lnt id=hl-3-27><a class=lnlinks href=#hl-3-27> 27</a>
+</span><span class=lnt id=hl-3-28><a class=lnlinks href=#hl-3-28> 28</a>
+</span><span class=lnt id=hl-3-29><a class=lnlinks href=#hl-3-29> 29</a>
+</span><span class=lnt id=hl-3-30><a class=lnlinks href=#hl-3-30> 30</a>
+</span><span class=lnt id=hl-3-31><a class=lnlinks href=#hl-3-31> 31</a>
+</span><span class=lnt id=hl-3-32><a class=lnlinks href=#hl-3-32> 32</a>
+</span><span class=lnt id=hl-3-33><a class=lnlinks href=#hl-3-33> 33</a>
+</span><span class=lnt id=hl-3-34><a class=lnlinks href=#hl-3-34> 34</a>
+</span><span class=lnt id=hl-3-35><a class=lnlinks href=#hl-3-35> 35</a>
+</span><span class=lnt id=hl-3-36><a class=lnlinks href=#hl-3-36> 36</a>
+</span><span class=lnt id=hl-3-37><a class=lnlinks href=#hl-3-37> 37</a>
+</span><span class=lnt id=hl-3-38><a class=lnlinks href=#hl-3-38> 38</a>
+</span><span class=lnt id=hl-3-39><a class=lnlinks href=#hl-3-39> 39</a>
+</span><span class=lnt id=hl-3-40><a class=lnlinks href=#hl-3-40> 40</a>
+</span><span class=lnt id=hl-3-41><a class=lnlinks href=#hl-3-41> 41</a>
+</span><span class=lnt id=hl-3-42><a class=lnlinks href=#hl-3-42> 42</a>
+</span><span class=lnt id=hl-3-43><a class=lnlinks href=#hl-3-43> 43</a>
+</span><span class=lnt id=hl-3-44><a class=lnlinks href=#hl-3-44> 44</a>
+</span><span class=lnt id=hl-3-45><a class=lnlinks href=#hl-3-45> 45</a>
+</span><span class=lnt id=hl-3-46><a class=lnlinks href=#hl-3-46> 46</a>
+</span><span class=lnt id=hl-3-47><a class=lnlinks href=#hl-3-47> 47</a>
+</span><span class=lnt id=hl-3-48><a class=lnlinks href=#hl-3-48> 48</a>
+</span><span class=lnt id=hl-3-49><a class=lnlinks href=#hl-3-49> 49</a>
+</span><span class=lnt id=hl-3-50><a class=lnlinks href=#hl-3-50> 50</a>
+</span><span class=lnt id=hl-3-51><a class=lnlinks href=#hl-3-51> 51</a>
+</span><span class=lnt id=hl-3-52><a class=lnlinks href=#hl-3-52> 52</a>
+</span><span class=lnt id=hl-3-53><a class=lnlinks href=#hl-3-53> 53</a>
+</span><span class=lnt id=hl-3-54><a class=lnlinks href=#hl-3-54> 54</a>
+</span><span class=lnt id=hl-3-55><a class=lnlinks href=#hl-3-55> 55</a>
+</span><span class=lnt id=hl-3-56><a class=lnlinks href=#hl-3-56> 56</a>
+</span><span class=lnt id=hl-3-57><a class=lnlinks href=#hl-3-57> 57</a>
+</span><span class=lnt id=hl-3-58><a class=lnlinks href=#hl-3-58> 58</a>
+</span><span class=lnt id=hl-3-59><a class=lnlinks href=#hl-3-59> 59</a>
+</span><span class=lnt id=hl-3-60><a class=lnlinks href=#hl-3-60> 60</a>
+</span><span class=lnt id=hl-3-61><a class=lnlinks href=#hl-3-61> 61</a>
+</span><span class=lnt id=hl-3-62><a class=lnlinks href=#hl-3-62> 62</a>
+</span><span class=lnt id=hl-3-63><a class=lnlinks href=#hl-3-63> 63</a>
+</span><span class=lnt id=hl-3-64><a class=lnlinks href=#hl-3-64> 64</a>
+</span><span class=lnt id=hl-3-65><a class=lnlinks href=#hl-3-65> 65</a>
+</span><span class=lnt id=hl-3-66><a class=lnlinks href=#hl-3-66> 66</a>
+</span><span class=lnt id=hl-3-67><a class=lnlinks href=#hl-3-67> 67</a>
+</span><span class=lnt id=hl-3-68><a class=lnlinks href=#hl-3-68> 68</a>
+</span><span class=lnt id=hl-3-69><a class=lnlinks href=#hl-3-69> 69</a>
+</span><span class=lnt id=hl-3-70><a class=lnlinks href=#hl-3-70> 70</a>
+</span><span class=lnt id=hl-3-71><a class=lnlinks href=#hl-3-71> 71</a>
+</span><span class=lnt id=hl-3-72><a class=lnlinks href=#hl-3-72> 72</a>
+</span><span class=lnt id=hl-3-73><a class=lnlinks href=#hl-3-73> 73</a>
+</span><span class=lnt id=hl-3-74><a class=lnlinks href=#hl-3-74> 74</a>
+</span><span class=lnt id=hl-3-75><a class=lnlinks href=#hl-3-75> 75</a>
+</span><span class=lnt id=hl-3-76><a class=lnlinks href=#hl-3-76> 76</a>
+</span><span class=lnt id=hl-3-77><a class=lnlinks href=#hl-3-77> 77</a>
+</span><span class=lnt id=hl-3-78><a class=lnlinks href=#hl-3-78> 78</a>
+</span><span class=lnt id=hl-3-79><a class=lnlinks href=#hl-3-79> 79</a>
+</span><span class=lnt id=hl-3-80><a class=lnlinks href=#hl-3-80> 80</a>
+</span><span class=lnt id=hl-3-81><a class=lnlinks href=#hl-3-81> 81</a>
+</span><span class=lnt id=hl-3-82><a class=lnlinks href=#hl-3-82> 82</a>
+</span><span class=lnt id=hl-3-83><a class=lnlinks href=#hl-3-83> 83</a>
+</span><span class=lnt id=hl-3-84><a class=lnlinks href=#hl-3-84> 84</a>
+</span><span class=lnt id=hl-3-85><a class=lnlinks href=#hl-3-85> 85</a>
+</span><span class=lnt id=hl-3-86><a class=lnlinks href=#hl-3-86> 86</a>
+</span><span class=lnt id=hl-3-87><a class=lnlinks href=#hl-3-87> 87</a>
+</span><span class=lnt id=hl-3-88><a class=lnlinks href=#hl-3-88> 88</a>
+</span><span class=lnt id=hl-3-89><a class=lnlinks href=#hl-3-89> 89</a>
+</span><span class=lnt id=hl-3-90><a class=lnlinks href=#hl-3-90> 90</a>
+</span><span class=lnt id=hl-3-91><a class=lnlinks href=#hl-3-91> 91</a>
+</span><span class=lnt id=hl-3-92><a class=lnlinks href=#hl-3-92> 92</a>
+</span><span class=lnt id=hl-3-93><a class=lnlinks href=#hl-3-93> 93</a>
+</span><span class=lnt id=hl-3-94><a class=lnlinks href=#hl-3-94> 94</a>
+</span><span class=lnt id=hl-3-95><a class=lnlinks href=#hl-3-95> 95</a>
+</span><span class=lnt id=hl-3-96><a class=lnlinks href=#hl-3-96> 96</a>
+</span><span class=lnt id=hl-3-97><a class=lnlinks href=#hl-3-97> 97</a>
+</span><span class=lnt id=hl-3-98><a class=lnlinks href=#hl-3-98> 98</a>
+</span><span class=lnt id=hl-3-99><a class=lnlinks href=#hl-3-99> 99</a>
+</span><span class=lnt id=hl-3-100><a class=lnlinks href=#hl-3-100>100</a>
+</span><span class=lnt id=hl-3-101><a class=lnlinks href=#hl-3-101>101</a>
+</span><span class=lnt id=hl-3-102><a class=lnlinks href=#hl-3-102>102</a>
+</span><span class=lnt id=hl-3-103><a class=lnlinks href=#hl-3-103>103</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;code&#34;</span>: <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;prefix&#34;</span>: <span class=o>[</span><span class=s2>&#34;code&#34;</span><span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;body&#34;</span>: <span class=o>[</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;{% code &lt;+title+&gt; lang:</span><span class=si>${</span><span class=nv>1</span><span class=p>|bash,python,lua,perl,yaml,ruby|</span><span class=si>}</span><span class=s2> %}&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;&lt;+code+&gt;&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;{% endcode %}&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;description&#34;</span>: <span class=s2>&#34;Next theme environment for Hexo&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>,
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;codeblock&#34;</span>: <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;prefix&#34;</span>: <span class=o>[</span><span class=s2>&#34;codeblock&#34;</span><span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;body&#34;</span>: <span class=o>[</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;{% codeblock &lt;+title+&gt; lang:</span><span class=si>${</span><span class=nv>1</span><span class=p>|bash,python,lua,perl,yaml,ruby|</span><span class=si>}</span><span class=s2> %}&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;&lt;+code+&gt;&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;{% endcodeblock %}&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;description&#34;</span>: <span class=s2>&#34;Next theme environment for Hexo&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>,
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;```&#34;</span>: <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;prefix&#34;</span>: <span class=o>[</span><span class=s2>&#34;```&#34;</span><span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;body&#34;</span>: <span class=o>[</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;```</span><span class=si>${</span><span class=nv>1</span><span class=p>|bash,python,lua,perl,yaml,ruby|</span><span class=si>}</span><span class=s2> &lt;+title+&gt; &#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;&lt;+code+&gt;&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;```&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;description&#34;</span>: <span class=s2>&#34;Next theme environment for Hexo&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>,
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;note&#34;</span>: <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;prefix&#34;</span>: <span class=o>[</span><span class=s2>&#34;note&#34;</span><span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;body&#34;</span>: <span class=o>[</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;{% note </span><span class=si>${</span><span class=nv>1</span><span class=p>|default,primary,success,info,warning,danger|</span><span class=si>}</span><span class=s2> %}&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;&lt;++&gt;&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;{% endnote %}&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;description&#34;</span>: <span class=s2>&#34;Next theme environment for Hexo&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>,
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;tabs&#34;</span>: <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;prefix&#34;</span>: <span class=o>[</span><span class=s2>&#34;tabs&#34;</span><span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;body&#34;</span>: <span class=o>[</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;{% tabs </span><span class=si>${</span><span class=nv>1</span><span class=p>:&lt;+UniqueName+&gt;</span><span class=si>}</span><span class=s2> %}&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;&lt;!-- tab </span><span class=si>${</span><span class=nv>2</span><span class=p>:&lt;+tabcaption+&gt;</span><span class=si>}</span><span class=s2> --&gt;&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;&lt;++&gt;&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;&lt;!-- endtab --&gt;&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;&lt;++&gt;&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;{% endtabs %}&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;description&#34;</span>: <span class=s2>&#34;Next theme environment for Hexo&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>,
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;tab&#34;</span>: <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;prefix&#34;</span>: <span class=o>[</span><span class=s2>&#34;tab&#34;</span><span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;body&#34;</span>: <span class=o>[</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;&lt;!-- tab </span><span class=si>${</span><span class=nv>2</span><span class=p>:&lt;+tabcaption+&gt;</span><span class=si>}</span><span class=s2> --&gt;&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;&lt;++&gt;&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;&lt;!-- endtab --&gt;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;description&#34;</span>: <span class=s2>&#34;Next theme environment for Hexo&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>,
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;label&#34;</span>: <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;prefix&#34;</span>: <span class=o>[</span><span class=s2>&#34;label&#34;</span><span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;body&#34;</span>: <span class=o>[</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;{% label </span><span class=si>${</span><span class=nv>1</span><span class=p>|default,primary,success,info,warning,danger|</span><span class=si>}</span><span class=s2>@</span><span class=si>${</span><span class=nv>2</span><span class=p>:&lt;+content+&gt;</span><span class=si>}</span><span class=s2> %}&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;description&#34;</span>: <span class=s2>&#34;Next theme environment for Hexo&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>,
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;centerquote&#34;</span>: <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;prefix&#34;</span>: <span class=o>[</span><span class=s2>&#34;centerquote&#34;</span><span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;body&#34;</span>: <span class=o>[</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;{% centerquote %}&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;</span><span class=si>${</span><span class=nv>1</span><span class=p>:&lt;+content+&gt;</span><span class=si>}</span><span class=s2>&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;{% endcenterquote %}&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;description&#34;</span>: <span class=s2>&#34;Next theme environment for Hexo&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>,
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;video&#34;</span>: <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;prefix&#34;</span>: <span class=o>[</span><span class=s2>&#34;video&#34;</span><span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;body&#34;</span>: <span class=o>[</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;{% video </span><span class=si>${</span><span class=nv>1</span><span class=p>|&lt;+/path/to/your/video.mp4+&gt;,https://&lt;+example.com/sample.mp4+&gt;|</span><span class=si>}</span><span class=s2>%}&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;description&#34;</span>: <span class=s2>&#34;Next theme environment for Hexo&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>,
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;pdf&#34;</span>: <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;prefix&#34;</span>: <span class=o>[</span><span class=s2>&#34;pdf&#34;</span><span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;body&#34;</span>: <span class=o>[</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;{% pdf </span><span class=si>${</span><span class=nv>1</span><span class=p>|&lt;+/path/to/your/video.pdf+&gt;,https://&lt;+example.com/sample.pdf+&gt;|</span><span class=si>}</span><span class=s2>%}&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;description&#34;</span>: <span class=s2>&#34;Next theme environment for Hexo&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>,
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;grouppicture&#34;</span>: <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;prefix&#34;</span>: <span class=o>[</span><span class=s2>&#34;grouppicture&#34;</span><span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;body&#34;</span>: <span class=o>[</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;{% grouppicture </span><span class=si>${</span><span class=nv>1</span><span class=p>:&lt;+number+&gt;</span><span class=si>}</span><span class=s2>-</span><span class=si>${</span><span class=nv>2</span><span class=p>:&lt;+layout+&gt;</span><span class=si>}</span><span class=s2> %}&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;![</span><span class=si>${</span><span class=nv>3</span><span class=p>:&lt;+picturetitle+&gt;</span><span class=si>}</span><span class=s2>](</span><span class=si>${</span><span class=nv>4</span><span class=p>:&lt;+picture+&gt;</span><span class=si>}</span><span class=s2>)&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;{% endgroudpicture %}&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>]</span>,
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;description&#34;</span>: <span class=s2>&#34;Next theme environment for Hexo&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=o>}</span></span></span></code></pre></td></tr></table></div></div></div><footer class=post-footer><hr><div class=post-nav><div class="post-nav-next post-nav-item"><a href=../../post/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92/ rel=next title=软件开发规划><i class="fa fa-chevron-left"></i> 软件开发规划</a></div><div class="post-nav-prev post-nav-item"><a href=../../post/%E9%AB%98%E9%98%B6%E8%8B%B1%E8%AF%AD%E5%A4%A7%E4%BD%9C%E4%B8%9A/ rel=prev title=高阶英语大作业>高阶英语大作业
 <i class="fa fa-chevron-right"></i></a></div></div></footer></article></div></div></main><footer class=footer><div class=footer-inner><div id=i18n-translate class=i18n-translate><i class="fa fa-language"></i><div id=lang-select class=lang-select><div id=lang-selected class=selected-option><span class="flag-icon flag-icon-zh-cn"></span>
 <span class=selected-language>简体中文</span>
 <i class="fa fa-chevron-down"></i></div><div id=lang-options class=lang-options><div class=lang-option lang-code=zh-cn lang-name=简体中文 lang-url=../../post/%E4%BD%BF%E7%94%A8lua%E9%85%8D%E7%BD%AEneovim/><span class="flag-icon flag-icon-zh-cn"></span>
 <span class=lang-name>简体中文</span></div></div></div></div><div class=copyright>&copy;
 <span itemprop=copyrightYear>2022 - 2026
 </span><span class=with-love><i class="fa fa-heart"></i>
-</span><span class=author itemprop=copyrightHolder>Zhen-Hua Feng</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.169.0 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.8.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div></div></footer><script class=next-config data-name=page type=application/json>{"clipboard":{"js":{"alias":"clipboard","file":"dist/clipboard.min.js","name":"clipboard.js","version":"2.0.11"}},"comments":false,"expired":false,"isHome":false,"isPage":true,"math":{"js":{"file":"es5/tex-mml-svg.js","name":"mathjax","version":"3.2.2"},"render":"mathjax"},"path":"%E4%BD%BF%E7%94%A8lua%E9%85%8D%E7%BD%AEneovim","permalink":"/post/%E4%BD%BF%E7%94%A8lua%E9%85%8D%E7%BD%AEneovim/","title":"使用Lua配置Neovim","toc":true}</script><script type=text/javascript src=https://s4.zstatic.net/ajax/libs/animejs/3.2.2/anime.min.js crossorigin=anonymous defer></script><script type=text/javascript src=https://s4.zstatic.net/ajax/libs/viewerjs/1.11.6/viewer.min.js crossorigin=anonymous defer></script><script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#9400D3","enable":false,"save":"manual"},"copybtn":true,"darkmode":false,"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"isMultiLang":true,"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"slideInRight","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":false,"plugin":"waline"},"views":{"enable":false,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","share":{"addtoany":{"js":"https://static.addtoany.com/menu/page.js","locale":"zh-CN","num":8},"enable":false},"sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"zstatic","router":{"home":"https://www.zstatic.net","logo":"https://www.zstatic.net/logo.png","name":"zstatic","type":"modern","url":"https://s4.zstatic.net/ajax/libs"}},"version":"4.8.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":false,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"@waline/client","file":"dist/waline.css","name":"waline","version":"2.15.8"},"js":{"alias":"@waline/client","file":"dist/waline.js","name":"waline","version":"2.15.8"}}}</script><script type=text/javascript src="../../js/main.min.js?=1794144902" defer></script><script type=text/javascript src="../../js/clipboard.min.js?=1794144902" defer></script><script type=text/javascript src="../../js/math.min.js?=1794144902" defer></script></body></html>
+</span><span class=author itemprop=copyrightHolder>Zhen-Hua Feng</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.169.0 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.8.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div></div></footer><script class=next-config data-name=page type=application/json>{"clipboard":{"js":{"alias":"clipboard","file":"dist/clipboard.min.js","name":"clipboard.js","version":"2.0.11"}},"comments":false,"expired":false,"isHome":false,"isPage":true,"math":{"js":{"file":"es5/tex-mml-svg.js","name":"mathjax","version":"3.2.2"},"render":"mathjax"},"path":"%E4%BD%BF%E7%94%A8lua%E9%85%8D%E7%BD%AEneovim","permalink":"/post/%E4%BD%BF%E7%94%A8lua%E9%85%8D%E7%BD%AEneovim/","title":"使用Lua配置Neovim","toc":true}</script><script type=text/javascript src=https://s4.zstatic.net/ajax/libs/animejs/3.2.2/anime.min.js crossorigin=anonymous defer></script><script type=text/javascript src=https://s4.zstatic.net/ajax/libs/viewerjs/1.11.6/viewer.min.js crossorigin=anonymous defer></script><script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#9400D3","enable":false,"save":"manual"},"copybtn":true,"darkmode":false,"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"isMultiLang":true,"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"slideInRight","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":false,"plugin":"waline"},"views":{"enable":false,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","share":{"addtoany":{"js":"https://static.addtoany.com/menu/page.js","locale":"zh-CN","num":8},"enable":false},"sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"zstatic","router":{"home":"https://www.zstatic.net","logo":"https://www.zstatic.net/logo.png","name":"zstatic","type":"modern","url":"https://s4.zstatic.net/ajax/libs"}},"version":"4.8.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":false,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"@waline/client","file":"dist/waline.css","name":"waline","version":"2.15.8"},"js":{"alias":"@waline/client","file":"dist/waline.js","name":"waline","version":"2.15.8"}}}</script><script type=text/javascript src="../../js/main.min.js?=1794212984" defer></script><script type=text/javascript src="../../js/clipboard.min.js?=1794212984" defer></script><script type=text/javascript src="../../js/math.min.js?=1794212984" defer></script></body></html>

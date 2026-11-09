@@ -1,4 +1,4 @@
-<!doctype html><html lang=zh-CN data-theme=light><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=theme-color content="#9400D3" media="(prefers-color-scheme: light)"><meta name=generator content="Hugo 0.169.0"><link rel="shortcut icon" type=image/x-icon href=../../imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=../../imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=../../imgs/icons/favicon_16x16_next.png><link rel=icon type=image/png sizes=32x32 href=../../imgs/icons/favicon_32_32_next.png><link rel=apple-touch-icon sizes=180x180 href=../../imgs/icons/apple_touch_icon_next.png><meta itemprop=name content="Sudo密码的存储和自动调用"><meta itemprop=description content><meta name=description content><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="/"><meta itemprop=keywords content="Hugo,Linux,Hexo,Physics"><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/font-awesome/6.7.2/css/all.min.css><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/viewerjs/1.11.6/viewer.min.css><link rel=stylesheet href="../../css/main.min.css?=1794144902"><style type=text/css>.post-footer hr:after{content:""}.flinks-list-footer hr:after{content:""}</style><link rel=stylesheet type=text/css href="../../css/custom_style.css?=1794144902"><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return 0[0];const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),0[0]):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>Sudo密码的存储和自动调用 - BNU-FZH</title><noscript><link rel=stylesheet href=../../css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
+<!doctype html><html lang=zh-CN data-theme=light><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=theme-color content="#9400D3" media="(prefers-color-scheme: light)"><meta name=generator content="Hugo 0.169.0"><link rel="shortcut icon" type=image/x-icon href=../../imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=../../imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=../../imgs/icons/favicon_16x16_next.png><link rel=icon type=image/png sizes=32x32 href=../../imgs/icons/favicon_32_32_next.png><link rel=apple-touch-icon sizes=180x180 href=../../imgs/icons/apple_touch_icon_next.png><meta itemprop=name content="Sudo密码的存储和自动调用"><meta itemprop=description content><meta name=description content><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="/"><meta itemprop=keywords content="Hugo,Linux,Hexo,Physics"><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/font-awesome/6.7.2/css/all.min.css><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/viewerjs/1.11.6/viewer.min.css><link rel=stylesheet href="../../css/main.min.css?=1794212984"><style type=text/css>.post-footer hr:after{content:""}.flinks-list-footer hr:after{content:""}</style><link rel=stylesheet type=text/css href="../../css/custom_style.css?=1794212984"><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return 0[0];const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),0[0]):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>Sudo密码的存储和自动调用 - BNU-FZH</title><noscript><link rel=stylesheet href=../../css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
 <span class=toggle-line></span>
 <span class=toggle-line></span></div></div><div class=site-meta><a href=../../ class=brand rel=start><i class=logo-line></i><h1 class=site-title>BNU-FZH</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description>fengzhenhua@outlook.com</p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=../../ class=hvr-icon-pulse rel=section><i class="fa fa-home hvr-icon"></i>首页</a></li><li class="menu-item menu-item-about"><a href=../../about.html class=hvr-icon-pulse rel=section><i class="fa fa-user hvr-icon"></i>关于</a></li><li class="menu-item menu-item-导航"><a href=../../%E5%AF%BC%E8%88%AA/ class=hvr-icon-pulse rel=section><i class="fa fa-fa fa-paper-plane hvr-icon"></i>导航</a></li><li class="menu-item menu-item-软件"><a href=../../%E8%BD%AF%E4%BB%B6/ class=hvr-icon-pulse rel=section><i class="fa fa-fa fa-briefcase hvr-icon"></i>软件</a></li><li class="menu-item menu-item-收藏"><a href=../../%E6%94%B6%E8%97%8F/ class=hvr-icon-pulse rel=section><i class="fa fa-fa fa-folder hvr-icon"></i>收藏</a></li><li class="menu-item menu-item-工作"><a href=../../%E5%B7%A5%E4%BD%9C/ class=hvr-icon-pulse rel=section><i class="fa fa-fa fa-folder hvr-icon"></i>工作</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
 <span class=toggle-line></span>
@@ -102,243 +102,243 @@ keysudo.sh是一个用于安全存储和调用 sudo 密码的 Bash 脚本工具�
 <a class=header-anchor href=#%e7%ae%80%e4%bb%8b></a></h2><p><code>keysudo.sh</code>是一个用于安全存储和调用 sudo 密码的 Bash 脚本工具，通过 GNOME Keyring 实现敏感信息的加密存储。脚本设计目标是通过密钥环系统减少密码的明文暴露，同时解决 sudo 验证失败导致的账户锁定问题。</p><a id=more></a><h2 id=主要功能>主要功能
 <a class=header-anchor href=#%e4%b8%bb%e8%a6%81%e5%8a%9f%e8%83%bd></a></h2><ul><li>🔐 自动将 sudo 密码存储至 GNOME Keyring</li><li>🔄 支持 3 次验证尝试（可配置）</li><li>⚠️ 智能检测系统环境（支持 Arch/RHEL 系）</li><li>🔒 密码输入支持 systemd-ask-password 工具</li><li>🛡️ 密码错误时自动重置 sudo 失败计数</li><li>🚫 杜绝密码明文存储和传输</li></ul><h2 id=快速使用>快速使用
 <a class=header-anchor href=#%e5%bf%ab%e9%80%9f%e4%bd%bf%e7%94%a8></a></h2><h3 id=基础用法>基础用法
-<a class=header-anchor href=#%e5%9f%ba%e7%a1%80%e7%94%a8%e6%b3%95></a></h3><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-1>1</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-2><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-2>2</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-3><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-3>3</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-4><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-4>4</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-5><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-5>5</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-6><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-6>6</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># 获取密码（自动触发存储流程）</span>
-</span></span><span style=display:flex><span>syndns_password<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>./keysudo.sh<span style=color:#66d9ef>)</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 使用示例（建议立即清理变量）</span>
-</span></span><span style=display:flex><span>echo $syndns_password | sudo -S your_command
-</span></span><span style=display:flex><span>unset syndns_password</span></span></code></pre></td></tr></table></div></div><h3 id=安装依赖>安装依赖
-<a class=header-anchor href=#%e5%ae%89%e8%a3%85%e4%be%9d%e8%b5%96></a></h3><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-1>1</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-2><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-2>2</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-3><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-3>3</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-4><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-4>4</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-5><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-5>5</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sh data-lang=sh><span style=display:flex><span><span style=color:#75715e># Arch 系系统</span>
-</span></span><span style=display:flex><span>sudo pacman -S pambase libsecret
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># RHEL/CentOS 系系统</span>
-</span></span><span style=display:flex><span>sudo yum install pam libsecret-tools</span></span></code></pre></td></tr></table></div></div><h3 id=卸载密码>卸载密码
-<a class=header-anchor href=#%e5%8d%b8%e8%bd%bd%e5%af%86%e7%a0%81></a></h3><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-1>1</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sh data-lang=sh><span style=display:flex><span>secret-tool clear syndns_password_key syndns_password</span></span></code></pre></td></tr></table></div></div><h2 id=常见问题>常见问题
+<a class=header-anchor href=#%e5%9f%ba%e7%a1%80%e7%94%a8%e6%b3%95></a></h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-0-1><a class=lnlinks href=#hl-0-1>1</a>
+</span><span class=lnt id=hl-0-2><a class=lnlinks href=#hl-0-2>2</a>
+</span><span class=lnt id=hl-0-3><a class=lnlinks href=#hl-0-3>3</a>
+</span><span class=lnt id=hl-0-4><a class=lnlinks href=#hl-0-4>4</a>
+</span><span class=lnt id=hl-0-5><a class=lnlinks href=#hl-0-5>5</a>
+</span><span class=lnt id=hl-0-6><a class=lnlinks href=#hl-0-6>6</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># 获取密码（自动触发存储流程）</span>
+</span></span><span class=line><span class=cl><span class=nv>syndns_password</span><span class=o>=</span><span class=k>$(</span>./keysudo.sh<span class=k>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 使用示例（建议立即清理变量）</span>
+</span></span><span class=line><span class=cl><span class=nb>echo</span> <span class=nv>$syndns_password</span> <span class=p>|</span> sudo -S your_command
+</span></span><span class=line><span class=cl><span class=nb>unset</span> syndns_password</span></span></code></pre></td></tr></table></div></div><h3 id=安装依赖>安装依赖
+<a class=header-anchor href=#%e5%ae%89%e8%a3%85%e4%be%9d%e8%b5%96></a></h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-1-1><a class=lnlinks href=#hl-1-1>1</a>
+</span><span class=lnt id=hl-1-2><a class=lnlinks href=#hl-1-2>2</a>
+</span><span class=lnt id=hl-1-3><a class=lnlinks href=#hl-1-3>3</a>
+</span><span class=lnt id=hl-1-4><a class=lnlinks href=#hl-1-4>4</a>
+</span><span class=lnt id=hl-1-5><a class=lnlinks href=#hl-1-5>5</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh><span class=line><span class=cl><span class=c1># Arch 系系统</span>
+</span></span><span class=line><span class=cl>sudo pacman -S pambase libsecret
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># RHEL/CentOS 系系统</span>
+</span></span><span class=line><span class=cl>sudo yum install pam libsecret-tools</span></span></code></pre></td></tr></table></div></div><h3 id=卸载密码>卸载密码
+<a class=header-anchor href=#%e5%8d%b8%e8%bd%bd%e5%af%86%e7%a0%81></a></h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-2-1><a class=lnlinks href=#hl-2-1>1</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh><span class=line><span class=cl>secret-tool clear syndns_password_key syndns_password</span></span></code></pre></td></tr></table></div></div><h2 id=常见问题>常见问题
 <a class=header-anchor href=#%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98></a></h2><h3 id=q1-密码无法存储到密钥环>Q1: 密码无法存储到密钥环
-<a class=header-anchor href=#q1-%e5%af%86%e7%a0%81%e6%97%a0%e6%b3%95%e5%ad%98%e5%82%a8%e5%88%b0%e5%af%86%e9%92%a5%e7%8e%af></a></h3><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-1>1</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-2><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-2>2</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-3><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-3>3</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-4><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-4>4</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sh data-lang=sh><span style=display:flex><span><span style=color:#75715e># 检查密钥环服务状态</span>
-</span></span><span style=display:flex><span>gnome-keyring-daemon --start
-</span></span><span style=display:flex><span><span style=color:#75715e># 验证存储功能</span>
-</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;test&#34;</span> | secret-tool store --label<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Test&#34;</span> test_key test_value</span></span></code></pre></td></tr></table></div></div><h3 id=q2-sudo-被锁定后如何处理>Q2: sudo 被锁定后如何处理
-<a class=header-anchor href=#q2-sudo-%e8%a2%ab%e9%94%81%e5%ae%9a%e5%90%8e%e5%a6%82%e4%bd%95%e5%a4%84%e7%90%86></a></h3><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-1>1</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-2><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-2>2</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-3><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-3>3</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-4><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-4>4</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-5><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-5>5</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sh data-lang=sh><span style=display:flex><span><span style=color:#75715e># 显示当前失败计数（RHEL系）</span>
-</span></span><span style=display:flex><span>sudo pam_tally2 --user $USER
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 强制解锁所有用户（Arch系）</span>
-</span></span><span style=display:flex><span>sudo faillock --reset</span></span></code></pre></td></tr></table></div></div><h2 id=程序源码>程序源码
-<a class=header-anchor href=#%e7%a8%8b%e5%ba%8f%e6%ba%90%e7%a0%81></a></h2><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-1> 1</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-2><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-2> 2</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-3><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-3> 3</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-4><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-4> 4</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-5><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-5> 5</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-6><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-6> 6</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-7><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-7> 7</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-8><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-8> 8</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-9><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-9> 9</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-10><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-10>10</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-11><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-11>11</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-12><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-12>12</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-13><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-13>13</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-14><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-14>14</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-15><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-15>15</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-16><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-16>16</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-17><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-17>17</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-18><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-18>18</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-19><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-19>19</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-20><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-20>20</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-21><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-21>21</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-22><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-22>22</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-23><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-23>23</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-24><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-24>24</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-25><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-25>25</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-26><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-26>26</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-27><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-27>27</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-28><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-28>28</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-29><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-29>29</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-30><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-30>30</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-31><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-31>31</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-32><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-32>32</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-33><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-33>33</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-34><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-34>34</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-35><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-35>35</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-36><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-36>36</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-37><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-37>37</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-38><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-38>38</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-39><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-39>39</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-40><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-40>40</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-41><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-41>41</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-42><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-42>42</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-43><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-43>43</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-44><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-44>44</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-45><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-45>45</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-46><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-46>46</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-47><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-47>47</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-48><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-48>48</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-49><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-49>49</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-50><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-50>50</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-51><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-51>51</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-52><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-52>52</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-53><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-53>53</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-54><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-54>54</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-55><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-55>55</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-56><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-56>56</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-57><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-57>57</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-58><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-58>58</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-59><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-59>59</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-60><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-60>60</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-61><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-61>61</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-62><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-62>62</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-63><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-63>63</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-64><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-64>64</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-65><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-65>65</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-66><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-66>66</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-67><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-67>67</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-68><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-68>68</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-69><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-69>69</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-70><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-70>70</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-71><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-71>71</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-72><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-72>72</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-73><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-73>73</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-74><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-74>74</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-75><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-75>75</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-76><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-76>76</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-77><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-77>77</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-78><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-78>78</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-79><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-79>79</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-80><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-80>80</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-81><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-81>81</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-82><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-82>82</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-83><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-83>83</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-84><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-84>84</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-85><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-85>85</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-86><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-86>86</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-87><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-87>87</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-88><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-88>88</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-89><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-89>89</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-90><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-90>90</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-91><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-91>91</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-92><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-92>92</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-93><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-93>93</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-94><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-94>94</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-95><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-95>95</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sh data-lang=sh><span style=display:flex><span><span style=color:#75715e>#! /bin/bash
-</span></span></span><span style=display:flex><span><span style=color:#75715e>#</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Program  : keysudo.sh</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Author   : Zhen-Hua Feng(冯振华)</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Email    : fengzhenhua@outlook.com</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Date     : 2025-01-10 20:41</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># CopyRight: Copyright (C) 2025--</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># License  : Distributed under terms of the MIT license.</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 定义标识符</span>
-</span></span><span style=display:flex><span>SYN_KEY<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;syndns_password&#34;</span>  <span style=color:#75715e># 密钥环中的唯一标识符</span>
-</span></span><span style=display:flex><span>SYN_SUDO_NUM_MAX<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;3&#34;</span>       <span style=color:#75715e># 确保这个数值与您系统中sudo验证次数一致，以免进入死循环</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 检测依赖，确保secret-tool正确安装</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> ! command -v secret-tool &amp;&gt;/dev/null; <span style=color:#66d9ef>then</span>
-</span></span><span style=display:flex><span>  echo <span style=color:#e6db74>&#34;错误：需要安装 secret-tool（包名：libsecret-tools）&#34;</span> &gt;&amp;<span style=color:#ae81ff>2</span>
-</span></span><span style=display:flex><span>  exit <span style=color:#ae81ff>1</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 探测系统sud解锁程序</span>
-</span></span><span style=display:flex><span>SYN_RES_CMD<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> command -v faillock &amp;&gt;/dev/null; <span style=color:#66d9ef>then</span>
-</span></span><span style=display:flex><span>    SYN_RES_CMD<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;faillock --user </span>$USER<span style=color:#e6db74> --reset&#34;</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>elif</span> command -v pam_tally2 &amp;&gt;/dev/null; <span style=color:#66d9ef>then</span>
-</span></span><span style=display:flex><span>    SYN_RES_CMD<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;pam_tally2 --user </span>$USER<span style=color:#e6db74> --reset&#34;</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>
-</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;错误：未找到可用SUDO解锁工具 !&#34;</span> &gt;&amp;<span style=color:#ae81ff>2</span>
-</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;请安装：Arch系安装pambase，RHEL系安装pam&#34;</span> &gt;&amp;<span style=color:#ae81ff>2</span>
-</span></span><span style=display:flex><span>    exit <span style=color:#ae81ff>1</span>  <span style=color:#75715e># 正确终止脚本</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 存储密码到 GNOME Keyring</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 测试密码过程中存在sudo次数限制，如果sudo被锁定了，那本脚本在首次没有完成密码保存的工作后将处于锁定状态</span>
-</span></span><span style=display:flex><span>SYN_KEY_GET<span style=color:#f92672>(){</span>
-</span></span><span style=display:flex><span>    local SYN_AMT<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$SYN_SUDO_NUM_MAX<span style=color:#e6db74>&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>while</span> <span style=color:#f92672>[[</span> <span style=color:#e6db74>&#34;</span>$SYN_AMT<span style=color:#e6db74>&#34;</span> -gt <span style=color:#ae81ff>0</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>do</span>
-</span></span><span style=display:flex><span>        SYN_KEY_X<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>secret-tool lookup syndns_password_key <span style=color:#e6db74>&#34;</span>$SYN_KEY<span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>)</span>
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> -z <span style=color:#e6db74>&#34;</span>$SYN_KEY_X<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
-</span></span><span style=display:flex><span>            unset SYN_KEY_DATA
-</span></span><span style=display:flex><span>            <span style=color:#75715e># 使用专业密码输入工具</span>
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> command -v systemd-ask-password &amp;&gt;/dev/null; <span style=color:#66d9ef>then</span>
-</span></span><span style=display:flex><span>                SYN_KEY_DATA<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>systemd-ask-password --timeout<span style=color:#f92672>=</span><span style=color:#ae81ff>30</span> <span style=color:#e6db74>&#34;请求sudo密码:&#34;</span><span style=color:#66d9ef>)</span>
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>else</span>
-</span></span><span style=display:flex><span>                printf <span style=color:#e6db74>&#34;</span>$0<span style=color:#e6db74> 请求输入sudo密码(30秒超时):&#34;</span> &gt;&amp;<span style=color:#ae81ff>2</span>
-</span></span><span style=display:flex><span>                <span style=color:#75715e># 增加超时后的清理逻辑</span>
-</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> ! read -rs -t <span style=color:#ae81ff>30</span> SYN_KEY_DATA; <span style=color:#66d9ef>then</span>
-</span></span><span style=display:flex><span>                    printf <span style=color:#e6db74>&#34;\n输入超时，操作取消。\n&#34;</span> &gt;&amp;<span style=color:#ae81ff>2</span>
-</span></span><span style=display:flex><span>                    unset SYN_KEY_DATA
-</span></span><span style=display:flex><span>                    exit <span style=color:#ae81ff>1</span>
-</span></span><span style=display:flex><span>                <span style=color:#66d9ef>fi</span>
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>fi</span>
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> -z <span style=color:#e6db74>&#34;</span>$SYN_KEY_DATA<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
-</span></span><span style=display:flex><span>                printf <span style=color:#e6db74>&#34;\n密码不能为空，请重新输入。\n&#34;</span> &gt;&amp;<span style=color:#ae81ff>2</span>
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>else</span>
-</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> printf <span style=color:#e6db74>&#34;%s&#34;</span> <span style=color:#e6db74>&#34;</span>$SYN_KEY_DATA<span style=color:#e6db74>&#34;</span> | secret-tool store --label<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Syndns Password&#34;</span> syndns_password_key <span style=color:#e6db74>&#34;</span>$SYN_KEY<span style=color:#e6db74>&#34;</span>; <span style=color:#66d9ef>then</span>
-</span></span><span style=display:flex><span>                    sudo -k
-</span></span><span style=display:flex><span>                    <span style=color:#66d9ef>if</span> printf <span style=color:#e6db74>&#34;%s&#34;</span> <span style=color:#e6db74>&#34;</span>$SYN_KEY_DATA<span style=color:#e6db74>&#34;</span> | sudo -S -v 2&gt;/dev/null; <span style=color:#66d9ef>then</span>
-</span></span><span style=display:flex><span>                        <span style=color:#75715e># 存储成功后立即清理</span>
-</span></span><span style=display:flex><span>                        unset SYN_KEY_DATA
-</span></span><span style=display:flex><span>                        printf <span style=color:#e6db74>&#34;\n密码已成功存储到 GNOME Keyring 中。\n&#34;</span> &gt;&amp;<span style=color:#ae81ff>2</span>
-</span></span><span style=display:flex><span>                        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>
-</span></span><span style=display:flex><span>                    <span style=color:#66d9ef>else</span>
-</span></span><span style=display:flex><span>                        SYN_AMT<span style=color:#f92672>=</span><span style=color:#66d9ef>$((</span>SYN_AMT <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span><span style=color:#66d9ef>))</span>
-</span></span><span style=display:flex><span>                        SYN_FAIL_RES <span style=color:#e6db74>&#34;警告：当前系统可能需要手动重置失败计数!&#34;</span>
-</span></span><span style=display:flex><span>                    <span style=color:#66d9ef>fi</span>
-</span></span><span style=display:flex><span>                <span style=color:#66d9ef>else</span>
-</span></span><span style=display:flex><span>                    printf <span style=color:#e6db74>&#34;\n无法存储密码，请检查 GNOME Keyring 是否可用。\n&#34;</span> &gt;&amp;<span style=color:#ae81ff>2</span>
-</span></span><span style=display:flex><span>                    exit <span style=color:#ae81ff>1</span>
-</span></span><span style=display:flex><span>                <span style=color:#66d9ef>fi</span>
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>fi</span>
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>else</span>
-</span></span><span style=display:flex><span>            sudo -k
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> ! printf <span style=color:#e6db74>&#34;%s&#34;</span> <span style=color:#e6db74>&#34;</span>$SYN_KEY_X<span style=color:#e6db74>&#34;</span> | sudo -S -v 2&gt;/dev/null; <span style=color:#66d9ef>then</span>
-</span></span><span style=display:flex><span>                SYN_AMT<span style=color:#f92672>=</span><span style=color:#66d9ef>$((</span>SYN_AMT <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span><span style=color:#66d9ef>))</span>
-</span></span><span style=display:flex><span>                secret-tool clear syndns_password_key <span style=color:#e6db74>&#34;</span>$SYN_KEY<span style=color:#e6db74>&#34;</span> <span style=color:#75715e># 清空密码，重新循环才能进入设置</span>
-</span></span><span style=display:flex><span>                SYN_FAIL_RES <span style=color:#e6db74>&#34;警告：当前系统可能需要手动重置失败计数!&#34;</span>
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>else</span>
-</span></span><span style=display:flex><span>                <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>fi</span>
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>fi</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>done</span>
-</span></span><span style=display:flex><span>    printf <span style=color:#e6db74>&#34;尝试次数已达上限，操作终止。\n&#34;</span> &gt;&amp;<span style=color:#ae81ff>2</span>
-</span></span><span style=display:flex><span>    SYN_FAIL_RES <span style=color:#e6db74>&#34;请切换至ROOT权限解除锁定: </span>$SYN_RES_CMD<span style=color:#e6db74>&#34;</span>
-</span></span><span style=display:flex><span>    exit <span style=color:#ae81ff>1</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
-</span></span><span style=display:flex><span>SYN_FAIL_RES<span style=color:#f92672>(){</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> grep -qi <span style=color:#e6db74>&#39;arch&#39;</span> /etc/os-release 2&gt;/dev/null; <span style=color:#66d9ef>then</span>
-</span></span><span style=display:flex><span>        faillock --user $USER --reset
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>
-</span></span><span style=display:flex><span>        <span style=color:#75715e># 优先显示传入的定制化提示</span>
-</span></span><span style=display:flex><span>        printf <span style=color:#e6db74>&#34;</span>$1<span style=color:#e6db74> \n&#34;</span> &gt;&amp;<span style=color:#ae81ff>2</span>
-</span></span><span style=display:flex><span>        <span style=color:#75715e># 补充建议命令（带sudo前缀）</span>
-</span></span><span style=display:flex><span>        <span style=color:#f92672>[</span> -n <span style=color:#e6db74>&#34;</span>$SYN_RES_CMD<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]</span> <span style=color:#f92672>&amp;&amp;</span> echo <span style=color:#e6db74>&#34;可尝试执行: sudo </span>$SYN_RES_CMD<span style=color:#e6db74>&#34;</span> &gt;&amp;<span style=color:#ae81ff>2</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
-</span></span><span style=display:flex><span>sudo -k  <span style=color:#75715e># 清除sudo缓存</span>
-</span></span><span style=display:flex><span>SYN_KEY_GET
-</span></span><span style=display:flex><span>echo $SYN_KEY_X</span></span></code></pre></td></tr></table></div></div></div><footer class=post-footer><hr><div class=post-nav><div class="post-nav-next post-nav-item"><a href=../../post/%E7%BC%96%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%BA%93%E4%B8%8E%E8%B7%A8%E7%A8%8B%E5%BA%8F%E8%B0%83%E7%94%A8/ rel=next title=编程的基本原理：库与跨程序调用><i class="fa fa-chevron-left"></i> 编程的基本原理：库与跨程序调用</a></div><div class="post-nav-prev post-nav-item"><a href=../../post/paru%E7%9A%84%E5%A2%9E%E5%BC%BA%E4%B8%8B%E8%BD%BD%E8%84%9A%E6%9C%ACparia/ rel=prev title=Paru的增强下载脚本Paria>Paru的增强下载脚本Paria
+<a class=header-anchor href=#q1-%e5%af%86%e7%a0%81%e6%97%a0%e6%b3%95%e5%ad%98%e5%82%a8%e5%88%b0%e5%af%86%e9%92%a5%e7%8e%af></a></h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-3-1><a class=lnlinks href=#hl-3-1>1</a>
+</span><span class=lnt id=hl-3-2><a class=lnlinks href=#hl-3-2>2</a>
+</span><span class=lnt id=hl-3-3><a class=lnlinks href=#hl-3-3>3</a>
+</span><span class=lnt id=hl-3-4><a class=lnlinks href=#hl-3-4>4</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh><span class=line><span class=cl><span class=c1># 检查密钥环服务状态</span>
+</span></span><span class=line><span class=cl>gnome-keyring-daemon --start
+</span></span><span class=line><span class=cl><span class=c1># 验证存储功能</span>
+</span></span><span class=line><span class=cl><span class=nb>echo</span> <span class=s2>&#34;test&#34;</span> <span class=p>|</span> secret-tool store --label<span class=o>=</span><span class=s2>&#34;Test&#34;</span> test_key test_value</span></span></code></pre></td></tr></table></div></div><h3 id=q2-sudo-被锁定后如何处理>Q2: sudo 被锁定后如何处理
+<a class=header-anchor href=#q2-sudo-%e8%a2%ab%e9%94%81%e5%ae%9a%e5%90%8e%e5%a6%82%e4%bd%95%e5%a4%84%e7%90%86></a></h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-4-1><a class=lnlinks href=#hl-4-1>1</a>
+</span><span class=lnt id=hl-4-2><a class=lnlinks href=#hl-4-2>2</a>
+</span><span class=lnt id=hl-4-3><a class=lnlinks href=#hl-4-3>3</a>
+</span><span class=lnt id=hl-4-4><a class=lnlinks href=#hl-4-4>4</a>
+</span><span class=lnt id=hl-4-5><a class=lnlinks href=#hl-4-5>5</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh><span class=line><span class=cl><span class=c1># 显示当前失败计数（RHEL系）</span>
+</span></span><span class=line><span class=cl>sudo pam_tally2 --user <span class=nv>$USER</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 强制解锁所有用户（Arch系）</span>
+</span></span><span class=line><span class=cl>sudo faillock --reset</span></span></code></pre></td></tr></table></div></div><h2 id=程序源码>程序源码
+<a class=header-anchor href=#%e7%a8%8b%e5%ba%8f%e6%ba%90%e7%a0%81></a></h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-5-1><a class=lnlinks href=#hl-5-1> 1</a>
+</span><span class=lnt id=hl-5-2><a class=lnlinks href=#hl-5-2> 2</a>
+</span><span class=lnt id=hl-5-3><a class=lnlinks href=#hl-5-3> 3</a>
+</span><span class=lnt id=hl-5-4><a class=lnlinks href=#hl-5-4> 4</a>
+</span><span class=lnt id=hl-5-5><a class=lnlinks href=#hl-5-5> 5</a>
+</span><span class=lnt id=hl-5-6><a class=lnlinks href=#hl-5-6> 6</a>
+</span><span class=lnt id=hl-5-7><a class=lnlinks href=#hl-5-7> 7</a>
+</span><span class=lnt id=hl-5-8><a class=lnlinks href=#hl-5-8> 8</a>
+</span><span class=lnt id=hl-5-9><a class=lnlinks href=#hl-5-9> 9</a>
+</span><span class=lnt id=hl-5-10><a class=lnlinks href=#hl-5-10>10</a>
+</span><span class=lnt id=hl-5-11><a class=lnlinks href=#hl-5-11>11</a>
+</span><span class=lnt id=hl-5-12><a class=lnlinks href=#hl-5-12>12</a>
+</span><span class=lnt id=hl-5-13><a class=lnlinks href=#hl-5-13>13</a>
+</span><span class=lnt id=hl-5-14><a class=lnlinks href=#hl-5-14>14</a>
+</span><span class=lnt id=hl-5-15><a class=lnlinks href=#hl-5-15>15</a>
+</span><span class=lnt id=hl-5-16><a class=lnlinks href=#hl-5-16>16</a>
+</span><span class=lnt id=hl-5-17><a class=lnlinks href=#hl-5-17>17</a>
+</span><span class=lnt id=hl-5-18><a class=lnlinks href=#hl-5-18>18</a>
+</span><span class=lnt id=hl-5-19><a class=lnlinks href=#hl-5-19>19</a>
+</span><span class=lnt id=hl-5-20><a class=lnlinks href=#hl-5-20>20</a>
+</span><span class=lnt id=hl-5-21><a class=lnlinks href=#hl-5-21>21</a>
+</span><span class=lnt id=hl-5-22><a class=lnlinks href=#hl-5-22>22</a>
+</span><span class=lnt id=hl-5-23><a class=lnlinks href=#hl-5-23>23</a>
+</span><span class=lnt id=hl-5-24><a class=lnlinks href=#hl-5-24>24</a>
+</span><span class=lnt id=hl-5-25><a class=lnlinks href=#hl-5-25>25</a>
+</span><span class=lnt id=hl-5-26><a class=lnlinks href=#hl-5-26>26</a>
+</span><span class=lnt id=hl-5-27><a class=lnlinks href=#hl-5-27>27</a>
+</span><span class=lnt id=hl-5-28><a class=lnlinks href=#hl-5-28>28</a>
+</span><span class=lnt id=hl-5-29><a class=lnlinks href=#hl-5-29>29</a>
+</span><span class=lnt id=hl-5-30><a class=lnlinks href=#hl-5-30>30</a>
+</span><span class=lnt id=hl-5-31><a class=lnlinks href=#hl-5-31>31</a>
+</span><span class=lnt id=hl-5-32><a class=lnlinks href=#hl-5-32>32</a>
+</span><span class=lnt id=hl-5-33><a class=lnlinks href=#hl-5-33>33</a>
+</span><span class=lnt id=hl-5-34><a class=lnlinks href=#hl-5-34>34</a>
+</span><span class=lnt id=hl-5-35><a class=lnlinks href=#hl-5-35>35</a>
+</span><span class=lnt id=hl-5-36><a class=lnlinks href=#hl-5-36>36</a>
+</span><span class=lnt id=hl-5-37><a class=lnlinks href=#hl-5-37>37</a>
+</span><span class=lnt id=hl-5-38><a class=lnlinks href=#hl-5-38>38</a>
+</span><span class=lnt id=hl-5-39><a class=lnlinks href=#hl-5-39>39</a>
+</span><span class=lnt id=hl-5-40><a class=lnlinks href=#hl-5-40>40</a>
+</span><span class=lnt id=hl-5-41><a class=lnlinks href=#hl-5-41>41</a>
+</span><span class=lnt id=hl-5-42><a class=lnlinks href=#hl-5-42>42</a>
+</span><span class=lnt id=hl-5-43><a class=lnlinks href=#hl-5-43>43</a>
+</span><span class=lnt id=hl-5-44><a class=lnlinks href=#hl-5-44>44</a>
+</span><span class=lnt id=hl-5-45><a class=lnlinks href=#hl-5-45>45</a>
+</span><span class=lnt id=hl-5-46><a class=lnlinks href=#hl-5-46>46</a>
+</span><span class=lnt id=hl-5-47><a class=lnlinks href=#hl-5-47>47</a>
+</span><span class=lnt id=hl-5-48><a class=lnlinks href=#hl-5-48>48</a>
+</span><span class=lnt id=hl-5-49><a class=lnlinks href=#hl-5-49>49</a>
+</span><span class=lnt id=hl-5-50><a class=lnlinks href=#hl-5-50>50</a>
+</span><span class=lnt id=hl-5-51><a class=lnlinks href=#hl-5-51>51</a>
+</span><span class=lnt id=hl-5-52><a class=lnlinks href=#hl-5-52>52</a>
+</span><span class=lnt id=hl-5-53><a class=lnlinks href=#hl-5-53>53</a>
+</span><span class=lnt id=hl-5-54><a class=lnlinks href=#hl-5-54>54</a>
+</span><span class=lnt id=hl-5-55><a class=lnlinks href=#hl-5-55>55</a>
+</span><span class=lnt id=hl-5-56><a class=lnlinks href=#hl-5-56>56</a>
+</span><span class=lnt id=hl-5-57><a class=lnlinks href=#hl-5-57>57</a>
+</span><span class=lnt id=hl-5-58><a class=lnlinks href=#hl-5-58>58</a>
+</span><span class=lnt id=hl-5-59><a class=lnlinks href=#hl-5-59>59</a>
+</span><span class=lnt id=hl-5-60><a class=lnlinks href=#hl-5-60>60</a>
+</span><span class=lnt id=hl-5-61><a class=lnlinks href=#hl-5-61>61</a>
+</span><span class=lnt id=hl-5-62><a class=lnlinks href=#hl-5-62>62</a>
+</span><span class=lnt id=hl-5-63><a class=lnlinks href=#hl-5-63>63</a>
+</span><span class=lnt id=hl-5-64><a class=lnlinks href=#hl-5-64>64</a>
+</span><span class=lnt id=hl-5-65><a class=lnlinks href=#hl-5-65>65</a>
+</span><span class=lnt id=hl-5-66><a class=lnlinks href=#hl-5-66>66</a>
+</span><span class=lnt id=hl-5-67><a class=lnlinks href=#hl-5-67>67</a>
+</span><span class=lnt id=hl-5-68><a class=lnlinks href=#hl-5-68>68</a>
+</span><span class=lnt id=hl-5-69><a class=lnlinks href=#hl-5-69>69</a>
+</span><span class=lnt id=hl-5-70><a class=lnlinks href=#hl-5-70>70</a>
+</span><span class=lnt id=hl-5-71><a class=lnlinks href=#hl-5-71>71</a>
+</span><span class=lnt id=hl-5-72><a class=lnlinks href=#hl-5-72>72</a>
+</span><span class=lnt id=hl-5-73><a class=lnlinks href=#hl-5-73>73</a>
+</span><span class=lnt id=hl-5-74><a class=lnlinks href=#hl-5-74>74</a>
+</span><span class=lnt id=hl-5-75><a class=lnlinks href=#hl-5-75>75</a>
+</span><span class=lnt id=hl-5-76><a class=lnlinks href=#hl-5-76>76</a>
+</span><span class=lnt id=hl-5-77><a class=lnlinks href=#hl-5-77>77</a>
+</span><span class=lnt id=hl-5-78><a class=lnlinks href=#hl-5-78>78</a>
+</span><span class=lnt id=hl-5-79><a class=lnlinks href=#hl-5-79>79</a>
+</span><span class=lnt id=hl-5-80><a class=lnlinks href=#hl-5-80>80</a>
+</span><span class=lnt id=hl-5-81><a class=lnlinks href=#hl-5-81>81</a>
+</span><span class=lnt id=hl-5-82><a class=lnlinks href=#hl-5-82>82</a>
+</span><span class=lnt id=hl-5-83><a class=lnlinks href=#hl-5-83>83</a>
+</span><span class=lnt id=hl-5-84><a class=lnlinks href=#hl-5-84>84</a>
+</span><span class=lnt id=hl-5-85><a class=lnlinks href=#hl-5-85>85</a>
+</span><span class=lnt id=hl-5-86><a class=lnlinks href=#hl-5-86>86</a>
+</span><span class=lnt id=hl-5-87><a class=lnlinks href=#hl-5-87>87</a>
+</span><span class=lnt id=hl-5-88><a class=lnlinks href=#hl-5-88>88</a>
+</span><span class=lnt id=hl-5-89><a class=lnlinks href=#hl-5-89>89</a>
+</span><span class=lnt id=hl-5-90><a class=lnlinks href=#hl-5-90>90</a>
+</span><span class=lnt id=hl-5-91><a class=lnlinks href=#hl-5-91>91</a>
+</span><span class=lnt id=hl-5-92><a class=lnlinks href=#hl-5-92>92</a>
+</span><span class=lnt id=hl-5-93><a class=lnlinks href=#hl-5-93>93</a>
+</span><span class=lnt id=hl-5-94><a class=lnlinks href=#hl-5-94>94</a>
+</span><span class=lnt id=hl-5-95><a class=lnlinks href=#hl-5-95>95</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh><span class=line><span class=cl><span class=cp>#! /bin/bash
+</span></span></span><span class=line><span class=cl><span class=c1>#</span>
+</span></span><span class=line><span class=cl><span class=c1># Program  : keysudo.sh</span>
+</span></span><span class=line><span class=cl><span class=c1># Author   : Zhen-Hua Feng(冯振华)</span>
+</span></span><span class=line><span class=cl><span class=c1># Email    : fengzhenhua@outlook.com</span>
+</span></span><span class=line><span class=cl><span class=c1># Date     : 2025-01-10 20:41</span>
+</span></span><span class=line><span class=cl><span class=c1># CopyRight: Copyright (C) 2025--</span>
+</span></span><span class=line><span class=cl><span class=c1># License  : Distributed under terms of the MIT license.</span>
+</span></span><span class=line><span class=cl><span class=c1>#</span>
+</span></span><span class=line><span class=cl><span class=c1># 定义标识符</span>
+</span></span><span class=line><span class=cl><span class=nv>SYN_KEY</span><span class=o>=</span><span class=s2>&#34;syndns_password&#34;</span>  <span class=c1># 密钥环中的唯一标识符</span>
+</span></span><span class=line><span class=cl><span class=nv>SYN_SUDO_NUM_MAX</span><span class=o>=</span><span class=s2>&#34;3&#34;</span>       <span class=c1># 确保这个数值与您系统中sudo验证次数一致，以免进入死循环</span>
+</span></span><span class=line><span class=cl><span class=c1># 检测依赖，确保secret-tool正确安装</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> ! <span class=nb>command</span> -v secret-tool <span class=p>&amp;</span>&gt;/dev/null<span class=p>;</span> <span class=k>then</span>
+</span></span><span class=line><span class=cl>  <span class=nb>echo</span> <span class=s2>&#34;错误：需要安装 secret-tool（包名：libsecret-tools）&#34;</span> &gt;<span class=p>&amp;</span><span class=m>2</span>
+</span></span><span class=line><span class=cl>  <span class=nb>exit</span> <span class=m>1</span>
+</span></span><span class=line><span class=cl><span class=k>fi</span>
+</span></span><span class=line><span class=cl><span class=c1># 探测系统sud解锁程序</span>
+</span></span><span class=line><span class=cl><span class=nv>SYN_RES_CMD</span><span class=o>=</span><span class=s2>&#34;&#34;</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=nb>command</span> -v faillock <span class=p>&amp;</span>&gt;/dev/null<span class=p>;</span> <span class=k>then</span>
+</span></span><span class=line><span class=cl>    <span class=nv>SYN_RES_CMD</span><span class=o>=</span><span class=s2>&#34;faillock --user </span><span class=nv>$USER</span><span class=s2> --reset&#34;</span>
+</span></span><span class=line><span class=cl><span class=k>elif</span> <span class=nb>command</span> -v pam_tally2 <span class=p>&amp;</span>&gt;/dev/null<span class=p>;</span> <span class=k>then</span>
+</span></span><span class=line><span class=cl>    <span class=nv>SYN_RES_CMD</span><span class=o>=</span><span class=s2>&#34;pam_tally2 --user </span><span class=nv>$USER</span><span class=s2> --reset&#34;</span>
+</span></span><span class=line><span class=cl><span class=k>else</span>
+</span></span><span class=line><span class=cl>    <span class=nb>echo</span> <span class=s2>&#34;错误：未找到可用SUDO解锁工具 !&#34;</span> &gt;<span class=p>&amp;</span><span class=m>2</span>
+</span></span><span class=line><span class=cl>    <span class=nb>echo</span> <span class=s2>&#34;请安装：Arch系安装pambase，RHEL系安装pam&#34;</span> &gt;<span class=p>&amp;</span><span class=m>2</span>
+</span></span><span class=line><span class=cl>    <span class=nb>exit</span> <span class=m>1</span>  <span class=c1># 正确终止脚本</span>
+</span></span><span class=line><span class=cl><span class=k>fi</span>
+</span></span><span class=line><span class=cl><span class=c1># 存储密码到 GNOME Keyring</span>
+</span></span><span class=line><span class=cl><span class=c1># 测试密码过程中存在sudo次数限制，如果sudo被锁定了，那本脚本在首次没有完成密码保存的工作后将处于锁定状态</span>
+</span></span><span class=line><span class=cl>SYN_KEY_GET<span class=o>(){</span>
+</span></span><span class=line><span class=cl>    <span class=nb>local</span> <span class=nv>SYN_AMT</span><span class=o>=</span><span class=s2>&#34;</span><span class=nv>$SYN_SUDO_NUM_MAX</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=k>while</span> <span class=o>[[</span> <span class=s2>&#34;</span><span class=nv>$SYN_AMT</span><span class=s2>&#34;</span> -gt <span class=m>0</span> <span class=o>]]</span><span class=p>;</span> <span class=k>do</span>
+</span></span><span class=line><span class=cl>        <span class=nv>SYN_KEY_X</span><span class=o>=</span><span class=k>$(</span>secret-tool lookup syndns_password_key <span class=s2>&#34;</span><span class=nv>$SYN_KEY</span><span class=s2>&#34;</span><span class=k>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=o>[[</span> -z <span class=s2>&#34;</span><span class=nv>$SYN_KEY_X</span><span class=s2>&#34;</span> <span class=o>]]</span><span class=p>;</span> <span class=k>then</span>
+</span></span><span class=line><span class=cl>            <span class=nb>unset</span> SYN_KEY_DATA
+</span></span><span class=line><span class=cl>            <span class=c1># 使用专业密码输入工具</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=nb>command</span> -v systemd-ask-password <span class=p>&amp;</span>&gt;/dev/null<span class=p>;</span> <span class=k>then</span>
+</span></span><span class=line><span class=cl>                <span class=nv>SYN_KEY_DATA</span><span class=o>=</span><span class=k>$(</span>systemd-ask-password --timeout<span class=o>=</span><span class=m>30</span> <span class=s2>&#34;请求sudo密码:&#34;</span><span class=k>)</span>
+</span></span><span class=line><span class=cl>            <span class=k>else</span>
+</span></span><span class=line><span class=cl>                <span class=nb>printf</span> <span class=s2>&#34;</span><span class=nv>$0</span><span class=s2> 请求输入sudo密码(30秒超时):&#34;</span> &gt;<span class=p>&amp;</span><span class=m>2</span>
+</span></span><span class=line><span class=cl>                <span class=c1># 增加超时后的清理逻辑</span>
+</span></span><span class=line><span class=cl>                <span class=k>if</span> ! <span class=nb>read</span> -rs -t <span class=m>30</span> SYN_KEY_DATA<span class=p>;</span> <span class=k>then</span>
+</span></span><span class=line><span class=cl>                    <span class=nb>printf</span> <span class=s2>&#34;\n输入超时，操作取消。\n&#34;</span> &gt;<span class=p>&amp;</span><span class=m>2</span>
+</span></span><span class=line><span class=cl>                    <span class=nb>unset</span> SYN_KEY_DATA
+</span></span><span class=line><span class=cl>                    <span class=nb>exit</span> <span class=m>1</span>
+</span></span><span class=line><span class=cl>                <span class=k>fi</span>
+</span></span><span class=line><span class=cl>            <span class=k>fi</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=o>[[</span> -z <span class=s2>&#34;</span><span class=nv>$SYN_KEY_DATA</span><span class=s2>&#34;</span> <span class=o>]]</span><span class=p>;</span> <span class=k>then</span>
+</span></span><span class=line><span class=cl>                <span class=nb>printf</span> <span class=s2>&#34;\n密码不能为空，请重新输入。\n&#34;</span> &gt;<span class=p>&amp;</span><span class=m>2</span>
+</span></span><span class=line><span class=cl>            <span class=k>else</span>
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=nb>printf</span> <span class=s2>&#34;%s&#34;</span> <span class=s2>&#34;</span><span class=nv>$SYN_KEY_DATA</span><span class=s2>&#34;</span> <span class=p>|</span> secret-tool store --label<span class=o>=</span><span class=s2>&#34;Syndns Password&#34;</span> syndns_password_key <span class=s2>&#34;</span><span class=nv>$SYN_KEY</span><span class=s2>&#34;</span><span class=p>;</span> <span class=k>then</span>
+</span></span><span class=line><span class=cl>                    sudo -k
+</span></span><span class=line><span class=cl>                    <span class=k>if</span> <span class=nb>printf</span> <span class=s2>&#34;%s&#34;</span> <span class=s2>&#34;</span><span class=nv>$SYN_KEY_DATA</span><span class=s2>&#34;</span> <span class=p>|</span> sudo -S -v 2&gt;/dev/null<span class=p>;</span> <span class=k>then</span>
+</span></span><span class=line><span class=cl>                        <span class=c1># 存储成功后立即清理</span>
+</span></span><span class=line><span class=cl>                        <span class=nb>unset</span> SYN_KEY_DATA
+</span></span><span class=line><span class=cl>                        <span class=nb>printf</span> <span class=s2>&#34;\n密码已成功存储到 GNOME Keyring 中。\n&#34;</span> &gt;<span class=p>&amp;</span><span class=m>2</span>
+</span></span><span class=line><span class=cl>                        <span class=k>return</span> <span class=m>0</span>
+</span></span><span class=line><span class=cl>                    <span class=k>else</span>
+</span></span><span class=line><span class=cl>                        <span class=nv>SYN_AMT</span><span class=o>=</span><span class=k>$((</span>SYN_AMT <span class=o>-</span> <span class=m>1</span><span class=k>))</span>
+</span></span><span class=line><span class=cl>                        SYN_FAIL_RES <span class=s2>&#34;警告：当前系统可能需要手动重置失败计数!&#34;</span>
+</span></span><span class=line><span class=cl>                    <span class=k>fi</span>
+</span></span><span class=line><span class=cl>                <span class=k>else</span>
+</span></span><span class=line><span class=cl>                    <span class=nb>printf</span> <span class=s2>&#34;\n无法存储密码，请检查 GNOME Keyring 是否可用。\n&#34;</span> &gt;<span class=p>&amp;</span><span class=m>2</span>
+</span></span><span class=line><span class=cl>                    <span class=nb>exit</span> <span class=m>1</span>
+</span></span><span class=line><span class=cl>                <span class=k>fi</span>
+</span></span><span class=line><span class=cl>            <span class=k>fi</span>
+</span></span><span class=line><span class=cl>        <span class=k>else</span>
+</span></span><span class=line><span class=cl>            sudo -k
+</span></span><span class=line><span class=cl>            <span class=k>if</span> ! <span class=nb>printf</span> <span class=s2>&#34;%s&#34;</span> <span class=s2>&#34;</span><span class=nv>$SYN_KEY_X</span><span class=s2>&#34;</span> <span class=p>|</span> sudo -S -v 2&gt;/dev/null<span class=p>;</span> <span class=k>then</span>
+</span></span><span class=line><span class=cl>                <span class=nv>SYN_AMT</span><span class=o>=</span><span class=k>$((</span>SYN_AMT <span class=o>-</span> <span class=m>1</span><span class=k>))</span>
+</span></span><span class=line><span class=cl>                secret-tool clear syndns_password_key <span class=s2>&#34;</span><span class=nv>$SYN_KEY</span><span class=s2>&#34;</span> <span class=c1># 清空密码，重新循环才能进入设置</span>
+</span></span><span class=line><span class=cl>                SYN_FAIL_RES <span class=s2>&#34;警告：当前系统可能需要手动重置失败计数!&#34;</span>
+</span></span><span class=line><span class=cl>            <span class=k>else</span>
+</span></span><span class=line><span class=cl>                <span class=k>return</span> <span class=m>0</span>
+</span></span><span class=line><span class=cl>            <span class=k>fi</span>
+</span></span><span class=line><span class=cl>        <span class=k>fi</span>
+</span></span><span class=line><span class=cl>    <span class=k>done</span>
+</span></span><span class=line><span class=cl>    <span class=nb>printf</span> <span class=s2>&#34;尝试次数已达上限，操作终止。\n&#34;</span> &gt;<span class=p>&amp;</span><span class=m>2</span>
+</span></span><span class=line><span class=cl>    SYN_FAIL_RES <span class=s2>&#34;请切换至ROOT权限解除锁定: </span><span class=nv>$SYN_RES_CMD</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=nb>exit</span> <span class=m>1</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span><span class=line><span class=cl>SYN_FAIL_RES<span class=o>(){</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> grep -qi <span class=s1>&#39;arch&#39;</span> /etc/os-release 2&gt;/dev/null<span class=p>;</span> <span class=k>then</span>
+</span></span><span class=line><span class=cl>        faillock --user <span class=nv>$USER</span> --reset
+</span></span><span class=line><span class=cl>    <span class=k>else</span>
+</span></span><span class=line><span class=cl>        <span class=c1># 优先显示传入的定制化提示</span>
+</span></span><span class=line><span class=cl>        <span class=nb>printf</span> <span class=s2>&#34;</span><span class=nv>$1</span><span class=s2> \n&#34;</span> &gt;<span class=p>&amp;</span><span class=m>2</span>
+</span></span><span class=line><span class=cl>        <span class=c1># 补充建议命令（带sudo前缀）</span>
+</span></span><span class=line><span class=cl>        <span class=o>[</span> -n <span class=s2>&#34;</span><span class=nv>$SYN_RES_CMD</span><span class=s2>&#34;</span> <span class=o>]</span> <span class=o>&amp;&amp;</span> <span class=nb>echo</span> <span class=s2>&#34;可尝试执行: sudo </span><span class=nv>$SYN_RES_CMD</span><span class=s2>&#34;</span> &gt;<span class=p>&amp;</span><span class=m>2</span>
+</span></span><span class=line><span class=cl>    <span class=k>fi</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span><span class=line><span class=cl>sudo -k  <span class=c1># 清除sudo缓存</span>
+</span></span><span class=line><span class=cl>SYN_KEY_GET
+</span></span><span class=line><span class=cl><span class=nb>echo</span> <span class=nv>$SYN_KEY_X</span></span></span></code></pre></td></tr></table></div></div></div><footer class=post-footer><hr><div class=post-nav><div class="post-nav-next post-nav-item"><a href=../../post/%E7%BC%96%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%BA%93%E4%B8%8E%E8%B7%A8%E7%A8%8B%E5%BA%8F%E8%B0%83%E7%94%A8/ rel=next title=编程的基本原理：库与跨程序调用><i class="fa fa-chevron-left"></i> 编程的基本原理：库与跨程序调用</a></div><div class="post-nav-prev post-nav-item"><a href=../../post/paru%E7%9A%84%E5%A2%9E%E5%BC%BA%E4%B8%8B%E8%BD%BD%E8%84%9A%E6%9C%ACparia/ rel=prev title=Paru的增强下载脚本Paria>Paru的增强下载脚本Paria
 <i class="fa fa-chevron-right"></i></a></div></div></footer></article></div></div></main><footer class=footer><div class=footer-inner><div id=i18n-translate class=i18n-translate><i class="fa fa-language"></i><div id=lang-select class=lang-select><div id=lang-selected class=selected-option><span class="flag-icon flag-icon-zh-cn"></span>
 <span class=selected-language>简体中文</span>
 <i class="fa fa-chevron-down"></i></div><div id=lang-options class=lang-options><div class=lang-option lang-code=zh-cn lang-name=简体中文 lang-url=../../post/sudo%E5%AF%86%E7%A0%81%E7%9A%84%E5%AD%98%E5%82%A8%E5%92%8C%E8%87%AA%E5%8A%A8%E8%B0%83%E7%94%A8/><span class="flag-icon flag-icon-zh-cn"></span>
 <span class=lang-name>简体中文</span></div></div></div></div><div class=copyright>&copy;
 <span itemprop=copyrightYear>2022 - 2026
 </span><span class=with-love><i class="fa fa-heart"></i>
-</span><span class=author itemprop=copyrightHolder>Zhen-Hua Feng</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.169.0 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.8.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div></div></footer><script class=next-config data-name=page type=application/json>{"clipboard":{"js":{"alias":"clipboard","file":"dist/clipboard.min.js","name":"clipboard.js","version":"2.0.11"}},"comments":false,"expired":false,"isHome":false,"isPage":true,"math":{"js":{"file":"es5/tex-mml-svg.js","name":"mathjax","version":"3.2.2"},"render":"mathjax"},"path":"sudo%E5%AF%86%E7%A0%81%E7%9A%84%E5%AD%98%E5%82%A8%E5%92%8C%E8%87%AA%E5%8A%A8%E8%B0%83%E7%94%A8","permalink":"/post/sudo%E5%AF%86%E7%A0%81%E7%9A%84%E5%AD%98%E5%82%A8%E5%92%8C%E8%87%AA%E5%8A%A8%E8%B0%83%E7%94%A8/","title":"Sudo密码的存储和自动调用","toc":true}</script><script type=text/javascript src=https://s4.zstatic.net/ajax/libs/animejs/3.2.2/anime.min.js crossorigin=anonymous defer></script><script type=text/javascript src=https://s4.zstatic.net/ajax/libs/viewerjs/1.11.6/viewer.min.js crossorigin=anonymous defer></script><script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#9400D3","enable":false,"save":"manual"},"copybtn":true,"darkmode":false,"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"isMultiLang":true,"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"slideInRight","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":false,"plugin":"waline"},"views":{"enable":false,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","share":{"addtoany":{"js":"https://static.addtoany.com/menu/page.js","locale":"zh-CN","num":8},"enable":false},"sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"zstatic","router":{"home":"https://www.zstatic.net","logo":"https://www.zstatic.net/logo.png","name":"zstatic","type":"modern","url":"https://s4.zstatic.net/ajax/libs"}},"version":"4.8.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":false,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"@waline/client","file":"dist/waline.css","name":"waline","version":"2.15.8"},"js":{"alias":"@waline/client","file":"dist/waline.js","name":"waline","version":"2.15.8"}}}</script><script type=text/javascript src="../../js/main.min.js?=1794144902" defer></script><script type=text/javascript src="../../js/clipboard.min.js?=1794144902" defer></script><script type=text/javascript src="../../js/math.min.js?=1794144902" defer></script></body></html>
+</span><span class=author itemprop=copyrightHolder>Zhen-Hua Feng</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.169.0 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.8.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div></div></footer><script class=next-config data-name=page type=application/json>{"clipboard":{"js":{"alias":"clipboard","file":"dist/clipboard.min.js","name":"clipboard.js","version":"2.0.11"}},"comments":false,"expired":false,"isHome":false,"isPage":true,"math":{"js":{"file":"es5/tex-mml-svg.js","name":"mathjax","version":"3.2.2"},"render":"mathjax"},"path":"sudo%E5%AF%86%E7%A0%81%E7%9A%84%E5%AD%98%E5%82%A8%E5%92%8C%E8%87%AA%E5%8A%A8%E8%B0%83%E7%94%A8","permalink":"/post/sudo%E5%AF%86%E7%A0%81%E7%9A%84%E5%AD%98%E5%82%A8%E5%92%8C%E8%87%AA%E5%8A%A8%E8%B0%83%E7%94%A8/","title":"Sudo密码的存储和自动调用","toc":true}</script><script type=text/javascript src=https://s4.zstatic.net/ajax/libs/animejs/3.2.2/anime.min.js crossorigin=anonymous defer></script><script type=text/javascript src=https://s4.zstatic.net/ajax/libs/viewerjs/1.11.6/viewer.min.js crossorigin=anonymous defer></script><script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#9400D3","enable":false,"save":"manual"},"copybtn":true,"darkmode":false,"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"isMultiLang":true,"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"slideInRight","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":false,"plugin":"waline"},"views":{"enable":false,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","share":{"addtoany":{"js":"https://static.addtoany.com/menu/page.js","locale":"zh-CN","num":8},"enable":false},"sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"zstatic","router":{"home":"https://www.zstatic.net","logo":"https://www.zstatic.net/logo.png","name":"zstatic","type":"modern","url":"https://s4.zstatic.net/ajax/libs"}},"version":"4.8.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":false,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"@waline/client","file":"dist/waline.css","name":"waline","version":"2.15.8"},"js":{"alias":"@waline/client","file":"dist/waline.js","name":"waline","version":"2.15.8"}}}</script><script type=text/javascript src="../../js/main.min.js?=1794212984" defer></script><script type=text/javascript src="../../js/clipboard.min.js?=1794212984" defer></script><script type=text/javascript src="../../js/math.min.js?=1794212984" defer></script></body></html>

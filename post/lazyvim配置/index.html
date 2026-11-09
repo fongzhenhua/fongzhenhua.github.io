@@ -1,4 +1,4 @@
-<!doctype html><html lang=zh-CN data-theme=light><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=theme-color content="#9400D3" media="(prefers-color-scheme: light)"><meta name=generator content="Hugo 0.169.0"><link rel="shortcut icon" type=image/x-icon href=../../imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=../../imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=../../imgs/icons/favicon_16x16_next.png><link rel=icon type=image/png sizes=32x32 href=../../imgs/icons/favicon_32_32_next.png><link rel=apple-touch-icon sizes=180x180 href=../../imgs/icons/apple_touch_icon_next.png><meta itemprop=name content="LazyVim配置"><meta itemprop=description content><meta name=description content><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="/"><meta itemprop=keywords content="Hugo,Linux,Hexo,Physics"><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/font-awesome/6.7.2/css/all.min.css><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/viewerjs/1.11.6/viewer.min.css><link rel=stylesheet href="../../css/main.min.css?=1794144902"><style type=text/css>.post-footer hr:after{content:""}.flinks-list-footer hr:after{content:""}</style><link rel=stylesheet type=text/css href="../../css/custom_style.css?=1794144902"><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return 0[0];const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),0[0]):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>LazyVim配置 - BNU-FZH</title><noscript><link rel=stylesheet href=../../css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
+<!doctype html><html lang=zh-CN data-theme=light><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=theme-color content="#9400D3" media="(prefers-color-scheme: light)"><meta name=generator content="Hugo 0.169.0"><link rel="shortcut icon" type=image/x-icon href=../../imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=../../imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=../../imgs/icons/favicon_16x16_next.png><link rel=icon type=image/png sizes=32x32 href=../../imgs/icons/favicon_32_32_next.png><link rel=apple-touch-icon sizes=180x180 href=../../imgs/icons/apple_touch_icon_next.png><meta itemprop=name content="LazyVim配置"><meta itemprop=description content><meta name=description content><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="/"><meta itemprop=keywords content="Hugo,Linux,Hexo,Physics"><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/font-awesome/6.7.2/css/all.min.css><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/viewerjs/1.11.6/viewer.min.css><link rel=stylesheet href="../../css/main.min.css?=1794212984"><style type=text/css>.post-footer hr:after{content:""}.flinks-list-footer hr:after{content:""}</style><link rel=stylesheet type=text/css href="../../css/custom_style.css?=1794212984"><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return 0[0];const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),0[0]):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>LazyVim配置 - BNU-FZH</title><noscript><link rel=stylesheet href=../../css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
 <span class=toggle-line></span>
 <span class=toggle-line></span></div></div><div class=site-meta><a href=../../ class=brand rel=start><i class=logo-line></i><h1 class=site-title>BNU-FZH</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description>fengzhenhua@outlook.com</p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=../../ class=hvr-icon-pulse rel=section><i class="fa fa-home hvr-icon"></i>首页</a></li><li class="menu-item menu-item-about"><a href=../../about.html class=hvr-icon-pulse rel=section><i class="fa fa-user hvr-icon"></i>关于</a></li><li class="menu-item menu-item-导航"><a href=../../%E5%AF%BC%E8%88%AA/ class=hvr-icon-pulse rel=section><i class="fa fa-fa fa-paper-plane hvr-icon"></i>导航</a></li><li class="menu-item menu-item-软件"><a href=../../%E8%BD%AF%E4%BB%B6/ class=hvr-icon-pulse rel=section><i class="fa fa-fa fa-briefcase hvr-icon"></i>软件</a></li><li class="menu-item menu-item-收藏"><a href=../../%E6%94%B6%E8%97%8F/ class=hvr-icon-pulse rel=section><i class="fa fa-fa fa-folder hvr-icon"></i>收藏</a></li><li class="menu-item menu-item-工作"><a href=../../%E5%B7%A5%E4%BD%9C/ class=hvr-icon-pulse rel=section><i class="fa fa-fa fa-folder hvr-icon"></i>工作</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
 <span class=toggle-line></span>
@@ -115,317 +115,317 @@ LazyVim是一套Neovim配置，由lazy.nvim驱动，可以轻松自定义和扩�
 <i class="fa fa-external-link-alt"></i></a></p><p><a href=https://www.bilibili.com/read/cv22398023 title=vim命令使用总结 rel="noopener external nofollow noreferrer" target=_blank class=exturl>vim命令使用总结
 <i class="fa fa-external-link-alt"></i></a></p><h2 id=-相关配置>⚙️ 相关配置
 <a class=header-anchor href=#-%e7%9b%b8%e5%85%b3%e9%85%8d%e7%bd%ae></a></h2><h3 id=1-添加插件>1. 添加插件
-<a class=header-anchor href=#1-%e6%b7%bb%e5%8a%a0%e6%8f%92%e4%bb%b6></a></h3><p>在 .config/nvim/lua/plugins/ 新加 xxx.lua，格式参考 example.lua</p><ul><li><p>修改主题，tokyonight.lua:</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-1> 1</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-2><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-2> 2</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-3><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-3> 3</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-4><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-4> 4</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-5><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-5> 5</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-6><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-6> 6</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-7><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-7> 7</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-8><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-8> 8</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-9><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-9> 9</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-10><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-10>10</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-lua data-lang=lua><span style=display:flex><span><span style=color:#66d9ef>return</span> {
-</span></span><span style=display:flex><span>{
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;folke/tokyonight.nvim&#34;</span>,
-</span></span><span style=display:flex><span>    lazy <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>,
-</span></span><span style=display:flex><span>    opts <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>    colorscheme <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;tokyonight&#34;</span>,
-</span></span><span style=display:flex><span>    style <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;storm&#34;</span>,
-</span></span><span style=display:flex><span>    },
-</span></span><span style=display:flex><span>},
-</span></span><span style=display:flex><span>} </span></span></code></pre></td></tr></table></div></div></li><li><p>更改开始面板logo，alpha.lua:</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-1> 1</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-2><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-2> 2</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-3><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-3> 3</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-4><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-4> 4</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-5><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-5> 5</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-6><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-6> 6</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-7><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-7> 7</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-8><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-8> 8</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-9><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-9> 9</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-10><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-10>10</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-11><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-11>11</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-12><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-12>12</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-13><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-13>13</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-14><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-14>14</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-15><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-15>15</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-lua data-lang=lua><span style=display:flex><span><span style=color:#66d9ef>return</span> {
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;goolord/alpha-nvim&#34;</span>,
-</span></span><span style=display:flex><span>    opts <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span>(_, opts)
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>local</span> logo <span style=color:#f92672>=</span> <span style=color:#e6db74>[[
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>        _____          __            .______________
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    /     \ _____  |  | __ ____   |   \__    ___/
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    /  \ /  \\__  \ |  |/ // __ \  |   | |    |   
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    /    Y    \/ __ \|    &lt;\  ___/  |   | |    |   
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    \____|__  (____  /__|_ \\___  &gt; |___| |____|   
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>            \/     \/     \/    \/                 
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>                   [ @theRunCom ]
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>        ]]</span>
-</span></span><span style=display:flex><span>        opts.section.header.val <span style=color:#f92672>=</span> vim.split(logo, <span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, { trimempty <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span> })
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>end</span>,
-</span></span><span style=display:flex><span>}</span></span></code></pre></td></tr></table></div></div></li></ul><p><img src=../../imgs/img-lazy-loading.gif data-src=../../Picture/lazy/MakeIt.jpg alt=MakeIt></p><ul><li><p>浏览文件，file-browser.lua:</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-1> 1</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-2><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-2> 2</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-3><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-3> 3</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-4><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-4> 4</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-5><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-5> 5</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-6><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-6> 6</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-7><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-7> 7</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-8><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-8> 8</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-9><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-9> 9</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-10><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-10>10</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-11><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-11>11</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-12><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-12>12</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-13><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-13>13</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-lua data-lang=lua><span style=display:flex><span><span style=color:#66d9ef>return</span> {
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;nvim-telescope/telescope-file-browser.nvim&#34;</span>,
-</span></span><span style=display:flex><span>    keys <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>        {
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;&lt;leader&gt;sB&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;:Telescope file_browser path=%:p:h=%:p:h&lt;cr&gt;&#34;</span>,
-</span></span><span style=display:flex><span>        desc <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Browse Files&#34;</span>,
-</span></span><span style=display:flex><span>        },
-</span></span><span style=display:flex><span>    },
-</span></span><span style=display:flex><span>    config <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span>()
-</span></span><span style=display:flex><span>        require(<span style=color:#e6db74>&#34;telescope&#34;</span>).load_extension(<span style=color:#e6db74>&#34;file_browser&#34;</span>)
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>end</span>,
-</span></span><span style=display:flex><span>}</span></span></code></pre></td></tr></table></div></div></li></ul><p><img src=../../imgs/img-lazy-loading.gif data-src=../../Picture/lazy/file-browser.jpg alt=file-browser></p><ul><li><p>终端，toggleterm.lua:</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-1> 1</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-2><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-2> 2</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-3><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-3> 3</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-4><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-4> 4</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-5><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-5> 5</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-6><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-6> 6</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-7><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-7> 7</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-8><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-8> 8</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-9><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-9> 9</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-10><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-10>10</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-11><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-11>11</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-12><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-12>12</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-13><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-13>13</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-14><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-14>14</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-15><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-15>15</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-16><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-16>16</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-17><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-17>17</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-18><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-18>18</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-19><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-19>19</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-20><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-20>20</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-21><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-21>21</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-22><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-22>22</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-23><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-23>23</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-24><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-24>24</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-25><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-25>25</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-26><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-26>26</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-27><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-27>27</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-28><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-28>28</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-lua data-lang=lua><span style=display:flex><span><span style=color:#66d9ef>return</span> {
-</span></span><span style=display:flex><span>{
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;akinsho/toggleterm.nvim&#34;</span>,
-</span></span><span style=display:flex><span>    version <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;*&#34;</span>,
-</span></span><span style=display:flex><span>    opts <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>    size <span style=color:#f92672>=</span> <span style=color:#ae81ff>20</span>,
-</span></span><span style=display:flex><span>    open_mapping <span style=color:#f92672>=</span> <span style=color:#e6db74>[[&lt;c-\&gt;]]</span>,
-</span></span><span style=display:flex><span>    hide_numbers <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>,
-</span></span><span style=display:flex><span>    shade_terminals <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>,
-</span></span><span style=display:flex><span>    shading_factor <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>,
-</span></span><span style=display:flex><span>    start_in_insert <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>,
-</span></span><span style=display:flex><span>    insert_mappings <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>,
-</span></span><span style=display:flex><span>    persist_size <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>,
-</span></span><span style=display:flex><span>    direction <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;float&#34;</span>,
-</span></span><span style=display:flex><span>    close_on_exit <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>,
-</span></span><span style=display:flex><span>    shell <span style=color:#f92672>=</span> vim.o.shell,
-</span></span><span style=display:flex><span>    float_opts <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>        border <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;curved&#34;</span>,
-</span></span><span style=display:flex><span>    },
-</span></span><span style=display:flex><span>    },
-</span></span><span style=display:flex><span>    keys <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>    {
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;&lt;c-</span><span style=color:#ae81ff>\\</span><span style=color:#e6db74>&gt;&#34;</span>,
-</span></span><span style=display:flex><span>        desc <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Toggle term&#34;</span>,
-</span></span><span style=display:flex><span>    },
-</span></span><span style=display:flex><span>    },
-</span></span><span style=display:flex><span>},
-</span></span><span style=display:flex><span>}</span></span></code></pre></td></tr></table></div></div></li><li><p>tree-sitter插件是基于tree-sitter的插件，可以为多种编辑器提供语法高亮、代码折叠、自动补全等功能，treesitter.lua:</p></li></ul><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-1> 1</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-2><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-2> 2</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-3><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-3> 3</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-4><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-4> 4</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-5><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-5> 5</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-6><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-6> 6</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-7><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-7> 7</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-8><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-8> 8</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-9><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-9> 9</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-10><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-10>10</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-11><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-11>11</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-12><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-12>12</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-13><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-13>13</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-14><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-14>14</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-15><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-15>15</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-16><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-16>16</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-17><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-17>17</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-18><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-18>18</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-19><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-19>19</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-20><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-20>20</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-21><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-21>21</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-22><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-22>22</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-23><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-23>23</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-24><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-24>24</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-25><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-25>25</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-26><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-26>26</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-27><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-27>27</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-28><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-28>28</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-29><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-29>29</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-30><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-30>30</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-31><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-31>31</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-32><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-32>32</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-33><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-33>33</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-34><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-34>34</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-35><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-35>35</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-36><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-36>36</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-37><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-37>37</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-38><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-38>38</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-39><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-39>39</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-40><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-40>40</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-41><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-41>41</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-42><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-42>42</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-43><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-43>43</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-44><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-44>44</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-45><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-45>45</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-46><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-46>46</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-47><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-47>47</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-48><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-48>48</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-49><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-49>49</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-50><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-50>50</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-51><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-51>51</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-52><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-52>52</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-53><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-53>53</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-54><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-54>54</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-55><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-55>55</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-56><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-56>56</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-57><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-57>57</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-58><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-58>58</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-59><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-59>59</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-60><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-60>60</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-lua data-lang=lua><span style=display:flex><span><span style=color:#66d9ef>return</span> {
-</span></span><span style=display:flex><span>  {
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;nvim-treesitter/nvim-treesitter&#34;</span>,
-</span></span><span style=display:flex><span>    opts <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>      ensure_installed <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;bash&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;regex&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;vim&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;lua&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;html&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;markdown&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;markdown_inline&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;css&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;typescript&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;tsx&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;javascript&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;json&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;json5&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;jsonc&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;graphql&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;prisma&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;rust&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;go&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;toml&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;c&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;cpp&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;clojure&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;dart&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;dockerfile&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;scss&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;swift&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;toml&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;verilog&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;vue&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;zig&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;proto&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;svelte&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;solidity&#34;</span>,
-</span></span><span style=display:flex><span>      },
-</span></span><span style=display:flex><span>      auto_install <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>,
-</span></span><span style=display:flex><span>      <span style=color:#75715e>-- ensure_installed = &#34;all&#34;, -- one of &#34;all&#34; or a list of languages</span>
-</span></span><span style=display:flex><span>      ignore_install <span style=color:#f92672>=</span> { <span style=color:#e6db74>&#34;&#34;</span> }, <span style=color:#75715e>-- List of parsers to ignore installing</span>
-</span></span><span style=display:flex><span>      sync_install <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span>, <span style=color:#75715e>-- install languages synchronously (only applied to `ensure_installed`)</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>      highlight <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>        enable <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>, <span style=color:#75715e>-- false will disable the whole extension</span>
-</span></span><span style=display:flex><span>        disable <span style=color:#f92672>=</span> { <span style=color:#e6db74>&#34;css&#34;</span> }, <span style=color:#75715e>-- list of language that will be disabled</span>
-</span></span><span style=display:flex><span>      },
-</span></span><span style=display:flex><span>      autopairs <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>        enable <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>,
-</span></span><span style=display:flex><span>      },
-</span></span><span style=display:flex><span>      indent <span style=color:#f92672>=</span> { enable <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>, disable <span style=color:#f92672>=</span> { <span style=color:#e6db74>&#34;python&#34;</span>, <span style=color:#e6db74>&#34;css&#34;</span> } },
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>      context_commentstring <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>        enable <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>,
-</span></span><span style=display:flex><span>        enable_autocmd <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span>,
-</span></span><span style=display:flex><span>      },
-</span></span><span style=display:flex><span>    },
-</span></span><span style=display:flex><span>  },
-</span></span><span style=display:flex><span>}</span></span></code></pre></td></tr></table></div></div><ul><li><p>Tailwind CSS 相关支持，tailwind.lua:</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-1> 1</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-2><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-2> 2</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-3><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-3> 3</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-4><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-4> 4</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-5><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-5> 5</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-6><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-6> 6</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-7><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-7> 7</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-8><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-8> 8</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-9><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-9> 9</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-10><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-10>10</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-11><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-11>11</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-12><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-12>12</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-13><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-13>13</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-14><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-14>14</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-15><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-15>15</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-16><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-16>16</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-17><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-17>17</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-18><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-18>18</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-19><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-19>19</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-20><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-20>20</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-21><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-21>21</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-22><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-22>22</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-23><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-23>23</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-24><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-24>24</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-25><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-25>25</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-26><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-26>26</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-27><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-27>27</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-28><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-28>28</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-29><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-29>29</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-30><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-30>30</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-31><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-31>31</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-32><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-32>32</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-lua data-lang=lua><span style=display:flex><span><span style=color:#66d9ef>return</span> {
-</span></span><span style=display:flex><span>{
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;neovim/nvim-lspconfig&#34;</span>,
-</span></span><span style=display:flex><span>    opts <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>    servers <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>        tailwindcss <span style=color:#f92672>=</span> {},
-</span></span><span style=display:flex><span>    },
-</span></span><span style=display:flex><span>    },
-</span></span><span style=display:flex><span>},
-</span></span><span style=display:flex><span>{
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;NvChad/nvim-colorizer.lua&#34;</span>,
-</span></span><span style=display:flex><span>    opts <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>    user_default_options <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>        tailwind <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>,
-</span></span><span style=display:flex><span>    },
-</span></span><span style=display:flex><span>    },
-</span></span><span style=display:flex><span>},
-</span></span><span style=display:flex><span>{
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;hrsh7th/nvim-cmp&#34;</span>,
-</span></span><span style=display:flex><span>    dependencies <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>    { <span style=color:#e6db74>&#34;roobert/tailwindcss-colorizer-cmp.nvim&#34;</span>, config <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span> },
-</span></span><span style=display:flex><span>    },
-</span></span><span style=display:flex><span>    opts <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span>(_, opts)
-</span></span><span style=display:flex><span>    <span style=color:#75715e>-- original LazyVim kind icon formatter</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>local</span> format_kinds <span style=color:#f92672>=</span> opts.formatting.format
-</span></span><span style=display:flex><span>    opts.formatting.format <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span>(entry, item)
-</span></span><span style=display:flex><span>        format_kinds(entry, item) <span style=color:#75715e>-- add icons</span>
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> require(<span style=color:#e6db74>&#34;tailwindcss-colorizer-cmp&#34;</span>).formatter(entry, item)
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>end</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>end</span>,
-</span></span><span style=display:flex><span>},
-</span></span><span style=display:flex><span>}</span></span></code></pre></td></tr></table></div></div></li></ul><h2 id=tips>Tips🔐
+<a class=header-anchor href=#1-%e6%b7%bb%e5%8a%a0%e6%8f%92%e4%bb%b6></a></h3><p>在 .config/nvim/lua/plugins/ 新加 xxx.lua，格式参考 example.lua</p><ul><li><p>修改主题，tokyonight.lua:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-0-1><a class=lnlinks href=#hl-0-1> 1</a>
+</span><span class=lnt id=hl-0-2><a class=lnlinks href=#hl-0-2> 2</a>
+</span><span class=lnt id=hl-0-3><a class=lnlinks href=#hl-0-3> 3</a>
+</span><span class=lnt id=hl-0-4><a class=lnlinks href=#hl-0-4> 4</a>
+</span><span class=lnt id=hl-0-5><a class=lnlinks href=#hl-0-5> 5</a>
+</span><span class=lnt id=hl-0-6><a class=lnlinks href=#hl-0-6> 6</a>
+</span><span class=lnt id=hl-0-7><a class=lnlinks href=#hl-0-7> 7</a>
+</span><span class=lnt id=hl-0-8><a class=lnlinks href=#hl-0-8> 8</a>
+</span><span class=lnt id=hl-0-9><a class=lnlinks href=#hl-0-9> 9</a>
+</span><span class=lnt id=hl-0-10><a class=lnlinks href=#hl-0-10>10</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-lua data-lang=lua><span class=line><span class=cl><span class=kr>return</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;folke/tokyonight.nvim&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>lazy</span> <span class=o>=</span> <span class=kc>true</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>opts</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>colorscheme</span> <span class=o>=</span> <span class=s2>&#34;tokyonight&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>style</span> <span class=o>=</span> <span class=s2>&#34;storm&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>}</span> </span></span></code></pre></td></tr></table></div></div></li><li><p>更改开始面板logo，alpha.lua:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-1-1><a class=lnlinks href=#hl-1-1> 1</a>
+</span><span class=lnt id=hl-1-2><a class=lnlinks href=#hl-1-2> 2</a>
+</span><span class=lnt id=hl-1-3><a class=lnlinks href=#hl-1-3> 3</a>
+</span><span class=lnt id=hl-1-4><a class=lnlinks href=#hl-1-4> 4</a>
+</span><span class=lnt id=hl-1-5><a class=lnlinks href=#hl-1-5> 5</a>
+</span><span class=lnt id=hl-1-6><a class=lnlinks href=#hl-1-6> 6</a>
+</span><span class=lnt id=hl-1-7><a class=lnlinks href=#hl-1-7> 7</a>
+</span><span class=lnt id=hl-1-8><a class=lnlinks href=#hl-1-8> 8</a>
+</span><span class=lnt id=hl-1-9><a class=lnlinks href=#hl-1-9> 9</a>
+</span><span class=lnt id=hl-1-10><a class=lnlinks href=#hl-1-10>10</a>
+</span><span class=lnt id=hl-1-11><a class=lnlinks href=#hl-1-11>11</a>
+</span><span class=lnt id=hl-1-12><a class=lnlinks href=#hl-1-12>12</a>
+</span><span class=lnt id=hl-1-13><a class=lnlinks href=#hl-1-13>13</a>
+</span><span class=lnt id=hl-1-14><a class=lnlinks href=#hl-1-14>14</a>
+</span><span class=lnt id=hl-1-15><a class=lnlinks href=#hl-1-15>15</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-lua data-lang=lua><span class=line><span class=cl><span class=kr>return</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;goolord/alpha-nvim&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>opts</span> <span class=o>=</span> <span class=kr>function</span><span class=p>(</span><span class=n>_</span><span class=p>,</span> <span class=n>opts</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=kd>local</span> <span class=n>logo</span> <span class=o>=</span> <span class=s>[[
+</span></span></span><span class=line><span class=cl><span class=s>        _____          __            .______________
+</span></span></span><span class=line><span class=cl><span class=s>    /     \ _____  |  | __ ____   |   \__    ___/
+</span></span></span><span class=line><span class=cl><span class=s>    /  \ /  \\__  \ |  |/ // __ \  |   | |    |   
+</span></span></span><span class=line><span class=cl><span class=s>    /    Y    \/ __ \|    &lt;\  ___/  |   | |    |   
+</span></span></span><span class=line><span class=cl><span class=s>    \____|__  (____  /__|_ \\___  &gt; |___| |____|   
+</span></span></span><span class=line><span class=cl><span class=s>            \/     \/     \/    \/                 
+</span></span></span><span class=line><span class=cl><span class=s>                   [ @theRunCom ]
+</span></span></span><span class=line><span class=cl><span class=s>        ]]</span>
+</span></span><span class=line><span class=cl>        <span class=n>opts.section</span><span class=p>.</span><span class=n>header.val</span> <span class=o>=</span> <span class=n>vim.split</span><span class=p>(</span><span class=n>logo</span><span class=p>,</span> <span class=s2>&#34;</span><span class=se>\n</span><span class=s2>&#34;</span><span class=p>,</span> <span class=p>{</span> <span class=n>trimempty</span> <span class=o>=</span> <span class=kc>true</span> <span class=p>})</span>
+</span></span><span class=line><span class=cl>    <span class=kr>end</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></li></ul><p><img src=../../imgs/img-lazy-loading.gif data-src=../../Picture/lazy/MakeIt.jpg alt=MakeIt></p><ul><li><p>浏览文件，file-browser.lua:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-2-1><a class=lnlinks href=#hl-2-1> 1</a>
+</span><span class=lnt id=hl-2-2><a class=lnlinks href=#hl-2-2> 2</a>
+</span><span class=lnt id=hl-2-3><a class=lnlinks href=#hl-2-3> 3</a>
+</span><span class=lnt id=hl-2-4><a class=lnlinks href=#hl-2-4> 4</a>
+</span><span class=lnt id=hl-2-5><a class=lnlinks href=#hl-2-5> 5</a>
+</span><span class=lnt id=hl-2-6><a class=lnlinks href=#hl-2-6> 6</a>
+</span><span class=lnt id=hl-2-7><a class=lnlinks href=#hl-2-7> 7</a>
+</span><span class=lnt id=hl-2-8><a class=lnlinks href=#hl-2-8> 8</a>
+</span><span class=lnt id=hl-2-9><a class=lnlinks href=#hl-2-9> 9</a>
+</span><span class=lnt id=hl-2-10><a class=lnlinks href=#hl-2-10>10</a>
+</span><span class=lnt id=hl-2-11><a class=lnlinks href=#hl-2-11>11</a>
+</span><span class=lnt id=hl-2-12><a class=lnlinks href=#hl-2-12>12</a>
+</span><span class=lnt id=hl-2-13><a class=lnlinks href=#hl-2-13>13</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-lua data-lang=lua><span class=line><span class=cl><span class=kr>return</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;nvim-telescope/telescope-file-browser.nvim&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>keys</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;&lt;leader&gt;sB&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;:Telescope file_browser path=%:p:h=%:p:h&lt;cr&gt;&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=n>desc</span> <span class=o>=</span> <span class=s2>&#34;Browse Files&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=n>config</span> <span class=o>=</span> <span class=kr>function</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=n>require</span><span class=p>(</span><span class=s2>&#34;telescope&#34;</span><span class=p>).</span><span class=n>load_extension</span><span class=p>(</span><span class=s2>&#34;file_browser&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=kr>end</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></li></ul><p><img src=../../imgs/img-lazy-loading.gif data-src=../../Picture/lazy/file-browser.jpg alt=file-browser></p><ul><li><p>终端，toggleterm.lua:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-3-1><a class=lnlinks href=#hl-3-1> 1</a>
+</span><span class=lnt id=hl-3-2><a class=lnlinks href=#hl-3-2> 2</a>
+</span><span class=lnt id=hl-3-3><a class=lnlinks href=#hl-3-3> 3</a>
+</span><span class=lnt id=hl-3-4><a class=lnlinks href=#hl-3-4> 4</a>
+</span><span class=lnt id=hl-3-5><a class=lnlinks href=#hl-3-5> 5</a>
+</span><span class=lnt id=hl-3-6><a class=lnlinks href=#hl-3-6> 6</a>
+</span><span class=lnt id=hl-3-7><a class=lnlinks href=#hl-3-7> 7</a>
+</span><span class=lnt id=hl-3-8><a class=lnlinks href=#hl-3-8> 8</a>
+</span><span class=lnt id=hl-3-9><a class=lnlinks href=#hl-3-9> 9</a>
+</span><span class=lnt id=hl-3-10><a class=lnlinks href=#hl-3-10>10</a>
+</span><span class=lnt id=hl-3-11><a class=lnlinks href=#hl-3-11>11</a>
+</span><span class=lnt id=hl-3-12><a class=lnlinks href=#hl-3-12>12</a>
+</span><span class=lnt id=hl-3-13><a class=lnlinks href=#hl-3-13>13</a>
+</span><span class=lnt id=hl-3-14><a class=lnlinks href=#hl-3-14>14</a>
+</span><span class=lnt id=hl-3-15><a class=lnlinks href=#hl-3-15>15</a>
+</span><span class=lnt id=hl-3-16><a class=lnlinks href=#hl-3-16>16</a>
+</span><span class=lnt id=hl-3-17><a class=lnlinks href=#hl-3-17>17</a>
+</span><span class=lnt id=hl-3-18><a class=lnlinks href=#hl-3-18>18</a>
+</span><span class=lnt id=hl-3-19><a class=lnlinks href=#hl-3-19>19</a>
+</span><span class=lnt id=hl-3-20><a class=lnlinks href=#hl-3-20>20</a>
+</span><span class=lnt id=hl-3-21><a class=lnlinks href=#hl-3-21>21</a>
+</span><span class=lnt id=hl-3-22><a class=lnlinks href=#hl-3-22>22</a>
+</span><span class=lnt id=hl-3-23><a class=lnlinks href=#hl-3-23>23</a>
+</span><span class=lnt id=hl-3-24><a class=lnlinks href=#hl-3-24>24</a>
+</span><span class=lnt id=hl-3-25><a class=lnlinks href=#hl-3-25>25</a>
+</span><span class=lnt id=hl-3-26><a class=lnlinks href=#hl-3-26>26</a>
+</span><span class=lnt id=hl-3-27><a class=lnlinks href=#hl-3-27>27</a>
+</span><span class=lnt id=hl-3-28><a class=lnlinks href=#hl-3-28>28</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-lua data-lang=lua><span class=line><span class=cl><span class=kr>return</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;akinsho/toggleterm.nvim&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>version</span> <span class=o>=</span> <span class=s2>&#34;*&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>opts</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>size</span> <span class=o>=</span> <span class=mi>20</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>open_mapping</span> <span class=o>=</span> <span class=s>[[&lt;c-\&gt;]]</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>hide_numbers</span> <span class=o>=</span> <span class=kc>true</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>shade_terminals</span> <span class=o>=</span> <span class=kc>true</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>shading_factor</span> <span class=o>=</span> <span class=mi>2</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>start_in_insert</span> <span class=o>=</span> <span class=kc>true</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>insert_mappings</span> <span class=o>=</span> <span class=kc>true</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>persist_size</span> <span class=o>=</span> <span class=kc>true</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>direction</span> <span class=o>=</span> <span class=s2>&#34;float&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>close_on_exit</span> <span class=o>=</span> <span class=kc>true</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>shell</span> <span class=o>=</span> <span class=n>vim.o</span><span class=p>.</span><span class=n>shell</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>float_opts</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>border</span> <span class=o>=</span> <span class=s2>&#34;curved&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=n>keys</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;&lt;c-</span><span class=se>\\</span><span class=s2>&gt;&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=n>desc</span> <span class=o>=</span> <span class=s2>&#34;Toggle term&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></li><li><p>tree-sitter插件是基于tree-sitter的插件，可以为多种编辑器提供语法高亮、代码折叠、自动补全等功能，treesitter.lua:</p></li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-4-1><a class=lnlinks href=#hl-4-1> 1</a>
+</span><span class=lnt id=hl-4-2><a class=lnlinks href=#hl-4-2> 2</a>
+</span><span class=lnt id=hl-4-3><a class=lnlinks href=#hl-4-3> 3</a>
+</span><span class=lnt id=hl-4-4><a class=lnlinks href=#hl-4-4> 4</a>
+</span><span class=lnt id=hl-4-5><a class=lnlinks href=#hl-4-5> 5</a>
+</span><span class=lnt id=hl-4-6><a class=lnlinks href=#hl-4-6> 6</a>
+</span><span class=lnt id=hl-4-7><a class=lnlinks href=#hl-4-7> 7</a>
+</span><span class=lnt id=hl-4-8><a class=lnlinks href=#hl-4-8> 8</a>
+</span><span class=lnt id=hl-4-9><a class=lnlinks href=#hl-4-9> 9</a>
+</span><span class=lnt id=hl-4-10><a class=lnlinks href=#hl-4-10>10</a>
+</span><span class=lnt id=hl-4-11><a class=lnlinks href=#hl-4-11>11</a>
+</span><span class=lnt id=hl-4-12><a class=lnlinks href=#hl-4-12>12</a>
+</span><span class=lnt id=hl-4-13><a class=lnlinks href=#hl-4-13>13</a>
+</span><span class=lnt id=hl-4-14><a class=lnlinks href=#hl-4-14>14</a>
+</span><span class=lnt id=hl-4-15><a class=lnlinks href=#hl-4-15>15</a>
+</span><span class=lnt id=hl-4-16><a class=lnlinks href=#hl-4-16>16</a>
+</span><span class=lnt id=hl-4-17><a class=lnlinks href=#hl-4-17>17</a>
+</span><span class=lnt id=hl-4-18><a class=lnlinks href=#hl-4-18>18</a>
+</span><span class=lnt id=hl-4-19><a class=lnlinks href=#hl-4-19>19</a>
+</span><span class=lnt id=hl-4-20><a class=lnlinks href=#hl-4-20>20</a>
+</span><span class=lnt id=hl-4-21><a class=lnlinks href=#hl-4-21>21</a>
+</span><span class=lnt id=hl-4-22><a class=lnlinks href=#hl-4-22>22</a>
+</span><span class=lnt id=hl-4-23><a class=lnlinks href=#hl-4-23>23</a>
+</span><span class=lnt id=hl-4-24><a class=lnlinks href=#hl-4-24>24</a>
+</span><span class=lnt id=hl-4-25><a class=lnlinks href=#hl-4-25>25</a>
+</span><span class=lnt id=hl-4-26><a class=lnlinks href=#hl-4-26>26</a>
+</span><span class=lnt id=hl-4-27><a class=lnlinks href=#hl-4-27>27</a>
+</span><span class=lnt id=hl-4-28><a class=lnlinks href=#hl-4-28>28</a>
+</span><span class=lnt id=hl-4-29><a class=lnlinks href=#hl-4-29>29</a>
+</span><span class=lnt id=hl-4-30><a class=lnlinks href=#hl-4-30>30</a>
+</span><span class=lnt id=hl-4-31><a class=lnlinks href=#hl-4-31>31</a>
+</span><span class=lnt id=hl-4-32><a class=lnlinks href=#hl-4-32>32</a>
+</span><span class=lnt id=hl-4-33><a class=lnlinks href=#hl-4-33>33</a>
+</span><span class=lnt id=hl-4-34><a class=lnlinks href=#hl-4-34>34</a>
+</span><span class=lnt id=hl-4-35><a class=lnlinks href=#hl-4-35>35</a>
+</span><span class=lnt id=hl-4-36><a class=lnlinks href=#hl-4-36>36</a>
+</span><span class=lnt id=hl-4-37><a class=lnlinks href=#hl-4-37>37</a>
+</span><span class=lnt id=hl-4-38><a class=lnlinks href=#hl-4-38>38</a>
+</span><span class=lnt id=hl-4-39><a class=lnlinks href=#hl-4-39>39</a>
+</span><span class=lnt id=hl-4-40><a class=lnlinks href=#hl-4-40>40</a>
+</span><span class=lnt id=hl-4-41><a class=lnlinks href=#hl-4-41>41</a>
+</span><span class=lnt id=hl-4-42><a class=lnlinks href=#hl-4-42>42</a>
+</span><span class=lnt id=hl-4-43><a class=lnlinks href=#hl-4-43>43</a>
+</span><span class=lnt id=hl-4-44><a class=lnlinks href=#hl-4-44>44</a>
+</span><span class=lnt id=hl-4-45><a class=lnlinks href=#hl-4-45>45</a>
+</span><span class=lnt id=hl-4-46><a class=lnlinks href=#hl-4-46>46</a>
+</span><span class=lnt id=hl-4-47><a class=lnlinks href=#hl-4-47>47</a>
+</span><span class=lnt id=hl-4-48><a class=lnlinks href=#hl-4-48>48</a>
+</span><span class=lnt id=hl-4-49><a class=lnlinks href=#hl-4-49>49</a>
+</span><span class=lnt id=hl-4-50><a class=lnlinks href=#hl-4-50>50</a>
+</span><span class=lnt id=hl-4-51><a class=lnlinks href=#hl-4-51>51</a>
+</span><span class=lnt id=hl-4-52><a class=lnlinks href=#hl-4-52>52</a>
+</span><span class=lnt id=hl-4-53><a class=lnlinks href=#hl-4-53>53</a>
+</span><span class=lnt id=hl-4-54><a class=lnlinks href=#hl-4-54>54</a>
+</span><span class=lnt id=hl-4-55><a class=lnlinks href=#hl-4-55>55</a>
+</span><span class=lnt id=hl-4-56><a class=lnlinks href=#hl-4-56>56</a>
+</span><span class=lnt id=hl-4-57><a class=lnlinks href=#hl-4-57>57</a>
+</span><span class=lnt id=hl-4-58><a class=lnlinks href=#hl-4-58>58</a>
+</span><span class=lnt id=hl-4-59><a class=lnlinks href=#hl-4-59>59</a>
+</span><span class=lnt id=hl-4-60><a class=lnlinks href=#hl-4-60>60</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-lua data-lang=lua><span class=line><span class=cl><span class=kr>return</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;nvim-treesitter/nvim-treesitter&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>opts</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=n>ensure_installed</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;bash&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;regex&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;vim&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;lua&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;html&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;markdown&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;markdown_inline&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;css&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;typescript&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;tsx&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;javascript&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;json&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;json5&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;jsonc&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;graphql&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;prisma&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;rust&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;go&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;toml&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;c&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;cpp&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;clojure&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;dart&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;dockerfile&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;scss&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;swift&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;toml&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;verilog&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;vue&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;zig&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;proto&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;svelte&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;solidity&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=p>},</span>
+</span></span><span class=line><span class=cl>      <span class=n>auto_install</span> <span class=o>=</span> <span class=kc>true</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=c1>-- ensure_installed = &#34;all&#34;, -- one of &#34;all&#34; or a list of languages</span>
+</span></span><span class=line><span class=cl>      <span class=n>ignore_install</span> <span class=o>=</span> <span class=p>{</span> <span class=s2>&#34;&#34;</span> <span class=p>},</span> <span class=c1>-- List of parsers to ignore installing</span>
+</span></span><span class=line><span class=cl>      <span class=n>sync_install</span> <span class=o>=</span> <span class=kc>false</span><span class=p>,</span> <span class=c1>-- install languages synchronously (only applied to `ensure_installed`)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>      <span class=n>highlight</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>enable</span> <span class=o>=</span> <span class=kc>true</span><span class=p>,</span> <span class=c1>-- false will disable the whole extension</span>
+</span></span><span class=line><span class=cl>        <span class=n>disable</span> <span class=o>=</span> <span class=p>{</span> <span class=s2>&#34;css&#34;</span> <span class=p>},</span> <span class=c1>-- list of language that will be disabled</span>
+</span></span><span class=line><span class=cl>      <span class=p>},</span>
+</span></span><span class=line><span class=cl>      <span class=n>autopairs</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>enable</span> <span class=o>=</span> <span class=kc>true</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=p>},</span>
+</span></span><span class=line><span class=cl>      <span class=n>indent</span> <span class=o>=</span> <span class=p>{</span> <span class=n>enable</span> <span class=o>=</span> <span class=kc>true</span><span class=p>,</span> <span class=n>disable</span> <span class=o>=</span> <span class=p>{</span> <span class=s2>&#34;python&#34;</span><span class=p>,</span> <span class=s2>&#34;css&#34;</span> <span class=p>}</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>      <span class=n>context_commentstring</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>enable</span> <span class=o>=</span> <span class=kc>true</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=n>enable_autocmd</span> <span class=o>=</span> <span class=kc>false</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div><ul><li><p>Tailwind CSS 相关支持，tailwind.lua:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-5-1><a class=lnlinks href=#hl-5-1> 1</a>
+</span><span class=lnt id=hl-5-2><a class=lnlinks href=#hl-5-2> 2</a>
+</span><span class=lnt id=hl-5-3><a class=lnlinks href=#hl-5-3> 3</a>
+</span><span class=lnt id=hl-5-4><a class=lnlinks href=#hl-5-4> 4</a>
+</span><span class=lnt id=hl-5-5><a class=lnlinks href=#hl-5-5> 5</a>
+</span><span class=lnt id=hl-5-6><a class=lnlinks href=#hl-5-6> 6</a>
+</span><span class=lnt id=hl-5-7><a class=lnlinks href=#hl-5-7> 7</a>
+</span><span class=lnt id=hl-5-8><a class=lnlinks href=#hl-5-8> 8</a>
+</span><span class=lnt id=hl-5-9><a class=lnlinks href=#hl-5-9> 9</a>
+</span><span class=lnt id=hl-5-10><a class=lnlinks href=#hl-5-10>10</a>
+</span><span class=lnt id=hl-5-11><a class=lnlinks href=#hl-5-11>11</a>
+</span><span class=lnt id=hl-5-12><a class=lnlinks href=#hl-5-12>12</a>
+</span><span class=lnt id=hl-5-13><a class=lnlinks href=#hl-5-13>13</a>
+</span><span class=lnt id=hl-5-14><a class=lnlinks href=#hl-5-14>14</a>
+</span><span class=lnt id=hl-5-15><a class=lnlinks href=#hl-5-15>15</a>
+</span><span class=lnt id=hl-5-16><a class=lnlinks href=#hl-5-16>16</a>
+</span><span class=lnt id=hl-5-17><a class=lnlinks href=#hl-5-17>17</a>
+</span><span class=lnt id=hl-5-18><a class=lnlinks href=#hl-5-18>18</a>
+</span><span class=lnt id=hl-5-19><a class=lnlinks href=#hl-5-19>19</a>
+</span><span class=lnt id=hl-5-20><a class=lnlinks href=#hl-5-20>20</a>
+</span><span class=lnt id=hl-5-21><a class=lnlinks href=#hl-5-21>21</a>
+</span><span class=lnt id=hl-5-22><a class=lnlinks href=#hl-5-22>22</a>
+</span><span class=lnt id=hl-5-23><a class=lnlinks href=#hl-5-23>23</a>
+</span><span class=lnt id=hl-5-24><a class=lnlinks href=#hl-5-24>24</a>
+</span><span class=lnt id=hl-5-25><a class=lnlinks href=#hl-5-25>25</a>
+</span><span class=lnt id=hl-5-26><a class=lnlinks href=#hl-5-26>26</a>
+</span><span class=lnt id=hl-5-27><a class=lnlinks href=#hl-5-27>27</a>
+</span><span class=lnt id=hl-5-28><a class=lnlinks href=#hl-5-28>28</a>
+</span><span class=lnt id=hl-5-29><a class=lnlinks href=#hl-5-29>29</a>
+</span><span class=lnt id=hl-5-30><a class=lnlinks href=#hl-5-30>30</a>
+</span><span class=lnt id=hl-5-31><a class=lnlinks href=#hl-5-31>31</a>
+</span><span class=lnt id=hl-5-32><a class=lnlinks href=#hl-5-32>32</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-lua data-lang=lua><span class=line><span class=cl><span class=kr>return</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;neovim/nvim-lspconfig&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>opts</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>servers</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>tailwindcss</span> <span class=o>=</span> <span class=p>{},</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;NvChad/nvim-colorizer.lua&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>opts</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>user_default_options</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>tailwind</span> <span class=o>=</span> <span class=kc>true</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;hrsh7th/nvim-cmp&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>dependencies</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span> <span class=s2>&#34;roobert/tailwindcss-colorizer-cmp.nvim&#34;</span><span class=p>,</span> <span class=n>config</span> <span class=o>=</span> <span class=kc>true</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=n>opts</span> <span class=o>=</span> <span class=kr>function</span><span class=p>(</span><span class=n>_</span><span class=p>,</span> <span class=n>opts</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=c1>-- original LazyVim kind icon formatter</span>
+</span></span><span class=line><span class=cl>    <span class=kd>local</span> <span class=n>format_kinds</span> <span class=o>=</span> <span class=n>opts.formatting</span><span class=p>.</span><span class=n>format</span>
+</span></span><span class=line><span class=cl>    <span class=n>opts.formatting</span><span class=p>.</span><span class=n>format</span> <span class=o>=</span> <span class=kr>function</span><span class=p>(</span><span class=n>entry</span><span class=p>,</span> <span class=n>item</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>format_kinds</span><span class=p>(</span><span class=n>entry</span><span class=p>,</span> <span class=n>item</span><span class=p>)</span> <span class=c1>-- add icons</span>
+</span></span><span class=line><span class=cl>        <span class=kr>return</span> <span class=n>require</span><span class=p>(</span><span class=s2>&#34;tailwindcss-colorizer-cmp&#34;</span><span class=p>).</span><span class=n>formatter</span><span class=p>(</span><span class=n>entry</span><span class=p>,</span> <span class=n>item</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=kr>end</span>
+</span></span><span class=line><span class=cl>    <span class=kr>end</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></li></ul><h2 id=tips>Tips🔐
 <a class=header-anchor href=#tips></a></h2><p><a href=https://devhints.io/vim title=vim原生快捷键 rel="noopener external nofollow noreferrer" target=_blank class=exturl>vim原生快捷键
 <i class="fa fa-external-link-alt"></i></a></p><h2 id=步骤>步骤
 <a class=header-anchor href=#%e6%ad%a5%e9%aa%a4></a></h2><ol><li>运行<code>:checkhealth</code></li></ol><p>0:00 Introduction
@@ -461,4 +461,4 @@ LazyVim是一套Neovim配置，由lazy.nvim驱动，可以轻松自定义和扩�
 <span class=lang-name>简体中文</span></div></div></div></div><div class=copyright>&copy;
 <span itemprop=copyrightYear>2022 - 2026
 </span><span class=with-love><i class="fa fa-heart"></i>
-</span><span class=author itemprop=copyrightHolder>Zhen-Hua Feng</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.169.0 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.8.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div></div></footer><script class=next-config data-name=page type=application/json>{"clipboard":{"js":{"alias":"clipboard","file":"dist/clipboard.min.js","name":"clipboard.js","version":"2.0.11"}},"comments":false,"expired":false,"isHome":false,"isPage":true,"math":{"js":{"file":"es5/tex-mml-svg.js","name":"mathjax","version":"3.2.2"},"render":"mathjax"},"path":"lazyvim%E9%85%8D%E7%BD%AE","permalink":"/post/lazyvim%E9%85%8D%E7%BD%AE/","title":"LazyVim配置","toc":true}</script><script type=text/javascript src=https://s4.zstatic.net/ajax/libs/animejs/3.2.2/anime.min.js crossorigin=anonymous defer></script><script type=text/javascript src=https://s4.zstatic.net/ajax/libs/viewerjs/1.11.6/viewer.min.js crossorigin=anonymous defer></script><script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#9400D3","enable":false,"save":"manual"},"copybtn":true,"darkmode":false,"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"isMultiLang":true,"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"slideInRight","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":false,"plugin":"waline"},"views":{"enable":false,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","share":{"addtoany":{"js":"https://static.addtoany.com/menu/page.js","locale":"zh-CN","num":8},"enable":false},"sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"zstatic","router":{"home":"https://www.zstatic.net","logo":"https://www.zstatic.net/logo.png","name":"zstatic","type":"modern","url":"https://s4.zstatic.net/ajax/libs"}},"version":"4.8.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":false,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"@waline/client","file":"dist/waline.css","name":"waline","version":"2.15.8"},"js":{"alias":"@waline/client","file":"dist/waline.js","name":"waline","version":"2.15.8"}}}</script><script type=text/javascript src="../../js/main.min.js?=1794144902" defer></script><script type=text/javascript src="../../js/clipboard.min.js?=1794144902" defer></script><script type=text/javascript src="../../js/math.min.js?=1794144902" defer></script></body></html>
+</span><span class=author itemprop=copyrightHolder>Zhen-Hua Feng</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.169.0 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.8.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div></div></footer><script class=next-config data-name=page type=application/json>{"clipboard":{"js":{"alias":"clipboard","file":"dist/clipboard.min.js","name":"clipboard.js","version":"2.0.11"}},"comments":false,"expired":false,"isHome":false,"isPage":true,"math":{"js":{"file":"es5/tex-mml-svg.js","name":"mathjax","version":"3.2.2"},"render":"mathjax"},"path":"lazyvim%E9%85%8D%E7%BD%AE","permalink":"/post/lazyvim%E9%85%8D%E7%BD%AE/","title":"LazyVim配置","toc":true}</script><script type=text/javascript src=https://s4.zstatic.net/ajax/libs/animejs/3.2.2/anime.min.js crossorigin=anonymous defer></script><script type=text/javascript src=https://s4.zstatic.net/ajax/libs/viewerjs/1.11.6/viewer.min.js crossorigin=anonymous defer></script><script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#9400D3","enable":false,"save":"manual"},"copybtn":true,"darkmode":false,"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"isMultiLang":true,"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"slideInRight","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":false,"plugin":"waline"},"views":{"enable":false,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","share":{"addtoany":{"js":"https://static.addtoany.com/menu/page.js","locale":"zh-CN","num":8},"enable":false},"sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"zstatic","router":{"home":"https://www.zstatic.net","logo":"https://www.zstatic.net/logo.png","name":"zstatic","type":"modern","url":"https://s4.zstatic.net/ajax/libs"}},"version":"4.8.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":false,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"@waline/client","file":"dist/waline.css","name":"waline","version":"2.15.8"},"js":{"alias":"@waline/client","file":"dist/waline.js","name":"waline","version":"2.15.8"}}}</script><script type=text/javascript src="../../js/main.min.js?=1794212984" defer></script><script type=text/javascript src="../../js/clipboard.min.js?=1794212984" defer></script><script type=text/javascript src="../../js/math.min.js?=1794212984" defer></script></body></html>

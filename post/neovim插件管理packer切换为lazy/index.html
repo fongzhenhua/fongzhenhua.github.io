@@ -1,4 +1,4 @@
-<!doctype html><html lang=zh-CN data-theme=light><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=theme-color content="#9400D3" media="(prefers-color-scheme: light)"><meta name=generator content="Hugo 0.169.0"><link rel="shortcut icon" type=image/x-icon href=../../imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=../../imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=../../imgs/icons/favicon_16x16_next.png><link rel=icon type=image/png sizes=32x32 href=../../imgs/icons/favicon_32_32_next.png><link rel=apple-touch-icon sizes=180x180 href=../../imgs/icons/apple_touch_icon_next.png><meta itemprop=name content="Neovim插件管理Packer切换为Lazy"><meta itemprop=description content><meta name=description content><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="/"><meta itemprop=keywords content="Hugo,Linux,Hexo,Physics"><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/font-awesome/6.7.2/css/all.min.css><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/viewerjs/1.11.6/viewer.min.css><link rel=stylesheet href="../../css/main.min.css?=1794144902"><style type=text/css>.post-footer hr:after{content:""}.flinks-list-footer hr:after{content:""}</style><link rel=stylesheet type=text/css href="../../css/custom_style.css?=1794144902"><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return 0[0];const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),0[0]):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>Neovim插件管理Packer切换为Lazy - BNU-FZH</title><noscript><link rel=stylesheet href=../../css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
+<!doctype html><html lang=zh-CN data-theme=light><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=theme-color content="#9400D3" media="(prefers-color-scheme: light)"><meta name=generator content="Hugo 0.169.0"><link rel="shortcut icon" type=image/x-icon href=../../imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=../../imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=../../imgs/icons/favicon_16x16_next.png><link rel=icon type=image/png sizes=32x32 href=../../imgs/icons/favicon_32_32_next.png><link rel=apple-touch-icon sizes=180x180 href=../../imgs/icons/apple_touch_icon_next.png><meta itemprop=name content="Neovim插件管理Packer切换为Lazy"><meta itemprop=description content><meta name=description content><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="/"><meta itemprop=keywords content="Hugo,Linux,Hexo,Physics"><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/font-awesome/6.7.2/css/all.min.css><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://s4.zstatic.net/ajax/libs/viewerjs/1.11.6/viewer.min.css><link rel=stylesheet href="../../css/main.min.css?=1794212984"><style type=text/css>.post-footer hr:after{content:""}.flinks-list-footer hr:after{content:""}</style><link rel=stylesheet type=text/css href="../../css/custom_style.css?=1794212984"><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return 0[0];const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),0[0]):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>Neovim插件管理Packer切换为Lazy - BNU-FZH</title><noscript><link rel=stylesheet href=../../css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
 <span class=toggle-line></span>
 <span class=toggle-line></span></div></div><div class=site-meta><a href=../../ class=brand rel=start><i class=logo-line></i><h1 class=site-title>BNU-FZH</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description>fengzhenhua@outlook.com</p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=../../ class=hvr-icon-pulse rel=section><i class="fa fa-home hvr-icon"></i>首页</a></li><li class="menu-item menu-item-about"><a href=../../about.html class=hvr-icon-pulse rel=section><i class="fa fa-user hvr-icon"></i>关于</a></li><li class="menu-item menu-item-导航"><a href=../../%E5%AF%BC%E8%88%AA/ class=hvr-icon-pulse rel=section><i class="fa fa-fa fa-paper-plane hvr-icon"></i>导航</a></li><li class="menu-item menu-item-软件"><a href=../../%E8%BD%AF%E4%BB%B6/ class=hvr-icon-pulse rel=section><i class="fa fa-fa fa-briefcase hvr-icon"></i>软件</a></li><li class="menu-item menu-item-收藏"><a href=../../%E6%94%B6%E8%97%8F/ class=hvr-icon-pulse rel=section><i class="fa fa-fa fa-folder hvr-icon"></i>收藏</a></li><li class="menu-item menu-item-工作"><a href=../../%E5%B7%A5%E4%BD%9C/ class=hvr-icon-pulse rel=section><i class="fa fa-fa fa-folder hvr-icon"></i>工作</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
 <span class=toggle-line></span>
@@ -115,286 +115,286 @@ This repository is currently unmaintained. For the time being (as of August, 202
 <i class="fa fa-external-link-alt"></i>
 </a>: Spiritual successor of packer.nvim. Functional but not as stable as lazy.nvim.
 {% endnote %}</li></ul><p>这个消息很突然，但是之前<code>lazy.nvim</code>更加优秀，同时也得到了<code>packer.nvim</code>作者的认可，具体原因不得而知，既然<code>packer.nvim</code>不再维护，同时作者给了两个替代方案，显然更加稳定的<code>lazy.nvim</code>就是一个可靠的选择。</p><h2 id=切换流程>切换流程
-<a class=header-anchor href=#%e5%88%87%e6%8d%a2%e6%b5%81%e7%a8%8b></a></h2><ol><li>册除<code>packer.nvim</code>的编译目录<code>~/.config/nvim/plugins</code>和由<code>packer.nvim</code>安装的插件.</li></ol><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-1>1</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-0-2><a style=outline:none;text-decoration:none;color:inherit href=#hl-0-2>2</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sh data-lang=sh><span style=display:flex><span>rm -rf ~/.config/nvim/plugins
-</span></span><span style=display:flex><span>rm -rf ~/.local/share/nvim</span></span></code></pre></td></tr></table></div></div><ol start=2><li>删除<code>packer.nvim</code>的配置文件<code>~/.config/nvim/lua/plg/plugin.lua</code>.</li></ol><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-1-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-1-1>1</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sh data-lang=sh><span style=display:flex><span>rm ~/.config/nvim/lua/plg/plugin.lua</span></span></code></pre></td></tr></table></div></div><ol start=3><li>同时新建<code>lazy.nvim</code>的配置文件<code>lazy-init.lua</code></li></ol><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-1> 1</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-2><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-2> 2</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-3><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-3> 3</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-4><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-4> 4</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-5><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-5> 5</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-6><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-6> 6</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-7><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-7> 7</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-8><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-8> 8</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-9><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-9> 9</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-10><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-10>10</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-11><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-11>11</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-12><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-12>12</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-13><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-13>13</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-14><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-14>14</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-15><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-15>15</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-16><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-16>16</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-17><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-17>17</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-18><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-18>18</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-19><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-19>19</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-20><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-20>20</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-21><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-21>21</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-22><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-22>22</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-23><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-23>23</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-24><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-24>24</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-25><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-25>25</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-26><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-26>26</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-27><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-27>27</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-28><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-28>28</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-29><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-29>29</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-30><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-30>30</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-31><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-31>31</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-32><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-32>32</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-33><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-33>33</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-34><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-34>34</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-35><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-35>35</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-36><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-36>36</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-37><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-37>37</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-38><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-38>38</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-39><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-39>39</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-40><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-40>40</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-41><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-41>41</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-42><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-42>42</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-43><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-43>43</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-44><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-44>44</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-45><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-45>45</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-46><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-46>46</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-47><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-47>47</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-48><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-48>48</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-49><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-49>49</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-50><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-50>50</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-51><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-51>51</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-52><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-52>52</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-53><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-53>53</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-54><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-54>54</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-55><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-55>55</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-56><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-56>56</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-57><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-57>57</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-58><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-58>58</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-59><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-59>59</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-60><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-60>60</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-61><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-61>61</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-62><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-62>62</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-63><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-63>63</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-64><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-64>64</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-65><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-65>65</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-66><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-66>66</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-67><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-67>67</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-68><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-68>68</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-69><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-69>69</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-70><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-70>70</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-71><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-71>71</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-72><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-72>72</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-73><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-73>73</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-2-74><a style=outline:none;text-decoration:none;color:inherit href=#hl-2-74>74</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-lua data-lang=lua><span style=display:flex><span><span style=color:#66d9ef>local</span> lazypath <span style=color:#f92672>=</span> vim.fn.stdpath(<span style=color:#e6db74>&#34;data&#34;</span>) <span style=color:#f92672>..</span> <span style=color:#e6db74>&#34;/lazy/lazy.nvim&#34;</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> vim.loop.fs_stat(lazypath) <span style=color:#66d9ef>then</span>
-</span></span><span style=display:flex><span>  vim.fn.system({
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;git&#34;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;clone&#34;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;--filter=blob:none&#34;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;https://github.com/folke/lazy.nvim.git&#34;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;--branch=stable&#34;</span>, <span style=color:#75715e>-- latest stable release</span>
-</span></span><span style=display:flex><span>    lazypath,
-</span></span><span style=display:flex><span>  })
-</span></span><span style=display:flex><span><span style=color:#66d9ef>end</span>
-</span></span><span style=display:flex><span>vim.opt.rtp:prepend(lazypath)
-</span></span><span style=display:flex><span>require(<span style=color:#e6db74>&#34;lazy&#34;</span>).setup({
-</span></span><span style=display:flex><span>   <span style=color:#e6db74>&#34;git@github.com:neovim/nvim-lspconfig&#34;</span>,
-</span></span><span style=display:flex><span>   <span style=color:#e6db74>&#34;git@github.com:williamboman/mason.nvim&#34;</span>,
-</span></span><span style=display:flex><span>   <span style=color:#e6db74>&#34;git@github.com:williamboman/mason-lspconfig.nvim&#34;</span>,
-</span></span><span style=display:flex><span>   <span style=color:#75715e>-- 借用了vim插件，因为二者是兼容的，速度上vim-latex更快</span>
-</span></span><span style=display:flex><span>   { <span style=color:#e6db74>&#34;git@github.com:vim-latex/vim-latex&#34;</span> },
-</span></span><span style=display:flex><span>   { <span style=color:#e6db74>&#34;git@github.com:jbyuki/nabla.nvim&#34;</span> },
-</span></span><span style=display:flex><span>   <span style=color:#75715e>-- 添加latex插件vimtex</span>
-</span></span><span style=display:flex><span>   { <span style=color:#e6db74>&#34;git@github.com:lervag/vimtex&#34;</span> },
-</span></span><span style=display:flex><span>   { <span style=color:#e6db74>&#34;git@github.com:mhinz/neovim-remote&#34;</span> },
-</span></span><span style=display:flex><span>   <span style=color:#75715e>-- 添加neovim主题</span>
-</span></span><span style=display:flex><span>   {
-</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;git@github.com:folke/tokyonight.nvim&#34;</span>,
-</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;git@github.com:tomasr/molokai&#34;</span>,
-</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;git@github.com:catppuccin/nvim&#34;</span>,
-</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;git@github.com:jaredgorski/SpaceCamp&#34;</span>,
-</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;git@github.com:morhetz/gruvbox&#34;</span>,
-</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;git@github.com:nelstrom/vim-mac-classic-theme&#34;</span>,
-</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;git@github.com:RRethy/nvim-base16&#34;</span>,
-</span></span><span style=display:flex><span>   },
-</span></span><span style=display:flex><span>   <span style=color:#75715e>-- 代码高亮</span>
-</span></span><span style=display:flex><span>   { <span style=color:#e6db74>&#34;git@github.com:nvim-treesitter/nvim-treesitter&#34;</span>, run <span style=color:#f92672>=</span><span style=color:#e6db74>&#34;:TSUpdate&#34;</span> },
-</span></span><span style=display:flex><span>   <span style=color:#75715e>-- 状态栏主题</span>
-</span></span><span style=display:flex><span>   {
-</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;git@github.com:nvim-lualine/lualine.nvim&#34;</span>,
-</span></span><span style=display:flex><span>      requires <span style=color:#f92672>=</span> { <span style=color:#e6db74>&#34;nvim-tree/nvim-web-devicons&#34;</span>, opt <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span> },
-</span></span><span style=display:flex><span>   },
-</span></span><span style=display:flex><span>   <span style=color:#75715e>--	-- nvim-cmp</span>
-</span></span><span style=display:flex><span>   <span style=color:#e6db74>&#39;git@github.com:hrsh7th/cmp-nvim-lsp&#39;</span>, 
-</span></span><span style=display:flex><span>   <span style=color:#e6db74>&#39;git@github.com:hrsh7th/cmp-buffer&#39;</span>  , 
-</span></span><span style=display:flex><span>   <span style=color:#e6db74>&#39;git@github.com:hrsh7th/cmp-path&#39;</span>    , 
-</span></span><span style=display:flex><span>   <span style=color:#e6db74>&#39;git@github.com:hrsh7th/cmp-cmdline&#39;</span> , 
-</span></span><span style=display:flex><span>   <span style=color:#e6db74>&#39;git@github.com:hrsh7th/nvim-cmp&#39;</span>,
-</span></span><span style=display:flex><span>   <span style=color:#75715e>-- vsnip</span>
-</span></span><span style=display:flex><span>   <span style=color:#e6db74>&#39;git@github.com:hrsh7th/cmp-vsnip&#39;</span> ,   
-</span></span><span style=display:flex><span>   <span style=color:#e6db74>&#39;git@github.com:hrsh7th/vim-vsnip&#39;</span> ,
-</span></span><span style=display:flex><span>   <span style=color:#e6db74>&#39;git@github.com:rafamadriz/friendly-snippets&#39;</span> ,
-</span></span><span style=display:flex><span>   <span style=color:#75715e>-- lspkind</span>
-</span></span><span style=display:flex><span>   { <span style=color:#e6db74>&#34;git@github.com:onsails/lspkind.nvim&#34;</span> },
-</span></span><span style=display:flex><span>   <span style=color:#75715e>-- 自动插入模板</span>
-</span></span><span style=display:flex><span>   { <span style=color:#e6db74>&#34;git@github.com:aperezdc/vim-template&#34;</span> },
-</span></span><span style=display:flex><span>   <span style=color:#75715e>-- 旧式片段插入程序</span>
-</span></span><span style=display:flex><span>   { <span style=color:#e6db74>&#34;git@github.com:SirVer/ultisnips&#34;</span> },
-</span></span><span style=display:flex><span>   { <span style=color:#e6db74>&#34;git@github.com:honza/vim-snippets&#34;</span> },
-</span></span><span style=display:flex><span>   <span style=color:#75715e>-- 注释插件</span>
-</span></span><span style=display:flex><span>   { <span style=color:#e6db74>&#34;git@github.com:terrortylor/nvim-comment&#34;</span> },
-</span></span><span style=display:flex><span>   { <span style=color:#e6db74>&#34;git@github.com:nvim-tree/nvim-web-devicons&#34;</span> },
-</span></span><span style=display:flex><span>   <span style=color:#75715e>-- 目录树插件</span>
-</span></span><span style=display:flex><span>   { <span style=color:#e6db74>&#34;git@github.com:nvim-tree/nvim-tree.lua&#34;</span> },
-</span></span><span style=display:flex><span>   <span style=color:#75715e>-- This plugin adds indentation guides to all lines (including empty lines).</span>
-</span></span><span style=display:flex><span>   { <span style=color:#e6db74>&#34;git@github.com:lukas-reineke/indent-blankline.nvim&#34;</span> },
-</span></span><span style=display:flex><span>   <span style=color:#75715e>-- 彩虹括号</span>
-</span></span><span style=display:flex><span>   { <span style=color:#e6db74>&#34;git@github.com:hiphish/rainbow-delimiters.nvim&#34;</span> }, 
-</span></span><span style=display:flex><span>   <span style=color:#75715e>-- 用来显示文件结构的插件，对于编写程序查看各定义时很有帮助</span>
-</span></span><span style=display:flex><span>   { <span style=color:#e6db74>&#34;git@github.com:liuchengxu/vista.vim&#34;</span> },
-</span></span><span style=display:flex><span>   <span style=color:#75715e>-- 模糊查找</span>
-</span></span><span style=display:flex><span>   {
-</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;git@github.com:nvim-telescope/telescope.nvim&#34;</span>, tag <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;0.1.4&#34;</span>,
-</span></span><span style=display:flex><span>      <span style=color:#75715e>-- or                            , branch = &#39;0.1.x&#39;,</span>
-</span></span><span style=display:flex><span>      requires <span style=color:#f92672>=</span> { { <span style=color:#e6db74>&#34;git@github.com:nvim-lua/plenary.nvim&#34;</span> } }
-</span></span><span style=display:flex><span>   },
-</span></span><span style=display:flex><span>})</span></span></code></pre></td></tr></table></div></div><p>{% note info %}
+<a class=header-anchor href=#%e5%88%87%e6%8d%a2%e6%b5%81%e7%a8%8b></a></h2><ol><li>册除<code>packer.nvim</code>的编译目录<code>~/.config/nvim/plugins</code>和由<code>packer.nvim</code>安装的插件.</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-0-1><a class=lnlinks href=#hl-0-1>1</a>
+</span><span class=lnt id=hl-0-2><a class=lnlinks href=#hl-0-2>2</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh><span class=line><span class=cl>rm -rf ~/.config/nvim/plugins
+</span></span><span class=line><span class=cl>rm -rf ~/.local/share/nvim</span></span></code></pre></td></tr></table></div></div><ol start=2><li>删除<code>packer.nvim</code>的配置文件<code>~/.config/nvim/lua/plg/plugin.lua</code>.</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-1-1><a class=lnlinks href=#hl-1-1>1</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh><span class=line><span class=cl>rm ~/.config/nvim/lua/plg/plugin.lua</span></span></code></pre></td></tr></table></div></div><ol start=3><li>同时新建<code>lazy.nvim</code>的配置文件<code>lazy-init.lua</code></li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-2-1><a class=lnlinks href=#hl-2-1> 1</a>
+</span><span class=lnt id=hl-2-2><a class=lnlinks href=#hl-2-2> 2</a>
+</span><span class=lnt id=hl-2-3><a class=lnlinks href=#hl-2-3> 3</a>
+</span><span class=lnt id=hl-2-4><a class=lnlinks href=#hl-2-4> 4</a>
+</span><span class=lnt id=hl-2-5><a class=lnlinks href=#hl-2-5> 5</a>
+</span><span class=lnt id=hl-2-6><a class=lnlinks href=#hl-2-6> 6</a>
+</span><span class=lnt id=hl-2-7><a class=lnlinks href=#hl-2-7> 7</a>
+</span><span class=lnt id=hl-2-8><a class=lnlinks href=#hl-2-8> 8</a>
+</span><span class=lnt id=hl-2-9><a class=lnlinks href=#hl-2-9> 9</a>
+</span><span class=lnt id=hl-2-10><a class=lnlinks href=#hl-2-10>10</a>
+</span><span class=lnt id=hl-2-11><a class=lnlinks href=#hl-2-11>11</a>
+</span><span class=lnt id=hl-2-12><a class=lnlinks href=#hl-2-12>12</a>
+</span><span class=lnt id=hl-2-13><a class=lnlinks href=#hl-2-13>13</a>
+</span><span class=lnt id=hl-2-14><a class=lnlinks href=#hl-2-14>14</a>
+</span><span class=lnt id=hl-2-15><a class=lnlinks href=#hl-2-15>15</a>
+</span><span class=lnt id=hl-2-16><a class=lnlinks href=#hl-2-16>16</a>
+</span><span class=lnt id=hl-2-17><a class=lnlinks href=#hl-2-17>17</a>
+</span><span class=lnt id=hl-2-18><a class=lnlinks href=#hl-2-18>18</a>
+</span><span class=lnt id=hl-2-19><a class=lnlinks href=#hl-2-19>19</a>
+</span><span class=lnt id=hl-2-20><a class=lnlinks href=#hl-2-20>20</a>
+</span><span class=lnt id=hl-2-21><a class=lnlinks href=#hl-2-21>21</a>
+</span><span class=lnt id=hl-2-22><a class=lnlinks href=#hl-2-22>22</a>
+</span><span class=lnt id=hl-2-23><a class=lnlinks href=#hl-2-23>23</a>
+</span><span class=lnt id=hl-2-24><a class=lnlinks href=#hl-2-24>24</a>
+</span><span class=lnt id=hl-2-25><a class=lnlinks href=#hl-2-25>25</a>
+</span><span class=lnt id=hl-2-26><a class=lnlinks href=#hl-2-26>26</a>
+</span><span class=lnt id=hl-2-27><a class=lnlinks href=#hl-2-27>27</a>
+</span><span class=lnt id=hl-2-28><a class=lnlinks href=#hl-2-28>28</a>
+</span><span class=lnt id=hl-2-29><a class=lnlinks href=#hl-2-29>29</a>
+</span><span class=lnt id=hl-2-30><a class=lnlinks href=#hl-2-30>30</a>
+</span><span class=lnt id=hl-2-31><a class=lnlinks href=#hl-2-31>31</a>
+</span><span class=lnt id=hl-2-32><a class=lnlinks href=#hl-2-32>32</a>
+</span><span class=lnt id=hl-2-33><a class=lnlinks href=#hl-2-33>33</a>
+</span><span class=lnt id=hl-2-34><a class=lnlinks href=#hl-2-34>34</a>
+</span><span class=lnt id=hl-2-35><a class=lnlinks href=#hl-2-35>35</a>
+</span><span class=lnt id=hl-2-36><a class=lnlinks href=#hl-2-36>36</a>
+</span><span class=lnt id=hl-2-37><a class=lnlinks href=#hl-2-37>37</a>
+</span><span class=lnt id=hl-2-38><a class=lnlinks href=#hl-2-38>38</a>
+</span><span class=lnt id=hl-2-39><a class=lnlinks href=#hl-2-39>39</a>
+</span><span class=lnt id=hl-2-40><a class=lnlinks href=#hl-2-40>40</a>
+</span><span class=lnt id=hl-2-41><a class=lnlinks href=#hl-2-41>41</a>
+</span><span class=lnt id=hl-2-42><a class=lnlinks href=#hl-2-42>42</a>
+</span><span class=lnt id=hl-2-43><a class=lnlinks href=#hl-2-43>43</a>
+</span><span class=lnt id=hl-2-44><a class=lnlinks href=#hl-2-44>44</a>
+</span><span class=lnt id=hl-2-45><a class=lnlinks href=#hl-2-45>45</a>
+</span><span class=lnt id=hl-2-46><a class=lnlinks href=#hl-2-46>46</a>
+</span><span class=lnt id=hl-2-47><a class=lnlinks href=#hl-2-47>47</a>
+</span><span class=lnt id=hl-2-48><a class=lnlinks href=#hl-2-48>48</a>
+</span><span class=lnt id=hl-2-49><a class=lnlinks href=#hl-2-49>49</a>
+</span><span class=lnt id=hl-2-50><a class=lnlinks href=#hl-2-50>50</a>
+</span><span class=lnt id=hl-2-51><a class=lnlinks href=#hl-2-51>51</a>
+</span><span class=lnt id=hl-2-52><a class=lnlinks href=#hl-2-52>52</a>
+</span><span class=lnt id=hl-2-53><a class=lnlinks href=#hl-2-53>53</a>
+</span><span class=lnt id=hl-2-54><a class=lnlinks href=#hl-2-54>54</a>
+</span><span class=lnt id=hl-2-55><a class=lnlinks href=#hl-2-55>55</a>
+</span><span class=lnt id=hl-2-56><a class=lnlinks href=#hl-2-56>56</a>
+</span><span class=lnt id=hl-2-57><a class=lnlinks href=#hl-2-57>57</a>
+</span><span class=lnt id=hl-2-58><a class=lnlinks href=#hl-2-58>58</a>
+</span><span class=lnt id=hl-2-59><a class=lnlinks href=#hl-2-59>59</a>
+</span><span class=lnt id=hl-2-60><a class=lnlinks href=#hl-2-60>60</a>
+</span><span class=lnt id=hl-2-61><a class=lnlinks href=#hl-2-61>61</a>
+</span><span class=lnt id=hl-2-62><a class=lnlinks href=#hl-2-62>62</a>
+</span><span class=lnt id=hl-2-63><a class=lnlinks href=#hl-2-63>63</a>
+</span><span class=lnt id=hl-2-64><a class=lnlinks href=#hl-2-64>64</a>
+</span><span class=lnt id=hl-2-65><a class=lnlinks href=#hl-2-65>65</a>
+</span><span class=lnt id=hl-2-66><a class=lnlinks href=#hl-2-66>66</a>
+</span><span class=lnt id=hl-2-67><a class=lnlinks href=#hl-2-67>67</a>
+</span><span class=lnt id=hl-2-68><a class=lnlinks href=#hl-2-68>68</a>
+</span><span class=lnt id=hl-2-69><a class=lnlinks href=#hl-2-69>69</a>
+</span><span class=lnt id=hl-2-70><a class=lnlinks href=#hl-2-70>70</a>
+</span><span class=lnt id=hl-2-71><a class=lnlinks href=#hl-2-71>71</a>
+</span><span class=lnt id=hl-2-72><a class=lnlinks href=#hl-2-72>72</a>
+</span><span class=lnt id=hl-2-73><a class=lnlinks href=#hl-2-73>73</a>
+</span><span class=lnt id=hl-2-74><a class=lnlinks href=#hl-2-74>74</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-lua data-lang=lua><span class=line><span class=cl><span class=kd>local</span> <span class=n>lazypath</span> <span class=o>=</span> <span class=n>vim.fn</span><span class=p>.</span><span class=n>stdpath</span><span class=p>(</span><span class=s2>&#34;data&#34;</span><span class=p>)</span> <span class=o>..</span> <span class=s2>&#34;/lazy/lazy.nvim&#34;</span>
+</span></span><span class=line><span class=cl><span class=kr>if</span> <span class=ow>not</span> <span class=n>vim.loop</span><span class=p>.</span><span class=n>fs_stat</span><span class=p>(</span><span class=n>lazypath</span><span class=p>)</span> <span class=kr>then</span>
+</span></span><span class=line><span class=cl>  <span class=n>vim.fn</span><span class=p>.</span><span class=n>system</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;git&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;clone&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;--filter=blob:none&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;https://github.com/folke/lazy.nvim.git&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;--branch=stable&#34;</span><span class=p>,</span> <span class=c1>-- latest stable release</span>
+</span></span><span class=line><span class=cl>    <span class=n>lazypath</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=p>})</span>
+</span></span><span class=line><span class=cl><span class=kr>end</span>
+</span></span><span class=line><span class=cl><span class=n>vim.opt</span><span class=p>.</span><span class=n>rtp</span><span class=p>:</span><span class=n>prepend</span><span class=p>(</span><span class=n>lazypath</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>require</span><span class=p>(</span><span class=s2>&#34;lazy&#34;</span><span class=p>).</span><span class=n>setup</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>   <span class=s2>&#34;git@github.com:neovim/nvim-lspconfig&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>   <span class=s2>&#34;git@github.com:williamboman/mason.nvim&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>   <span class=s2>&#34;git@github.com:williamboman/mason-lspconfig.nvim&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>   <span class=c1>-- 借用了vim插件，因为二者是兼容的，速度上vim-latex更快</span>
+</span></span><span class=line><span class=cl>   <span class=p>{</span> <span class=s2>&#34;git@github.com:vim-latex/vim-latex&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>   <span class=p>{</span> <span class=s2>&#34;git@github.com:jbyuki/nabla.nvim&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>   <span class=c1>-- 添加latex插件vimtex</span>
+</span></span><span class=line><span class=cl>   <span class=p>{</span> <span class=s2>&#34;git@github.com:lervag/vimtex&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>   <span class=p>{</span> <span class=s2>&#34;git@github.com:mhinz/neovim-remote&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>   <span class=c1>-- 添加neovim主题</span>
+</span></span><span class=line><span class=cl>   <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=s2>&#34;git@github.com:folke/tokyonight.nvim&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=s2>&#34;git@github.com:tomasr/molokai&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=s2>&#34;git@github.com:catppuccin/nvim&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=s2>&#34;git@github.com:jaredgorski/SpaceCamp&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=s2>&#34;git@github.com:morhetz/gruvbox&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=s2>&#34;git@github.com:nelstrom/vim-mac-classic-theme&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=s2>&#34;git@github.com:RRethy/nvim-base16&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>   <span class=p>},</span>
+</span></span><span class=line><span class=cl>   <span class=c1>-- 代码高亮</span>
+</span></span><span class=line><span class=cl>   <span class=p>{</span> <span class=s2>&#34;git@github.com:nvim-treesitter/nvim-treesitter&#34;</span><span class=p>,</span> <span class=n>run</span> <span class=o>=</span><span class=s2>&#34;:TSUpdate&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>   <span class=c1>-- 状态栏主题</span>
+</span></span><span class=line><span class=cl>   <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=s2>&#34;git@github.com:nvim-lualine/lualine.nvim&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=n>requires</span> <span class=o>=</span> <span class=p>{</span> <span class=s2>&#34;nvim-tree/nvim-web-devicons&#34;</span><span class=p>,</span> <span class=n>opt</span> <span class=o>=</span> <span class=kc>true</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>   <span class=p>},</span>
+</span></span><span class=line><span class=cl>   <span class=c1>--	-- nvim-cmp</span>
+</span></span><span class=line><span class=cl>   <span class=s1>&#39;git@github.com:hrsh7th/cmp-nvim-lsp&#39;</span><span class=p>,</span> 
+</span></span><span class=line><span class=cl>   <span class=s1>&#39;git@github.com:hrsh7th/cmp-buffer&#39;</span>  <span class=p>,</span> 
+</span></span><span class=line><span class=cl>   <span class=s1>&#39;git@github.com:hrsh7th/cmp-path&#39;</span>    <span class=p>,</span> 
+</span></span><span class=line><span class=cl>   <span class=s1>&#39;git@github.com:hrsh7th/cmp-cmdline&#39;</span> <span class=p>,</span> 
+</span></span><span class=line><span class=cl>   <span class=s1>&#39;git@github.com:hrsh7th/nvim-cmp&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>   <span class=c1>-- vsnip</span>
+</span></span><span class=line><span class=cl>   <span class=s1>&#39;git@github.com:hrsh7th/cmp-vsnip&#39;</span> <span class=p>,</span>   
+</span></span><span class=line><span class=cl>   <span class=s1>&#39;git@github.com:hrsh7th/vim-vsnip&#39;</span> <span class=p>,</span>
+</span></span><span class=line><span class=cl>   <span class=s1>&#39;git@github.com:rafamadriz/friendly-snippets&#39;</span> <span class=p>,</span>
+</span></span><span class=line><span class=cl>   <span class=c1>-- lspkind</span>
+</span></span><span class=line><span class=cl>   <span class=p>{</span> <span class=s2>&#34;git@github.com:onsails/lspkind.nvim&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>   <span class=c1>-- 自动插入模板</span>
+</span></span><span class=line><span class=cl>   <span class=p>{</span> <span class=s2>&#34;git@github.com:aperezdc/vim-template&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>   <span class=c1>-- 旧式片段插入程序</span>
+</span></span><span class=line><span class=cl>   <span class=p>{</span> <span class=s2>&#34;git@github.com:SirVer/ultisnips&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>   <span class=p>{</span> <span class=s2>&#34;git@github.com:honza/vim-snippets&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>   <span class=c1>-- 注释插件</span>
+</span></span><span class=line><span class=cl>   <span class=p>{</span> <span class=s2>&#34;git@github.com:terrortylor/nvim-comment&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>   <span class=p>{</span> <span class=s2>&#34;git@github.com:nvim-tree/nvim-web-devicons&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>   <span class=c1>-- 目录树插件</span>
+</span></span><span class=line><span class=cl>   <span class=p>{</span> <span class=s2>&#34;git@github.com:nvim-tree/nvim-tree.lua&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>   <span class=c1>-- This plugin adds indentation guides to all lines (including empty lines).</span>
+</span></span><span class=line><span class=cl>   <span class=p>{</span> <span class=s2>&#34;git@github.com:lukas-reineke/indent-blankline.nvim&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>   <span class=c1>-- 彩虹括号</span>
+</span></span><span class=line><span class=cl>   <span class=p>{</span> <span class=s2>&#34;git@github.com:hiphish/rainbow-delimiters.nvim&#34;</span> <span class=p>},</span> 
+</span></span><span class=line><span class=cl>   <span class=c1>-- 用来显示文件结构的插件，对于编写程序查看各定义时很有帮助</span>
+</span></span><span class=line><span class=cl>   <span class=p>{</span> <span class=s2>&#34;git@github.com:liuchengxu/vista.vim&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>   <span class=c1>-- 模糊查找</span>
+</span></span><span class=line><span class=cl>   <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=s2>&#34;git@github.com:nvim-telescope/telescope.nvim&#34;</span><span class=p>,</span> <span class=n>tag</span> <span class=o>=</span> <span class=s2>&#34;0.1.4&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=c1>-- or                            , branch = &#39;0.1.x&#39;,</span>
+</span></span><span class=line><span class=cl>      <span class=n>requires</span> <span class=o>=</span> <span class=p>{</span> <span class=p>{</span> <span class=s2>&#34;git@github.com:nvim-lua/plenary.nvim&#34;</span> <span class=p>}</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl>   <span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>})</span></span></span></code></pre></td></tr></table></div></div><p>{% note info %}
 注意: 官方网站还给出了另一个方法，就是将lazy-init.lua放在目录<code>~/.config/nvim</code>中，同时插件配置文件单独建立，然后再调用，但是本着lazy的原则，我还是更愿意一个文件解决问题，因为插件也不是多的放不下，文件越少越方便管理。
-{% endnote %}</p><ol start=4><li>建立<code>~/.config/nvim/init.vim</code>配置文件</li></ol><ul><li>先设置不引入插件，写入</li></ul><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-3-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-3-1>1</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-vim data-lang=vim><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#34;lazy-init&#34;</span>)</span></span></code></pre></td></tr></table></div></div><p>启动<code>nvim</code>,然后插件就会自动开始安装了。</p><ul><li>启动各插件</li></ul><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-1> 1</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-2><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-2> 2</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-3><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-3> 3</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-4><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-4> 4</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-5><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-5> 5</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-6><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-6> 6</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-7><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-7> 7</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-8><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-8> 8</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-9><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-9> 9</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-10><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-10>10</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-11><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-11>11</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-12><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-12>12</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-13><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-13>13</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-14><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-14>14</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-15><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-15>15</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-16><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-16>16</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-17><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-17>17</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-18><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-18>18</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-19><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-19>19</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-20><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-20>20</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-21><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-21>21</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-22><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-22>22</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-23><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-23>23</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-24><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-24>24</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-25><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-25>25</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-26><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-26>26</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-27><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-27>27</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-28><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-28>28</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-29><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-29>29</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-30><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-30>30</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-31><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-31>31</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-32><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-32>32</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-33><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-33>33</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-34><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-34>34</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-35><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-35>35</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-36><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-36>36</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-37><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-37>37</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-38><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-38>38</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-39><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-39>39</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-40><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-40>40</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-41><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-41>41</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-42><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-42>42</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-43><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-43>43</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-44><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-44>44</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-45><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-45>45</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-46><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-46>46</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-47><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-47>47</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-48><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-48>48</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-49><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-49>49</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-50><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-50>50</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-51><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-51>51</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-52><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-52>52</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-53><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-53>53</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-54><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-54>54</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-55><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-55>55</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-56><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-56>56</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-57><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-57>57</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-58><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-58>58</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-59><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-59>59</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-60><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-60>60</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-61><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-61>61</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-62><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-62>62</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-4-63><a style=outline:none;text-decoration:none;color:inherit href=#hl-4-63>63</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-vim data-lang=vim><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#34;lazy-init&#34;</span>)
-</span></span><span style=display:flex><span><span style=color:#66d9ef>set</span> <span style=color:#a6e22e>shortmess</span>+=<span style=color:#a6e22e>I</span> <span style=color:#75715e>&#34;关闭启动界面</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>g</span>:<span style=color:#a6e22e>loaded_ruby_provider</span> = <span style=color:#ae81ff>0</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34; 基础设置</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;lsp/base&#39;</span>)
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34; 配置主题</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34; lua require(&#39;theme/catppuccin&#39;)</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34; lua require(&#39;theme/gruvbox&#39;)</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34; lua require(&#39;theme/mac_classic&#39;)</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34; lua require(&#39;theme/molokai&#39;)</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34; lua require(&#39;theme/spacecamp&#39;)</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;theme/tokyonight&#39;</span>)
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34; lua require(&#39;theme/nvim-base16&#39;)</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34; 状态栏主题</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;theme/lualine&#39;</span>)
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34;lua require(&#39;theme/evil_lualine&#39;)</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34;lua require(&#39;theme/bubbles_lualine&#39;)</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34;lua require(&#39;theme/slanted-gaps_lualine&#39;)</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;lsp/keybindings&#39;</span>)
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34; 编程语言配置</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;lsp/python&#39;</span>)
-</span></span><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;lsp/setup&#39;</span>)
-</span></span><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;lsp/shell&#39;</span>)
-</span></span><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;lsp/texlab&#39;</span>)
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34; Packer 插件管理</span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;plg/cmp&#39;</span>)
-</span></span><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;plg/vim-latex&#39;</span>)
-</span></span><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;plg/nabla&#39;</span>)
-</span></span><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;plg/vimtex&#39;</span>)
-</span></span><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;plg/vim-template&#39;</span>)
-</span></span><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;plg/nvim-comment&#39;</span>)
-</span></span><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;plg/nvim-tree&#39;</span>)
-</span></span><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;plg/lspkind&#39;</span>)
-</span></span><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;plg/indent-blankline&#39;</span>)
-</span></span><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;plg/rainbow-delimiters&#39;</span>)
-</span></span><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;plg/vista&#39;</span>)
-</span></span><span style=display:flex><span><span style=color:#a6e22e>lua</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;plg/telescope&#39;</span>)
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34;</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34; 由于vista插件有些配置不能使用lua语言改写，所以暂时在此按vimscript格式引入其配置，等时机成熟再改用lua语言</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34; --------------------vista begin--------------------</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>g</span>:<span style=color:#a6e22e>vista_icon_indent</span> = [<span style=color:#e6db74>&#34;╰─▸ &#34;</span>, <span style=color:#e6db74>&#34;├─▸ &#34;</span>]
-</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>g</span>:<span style=color:#a6e22e>vista_default_executive</span> = <span style=color:#e6db74>&#39;ctags&#39;</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>g</span>:<span style=color:#a6e22e>vista_executive_for</span> = {
-</span></span><span style=display:flex><span>  \ <span style=color:#e6db74>&#39;cpp&#39;</span>: <span style=color:#e6db74>&#39;vim_lsp&#39;</span>,
-</span></span><span style=display:flex><span>  \ <span style=color:#e6db74>&#39;php&#39;</span>: <span style=color:#e6db74>&#39;vim_lsp&#39;</span>,
-</span></span><span style=display:flex><span>  \ }
-</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>g</span>:<span style=color:#a6e22e>vista_ctags_cmd</span> = {
-</span></span><span style=display:flex><span>      \ <span style=color:#e6db74>&#39;haskell&#39;</span>: <span style=color:#e6db74>&#39;hasktags -x -o - -c&#39;</span>,
-</span></span><span style=display:flex><span>      \ }
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>g</span>:<span style=color:#a6e22e>vista_fzf_preview</span> = [<span style=color:#e6db74>&#39;right:50%&#39;</span>]
-</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>g</span>:<span style=color:#a6e22e>vista</span>#<span style=color:#a6e22e>renderer</span>#<span style=color:#a6e22e>enable_icon</span> = <span style=color:#ae81ff>1</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>g</span>:<span style=color:#a6e22e>vista</span>#<span style=color:#a6e22e>renderer</span>#<span style=color:#a6e22e>icons</span> = {
-</span></span><span style=display:flex><span>\   <span style=color:#e6db74>&#34;function&#34;</span>: <span style=color:#e6db74>&#34;\uf794&#34;</span>,
-</span></span><span style=display:flex><span>\   <span style=color:#e6db74>&#34;variable&#34;</span>: <span style=color:#e6db74>&#34;\uf71b&#34;</span>,
-</span></span><span style=display:flex><span>\  }
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34; --------------------vista end--------------------</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34;</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34; ---------------Fcitx5 Auto Switch----------------</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>fcitx5state</span>=<span style=color:#a6e22e>system</span>(<span style=color:#e6db74>&#34;fcitx5-remote&#34;</span>)
-</span></span><span style=display:flex><span><span style=color:#66d9ef>autocmd</span> <span style=color:#a6e22e>InsertLeave</span> * :<span style=color:#a6e22e>silent</span> <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>fcitx5state</span>=<span style=color:#a6e22e>system</span>(<span style=color:#e6db74>&#34;fcitx5-remote&#34;</span>)[<span style=color:#ae81ff>0</span>] | <span style=color:#a6e22e>silent</span> !<span style=color:#a6e22e>fcitx5</span>-<span style=color:#a6e22e>remote</span> -<span style=color:#a6e22e>c</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>autocmd</span> <span style=color:#a6e22e>InsertEnter</span> * :<span style=color:#a6e22e>silent</span> <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>fcitx5state</span> == <span style=color:#ae81ff>2</span> | <span style=color:#a6e22e>call</span> <span style=color:#a6e22e>system</span>(<span style=color:#e6db74>&#34;fcitx5-remote -o&#34;</span>) | <span style=color:#66d9ef>endif</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>&#34; --------------------End Fcitx5--------------------</span></span></span></code></pre></td></tr></table></div></div><p>{% note warning %}
+{% endnote %}</p><ol start=4><li>建立<code>~/.config/nvim/init.vim</code>配置文件</li></ol><ul><li>先设置不引入插件，写入</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-3-1><a class=lnlinks href=#hl-3-1>1</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-vim data-lang=vim><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s2>&#34;lazy-init&#34;</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><p>启动<code>nvim</code>,然后插件就会自动开始安装了。</p><ul><li>启动各插件</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-4-1><a class=lnlinks href=#hl-4-1> 1</a>
+</span><span class=lnt id=hl-4-2><a class=lnlinks href=#hl-4-2> 2</a>
+</span><span class=lnt id=hl-4-3><a class=lnlinks href=#hl-4-3> 3</a>
+</span><span class=lnt id=hl-4-4><a class=lnlinks href=#hl-4-4> 4</a>
+</span><span class=lnt id=hl-4-5><a class=lnlinks href=#hl-4-5> 5</a>
+</span><span class=lnt id=hl-4-6><a class=lnlinks href=#hl-4-6> 6</a>
+</span><span class=lnt id=hl-4-7><a class=lnlinks href=#hl-4-7> 7</a>
+</span><span class=lnt id=hl-4-8><a class=lnlinks href=#hl-4-8> 8</a>
+</span><span class=lnt id=hl-4-9><a class=lnlinks href=#hl-4-9> 9</a>
+</span><span class=lnt id=hl-4-10><a class=lnlinks href=#hl-4-10>10</a>
+</span><span class=lnt id=hl-4-11><a class=lnlinks href=#hl-4-11>11</a>
+</span><span class=lnt id=hl-4-12><a class=lnlinks href=#hl-4-12>12</a>
+</span><span class=lnt id=hl-4-13><a class=lnlinks href=#hl-4-13>13</a>
+</span><span class=lnt id=hl-4-14><a class=lnlinks href=#hl-4-14>14</a>
+</span><span class=lnt id=hl-4-15><a class=lnlinks href=#hl-4-15>15</a>
+</span><span class=lnt id=hl-4-16><a class=lnlinks href=#hl-4-16>16</a>
+</span><span class=lnt id=hl-4-17><a class=lnlinks href=#hl-4-17>17</a>
+</span><span class=lnt id=hl-4-18><a class=lnlinks href=#hl-4-18>18</a>
+</span><span class=lnt id=hl-4-19><a class=lnlinks href=#hl-4-19>19</a>
+</span><span class=lnt id=hl-4-20><a class=lnlinks href=#hl-4-20>20</a>
+</span><span class=lnt id=hl-4-21><a class=lnlinks href=#hl-4-21>21</a>
+</span><span class=lnt id=hl-4-22><a class=lnlinks href=#hl-4-22>22</a>
+</span><span class=lnt id=hl-4-23><a class=lnlinks href=#hl-4-23>23</a>
+</span><span class=lnt id=hl-4-24><a class=lnlinks href=#hl-4-24>24</a>
+</span><span class=lnt id=hl-4-25><a class=lnlinks href=#hl-4-25>25</a>
+</span><span class=lnt id=hl-4-26><a class=lnlinks href=#hl-4-26>26</a>
+</span><span class=lnt id=hl-4-27><a class=lnlinks href=#hl-4-27>27</a>
+</span><span class=lnt id=hl-4-28><a class=lnlinks href=#hl-4-28>28</a>
+</span><span class=lnt id=hl-4-29><a class=lnlinks href=#hl-4-29>29</a>
+</span><span class=lnt id=hl-4-30><a class=lnlinks href=#hl-4-30>30</a>
+</span><span class=lnt id=hl-4-31><a class=lnlinks href=#hl-4-31>31</a>
+</span><span class=lnt id=hl-4-32><a class=lnlinks href=#hl-4-32>32</a>
+</span><span class=lnt id=hl-4-33><a class=lnlinks href=#hl-4-33>33</a>
+</span><span class=lnt id=hl-4-34><a class=lnlinks href=#hl-4-34>34</a>
+</span><span class=lnt id=hl-4-35><a class=lnlinks href=#hl-4-35>35</a>
+</span><span class=lnt id=hl-4-36><a class=lnlinks href=#hl-4-36>36</a>
+</span><span class=lnt id=hl-4-37><a class=lnlinks href=#hl-4-37>37</a>
+</span><span class=lnt id=hl-4-38><a class=lnlinks href=#hl-4-38>38</a>
+</span><span class=lnt id=hl-4-39><a class=lnlinks href=#hl-4-39>39</a>
+</span><span class=lnt id=hl-4-40><a class=lnlinks href=#hl-4-40>40</a>
+</span><span class=lnt id=hl-4-41><a class=lnlinks href=#hl-4-41>41</a>
+</span><span class=lnt id=hl-4-42><a class=lnlinks href=#hl-4-42>42</a>
+</span><span class=lnt id=hl-4-43><a class=lnlinks href=#hl-4-43>43</a>
+</span><span class=lnt id=hl-4-44><a class=lnlinks href=#hl-4-44>44</a>
+</span><span class=lnt id=hl-4-45><a class=lnlinks href=#hl-4-45>45</a>
+</span><span class=lnt id=hl-4-46><a class=lnlinks href=#hl-4-46>46</a>
+</span><span class=lnt id=hl-4-47><a class=lnlinks href=#hl-4-47>47</a>
+</span><span class=lnt id=hl-4-48><a class=lnlinks href=#hl-4-48>48</a>
+</span><span class=lnt id=hl-4-49><a class=lnlinks href=#hl-4-49>49</a>
+</span><span class=lnt id=hl-4-50><a class=lnlinks href=#hl-4-50>50</a>
+</span><span class=lnt id=hl-4-51><a class=lnlinks href=#hl-4-51>51</a>
+</span><span class=lnt id=hl-4-52><a class=lnlinks href=#hl-4-52>52</a>
+</span><span class=lnt id=hl-4-53><a class=lnlinks href=#hl-4-53>53</a>
+</span><span class=lnt id=hl-4-54><a class=lnlinks href=#hl-4-54>54</a>
+</span><span class=lnt id=hl-4-55><a class=lnlinks href=#hl-4-55>55</a>
+</span><span class=lnt id=hl-4-56><a class=lnlinks href=#hl-4-56>56</a>
+</span><span class=lnt id=hl-4-57><a class=lnlinks href=#hl-4-57>57</a>
+</span><span class=lnt id=hl-4-58><a class=lnlinks href=#hl-4-58>58</a>
+</span><span class=lnt id=hl-4-59><a class=lnlinks href=#hl-4-59>59</a>
+</span><span class=lnt id=hl-4-60><a class=lnlinks href=#hl-4-60>60</a>
+</span><span class=lnt id=hl-4-61><a class=lnlinks href=#hl-4-61>61</a>
+</span><span class=lnt id=hl-4-62><a class=lnlinks href=#hl-4-62>62</a>
+</span><span class=lnt id=hl-4-63><a class=lnlinks href=#hl-4-63>63</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-vim data-lang=vim><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s2>&#34;lazy-init&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>set</span> <span class=nx>shortmess</span><span class=p>+=</span><span class=nx>I</span> <span class=c>&#34;关闭启动界面</span>
+</span></span><span class=line><span class=cl><span class=k>let</span> <span class=nx>g</span>:<span class=nx>loaded_ruby_provider</span> <span class=p>=</span> <span class=m>0</span>
+</span></span><span class=line><span class=cl><span class=c>&#34; 基础设置</span>
+</span></span><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;lsp/base&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=c>&#34; 配置主题</span>
+</span></span><span class=line><span class=cl><span class=c>&#34; lua require(&#39;theme/catppuccin&#39;)</span>
+</span></span><span class=line><span class=cl><span class=c>&#34; lua require(&#39;theme/gruvbox&#39;)</span>
+</span></span><span class=line><span class=cl><span class=c>&#34; lua require(&#39;theme/mac_classic&#39;)</span>
+</span></span><span class=line><span class=cl><span class=c>&#34; lua require(&#39;theme/molokai&#39;)</span>
+</span></span><span class=line><span class=cl><span class=c>&#34; lua require(&#39;theme/spacecamp&#39;)</span>
+</span></span><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;theme/tokyonight&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=c>&#34; lua require(&#39;theme/nvim-base16&#39;)</span>
+</span></span><span class=line><span class=cl><span class=c>&#34; 状态栏主题</span>
+</span></span><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;theme/lualine&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=c>&#34;lua require(&#39;theme/evil_lualine&#39;)</span>
+</span></span><span class=line><span class=cl><span class=c>&#34;lua require(&#39;theme/bubbles_lualine&#39;)</span>
+</span></span><span class=line><span class=cl><span class=c>&#34;lua require(&#39;theme/slanted-gaps_lualine&#39;)</span>
+</span></span><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;lsp/keybindings&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=c>&#34; 编程语言配置</span>
+</span></span><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;lsp/python&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;lsp/setup&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;lsp/shell&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;lsp/texlab&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=c>&#34; Packer 插件管理</span>
+</span></span><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;plg/cmp&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;plg/vim-latex&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;plg/nabla&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;plg/vimtex&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;plg/vim-template&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;plg/nvim-comment&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;plg/nvim-tree&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;plg/lspkind&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;plg/indent-blankline&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;plg/rainbow-delimiters&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;plg/vista&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nx>lua</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;plg/telescope&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=c>&#34;</span>
+</span></span><span class=line><span class=cl><span class=c>&#34; 由于vista插件有些配置不能使用lua语言改写，所以暂时在此按vimscript格式引入其配置，等时机成熟再改用lua语言</span>
+</span></span><span class=line><span class=cl><span class=c>&#34; --------------------vista begin--------------------</span>
+</span></span><span class=line><span class=cl><span class=k>let</span> <span class=nx>g</span>:<span class=nx>vista_icon_indent</span> <span class=p>=</span> [<span class=s2>&#34;╰─▸ &#34;</span><span class=p>,</span> <span class=s2>&#34;├─▸ &#34;</span>]
+</span></span><span class=line><span class=cl><span class=k>let</span> <span class=nx>g</span>:<span class=nx>vista_default_executive</span> <span class=p>=</span> <span class=s1>&#39;ctags&#39;</span>
+</span></span><span class=line><span class=cl><span class=k>let</span> <span class=nx>g</span>:<span class=nx>vista_executive_for</span> <span class=p>=</span> {
+</span></span><span class=line><span class=cl>  \ <span class=s1>&#39;cpp&#39;</span>: <span class=s1>&#39;vim_lsp&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  \ <span class=s1>&#39;php&#39;</span>: <span class=s1>&#39;vim_lsp&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  \ }
+</span></span><span class=line><span class=cl><span class=k>let</span> <span class=nx>g</span>:<span class=nx>vista_ctags_cmd</span> <span class=p>=</span> {
+</span></span><span class=line><span class=cl>      \ <span class=s1>&#39;haskell&#39;</span>: <span class=s1>&#39;hasktags -x -o - -c&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      \ }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>let</span> <span class=nx>g</span>:<span class=nx>vista_fzf_preview</span> <span class=p>=</span> [<span class=s1>&#39;right:50%&#39;</span>]
+</span></span><span class=line><span class=cl><span class=k>let</span> <span class=nx>g</span>:<span class=nx>vista</span>#<span class=nx>renderer</span>#<span class=nx>enable_icon</span> <span class=p>=</span> <span class=m>1</span>
+</span></span><span class=line><span class=cl><span class=k>let</span> <span class=nx>g</span>:<span class=nx>vista</span>#<span class=nx>renderer</span>#<span class=nx>icons</span> <span class=p>=</span> {
+</span></span><span class=line><span class=cl>\   <span class=s2>&#34;function&#34;</span>: <span class=s2>&#34;\uf794&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>\   <span class=s2>&#34;variable&#34;</span>: <span class=s2>&#34;\uf71b&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>\  }
+</span></span><span class=line><span class=cl><span class=c>&#34; --------------------vista end--------------------</span>
+</span></span><span class=line><span class=cl><span class=c>&#34;</span>
+</span></span><span class=line><span class=cl><span class=c>&#34; ---------------Fcitx5 Auto Switch----------------</span>
+</span></span><span class=line><span class=cl><span class=k>let</span> <span class=nx>fcitx5state</span><span class=p>=</span><span class=nx>system</span><span class=p>(</span><span class=s2>&#34;fcitx5-remote&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>autocmd</span> <span class=nx>InsertLeave</span> * :<span class=nx>silent</span> <span class=k>let</span> <span class=nx>fcitx5state</span><span class=p>=</span><span class=nx>system</span><span class=p>(</span><span class=s2>&#34;fcitx5-remote&#34;</span><span class=p>)</span>[<span class=m>0</span>] <span class=p>|</span> <span class=nx>silent</span> <span class=p>!</span><span class=nx>fcitx5</span><span class=p>-</span><span class=nx>remote</span> <span class=p>-</span><span class=nx>c</span>
+</span></span><span class=line><span class=cl><span class=k>autocmd</span> <span class=nx>InsertEnter</span> * :<span class=nx>silent</span> <span class=k>if</span> <span class=nx>fcitx5state</span> <span class=p>==</span> <span class=m>2</span> <span class=p>|</span> <span class=nx>call</span> <span class=nx>system</span><span class=p>(</span><span class=s2>&#34;fcitx5-remote -o&#34;</span><span class=p>)</span> <span class=p>|</span> <span class=k>endif</span>
+</span></span><span class=line><span class=cl><span class=c>&#34; --------------------End Fcitx5--------------------</span></span></span></code></pre></td></tr></table></div></div><p>{% note warning %}
 选择建立<code>~/.config/nvim/init.vim</code>，因为有些<code>vim</code>的插件还没有完全使用<code>lua</code>重写，比如<code>fcitx5</code>在不同模式下自动切换的这段代码就必须写在<code>init.vim</code>文件中才得，这是当前一个最好的选择。
 {% endnote %}</p><h2 id=lazy-使用方法>Lazy 使用方法
 <a class=header-anchor href=#lazy-%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95></a></h2><p>Plugins are managed with the <code>:Lazy</code> command.
@@ -402,57 +402,57 @@ Open the help with <code>&lt;?></code> to see all the key mappings.</p><p>You ca
 can be hovered with <code>&lt;K></code> to open links, help files, readmes,
 git commits and git issues.</p><p>Lazy can automatically check for updates in the background. This feature
 can be enabled with <code>config.checker.enabled = true</code>.</p><p>Any operation can be started from the UI, with a sub command or an API function:</p><table><thead><tr><th>Command</th><th>Lua</th><th>Description</th></tr></thead><tbody><tr><td><code>:Lazy build {plugins}</code></td><td><code>require("lazy").build(opts)</code></td><td>Rebuild a plugin</td></tr><tr><td><code>:Lazy check [plugins]</code></td><td><code>require("lazy").check(opts?)</code></td><td>Check for updates and show the log (git fetch)</td></tr><tr><td><code>:Lazy clean [plugins]</code></td><td><code>require("lazy").clean(opts?)</code></td><td>Clean plugins that are no longer needed</td></tr><tr><td><code>:Lazy clear</code></td><td><code>require("lazy").clear()</code></td><td>Clear finished tasks</td></tr><tr><td><code>:Lazy debug</code></td><td><code>require("lazy").debug()</code></td><td>Show debug information</td></tr><tr><td><code>:Lazy health</code></td><td><code>require("lazy").health()</code></td><td>Run <code>:checkhealth lazy</code></td></tr><tr><td><code>:Lazy help</code></td><td><code>require("lazy").help()</code></td><td>Toggle this help page</td></tr><tr><td><code>:Lazy home</code></td><td><code>require("lazy").home()</code></td><td>Go back to plugin list</td></tr><tr><td><code>:Lazy install [plugins]</code></td><td><code>require("lazy").install(opts?)</code></td><td>Install missing plugins</td></tr><tr><td><code>:Lazy load {plugins}</code></td><td><code>require("lazy").load(opts)</code></td><td>Load a plugin that has not been loaded yet. Similar to <code>:packadd</code>. Like <code>:Lazy load foo.nvim</code>. Use <code>:Lazy! load</code> to skip <code>cond</code> checks.</td></tr><tr><td><code>:Lazy log [plugins]</code></td><td><code>require("lazy").log(opts?)</code></td><td>Show recent updates</td></tr><tr><td><code>:Lazy profile</code></td><td><code>require("lazy").profile()</code></td><td>Show detailed profiling</td></tr><tr><td><code>:Lazy reload {plugins}</code></td><td><code>require("lazy").reload(opts)</code></td><td>Reload a plugin (experimental!!)</td></tr><tr><td><code>:Lazy restore [plugins]</code></td><td><code>require("lazy").restore(opts?)</code></td><td>Updates all plugins to the state in the lockfile. For a single plugin: restore it to the state in the lockfile or to a given commit under the cursor</td></tr><tr><td><code>:Lazy sync [plugins]</code></td><td><code>require("lazy").sync(opts?)</code></td><td>Run install, clean and update</td></tr><tr><td><code>:Lazy update [plugins]</code></td><td><code>require("lazy").update(opts?)</code></td><td>Update plugins. This will also update the lockfile</td></tr></tbody></table><p>Any command can have a <strong>bang</strong> to make the command wait till it finished. For example,
-if you want to sync lazy from the cmdline, you can use:</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-5-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-5-1>1</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-shell data-lang=shell><span style=display:flex><span>$ nvim --headless <span style=color:#e6db74>&#34;+Lazy! sync&#34;</span> +qa</span></span></code></pre></td></tr></table></div></div><p><code>opts</code> is a table with the following key-values:</p><ul><li><strong>wait</strong>: when true, then the call will wait till the operation completed</li><li><strong>show</strong>: when false, the UI will not be shown</li><li><strong>plugins</strong>: a list of plugin names to run the operation on</li><li><strong>concurrency</strong>: limit the <code>number</code> of concurrently running tasks</li></ul><p>Stats API (<code>require("lazy").stats()</code>):</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-6-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-6-1> 1</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-6-2><a style=outline:none;text-decoration:none;color:inherit href=#hl-6-2> 2</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-6-3><a style=outline:none;text-decoration:none;color:inherit href=#hl-6-3> 3</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-6-4><a style=outline:none;text-decoration:none;color:inherit href=#hl-6-4> 4</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-6-5><a style=outline:none;text-decoration:none;color:inherit href=#hl-6-5> 5</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-6-6><a style=outline:none;text-decoration:none;color:inherit href=#hl-6-6> 6</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-6-7><a style=outline:none;text-decoration:none;color:inherit href=#hl-6-7> 7</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-6-8><a style=outline:none;text-decoration:none;color:inherit href=#hl-6-8> 8</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-6-9><a style=outline:none;text-decoration:none;color:inherit href=#hl-6-9> 9</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-6-10><a style=outline:none;text-decoration:none;color:inherit href=#hl-6-10>10</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-6-11><a style=outline:none;text-decoration:none;color:inherit href=#hl-6-11>11</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-6-12><a style=outline:none;text-decoration:none;color:inherit href=#hl-6-12>12</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-lua data-lang=lua><span style=display:flex><span>{
-</span></span><span style=display:flex><span>  <span style=color:#75715e>-- startuptime in milliseconds till UIEnter</span>
-</span></span><span style=display:flex><span>  startuptime <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>,
-</span></span><span style=display:flex><span>  <span style=color:#75715e>-- when true, startuptime is the accurate cputime for the Neovim process. (Linux &amp; Macos)</span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e>-- this is more accurate than `nvim --startuptime`, and as such will be slightly higher</span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e>-- when false, startuptime is calculated based on a delta with a timestamp when lazy started.</span>
-</span></span><span style=display:flex><span>  real_cputime <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span>,
-</span></span><span style=display:flex><span>  count <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>, <span style=color:#75715e>-- total number of plugins</span>
-</span></span><span style=display:flex><span>  loaded <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>, <span style=color:#75715e>-- number of loaded plugins</span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e>---@type table&lt;string, number&gt;</span>
-</span></span><span style=display:flex><span>  times <span style=color:#f92672>=</span> {},
-</span></span><span style=display:flex><span>}</span></span></code></pre></td></tr></table></div></div><p><strong>lazy.nvim</strong> provides a statusline component that you can use to show the number of pending updates.
-Make sure to enable <code>config.checker.enabled = true</code> to make this work.</p><details><summary>Example of configuring <a href=https://github.com/nvim-lualine/lualine.nvim>lualine.nvim</a></summary><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-7-1><a style=outline:none;text-decoration:none;color:inherit href=#hl-7-1> 1</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-7-2><a style=outline:none;text-decoration:none;color:inherit href=#hl-7-2> 2</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-7-3><a style=outline:none;text-decoration:none;color:inherit href=#hl-7-3> 3</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-7-4><a style=outline:none;text-decoration:none;color:inherit href=#hl-7-4> 4</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-7-5><a style=outline:none;text-decoration:none;color:inherit href=#hl-7-5> 5</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-7-6><a style=outline:none;text-decoration:none;color:inherit href=#hl-7-6> 6</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-7-7><a style=outline:none;text-decoration:none;color:inherit href=#hl-7-7> 7</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-7-8><a style=outline:none;text-decoration:none;color:inherit href=#hl-7-8> 8</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-7-9><a style=outline:none;text-decoration:none;color:inherit href=#hl-7-9> 9</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-7-10><a style=outline:none;text-decoration:none;color:inherit href=#hl-7-10>10</a>
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f" id=hl-7-11><a style=outline:none;text-decoration:none;color:inherit href=#hl-7-11>11</a>
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-lua data-lang=lua><span style=display:flex><span>require(<span style=color:#e6db74>&#34;lualine&#34;</span>).setup({
-</span></span><span style=display:flex><span>  sections <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>    lualine_x <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>      {
-</span></span><span style=display:flex><span>        require(<span style=color:#e6db74>&#34;lazy.status&#34;</span>).updates,
-</span></span><span style=display:flex><span>        cond <span style=color:#f92672>=</span> require(<span style=color:#e6db74>&#34;lazy.status&#34;</span>).has_updates,
-</span></span><span style=display:flex><span>        color <span style=color:#f92672>=</span> { fg <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;#ff9e64&#34;</span> },
-</span></span><span style=display:flex><span>      },
-</span></span><span style=display:flex><span>    },
-</span></span><span style=display:flex><span>  },
-</span></span><span style=display:flex><span>})</span></span></code></pre></td></tr></table></div></div></details></div><footer class=post-footer><hr><div class=post-nav><div class="post-nav-next post-nav-item"><a href=../../post/vim%E5%92%8Cneovim%E4%B8%AD%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2fcitx5%E8%BE%93%E5%85%A5%E6%B3%95/ rel=next title=vim和neovim中自动切换Fcitx5输入法><i class="fa fa-chevron-left"></i> vim和neovim中自动切换Fcitx5输入法</a></div><div class="post-nav-prev post-nav-item"><a href=../../post/%E4%B8%BAvim-templates%E6%8F%92%E4%BB%B6%E7%BC%96%E5%86%99%E6%A8%A1%E6%9D%BF/ rel=prev title=为vim-templates插件编写模板>为vim-templates插件编写模板
+if you want to sync lazy from the cmdline, you can use:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-5-1><a class=lnlinks href=#hl-5-1>1</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>$ nvim --headless <span class=s2>&#34;+Lazy! sync&#34;</span> +qa</span></span></code></pre></td></tr></table></div></div><p><code>opts</code> is a table with the following key-values:</p><ul><li><strong>wait</strong>: when true, then the call will wait till the operation completed</li><li><strong>show</strong>: when false, the UI will not be shown</li><li><strong>plugins</strong>: a list of plugin names to run the operation on</li><li><strong>concurrency</strong>: limit the <code>number</code> of concurrently running tasks</li></ul><p>Stats API (<code>require("lazy").stats()</code>):</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-6-1><a class=lnlinks href=#hl-6-1> 1</a>
+</span><span class=lnt id=hl-6-2><a class=lnlinks href=#hl-6-2> 2</a>
+</span><span class=lnt id=hl-6-3><a class=lnlinks href=#hl-6-3> 3</a>
+</span><span class=lnt id=hl-6-4><a class=lnlinks href=#hl-6-4> 4</a>
+</span><span class=lnt id=hl-6-5><a class=lnlinks href=#hl-6-5> 5</a>
+</span><span class=lnt id=hl-6-6><a class=lnlinks href=#hl-6-6> 6</a>
+</span><span class=lnt id=hl-6-7><a class=lnlinks href=#hl-6-7> 7</a>
+</span><span class=lnt id=hl-6-8><a class=lnlinks href=#hl-6-8> 8</a>
+</span><span class=lnt id=hl-6-9><a class=lnlinks href=#hl-6-9> 9</a>
+</span><span class=lnt id=hl-6-10><a class=lnlinks href=#hl-6-10>10</a>
+</span><span class=lnt id=hl-6-11><a class=lnlinks href=#hl-6-11>11</a>
+</span><span class=lnt id=hl-6-12><a class=lnlinks href=#hl-6-12>12</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-lua data-lang=lua><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>-- startuptime in milliseconds till UIEnter</span>
+</span></span><span class=line><span class=cl>  <span class=n>startuptime</span> <span class=o>=</span> <span class=mi>0</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=c1>-- when true, startuptime is the accurate cputime for the Neovim process. (Linux &amp; Macos)</span>
+</span></span><span class=line><span class=cl>  <span class=c1>-- this is more accurate than `nvim --startuptime`, and as such will be slightly higher</span>
+</span></span><span class=line><span class=cl>  <span class=c1>-- when false, startuptime is calculated based on a delta with a timestamp when lazy started.</span>
+</span></span><span class=line><span class=cl>  <span class=n>real_cputime</span> <span class=o>=</span> <span class=kc>false</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=n>count</span> <span class=o>=</span> <span class=mi>0</span><span class=p>,</span> <span class=c1>-- total number of plugins</span>
+</span></span><span class=line><span class=cl>  <span class=n>loaded</span> <span class=o>=</span> <span class=mi>0</span><span class=p>,</span> <span class=c1>-- number of loaded plugins</span>
+</span></span><span class=line><span class=cl>  <span class=c1>---@type table&lt;string, number&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=n>times</span> <span class=o>=</span> <span class=p>{},</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div><p><strong>lazy.nvim</strong> provides a statusline component that you can use to show the number of pending updates.
+Make sure to enable <code>config.checker.enabled = true</code> to make this work.</p><details><summary>Example of configuring <a href=https://github.com/nvim-lualine/lualine.nvim>lualine.nvim</a></summary><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-7-1><a class=lnlinks href=#hl-7-1> 1</a>
+</span><span class=lnt id=hl-7-2><a class=lnlinks href=#hl-7-2> 2</a>
+</span><span class=lnt id=hl-7-3><a class=lnlinks href=#hl-7-3> 3</a>
+</span><span class=lnt id=hl-7-4><a class=lnlinks href=#hl-7-4> 4</a>
+</span><span class=lnt id=hl-7-5><a class=lnlinks href=#hl-7-5> 5</a>
+</span><span class=lnt id=hl-7-6><a class=lnlinks href=#hl-7-6> 6</a>
+</span><span class=lnt id=hl-7-7><a class=lnlinks href=#hl-7-7> 7</a>
+</span><span class=lnt id=hl-7-8><a class=lnlinks href=#hl-7-8> 8</a>
+</span><span class=lnt id=hl-7-9><a class=lnlinks href=#hl-7-9> 9</a>
+</span><span class=lnt id=hl-7-10><a class=lnlinks href=#hl-7-10>10</a>
+</span><span class=lnt id=hl-7-11><a class=lnlinks href=#hl-7-11>11</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-lua data-lang=lua><span class=line><span class=cl><span class=n>require</span><span class=p>(</span><span class=s2>&#34;lualine&#34;</span><span class=p>).</span><span class=n>setup</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>  <span class=n>sections</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>lualine_x</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>require</span><span class=p>(</span><span class=s2>&#34;lazy.status&#34;</span><span class=p>).</span><span class=n>updates</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=n>cond</span> <span class=o>=</span> <span class=n>require</span><span class=p>(</span><span class=s2>&#34;lazy.status&#34;</span><span class=p>).</span><span class=n>has_updates</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=n>color</span> <span class=o>=</span> <span class=p>{</span> <span class=n>fg</span> <span class=o>=</span> <span class=s2>&#34;#ff9e64&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>      <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>})</span></span></span></code></pre></td></tr></table></div></div></details></div><footer class=post-footer><hr><div class=post-nav><div class="post-nav-next post-nav-item"><a href=../../post/vim%E5%92%8Cneovim%E4%B8%AD%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2fcitx5%E8%BE%93%E5%85%A5%E6%B3%95/ rel=next title=vim和neovim中自动切换Fcitx5输入法><i class="fa fa-chevron-left"></i> vim和neovim中自动切换Fcitx5输入法</a></div><div class="post-nav-prev post-nav-item"><a href=../../post/%E4%B8%BAvim-templates%E6%8F%92%E4%BB%B6%E7%BC%96%E5%86%99%E6%A8%A1%E6%9D%BF/ rel=prev title=为vim-templates插件编写模板>为vim-templates插件编写模板
 <i class="fa fa-chevron-right"></i></a></div></div></footer></article></div></div></main><footer class=footer><div class=footer-inner><div id=i18n-translate class=i18n-translate><i class="fa fa-language"></i><div id=lang-select class=lang-select><div id=lang-selected class=selected-option><span class="flag-icon flag-icon-zh-cn"></span>
 <span class=selected-language>简体中文</span>
 <i class="fa fa-chevron-down"></i></div><div id=lang-options class=lang-options><div class=lang-option lang-code=zh-cn lang-name=简体中文 lang-url=../../post/neovim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86packer%E5%88%87%E6%8D%A2%E4%B8%BAlazy/><span class="flag-icon flag-icon-zh-cn"></span>
 <span class=lang-name>简体中文</span></div></div></div></div><div class=copyright>&copy;
 <span itemprop=copyrightYear>2022 - 2026
 </span><span class=with-love><i class="fa fa-heart"></i>
-</span><span class=author itemprop=copyrightHolder>Zhen-Hua Feng</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.169.0 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.8.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div></div></footer><script class=next-config data-name=page type=application/json>{"clipboard":{"js":{"alias":"clipboard","file":"dist/clipboard.min.js","name":"clipboard.js","version":"2.0.11"}},"comments":false,"expired":false,"isHome":false,"isPage":true,"math":{"js":{"file":"es5/tex-mml-svg.js","name":"mathjax","version":"3.2.2"},"render":"mathjax"},"path":"neovim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86packer%E5%88%87%E6%8D%A2%E4%B8%BAlazy","permalink":"/post/neovim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86packer%E5%88%87%E6%8D%A2%E4%B8%BAlazy/","title":"Neovim插件管理Packer切换为Lazy","toc":true}</script><script type=text/javascript src=https://s4.zstatic.net/ajax/libs/animejs/3.2.2/anime.min.js crossorigin=anonymous defer></script><script type=text/javascript src=https://s4.zstatic.net/ajax/libs/viewerjs/1.11.6/viewer.min.js crossorigin=anonymous defer></script><script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#9400D3","enable":false,"save":"manual"},"copybtn":true,"darkmode":false,"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"isMultiLang":true,"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"slideInRight","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":false,"plugin":"waline"},"views":{"enable":false,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","share":{"addtoany":{"js":"https://static.addtoany.com/menu/page.js","locale":"zh-CN","num":8},"enable":false},"sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"zstatic","router":{"home":"https://www.zstatic.net","logo":"https://www.zstatic.net/logo.png","name":"zstatic","type":"modern","url":"https://s4.zstatic.net/ajax/libs"}},"version":"4.8.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":false,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"@waline/client","file":"dist/waline.css","name":"waline","version":"2.15.8"},"js":{"alias":"@waline/client","file":"dist/waline.js","name":"waline","version":"2.15.8"}}}</script><script type=text/javascript src="../../js/main.min.js?=1794144902" defer></script><script type=text/javascript src="../../js/clipboard.min.js?=1794144902" defer></script><script type=text/javascript src="../../js/math.min.js?=1794144902" defer></script></body></html>
+</span><span class=author itemprop=copyrightHolder>Zhen-Hua Feng</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.169.0 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.8.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div></div></footer><script class=next-config data-name=page type=application/json>{"clipboard":{"js":{"alias":"clipboard","file":"dist/clipboard.min.js","name":"clipboard.js","version":"2.0.11"}},"comments":false,"expired":false,"isHome":false,"isPage":true,"math":{"js":{"file":"es5/tex-mml-svg.js","name":"mathjax","version":"3.2.2"},"render":"mathjax"},"path":"neovim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86packer%E5%88%87%E6%8D%A2%E4%B8%BAlazy","permalink":"/post/neovim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86packer%E5%88%87%E6%8D%A2%E4%B8%BAlazy/","title":"Neovim插件管理Packer切换为Lazy","toc":true}</script><script type=text/javascript src=https://s4.zstatic.net/ajax/libs/animejs/3.2.2/anime.min.js crossorigin=anonymous defer></script><script type=text/javascript src=https://s4.zstatic.net/ajax/libs/viewerjs/1.11.6/viewer.min.js crossorigin=anonymous defer></script><script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#9400D3","enable":false,"save":"manual"},"copybtn":true,"darkmode":false,"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"isMultiLang":true,"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"slideInRight","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":false,"plugin":"waline"},"views":{"enable":false,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","share":{"addtoany":{"js":"https://static.addtoany.com/menu/page.js","locale":"zh-CN","num":8},"enable":false},"sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"zstatic","router":{"home":"https://www.zstatic.net","logo":"https://www.zstatic.net/logo.png","name":"zstatic","type":"modern","url":"https://s4.zstatic.net/ajax/libs"}},"version":"4.8.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":false,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"@waline/client","file":"dist/waline.css","name":"waline","version":"2.15.8"},"js":{"alias":"@waline/client","file":"dist/waline.js","name":"waline","version":"2.15.8"}}}</script><script type=text/javascript src="../../js/main.min.js?=1794212984" defer></script><script type=text/javascript src="../../js/clipboard.min.js?=1794212984" defer></script><script type=text/javascript src="../../js/math.min.js?=1794212984" defer></script></body></html>
